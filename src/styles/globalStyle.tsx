@@ -13,6 +13,10 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+
+  @font-face {
+    font-family: 'SUIT';
+  }
   
 `;
 
