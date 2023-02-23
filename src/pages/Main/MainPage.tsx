@@ -168,7 +168,7 @@ const MainContainer = styled.div`
 
   background: #151519;
 
-  font-family: "SUIT", sans-serif;
+  font-family: "SUIT";
 `;
 
 const MainText = styled.p`

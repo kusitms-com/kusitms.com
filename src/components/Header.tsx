@@ -77,6 +77,7 @@ const HeaderContainer = styled.div`
 
   padding-left: 48px;
   padding-right: 76px;
+  font-family: "SUIT";
 `;
 
 const LogoContainer = styled.div`

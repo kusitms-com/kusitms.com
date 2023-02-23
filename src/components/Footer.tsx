@@ -81,6 +81,7 @@ const FooterContainer = styled.div`
   padding-bottom: 56px;
 
   background: #151519;
+  font-family: "SUIT";
 `;
 
 const LeftContainer = styled.div`

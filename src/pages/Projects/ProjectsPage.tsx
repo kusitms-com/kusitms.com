@@ -1,7 +1,8 @@
+import Layout from "components/Layout";
 import React from "react";
 
 const ProjectsPage = () => {
-  return <div>project</div>;
+  return <Layout>project</Layout>;
 };
 
 export default ProjectsPage;
