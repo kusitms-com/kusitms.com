@@ -1,10 +1,11 @@
 /* eslint-disable */
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "SUIT";
 `;
 
 export const ProjectIntroContainer = styled.div`
@@ -12,7 +13,7 @@ export const ProjectIntroContainer = styled.div`
   color: white;
   flex-direction: column;
   align-items: center;
-  width: 700px;
+  width: 640px;
   margin-top: 180px;
   text-align: center;
   
@@ -43,6 +44,7 @@ export const SelectBox = styled.div`
 export const SelectBoxItem = styled.div`
   display: flex;
   background-color: ${props => props.color};
+  color: ${props => props.about || "white"};
   border: 0px solid;
   border-radius: 75px;
   cursor: pointer;
@@ -88,5 +90,38 @@ export const IntroDetail = styled.div`
 `;
 
 export const ProjectsWrapper = styled.div`
-  height: 4000px;
+  width: 100%;
+`;
+
+export const ProjectFilterWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-top: 110px;
+`;
+
+export const ProjectFilterContainer = styled.div`
+  width: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const ProjectFilterItem = styled.div`
+  color: #90909A;
+  ${props => 
+    props["aria-checked"] && 
+    css`
+      color: #E2E2EB;
+    `
+  };
+  cursor: pointer;
+`;
+
+export const ProjectListWrapper = styled.div`
+  display: grid;
+  margin-top: 24px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
+  grid-gap: 20px;
 `;
