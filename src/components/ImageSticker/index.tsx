@@ -1,17 +1,18 @@
 /* eslint-disable */
 import * as s from "./styles";
 import {ReactComponent as CompanyProjectSticker} from "../../images/projects/sticker/CompanyProjectSticker.svg";
-import tmpImg from "../../images/projects/tmp/tmpImg.png";
+import {ReactComponent as MeetupSticker} from "../../images/projects/sticker/MeetupSticker.svg";
+import { IStickerProps } from "pages/Projects/ProjectsPage";
 
-const ImageSticker = () => {
+const ImageSticker = ({isMeetupSelected, companyImgURL, meetupImgURL}: IStickerProps) => {
   return (
     <s.Wrapper>
       <s.StickerWrapper>
-        <CompanyProjectSticker />
+        { isMeetupSelected ? <MeetupSticker /> : <CompanyProjectSticker /> }
       </s.StickerWrapper>
 
       <s.ImgWrapper>
-        <s.ImgContent src={tmpImg} />
+        {isMeetupSelected ? <s.ImgContent src={meetupImgURL} /> : <s.ImgContent src={companyImgURL} />}
       </s.ImgWrapper>
     </s.Wrapper>
   )

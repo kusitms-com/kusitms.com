@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { IMeetupProject } from "pages/Projects/ProjectsPage";
 
-const tmpData: IMeetupProject[] = [
+const meetupTmpData: IMeetupProject[] = [
   {
     meetup_id: 1,
     poster_url: "poster_url_1",
@@ -125,4 +125,4 @@ const tmpData: IMeetupProject[] = [
   },
 ];
 
-export default tmpData;
+export default meetupTmpData;
