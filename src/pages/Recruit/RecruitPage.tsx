@@ -6,8 +6,19 @@ import polygon from "../../images/recruit/Polygon.svg";
 import book from "../../images/recruit/apply-book.svg";
 import calendar from "../../images/recruit/apply-calendar.svg";
 import ranking from "../../images/recruit/apply-ranking.svg";
-import openbtn from "../../images/recruit/qna-open.svg";
+
 import RecruitProcess from "components/recruit/RecruitProcess";
+import RecruitAccordion from "components/recruit/RecriutAccordion";
+
+export interface Props {
+  question?: string | React.ReactNode;
+  answer?: string | React.ReactNode;
+}
+
+interface applyType {
+  icon: string;
+  text: string;
+}
 
 const RECRUIT_UNDERTITLE =
   "큐시즘은 혼자서는 해낼 수 없는 일들을 함께 이루어내고 있어요.\n멋진 아이디어를 실현하고, 놀라운 결과를 만들어내요.\n우리와 함께할래요?";
@@ -52,6 +63,61 @@ const RECRUIT_ALARM = [
   },
 ];
 
+const QNA = [
+  {
+    question: "모집 시기가 언제인가요?",
+    answer:
+      "큐시즘은 상반기, 하반기 총 2번 신규 운영진 및 학회원을 모집해요.\n운영진 리크루팅 이후 학회원 리크루팅이 시작되니\n모집 시기를 놓치고 싶지 않다면 홈페이지 상단에 있는 배너를 클릭해서 미리 알림을 받아보세요.",
+  },
+  {
+    question: "경쟁률이 어떻게 되나요?",
+    answer:
+      "매 기수 모집마다 경쟁률이 상이하게 나타나요. 따라서 경쟁률은 말씀드리기 어려운 점 양해부탁드려요.",
+  },
+  {
+    question: "토요일 활동 시간대가 어떻게 되나요?",
+    answer:
+      "정규 세션은 3~6시에 진행되나, 행사 및 커리큘럼에 따라 12~6시 사이에 진행되기도 해요.\n따라서 토요일 오후 시간에는 큐시즘 활동이 가능해야 해요!",
+  },
+  {
+    question: "졸업예정 학부생도 지원이 가능한가요?",
+    answer:
+      "큐시즘은 한 기수동안 재학생, 휴학생, 졸업 유예자처럼 대학생 신분을 유지하는 사람들만 지원이 가능해요.",
+  },
+  {
+    question: "학회 수료 시, 수료증을 받을 수 있나요?",
+    answer:
+      "네, 학회의 마지막 커리큘럼에서 수료 기준을 충족한 학회원에게 수료증을 제공하고 있어요.",
+  },
+  {
+    question: "정기 커리큘럼에 불참하게 되면 어떻게 되나요?",
+    answer:
+      "정기 커리큘럼에 불참하면 정관에 따라 벌점이 부과돼요.\n최대 벌점을 초과하면 수료를 못하게 될 수 있어요. 정기 커리큘럼에는 최대한 참여해야 수료에 지장이 없어요.",
+  },
+  {
+    question:
+      "이전 기수 활동하신 분들이 그대로 팀을 꾸려 서비스를 이어나가고 있는지 궁금해요.",
+    answer:
+      "매 기수마다 차이가 있지만, 밋업데이 이후 꾸준히 프로젝트를 이어나가는 팀이 존재해요.\n자세한 이야기는 프로젝트 페이지에서 확인해보세요.",
+  },
+  {
+    question: "운영진과 학회원의 차이가 무엇인가요?",
+    answer:
+      "큐시즘은 학기 시작하는 3-4월, 7-8월에 모집을 시작해요.\n모집 시기를 놓치고 싶지 않다면 홈페이지 상단에 있는 배너를 클릭해서 미리 알림을 받아보세요.",
+  },
+  {
+    question: "큐시즘이 처음인데 운영진부터 지원해도 되나요?",
+    answer:
+      "네, 물론이에요 :)\n큐시즘 활동을 하면서 더 많은 경험을 쌓고 알차게 보내고 싶은 분이라면 언제나 환영이에요.\n매 기수 신규 운영진으로 들어와 함께 하는 분들이 많기 때문에\n큐시즘에 대한 열정만 있으시다면 전혀 부담가지실 필요 없어요!",
+  },
+  {
+    question:
+      "운영진 지원 후 불합격이 되었을 때, 일반 학회원으로 재신청해도 불이익은 없나요?",
+    answer:
+      "네, 전혀 불이익 없어요!\n모든 지원 서류는 모집이 끝난 후 즉시 폐기하므로 학회원으로 재신청하셔도 전혀 문제되지 않아요.",
+  },
+];
+
 // const RECRUIT_ALARM
 
 const RecruitPage = () => {
@@ -67,7 +133,7 @@ const RecruitPage = () => {
           </div>
           <RecruitTitle>{RECRUIT_TITLE_1}</RecruitTitle>
           <ApplyBoxs>
-            {WHO_APPLY.map((apply: any, index: number) => (
+            {WHO_APPLY.map((apply: applyType, index: number) => (
               <ApplyBox key={index}>
                 <IconBox>
                   <img src={apply.icon} />
@@ -107,11 +173,24 @@ const RecruitPage = () => {
       </RecruitContainer>
       <QnaBox>
         <QnaTitle>궁금한게 있어요!</QnaTitle>
-        <QnaAccordion>
-          <QIcon>Q</QIcon>
-          <Question>모집 기간이 언제에요?</Question>
-          <QnaOpenBtn src={openbtn} />
-        </QnaAccordion>
+        {QNA.map((qna: Props, index: number) => (
+          <RecruitAccordion
+            key={index}
+            question={qna.question}
+            answer={qna.answer}
+          />
+        ))}
+
+        {/* <RecruitAccordion question={QNA[0].question} answer={QNA[0].answer} />
+        <RecruitAccordion question={QNA[1].question} answer={QNA[1].answer} />
+        <RecruitAccordion question={QNA[0].question} answer={QNA[0].answer} />
+        <RecruitAccordion question={QNA[1].question} answer={QNA[1].answer} />
+        <RecruitAccordion question={QNA[0].question} answer={QNA[0].answer} />
+        <RecruitAccordion question={QNA[1].question} answer={QNA[1].answer} />
+        <RecruitAccordion question={QNA[0].question} answer={QNA[0].answer} />
+        <RecruitAccordion question={QNA[1].question} answer={QNA[1].answer} />
+        <RecruitAccordion question={QNA[0].question} answer={QNA[0].answer} />
+        <RecruitAccordion question={QNA[1].question} answer={QNA[1].answer} /> */}
       </QnaBox>
     </Layout>
   );
@@ -300,7 +379,7 @@ const RecruitBtn = styled.button`
 
 const QnaBox = styled.div`
   width: 100%;
-  height: 1358px;
+  // height: 1358px;
   background-color: #ffffff;
 
   display: flex;
@@ -309,6 +388,7 @@ const QnaBox = styled.div`
 
   font-family: "SUIT";
   padding-top: 162px;
+  padding-bottom: 162px;
 `;
 
 const QnaTitle = styled.p`
@@ -319,35 +399,8 @@ const QnaTitle = styled.p`
   margin-bottom: 100px;
 `;
 
-const QnaAccordion = styled.div`
-  width: 980px;
-  height: 108px;
-  background: #f2f2f8;
-  border-radius: 32px;
-  font-size: 20px;
-  line-height: 25px;
-  padding-top: 40px;
-  padding-left: 48px;
-  position: relative;
-`;
-
-const QIcon = styled.span`
-  color: #0055ff;
-  font-weight: 800;
-  font-size; 20px;
-  line-height: 25px;
-  margin-right: 8px;
-`;
-
-const Question = styled.span`
-  font-weight: 400;
-  font-size: 20px;
-  letter-spacing: -0.2px;
-`;
-
-const QnaOpenBtn = styled.img`
-  vertical-align: middle;
-  position: absolute;
-  top: 40px;
-  right: 48px;
-`;
+// const Question = styled.span`
+//   font-weight: 400;
+//   font-size: 20px;
+//   letter-spacing: -0.2px;
+// `;
