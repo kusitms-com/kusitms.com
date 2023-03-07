@@ -57,6 +57,10 @@ export const SelectBoxItem = styled.div`
   align-items: center;
 `;
 
+export const EventContainer = styled.div`
+
+`;
+
 export const EventIntroContainer = styled.div`
   display: flex;
   flex-direction: row;
