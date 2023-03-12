@@ -11,7 +11,6 @@ import MeetupProjectCard from "components/MeetupProjectCard";
 import company_tmpImg from "../../images/projects/tmp/company_tmpImg.png";
 import meetup_tmpImg from "../../images/projects/tmp/meetup_tmpImg.png";
 import CompanyProjectCard from "components/CompanyProjectCard";
-import companyTmpData from "tmpdata/tmpCompanyData";
 import ProjectsAPI from "api/ProjectsAPI";
 
 export interface IMeetupList {
@@ -44,6 +43,33 @@ export interface ICompanyProject {
   name: string;
   content: string;
   category: string[];
+}
+
+export interface IMeetupDetails {
+  cardinal: number;
+  name: string;
+  intro: string;
+  type: string;
+  team: IMeetupTeam;
+  meetup_id: number;
+  one_line_intro: string;
+  logo_url: string;
+  poster_url: string;
+  instagram_url?: string | null;
+  github_url: string;
+  app_url?: string | null;
+  start_date: string;
+  end_date: string;
+}
+
+export interface IMeetupTeam {
+  name: string;
+  planner: string[];
+  designer: string[];
+  frontend?: string[] | null;
+  backend: string[];
+  ios?: string[] | null;
+  android?: string[] | null;
 }
 
 export interface IStickerProps {
