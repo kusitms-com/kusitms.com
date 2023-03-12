@@ -6,8 +6,15 @@ import { ReactComponent as GithubIcon} from "../../images/projects/icons/GithubI
 
 
 const MeetupProjectCard = ({meetup_id, poster_url, logo_url, cardinal, name, one_line_intro, instagram_url, github_url, app_url}: IMeetupProject) => {
+  const handleIcon = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    console.log("아이콘 클릭됨");
+  };
+  const handleProject = () => {
+    console.log("프로젝트 전체 클릭됨");
+  }
   return (
-    <s.Wrapper>
+    <s.Wrapper onClick={handleProject}>
       <s.PosterImg src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
 
       <s.LogoImg src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" />
@@ -18,7 +25,7 @@ const MeetupProjectCard = ({meetup_id, poster_url, logo_url, cardinal, name, one
         <s.OneLineIntro>공백포함 최대40자 공백포함 최대40자 공백포함 최대40자 공백포함 최대40자  </s.OneLineIntro>
 
         <s.IconContainer>
-          <s.IconBackground>
+          <s.IconBackground onClick={handleIcon}>
             <InstagramIcon />
           </s.IconBackground>
 

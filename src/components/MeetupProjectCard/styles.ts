@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   font-family: 'SUIT';
   background-color: white;
+  cursor: pointer;
 `;
 
 export const PosterImg = styled.img`
