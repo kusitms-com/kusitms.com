@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_SERVER_BASE_ADDRESS,
-  withCredentials: true,
+  baseURL: "https://kusitms.herokuapp.com/",
+  withCredentials: false,
 });
 
 const HttpClient = {

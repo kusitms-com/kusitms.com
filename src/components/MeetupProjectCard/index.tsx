@@ -15,14 +15,14 @@ const MeetupProjectCard = ({meetup_id, poster_url, logo_url, cardinal, name, one
   }
   return (
     <s.Wrapper onClick={handleProject}>
-      <s.PosterImg src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
+      <s.PosterImg src={poster_url} />
 
-      <s.LogoImg src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" />
+      <s.LogoImg src={logo_url} />
 
       <s.ProjectInfoWapper>
-        <s.Cardinal>26기</s.Cardinal>
-        <s.ProjectName>프로젝트 명</s.ProjectName>
-        <s.OneLineIntro>공백포함 최대40자 공백포함 최대40자 공백포함 최대40자 공백포함 최대40자  </s.OneLineIntro>
+        <s.Cardinal>{cardinal}기</s.Cardinal>
+        <s.ProjectName>{name}</s.ProjectName>
+        <s.OneLineIntro>{one_line_intro}</s.OneLineIntro>
 
         <s.IconContainer>
           <s.IconBackground onClick={handleIcon}>
