@@ -20,25 +20,30 @@ export interface IMeetupList {
 };
 
 export interface IMeetupProject {
-  meetup_id: number,
-  poster_url: string,
-  logo_url: string,
-  cardinal: number,
-  name: string,
-  one_line_intro: string,
-  instagram_url: string,
-  github_url: string,
+  meetup_id: number;
+  poster_url: string;
+  logo_url: string;
+  cardinal: number;
+  name: string;
+  one_line_intro: string;
+  instagram_url: string;
+  github_url: string;
   app_url?: string | null
 };
 
+export interface ICompanyList {
+  corporateCount: number;
+  corporateList: ICompanyProject[];
+}
+
 export interface ICompanyProject {
-  corporate_id: number,
-  banner_url: string,
-  logo_url: string,
-  cardinal: number,
-  name: string,
-  content: string,
-  category: string[]
+  corporate_id: number;
+  banner_url: string;
+  logo_url: string;
+  cardinal: number;
+  name: string;
+  content: string;
+  category: string[];
 }
 
 export interface IStickerProps {
@@ -73,13 +78,23 @@ const ProjectsPage = () => {
   const [meetupList, setMeetupList] = useState<IMeetupProject[]>([]);
   const [meetupCount, setMeetupCount] = useState(0);
 
+  const [corporateList, setCorporateList] = useState<ICompanyProject[]>([]);
+  const [corporateCount, setCorporateCount] = useState(0);
+
   useEffect(() => {
     const meetup: Promise<any> = ProjectsAPI.getMeetupList();
     meetup.then((data: IMeetupList) => {
       setMeetupCount(data.meetup_count);
       setMeetupList([...data.meetup_list])
       console.log({meetupList});
-    })
+    });
+
+    const corporate: Promise<any> = ProjectsAPI.getCorporateList();
+    corporate.then((data: ICompanyList) => {
+      setCorporateCount(data.corporateCount);
+      setCorporateList([...data.corporateList]);
+      console.log({corporateList});
+    });
   }, []);
 
   return (
@@ -88,7 +103,7 @@ const ProjectsPage = () => {
         <s.ProjectIntroContainer>
           <s.ProjectIntroText>{ProjectIntroText}</s.ProjectIntroText>
           <s.ProjectIntroSubText>
-            <s.ProjectNumText>{meetupCount}</s.ProjectNumText>
+            { isMeetupSelected ? <s.ProjectNumText>{meetupCount}</s.ProjectNumText> : <s.ProjectNumText>{corporateCount}</s.ProjectNumText>}
             {ProjectIntroSubText}
             </s.ProjectIntroSubText>
         </s.ProjectIntroContainer>
@@ -170,7 +185,7 @@ const ProjectsPage = () => {
 
               <s.ProjectListWrapper>
                 {
-                  companyTmpData.map((d, i) => {
+                  corporateList.map((d, i) => {
                     return <CompanyProjectCard corporate_id={d.corporate_id} banner_url={d.banner_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} content={d.content} category={d.category} />
                   })
                 }

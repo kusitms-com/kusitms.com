@@ -29,7 +29,7 @@ const ProjectsAPI = {
       const path = `api/projects/corporate`;
       const response = await HttpClient.get(path, {}, {});
       console.log(response);
-      return response;
+      return response.data;
     } catch (e) {
       console.log(e);
       return null;
