@@ -4,16 +4,33 @@ import * as s from "./styles";
 import { ReactComponent as InstagramIcon } from "../../images/projects/icons/InstagramIcon.svg";
 import { ReactComponent as GithubIcon } from "../../images/projects/icons/GithubIcon.svg";
 import { ReactComponent as DetailLinkIcon } from "../../images/projects/icons/DetailLinkIcon.svg";
+import { IMeetupDetails } from "pages/Projects/ProjectsPage";
 
-const ProjectDetail = () => {
+const ProjectDetail = (
+  {
+    cardinal,
+    name,
+    intro, 
+    type, 
+    team, 
+    meetup_id, 
+    one_line_intro, 
+    logo_url,
+    poster_url,
+    instagram_url,
+    github_url,
+    app_url,
+    start_date,
+    end_date
+  }: IMeetupDetails) => {
   return (
     <Layout>
       <s.Wrapper>
         <s.Container>
           <s.TopContainer>
             <s.Intro>
-              <s.Title>프로젝트명</s.Title>
-              <s.OneLineIntro>프로젝트 한 줄 소개</s.OneLineIntro>
+              <s.Title>{name}</s.Title>
+              <s.OneLineIntro>{intro}</s.OneLineIntro>
             </s.Intro>
 
             <s.IconContainer>
@@ -46,10 +63,10 @@ const ProjectDetail = () => {
                   <s.VerticalLine />
 
                   <s.AbstractInfoText>
-                    <s.AbstractInfoTextItem>26기</s.AbstractInfoTextItem>
-                    <s.AbstractInfoTextItem>{`앱 (2022.00.00 - 00.00)`}</s.AbstractInfoTextItem>
-                    <s.AbstractInfoTextItem>{`기획 (3) : 홍길동, 홍길동, 홍길동`}</s.AbstractInfoTextItem>
-                    <s.AbstractInfoTextItem>{`디자인 (1) : 홍길동`}</s.AbstractInfoTextItem>
+                    <s.AbstractInfoTextItem>{cardinal}기</s.AbstractInfoTextItem>
+                    <s.AbstractInfoTextItem>{`${type} (${start_date} - ${end_date})`}</s.AbstractInfoTextItem>
+                    <s.AbstractInfoTextItem>{`기획 (${team.planner.length}) : 홍길동, 홍길동, 홍길동`}</s.AbstractInfoTextItem>
+                    <s.AbstractInfoTextItem>{`디자인 (${team.designer.length}) : 홍길동`}</s.AbstractInfoTextItem>
                     <s.AbstractInfoTextItem>{`프론트엔드 (2) : 홍길동, 홍길동`}</s.AbstractInfoTextItem>
                     <s.AbstractInfoTextItem>{`백엔드 (2) : 홍길동, 홍길동`}</s.AbstractInfoTextItem>
                   </s.AbstractInfoText>

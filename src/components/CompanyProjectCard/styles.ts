@@ -18,17 +18,15 @@ export const PosterImg = styled.img`
   height: 285px;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  src: ${props => props.src};
 `;
 
 export const LogoImg = styled.img`
   display: flex;
   position: absolute;
-  margin-top: 237px;
+  margin-top: 130px;
   width: 95px;
   height: 95px;
   border-radius: 50px;
-  src: ${props => props.src};
   top: 0px;
   right: 24px;
 `;
