@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Main, Projects, Recruit } from "pages";
+import Reviews from "pages/Reviews/ReviewsPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/recruit" element={<Recruit />} />
+          <Route path="/reviews" element={<Reviews />} />
         </Routes>
       </Router>
     </Container>
