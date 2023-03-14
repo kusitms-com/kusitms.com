@@ -78,6 +78,9 @@ const HeaderContainer = styled.div`
   padding-left: 48px;
   padding-right: 76px;
   font-family: "SUIT";
+
+  z-index: 100000;
+  overflow-x: hidden;
 `;
 
 const LogoContainer = styled.div`
