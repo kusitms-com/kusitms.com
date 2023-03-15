@@ -209,10 +209,7 @@ const MainPage = () => {
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    AOS.init({
-      duration: 2000,
-    });
-    AOS.refresh();
+    AOS.init();
   }, []);
 
   useEffect(() => {
@@ -612,7 +609,11 @@ const MainPage = () => {
             </div>
           </MobileNumberContainer>
           <MobileIntroduceContainer>
-            <TitleTextContainer>
+            <TitleTextContainer
+              data-aos="fade-up"
+              data-aos-duration="3000"
+              data-aos-anchor-placement="top-bottom"
+            >
               <MobileTitleText>{INTRODUCTION_TITLE_1}</MobileTitleText>
               <EmphasisImage
                 style={{
@@ -623,7 +624,11 @@ const MainPage = () => {
                 }}
               />
             </TitleTextContainer>
-            <MobileDescriptionText>
+            <MobileDescriptionText
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-anchor-placement="top-center"
+            >
               {MOBILE_INTRODUCTION_DESCRIPTION_1}
             </MobileDescriptionText>
             <div
@@ -642,12 +647,22 @@ const MainPage = () => {
                 }
               )}
             </div>
-            <MobileButton>
+            <MobileButton
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-anchor-placement="top-center"
+            >
               {"학회 소개영상 보러가기"}
               <img src={rightArrowIcon} width={20} height={8} />
             </MobileButton>
             <MobileManagementContainer>
-              <MobileManagementTitle>{MANAGEMENT_TITLE}</MobileManagementTitle>
+              <MobileManagementTitle
+                data-aos="fade-up"
+                data-aos-duration="3000"
+                data-aos-anchor-placement="top-center"
+              >
+                {MANAGEMENT_TITLE}
+              </MobileManagementTitle>
               <div
                 style={{
                   display: "flex",
@@ -672,6 +687,10 @@ const MainPage = () => {
                   height={400}
                   src={program}
                   style={{ marginTop: "-38px" }}
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"
                 />
               );
             })}
@@ -685,6 +704,10 @@ const MainPage = () => {
                     height={400}
                     src={activity}
                     style={{ marginTop: "-38px" }}
+                    data-aos="fade-up"
+                    data-aos-duration="1000"
+                    data-aos-offset="300"
+                    data-aos-easing="ease-in-sine"
                   />
                 );
               }
@@ -1521,8 +1544,16 @@ const MobileIntroduceProgramContainer = styled.div`
 `;
 
 const MobileIntroductionCard = (group: introductionGroupType) => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <MobileIntroductionCardContainer>
+    <MobileIntroductionCardContainer
+      data-aos="fade-right"
+      data-aos-delay="500"
+      data-aos-offset="300"
+      data-aos-easing="ease-in-sine"
+    >
       <img src={group.img} width="36px" height="36px" />
       <MobileIntroductionCardSideContainer>
         <MobileIntroductionCardTitle>{group.title}</MobileIntroductionCardTitle>
@@ -1538,8 +1569,9 @@ const MobileIntroductionCardContainer = styled.div`
   width: 322px;
   height: 209px;
 
-  background: #ffffff;
+  background: #fff;
   border-radius: 20px;
+
   display: flex;
   gap: 17px;
 
@@ -1631,8 +1663,17 @@ const MobileManagementTitle = styled.p`
 `;
 
 const MobileManagementCard = (content: managementContentType) => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <MobileManagementCardContainer url={content.img}>
+    <MobileManagementCardContainer
+      url={content.img}
+      data-aos="fade-up"
+      data-aos-delay="1000"
+      data-aos-offset="400"
+      data-aos-easing="ease-in-sine"
+    >
       <MobileManagementCardTitle>{content.title}</MobileManagementCardTitle>
       <MobileManagementCardContent>
         {content.content}
