@@ -22,5 +22,5 @@ const Container = styled.div`
   justify-content: center;
 
   background: #151519;
-  overflow: hidden;
+  overflow-y: hidden;
 `;

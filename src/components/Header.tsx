@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import logo from "../images/common/logo.svg";
 import logoText from "../images/common/logo-text.svg";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useIsMobile } from "../hooks/useIsMobile";
 
 interface CategoryOption {
   title: string;
@@ -24,6 +26,8 @@ const Header = (props: any) => {
 
   const [selectedOption, setSelectedOption] = useState<string>("학회소개");
 
+  const isMobile = useIsMobile();
+
   const onClickCategory = (title: string, link: string) => {
     setSelectedOption(title);
     navigate(link);
@@ -34,6 +38,17 @@ const Header = (props: any) => {
       if (pathname.includes(option.link)) setSelectedOption(option.title);
     });
   }, [pathname]);
+
+  if (isMobile) {
+    return (
+      <MobileHeaderContainer>
+        <LogoContainer>
+          <img src={logo} />
+          <img src={logoText} />
+        </LogoContainer>
+      </MobileHeaderContainer>
+    );
+  }
 
   return (
     <HeaderContainer>
@@ -106,4 +121,27 @@ const Category = styled.div<{ selected: boolean }>`
   color: ${(props) => (props.selected ? "#FFF" : "#90909A")};
 
   cursor: pointer;
+`;
+
+/// /////////////////////////////////////
+
+const MobileHeaderContainer = styled.div`
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100vw;
+  height: 47px;
+
+  background: #151519;
+
+  padding-left: 18px;
+  padding-right: 28px;
+  font-family: "SUIT";
+
+  z-index: 100000;
+  overflow-x: hidden;
 `;
