@@ -176,7 +176,11 @@ const ProjectsPage = () => {
 
               <s.ProjectListWrapper>
                 {
+                  isNewestSelected ?
                   meetupList.map((d, i) => {
+                    return <MeetupProjectCard meetup_id={d.meetup_id} poster_url={d.poster_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} one_line_intro={d.one_line_intro} instagram_url={d.instagram_url} github_url={d.github_url} app_url={d.app_url}/>
+                  }) :
+                  meetupList.slice(0).reverse().map((d, i) => {
                     return <MeetupProjectCard meetup_id={d.meetup_id} poster_url={d.poster_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} one_line_intro={d.one_line_intro} instagram_url={d.instagram_url} github_url={d.github_url} app_url={d.app_url}/>
                   })
                 }
@@ -211,7 +215,11 @@ const ProjectsPage = () => {
 
               <s.ProjectListWrapper>
                 {
+                  isNewestSelected ? 
                   corporateList.map((d, i) => {
+                    return <CompanyProjectCard corporate_id={d.corporate_id} banner_url={d.banner_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} content={d.content} category={d.category} />
+                  }) :
+                  corporateList.slice(0).reverse().map((d, i) => {
                     return <CompanyProjectCard corporate_id={d.corporate_id} banner_url={d.banner_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} content={d.content} category={d.category} />
                   })
                 }
