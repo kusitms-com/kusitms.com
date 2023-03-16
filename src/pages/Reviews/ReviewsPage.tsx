@@ -15,7 +15,8 @@ interface categoryType {
 }
 
 const REVIEW_TITLE = "큐밀리의\n솔직 후기를 들어보세요!";
-const API_URL = "https://kusitms.herokuapp.com/api/reviews";
+// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+const API_URL = `${process.env.REACT_APP_SERVER_BASE_ADDRESS}api/reviews`;
 const categories = [
   {
     name: "전체",
@@ -68,7 +69,9 @@ const Reviews = () => {
       setData(lists);
       return;
     }
-    const filterData = lists.filter((item: any) => item.team === btn);
+    const filterData = lists.filter(
+      (item: reviewListType) => item.team === btn
+    );
     setData(filterData);
   };
 

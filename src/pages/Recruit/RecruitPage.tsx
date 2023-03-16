@@ -10,11 +10,6 @@ import ranking from "../../images/recruit/apply-ranking.svg";
 import RecruitProcess from "components/recruit/RecruitProcess";
 import RecruitAccordion from "components/recruit/RecriutAccordion";
 
-export interface Props {
-  question?: string | React.ReactNode;
-  answer?: string | React.ReactNode;
-}
-
 interface applyType {
   icon: string;
   text: string;
@@ -118,7 +113,7 @@ const QNA = [
   },
 ];
 const RecruitPage = () => {
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState<number | null>(null);
   return (
     <Layout>
       <RecruitContainer>
@@ -172,7 +167,7 @@ const RecruitPage = () => {
       <QnaBox>
         <QnaTitle>궁금한게 있어요!</QnaTitle>
 
-        {QNA.map((qna: Props, index: number) => (
+        {QNA.map((qna: any, index: number) => (
           <RecruitAccordion
             key={index}
             index={index}

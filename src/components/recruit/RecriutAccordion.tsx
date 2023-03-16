@@ -3,9 +3,16 @@ import styled from "styled-components";
 import openbtn from "../../images/recruit/qna-open.svg";
 import closebtn from "../../images/recruit/qna-close.svg";
 import { Link } from "react-router-dom";
-// import type { Props } from "pages/Recruit/RecruitPage";
 
-const RecruitAccordion = (props: any) => {
+export interface Props {
+  question?: string | React.ReactNode;
+  answer?: string | React.ReactNode;
+  index: number;
+  active: number | null;
+  setActive: React.Dispatch<React.SetStateAction<number | null>>;
+}
+
+const RecruitAccordion = (props: Props) => {
   const parentRef = useRef<HTMLDivElement>(null);
   const childRef = useRef<HTMLDivElement>(null);
   const [isCollapse, setIsCollapse] = useState<boolean>(false);
