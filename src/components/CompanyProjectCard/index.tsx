@@ -2,7 +2,15 @@
 import * as s from "./styles";
 import { ICompanyProject } from "pages/Projects/ProjectsPage";
 
-const MeetupProjectCard = ({corporate_id, banner_url, logo_url, cardinal, name, content, category}: ICompanyProject) => {
+const MeetupProjectCard = ({
+  corporate_id,
+  banner_url,
+  logo_url,
+  cardinal,
+  name,
+  content,
+  category,
+}: ICompanyProject) => {
   return (
     <s.Wrapper>
       <s.PosterImg src={banner_url} />
@@ -15,14 +23,12 @@ const MeetupProjectCard = ({corporate_id, banner_url, logo_url, cardinal, name, 
         <s.ContentIntro>{content}</s.ContentIntro>
 
         <s.CategoryBoxContainer>
-          {
-            category &&
-            category.map((d, i) => <s.CategoryBox>{d}</s.CategoryBox>)
-          }
+          {category &&
+            category.map((d, i) => <s.CategoryBox>{d}</s.CategoryBox>)}
         </s.CategoryBoxContainer>
       </s.ProjectInfoWapper>
     </s.Wrapper>
-  )
+  );
 };
 
 export default MeetupProjectCard;

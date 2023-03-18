@@ -6,23 +6,22 @@ import { ReactComponent as GithubIcon } from "../../images/projects/icons/Github
 import { ReactComponent as DetailLinkIcon } from "../../images/projects/icons/DetailLinkIcon.svg";
 import { IMeetupDetails } from "pages/Projects/ProjectsPage";
 
-const ProjectDetail = (
-  {
-    cardinal,
-    name,
-    intro, 
-    type, 
-    team, 
-    meetup_id, 
-    one_line_intro, 
-    logo_url,
-    poster_url,
-    instagram_url,
-    github_url,
-    app_url,
-    start_date,
-    end_date
-  }: IMeetupDetails) => {
+const ProjectDetail = ({
+  cardinal,
+  name,
+  intro,
+  type,
+  team,
+  meetup_id,
+  one_line_intro,
+  logo_url,
+  poster_url,
+  instagram_url,
+  github_url,
+  app_url,
+  start_date,
+  end_date,
+}: IMeetupDetails) => {
   return (
     <Layout>
       <s.Wrapper>
@@ -63,7 +62,9 @@ const ProjectDetail = (
                   <s.VerticalLine />
 
                   <s.AbstractInfoText>
-                    <s.AbstractInfoTextItem>{cardinal}기</s.AbstractInfoTextItem>
+                    <s.AbstractInfoTextItem>
+                      {cardinal}기
+                    </s.AbstractInfoTextItem>
                     <s.AbstractInfoTextItem>{`${type} (${start_date} - ${end_date})`}</s.AbstractInfoTextItem>
                     <s.AbstractInfoTextItem>{`기획 (${team.planner.length}) : 홍길동, 홍길동, 홍길동`}</s.AbstractInfoTextItem>
                     <s.AbstractInfoTextItem>{`디자인 (${team.designer.length}) : 홍길동`}</s.AbstractInfoTextItem>
