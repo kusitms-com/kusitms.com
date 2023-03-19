@@ -23,4 +23,5 @@ const Container = styled.div`
 
   background: #151519;
   overflow-y: hidden;
+  overflow-x: hidden;
 `;

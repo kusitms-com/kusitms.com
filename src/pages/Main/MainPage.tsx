@@ -10,7 +10,6 @@ import "animate.css/animate.min.css";
 import { useIsMobile } from "hooks/useIsMobile";
 
 import mainImage from "../../images/main/main-image.svg";
-import mainSubImage from "../../images/main/sub-main-image.svg";
 import { ReactComponent as EmphasisImage } from "../../images/main/emphasis-image.svg";
 import { ReactComponent as EmphasisImageWhite } from "../../images/main/emphasis-image-white.svg";
 import designIcon from "../../images/main/icon-design.svg";
@@ -18,6 +17,10 @@ import developIcon from "../../images/main/icon-develop.svg";
 import planIcon from "../../images/main/icon-plan.svg";
 import rightArrowIcon from "../../images/main/icon-right-arrow.svg";
 
+import { ReactComponent as MainLogoImage } from "../../images/main/logo-kusitms-main.svg";
+import { ReactComponent as UpdownImage } from "../../images/main/up-down-image.svg";
+
+import backgroundImage from "../../images/main/background-image.png";
 import backgroundImageMobile from "../../images/main/mobile/background-image.png";
 
 import managementImage1 from "../../images/main/management-image-1.png";
@@ -235,6 +238,9 @@ const MainPage = () => {
             update[0].classList.add("fadeWorthText1");
             update[1].classList.add("fadeWorthText2");
             update[2].classList.add("fadeWorthText3");
+
+            const movingImage = document.getElementsByClassName("defaultImage");
+            movingImage[0].classList.add("movingImage");
           } else if (
             Math.ceil(scrollTop) >= pageHeight &&
             Math.ceil(scrollTop) < pageHeight * 2
@@ -372,6 +378,15 @@ const MainPage = () => {
               left: 0,
               behavior: "smooth",
             });
+          } else if (
+            Math.ceil(scrollTop) >= pageHeight * 12 &&
+            Math.ceil(scrollTop) < pageHeight * 13
+          ) {
+            outerDivRef.current.scrollTo({
+              top: pageHeight * 13,
+              left: 0,
+              behavior: "smooth",
+            });
           }
         } else {
           // 스크롤 올릴 때
@@ -496,6 +511,15 @@ const MainPage = () => {
           ) {
             outerDivRef.current.scrollTo({
               top: pageHeight * 11,
+              left: 0,
+              behavior: "smooth",
+            });
+          } else if (
+            Math.ceil(scrollTop) >= pageHeight * 13 &&
+            Math.ceil(scrollTop) < pageHeight * 14
+          ) {
+            outerDivRef.current.scrollTo({
+              top: pageHeight * 12,
               left: 0,
               behavior: "smooth",
             });
@@ -735,9 +759,9 @@ const MainPage = () => {
                   return (
                     <MovingComponent
                       type={"flash"}
-                      duration={"2000ms"}
+                      duration={"5000ms"}
                       timing={"ease"}
-                      delay={`${index * 100}ms`}
+                      delay={`${index * 400}ms`}
                       fillMode="backwards"
                     >
                       {s}
@@ -750,9 +774,9 @@ const MainPage = () => {
                   return (
                     <MovingComponent
                       type={"flash"}
-                      duration={"2000ms"}
+                      duration={"5000ms"}
                       timing={"ease"}
-                      delay={`${index * 100}ms`}
+                      delay={`${index * 400}ms`}
                       direction="reverse"
                     >
                       {s}
@@ -772,8 +796,59 @@ const MainPage = () => {
               </div>
               <KustimsText>{KUSTIMS}</KustimsText>
             </LeftContainer>
-            <img src={mainSubImage} />
+            <div style={{ position: "relative" }}>
+              <UpDownCustomImage className="defaultImage" />
+              <MainLogoImage
+                style={{
+                  position: "absolute",
+                  top: "-220px",
+                  left: "310px",
+                  zIndex: 0,
+                }}
+              />
+            </div>
           </WorthContainer>
+          <NumberContainer>
+            <NumberTitle>{"Since 2009"}</NumberTitle>
+            <div style={{ display: "flex", gap: "55px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <PCCircle />
+                <Number>1403{"명"}</Number>
+                <NumberSubTitle>{"누적 회원 수"}</NumberSubTitle>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <PCCircle />
+                <Number>{"203개 프로젝트"}</Number>
+                <NumberSubTitle>{"프로젝트 결과물"}</NumberSubTitle>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <PCCircle />
+                <Number>{"100개 대학"}</Number>
+                <NumberSubTitle>{"참여 대학 수"}</NumberSubTitle>
+              </div>
+            </div>
+          </NumberContainer>
           <IntroductionContainer>
             <TitleTextContainer className="defaultTitle1">
               <TitleText>{INTRODUCTION_TITLE_1}</TitleText>
@@ -1104,6 +1179,8 @@ const Button = styled.div`
   letter-spacing: -0.2px;
 
   color: #ffffff;
+
+  font-family: "SUIT";
 `;
 
 const ManagementContainer = styled.div`
@@ -1822,4 +1899,91 @@ const MobileKusitmsText = styled.p`
   letter-spacing: -0.5px;
 
   color: #ffffff;
+`;
+
+const NumberContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  background-image: url(${backgroundImage});
+  //background-size: (50%, 50%);
+`;
+
+const NumberTitle = styled.p`
+  font-family: "SUIT";
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 120%;
+  /* identical to box height, or 29px */
+
+  text-align: center;
+
+  /* WH */
+
+  color: #ffffff;
+
+  margin-bottom: 88px;
+
+  margin-left: -89px;
+`;
+
+const Number = styled.p`
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 105%;
+  /* identical to box height, or 63px */
+
+  letter-spacing: -0.2px;
+
+  /* WH */
+
+  color: #ffffff;
+  margin-bottom: 24px;
+`;
+
+const PCCircle = styled.div`
+  width: 8px;
+  height: 8px;
+
+  background: #dce1ff;
+  border-radius: 50%;
+
+  margin-bottom: 24px;
+`;
+
+const NumberSubTitle = styled.p`
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  letter-spacing: -0.5px;
+
+  /* OnPrimary */
+
+  color: #dce1ff;
+`;
+
+const fadeInBottom = keyframes`
+  0% {
+      opacity: 0;
+      transform: translateY(-800px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+`;
+
+const UpDownCustomImage = styled(UpdownImage)`
+  &.movingImage {
+    animation: ${fadeInBottom} 2s;
+  }
 `;
