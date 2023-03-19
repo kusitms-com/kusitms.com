@@ -4,8 +4,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import logo from "../images/common/logo.svg";
 import logoText from "../images/common/logo-text.svg";
+import { ReactComponent as IconMenu } from "../images/common/icon-menu.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useIsMobile } from "../hooks/useIsMobile";
+import Sidebar from "./SideBar";
 
 interface CategoryOption {
   title: string;
@@ -39,6 +41,12 @@ const Header = (props: any) => {
     });
   }, [pathname]);
 
+  /// mobile
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleSide = () => {
+    setIsOpen(true);
+  };
+
   if (isMobile) {
     return (
       <MobileHeaderContainer>
@@ -46,6 +54,14 @@ const Header = (props: any) => {
           <img src={logo} />
           <img src={logoText} />
         </LogoContainer>
+        <IconMenuCustom onClick={toggleSide} />
+        {isOpen && (
+          <Sidebar
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            categories={CATEGORY_OPTIONS}
+          />
+        )}
       </MobileHeaderContainer>
     );
   }
@@ -144,4 +160,8 @@ const MobileHeaderContainer = styled.div`
 
   z-index: 100000;
   overflow-x: hidden;
+`;
+
+const IconMenuCustom = styled(IconMenu)`
+  cursor: pointer;
 `;
