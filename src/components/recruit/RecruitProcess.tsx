@@ -95,7 +95,7 @@ const LastContext = styled.span`
   transform: translate(-50%, -120%);
   font-family: "SUIT";
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 25px;
   color: #ffffff;
 `;
