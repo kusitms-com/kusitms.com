@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   border-radius: 40px;
   display: flex;
   flex-direction: column;
-  font-family: 'SUIT';
+  font-family: "SUIT";
   background-color: white;
   cursor: pointer;
 `;
@@ -19,7 +19,7 @@ export const PosterImg = styled.img`
   height: 285px;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  src: ${props => props.src};
+  src: ${(props) => props.src};
 `;
 
 export const LogoImg = styled.img`
@@ -29,7 +29,7 @@ export const LogoImg = styled.img`
   width: 95px;
   height: 95px;
   border-radius: 50px;
-  src: ${props => props.src};
+  src: ${(props) => props.src};
   top: 0px;
   right: 24px;
 `;
@@ -64,13 +64,13 @@ export const IconContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 15px;
-`
+`;
 
 export const IconBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #45464F;
+  background-color: #45464f;
   width: 44px;
   height: 44px;
   border-radius: 50px;
