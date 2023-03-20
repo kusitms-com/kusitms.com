@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   font-family: "SUIT";
+  &.open {
+    background: rgba(21, 21, 25, 0.7);
+    z-index:3;
+  }
 `;
 
 export const ProjectIntroContainer = styled.div`
@@ -128,4 +132,9 @@ export const ProjectListWrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-auto-rows: 1fr;
   grid-gap: 20px;
+`;
+
+
+export const CardWrapper = styled.div`
+  
 `;

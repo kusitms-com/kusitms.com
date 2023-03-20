@@ -12,6 +12,7 @@ import company_tmpImg from "../../images/projects/tmp/company_tmpImg.png";
 import meetup_tmpImg from "../../images/projects/tmp/meetup_tmpImg.png";
 import CompanyProjectCard from "components/CompanyProjectCard";
 import ProjectsAPI from "api/ProjectsAPI";
+import ProjectDetail from "pages/ProjectDetail";
 
 export interface IMeetupList {
   meetup_count: number;
@@ -123,9 +124,31 @@ const ProjectsPage = () => {
     });
   }, []);
 
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedMeetupId, setSelectedMeetupId] = useState(0);
+  const [modalProps, setModalProps] = useState<IMeetupDetails>();
+  const handleModal = (meetup_id: number, e: React.MouseEvent<HTMLDivElement>) => {
+    setModalOpen(!modalOpen);
+    setSelectedMeetupId(meetup_id);
+  };
+
+  useEffect(() => {
+    const meetupDetails: Promise<any> = ProjectsAPI.getMeetupDetail(selectedMeetupId);
+    meetupDetails.then((data: IMeetupDetails) => {
+      setModalProps({...data});
+    }).catch((error) => {
+      console.log(error);
+    });
+  }, [selectedMeetupId])
+
   return (
     <Layout>
-      <s.Wrapper>
+      <s.Wrapper className={modalOpen ? "open" : ""}>
+        {
+          modalOpen ? <ProjectDetail cardinal={modalProps!.cardinal} name={modalProps!.name} intro={modalProps!.intro} type={modalProps!.type} team={modalProps!.team} meetup_id={modalProps!.meetup_id} one_line_intro={modalProps!.one_line_intro} logo_url={modalProps!.logo_url} poster_url={modalProps!.poster_url} instagram_url={modalProps!.instagram_url} github_url={modalProps!.github_url} app_url={modalProps!.app_url} start_date={modalProps!.start_date} end_date={modalProps!.end_date} setModalOpen={setModalOpen}/>
+          :
+          <></>
+        }
         <s.ProjectIntroContainer>
           <s.ProjectIntroText>{ProjectIntroText}</s.ProjectIntroText>
           <s.ProjectIntroSubText>
@@ -178,7 +201,11 @@ const ProjectsPage = () => {
                 {
                   isNewestSelected ?
                   meetupList.map((d, i) => {
-                    return <MeetupProjectCard meetup_id={d.meetup_id} poster_url={d.poster_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} one_line_intro={d.one_line_intro} instagram_url={d.instagram_url} github_url={d.github_url} app_url={d.app_url}/>
+                    return (
+                      <s.CardWrapper onClick={(e) => {handleModal(d.meetup_id, e)}}>
+                        <MeetupProjectCard meetup_id={d.meetup_id} poster_url={d.poster_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} one_line_intro={d.one_line_intro} instagram_url={d.instagram_url} github_url={d.github_url} app_url={d.app_url}/>
+                      </s.CardWrapper>
+                    )
                   }) :
                   meetupList.slice(0).reverse().map((d, i) => {
                     return <MeetupProjectCard meetup_id={d.meetup_id} poster_url={d.poster_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} one_line_intro={d.one_line_intro} instagram_url={d.instagram_url} github_url={d.github_url} app_url={d.app_url}/>

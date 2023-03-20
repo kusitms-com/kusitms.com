@@ -2,17 +2,23 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(21, 21, 25, 0.7);
+  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: 'SUIT';
   color: white;
-  margin-top: 192px;
   max-width: 1180px;
   width: 100%;
 `;
 
 export const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;

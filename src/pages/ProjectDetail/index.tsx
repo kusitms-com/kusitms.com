@@ -1,10 +1,10 @@
 /* eslint-disable */
-import Layout from "components/Layout";
 import * as s from "./styles";
 import { ReactComponent as InstagramIcon } from "../../images/projects/icons/InstagramIcon.svg";
 import { ReactComponent as GithubIcon } from "../../images/projects/icons/GithubIcon.svg";
 import { ReactComponent as DetailLinkIcon } from "../../images/projects/icons/DetailLinkIcon.svg";
 import { IMeetupDetails } from "pages/Projects/ProjectsPage";
+import { useEffect, useRef } from "react";
 
 const ProjectDetail = (
   {
@@ -21,16 +21,47 @@ const ProjectDetail = (
     github_url,
     app_url,
     start_date,
-    end_date
-  }: IMeetupDetails) => {
-  return (
-    <Layout>
-      <s.Wrapper>
+    end_date,
+    setModalOpen
+  }: IMeetupDetails | any) => {
+  
+    
+    const modalRef = useRef<any>(null);
+    
+    useEffect(() => {
+      const eveneHandler = (e: React.MouseEvent<HTMLElement> | MouseEvent) => {
+        if(modalRef.current && !modalRef.current.contains(e.target)){
+          closeModal();
+        }
+      };
+      document.addEventListener('mousedown', eveneHandler);
+      return () => document.removeEventListener('mousedown', eveneHandler);
+    });
+    
+    const closeModal = () => {
+      setModalOpen(false);
+    };
+
+    useEffect(() => {
+      document.body.style.cssText = `
+        position: fixed; 
+        top: -${window.scrollY}px;
+        overflow-y: scroll;
+        width: 100%;`;
+      return () => {
+        const scrollY = document.body.style.top;
+        document.body.style.cssText = '';
+        window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      };
+    }, []);
+
+    return (
+      <s.Wrapper ref={modalRef}>
         <s.Container>
           <s.TopContainer>
             <s.Intro>
               <s.Title>{name}</s.Title>
-              <s.OneLineIntro>{intro}</s.OneLineIntro>
+              <s.OneLineIntro>{one_line_intro}</s.OneLineIntro>
             </s.Intro>
 
             <s.IconContainer>
@@ -49,7 +80,7 @@ const ProjectDetail = (
           </s.TopContainer>
 
           <s.DetailContainer>
-            <s.ItemPoster src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
+            <s.ItemPoster src={poster_url} />
             <s.ProjectIntroduce>
               <s.ProjectAbstract>
                 <s.AbstractTitle>프로젝트 요약</s.AbstractTitle>
@@ -76,21 +107,14 @@ const ProjectDetail = (
               <s.ProjectIntroText>
                 <s.ProjectIntroTextTitle>프로젝트 설명</s.ProjectIntroTextTitle>
                 <s.ProjectIntroTextContent>
-                  피크랩(pickRAP)은 스크랩의 과정을 통해 자신만의 솔직한 감성과
-                  정체성을 만들어나가는 서비스입니다. 피크랩(pickRAP) 은
-                  스크랩의 과정을 통해 자신만의 솔직한 감성과 정체성을
-                  만들어나가는 서비스입니다. 피크랩(pickRAP)은 스크랩의 과정을
-                  통해 자신만의 솔직한 감성과 정체성을 만들어나가는
-                  서비스입니다. 피크랩(pickRAP) 은 스크랩의 과정을 통해 자신만의
-                  솔직한 감성과 정체성을 만들어나가는 서비스입니다.
+                  {intro}
                 </s.ProjectIntroTextContent>
               </s.ProjectIntroText>
             </s.ProjectIntroduce>
           </s.DetailContainer>
         </s.Container>
       </s.Wrapper>
-    </Layout>
-  );
+    );
 };
 
 export default ProjectDetail;
