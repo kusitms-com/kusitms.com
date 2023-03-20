@@ -114,19 +114,19 @@ const ProjectsPage = () => {
     meetup.then((data: IMeetupList) => {
       setMeetupCount(data.meetup_count);
       setMeetupList([...data.meetup_list]);
-      console.log({ meetupList });
+      console.log( meetupList );
     });
 
     const corporate: Promise<any> = ProjectsAPI.getCorporateList();
     corporate.then((data: ICompanyList) => {
       setCorporateCount(data.corporateCount);
       setCorporateList([...data.corporateList]);
-      console.log({ corporateList });
+      console.log( corporateList );
     });
   }, []);
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedMeetupId, setSelectedMeetupId] = useState(0);
+  const [selectedMeetupId, setSelectedMeetupId] = useState(1);
   const [modalProps, setModalProps] = useState<IMeetupDetails>();
   const handleModal = (meetup_id: number, e: React.MouseEvent<HTMLDivElement>) => {
     setModalOpen(!modalOpen);
@@ -134,13 +134,15 @@ const ProjectsPage = () => {
   };
 
   useEffect(() => {
+    console.log({selectedMeetupId})
     const meetupDetails: Promise<any> = ProjectsAPI.getMeetupDetail(selectedMeetupId);
     meetupDetails.then((data: IMeetupDetails) => {
+      console.log(data);
       setModalProps({...data});
     }).catch((error) => {
       console.log(error);
     });
-  }, [selectedMeetupId])
+  }, [selectedMeetupId]);
 
   return (
     <Layout>
