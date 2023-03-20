@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   border-radius: 40px;
   display: flex;
   flex-direction: column;
-  font-family: 'SUIT';
+  font-family: "SUIT";
   background-color: white;
 `;
 
@@ -64,13 +64,12 @@ export const CategoryBoxContainer = styled.div`
 `;
 
 export const CategoryBox = styled.div`
-  border: 1px solid #2F3038;
+  border: 1px solid #2f3038;
   border-radius: 15px;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 12px;
   padding-right: 12px;
   margin-left: 5px;
-  color: #2F3038;
+  color: #2f3038;
 `;
-

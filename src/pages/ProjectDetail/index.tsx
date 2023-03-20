@@ -94,7 +94,9 @@ const ProjectDetail = (
                   <s.VerticalLine />
 
                   <s.AbstractInfoText>
-                    <s.AbstractInfoTextItem>{cardinal}기</s.AbstractInfoTextItem>
+                    <s.AbstractInfoTextItem>
+                      {cardinal}기
+                    </s.AbstractInfoTextItem>
                     <s.AbstractInfoTextItem>{`${type} (${start_date} - ${end_date})`}</s.AbstractInfoTextItem>
                     <s.AbstractInfoTextItem>{`기획 (${team.planner.length}) : 홍길동, 홍길동, 홍길동`}</s.AbstractInfoTextItem>
                     <s.AbstractInfoTextItem>{`디자인 (${team.designer.length}) : 홍길동`}</s.AbstractInfoTextItem>

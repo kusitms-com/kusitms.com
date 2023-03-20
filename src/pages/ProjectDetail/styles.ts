@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'SUIT';
+  font-family: "SUIT";
   color: white;
   max-width: 1180px;
   width: 100%;
@@ -43,7 +43,7 @@ export const Title = styled.div`
 
 export const OneLineIntro = styled.div`
   font-size: 20px;
-  color: #E2E2EB;
+  color: #e2e2eb;
   margin-top: 24px;
 `;
 
@@ -59,7 +59,7 @@ export const IconBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #90909A;
+  background-color: #90909a;
   width: 44px;
   height: 44px;
   border-radius: 50px;
@@ -94,7 +94,7 @@ export const ProjectAbstract = styled.div`
   width: 100%;
   height: 343px;
   border-radius: 10px;
-  background-color: #5D5E67;
+  background-color: #5d5e67;
 `;
 
 export const AbstractTitle = styled.div`
@@ -126,7 +126,7 @@ export const VerticalLine = styled.div`
   border: 1px solid;
   width: 0.1px;
   height: 210px;
-  border-color: #90909A;
+  border-color: #90909a;
   margin-left: 40px;
 `;
 
@@ -147,7 +147,7 @@ export const ProjectIntroText = styled.div`
   width: 100%;
   height: 457px;
   border-radius: 10px;
-  background-color: #2F3038;
+  background-color: #2f3038;
 `;
 
 export const ProjectIntroTextTitle = styled.div`

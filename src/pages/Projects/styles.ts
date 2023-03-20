@@ -20,7 +20,6 @@ export const ProjectIntroContainer = styled.div`
   width: 640px;
   margin-top: 180px;
   text-align: center;
-  
 `;
 
 export const ProjectIntroText = styled.div`
@@ -28,7 +27,7 @@ export const ProjectIntroText = styled.div`
 `;
 
 export const ProjectNumText = styled.div`
-  color: #62EFE5;
+  color: #62efe5;
   font-size: 20px;
 `;
 
@@ -47,8 +46,8 @@ export const SelectBox = styled.div`
 
 export const SelectBoxItem = styled.div`
   display: flex;
-  background-color: ${props => props.color};
-  color: ${props => props.about || "white"};
+  background-color: ${(props) => props.color};
+  color: ${(props) => props.about || "white"};
   border: 0px solid;
   border-radius: 75px;
   cursor: pointer;
@@ -61,9 +60,7 @@ export const SelectBoxItem = styled.div`
   align-items: center;
 `;
 
-export const EventContainer = styled.div`
-
-`;
+export const EventContainer = styled.div``;
 
 export const EventIntroContainer = styled.div`
   display: flex;
@@ -75,7 +72,7 @@ export const EventIntroContainer = styled.div`
 export const IntroText = styled.div`
   width: 584px;
   height: 400px;
-`
+`;
 
 export const IntroTitleWrapper = styled.div`
   display: flex;
@@ -90,7 +87,7 @@ export const IntroTitle = styled.div`
 `;
 
 export const IntroDetail = styled.div`
-  color: #90909A;
+  color: #90909a;
   font-size: 20px;
   margin-top: 100px;
   line-height: 150%;
@@ -116,13 +113,12 @@ export const ProjectFilterContainer = styled.div`
 `;
 
 export const ProjectFilterItem = styled.div`
-  color: #90909A;
-  ${props => 
-    props["aria-checked"] && 
+  color: #90909a;
+  ${(props) =>
+    props["aria-checked"] &&
     css`
-      color: #E2E2EB;
-    `
-  };
+      color: #e2e2eb;
+    `};
   cursor: pointer;
 `;
 

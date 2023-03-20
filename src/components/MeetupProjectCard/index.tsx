@@ -1,18 +1,27 @@
 /* eslint-disable */
 import * as s from "./styles";
 import { IMeetupProject } from "pages/Projects/ProjectsPage";
-import { ReactComponent as InstagramIcon} from "../../images/projects/icons/InstagramIcon.svg";
-import { ReactComponent as GithubIcon} from "../../images/projects/icons/GithubIcon.svg";
+import { ReactComponent as InstagramIcon } from "../../images/projects/icons/InstagramIcon.svg";
+import { ReactComponent as GithubIcon } from "../../images/projects/icons/GithubIcon.svg";
 
-
-const MeetupProjectCard = ({meetup_id, poster_url, logo_url, cardinal, name, one_line_intro, instagram_url, github_url, app_url}: IMeetupProject) => {
+const MeetupProjectCard = ({
+  meetup_id,
+  poster_url,
+  logo_url,
+  cardinal,
+  name,
+  one_line_intro,
+  instagram_url,
+  github_url,
+  app_url,
+}: IMeetupProject) => {
   const handleIcon = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     console.log("아이콘 클릭됨");
   };
   const handleProject = () => {
     console.log("프로젝트 전체 클릭됨");
-  }
+  };
   return (
     <s.Wrapper onClick={handleProject}>
       <s.PosterImg src={poster_url} />
@@ -35,7 +44,7 @@ const MeetupProjectCard = ({meetup_id, poster_url, logo_url, cardinal, name, one
         </s.IconContainer>
       </s.ProjectInfoWapper>
     </s.Wrapper>
-  )
+  );
 };
 
 export default MeetupProjectCard;

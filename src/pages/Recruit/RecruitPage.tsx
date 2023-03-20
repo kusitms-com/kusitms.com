@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "components/Layout";
 import styled from "styled-components";
 
@@ -9,11 +9,6 @@ import ranking from "../../images/recruit/apply-ranking.svg";
 
 import RecruitProcess from "components/recruit/RecruitProcess";
 import RecruitAccordion from "components/recruit/RecriutAccordion";
-
-export interface Props {
-  question?: string | React.ReactNode;
-  answer?: string | React.ReactNode;
-}
 
 interface applyType {
   icon: string;
@@ -98,12 +93,12 @@ const QNA = [
     question:
       "이전 기수 활동하신 분들이 그대로 팀을 꾸려 서비스를 이어나가고 있는지 궁금해요.",
     answer:
-      "매 기수마다 차이가 있지만, 밋업데이 이후 꾸준히 프로젝트를 이어나가는 팀이 존재해요.\n자세한 이야기는 프로젝트 페이지에서 확인해보세요.",
+      "매 기수마다 차이가 있지만, 밋업데이 이후 꾸준히 프로젝트를 이어나가는 팀이 존재해요.\n자세한 이야기는 ",
   },
   {
     question: "운영진과 학회원의 차이가 무엇인가요?",
     answer:
-      "큐시즘은 학기 시작하는 3-4월, 7-8월에 모집을 시작해요.\n모집 시기를 놓치고 싶지 않다면 홈페이지 상단에 있는 배너를 클릭해서 미리 알림을 받아보세요.",
+      "운영진은 학회원의 일원으로써 일반 학회원과 동일하게 모든 행사에 참여해요.\n다만, 운영진은 큐시즘 행사 전반에 대해 관리하고 운영하는 역할을 하며 더욱 큐시즘을 알차게 보낼 수 있게 해줘요!",
   },
   {
     question: "큐시즘이 처음인데 운영진부터 지원해도 되나요?",
@@ -117,10 +112,8 @@ const QNA = [
       "네, 전혀 불이익 없어요!\n모든 지원 서류는 모집이 끝난 후 즉시 폐기하므로 학회원으로 재신청하셔도 전혀 문제되지 않아요.",
   },
 ];
-
-// const RECRUIT_ALARM
-
 const RecruitPage = () => {
+  const [active, setActive] = useState<number | null>(null);
   return (
     <Layout>
       <RecruitContainer>
@@ -173,24 +166,17 @@ const RecruitPage = () => {
       </RecruitContainer>
       <QnaBox>
         <QnaTitle>궁금한게 있어요!</QnaTitle>
-        {QNA.map((qna: Props, index: number) => (
+
+        {QNA.map((qna: any, index: number) => (
           <RecruitAccordion
             key={index}
+            index={index}
+            active={active}
+            setActive={setActive}
             question={qna.question}
             answer={qna.answer}
           />
         ))}
-
-        {/* <RecruitAccordion question={QNA[0].question} answer={QNA[0].answer} />
-        <RecruitAccordion question={QNA[1].question} answer={QNA[1].answer} />
-        <RecruitAccordion question={QNA[0].question} answer={QNA[0].answer} />
-        <RecruitAccordion question={QNA[1].question} answer={QNA[1].answer} />
-        <RecruitAccordion question={QNA[0].question} answer={QNA[0].answer} />
-        <RecruitAccordion question={QNA[1].question} answer={QNA[1].answer} />
-        <RecruitAccordion question={QNA[0].question} answer={QNA[0].answer} />
-        <RecruitAccordion question={QNA[1].question} answer={QNA[1].answer} />
-        <RecruitAccordion question={QNA[0].question} answer={QNA[0].answer} />
-        <RecruitAccordion question={QNA[1].question} answer={QNA[1].answer} /> */}
       </QnaBox>
     </Layout>
   );
@@ -375,11 +361,11 @@ const RecruitBtn = styled.button`
   font-size: 20px;
   color: #ffffff;
   cursor: pointer;
+  border: none;
 `;
 
 const QnaBox = styled.div`
   width: 100%;
-  // height: 1358px;
   background-color: #ffffff;
 
   display: flex;
@@ -398,9 +384,3 @@ const QnaTitle = styled.p`
   color: #0055ff;
   margin-bottom: 100px;
 `;
-
-// const Question = styled.span`
-//   font-weight: 400;
-//   font-size: 20px;
-//   letter-spacing: -0.2px;
-// `;

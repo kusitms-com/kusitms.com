@@ -1,12 +1,17 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Main, Recruit } from "pages";
+import Aos from "aos";
 
 // eslint-disable-next-line
 const Projects = lazy(() => import("./pages/Projects/ProjectsPage"));
 
 function App() {
+  useEffect(() => {
+    Aos.init();
+  }, []);
+
   return (
     <Container>
       <Router>
@@ -26,5 +31,5 @@ export default App;
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  overflow-x: hidden;
 `;
