@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   align-items: center;
   font-family: "SUIT";
   color: white;
+  margin-top: 100px;
   max-width: 1180px;
   width: 100%;
 `;

@@ -12,6 +12,12 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const NotDetailWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const ProjectIntroContainer = styled.div`
   display: flex;
   color: white;
@@ -137,4 +143,9 @@ export interface CardContainer {
 export const CardWrapper = styled.div<CardContainer>`
   display: ${(props) => props.visible ? 'none' : 'block'};
   background-color: ${(props) => props.visible ? 'rgba(21, 21, 25, 0)' : 'rgba(21, 21, 25, 0.9)'};
+`;
+
+export const DetailWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
 `;

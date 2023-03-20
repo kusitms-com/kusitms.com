@@ -24,7 +24,7 @@ const MeetupProjectCard = ({
   };
   return (
     <s.Wrapper onClick={handleProject}>
-      <s.PosterImg src={poster_url} />
+      <s.PosterImg src={poster_url} loading="lazy" decoding="async" />
 
       <s.LogoImg src={logo_url} />
 

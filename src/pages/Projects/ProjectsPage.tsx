@@ -152,234 +152,246 @@ const ProjectsPage = () => {
 
   return (
     <Layout>
-      <s.Wrapper className={modalOpen ? "open" : ""}>
+      <s.Wrapper>
         {modalOpen ? (
-          <ProjectDetail
-            cardinal={modalProps!.cardinal}
-            name={modalProps!.name}
-            intro={modalProps!.intro}
-            type={modalProps!.type}
-            team={modalProps!.team}
-            meetup_id={modalProps!.meetup_id}
-            one_line_intro={modalProps!.one_line_intro}
-            logo_url={modalProps!.logo_url}
-            poster_url={modalProps!.poster_url}
-            instagram_url={modalProps!.instagram_url}
-            github_url={modalProps!.github_url}
-            app_url={modalProps!.app_url}
-            start_date={modalProps!.start_date}
-            end_date={modalProps!.end_date}
-            setModalOpen={setModalOpen}
-          />
+          <s.DetailWrapper>
+            <ProjectDetail
+              cardinal={modalProps!.cardinal}
+              name={modalProps!.name}
+              intro={modalProps!.intro}
+              type={modalProps!.type}
+              team={modalProps!.team}
+              meetup_id={modalProps!.meetup_id}
+              one_line_intro={modalProps!.one_line_intro}
+              logo_url={modalProps!.logo_url}
+              poster_url={modalProps!.poster_url}
+              instagram_url={modalProps!.instagram_url}
+              github_url={modalProps!.github_url}
+              app_url={modalProps!.app_url}
+              start_date={modalProps!.start_date}
+              end_date={modalProps!.end_date}
+              setModalOpen={setModalOpen}
+            />
+          </s.DetailWrapper>
         ) : (
-          <></>
-        )}
-        <s.ProjectIntroContainer>
-          <s.ProjectIntroText>{ProjectIntroText}</s.ProjectIntroText>
-          <s.ProjectIntroSubText>
+          <s.NotDetailWrapper>
+            <s.ProjectIntroContainer>
+              <s.ProjectIntroText>{ProjectIntroText}</s.ProjectIntroText>
+              <s.ProjectIntroSubText>
+                {isMeetupSelected ? (
+                  <s.ProjectNumText>{meetupCount}</s.ProjectNumText>
+                ) : (
+                  <s.ProjectNumText>{corporateCount}</s.ProjectNumText>
+                )}
+                {ProjectIntroSubText}
+              </s.ProjectIntroSubText>
+            </s.ProjectIntroContainer>
+
+            <s.SelectBox>
+              {isMeetupSelected ? (
+                <s.SelectBoxItem
+                  color={selectedColors[0]}
+                  onClick={selectHandler}
+                >
+                  밋업데이
+                </s.SelectBoxItem>
+              ) : (
+                <s.SelectBoxItem
+                  color={selectedColors[2]}
+                  onClick={selectHandler}
+                >
+                  밋업데이
+                </s.SelectBoxItem>
+              )}
+
+              {isMeetupSelected ? (
+                <s.SelectBoxItem
+                  color={selectedColors[2]}
+                  onClick={selectHandler}
+                >
+                  기업 프로젝트
+                </s.SelectBoxItem>
+              ) : (
+                <s.SelectBoxItem
+                  color={selectedColors[1]}
+                  about={"black"}
+                  onClick={selectHandler}
+                >
+                  기업 프로젝트
+                </s.SelectBoxItem>
+              )}
+            </s.SelectBox>
+
             {isMeetupSelected ? (
-              <s.ProjectNumText>{meetupCount}</s.ProjectNumText>
+              <s.EventContainer>
+                <s.EventIntroContainer>
+                  <ImageSticker
+                    isMeetupSelected={isMeetupSelected}
+                    meetupImgURL={meetup_tmpImg}
+                    companyImgURL={company_tmpImg}
+                  />
+
+                  <s.IntroText>
+                    <s.IntroTitleWrapper>
+                      <s.IntroTitle>{MeetupIntroTitle}</s.IntroTitle>
+                      <MeetupHighlightIcon />
+                    </s.IntroTitleWrapper>
+
+                    <s.IntroDetail>{MeetupIntroDetail}</s.IntroDetail>
+
+                    <MeetupIcons />
+                  </s.IntroText>
+                </s.EventIntroContainer>
+
+                <s.ProjectsWrapper>
+                  <s.ProjectFilterWrapper>
+                    <s.ProjectFilterContainer>
+                      <s.ProjectFilterItem
+                        aria-checked={isNewestSelected}
+                        onClick={filterHandler}
+                      >
+                        최신순
+                      </s.ProjectFilterItem>
+                      <s.ProjectFilterItem
+                        aria-checked={!isNewestSelected}
+                        onClick={filterHandler}
+                      >
+                        오래된 순
+                      </s.ProjectFilterItem>
+                    </s.ProjectFilterContainer>
+                  </s.ProjectFilterWrapper>
+
+                  <s.ProjectListWrapper>
+                    {isNewestSelected
+                      ? meetupList.map((d, i) => {
+                          return (
+                            <s.CardWrapper
+                              onClick={(e) => {
+                                handleModal(d.meetup_id, e);
+                              }}
+                              visible={modalOpen}
+                            >
+                              <MeetupProjectCard
+                                key={d.meetup_id}
+                                meetup_id={d.meetup_id}
+                                poster_url={d.poster_url}
+                                logo_url={d.logo_url}
+                                cardinal={d.cardinal}
+                                name={d.name}
+                                one_line_intro={d.one_line_intro}
+                                instagram_url={d.instagram_url}
+                                github_url={d.github_url}
+                                app_url={d.app_url}
+                              />
+                            </s.CardWrapper>
+                          );
+                        })
+                      : meetupList
+                          .slice(0)
+                          .reverse()
+                          .map((d, i) => {
+                            return (
+                              <s.CardWrapper
+                                onClick={(e) => {
+                                  handleModal(d.meetup_id, e);
+                                }}
+                                visible={modalOpen}
+                              >
+                                <MeetupProjectCard
+                                  key={d.meetup_id}
+                                  meetup_id={d.meetup_id}
+                                  poster_url={d.poster_url}
+                                  logo_url={d.logo_url}
+                                  cardinal={d.cardinal}
+                                  name={d.name}
+                                  one_line_intro={d.one_line_intro}
+                                  instagram_url={d.instagram_url}
+                                  github_url={d.github_url}
+                                  app_url={d.app_url}
+                                />
+                              </s.CardWrapper>
+                            );
+                          })}
+                  </s.ProjectListWrapper>
+                </s.ProjectsWrapper>
+              </s.EventContainer>
             ) : (
-              <s.ProjectNumText>{corporateCount}</s.ProjectNumText>
-            )}
-            {ProjectIntroSubText}
-          </s.ProjectIntroSubText>
-        </s.ProjectIntroContainer>
+              <s.EventContainer>
+                <s.EventIntroContainer>
+                  <ImageSticker
+                    isMeetupSelected={isMeetupSelected}
+                    meetupImgURL={meetup_tmpImg}
+                    companyImgURL={company_tmpImg}
+                  />
 
-        <s.SelectBox>
-          {isMeetupSelected ? (
-            <s.SelectBoxItem color={selectedColors[0]} onClick={selectHandler}>
-              밋업데이
-            </s.SelectBoxItem>
-          ) : (
-            <s.SelectBoxItem color={selectedColors[2]} onClick={selectHandler}>
-              밋업데이
-            </s.SelectBoxItem>
-          )}
+                  <s.IntroText>
+                    <s.IntroTitleWrapper>
+                      <s.IntroTitle>{CompanyIntroTitle}</s.IntroTitle>
+                      <CompanyHighlightIcon />
+                    </s.IntroTitleWrapper>
 
-          {isMeetupSelected ? (
-            <s.SelectBoxItem color={selectedColors[2]} onClick={selectHandler}>
-              기업 프로젝트
-            </s.SelectBoxItem>
-          ) : (
-            <s.SelectBoxItem
-              color={selectedColors[1]}
-              about={"black"}
-              onClick={selectHandler}
-            >
-              기업 프로젝트
-            </s.SelectBoxItem>
-          )}
-        </s.SelectBox>
+                    <s.IntroDetail>{CompanyIntroDetail}</s.IntroDetail>
 
-        {isMeetupSelected ? (
-          <s.EventContainer>
-            <s.EventIntroContainer>
-              <ImageSticker
-                isMeetupSelected={isMeetupSelected}
-                meetupImgURL={meetup_tmpImg}
-                companyImgURL={company_tmpImg}
-              />
+                    <CompanyIcons />
+                  </s.IntroText>
+                </s.EventIntroContainer>
 
-              <s.IntroText>
-                <s.IntroTitleWrapper>
-                  <s.IntroTitle>{MeetupIntroTitle}</s.IntroTitle>
-                  <MeetupHighlightIcon />
-                </s.IntroTitleWrapper>
+                <s.ProjectsWrapper>
+                  <s.ProjectFilterWrapper>
+                    <s.ProjectFilterContainer>
+                      <s.ProjectFilterItem
+                        aria-checked={isNewestSelected}
+                        onClick={filterHandler}
+                      >
+                        최신순
+                      </s.ProjectFilterItem>
+                      <s.ProjectFilterItem
+                        aria-checked={!isNewestSelected}
+                        onClick={filterHandler}
+                      >
+                        오래된 순
+                      </s.ProjectFilterItem>
+                    </s.ProjectFilterContainer>
+                  </s.ProjectFilterWrapper>
 
-                <s.IntroDetail>{MeetupIntroDetail}</s.IntroDetail>
-
-                <MeetupIcons />
-              </s.IntroText>
-            </s.EventIntroContainer>
-
-            <s.ProjectsWrapper>
-              <s.ProjectFilterWrapper>
-                <s.ProjectFilterContainer>
-                  <s.ProjectFilterItem
-                    aria-checked={isNewestSelected}
-                    onClick={filterHandler}
-                  >
-                    최신순
-                  </s.ProjectFilterItem>
-                  <s.ProjectFilterItem
-                    aria-checked={!isNewestSelected}
-                    onClick={filterHandler}
-                  >
-                    오래된 순
-                  </s.ProjectFilterItem>
-                </s.ProjectFilterContainer>
-              </s.ProjectFilterWrapper>
-
-              <s.ProjectListWrapper>
-                {isNewestSelected
-                  ? meetupList.map((d, i) => {
-                      return (
-                        <s.CardWrapper
-                          onClick={(e) => {
-                            handleModal(d.meetup_id, e);
-                          }}
-                          visible={modalOpen}
-                        >
-                          <MeetupProjectCard
-                            key={d.meetup_id}
-                            meetup_id={d.meetup_id}
-                            poster_url={d.poster_url}
-                            logo_url={d.logo_url}
-                            cardinal={d.cardinal}
-                            name={d.name}
-                            one_line_intro={d.one_line_intro}
-                            instagram_url={d.instagram_url}
-                            github_url={d.github_url}
-                            app_url={d.app_url}
-                          />
-                        </s.CardWrapper>
-                      );
-                    })
-                  : meetupList
-                      .slice(0)
-                      .reverse()
-                      .map((d, i) => {
-                        return (
-                          <s.CardWrapper
-                            onClick={(e) => {
-                              handleModal(d.meetup_id, e);
-                            }}
-                            visible={modalOpen}
-                          >
-                            <MeetupProjectCard
-                              key={d.meetup_id}
-                              meetup_id={d.meetup_id}
-                              poster_url={d.poster_url}
+                  <s.ProjectListWrapper>
+                    {isNewestSelected
+                      ? corporateList.map((d, i) => {
+                          return (
+                            <CompanyProjectCard
+                              corporate_id={d.corporate_id}
+                              banner_url={d.banner_url}
                               logo_url={d.logo_url}
                               cardinal={d.cardinal}
                               name={d.name}
-                              one_line_intro={d.one_line_intro}
-                              instagram_url={d.instagram_url}
-                              github_url={d.github_url}
-                              app_url={d.app_url}
+                              content={d.content}
+                              category={d.category}
+                              key={d.corporate_id}
                             />
-                          </s.CardWrapper>
-                        );
-                      })}
-              </s.ProjectListWrapper>
-            </s.ProjectsWrapper>
-          </s.EventContainer>
-        ) : (
-          <s.EventContainer>
-            <s.EventIntroContainer>
-              <ImageSticker
-                isMeetupSelected={isMeetupSelected}
-                meetupImgURL={meetup_tmpImg}
-                companyImgURL={company_tmpImg}
-              />
-
-              <s.IntroText>
-                <s.IntroTitleWrapper>
-                  <s.IntroTitle>{CompanyIntroTitle}</s.IntroTitle>
-                  <CompanyHighlightIcon />
-                </s.IntroTitleWrapper>
-
-                <s.IntroDetail>{CompanyIntroDetail}</s.IntroDetail>
-
-                <CompanyIcons />
-              </s.IntroText>
-            </s.EventIntroContainer>
-
-            <s.ProjectsWrapper>
-              <s.ProjectFilterWrapper>
-                <s.ProjectFilterContainer>
-                  <s.ProjectFilterItem
-                    aria-checked={isNewestSelected}
-                    onClick={filterHandler}
-                  >
-                    최신순
-                  </s.ProjectFilterItem>
-                  <s.ProjectFilterItem
-                    aria-checked={!isNewestSelected}
-                    onClick={filterHandler}
-                  >
-                    오래된 순
-                  </s.ProjectFilterItem>
-                </s.ProjectFilterContainer>
-              </s.ProjectFilterWrapper>
-
-              <s.ProjectListWrapper>
-                {isNewestSelected
-                  ? corporateList.map((d, i) => {
-                      return (
-                        <CompanyProjectCard
-                          corporate_id={d.corporate_id}
-                          banner_url={d.banner_url}
-                          logo_url={d.logo_url}
-                          cardinal={d.cardinal}
-                          name={d.name}
-                          content={d.content}
-                          category={d.category}
-                          key={d.corporate_id}
-                        />
-                      );
-                    })
-                  : corporateList
-                      .slice(0)
-                      .reverse()
-                      .map((d, i) => {
-                        return (
-                          <CompanyProjectCard
-                            corporate_id={d.corporate_id}
-                            banner_url={d.banner_url}
-                            logo_url={d.logo_url}
-                            cardinal={d.cardinal}
-                            name={d.name}
-                            content={d.content}
-                            category={d.category}
-                            key={d.corporate_id}
-                          />
-                        );
-                      })}
-              </s.ProjectListWrapper>
-            </s.ProjectsWrapper>
-          </s.EventContainer>
+                          );
+                        })
+                      : corporateList
+                          .slice(0)
+                          .reverse()
+                          .map((d, i) => {
+                            return (
+                              <CompanyProjectCard
+                                corporate_id={d.corporate_id}
+                                banner_url={d.banner_url}
+                                logo_url={d.logo_url}
+                                cardinal={d.cardinal}
+                                name={d.name}
+                                content={d.content}
+                                category={d.category}
+                                key={d.corporate_id}
+                              />
+                            );
+                          })}
+                  </s.ProjectListWrapper>
+                </s.ProjectsWrapper>
+              </s.EventContainer>
+            )}
+          </s.NotDetailWrapper>
         )}
       </s.Wrapper>
     </Layout>

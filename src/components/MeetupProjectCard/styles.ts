@@ -15,11 +15,10 @@ export const Wrapper = styled.div`
 
 export const PosterImg = styled.img`
   display: flex;
-  width: 380px;
-  height: 285px;
+  object-fit: cover;
+  overflow: hidden;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  src: ${(props) => props.src};
 `;
 
 export const LogoImg = styled.img`
