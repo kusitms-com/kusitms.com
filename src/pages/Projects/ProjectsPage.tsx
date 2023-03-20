@@ -234,15 +234,15 @@ const ProjectsPage = () => {
                   isNewestSelected ?
                   meetupList.map((d, i) => {
                     return (
-                      <s.CardWrapper onClick={(e) => {handleModal(d.meetup_id, e)}} key={d.meetup_id}>
-                        <MeetupProjectCard meetup_id={d.meetup_id} poster_url={d.poster_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} one_line_intro={d.one_line_intro} instagram_url={d.instagram_url} github_url={d.github_url} app_url={d.app_url}/>
+                      <s.CardWrapper onClick={(e) => {handleModal(d.meetup_id, e)}} key={d.meetup_id} visible={modalOpen}>
+                        <MeetupProjectCard key={d.meetup_id} meetup_id={d.meetup_id} poster_url={d.poster_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} one_line_intro={d.one_line_intro} instagram_url={d.instagram_url} github_url={d.github_url} app_url={d.app_url}/>
                       </s.CardWrapper>
                     )
                   }) :
                   meetupList.slice(0).reverse().map((d, i) => {
                     return (
-                      <s.CardWrapper onClick={(e) => {handleModal(d.meetup_id, e)}} key={d.meetup_id}>
-                        <MeetupProjectCard meetup_id={d.meetup_id} poster_url={d.poster_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} one_line_intro={d.one_line_intro} instagram_url={d.instagram_url} github_url={d.github_url} app_url={d.app_url}/>
+                      <s.CardWrapper onClick={(e) => {handleModal(d.meetup_id, e)}} key={d.meetup_id} visible={modalOpen}>
+                        <MeetupProjectCard key={d.meetup_id} meetup_id={d.meetup_id} poster_url={d.poster_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} one_line_intro={d.one_line_intro} instagram_url={d.instagram_url} github_url={d.github_url} app_url={d.app_url}/>
                       </s.CardWrapper>
                     )
                   })

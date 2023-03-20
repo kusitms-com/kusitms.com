@@ -130,7 +130,11 @@ export const ProjectListWrapper = styled.div`
   grid-gap: 20px;
 `;
 
+export interface CardContainer {
+  visible: boolean;
+}
 
-export const CardWrapper = styled.div`
-  
+export const CardWrapper = styled.div<CardContainer>`
+  display: ${(props) => props.visible ? 'none' : 'block'};
+  background-color: ${(props) => props.visible ? 'rgba(21, 21, 25, 0)' : 'rgba(21, 21, 25, 0.9)'};
 `;
