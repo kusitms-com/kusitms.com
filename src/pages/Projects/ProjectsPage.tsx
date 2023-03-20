@@ -114,44 +114,66 @@ const ProjectsPage = () => {
     meetup.then((data: IMeetupList) => {
       setMeetupCount(data.meetup_count);
       setMeetupList([...data.meetup_list]);
-      console.log( meetupList );
+      console.log(meetupList);
     });
 
     const corporate: Promise<any> = ProjectsAPI.getCorporateList();
     corporate.then((data: ICompanyList) => {
       setCorporateCount(data.corporateCount);
       setCorporateList([...data.corporateList]);
-      console.log( corporateList );
+      console.log(corporateList);
     });
   }, []);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedMeetupId, setSelectedMeetupId] = useState(1);
   const [modalProps, setModalProps] = useState<IMeetupDetails>();
-  const handleModal = (meetup_id: number, e: React.MouseEvent<HTMLDivElement>) => {
+  const handleModal = (
+    meetup_id: number,
+    e: React.MouseEvent<HTMLDivElement>
+  ) => {
     setModalOpen(!modalOpen);
     setSelectedMeetupId(meetup_id);
   };
 
   useEffect(() => {
-    console.log({selectedMeetupId})
-    const meetupDetails: Promise<any> = ProjectsAPI.getMeetupDetail(selectedMeetupId);
-    meetupDetails.then((data: IMeetupDetails) => {
-      console.log(data);
-      setModalProps({...data});
-    }).catch((error) => {
-      console.log(error);
-    });
+    console.log({ selectedMeetupId });
+    const meetupDetails: Promise<any> =
+      ProjectsAPI.getMeetupDetail(selectedMeetupId);
+    meetupDetails
+      .then((data: IMeetupDetails) => {
+        console.log(data);
+        setModalProps({ ...data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [selectedMeetupId]);
 
   return (
     <Layout>
       <s.Wrapper className={modalOpen ? "open" : ""}>
-        {
-          modalOpen ? <ProjectDetail cardinal={modalProps!.cardinal} name={modalProps!.name} intro={modalProps!.intro} type={modalProps!.type} team={modalProps!.team} meetup_id={modalProps!.meetup_id} one_line_intro={modalProps!.one_line_intro} logo_url={modalProps!.logo_url} poster_url={modalProps!.poster_url} instagram_url={modalProps!.instagram_url} github_url={modalProps!.github_url} app_url={modalProps!.app_url} start_date={modalProps!.start_date} end_date={modalProps!.end_date} setModalOpen={setModalOpen}/>
-          :
+        {modalOpen ? (
+          <ProjectDetail
+            cardinal={modalProps!.cardinal}
+            name={modalProps!.name}
+            intro={modalProps!.intro}
+            type={modalProps!.type}
+            team={modalProps!.team}
+            meetup_id={modalProps!.meetup_id}
+            one_line_intro={modalProps!.one_line_intro}
+            logo_url={modalProps!.logo_url}
+            poster_url={modalProps!.poster_url}
+            instagram_url={modalProps!.instagram_url}
+            github_url={modalProps!.github_url}
+            app_url={modalProps!.app_url}
+            start_date={modalProps!.start_date}
+            end_date={modalProps!.end_date}
+            setModalOpen={setModalOpen}
+          />
+        ) : (
           <></>
-        }
+        )}
         <s.ProjectIntroContainer>
           <s.ProjectIntroText>{ProjectIntroText}</s.ProjectIntroText>
           <s.ProjectIntroSubText>
@@ -230,24 +252,56 @@ const ProjectsPage = () => {
               </s.ProjectFilterWrapper>
 
               <s.ProjectListWrapper>
-                {
-                  isNewestSelected ?
-                  meetupList.map((d, i) => {
-                    return (
-                      <s.CardWrapper onClick={(e) => {handleModal(d.meetup_id, e)}} key={d.meetup_id} visible={modalOpen}>
-                        <MeetupProjectCard key={d.meetup_id} meetup_id={d.meetup_id} poster_url={d.poster_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} one_line_intro={d.one_line_intro} instagram_url={d.instagram_url} github_url={d.github_url} app_url={d.app_url}/>
-                      </s.CardWrapper>
-                    )
-                  }) :
-                  meetupList.slice(0).reverse().map((d, i) => {
-                    return (
-                      <s.CardWrapper onClick={(e) => {handleModal(d.meetup_id, e)}} key={d.meetup_id} visible={modalOpen}>
-                        <MeetupProjectCard key={d.meetup_id} meetup_id={d.meetup_id} poster_url={d.poster_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} one_line_intro={d.one_line_intro} instagram_url={d.instagram_url} github_url={d.github_url} app_url={d.app_url}/>
-                      </s.CardWrapper>
-                    )
-                  })
-                }
-
+                {isNewestSelected
+                  ? meetupList.map((d, i) => {
+                      return (
+                        <s.CardWrapper
+                          onClick={(e) => {
+                            handleModal(d.meetup_id, e);
+                          }}
+                          visible={modalOpen}
+                        >
+                          <MeetupProjectCard
+                            key={d.meetup_id}
+                            meetup_id={d.meetup_id}
+                            poster_url={d.poster_url}
+                            logo_url={d.logo_url}
+                            cardinal={d.cardinal}
+                            name={d.name}
+                            one_line_intro={d.one_line_intro}
+                            instagram_url={d.instagram_url}
+                            github_url={d.github_url}
+                            app_url={d.app_url}
+                          />
+                        </s.CardWrapper>
+                      );
+                    })
+                  : meetupList
+                      .slice(0)
+                      .reverse()
+                      .map((d, i) => {
+                        return (
+                          <s.CardWrapper
+                            onClick={(e) => {
+                              handleModal(d.meetup_id, e);
+                            }}
+                            visible={modalOpen}
+                          >
+                            <MeetupProjectCard
+                              key={d.meetup_id}
+                              meetup_id={d.meetup_id}
+                              poster_url={d.poster_url}
+                              logo_url={d.logo_url}
+                              cardinal={d.cardinal}
+                              name={d.name}
+                              one_line_intro={d.one_line_intro}
+                              instagram_url={d.instagram_url}
+                              github_url={d.github_url}
+                              app_url={d.app_url}
+                            />
+                          </s.CardWrapper>
+                        );
+                      })}
               </s.ProjectListWrapper>
             </s.ProjectsWrapper>
           </s.EventContainer>
@@ -291,15 +345,38 @@ const ProjectsPage = () => {
               </s.ProjectFilterWrapper>
 
               <s.ProjectListWrapper>
-                {
-                  isNewestSelected ? 
-                  corporateList.map((d, i) => {
-                    return <CompanyProjectCard corporate_id={d.corporate_id} banner_url={d.banner_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} content={d.content} category={d.category} key={d.corporate_id} />
-                  }) :
-                  corporateList.slice(0).reverse().map((d, i) => {
-                    return <CompanyProjectCard corporate_id={d.corporate_id} banner_url={d.banner_url} logo_url={d.logo_url} cardinal={d.cardinal} name={d.name} content={d.content} category={d.category} key={d.corporate_id} />
-                  })
-                }
+                {isNewestSelected
+                  ? corporateList.map((d, i) => {
+                      return (
+                        <CompanyProjectCard
+                          corporate_id={d.corporate_id}
+                          banner_url={d.banner_url}
+                          logo_url={d.logo_url}
+                          cardinal={d.cardinal}
+                          name={d.name}
+                          content={d.content}
+                          category={d.category}
+                          key={d.corporate_id}
+                        />
+                      );
+                    })
+                  : corporateList
+                      .slice(0)
+                      .reverse()
+                      .map((d, i) => {
+                        return (
+                          <CompanyProjectCard
+                            corporate_id={d.corporate_id}
+                            banner_url={d.banner_url}
+                            logo_url={d.logo_url}
+                            cardinal={d.cardinal}
+                            name={d.name}
+                            content={d.content}
+                            category={d.category}
+                            key={d.corporate_id}
+                          />
+                        );
+                      })}
               </s.ProjectListWrapper>
             </s.ProjectsWrapper>
           </s.EventContainer>
