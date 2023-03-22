@@ -11,27 +11,29 @@ export const Wrapper = styled.div`
   font-family: "SUIT";
   background-color: white;
   cursor: pointer;
+  :hover {
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.4), 0 6px 4px rgba(255, 255, 255, 0.4);
+  };
 `;
 
 export const PosterImg = styled.img`
   display: flex;
-  width: 380px;
-  height: 285px;
+  object-fit: cover;
+  overflow: hidden;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  src: ${(props) => props.src};
 `;
 
 export const LogoImg = styled.img`
   display: flex;
   position: absolute;
-  margin-top: 237px;
+  margin-top: 210px;
   width: 95px;
   height: 95px;
   border-radius: 50px;
-  src: ${(props) => props.src};
   top: 0px;
   right: 24px;
+  background-color: white;
 `;
 
 export const ProjectInfoWapper = styled.div`
@@ -56,14 +58,16 @@ export const ProjectName = styled.div`
 
 export const OneLineIntro = styled.div`
   margin-top: 20px;
+  margin-right: 20px;
 `;
 
 export const IconContainer = styled.div`
   width: 104px;
   display: flex;
+  position: absolute;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 15px;
+  bottom: 50px;
 `;
 
 export const IconBackground = styled.div`

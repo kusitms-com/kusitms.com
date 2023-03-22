@@ -6,6 +6,16 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   font-family: "SUIT";
+  &.open {
+    background: rgba(21, 21, 25, 0.7);
+    z-index:3;
+  }
+`;
+
+export const NotDetailWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const ProjectIntroContainer = styled.div`
@@ -124,4 +134,18 @@ export const ProjectListWrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-auto-rows: 1fr;
   grid-gap: 20px;
+`;
+
+export interface CardContainer {
+  visible: boolean;
+}
+
+export const CardWrapper = styled.div<CardContainer>`
+  display: ${(props) => props.visible ? 'none' : 'block'};
+  background-color: ${(props) => props.visible ? 'rgba(21, 21, 25, 0)' : 'rgba(21, 21, 25, 0.9)'};
+`;
+
+export const DetailWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
 `;
