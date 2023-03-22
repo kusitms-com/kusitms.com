@@ -1,27 +1,27 @@
-import React, { useEffect } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Main, Projects, Recruit } from "pages";
-import Reviews from "pages/Reviews/ReviewsPage";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import ScrollToTop from "components/ScrollToTop";
+import { Main, Recruit } from "pages";
+import Aos from "aos";
+
+// eslint-disable-next-line
+const Projects = lazy(() => import("./pages/Projects/ProjectsPage"));
 
 function App() {
   useEffect(() => {
-    AOS.init();
+    Aos.init();
   }, []);
 
   return (
     <Container>
       <Router>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/recruit" element={<Recruit />} />
-          <Route path="/reviews" element={<Reviews />} />
-        </Routes>
+        <Suspense fallback={<div>Loading ..</div>}>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/recruit" element={<Recruit />} />
+          </Routes>
+        </Suspense>
       </Router>
     </Container>
   );
