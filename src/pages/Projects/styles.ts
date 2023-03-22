@@ -30,6 +30,7 @@ export const ProjectIntroContainer = styled.div`
 
 export const ProjectIntroText = styled.div`
   font-size: 48px;
+  font-weight: bold;
 `;
 
 export const ProjectNumText = styled.div`
