@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import Layout from "components/Layout";
 import styled from "styled-components";
+import { useIsMobile } from "hooks/useIsMobile";
 
 import polygon from "../../images/recruit/Polygon.svg";
 import book from "../../images/recruit/apply-book.svg";
 import calendar from "../../images/recruit/apply-calendar.svg";
 import ranking from "../../images/recruit/apply-ranking.svg";
+
+import mbook from "../../images/recruit/mobile-book.svg";
+import mcalendar from "../../images/recruit/mobile-calendar.svg";
+import mranking from "../../images/recruit/mobile-ranking.svg";
 
 import RecruitProcess from "components/recruit/RecruitProcess";
 import RecruitAccordion from "components/recruit/RecriutAccordion";
@@ -15,8 +20,15 @@ interface applyType {
   text: string;
 }
 
+const KUSITMS_28TH_ALRAM_URL = "https://forms.gle/WvYMe6EFE7a5f7CP7";
 const RECRUIT_UNDERTITLE =
   "큐시즘은 혼자서는 해낼 수 없는 일들을 함께 이루어내고 있어요.\n멋진 아이디어를 실현하고, 놀라운 결과를 만들어내요.\n우리와 함께할래요?";
+const MOBILE_RECRUIT_UNDERTITLE =
+  "큐시즘은 혼자서는 해낼 수 없는 일들을\n함께 이루어내고 있어요.\n멋진 아이디어를 실현하고, 놀라운 결과를 만들어내요.\n우리와 함께할래요?";
+
+// ↓ 운영진 모집 시 지원 조건 3번째를 아래 문구로 변경
+// const RECRUIT_WHO_APPLY_STAFF3 = "활동 기간 동안 운영진 활동 및 학회 활동에\n적극적으로 참석 가능한 분",
+
 const RECRUIT_TITLE_1 = "누가 지원할 수 있어요?";
 const RECRUIT_TITLE_2 = "어떤 파트를 모집해요?";
 const RECRUIT_TITLE_3 = "언제 어디서 모여요?";
@@ -25,35 +37,38 @@ const RECRUIT_TITLE_4 = "모집 절차가 어떻게 돼요?";
 const RECRUIT_PART_1 = "기획";
 const RECRUIT_PART_2 = "개발";
 const RECRUIT_PART_3 = "디자인";
+// 운영진 모집 시
+// const RECRUIT_PART_1 = "경영총괄팀";
+// const RECRUIT_PART_2 = "교육기획팀";
+// const RECRUIT_PART_3 = "대외홍보팀";
 
 const PART_UNDER_SUB = "* 파트별 인원 수는 매 기수 달라질 수 있어요 :)";
+const MOBILE_PART_UNDER_SUB = "* 팀별 인원 수는 매 기수 달라질 수 있어요 :)";
+// const MOBILE_PART_SECOND_UNDER_SUB = "* 운영진도 학회원 활동에 참여해요.";
 const WHERE_SUB = "일시: 매주 토요일 15시 ~ 18시\n장소: 서울 지역 내";
+const MOBILE_WHEN_SUB = "토요일 15시 ~ 18시";
+const MOBILE_WHERE_SUB = "서울 지역 내";
+
 const WHERE_UNDER_SUB =
-  "* 활동 장소와 시간은 커리큘럼에 따라 변경될 수 있어요 :)";
-const WHO_APPLY = [
-  {
-    icon: book,
-    text: "활동 기간 동안 대학생 신분을 유지하는 분\n(졸업 유예자, 휴학생, 수료생 포함)",
-  },
-  {
-    icon: calendar,
-    text: "매주 토요일 서울 지역에서\n진행되는 세션에 빠짐없이 참석 가능한 분",
-  },
-  {
-    icon: ranking,
-    text: "활동 기간 동안 팀 모임에\n적극적으로 참석 가능한 분",
-  },
-];
+  "* 활동 장소와 시간은\n 커리큘럼에 따라 변경될 수 있어요 :)";
 
 const RECRUIT_ALARM = [
+  // 모집 전
   {
     title: "모집 알림을 받아볼게요!",
     msg: "아쉽게도 지금은 모집 기간이 아니에요!\n알림 신청을 통해 28기 모집 알림을 받아보세요. :)",
     btn: "28기 모집 알림 신청하기",
   },
+  // 학회원 모집 중
   {
     title: "이제 지원해볼게요!",
-    msg: "큐시즘 28기 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
+    msg: "큐시즘 28기 신규 학회원 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
+    btn: "함께하러 가기",
+  },
+  // 운영진 모집 중
+  {
+    title: "이제 지원해볼게요!",
+    msg: "큐시즘 28기 신규 운영진 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
     btn: "함께하러 가기",
   },
 ];
@@ -114,6 +129,106 @@ const QNA = [
 ];
 const RecruitPage = () => {
   const [active, setActive] = useState<number | null>(null);
+  const isMobile = useIsMobile();
+
+  const WHO_APPLY = [
+    {
+      icon: isMobile ? mbook : book,
+      text: "활동 기간 동안 대학생 신분을 유지하는 분\n(졸업 유예자, 휴학생, 수료생 포함)",
+    },
+    {
+      icon: isMobile ? mcalendar : calendar,
+      text: "매주 토요일 서울 지역에서\n진행되는 세션에 빠짐없이 참석 가능한 분",
+    },
+    {
+      icon: isMobile ? mranking : ranking,
+      text: "활동 기간 동안 팀 모임에\n적극적으로 참석 가능한 분",
+    },
+  ];
+
+  if (isMobile) {
+    return (
+      <Layout>
+        <MobileRecruitContainer>
+          <MobileTopText>KUSITMS</MobileTopText>
+          <MobileRecruitText>Recruitment</MobileRecruitText>
+          <MobileRecruitUnderText>
+            {MOBILE_RECRUIT_UNDERTITLE}
+          </MobileRecruitUnderText>
+          <div style={{ margin: "100px 0" }}>
+            <img src={polygon} />
+          </div>
+          <MobileRecruitTitle>{RECRUIT_TITLE_1}</MobileRecruitTitle>
+          <MobileApplyBoxs>
+            {WHO_APPLY.map((apply: applyType, index: number) => (
+              <MobileApplyBox key={index}>
+                <MobileIconBox>
+                  <img src={apply.icon} />
+                </MobileIconBox>
+                <MobileSquareBox>{apply.text}</MobileSquareBox>
+              </MobileApplyBox>
+            ))}
+          </MobileApplyBoxs>
+
+          <MobileRecruitTitle>{RECRUIT_TITLE_2}</MobileRecruitTitle>
+          <MobileSquareBigBox>
+            <MobileParts>
+              <span>{RECRUIT_PART_1}</span>
+              <span>{RECRUIT_PART_2}</span>
+              <span>{RECRUIT_PART_3}</span>
+            </MobileParts>
+            <MobileUnderSub>{MOBILE_PART_UNDER_SUB}</MobileUnderSub>
+            {/* <MobileUnderSub>{MOBILE_PART_SECOND_UNDER_SUB}</MobileUnderSub> */}
+          </MobileSquareBigBox>
+
+          <MobileRecruitTitle>{RECRUIT_TITLE_3}</MobileRecruitTitle>
+          <MobileWhenSquareBigBox>
+            <MobileWhenBox>
+              <MobileSmallSub>일시:</MobileSmallSub>
+              <MobileBigSub>{MOBILE_WHEN_SUB}</MobileBigSub>
+              <MobileSmallSub>장소:</MobileSmallSub>
+              <MobileBigSub>{MOBILE_WHERE_SUB}</MobileBigSub>
+              <MobileUnderSub>{WHERE_UNDER_SUB}</MobileUnderSub>
+            </MobileWhenBox>
+          </MobileWhenSquareBigBox>
+
+          <MobileRecruitTitle>{RECRUIT_TITLE_4}</MobileRecruitTitle>
+          <RecruitProcess />
+
+          <div style={{ margin: "100px 0" }}>
+            <img src={polygon} />
+          </div>
+          <MobileRecruitStateBox>
+            <MobileRecruitTitle>{RECRUIT_ALARM[0].title}</MobileRecruitTitle>
+            <MobileRecruitStateMsg>
+              {RECRUIT_ALARM[0].msg}
+            </MobileRecruitStateMsg>
+            <MobileRecruitBtn
+              onClick={() => {
+                window.open(KUSITMS_28TH_ALRAM_URL, "_blank");
+              }}
+            >
+              {RECRUIT_ALARM[0].btn}
+            </MobileRecruitBtn>
+          </MobileRecruitStateBox>
+        </MobileRecruitContainer>
+        <MobileQnaBox>
+          <MobileQnaTitle>궁금한게 있어요!</MobileQnaTitle>
+          {QNA.map((qna: any, index: number) => (
+            <RecruitAccordion
+              key={index}
+              index={index}
+              active={active}
+              setActive={setActive}
+              question={qna.question}
+              answer={qna.answer}
+            />
+          ))}
+        </MobileQnaBox>
+      </Layout>
+    );
+  }
+
   return (
     <Layout>
       <RecruitContainer>
@@ -184,6 +299,21 @@ const RecruitPage = () => {
 
 export default RecruitPage;
 
+const MobileRecruitContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 54px;
+  text-align: center;
+  background: #151519;
+
+  font-family: "SUIT";
+`;
+
 const RecruitContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -199,6 +329,216 @@ const RecruitContainer = styled.div`
   font-family: "SUIT";
 `;
 
+const MobileTopText = styled.p`
+  margin-top: 60px;
+  font-size: 48px;
+  color: #ffffff;
+  font-weight: 800;
+  line-height: 60px;
+`;
+
+const MobileRecruitText = styled.p`
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 60px;
+  text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
+`;
+
+const MobileRecruitUnderText = styled.p`
+  font-family: "SUIT";
+  margin-top: 40px;
+  line-height: 25px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: -0.5px;
+  white-space: pre-wrap;
+`;
+
+const MobileRecruitTitle = styled.p`
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 24px;
+  color: #ffffff;
+  margin-bottom: 60px;
+`;
+
+const MobileApplyBoxs = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 334px;
+  margin-bottom: 120px;
+`;
+
+const MobileApplyBox = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+
+  width: 334px;
+  height: 190px;
+
+  margin-bottom: 40px;
+`;
+
+const MobileIconBox = styled.div`
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 137px;
+  top: 0px;
+  background-color: #ffffff;
+  z-index: 900;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const MobileSquareBox = styled.div`
+  position: absolute;
+  width: 334px;
+  height: 160px;
+  left: 0px;
+  top: 30px;
+
+  background-color: rgba(47, 48, 56, 0.6);
+  border-radius: 32px;
+
+  padding: 56px 0;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: -0.5px;
+  white-space: pre-wrap;
+`;
+
+const MobileWhenSquareBigBox = styled.div`
+  width: 334px;
+  height: 311px;
+  border-radius: 32px;
+  background-color: rgba(47, 48, 56, 0.6);
+  margin-bottom: 120px;
+  font-family: "SUIT";
+  text-align: center;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 800;
+  color: #ffffff;
+`;
+
+const MobileSquareBigBox = styled.div`
+  width: 334px;
+  height: 382px;
+  border-radius: 32px;
+  background-color: rgba(47, 48, 56, 0.6);
+  margin-bottom: 120px;
+  font-family: "SUIT";
+  text-align: center;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 800;
+  color: #ffffff;
+`;
+
+const MobileParts = styled.div`
+  margin-top: 60px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 54px;
+`;
+
+const MobileUnderSub = styled.p`
+  font-size: 16px;
+  color: #90909a;
+  font-weight: 400;
+  line-height: 23px;
+  padding-top: 20px;
+  margin-bottom: 5px;
+  white-space: pre-wrap;
+`;
+
+const MobileWhenBox = styled.div`
+  margin-top: 40px;
+`;
+
+const MobileSmallSub = styled.p`
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 800;
+  color: #5d5e67;
+  margin-bottom: 8px;
+`;
+
+const MobileBigSub = styled.p`
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 20px;
+`;
+
+// 프로세스 하기
+
+const MobileRecruitStateBox = styled.div`
+  width: 460px;
+  height: 302px;
+`;
+
+const MobileRecruitStateMsg = styled.p`
+  font-family: "SUIT";
+  margin: 40px 0;
+  line-height: 25px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: -0.5px;
+  white-space: pre-wrap;
+`;
+
+const MobileRecruitBtn = styled.button`
+  padding: 16px 32px;
+  background: #0055ff;
+  border-radius: 75px;
+  font-family: "SUIT";
+  font-weight: 600;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+`;
+
+const MobileQnaBox = styled.div`
+  width: 100%;
+  background-color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: "SUIT";
+  padding: 80px 0;
+`;
+
+const MobileQnaTitle = styled.p`
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 30px;
+  color: #0055ff;
+  margin-bottom: 60px;
+`;
+
+// Web
 const RecruitInner = styled.div`
   display: flex;
   flex-direction: column;
@@ -227,10 +567,10 @@ const RecruitUnderText = styled.p`
   margin-top: 40px;
   line-height: 30px;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   text-align: center;
-  letter-spacing: -0.2px;
+  letter-spacing: -0.5px;
 `;
 
 const RecruitTitle = styled.p`
@@ -334,6 +674,7 @@ const UnderSub = styled.p`
   color: #90909a;
   font-weight: 400;
   line-height: 20px;
+  white-space: nowrap;
 `;
 
 const RecruitStateBox = styled.div`
