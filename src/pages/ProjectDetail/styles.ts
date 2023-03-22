@@ -2,17 +2,24 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(21, 21, 25, 0.9);
+  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: "SUIT";
   color: white;
-  margin-top: 192px;
+  margin-top: 100px;
   max-width: 1180px;
   width: 100%;
 `;
 
 export const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -45,7 +52,7 @@ export const IconContainer = styled.div`
   width: 200px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: end;
   margin-top: 48px;
 `;
 
@@ -57,6 +64,7 @@ export const IconBackground = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 50px;
+  margin-right: 20px;
   cursor: pointer;
 `;
 
@@ -121,7 +129,7 @@ export const VerticalLine = styled.div`
   width: 0.1px;
   height: 210px;
   border-color: #90909a;
-  margin-left: 40px;
+  margin-left: 30px;
 `;
 
 export const AbstractInfoText = styled.div`
@@ -129,7 +137,7 @@ export const AbstractInfoText = styled.div`
   flex-direction: column;
   justify-content: space-between;
   font-size: 20px;
-  margin-left: 40px;
+  margin-left: 30px;
   height: 210px;
 `;
 
@@ -156,5 +164,10 @@ export const ProjectIntroTextContent = styled.div`
   line-height: 40px;
   margin-top: 24px;
   margin-left: 40px;
+  margin-bottom: 24px;
   font-size: 20px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  };
 `;
