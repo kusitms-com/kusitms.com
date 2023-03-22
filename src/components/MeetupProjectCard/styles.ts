@@ -20,6 +20,7 @@ export const PosterImg = styled.img`
   display: flex;
   object-fit: cover;
   overflow: hidden;
+  height: 285px;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
 `;
@@ -27,7 +28,7 @@ export const PosterImg = styled.img`
 export const LogoImg = styled.img`
   display: flex;
   position: absolute;
-  margin-top: 210px;
+  margin-top: 235px;
   width: 95px;
   height: 95px;
   border-radius: 50px;
@@ -39,7 +40,7 @@ export const LogoImg = styled.img`
 export const ProjectInfoWapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  /* height: 100%; */
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
   margin-left: 24px;
@@ -67,7 +68,7 @@ export const IconContainer = styled.div`
   position: absolute;
   flex-direction: row;
   justify-content: space-between;
-  bottom: 50px;
+  bottom: 30px;
 `;
 
 export const IconBackground = styled.div`
