@@ -57,7 +57,7 @@ export interface IMeetupDetails {
   logo_url: string;
   poster_url: string;
   instagram_url?: string | null;
-  github_url: string;
+  github_url?: string | null;
   app_url?: string | null;
   start_date: string;
   end_date: string;

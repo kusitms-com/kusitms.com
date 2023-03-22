@@ -15,15 +15,14 @@ const MeetupProjectCard = ({
   github_url,
   app_url,
 }: IMeetupProject) => {
-  const handleIcon = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
+  const handleIcon = (url: string) => {
     console.log("아이콘 클릭됨");
   };
   const handleProject = () => {
     console.log("프로젝트 전체 클릭됨");
   };
   return (
-    <s.Wrapper onClick={handleProject}>
+    <s.Wrapper onClick={() => handleProject}>
       <s.PosterImg src={poster_url} loading="lazy" decoding="async" />
 
       <s.LogoImg src={logo_url} />
@@ -34,13 +33,17 @@ const MeetupProjectCard = ({
         <s.OneLineIntro>{one_line_intro}</s.OneLineIntro>
 
         <s.IconContainer>
-          <s.IconBackground onClick={handleIcon}>
-            <InstagramIcon />
-          </s.IconBackground>
+          {instagram_url && (
+            <s.IconBackground onClick={() => handleIcon(instagram_url)}>
+              <InstagramIcon />
+            </s.IconBackground>
+          )}
 
-          <s.IconBackground>
-            <GithubIcon />
-          </s.IconBackground>
+          {github_url && (
+            <s.IconBackground onClick={() => handleIcon(github_url)}>
+              <GithubIcon />
+            </s.IconBackground>
+          )}
         </s.IconContainer>
       </s.ProjectInfoWapper>
     </s.Wrapper>
