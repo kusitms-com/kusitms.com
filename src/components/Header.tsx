@@ -19,7 +19,6 @@ const CATEGORY_OPTIONS = [
   { title: "프로젝트", link: "/projects" },
   { title: "후기", link: "/reviews" },
   { title: "리크루팅", link: "/recruit" },
-  { title: "강연회", link: "/k" },
 ];
 
 const Header = (props: any) => {
@@ -153,13 +152,15 @@ const MobileHeaderContainer = styled.div`
   height: 47px;
 
   background: #151519;
-
-  padding-left: 18px;
+  padding-top: 23px;
+  padding-left: 16px;
   padding-right: 28px;
   font-family: "SUIT";
 
   z-index: 100000;
   overflow-x: hidden;
+
+  viewport-fit: cover;
 `;
 
 const IconMenuCustom = styled(IconMenu)`

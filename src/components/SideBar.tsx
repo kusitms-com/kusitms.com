@@ -7,7 +7,7 @@ import logoText from "../images/common/logo-text.svg";
 
 const SideBarWrap = styled.div`
   z-index: 5;
-  padding-top: 47px;
+  padding-top: 23px;
   background: #151519;
   height: 100%;
   width: 100%;
