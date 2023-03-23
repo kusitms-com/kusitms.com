@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Main, Recruit, Reviews } from "pages";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import ScrollToTop from "components/ScrollToTop";
 
 // eslint-disable-next-line
 const Projects = lazy(() => import("./pages/Projects/ProjectsPage"));
