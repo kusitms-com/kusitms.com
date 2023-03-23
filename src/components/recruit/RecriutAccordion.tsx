@@ -39,7 +39,7 @@ const RecruitAccordion = (props: Props) => {
         "height 0.35s ease, background 0.35s ease";
     } else {
       parentRef.current.style.height = `${childRef.current.clientHeight}px`;
-      parentRef.current.style.marginBottom = isMobile ? "0" : "40px";
+      parentRef.current.style.marginBottom = isMobile ? "0px" : "40px";
     }
     setIsCollapse(!isCollapse);
   };
@@ -49,7 +49,10 @@ const RecruitAccordion = (props: Props) => {
   }, [props.active]);
 
   const parentRefHeight = parentRef.current?.style.height ?? "0px";
-  const buttonText = parentRefHeight === "0px" ? openbtn : closebtn;
+  const buttonText =
+    parentRefHeight !== "0px" && props.active === props.index
+      ? closebtn
+      : openbtn;
 
   if (isMobile) {
     return (

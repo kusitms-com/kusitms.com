@@ -20,7 +20,6 @@ interface applyType {
   text: string;
 }
 
-const KUSITMS_28TH_ALRAM_URL = "https://forms.gle/WvYMe6EFE7a5f7CP7";
 const RECRUIT_UNDERTITLE =
   "큐시즘은 혼자서는 해낼 수 없는 일들을 함께 이루어내고 있어요.\n멋진 아이디어를 실현하고, 놀라운 결과를 만들어내요.\n우리와 함께할래요?";
 const MOBILE_RECRUIT_UNDERTITLE =
@@ -205,7 +204,10 @@ const RecruitPage = () => {
             </MobileRecruitStateMsg>
             <MobileRecruitBtn
               onClick={() => {
-                window.open(KUSITMS_28TH_ALRAM_URL, "_blank");
+                window.open(
+                  process.env.REACT_APP_KUSITMS_28TH_ALRAM_URL,
+                  "_blank"
+                );
               }}
             >
               {RECRUIT_ALARM[0].btn}
@@ -275,7 +277,16 @@ const RecruitPage = () => {
           <RecruitStateBox>
             <RecruitTitle>{RECRUIT_ALARM[0].title}</RecruitTitle>
             <RecruitStateMsg>{RECRUIT_ALARM[0].msg}</RecruitStateMsg>
-            <RecruitBtn>{RECRUIT_ALARM[0].btn}</RecruitBtn>
+            <RecruitBtn
+              onClick={() => {
+                window.open(
+                  process.env.REACT_APP_KUSITMS_28TH_ALRAM_URL,
+                  "_blank"
+                );
+              }}
+            >
+              {RECRUIT_ALARM[0].btn}
+            </RecruitBtn>
           </RecruitStateBox>
         </RecruitInner>
       </RecruitContainer>
