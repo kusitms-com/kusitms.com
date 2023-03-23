@@ -44,6 +44,7 @@ const Reviews = () => {
   const [data, setData] = useState<reviewListType[]>([]);
   const [btn, setBtn] = useState<string>("전체");
   const isMobile = useIsMobile();
+
   const onClick = (event: React.FormEvent<HTMLButtonElement>) => {
     const {
       currentTarget: { id },
@@ -94,7 +95,7 @@ const Reviews = () => {
       document.getElementById(item)!.style.backgroundColor = "#dce1ff";
       return null;
     });
-  }, [btn]);
+  });
 
   if (isMobile) {
     return (
