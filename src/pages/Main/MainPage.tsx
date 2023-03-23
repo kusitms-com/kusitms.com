@@ -54,7 +54,11 @@ import introduceActivityImageMobile4 from "../../images/main/mobile/introduce-ac
 import lectureImage1 from "../../images/main/lecture-image-1.png";
 import lectureImage2 from "../../images/main/lecture-image-2.png";
 
+import lectureImageMobile1 from "../../images/main/mobile/lecture-image-1.png";
+import lectureImageMobile2 from "../../images/main/mobile/lecture-image-2.png";
+
 import partnerImage from "../../images/main/partner-image.png";
+import partnerMobileImage from "../../images/main/mobile/partner-image.png";
 
 import { ReactComponent as ActivityTop } from "../../images/main/activity-top.svg";
 import { ReactComponent as ActivityBottom } from "../../images/main/activity-bottom.svg";
@@ -181,6 +185,8 @@ const MOBILE_MANAGEMENT_CONTENTS = [
   },
 ];
 
+const INTRODUCE_YOUTUBE_LINK = "https://youtu.be/B19m5WRdMjw";
+
 const INTRODUCE_PROGRAMS = [
   introduceProgramImage1,
   introduceProgramImage2,
@@ -215,13 +221,16 @@ const MainPage = () => {
   const { ref, inView } = useInView({ threshold: 0.5 });
 
   useEffect(() => {
-    AOS.init();
+    window.addEventListener("load", () => {
+      AOS.init();
+    });
   }, []);
 
   useEffect(() => {
     if (inView) {
       setIsInView(true);
     }
+    console.log(inView);
   }, [inView]);
 
   if (isMobile) {
@@ -267,7 +276,6 @@ const MainPage = () => {
                 })}
               </div>
             </MobileMainText>
-
             <MobileWorthContainer>
               <MobileLeftContainer>
                 <div>
@@ -291,7 +299,19 @@ const MainPage = () => {
                 }}
               >
                 <Circle />
-                <MobileNumber>{"명"}</MobileNumber>
+                <MobileNumber>
+                  <div>
+                    {isInView && (
+                      <CountUp
+                        start={0}
+                        end={1402}
+                        duration={2}
+                        useEasing={true}
+                      />
+                    )}
+                  </div>
+                  {"명"}
+                </MobileNumber>
                 <MobileNumberSubTitle>{"누적 회원 수"}</MobileNumberSubTitle>
               </div>
               <div
@@ -303,7 +323,20 @@ const MainPage = () => {
                 }}
               >
                 <Circle />
-                <MobileNumber>{"\n프로젝트"}</MobileNumber>
+                <MobileNumber>
+                  <div style={{ width: "108px", textAlign: "right" }}>
+                    {isInView && (
+                      <CountUp
+                        start={0}
+                        end={203}
+                        duration={2.3}
+                        delay={1.8}
+                        useEasing={true}
+                      />
+                    )}
+                  </div>
+                  {"개\n프로젝트"}
+                </MobileNumber>
                 <MobileNumberSubTitle>{"프로젝트 결과물"}</MobileNumberSubTitle>
               </div>
               <div
@@ -315,7 +348,20 @@ const MainPage = () => {
                 }}
               >
                 <Circle />
-                <MobileNumber>{"개\n대학"}</MobileNumber>
+                <MobileNumber>
+                  <div style={{ width: "103px", textAlign: "right" }}>
+                    {isInView && (
+                      <CountUp
+                        start={0}
+                        end={100}
+                        duration={3}
+                        delay={3.2}
+                        useEasing={true}
+                      />
+                    )}
+                  </div>
+                  {"개\n대학"}
+                </MobileNumber>
                 <MobileNumberSubTitle>{"참여 대학 수"}</MobileNumberSubTitle>
               </div>
             </div>
@@ -359,14 +405,16 @@ const MainPage = () => {
                 }
               )}
             </div>
-            <MobileButton
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              data-aos-anchor-placement="top-center"
-            >
-              {"학회 소개영상 보러가기"}
-              <img src={rightArrowIcon} width={20} height={8} />
-            </MobileButton>
+            <a href={INTRODUCE_YOUTUBE_LINK} target="_blank" rel="noreferrer">
+              <MobileButton
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-anchor-placement="top-center"
+              >
+                {"학회 소개영상 보러가기"}
+                <img src={rightArrowIcon} width={20} height={8} />
+              </MobileButton>
+            </a>
             <MobileManagementContainer>
               <MobileManagementTitle
                 data-aos="fade-up"
@@ -392,6 +440,20 @@ const MainPage = () => {
             </MobileManagementContainer>
           </MobileIntroduceContainer>
           <MobileIntroduceProgramContainer>
+            <div style={{ marginBottom: "98px" }}>
+              <MobileTitleText>{INTRODUCTION_TITLE_2}</MobileTitleText>
+              <EmphasisImage
+                style={{
+                  width: "110px",
+                  height: "11px",
+                  marginLeft: "114px",
+                  marginTop: "8px",
+                }}
+              />
+              <MobileDescriptionText>
+                {INTRODUCTION_DESCRIPTION_2}
+              </MobileDescriptionText>
+            </div>
             {MOBILE_INTRODUCE_PROGRAMS.map((program: string, index: number) => {
               return (
                 <img
@@ -408,6 +470,20 @@ const MainPage = () => {
             })}
           </MobileIntroduceProgramContainer>
           <MobileIntroduceActivityContainer>
+            <div style={{ marginBottom: "123px" }}>
+              <MobileTitleText>{INTRODUCTION_TITLE_3}</MobileTitleText>
+              <EmphasisImageWhite
+                style={{
+                  width: "110px",
+                  height: "11px",
+                  marginLeft: "44px",
+                  marginTop: "8px",
+                }}
+              />
+              <MobileDescriptionText>
+                {INTRODUCTION_DESCRIPTION_3}
+              </MobileDescriptionText>
+            </div>
             {MOBILE_INTRODUCE_ACTIVITIES.map(
               (activity: string, index: number) => {
                 return (
@@ -425,6 +501,72 @@ const MainPage = () => {
               }
             )}
           </MobileIntroduceActivityContainer>
+          <MobileLectureContainer>
+            <div
+              style={{
+                width: "390px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: "80px 0 100px 0",
+              }}
+            >
+              <div
+                className="defaultTitle4"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-once="false"
+                style={{ marginBottom: "80px" }}
+              >
+                <MobileTitleText style={{ color: "#151519" }}>
+                  {INTRODUCTION_TITLE_4}
+                </MobileTitleText>
+                <EmphasisImage
+                  style={{
+                    width: "120px",
+                    height: "20px",
+                    marginLeft: "18px",
+                    marginTop: "8px",
+                  }}
+                />
+              </div>
+              <MobileLectureTag>{"전문가 초청 강연"}</MobileLectureTag>
+              <img src={lectureImageMobile1} width="300px" height="260px" />
+              <MobileLectureTag
+                color="#000"
+                backgroundColor="#62EFE5"
+                style={{ marginTop: "100px" }}
+              >
+                {"OB 초청 강연"}
+              </MobileLectureTag>
+              <img src={lectureImageMobile2} width="300px" height="260px" />
+            </div>
+          </MobileLectureContainer>
+          <MobilePartnerContainer>
+            <div
+              className="defaultTitle5"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-once="false"
+              style={{ marginBottom: "60px" }}
+            >
+              <MobileTitleText>{"파트너사"}</MobileTitleText>
+              <EmphasisImage
+                style={{
+                  width: "123px",
+                  height: "20px",
+                  marginLeft: "50px",
+                  marginTop: "8px",
+                }}
+              />
+              <MobileDescriptionText>
+                {"KUSITMS과 함께하는 파트너사를 소개해요."}
+              </MobileDescriptionText>
+            </div>
+            <img src={partnerMobileImage} width="240px" height="428px" />
+          </MobilePartnerContainer>
         </MobileContainer>
       </Layout>
     );
@@ -549,9 +691,16 @@ const MainPage = () => {
             >
               <PCCircle />
               <Number ref={ref}>
-                {isInView && (
-                  <CountUp start={0} end={1402} duration={2} useEasing={true} />
-                )}
+                <div style={{ width: "156px", textAlign: "right" }}>
+                  {isInView && (
+                    <CountUp
+                      start={0}
+                      end={1402}
+                      duration={2}
+                      useEasing={true}
+                    />
+                  )}
+                </div>
                 {"명"}
               </Number>
               <NumberSubTitle>{"누적 회원 수"}</NumberSubTitle>
@@ -565,16 +714,19 @@ const MainPage = () => {
               }}
             >
               <PCCircle />
+
               <Number>
-                {isInView && (
-                  <CountUp
-                    start={0}
-                    end={203}
-                    duration={2.3}
-                    delay={1.8}
-                    useEasing={true}
-                  />
-                )}
+                <div style={{ width: "108px", textAlign: "right" }}>
+                  {isInView && (
+                    <CountUp
+                      start={0}
+                      end={203}
+                      duration={2.3}
+                      delay={1.8}
+                      useEasing={true}
+                    />
+                  )}
+                </div>
                 {"개 프로젝트"}
               </Number>
               <NumberSubTitle>{"프로젝트 결과물"}</NumberSubTitle>
@@ -589,15 +741,17 @@ const MainPage = () => {
             >
               <PCCircle />
               <Number>
-                {isInView && (
-                  <CountUp
-                    start={0}
-                    end={100}
-                    duration={3}
-                    delay={3.2}
-                    useEasing={true}
-                  />
-                )}
+                <div style={{ width: "103px", textAlign: "right" }}>
+                  {isInView && (
+                    <CountUp
+                      start={0}
+                      end={100}
+                      duration={3}
+                      delay={3.2}
+                      useEasing={true}
+                    />
+                  )}
+                </div>
                 {"개 대학"}
               </Number>
               <NumberSubTitle>{"참여 대학 수"}</NumberSubTitle>
@@ -640,11 +794,12 @@ const MainPage = () => {
               return <IntroductionCard {...group} />;
             }
           )}
-
-          <Button>
-            {"학회 소개영상 보러가기"}
-            <img src={rightArrowIcon} />
-          </Button>
+          <a href={INTRODUCE_YOUTUBE_LINK} target="_blank" rel="noreferrer">
+            <Button>
+              {"학회 소개영상 보러가기"}
+              <img src={rightArrowIcon} />
+            </Button>
+          </a>
         </div>
         <ManagementContainer>
           <ManagementTitle>{MANAGEMENT_TITLE}</ManagementTitle>
@@ -698,14 +853,7 @@ const MainPage = () => {
           </IntroduceProgramCardContainer>
         </IntroduceProgramContainer>
         <IntroduceActivityContainer>
-          <IntroduceActivityTitleDiv
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-anchor-placement="top-bottom"
-            data-aos-once="false"
-            data-aos-anchor="#activityContainer"
-            data-aos-delay={3000}
-          >
+          <IntroduceActivityTitleDiv>
             <TitleText id="activityContainer">{INTRODUCTION_TITLE_3}</TitleText>
             <EmphasisImageWhite />
             <DescriptionText>{INTRODUCTION_DESCRIPTION_3}</DescriptionText>
@@ -716,13 +864,7 @@ const MainPage = () => {
             <ActivityCardContainer>
               {INTRODUCE_ACTIVITIES.map((activity: string, index: number) => {
                 return (
-                  <div
-                    data-aos="flip-up"
-                    data-aos-duration="1000"
-                    data-aos-anchor-placement="top-bottom"
-                    data-aos-once="false"
-                    data-aos-delay={index * 1000}
-                  >
+                  <div>
                     <img src={activity} />
                   </div>
                 );
@@ -772,17 +914,6 @@ const MainPage = () => {
 };
 
 export default MainPage;
-
-const fadeInLeft = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateX(-200px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0px);
-  }
-`;
 
 const fadeInTop = keyframes`
   0% {
@@ -840,17 +971,6 @@ const WorthContainer = styled.div`
 const WorthText = styled.p.attrs((props) => ({
   className: props.className,
 }))`
-  &.fadeWorthText1 {
-    animation: ${fadeInLeft} 2s;
-  }
-  &.fadeWorthText2 {
-    animation: ${fadeInLeft} 2s;
-    animation-delay: 0.3s;
-  }
-  &.fadeWorthText3 {
-    animation: ${fadeInLeft} 2s;
-    animation-delay: 0.7s;
-  }
   font-size: 72px;
   line-height: 96px;
   letter-spacing: -1px;
@@ -892,14 +1012,14 @@ const IntroduceActivityContainer = styled.div`
 
 const ActivityWrapperImageTop = styled(ActivityTop)`
   position: absolute;
-  top: -120px;
-  left: -200px;
+  top: -100px;
+  left: 300px;
 `;
 
 const ActivityWrapperImageBottom = styled(ActivityBottom)`
   position: absolute;
   top: 900px;
-  right: -280px;
+  right: 200px;
 `;
 
 const IntroductionContainer = styled.div`
@@ -1123,7 +1243,7 @@ const IntroductionCard = (group: introductionGroupType) => {
       data-aos-duration="1000"
       data-aos-anchor-placement="top-bottom"
       data-aos-once="false"
-      data-aos-delay="1000"
+      data-aos-delay="2000"
       flexDirection={group.title === "개발팀"}
     >
       <img
@@ -1331,10 +1451,11 @@ const IntroudceImageCard = styled.div<{ index: number }>`
 /// //////////////////////////////////////////
 
 const MobileContainer = styled.div`
-  width: 100%;
+  width: 100vw;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   padding-top: 54px;
 `;
@@ -1370,7 +1491,7 @@ const MobileNumberContainer = styled.div`
   align-items: center;
   padding: 40px 0;
 
-  width: 390px;
+  width: 100vw;
   height: 239px;
 
   background: url(${backgroundImageMobile}) no-repeat;
@@ -1423,7 +1544,7 @@ const MobileIntroduceProgramContainer = styled.div`
   justify-content: center;
 
   width: 390px;
-  height: 2382px;
+  padding: 80px 0;
 `;
 
 const MobileIntroductionCard = (group: introductionGroupType) => {
@@ -1612,8 +1733,7 @@ const MobileManagementCardContent = styled.p`
 `;
 
 const MobileIntroduceActivityContainer = styled.div`
-  width: 390px;
-  height: 1761px;
+  width: 100vw;
 
   background: #0055ff;
 
@@ -1621,6 +1741,7 @@ const MobileIntroduceActivityContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 80px 0;
 `;
 
 const MobileNumberTitle = styled.div`
@@ -1736,7 +1857,7 @@ const NumberTitle = styled.p`
   margin-left: -89px;
 `;
 
-const Number = styled.p`
+const Number = styled.div`
   font-family: "SUIT";
   font-style: normal;
   font-weight: 700;
@@ -1750,6 +1871,7 @@ const Number = styled.p`
 
   color: #ffffff;
   margin-bottom: 24px;
+  display: flex;
 `;
 
 const PCCircle = styled.div`
@@ -1792,4 +1914,41 @@ const UpDownCustomImage = styled(UpdownImage)`
   &.movingImage {
     animation: ${fadeInBottom} 2s;
   }
+`;
+
+const MobileLectureContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+
+  background-color: #ffffff;
+`;
+
+const MobilePartnerContainer = styled.div`
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const MobileLectureTag = styled.div<{
+  color?: string;
+  backgroundColor?: string;
+}>`
+  display: flex;
+  flex-direction: column;
+  padding: 12px 24px;
+
+  color: ${(props) => (props.color ? props.color : "#fff")};
+
+  background: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : "#0055ff"};
+  border-radius: 75px;
+  font-family: "SUIT";
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  margin-bottom: 48px;
 `;
