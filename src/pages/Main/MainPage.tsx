@@ -10,7 +10,6 @@ import "animate.css/animate.min.css";
 import { useIsMobile } from "hooks/useIsMobile";
 
 import mainImage from "../../images/main/main-image.svg";
-import mainImageMobile from "../../images/main/mobile/main-image.svg";
 import { ReactComponent as EmphasisImage } from "../../images/main/emphasis-image.svg";
 import { ReactComponent as EmphasisImageWhite } from "../../images/main/emphasis-image-white.svg";
 import designIcon from "../../images/main/icon-design.svg";
@@ -251,9 +250,9 @@ const MainPage = () => {
                   return (
                     <MovingComponent
                       type={"flash"}
-                      duration={"3000ms"}
+                      duration={"2000ms"}
                       timing={"ease"}
-                      delay={`${index * 400}ms`}
+                      delay={`${index * 100}ms`}
                       fillMode="backwards"
                     >
                       {s}
@@ -266,9 +265,9 @@ const MainPage = () => {
                   return (
                     <MovingComponent
                       type={"flash"}
-                      duration={"3000ms"}
+                      duration={"2000ms"}
                       timing={"ease"}
-                      delay={`${index * 400}ms`}
+                      delay={`${index * 100}ms`}
                       direction="reverse"
                     >
                       {s}
@@ -277,69 +276,15 @@ const MainPage = () => {
                 })}
               </div>
             </MobileMainText>
-            <img src={mainImageMobile} style={{ marginTop: "40px" }} />
             <MobileWorthContainer>
               <MobileLeftContainer>
                 <div>
-                  <MobileWortText
-                    data-aos="fade-right"
-                    data-aos-duration="2000"
-                    data-aos-anchor-placement="top-center"
-                    data-aos-anchor="#defaultWorthText"
-                    data-aos-once="false"
-                    data-aos-easing="ease-in-sine"
-                  >
-                    {WORTHTEXT1}
-                  </MobileWortText>
-                  <MobileWortText
-                    data-aos="fade-right"
-                    data-aos-duration="2000"
-                    data-aos-anchor-placement="top-center"
-                    data-aos-anchor="#defaultWorthText"
-                    data-aos-once="false"
-                    data-aos-easing="ease-in-sine"
-                    data-aos-delay="800"
-                  >
-                    {WORTHTEXT2}
-                  </MobileWortText>
-                  <MobileWortText
-                    data-aos="fade-right"
-                    data-aos-duration="2000"
-                    data-aos-anchor-placement="top-center"
-                    data-aos-anchor="#defaultWorthText"
-                    data-aos-once="false"
-                    data-aos-easing="ease-in-sine"
-                    data-aos-delay="1600"
-                  >
-                    {WORTHTEXT3}
-                  </MobileWortText>
+                  <MobileWortText>{WORTHTEXT1}</MobileWortText>
+                  <MobileWortText>{WORTHTEXT2}</MobileWortText>
+                  <MobileWortText>{WORTHTEXT3}</MobileWortText>
                 </div>
-                <MobileKusitmsText id="defaultWorthText">
-                  {KUSTIMS}
-                </MobileKusitmsText>
+                <MobileKusitmsText>{KUSTIMS}</MobileKusitmsText>
               </MobileLeftContainer>
-              <div style={{ position: "relative" }}>
-                <UpDownCustomImage
-                  data-aos="fade-down"
-                  data-aos-duration="3000"
-                  data-aos-anchor-placement="top-bottom"
-                  data-aos-anchor="#defaultWorthText"
-                  className="defaultImage"
-                  data-aos-once="false"
-                  data-aos-delay="800"
-                  style={{ width: "140px", height: "97px" }}
-                />
-                <MainLogoImage
-                  style={{
-                    position: "absolute",
-                    zIndex: 0,
-                    top: "-66px",
-                    left: "124px",
-                    width: "60px",
-                    height: "224px",
-                  }}
-                />
-              </div>
             </MobileWorthContainer>
           </MobileTopContainer>
           <MobileNumberContainer>
@@ -355,8 +300,8 @@ const MainPage = () => {
               >
                 <Circle />
                 <MobileNumber>
-                  <div style={{ width: "53px", textAlign: "right" }}>
-                    {true && (
+                  <div>
+                    {isInView && (
                       <CountUp
                         start={0}
                         end={1402}
@@ -379,8 +324,8 @@ const MainPage = () => {
               >
                 <Circle />
                 <MobileNumber>
-                  <div style={{ width: "37px", textAlign: "right" }}>
-                    {true && (
+                  <div style={{ width: "108px", textAlign: "right" }}>
+                    {isInView && (
                       <CountUp
                         start={0}
                         end={203}
@@ -390,7 +335,7 @@ const MainPage = () => {
                       />
                     )}
                   </div>
-                  {"개"}
+                  {"개\n프로젝트"}
                 </MobileNumber>
                 <MobileNumberSubTitle>{"프로젝트 결과물"}</MobileNumberSubTitle>
               </div>
@@ -404,8 +349,8 @@ const MainPage = () => {
               >
                 <Circle />
                 <MobileNumber>
-                  <div style={{ width: "36px", textAlign: "right" }}>
-                    {true && (
+                  <div style={{ width: "103px", textAlign: "right" }}>
+                    {isInView && (
                       <CountUp
                         start={0}
                         end={100}
@@ -415,14 +360,18 @@ const MainPage = () => {
                       />
                     )}
                   </div>
-                  {"개"}
+                  {"개\n대학"}
                 </MobileNumber>
                 <MobileNumberSubTitle>{"참여 대학 수"}</MobileNumberSubTitle>
               </div>
             </div>
           </MobileNumberContainer>
           <MobileIntroduceContainer>
-            <TitleTextContainer data-aos="fade-up" data-aos-duration="3000">
+            <TitleTextContainer
+              data-aos="fade-up"
+              data-aos-duration="3000"
+              data-aos-anchor-placement="top-bottom"
+            >
               <MobileTitleText>{INTRODUCTION_TITLE_1}</MobileTitleText>
               <EmphasisImage
                 style={{
@@ -433,7 +382,11 @@ const MainPage = () => {
                 }}
               />
             </TitleTextContainer>
-            <MobileDescriptionText data-aos="fade-up" data-aos-duration="3000">
+            <MobileDescriptionText
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-anchor-placement="top-center"
+            >
               {MOBILE_INTRODUCTION_DESCRIPTION_1}
             </MobileDescriptionText>
             <div
@@ -453,7 +406,11 @@ const MainPage = () => {
               )}
             </div>
             <a href={INTRODUCE_YOUTUBE_LINK} target="_blank" rel="noreferrer">
-              <MobileButton>
+              <MobileButton
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-anchor-placement="top-center"
+              >
                 {"학회 소개영상 보러가기"}
                 <img src={rightArrowIcon} width={20} height={8} />
               </MobileButton>
@@ -461,7 +418,8 @@ const MainPage = () => {
             <MobileManagementContainer>
               <MobileManagementTitle
                 data-aos="fade-up"
-                data-aos-duration="1000"
+                data-aos-duration="3000"
+                data-aos-anchor-placement="top-center"
               >
                 {MANAGEMENT_TITLE}
               </MobileManagementTitle>
@@ -482,12 +440,7 @@ const MainPage = () => {
             </MobileManagementContainer>
           </MobileIntroduceContainer>
           <MobileIntroduceProgramContainer>
-            <div
-              style={{ marginBottom: "98px" }}
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              data-aos-delay="1000"
-            >
+            <div style={{ marginBottom: "98px" }}>
               <MobileTitleText>{INTRODUCTION_TITLE_2}</MobileTitleText>
               <EmphasisImage
                 style={{
@@ -498,9 +451,7 @@ const MainPage = () => {
                 }}
               />
               <MobileDescriptionText>
-                {
-                  "KUSITMS에서는 학회원이 새로운 경험을 통해\n성장할 수 있도록 다양한 프로그램을 진행해요."
-                }
+                {INTRODUCTION_DESCRIPTION_2}
               </MobileDescriptionText>
             </div>
             {MOBILE_INTRODUCE_PROGRAMS.map((program: string, index: number) => {
@@ -519,11 +470,7 @@ const MainPage = () => {
             })}
           </MobileIntroduceProgramContainer>
           <MobileIntroduceActivityContainer>
-            <div
-              style={{ marginBottom: "123px" }}
-              data-aos="fade-up"
-              data-aos-duration="3000"
-            >
+            <div style={{ marginBottom: "123px" }}>
               <MobileTitleText>{INTRODUCTION_TITLE_3}</MobileTitleText>
               <EmphasisImageWhite
                 style={{
@@ -1524,7 +1471,7 @@ const MobileTopContainer = styled.div`
   padding-top: 40px;
 `;
 
-const MobileMainText = styled.div`
+const MobileMainText = styled.p`
   font-family: "SUIT";
   font-style: normal;
   font-weight: 800;
@@ -1536,11 +1483,6 @@ const MobileMainText = styled.div`
   color: #ffffff;
 
   white-space: pre-wrap;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
 const MobileNumberContainer = styled.div`
@@ -1612,7 +1554,8 @@ const MobileIntroductionCard = (group: introductionGroupType) => {
   return (
     <MobileIntroductionCardContainer
       data-aos="fade-right"
-      data-aos-delay="1000"
+      data-aos-delay="500"
+      data-aos-offset="300"
       data-aos-easing="ease-in-sine"
     >
       <img src={group.img} width="36px" height="36px" />
@@ -1821,10 +1764,9 @@ const Circle = styled.div`
 
   background: #dce1ff;
   border-radius: 50%;
-  margin-bottom: 12px;
 `;
 
-const MobileNumber = styled.div`
+const MobileNumber = styled.p`
   font-family: "SUIT";
   font-style: normal;
   font-weight: 800;
@@ -1835,7 +1777,6 @@ const MobileNumber = styled.div`
   color: #ffffff;
 
   white-space: pre-wrap;
-  display: flex;
 `;
 
 const MobileNumberSubTitle = styled.p`
@@ -1854,16 +1795,16 @@ const MobileNumberSubTitle = styled.p`
 
 const MobileWorthContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 60px 64px 78px 32px;
-  width: 390px;
+  gap: 370px;
+
+  padding: 0px 370px;
 `;
 
 const MobileLeftContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 159px;
 `;
 
 const MobileWortText = styled.p`
@@ -1885,7 +1826,6 @@ const MobileKusitmsText = styled.p`
   letter-spacing: -0.5px;
 
   color: #ffffff;
-  margin-top: 71px;
 `;
 
 const NumberContainer = styled.div`
