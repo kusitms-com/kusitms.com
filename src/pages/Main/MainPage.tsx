@@ -886,7 +886,7 @@ const MainPage = () => {
           </DescriptionText>
         </IntroduceProgramContainer>
         <IntroduceProgramContainer id="program-container">
-          <IntroduceProgramCardContainer className="introduceDefault">
+          <IntroduceProgramCardContainer>
             {INTRODUCE_PROGRAMS.map((program: string, index: number) => {
               return (
                 <IntroudceImageCard
