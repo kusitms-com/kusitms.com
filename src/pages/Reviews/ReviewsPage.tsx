@@ -235,7 +235,7 @@ const MobileReviewBoxContainer = styled.div`
   padding: 0px;
   width: 390px;
   flex-wrap: wrap; // 복수의 행
-  // margin-bottom: 60px;
+  margin-bottom: 60px;
 `;
 
 const MobileReviewBox = styled.div`
