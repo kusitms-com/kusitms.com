@@ -315,10 +315,6 @@ const MobileRecruitContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 54px;
   text-align: center;
   background: #151519;
 
