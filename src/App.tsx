@@ -35,5 +35,4 @@ export default App;
 
 const Container = styled.div`
   width: 100vw;
-  overflow-x: hidden;
 `;
