@@ -65,6 +65,8 @@ import { ReactComponent as ActivityTop } from "../../images/main/activity-top.sv
 import { ReactComponent as ActivityBottom } from "../../images/main/activity-bottom.svg";
 import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
+import Header from "components/Header";
+import Footer from "components/Footer";
 
 interface introductionGroupType {
   img: string;
@@ -236,8 +238,9 @@ const MainPage = () => {
 
   if (isMobile) {
     return (
-      <Layout>
+      <CustomContainer>
         <MobileContainer>
+          <Header />
           <MobileTopContainer>
             <MobileMainText>
               <div
@@ -284,7 +287,6 @@ const MainPage = () => {
                   <MobileWortText
                     data-aos="fade-right"
                     data-aos-duration="2000"
-                    data-aos-anchor-placement="top-center"
                     data-aos-anchor="#defaultWorthText"
                     data-aos-once="false"
                     data-aos-easing="ease-in-sine"
@@ -294,22 +296,20 @@ const MainPage = () => {
                   <MobileWortText
                     data-aos="fade-right"
                     data-aos-duration="2000"
-                    data-aos-anchor-placement="top-center"
                     data-aos-anchor="#defaultWorthText"
                     data-aos-once="false"
                     data-aos-easing="ease-in-sine"
-                    data-aos-delay="800"
+                    data-aos-delay="500"
                   >
                     {WORTHTEXT2}
                   </MobileWortText>
                   <MobileWortText
                     data-aos="fade-right"
                     data-aos-duration="2000"
-                    data-aos-anchor-placement="top-center"
                     data-aos-anchor="#defaultWorthText"
                     data-aos-once="false"
                     data-aos-easing="ease-in-sine"
-                    data-aos-delay="1600"
+                    data-aos-delay="1000"
                   >
                     {WORTHTEXT3}
                   </MobileWortText>
@@ -621,7 +621,8 @@ const MainPage = () => {
             <img src={partnerMobileImage} width="240px" height="428px" />
           </MobilePartnerContainer>
         </MobileContainer>
-      </Layout>
+        <Footer />
+      </CustomContainer>
     );
   }
 
@@ -815,9 +816,7 @@ const MainPage = () => {
           <TitleTextContainer
             data-aos="fade-up"
             data-aos-duration="1000"
-            data-aos-anchor-placement="top-bottom"
             data-aos-once="false"
-            data-aos-delay="800"
           >
             <TitleText>{INTRODUCTION_TITLE_1}</TitleText>
             <EmphasisImage />
@@ -826,9 +825,7 @@ const MainPage = () => {
             className="defaultTitle1"
             data-aos="fade-up"
             data-aos-duration="1000"
-            data-aos-anchor-placement="top-bottom"
             data-aos-once="false"
-            data-aos-delay="1000"
           >
             {INTRODUCTION_DESCRIPTION_1}
           </DescriptionText>
@@ -1296,7 +1293,6 @@ const IntroductionCard = (group: introductionGroupType) => {
       data-aos-duration="1000"
       data-aos-anchor-placement="top-bottom"
       data-aos-once="false"
-      data-aos-delay="2000"
       flexDirection={group.title === "개발팀"}
     >
       <img
@@ -1505,12 +1501,11 @@ const IntroudceImageCard = styled.div<{ index: number }>`
 
 const MobileContainer = styled.div`
   width: 100vw;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  padding-top: 54px;
 `;
 const MobileTopContainer = styled.div`
   display: flex;
@@ -2011,4 +2006,14 @@ const MobileLectureTag = styled.div<{
   font-size: 16px;
   line-height: 150%;
   margin-bottom: 48px;
+`;
+
+const CustomContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #151519;
+  height: inherit;
 `;
