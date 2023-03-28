@@ -241,7 +241,7 @@ const MobileReviewBoxContainer = styled.div`
 
 const MobileReviewBox = styled.div`
   width: 334px;
-  height: 363px;
+  height: 368px;
   background: #f2f2f8;
   border-radius: 32px;
   padding: 40px 24px;
@@ -341,7 +341,7 @@ const ReviewBoxContainer = styled.div`
 
 const ReviewBox = styled.div`
   width: 380px;
-  height: 453px;
+  height: 460px;
   background: #f2f2f8;
   border-radius: 32px;
   padding: 48px 32px;
@@ -367,5 +367,9 @@ const WriterTeam = styled.p`
 const WriterReview = styled.p`
   font-weight: 400;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 25px;
+  // overflow: auto;
+  // white-space: normal;
+  // width: 316px;
+  // height: 263px;
 `;
