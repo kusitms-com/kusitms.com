@@ -10,9 +10,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   font-family: "SUIT";
   background-color: white;
-  :hover {
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.4), 0 6px 4px rgba(255, 255, 255, 0.4);
-  };
 `;
 
 export const PosterImg = styled.img`
