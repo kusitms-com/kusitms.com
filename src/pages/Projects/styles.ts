@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   font-family: "SUIT";
   &.open {
     background: rgba(21, 21, 25, 0.7);
-    z-index:3;
+    z-index:100002;
   }
 `;
 
@@ -149,4 +149,7 @@ export const CardWrapper = styled.div<CardContainer>`
 export const DetailWrapper = styled.div`
   width: 100vw;
   height: 100vh;
+  z-index: 100001;
+  background-color: #151519;
+  overflow: hidden;
 `;
