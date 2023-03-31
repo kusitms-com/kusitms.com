@@ -19,7 +19,6 @@ const CATEGORY_OPTIONS = [
   { title: "프로젝트", link: "/projects" },
   { title: "후기", link: "/reviews" },
   { title: "리크루팅", link: "/recruit" },
-  { title: "강연회", link: "/k" },
 ];
 
 const Header = (props: any) => {
@@ -50,10 +49,10 @@ const Header = (props: any) => {
   if (isMobile) {
     return (
       <MobileHeaderContainer>
-        <LogoContainer>
+        <MobileLogoContainer>
           <img src={logo} />
           <img src={logoText} />
-        </LogoContainer>
+        </MobileLogoContainer>
         <IconMenuCustom onClick={toggleSide} />
         {isOpen && (
           <Sidebar
@@ -142,26 +141,33 @@ const Category = styled.div<{ selected: boolean }>`
 /// /////////////////////////////////////
 
 const MobileHeaderContainer = styled.div`
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   width: 100vw;
-  height: 47px;
 
   background: #151519;
-
-  padding-left: 18px;
-  padding-right: 28px;
   font-family: "SUIT";
 
   z-index: 100000;
+
+  viewport-fit: cover;
   overflow-x: hidden;
+`;
+
+const MobileLogoContainer = styled.div`
+  display: flex;
+  gap: 10px;
+
+  cursor: pointer;
+  margin: 16px 0 16px 28px;
 `;
 
 const IconMenuCustom = styled(IconMenu)`
   cursor: pointer;
+  margin: 11px 28px 11px 0;
 `;

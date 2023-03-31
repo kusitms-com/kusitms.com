@@ -3,6 +3,7 @@ import * as s from "./styles";
 import { IMeetupProject } from "pages/Projects/ProjectsPage";
 import { ReactComponent as InstagramIcon } from "../../images/projects/icons/InstagramIcon.svg";
 import { ReactComponent as GithubIcon } from "../../images/projects/icons/GithubIcon.svg";
+import { ReactComponent as LinkIcon } from "../../images/projects/icons/LinkIcon.svg";
 
 const MeetupProjectCard = ({
   meetup_id,
@@ -41,6 +42,12 @@ const MeetupProjectCard = ({
           {github_url && (
             <s.IconBackground onClick={(e) => handleIcon(github_url, e)}>
               <GithubIcon />
+            </s.IconBackground>
+          )}
+
+          {app_url && (
+            <s.IconBackground onClick={(e) => handleIcon(app_url, e)}>
+              <LinkIcon />
             </s.IconBackground>
           )}
         </s.IconContainer>

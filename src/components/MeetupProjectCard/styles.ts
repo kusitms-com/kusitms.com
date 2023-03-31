@@ -12,7 +12,8 @@ export const Wrapper = styled.div`
   background-color: white;
   cursor: pointer;
   :hover {
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.4), 0 6px 4px rgba(255, 255, 255, 0.4);
+    transform: scale(1.03);
+    transition: all 0.1s linear;
   };
 `;
 

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable react/jsx-key */
 import Layout from "components/Layout";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import MovingComponent from "react-moving-text";
 import styled, { keyframes } from "styled-components";
 import AOS from "aos";
@@ -10,6 +10,7 @@ import "animate.css/animate.min.css";
 import { useIsMobile } from "hooks/useIsMobile";
 
 import mainImage from "../../images/main/main-image.svg";
+import mainImageMobile from "../../images/main/mobile/main-image.svg";
 import { ReactComponent as EmphasisImage } from "../../images/main/emphasis-image.svg";
 import { ReactComponent as EmphasisImageWhite } from "../../images/main/emphasis-image-white.svg";
 import designIcon from "../../images/main/icon-design.svg";
@@ -54,10 +55,18 @@ import introduceActivityImageMobile4 from "../../images/main/mobile/introduce-ac
 import lectureImage1 from "../../images/main/lecture-image-1.png";
 import lectureImage2 from "../../images/main/lecture-image-2.png";
 
+import lectureImageMobile1 from "../../images/main/mobile/lecture-image-1.png";
+import lectureImageMobile2 from "../../images/main/mobile/lecture-image-2.png";
+
 import partnerImage from "../../images/main/partner-image.png";
+import partnerMobileImage from "../../images/main/mobile/partner-image.png";
 
 import { ReactComponent as ActivityTop } from "../../images/main/activity-top.svg";
 import { ReactComponent as ActivityBottom } from "../../images/main/activity-bottom.svg";
+import { useInView } from "react-intersection-observer";
+import CountUp from "react-countup";
+import Header from "components/Header";
+import Footer from "components/Footer";
 
 interface introductionGroupType {
   img: string;
@@ -179,6 +188,8 @@ const MOBILE_MANAGEMENT_CONTENTS = [
   },
 ];
 
+const INTRODUCE_YOUTUBE_LINK = "https://youtu.be/B19m5WRdMjw";
+
 const INTRODUCE_PROGRAMS = [
   introduceProgramImage1,
   introduceProgramImage2,
@@ -208,338 +219,28 @@ const MOBILE_INTRODUCE_ACTIVITIES = [
 ];
 
 const MainPage = () => {
-  const outerDivRef = useRef<any>(null);
   const isMobile = useIsMobile();
+  const [isInView, setIsInView] = useState(false);
+  const { ref, inView } = useInView({ threshold: 0.5 });
 
   useEffect(() => {
-    AOS.init();
+    window.addEventListener("load", () => {
+      AOS.init();
+    });
   }, []);
 
   useEffect(() => {
-    if (!isMobile) {
-      const wheelHandler = (e: any) => {
-        e.preventDefault();
-
-        const { deltaY } = e;
-        const { scrollTop } = outerDivRef.current; // 스크롤 위쪽 끝부분 위치
-        const pageHeight = window.innerHeight; // 화면 세로길이, 100vh와 같습니다.
-
-        if (deltaY > 0) {
-          // 스크롤 내릴 때
-          if (scrollTop >= 0 && Math.ceil(scrollTop) < pageHeight) {
-            // 현재 1페이지
-            outerDivRef.current.scrollTo({
-              top: pageHeight,
-              left: 0,
-              behavior: "smooth",
-            });
-
-            const update = document.getElementsByClassName("defaultWorthText");
-            update[0].classList.add("fadeWorthText1");
-            update[1].classList.add("fadeWorthText2");
-            update[2].classList.add("fadeWorthText3");
-
-            const movingImage = document.getElementsByClassName("defaultImage");
-            movingImage[0].classList.add("movingImage");
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight &&
-            Math.ceil(scrollTop) < pageHeight * 2
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 2,
-              left: 0,
-              behavior: "smooth",
-            });
-
-            const fade = document.getElementsByClassName("defaultTitle1");
-            fade[0].classList.add("fadeInTitle");
-            fade[1].classList.add("fadeInTitle");
-
-            const update1 = document.getElementsByClassName("fadeWorthText1");
-            const update2 = document.getElementsByClassName("fadeWorthText2");
-            const update3 = document.getElementsByClassName("fadeWorthText3");
-            update1[0].classList.remove("fadeWorthText1");
-            update2[0].classList.remove("fadeWorthText2");
-            update3[0].classList.remove("fadeWorthText3");
-            update1[0].classList.add("defaultWorthText");
-            update2[0].classList.add("defaultWorthText");
-            update3[0].classList.add("defaultWorthText");
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 2 &&
-            Math.ceil(scrollTop) < pageHeight * 3
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 3,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 3 &&
-            Math.ceil(scrollTop) < pageHeight * 4
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 4,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 4 &&
-            Math.ceil(scrollTop) < pageHeight * 5
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 5,
-              left: 0,
-              behavior: "smooth",
-            });
-            const fade = document.getElementsByClassName("defaultTitle2");
-            fade[0].classList.add("fadeInTitle");
-            fade[1].classList.add("fadeInTitle");
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 5 &&
-            Math.ceil(scrollTop) < pageHeight * 6
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 6,
-              left: 0,
-              behavior: "smooth",
-            });
-            const fade = document.getElementsByClassName("introduceDefault");
-            fade[0].classList.add("programCardContainer");
-
-            // update[0].classList.remove("imageDefault");
-            // update[1].classList.remove("imageDefault");
-            // update[2].classList.remove("imageDefault");
-            // update[3].classList.remove("imageDefault");
-            // update[0].classList.add("fadeTopCard0");
-            // update[1].classList.add("fadeTopCard1");
-            // update[2].classList.add("fadeTopCard2");
-            // update[3].classList.add("fadeTopCard3");
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 6 &&
-            Math.ceil(scrollTop) < pageHeight * 7
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 7,
-              left: 0,
-              behavior: "smooth",
-            });
-
-            const fade = document.getElementsByClassName("defaultTitle3");
-            fade[0].classList.add("fadeInTitle");
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 7 &&
-            Math.ceil(scrollTop) < pageHeight * 8
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 8,
-              left: 0,
-              behavior: "smooth",
-            });
-            const fade = document.getElementsByClassName("defaultActivity");
-            fade[0].classList.add("programCardContainer");
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 8 &&
-            Math.ceil(scrollTop) < pageHeight * 9
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 9,
-              left: 0,
-              behavior: "smooth",
-            });
-            const fade = document.getElementsByClassName("defaultTitle4");
-            fade[0].classList.add("fadeInTitle");
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 9 &&
-            Math.ceil(scrollTop) < pageHeight * 10
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 10,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 10 &&
-            Math.ceil(scrollTop) < pageHeight * 11
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 11,
-              left: 0,
-              behavior: "smooth",
-            });
-
-            const fade = document.getElementsByClassName("defaultTitle5");
-            fade[0].classList.add("fadeInTitle");
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 11 &&
-            Math.ceil(scrollTop) < pageHeight * 12
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 12,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 12 &&
-            Math.ceil(scrollTop) < pageHeight * 13
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 13,
-              left: 0,
-              behavior: "smooth",
-            });
-          }
-        } else {
-          // 스크롤 올릴 때
-          if (scrollTop >= 0 && Math.ceil(scrollTop) < pageHeight) {
-            outerDivRef.current.scrollTo({
-              top: 0,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight &&
-            Math.ceil(scrollTop) < pageHeight * 2
-          ) {
-            outerDivRef.current.scrollTo({
-              top: 0,
-              left: 0,
-              behavior: "smooth",
-            });
-
-            const update1 = document.getElementsByClassName("fadeWorthText1");
-            const update2 = document.getElementsByClassName("fadeWorthText2");
-            const update3 = document.getElementsByClassName("fadeWorthText3");
-            update1[0].classList.remove("fadeWorthText1");
-            update2[0].classList.remove("fadeWorthText2");
-            update3[0].classList.remove("fadeWorthText3");
-            update1[0].classList.add("defaultWorthText");
-            update2[0].classList.add("defaultWorthText");
-            update3[0].classList.add("defaultWorthText");
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 2 &&
-            Math.ceil(scrollTop) < pageHeight * 3
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 3 &&
-            Math.ceil(scrollTop) < pageHeight * 4
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 2,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 4 &&
-            Math.ceil(scrollTop) < pageHeight * 5
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 3,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 5 &&
-            Math.ceil(scrollTop) < pageHeight * 6
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 4,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 6 &&
-            Math.ceil(scrollTop) < pageHeight * 7
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 5,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 7 &&
-            Math.ceil(scrollTop) < pageHeight * 8
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 6,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 8 &&
-            Math.ceil(scrollTop) < pageHeight * 9
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 7,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 9 &&
-            Math.ceil(scrollTop) < pageHeight * 10
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 8,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 10 &&
-            Math.ceil(scrollTop) < pageHeight * 11
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 9,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 11 &&
-            Math.ceil(scrollTop) < pageHeight * 12
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 10,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 12 &&
-            Math.ceil(scrollTop) < pageHeight * 13
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 11,
-              left: 0,
-              behavior: "smooth",
-            });
-          } else if (
-            Math.ceil(scrollTop) >= pageHeight * 13 &&
-            Math.ceil(scrollTop) < pageHeight * 14
-          ) {
-            outerDivRef.current.scrollTo({
-              top: pageHeight * 12,
-              left: 0,
-              behavior: "smooth",
-            });
-          }
-        }
-      };
-      const outerDivRefCurrent: any = outerDivRef.current;
-      if (outerDivRefCurrent) {
-        outerDivRefCurrent.addEventListener("wheel", wheelHandler);
-        return () => {
-          outerDivRefCurrent.removeEventListener("wheel", wheelHandler);
-        };
-      }
+    if (inView) {
+      setIsInView(true);
     }
-  }, []);
+    console.log(inView);
+  }, [inView]);
 
   if (isMobile) {
     return (
-      <Layout>
+      <CustomContainer>
         <MobileContainer>
+          <Header />
           <MobileTopContainer>
             <MobileMainText>
               <div
@@ -553,9 +254,9 @@ const MainPage = () => {
                   return (
                     <MovingComponent
                       type={"flash"}
-                      duration={"2000ms"}
+                      duration={"3000ms"}
                       timing={"ease"}
-                      delay={`${index * 100}ms`}
+                      delay={`${index * 400}ms`}
                       fillMode="backwards"
                     >
                       {s}
@@ -568,9 +269,9 @@ const MainPage = () => {
                   return (
                     <MovingComponent
                       type={"flash"}
-                      duration={"2000ms"}
+                      duration={"3000ms"}
                       timing={"ease"}
-                      delay={`${index * 100}ms`}
+                      delay={`${index * 400}ms`}
                       direction="reverse"
                     >
                       {s}
@@ -579,16 +280,66 @@ const MainPage = () => {
                 })}
               </div>
             </MobileMainText>
-
+            <img src={mainImageMobile} style={{ marginTop: "40px" }} />
             <MobileWorthContainer>
               <MobileLeftContainer>
                 <div>
-                  <MobileWortText>{WORTHTEXT1}</MobileWortText>
-                  <MobileWortText>{WORTHTEXT2}</MobileWortText>
-                  <MobileWortText>{WORTHTEXT3}</MobileWortText>
+                  <MobileWortText
+                    data-aos="fade-right"
+                    data-aos-duration="2000"
+                    data-aos-anchor="#defaultWorthText"
+                    data-aos-once="false"
+                    data-aos-easing="ease-in-sine"
+                  >
+                    {WORTHTEXT1}
+                  </MobileWortText>
+                  <MobileWortText
+                    data-aos="fade-right"
+                    data-aos-duration="2000"
+                    data-aos-anchor="#defaultWorthText"
+                    data-aos-once="false"
+                    data-aos-easing="ease-in-sine"
+                    data-aos-delay="500"
+                  >
+                    {WORTHTEXT2}
+                  </MobileWortText>
+                  <MobileWortText
+                    data-aos="fade-right"
+                    data-aos-duration="2000"
+                    data-aos-anchor="#defaultWorthText"
+                    data-aos-once="false"
+                    data-aos-easing="ease-in-sine"
+                    data-aos-delay="1000"
+                  >
+                    {WORTHTEXT3}
+                  </MobileWortText>
                 </div>
-                <MobileKusitmsText>{KUSTIMS}</MobileKusitmsText>
+                <MobileKusitmsText id="defaultWorthText">
+                  {KUSTIMS}
+                </MobileKusitmsText>
               </MobileLeftContainer>
+              <div style={{ position: "relative" }}>
+                <UpDownCustomImage
+                  data-aos="fade-down"
+                  data-aos-duration="3000"
+                  data-aos-anchor-placement="top-bottom"
+                  data-aos-anchor="#defaultWorthText"
+                  className="defaultImage"
+                  data-aos-once="false"
+                  data-aos-delay="800"
+                  style={{ width: "140px", height: "97px" }}
+                />
+                <MainLogoImage
+                  style={{
+                    position: "absolute",
+                    zIndex: 0,
+                    top: "-66px",
+                    left: "124px",
+                    width: "60px",
+                    height: "224px",
+                  }}
+                />
+              </div>
             </MobileWorthContainer>
           </MobileTopContainer>
           <MobileNumberContainer>
@@ -603,7 +354,19 @@ const MainPage = () => {
                 }}
               >
                 <Circle />
-                <MobileNumber>{"명"}</MobileNumber>
+                <MobileNumber>
+                  <div style={{ width: "53px", textAlign: "right" }}>
+                    {true && (
+                      <CountUp
+                        start={0}
+                        end={1402}
+                        duration={2}
+                        useEasing={true}
+                      />
+                    )}
+                  </div>
+                  {"명"}
+                </MobileNumber>
                 <MobileNumberSubTitle>{"누적 회원 수"}</MobileNumberSubTitle>
               </div>
               <div
@@ -615,7 +378,20 @@ const MainPage = () => {
                 }}
               >
                 <Circle />
-                <MobileNumber>{"\n프로젝트"}</MobileNumber>
+                <MobileNumber>
+                  <div style={{ width: "37px", textAlign: "right" }}>
+                    {true && (
+                      <CountUp
+                        start={0}
+                        end={203}
+                        duration={2.3}
+                        delay={1.8}
+                        useEasing={true}
+                      />
+                    )}
+                  </div>
+                  {"개"}
+                </MobileNumber>
                 <MobileNumberSubTitle>{"프로젝트 결과물"}</MobileNumberSubTitle>
               </div>
               <div
@@ -627,17 +403,26 @@ const MainPage = () => {
                 }}
               >
                 <Circle />
-                <MobileNumber>{"개\n대학"}</MobileNumber>
+                <MobileNumber>
+                  <div style={{ width: "36px", textAlign: "right" }}>
+                    {true && (
+                      <CountUp
+                        start={0}
+                        end={100}
+                        duration={3}
+                        delay={3.2}
+                        useEasing={true}
+                      />
+                    )}
+                  </div>
+                  {"개"}
+                </MobileNumber>
                 <MobileNumberSubTitle>{"참여 대학 수"}</MobileNumberSubTitle>
               </div>
             </div>
           </MobileNumberContainer>
           <MobileIntroduceContainer>
-            <TitleTextContainer
-              data-aos="fade-up"
-              data-aos-duration="3000"
-              data-aos-anchor-placement="top-bottom"
-            >
+            <TitleTextContainer data-aos="fade-up" data-aos-duration="3000">
               <MobileTitleText>{INTRODUCTION_TITLE_1}</MobileTitleText>
               <EmphasisImage
                 style={{
@@ -648,11 +433,7 @@ const MainPage = () => {
                 }}
               />
             </TitleTextContainer>
-            <MobileDescriptionText
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              data-aos-anchor-placement="top-center"
-            >
+            <MobileDescriptionText data-aos="fade-up" data-aos-duration="3000">
               {MOBILE_INTRODUCTION_DESCRIPTION_1}
             </MobileDescriptionText>
             <div
@@ -671,19 +452,16 @@ const MainPage = () => {
                 }
               )}
             </div>
-            <MobileButton
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              data-aos-anchor-placement="top-center"
-            >
-              {"학회 소개영상 보러가기"}
-              <img src={rightArrowIcon} width={20} height={8} />
-            </MobileButton>
+            <a href={INTRODUCE_YOUTUBE_LINK} target="_blank" rel="noreferrer">
+              <MobileButton>
+                {"학회 소개영상 보러가기"}
+                <img src={rightArrowIcon} width={20} height={8} />
+              </MobileButton>
+            </a>
             <MobileManagementContainer>
               <MobileManagementTitle
                 data-aos="fade-up"
-                data-aos-duration="3000"
-                data-aos-anchor-placement="top-center"
+                data-aos-duration="1000"
               >
                 {MANAGEMENT_TITLE}
               </MobileManagementTitle>
@@ -704,6 +482,27 @@ const MainPage = () => {
             </MobileManagementContainer>
           </MobileIntroduceContainer>
           <MobileIntroduceProgramContainer>
+            <div
+              style={{ marginBottom: "98px" }}
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="1000"
+            >
+              <MobileTitleText>{INTRODUCTION_TITLE_2}</MobileTitleText>
+              <EmphasisImage
+                style={{
+                  width: "110px",
+                  height: "11px",
+                  marginLeft: "114px",
+                  marginTop: "8px",
+                }}
+              />
+              <MobileDescriptionText>
+                {
+                  "KUSITMS에서는 학회원이 새로운 경험을 통해\n성장할 수 있도록 다양한 프로그램을 진행해요."
+                }
+              </MobileDescriptionText>
+            </div>
             {MOBILE_INTRODUCE_PROGRAMS.map((program: string, index: number) => {
               return (
                 <img
@@ -720,6 +519,24 @@ const MainPage = () => {
             })}
           </MobileIntroduceProgramContainer>
           <MobileIntroduceActivityContainer>
+            <div
+              style={{ marginBottom: "123px" }}
+              data-aos="fade-up"
+              data-aos-duration="3000"
+            >
+              <MobileTitleText>{INTRODUCTION_TITLE_3}</MobileTitleText>
+              <EmphasisImageWhite
+                style={{
+                  width: "110px",
+                  height: "11px",
+                  marginLeft: "44px",
+                  marginTop: "8px",
+                }}
+              />
+              <MobileDescriptionText>
+                {INTRODUCTION_DESCRIPTION_3}
+              </MobileDescriptionText>
+            </div>
             {MOBILE_INTRODUCE_ACTIVITIES.map(
               (activity: string, index: number) => {
                 return (
@@ -737,246 +554,416 @@ const MainPage = () => {
               }
             )}
           </MobileIntroduceActivityContainer>
+          <MobileLectureContainer>
+            <div
+              style={{
+                width: "390px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: "80px 0 100px 0",
+              }}
+            >
+              <div
+                className="defaultTitle4"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-once="false"
+                style={{ marginBottom: "80px" }}
+              >
+                <MobileTitleText style={{ color: "#151519" }}>
+                  {INTRODUCTION_TITLE_4}
+                </MobileTitleText>
+                <EmphasisImage
+                  style={{
+                    width: "120px",
+                    height: "20px",
+                    marginLeft: "18px",
+                    marginTop: "8px",
+                  }}
+                />
+              </div>
+              <MobileLectureTag>{"전문가 초청 강연"}</MobileLectureTag>
+              <img src={lectureImageMobile1} width="300px" height="260px" />
+              <MobileLectureTag
+                color="#000"
+                backgroundColor="#62EFE5"
+                style={{ marginTop: "100px" }}
+              >
+                {"OB 초청 강연"}
+              </MobileLectureTag>
+              <img src={lectureImageMobile2} width="300px" height="260px" />
+            </div>
+          </MobileLectureContainer>
+          <MobilePartnerContainer>
+            <div
+              className="defaultTitle5"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-once="false"
+              style={{ marginBottom: "60px" }}
+            >
+              <MobileTitleText>{"파트너사"}</MobileTitleText>
+              <EmphasisImage
+                style={{
+                  width: "123px",
+                  height: "20px",
+                  marginLeft: "50px",
+                  marginTop: "8px",
+                }}
+              />
+              <MobileDescriptionText>
+                {"KUSITMS과 함께하는 파트너사를 소개해요."}
+              </MobileDescriptionText>
+            </div>
+            <img src={partnerMobileImage} width="240px" height="428px" />
+          </MobilePartnerContainer>
         </MobileContainer>
-      </Layout>
+        <Footer />
+      </CustomContainer>
     );
   }
 
   return (
     <Layout>
-      <div style={{ overflow: "hidden" }}>
-        <TopContainer ref={outerDivRef}>
-          <MainContainer>
-            <MainText>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  textAlign: "center",
-                }}
-              >
-                {MAINTEXT.map((s: string, index: number) => {
-                  return (
-                    <MovingComponent
-                      type={"flash"}
-                      duration={"5000ms"}
-                      timing={"ease"}
-                      delay={`${index * 400}ms`}
-                      fillMode="backwards"
-                    >
-                      {s}
-                    </MovingComponent>
-                  );
-                })}
-              </div>
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                {MAINTEXT2.map((s: string, index: number) => {
-                  return (
-                    <MovingComponent
-                      type={"flash"}
-                      duration={"5000ms"}
-                      timing={"ease"}
-                      delay={`${index * 400}ms`}
-                      direction="reverse"
-                    >
-                      {s}
-                    </MovingComponent>
-                  );
-                })}
-              </div>
-            </MainText>
-            <img src={mainImage} width={1430} />
-          </MainContainer>
+      <div>
+        <MainContainer>
+          <MainText>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                textAlign: "center",
+              }}
+            >
+              {MAINTEXT.map((s: string, index: number) => {
+                return (
+                  <MovingComponent
+                    type={"flash"}
+                    duration={"5000ms"}
+                    timing={"ease"}
+                    delay={`${index * 400}ms`}
+                    fillMode="backwards"
+                  >
+                    {s}
+                  </MovingComponent>
+                );
+              })}
+            </div>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              {MAINTEXT2.map((s: string, index: number) => {
+                return (
+                  <MovingComponent
+                    type={"flash"}
+                    duration={"5000ms"}
+                    timing={"ease"}
+                    delay={`${index * 400}ms`}
+                    direction="reverse"
+                  >
+                    {s}
+                  </MovingComponent>
+                );
+              })}
+            </div>
+          </MainText>
+          <img src={mainImage} width={1430} />
           <WorthContainer>
             <LeftContainer>
               <div>
-                <WorthText className="defaultWorthText">{WORTHTEXT1}</WorthText>
-                <WorthText className="defaultWorthText">{WORTHTEXT2}</WorthText>
-                <WorthText className="defaultWorthText">{WORTHTEXT3}</WorthText>
+                <WorthText
+                  className="defaultWorthText"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                  data-aos-anchor-placement="top-center"
+                  data-aos-anchor="defaultWorthText"
+                  data-aos-once="false"
+                  data-aos-easing="ease-in-sine"
+                >
+                  {WORTHTEXT1}
+                </WorthText>
+                <WorthText
+                  className="defaultWorthText"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                  data-aos-anchor-placement="top-center"
+                  data-aos-anchor="defaultWorthText"
+                  data-aos-once="false"
+                  data-aos-delay="500"
+                  data-aos-easing="ease-in-sine"
+                >
+                  {WORTHTEXT2}
+                </WorthText>
+                <WorthText
+                  id="defaultWorthText"
+                  className="defaultWorthText"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                  data-aos-anchor-placement="top-center"
+                  data-aos-anchor="defaultWorthText"
+                  data-aos-once="false"
+                  data-aos-delay="1000"
+                  data-aos-easing="ease-in-sine"
+                >
+                  {WORTHTEXT3}
+                </WorthText>
               </div>
               <KustimsText>{KUSTIMS}</KustimsText>
             </LeftContainer>
             <div style={{ position: "relative" }}>
-              <UpDownCustomImage className="defaultImage" />
+              <UpDownCustomImage
+                data-aos="fade-down"
+                data-aos-duration="3000"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-anchor="defaultWorthText"
+                className="defaultImage"
+                data-aos-once="false"
+                data-aos-delay="800"
+              />
               <MainLogoImage
                 style={{
                   position: "absolute",
-                  top: "-220px",
-                  left: "310px",
+                  top: "-210px",
+                  left: "320px",
                   zIndex: 0,
                 }}
               />
             </div>
           </WorthContainer>
-          <NumberContainer>
-            <NumberTitle>{"Since 2009"}</NumberTitle>
-            <div style={{ display: "flex", gap: "55px" }}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <PCCircle />
-                <Number>1403{"명"}</Number>
-                <NumberSubTitle>{"누적 회원 수"}</NumberSubTitle>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <PCCircle />
-                <Number>{"203개 프로젝트"}</Number>
-                <NumberSubTitle>{"프로젝트 결과물"}</NumberSubTitle>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <PCCircle />
-                <Number>{"100개 대학"}</Number>
-                <NumberSubTitle>{"참여 대학 수"}</NumberSubTitle>
-              </div>
+        </MainContainer>
+        <NumberContainer>
+          <NumberTitle>{"Since 2009"}</NumberTitle>
+          <div style={{ display: "flex", gap: "55px" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <PCCircle />
+              <Number ref={ref}>
+                <div style={{ width: "156px", textAlign: "right" }}>
+                  {isInView && (
+                    <CountUp
+                      start={0}
+                      end={1402}
+                      duration={2}
+                      useEasing={true}
+                    />
+                  )}
+                </div>
+                {"명"}
+              </Number>
+              <NumberSubTitle>{"누적 회원 수"}</NumberSubTitle>
             </div>
-          </NumberContainer>
-          <IntroductionContainer>
-            <TitleTextContainer className="defaultTitle1">
-              <TitleText>{INTRODUCTION_TITLE_1}</TitleText>
-              <EmphasisImage />
-            </TitleTextContainer>
-            <DescriptionText className="defaultTitle1">
-              {INTRODUCTION_DESCRIPTION_1}
-            </DescriptionText>
-          </IntroductionContainer>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-              height: "100vh",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {INTRODUCTION_GROUPS.map(
-              (group: introductionGroupType, index: number) => {
-                return <IntroductionCard {...group} />;
-              }
-            )}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <PCCircle />
 
+              <Number>
+                <div style={{ width: "108px", textAlign: "right" }}>
+                  {isInView && (
+                    <CountUp
+                      start={0}
+                      end={203}
+                      duration={2.3}
+                      delay={1.8}
+                      useEasing={true}
+                    />
+                  )}
+                </div>
+                {"개 프로젝트"}
+              </Number>
+              <NumberSubTitle>{"프로젝트 결과물"}</NumberSubTitle>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <PCCircle />
+              <Number>
+                <div style={{ width: "103px", textAlign: "right" }}>
+                  {isInView && (
+                    <CountUp
+                      start={0}
+                      end={100}
+                      duration={3}
+                      delay={3.2}
+                      useEasing={true}
+                    />
+                  )}
+                </div>
+                {"개 대학"}
+              </Number>
+              <NumberSubTitle>{"참여 대학 수"}</NumberSubTitle>
+            </div>
+          </div>
+        </NumberContainer>
+        <IntroductionContainer>
+          <TitleTextContainer
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-once="false"
+          >
+            <TitleText>{INTRODUCTION_TITLE_1}</TitleText>
+            <EmphasisImage />
+          </TitleTextContainer>
+          <DescriptionText
+            className="defaultTitle1"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-once="false"
+          >
+            {INTRODUCTION_DESCRIPTION_1}
+          </DescriptionText>
+        </IntroductionContainer>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px",
+            alignItems: "center",
+            marginBottom: "180px",
+          }}
+        >
+          {INTRODUCTION_GROUPS.map(
+            (group: introductionGroupType, index: number) => {
+              return <IntroductionCard {...group} />;
+            }
+          )}
+          <a href={INTRODUCE_YOUTUBE_LINK} target="_blank" rel="noreferrer">
             <Button>
               {"학회 소개영상 보러가기"}
               <img src={rightArrowIcon} />
             </Button>
+          </a>
+        </div>
+        <ManagementContainer>
+          <ManagementTitle>{MANAGEMENT_TITLE}</ManagementTitle>
+          <div style={{ display: "flex", gap: "20px" }}>
+            {MANAGEMENT_CONTENTS.map(
+              (content: managementContentType, index: number) => {
+                return <ManagementCard {...content} />;
+              }
+            )}
           </div>
-          <ManagementContainer>
-            <ManagementTitle>{MANAGEMENT_TITLE}</ManagementTitle>
-            <div style={{ display: "flex", gap: "20px" }}>
-              {MANAGEMENT_CONTENTS.map(
-                (content: managementContentType, index: number) => {
-                  return <ManagementCard {...content} />;
-                }
-              )}
-            </div>
-          </ManagementContainer>
-          <IntroduceProgramContainer>
-            <TitleTextContainer className="defaultTitle2">
-              <TitleText>{INTRODUCTION_TITLE_2}</TitleText>
-              <EmphasisImage style={{ marginLeft: "98px", width: "161px" }} />
-            </TitleTextContainer>
-            <DescriptionText className="defaultTitle2">
-              {INTRODUCTION_DESCRIPTION_2}
-            </DescriptionText>
-          </IntroduceProgramContainer>
-          <IntroduceProgramContainer>
-            <IntroduceProgramCardContainer className="introduceDefault">
-              {INTRODUCE_PROGRAMS.map((program: string, index: number) => {
+        </ManagementContainer>
+        <IntroduceProgramContainer>
+          <TitleTextContainer
+            className="defaultTitle2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-once="false"
+          >
+            <TitleText>{INTRODUCTION_TITLE_2}</TitleText>
+            <EmphasisImage style={{ marginLeft: "98px", width: "161px" }} />
+          </TitleTextContainer>
+          <DescriptionText
+            className="defaultTitle2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-once="false"
+          >
+            {INTRODUCTION_DESCRIPTION_2}
+          </DescriptionText>
+        </IntroduceProgramContainer>
+        <IntroduceProgramContainer id="program-container">
+          <IntroduceProgramCardContainer>
+            {INTRODUCE_PROGRAMS.map((program: string, index: number) => {
+              return (
+                <IntroudceImageCard
+                  data-aos="flip-up"
+                  data-aos-duration="1000"
+                  data-aos-anchor-placement="top-bottom"
+                  data-aos-once="false"
+                  data-aos-delay={index * 600}
+                  index={index}
+                  className="imageDefault"
+                  data-aso-offset="400"
+                >
+                  <img src={program} />
+                </IntroudceImageCard>
+              );
+            })}
+          </IntroduceProgramCardContainer>
+        </IntroduceProgramContainer>
+        <IntroduceActivityContainer>
+          <IntroduceActivityTitleDiv>
+            <TitleText id="activityContainer">{INTRODUCTION_TITLE_3}</TitleText>
+            <EmphasisImageWhite />
+            <DescriptionText>{INTRODUCTION_DESCRIPTION_3}</DescriptionText>
+          </IntroduceActivityTitleDiv>
+          <IntroduceActivityContainerInside>
+            <ActivityWrapperImageTop />
+            <ActivityWrapperImageBottom />
+            <ActivityCardContainer>
+              {INTRODUCE_ACTIVITIES.map((activity: string, index: number) => {
                 return (
-                  <IntroudceImageCard index={index} className="imageDefault">
-                    <img src={program} />
-                  </IntroudceImageCard>
+                  <div>
+                    <img src={activity} />
+                  </div>
                 );
               })}
-            </IntroduceProgramCardContainer>
-          </IntroduceProgramContainer>
-          <IntroduceActivityContainer>
-            <IntroduceActivityTitleDiv className="defaultTitle3">
-              <TitleText>{INTRODUCTION_TITLE_3}</TitleText>
-              <EmphasisImageWhite />
-              <DescriptionText>{INTRODUCTION_DESCRIPTION_3}</DescriptionText>
-            </IntroduceActivityTitleDiv>
-          </IntroduceActivityContainer>
-          <IntroduceActivityContainer>
-            <IntroduceActivityContainerInside className="defaultActivity">
-              <ActivityWrapperImageTop />
-              <ActivityWrapperImageBottom />
-              <ActivityCardContainer>
-                {INTRODUCE_ACTIVITIES.map((activity: string, index: number) => {
-                  return (
-                    <div>
-                      <img src={activity} />
-                    </div>
-                  );
-                })}
-              </ActivityCardContainer>
-            </IntroduceActivityContainerInside>
-          </IntroduceActivityContainer>
-          <LectureContainer>
-            <IntroduceActivityTitleDiv className="defaultTitle4">
-              <TitleText style={{ color: "#151519" }}>
-                {INTRODUCTION_TITLE_4}
-              </TitleText>
-              <EmphasisImage />
-            </IntroduceActivityTitleDiv>
-          </LectureContainer>
-          <LectureContainer>
-            <LectureTag>{"전문가 초청 강연"}</LectureTag>
-            <img src={lectureImage1} />
-          </LectureContainer>
-          <LectureContainer>
-            <LectureTag color="#000" backgroundColor="#62EFE5">
-              {"OB 초청 강연"}
-            </LectureTag>
-            <img src={lectureImage2} />
-          </LectureContainer>
-          <PartnerContainer>
-            <IntroduceActivityTitleDiv className="defaultTitle5">
-              <TitleText>{"파트너사"}</TitleText>
-              <EmphasisImage />
-              <DescriptionText>
-                {"KUSITMS과 함께하는 파트너사를 소개해요."}
-              </DescriptionText>
-            </IntroduceActivityTitleDiv>
-            <img src={partnerImage} />
-          </PartnerContainer>
-        </TopContainer>
+            </ActivityCardContainer>
+          </IntroduceActivityContainerInside>
+        </IntroduceActivityContainer>
+        <LectureContainer>
+          <IntroduceActivityTitleDiv
+            className="defaultTitle4"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-once="false"
+          >
+            <TitleText style={{ color: "#151519" }}>
+              {INTRODUCTION_TITLE_4}
+            </TitleText>
+            <EmphasisImage />
+          </IntroduceActivityTitleDiv>
+          <LectureTag>{"전문가 초청 강연"}</LectureTag>
+          <img src={lectureImage1} />
+          <LectureTag color="#000" backgroundColor="#62EFE5">
+            {"OB 초청 강연"}
+          </LectureTag>
+          <img src={lectureImage2} />
+        </LectureContainer>
+        <PartnerContainer>
+          <IntroduceActivityTitleDiv
+            className="defaultTitle5"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-once="false"
+          >
+            <TitleText>{"파트너사"}</TitleText>
+            <EmphasisImage />
+            <DescriptionText>
+              {"KUSITMS과 함께하는 파트너사를 소개해요."}
+            </DescriptionText>
+          </IntroduceActivityTitleDiv>
+          <img src={partnerImage} />
+        </PartnerContainer>
       </div>
     </Layout>
   );
 };
 
 export default MainPage;
-
-const fadeInLeft = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateX(-200px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0px);
-  }
-`;
 
 const fadeInTop = keyframes`
   0% {
@@ -989,29 +976,17 @@ const fadeInTop = keyframes`
     }
 `;
 
-const TopContainer = styled.div`
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 
-  height: 100vh;
-  padding-top: 110px;
+  padding-top: 120px;
 
   background: #151519;
 
   font-family: "SUIT";
-  overflow-x: hidden;
+  height: 1802px;
 `;
 
 const MainText = styled.div`
@@ -1035,31 +1010,17 @@ const MainText = styled.div`
 
 const WorthContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 370px;
+  gap: 236px;
+  width: 1920px;
 
   padding: 0px 370px;
-
-  height: 100vh;
-
-  overflow-x: hidden;
+  padding-top: 100px;
 `;
 
 const WorthText = styled.p.attrs((props) => ({
   className: props.className,
 }))`
-  &.fadeWorthText1 {
-    animation: ${fadeInLeft} 2s;
-  }
-  &.fadeWorthText2 {
-    animation: ${fadeInLeft} 2s;
-    animation-delay: 0.3s;
-  }
-  &.fadeWorthText3 {
-    animation: ${fadeInLeft} 2s;
-    animation-delay: 0.7s;
-  }
   font-size: 72px;
   line-height: 96px;
   letter-spacing: -1px;
@@ -1083,38 +1044,40 @@ const KustimsText = styled.p`
   letter-spacing: -0.2px;
 
   color: #ffffff;
+
+  width: 436px;
+  font-family: "SUIT";
+  font-weight: 400;
 `;
 
 const IntroduceActivityContainer = styled.div`
-  height: 100vh;
   background-color: #0055ff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  padding: 200px 0px;
+  padding-bottom: 400px;
+  height: 2013px;
 `;
 
 const ActivityWrapperImageTop = styled(ActivityTop)`
   position: absolute;
-  top: -149px;
-  left: -200px;
+  top: -100px;
+  left: 300px;
 `;
 
 const ActivityWrapperImageBottom = styled(ActivityBottom)`
   position: absolute;
-  top: 1111px;
-  right: -200px;
+  top: 900px;
+  right: 200px;
 `;
 
 const IntroductionContainer = styled.div`
   display: flex;
-  height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
+  padding-top: 280px;
 `;
 
 const TitleTextContainer = styled.div.attrs((props) => ({
@@ -1188,8 +1151,7 @@ const ManagementContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  overflow-x: hidden;
+  margin-bottom: 200px;
 `;
 
 const ManagementTitle = styled.p`
@@ -1211,9 +1173,6 @@ const IntroduceProgramContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: hidden;
 `;
 
 const ProgramCardFadeInUp = keyframes`
@@ -1238,6 +1197,7 @@ const IntroduceProgramCardContainer = styled.div.attrs((props) => ({
   align-items: center;
   justify-content: center;
   width: 908px;
+  margin-bottom: 200px;
 
   & > div {
     width: 50%;
@@ -1284,8 +1244,6 @@ const ActivityCardContainer = styled.div`
     margin-top: 40px;
     margin-left: -38px;
   }
-
-  overflow-y: auto;
 `;
 
 const LectureContainer = styled.div`
@@ -1295,8 +1253,7 @@ const LectureContainer = styled.div`
   align-items: center;
 
   background: #fff;
-  height: 100vh;
-  overflow-x: hidden;
+  padding: 200px 0;
 `;
 
 interface LectureTagProps {
@@ -1331,7 +1288,13 @@ const LectureTag = styled.div<LectureTagProps>`
 
 const IntroductionCard = (group: introductionGroupType) => {
   return (
-    <IntroductionCardContainer flexDirection={group.title === "개발팀"}>
+    <IntroductionCardContainer
+      data-aos={group.title === "개발팀" ? "fade-right" : "fade-left"}
+      data-aos-duration="1000"
+      data-aos-anchor-placement="top-bottom"
+      data-aos-once="false"
+      flexDirection={group.title === "개발팀"}
+    >
       <img
         src={group.img}
         height={group.title === "디자인팀" ? "124px" : "96px"}
@@ -1402,6 +1365,17 @@ const ManagementCard = (content: managementContentType) => {
     <ManagementCardContainer
       url={content.img}
       marginTop={content.title === "교육기획팀"}
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-anchor-placement="top-bottom"
+      data-aos-once="false"
+      data-aos-delay={
+        content.title === "교육기획팀"
+          ? 800
+          : content.title === "대외홍보팀"
+          ? 1600
+          : 0
+      }
     >
       <ManagementCardTitle>{content.title}</ManagementCardTitle>
       <ManagementCardContent>{content.content}</ManagementCardContent>
@@ -1455,11 +1429,12 @@ const PartnerContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  padding: 200px 0 120px 0;
 `;
 
 const IntroduceActivityContainerInside = styled.div`
   position: relative;
+  width: 1920px;
 
   display: flex;
   align-items: center;
@@ -1525,12 +1500,12 @@ const IntroudceImageCard = styled.div<{ index: number }>`
 /// //////////////////////////////////////////
 
 const MobileContainer = styled.div`
-  width: 100%;
+  width: 100vw;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
-
-  padding-top: 54px;
+  align-items: center;
 `;
 const MobileTopContainer = styled.div`
   display: flex;
@@ -1544,7 +1519,7 @@ const MobileTopContainer = styled.div`
   padding-top: 40px;
 `;
 
-const MobileMainText = styled.p`
+const MobileMainText = styled.div`
   font-family: "SUIT";
   font-style: normal;
   font-weight: 800;
@@ -1556,6 +1531,11 @@ const MobileMainText = styled.p`
   color: #ffffff;
 
   white-space: pre-wrap;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const MobileNumberContainer = styled.div`
@@ -1564,7 +1544,7 @@ const MobileNumberContainer = styled.div`
   align-items: center;
   padding: 40px 0;
 
-  width: 390px;
+  width: 100vw;
   height: 239px;
 
   background: url(${backgroundImageMobile}) no-repeat;
@@ -1617,7 +1597,7 @@ const MobileIntroduceProgramContainer = styled.div`
   justify-content: center;
 
   width: 390px;
-  height: 2382px;
+  padding: 80px 0;
 `;
 
 const MobileIntroductionCard = (group: introductionGroupType) => {
@@ -1627,8 +1607,7 @@ const MobileIntroductionCard = (group: introductionGroupType) => {
   return (
     <MobileIntroductionCardContainer
       data-aos="fade-right"
-      data-aos-delay="500"
-      data-aos-offset="300"
+      data-aos-delay="1000"
       data-aos-easing="ease-in-sine"
     >
       <img src={group.img} width="36px" height="36px" />
@@ -1806,8 +1785,7 @@ const MobileManagementCardContent = styled.p`
 `;
 
 const MobileIntroduceActivityContainer = styled.div`
-  width: 390px;
-  height: 1761px;
+  width: 100vw;
 
   background: #0055ff;
 
@@ -1815,6 +1793,7 @@ const MobileIntroduceActivityContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 80px 0;
 `;
 
 const MobileNumberTitle = styled.div`
@@ -1837,9 +1816,10 @@ const Circle = styled.div`
 
   background: #dce1ff;
   border-radius: 50%;
+  margin-bottom: 12px;
 `;
 
-const MobileNumber = styled.p`
+const MobileNumber = styled.div`
   font-family: "SUIT";
   font-style: normal;
   font-weight: 800;
@@ -1850,6 +1830,7 @@ const MobileNumber = styled.p`
   color: #ffffff;
 
   white-space: pre-wrap;
+  display: flex;
 `;
 
 const MobileNumberSubTitle = styled.p`
@@ -1868,16 +1849,16 @@ const MobileNumberSubTitle = styled.p`
 
 const MobileWorthContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 370px;
-
-  padding: 0px 370px;
+  padding: 60px 64px 78px 32px;
+  width: 390px;
 `;
 
 const MobileLeftContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 159px;
 `;
 
 const MobileWortText = styled.p`
@@ -1899,6 +1880,7 @@ const MobileKusitmsText = styled.p`
   letter-spacing: -0.5px;
 
   color: #ffffff;
+  margin-top: 71px;
 `;
 
 const NumberContainer = styled.div`
@@ -1906,10 +1888,10 @@ const NumberContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 447px;
 
   background-image: url(${backgroundImage});
-  //background-size: (50%, 50%);
+  background-size: contain;
 `;
 
 const NumberTitle = styled.p`
@@ -1930,7 +1912,7 @@ const NumberTitle = styled.p`
   margin-left: -89px;
 `;
 
-const Number = styled.p`
+const Number = styled.div`
   font-family: "SUIT";
   font-style: normal;
   font-weight: 700;
@@ -1944,6 +1926,7 @@ const Number = styled.p`
 
   color: #ffffff;
   margin-bottom: 24px;
+  display: flex;
 `;
 
 const PCCircle = styled.div`
@@ -1986,4 +1969,51 @@ const UpDownCustomImage = styled(UpdownImage)`
   &.movingImage {
     animation: ${fadeInBottom} 2s;
   }
+`;
+
+const MobileLectureContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+
+  background-color: #ffffff;
+`;
+
+const MobilePartnerContainer = styled.div`
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const MobileLectureTag = styled.div<{
+  color?: string;
+  backgroundColor?: string;
+}>`
+  display: flex;
+  flex-direction: column;
+  padding: 12px 24px;
+
+  color: ${(props) => (props.color ? props.color : "#fff")};
+
+  background: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : "#0055ff"};
+  border-radius: 75px;
+  font-family: "SUIT";
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  margin-bottom: 48px;
+`;
+
+const CustomContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #151519;
+  height: inherit;
 `;

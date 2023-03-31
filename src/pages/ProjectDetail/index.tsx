@@ -3,6 +3,7 @@ import * as s from "./styles";
 import { ReactComponent as InstagramIcon } from "../../images/projects/icons/InstagramIcon.svg";
 import { ReactComponent as GithubIcon } from "../../images/projects/icons/GithubIcon.svg";
 import { ReactComponent as DetailLinkIcon } from "../../images/projects/icons/DetailLinkIcon.svg";
+import { ReactComponent as CloseIcon } from "../../images/projects/icons/CloseIcon.svg";
 import { IMeetupDetails } from "pages/Projects/ProjectsPage";
 import { useEffect, useRef } from "react";
 
@@ -40,17 +41,7 @@ const ProjectDetail = ({
   };
 
   useEffect(() => {
-    document.body.style.cssText = `
-        position: fixed; 
-        top: -${window.scrollY}px;
-        overflow-y: scroll;
-        width: 100%;
-      `;
-    return () => {
-      const scrollY = document.body.style.top;
-      document.body.style.cssText = "";
-      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
-    };
+    window.scrollTo(0, 0);
   }, []);
 
   const handleIcon = (url: string) => {
@@ -66,25 +57,31 @@ const ProjectDetail = ({
             <s.OneLineIntro>{one_line_intro}</s.OneLineIntro>
           </s.Intro>
 
-          <s.IconContainer>
-            {instagram_url && (
-              <s.IconBackground onClick={() => handleIcon(instagram_url)}>
-                <InstagramIcon />
-              </s.IconBackground>
-            )}
+          <s.RightIcons>
+            <s.CloseIconWrapper onClick={() => closeModal()}>
+              <CloseIcon />
+            </s.CloseIconWrapper>
+            <s.IconContainer>
+              {instagram_url && (
+                <s.IconBackground onClick={() => handleIcon(instagram_url)}>
+                  <InstagramIcon />
+                </s.IconBackground>
+              )}
 
-            {github_url && (
-              <s.IconBackground onClick={() => handleIcon(github_url)}>
-                <GithubIcon />
-              </s.IconBackground>
-            )}
+              {github_url && (
+                <s.IconBackground onClick={() => handleIcon(github_url)}>
+                  <GithubIcon />
+                </s.IconBackground>
+              )}
 
-            {app_url && (
-              <s.IconBackground onClick={() => handleIcon(app_url)}>
-                <DetailLinkIcon />
-              </s.IconBackground>
-            )}
-          </s.IconContainer>
+              {app_url && (
+                <s.IconBackground onClick={() => handleIcon(app_url)}>
+                  <DetailLinkIcon />
+                </s.IconBackground>
+              )}
+            </s.IconContainer>
+          </s.RightIcons>
+
         </s.TopContainer>
 
         <s.DetailContainer>
