@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   align-items: center;
   font-family: "SUIT";
   &.open {
-    background: rgba(21, 21, 25, 0.7);
+    /* background: rgba(21, 21, 25, 0.7); */
     z-index:100002;
   }
 `;
@@ -31,6 +31,7 @@ export const ProjectIntroContainer = styled.div`
 export const ProjectIntroText = styled.div`
   font-size: 48px;
   font-weight: bold;
+  line-height: 60px;
 `;
 
 export const ProjectNumText = styled.div`
@@ -90,6 +91,7 @@ export const IntroTitle = styled.div`
   color: white;
   margin-top: 100px;
   font-size: 48px;
+  font-weight: bold;
   margin-bottom: 10px;
 `;
 
