@@ -189,6 +189,7 @@ export const ProjectIntroTextContent = styled.div`
   font-size: 20px;
   font-weight: 400;
   overflow: auto;
+  word-break: keep-all;
   &::-webkit-scrollbar {
     display: none;
   };
