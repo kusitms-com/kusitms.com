@@ -17,11 +17,79 @@ export const Wrapper = styled.div`
   width: 100%;
 `;
 
+export const m_Layer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const m_Wrapper = styled.div`
+  display: flex;
+  background-color: rgba(21, 21, 25, 0.9);
+  z-index: 5;
+  flex-direction: column;
+  align-items: center;
+  font-family: "SUIT";
+  color: white;
+  max-width: 320px;
+  width: 320px;
+`;
+
 export const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
+`;
+
+export const m_Container = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+`;
+
+export const m_IconContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 320px;
+  margin-top: 20px;
+`;
+
+export const m_LeftIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #45464F;
+  width: 36px;
+  height: 36px;
+  border-radius: 50px;
+  cursor: pointer;
+`;
+
+export const m_RightIcons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  width: 120px;
+`;
+
+export const m_RightIconContainer = styled.div`
+  display: flex;
+  flex-direction: end;
+`;
+
+export const m_IconBackground = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #45464F;
+  width: 36px;
+  height: 36px;
+  border-radius: 50px;
+  margin-left: 20px;
+  cursor: pointer;
 `;
 
 export const TopContainer = styled.div`
@@ -32,9 +100,24 @@ export const TopContainer = styled.div`
   margin-top: 112px;
 `;
 
+export const m_TopContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  width: 100%;
+  margin-top: 24px;
+`;
+
 export const Intro = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const m_Intro = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
 `;
 
 export const Title = styled.div`
@@ -42,8 +125,20 @@ export const Title = styled.div`
   font-weight: bold;
 `;
 
+export const m_Title = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+`;
+
 export const OneLineIntro = styled.div`
   font-size: 20px;
+  color: #e2e2eb;
+  margin-top: 24px;
+  font-weight: 400;
+`;
+
+export const m_OneLineIntro = styled.div`
+  font-size: 14px;
   color: #e2e2eb;
   margin-top: 24px;
   font-weight: 400;
@@ -93,9 +188,24 @@ export const DetailContainer = styled.div`
   margin-top: 40px;
 `;
 
+export const m_DetailContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 320px;
+  /* height: 678px; */
+  margin-top: 40px;
+`;
+
 export const ItemPoster = styled.img`
   width: 480px;
   height: 678px;
+  border-radius: 10px;
+`;
+
+export const m_ItemPoster = styled.img`
+  width: 320px;
+  height: 452px;
   border-radius: 10px;
 `;
 
@@ -117,6 +227,16 @@ export const ProjectAbstract = styled.div`
   background-color: #5d5e67;
 `;
 
+export const m_ProjectAbstract = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 326px;
+  height: 330px;
+  border-radius: 10px;
+  margin-top: 24px;
+  background-color: #5d5e67;
+`;
+
 export const AbstractTitle = styled.div`
   margin-top: 40px;
   margin-left: 40px;
@@ -124,7 +244,20 @@ export const AbstractTitle = styled.div`
   font-weight: bold;
 `;
 
+export const m_AbstractTitle = styled.div`
+  margin-top: 24px;
+  margin-left: 24px;
+  font-size: 20px;
+  font-weight: bold;
+`;
+
 export const ProjectAbstractContent = styled.div`
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const m_ProjectAbstractContent = styled.div`
   margin-top: 24px;
   display: flex;
   flex-direction: row;
@@ -139,8 +272,23 @@ export const AbstractColumnContainer = styled.div`
   font-weight: 400;
 `;
 
+export const m_AbstractColumnContainer = styled.div`
+  width: 100px;
+  height: 114px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 24px;
+  font-weight: 400;
+  word-break: keep-all;
+`;
+
 export const AbstractColumn = styled.div`
-  font-size: 20px;
+  font-size: 24px;
+`;
+
+export const m_AbstractColumn = styled.div`
+  font-size: 14px;
 `;
 
 export const VerticalLine = styled.div`
@@ -149,6 +297,14 @@ export const VerticalLine = styled.div`
   height: 210px;
   border-color: #90909a;
   margin-left: 60px;
+`;
+
+export const m_VerticalLine = styled.div`
+  border: 1px solid;
+  width: 0.1px;
+  height: 242px;
+  border-color: #90909a;
+  margin-left: 10px;
 `;
 
 export const AbstractInfoText = styled.div`
@@ -161,7 +317,19 @@ export const AbstractInfoText = styled.div`
   height: 210px;
 `;
 
-export const AbstractInfoTextItem = styled.div``;
+export const m_AbstractInfoText = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 10px;
+  height: 242px;
+`;
+
+export const AbstractInfoTextItem = styled.div`
+  white-space: pre-wrap;  
+`;
 
 export const ProjectIntroText = styled.div`
   display: flex;
@@ -172,10 +340,27 @@ export const ProjectIntroText = styled.div`
   background-color: #2f3038;
 `;
 
+export const m_ProjectIntroText = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 326px;
+  height: 410px;
+  border-radius: 10px;
+  background-color: #2f3038;
+  margin-top: 24px;
+`;
+
 export const ProjectIntroTextTitle = styled.div`
   margin-top: 40px;
   margin-left: 40px;
   font-size: 24px;
+  font-weight: bold;
+`;
+
+export const m_ProjectIntroTextTitle = styled.div`
+  margin-top: 24px;
+  margin-left: 24px;
+  font-size: 20px;
   font-weight: bold;
 `;
 
@@ -187,6 +372,22 @@ export const ProjectIntroTextContent = styled.div`
   margin-right: 40px;
   margin-bottom: 24px;
   font-size: 20px;
+  font-weight: 400;
+  overflow: auto;
+  word-break: keep-all;
+  &::-webkit-scrollbar {
+    display: none;
+  };
+`;
+
+export const m_ProjectIntroTextContent = styled.div`
+  width: 278px;
+  line-height: 25px;
+  margin-top: 16px;
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-bottom: 24px;
+  font-size: 14px;
   font-weight: 400;
   overflow: auto;
   word-break: keep-all;

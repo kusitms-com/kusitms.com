@@ -310,7 +310,6 @@ export const DetailWrapper = styled.div`
 
 export const m_DetailWrapper = styled.div`
   width: 100vw;
-  height: 100vh;
   z-index: 100001;
   background-color: #151519;
   overflow: hidden;
