@@ -181,12 +181,13 @@ export const ProjectIntroTextTitle = styled.div`
 
 export const ProjectIntroTextContent = styled.div`
   width: 600px;
-  line-height: 28px;
+  line-height: 25px;
   margin-top: 24px;
   margin-left: 40px;
   margin-right: 40px;
   margin-bottom: 24px;
-  font-size: 14px;
+  font-size: 20px;
+  font-weight: 400;
   overflow: auto;
   &::-webkit-scrollbar {
     display: none;
