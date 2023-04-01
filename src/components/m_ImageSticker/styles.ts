@@ -4,9 +4,9 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   margin-top: 40px;
-  margin-right: 70px;
-  width: 314px;
-  height: 280px;
+  margin-right: 20px;
+  width: 370px;
+  height: 320px;
 `;
 
 export const StickerWrapper = styled.div`
@@ -14,7 +14,6 @@ export const StickerWrapper = styled.div`
   height: 67px;
   position: relative;
   left: 170px;
-  /* top: 70px; */
   z-index: 1;
 `;
 
