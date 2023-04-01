@@ -224,6 +224,9 @@ export const ProjectsWrapper = styled.div`
 `;
 
 export const m_ProjectsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 `;
 
