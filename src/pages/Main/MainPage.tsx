@@ -10,7 +10,7 @@ import "animate.css/animate.min.css";
 import { useIsMobile } from "hooks/useIsMobile";
 
 import mainImage from "../../images/main/main-image.svg";
-import mainImageMobile from "../../images/main/mobile/main-image.svg";
+import mainImageMobile from "../../images/main/mobile/main-image.png";
 import { ReactComponent as EmphasisImage } from "../../images/main/emphasis-image.svg";
 import { ReactComponent as EmphasisImageWhite } from "../../images/main/emphasis-image-white.svg";
 import designIcon from "../../images/main/icon-design.svg";
@@ -224,9 +224,9 @@ const MainPage = () => {
   const { ref, inView } = useInView({ threshold: 0.5 });
 
   useEffect(() => {
-    window.addEventListener("load", () => {
+    setTimeout(function () {
       AOS.init();
-    });
+    }, 1000);
   }, []);
 
   useEffect(() => {
@@ -254,7 +254,7 @@ const MainPage = () => {
                   return (
                     <MovingComponent
                       type={"flash"}
-                      duration={"3000ms"}
+                      duration={"10000ms"}
                       timing={"ease"}
                       delay={`${index * 400}ms`}
                       fillMode="backwards"
@@ -269,7 +269,7 @@ const MainPage = () => {
                   return (
                     <MovingComponent
                       type={"flash"}
-                      duration={"3000ms"}
+                      duration={"10000ms"}
                       timing={"ease"}
                       delay={`${index * 400}ms`}
                       direction="reverse"
@@ -280,7 +280,10 @@ const MainPage = () => {
                 })}
               </div>
             </MobileMainText>
-            <img src={mainImageMobile} style={{ marginTop: "40px" }} />
+            <img
+              src={mainImageMobile}
+              style={{ marginTop: "40px", height: "136px", width: "342px" }}
+            />
             <MobileWorthContainer>
               <MobileLeftContainer>
                 <div>
@@ -360,7 +363,7 @@ const MainPage = () => {
                       <CountUp
                         start={0}
                         end={1402}
-                        duration={2}
+                        duration={1.5}
                         useEasing={true}
                       />
                     )}
@@ -384,8 +387,8 @@ const MainPage = () => {
                       <CountUp
                         start={0}
                         end={203}
-                        duration={2.3}
-                        delay={1.8}
+                        duration={1.2}
+                        delay={1.2}
                         useEasing={true}
                       />
                     )}
@@ -409,8 +412,8 @@ const MainPage = () => {
                       <CountUp
                         start={0}
                         end={100}
-                        duration={3}
-                        delay={3.2}
+                        duration={1.5}
+                        delay={2}
                         useEasing={true}
                       />
                     )}
@@ -512,7 +515,6 @@ const MainPage = () => {
                   style={{ marginTop: "-38px" }}
                   data-aos="fade-up"
                   data-aos-duration="1000"
-                  data-aos-offset="300"
                   data-aos-easing="ease-in-sine"
                 />
               );
@@ -547,7 +549,6 @@ const MainPage = () => {
                     style={{ marginTop: "-38px" }}
                     data-aos="fade-up"
                     data-aos-duration="1000"
-                    data-aos-offset="300"
                     data-aos-easing="ease-in-sine"
                   />
                 );
@@ -628,198 +629,205 @@ const MainPage = () => {
 
   return (
     <Layout>
-      <div>
-        <MainContainer>
-          <MainText>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                textAlign: "center",
-              }}
-            >
-              {MAINTEXT.map((s: string, index: number) => {
-                return (
-                  <MovingComponent
-                    type={"flash"}
-                    duration={"5000ms"}
-                    timing={"ease"}
-                    delay={`${index * 400}ms`}
-                    fillMode="backwards"
-                  >
-                    {s}
-                  </MovingComponent>
-                );
-              })}
-            </div>
-            <div style={{ display: "flex", flexDirection: "row" }}>
-              {MAINTEXT2.map((s: string, index: number) => {
-                return (
-                  <MovingComponent
-                    type={"flash"}
-                    duration={"5000ms"}
-                    timing={"ease"}
-                    delay={`${index * 400}ms`}
-                    direction="reverse"
-                  >
-                    {s}
-                  </MovingComponent>
-                );
-              })}
-            </div>
-          </MainText>
-          <img src={mainImage} width={1430} />
-          <WorthContainer>
-            <LeftContainer>
-              <div>
-                <WorthText
-                  className="defaultWorthText"
-                  data-aos="fade-right"
-                  data-aos-duration="2000"
-                  data-aos-anchor-placement="top-center"
-                  data-aos-anchor="defaultWorthText"
-                  data-aos-once="false"
-                  data-aos-easing="ease-in-sine"
+      <MainContainer>
+        <MainText>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              textAlign: "center",
+            }}
+          >
+            {MAINTEXT.map((s: string, index: number) => {
+              return (
+                <MovingComponent
+                  type={"flash"}
+                  duration={"5000ms"}
+                  timing={"ease"}
+                  delay={`${index * 400}ms`}
+                  fillMode="backwards"
                 >
-                  {WORTHTEXT1}
-                </WorthText>
-                <WorthText
-                  className="defaultWorthText"
-                  data-aos="fade-right"
-                  data-aos-duration="2000"
-                  data-aos-anchor-placement="top-center"
-                  data-aos-anchor="defaultWorthText"
-                  data-aos-once="false"
-                  data-aos-delay="500"
-                  data-aos-easing="ease-in-sine"
-                >
-                  {WORTHTEXT2}
-                </WorthText>
-                <WorthText
-                  id="defaultWorthText"
-                  className="defaultWorthText"
-                  data-aos="fade-right"
-                  data-aos-duration="2000"
-                  data-aos-anchor-placement="top-center"
-                  data-aos-anchor="defaultWorthText"
-                  data-aos-once="false"
-                  data-aos-delay="1000"
-                  data-aos-easing="ease-in-sine"
-                >
-                  {WORTHTEXT3}
-                </WorthText>
-              </div>
-              <KustimsText>{KUSTIMS}</KustimsText>
-            </LeftContainer>
-            <div style={{ position: "relative" }}>
-              <UpDownCustomImage
-                data-aos="fade-down"
-                data-aos-duration="3000"
-                data-aos-anchor-placement="top-bottom"
-                data-aos-anchor="defaultWorthText"
-                className="defaultImage"
-                data-aos-once="false"
-                data-aos-delay="800"
-              />
-              <MainLogoImage
-                style={{
-                  position: "absolute",
-                  top: "-210px",
-                  left: "320px",
-                  zIndex: 0,
-                }}
-              />
-            </div>
-          </WorthContainer>
-        </MainContainer>
-        <NumberContainer>
-          <NumberTitle>{"Since 2009"}</NumberTitle>
-          <div style={{ display: "flex", gap: "55px" }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <PCCircle />
-              <Number ref={ref}>
-                <div style={{ width: "156px", textAlign: "right" }}>
-                  {isInView && (
-                    <CountUp
-                      start={0}
-                      end={1402}
-                      duration={2}
-                      useEasing={true}
-                    />
-                  )}
-                </div>
-                {"명"}
-              </Number>
-              <NumberSubTitle>{"누적 회원 수"}</NumberSubTitle>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <PCCircle />
-
-              <Number>
-                <div style={{ width: "108px", textAlign: "right" }}>
-                  {isInView && (
-                    <CountUp
-                      start={0}
-                      end={203}
-                      duration={2.3}
-                      delay={1.8}
-                      useEasing={true}
-                    />
-                  )}
-                </div>
-                {"개 프로젝트"}
-              </Number>
-              <NumberSubTitle>{"프로젝트 결과물"}</NumberSubTitle>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <PCCircle />
-              <Number>
-                <div style={{ width: "103px", textAlign: "right" }}>
-                  {isInView && (
-                    <CountUp
-                      start={0}
-                      end={100}
-                      duration={3}
-                      delay={3.2}
-                      useEasing={true}
-                    />
-                  )}
-                </div>
-                {"개 대학"}
-              </Number>
-              <NumberSubTitle>{"참여 대학 수"}</NumberSubTitle>
-            </div>
+                  {s}
+                </MovingComponent>
+              );
+            })}
           </div>
-        </NumberContainer>
-        <IntroductionContainer>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            {MAINTEXT2.map((s: string, index: number) => {
+              return (
+                <MovingComponent
+                  type={"flash"}
+                  duration={"5000ms"}
+                  timing={"ease"}
+                  delay={`${index * 400}ms`}
+                  direction="reverse"
+                >
+                  {s}
+                </MovingComponent>
+              );
+            })}
+          </div>
+        </MainText>
+        <img src={mainImage} width={1430} />
+        <WorthContainer>
+          <LeftContainer>
+            <div>
+              <WorthText
+                className="defaultWorthText"
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-anchor-placement="top-center"
+                data-aos-anchor="defaultWorthText"
+                data-aos-once="false"
+                data-aos-easing="ease-in-sine"
+              >
+                {WORTHTEXT1}
+              </WorthText>
+              <WorthText
+                className="defaultWorthText"
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-anchor-placement="top-center"
+                data-aos-anchor="defaultWorthText"
+                data-aos-once="false"
+                data-aos-delay="500"
+                data-aos-easing="ease-in-sine"
+              >
+                {WORTHTEXT2}
+              </WorthText>
+              <WorthText
+                id="defaultWorthText"
+                className="defaultWorthText"
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-anchor-placement="top-center"
+                data-aos-anchor="defaultWorthText"
+                data-aos-once="false"
+                data-aos-delay="1000"
+                data-aos-easing="ease-in-sine"
+              >
+                {WORTHTEXT3}
+              </WorthText>
+            </div>
+            <KustimsText>{KUSTIMS}</KustimsText>
+          </LeftContainer>
+          <div style={{ position: "relative" }}>
+            <UpDownCustomImage
+              data-aos="fade-down"
+              data-aos-duration="3000"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-anchor="defaultWorthText"
+              className="defaultImage"
+              data-aos-once="false"
+              data-aos-delay="800"
+            />
+            <MainLogoImage
+              style={{
+                position: "absolute",
+                top: "-210px",
+                left: "320px",
+                zIndex: 0,
+              }}
+            />
+          </div>
+        </WorthContainer>
+      </MainContainer>
+      <NumberContainer>
+        <NumberTitle>{"Since 2009"}</NumberTitle>
+        <div style={{ display: "flex", gap: "55px" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <PCCircle />
+            <Number ref={ref}>
+              <div style={{ width: "156px", textAlign: "right" }}>
+                {isInView && (
+                  <CountUp
+                    start={0}
+                    end={1402}
+                    duration={1.2}
+                    useEasing={true}
+                  />
+                )}
+              </div>
+              {"명"}
+            </Number>
+            <NumberSubTitle>{"누적 회원 수"}</NumberSubTitle>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <PCCircle />
+
+            <Number>
+              <div style={{ width: "108px", textAlign: "right" }}>
+                {isInView && (
+                  <CountUp
+                    start={0}
+                    end={203}
+                    duration={1.2}
+                    delay={0.8}
+                    useEasing={true}
+                  />
+                )}
+              </div>
+              {"개 프로젝트"}
+            </Number>
+            <NumberSubTitle>{"프로젝트 결과물"}</NumberSubTitle>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <PCCircle />
+            <Number>
+              <div style={{ width: "103px", textAlign: "right" }}>
+                {isInView && (
+                  <CountUp
+                    start={0}
+                    end={100}
+                    duration={1.5}
+                    delay={1.4}
+                    useEasing={true}
+                  />
+                )}
+              </div>
+              {"개 대학"}
+            </Number>
+            <NumberSubTitle>{"참여 대학 수"}</NumberSubTitle>
+          </div>
+        </div>
+      </NumberContainer>
+      <IntroductionContainer>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <TitleTextContainer
             data-aos="fade-up"
             data-aos-duration="1000"
             data-aos-once="false"
           >
             <TitleText>{INTRODUCTION_TITLE_1}</TitleText>
-            <EmphasisImage />
+            <EmphasisImage style={{ marginLeft: "-140px" }} />
           </TitleTextContainer>
           <DescriptionText
             className="defaultTitle1"
@@ -829,136 +837,153 @@ const MainPage = () => {
           >
             {INTRODUCTION_DESCRIPTION_1}
           </DescriptionText>
-        </IntroductionContainer>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            alignItems: "center",
-            marginBottom: "180px",
-          }}
-        >
-          {INTRODUCTION_GROUPS.map(
-            (group: introductionGroupType, index: number) => {
-              return <IntroductionCard {...group} />;
+        </div>
+      </IntroductionContainer>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+          alignItems: "center",
+          marginBottom: "180px",
+        }}
+      >
+        {INTRODUCTION_GROUPS.map(
+          (group: introductionGroupType, index: number) => {
+            return <IntroductionCard {...group} />;
+          }
+        )}
+        <a href={INTRODUCE_YOUTUBE_LINK} target="_blank" rel="noreferrer">
+          <Button>
+            {"학회 소개영상 보러가기"}
+            <img src={rightArrowIcon} />
+          </Button>
+        </a>
+      </div>
+      <ManagementContainer>
+        <ManagementTitle>{MANAGEMENT_TITLE}</ManagementTitle>
+        <div style={{ display: "flex", gap: "20px" }}>
+          {MANAGEMENT_CONTENTS.map(
+            (content: managementContentType, index: number) => {
+              return <ManagementCard {...content} />;
             }
           )}
-          <a href={INTRODUCE_YOUTUBE_LINK} target="_blank" rel="noreferrer">
-            <Button>
-              {"학회 소개영상 보러가기"}
-              <img src={rightArrowIcon} />
-            </Button>
-          </a>
         </div>
-        <ManagementContainer>
-          <ManagementTitle>{MANAGEMENT_TITLE}</ManagementTitle>
-          <div style={{ display: "flex", gap: "20px" }}>
-            {MANAGEMENT_CONTENTS.map(
-              (content: managementContentType, index: number) => {
-                return <ManagementCard {...content} />;
-              }
-            )}
-          </div>
-        </ManagementContainer>
-        <IntroduceProgramContainer>
+      </ManagementContainer>
+      <IntroduceProgramContainer>
+        <div>
           <TitleTextContainer
             className="defaultTitle2"
             data-aos="fade-up"
             data-aos-duration="1000"
-            data-aos-anchor-placement="top-bottom"
             data-aos-once="false"
           >
             <TitleText>{INTRODUCTION_TITLE_2}</TitleText>
-            <EmphasisImage style={{ marginLeft: "98px", width: "161px" }} />
+            <EmphasisImage style={{ width: "161px" }} />
           </TitleTextContainer>
           <DescriptionText
             className="defaultTitle2"
             data-aos="fade-up"
             data-aos-duration="1000"
-            data-aos-anchor-placement="top-bottom"
             data-aos-once="false"
+            data-aos-delay="300"
           >
             {INTRODUCTION_DESCRIPTION_2}
           </DescriptionText>
-        </IntroduceProgramContainer>
-        <IntroduceProgramContainer id="program-container">
           <IntroduceProgramCardContainer>
             {INTRODUCE_PROGRAMS.map((program: string, index: number) => {
               return (
                 <IntroudceImageCard
-                  data-aos="flip-up"
+                  data-aos="flip-down"
                   data-aos-duration="1000"
-                  data-aos-anchor-placement="top-bottom"
                   data-aos-once="false"
-                  data-aos-delay={index * 600}
+                  data-aos-delay={index * 300}
                   index={index}
                   className="imageDefault"
-                  data-aso-offset="400"
                 >
                   <img src={program} />
                 </IntroudceImageCard>
               );
             })}
           </IntroduceProgramCardContainer>
-        </IntroduceProgramContainer>
-        <IntroduceActivityContainer>
-          <IntroduceActivityTitleDiv>
+        </div>
+      </IntroduceProgramContainer>
+      <IntroduceActivityContainer>
+        <IntroduceActivityTitleDiv>
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-once="false"
+          >
             <TitleText id="activityContainer">{INTRODUCTION_TITLE_3}</TitleText>
-            <EmphasisImageWhite />
-            <DescriptionText>{INTRODUCTION_DESCRIPTION_3}</DescriptionText>
-          </IntroduceActivityTitleDiv>
-          <IntroduceActivityContainerInside>
-            <ActivityWrapperImageTop />
-            <ActivityWrapperImageBottom />
-            <ActivityCardContainer>
-              {INTRODUCE_ACTIVITIES.map((activity: string, index: number) => {
-                return (
-                  <div>
-                    <img src={activity} />
-                  </div>
-                );
-              })}
-            </ActivityCardContainer>
-          </IntroduceActivityContainerInside>
-        </IntroduceActivityContainer>
-        <LectureContainer>
-          <IntroduceActivityTitleDiv
-            className="defaultTitle4"
+            <EmphasisImageWhite style={{ marginLeft: "53px" }} />
+          </div>
+          <DescriptionText
             data-aos="fade-up"
             data-aos-duration="1000"
-            data-aos-anchor-placement="top-bottom"
             data-aos-once="false"
+            data-aos-delay="300"
           >
-            <TitleText style={{ color: "#151519" }}>
-              {INTRODUCTION_TITLE_4}
-            </TitleText>
-            <EmphasisImage />
-          </IntroduceActivityTitleDiv>
-          <LectureTag>{"전문가 초청 강연"}</LectureTag>
-          <img src={lectureImage1} />
-          <LectureTag color="#000" backgroundColor="#62EFE5">
-            {"OB 초청 강연"}
-          </LectureTag>
-          <img src={lectureImage2} />
-        </LectureContainer>
-        <PartnerContainer>
-          <IntroduceActivityTitleDiv
-            className="defaultTitle5"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-anchor-placement="top-bottom"
-            data-aos-once="false"
-          >
+            {INTRODUCTION_DESCRIPTION_3}
+          </DescriptionText>
+        </IntroduceActivityTitleDiv>
+        <IntroduceActivityContainerInside>
+          <ActivityWrapperImageTop />
+          <ActivityWrapperImageBottom />
+          <ActivityCardContainer>
+            {INTRODUCE_ACTIVITIES.map((activity: string, index: number) => {
+              return (
+                <div
+                  data-aos="flip-down"
+                  data-aos-duration="1000"
+                  data-aos-once="false"
+                  data-aos-delay={index * 300}
+                >
+                  <img src={activity} />
+                </div>
+              );
+            })}
+          </ActivityCardContainer>
+        </IntroduceActivityContainerInside>
+      </IntroduceActivityContainer>
+      <LectureContainer>
+        <IntroduceActivityTitleDiv
+          className="defaultTitle4"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-once="false"
+        >
+          <TitleText style={{ color: "#151519" }}>
+            {INTRODUCTION_TITLE_4}
+          </TitleText>
+          <EmphasisImage />
+        </IntroduceActivityTitleDiv>
+        <LectureTag data-aos="fade-up" data-aos-duration="1000">
+          {"전문가 초청 강연"}
+        </LectureTag>
+        <img data-aos="fade-up" data-aos-duration="1000" src={lectureImage1} />
+        <LectureTag
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          color="#000"
+          backgroundColor="#62EFE5"
+        >
+          {"OB 초청 강연"}
+        </LectureTag>
+        <img data-aos="fade-up" data-aos-duration="1000" src={lectureImage2} />
+      </LectureContainer>
+      <PartnerContainer>
+        <IntroduceActivityTitleDiv className="defaultTitle5">
+          <div data-aos="fade-up" data-aos-duration="1000">
             <TitleText>{"파트너사"}</TitleText>
             <EmphasisImage />
-            <DescriptionText>
-              {"KUSITMS과 함께하는 파트너사를 소개해요."}
-            </DescriptionText>
-          </IntroduceActivityTitleDiv>
-          <img src={partnerImage} />
-        </PartnerContainer>
-      </div>
+          </div>
+          <DescriptionText data-aos="fade-up" data-aos-duration="1000">
+            {"KUSITMS과 함께하는 파트너사를 소개해요."}
+          </DescriptionText>
+        </IntroduceActivityTitleDiv>
+        <img src={partnerImage} data-aos="fade-up" data-aos-duration="1000" />
+      </PartnerContainer>
     </Layout>
   );
 };
@@ -1011,11 +1036,11 @@ const MainText = styled.div`
 const WorthContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 236px;
-  width: 1920px;
 
-  padding: 0px 370px;
   padding-top: 100px;
+  width: 100%;
 `;
 
 const WorthText = styled.p.attrs((props) => ({
@@ -1029,6 +1054,7 @@ const WorthText = styled.p.attrs((props) => ({
 
   white-space: pre;
   font-family: "SUIT";
+  font-weight: 800;
 `;
 
 const LeftContainer = styled.div`
@@ -1058,18 +1084,19 @@ const IntroduceActivityContainer = styled.div`
   padding: 200px 0px;
   padding-bottom: 400px;
   height: 2013px;
+  width: 100%;
 `;
 
 const ActivityWrapperImageTop = styled(ActivityTop)`
   position: absolute;
   top: -100px;
-  left: 300px;
+  left: -140px;
 `;
 
 const ActivityWrapperImageBottom = styled(ActivityBottom)`
   position: absolute;
   top: 900px;
-  right: 200px;
+  right: -290px;
 `;
 
 const IntroductionContainer = styled.div`
@@ -1078,6 +1105,8 @@ const IntroductionContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 280px;
+  width: 100%;
+  background-color: #151519;
 `;
 
 const TitleTextContainer = styled.div.attrs((props) => ({
@@ -1086,7 +1115,11 @@ const TitleTextContainer = styled.div.attrs((props) => ({
   &.fadeInTitle {
     animation: ${fadeInTop} 2s;
   }
-  align-self: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
 `;
 
 const TitleText = styled.h3`
@@ -1099,6 +1132,7 @@ const TitleText = styled.h3`
   margin-bottom: 8px;
 
   font-family: "SUIT";
+  text-align: center;
 `;
 
 const DescriptionText = styled.p.attrs((props) => ({
@@ -1173,6 +1207,7 @@ const IntroduceProgramContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 
 const ProgramCardFadeInUp = keyframes`
@@ -1254,6 +1289,7 @@ const LectureContainer = styled.div`
 
   background: #fff;
   padding: 200px 0;
+  width: 100%;
 `;
 
 interface LectureTagProps {
@@ -1291,9 +1327,11 @@ const IntroductionCard = (group: introductionGroupType) => {
     <IntroductionCardContainer
       data-aos={group.title === "개발팀" ? "fade-right" : "fade-left"}
       data-aos-duration="1000"
-      data-aos-anchor-placement="top-bottom"
       data-aos-once="false"
       flexDirection={group.title === "개발팀"}
+      data-aos-delay={
+        group.title === "개발팀" ? 300 : group.title === "디자인팀" ? 600 : 0
+      }
     >
       <img
         src={group.img}
@@ -1371,9 +1409,9 @@ const ManagementCard = (content: managementContentType) => {
       data-aos-once="false"
       data-aos-delay={
         content.title === "교육기획팀"
-          ? 800
+          ? 300
           : content.title === "대외홍보팀"
-          ? 1600
+          ? 600
           : 0
       }
     >
@@ -1434,7 +1472,6 @@ const PartnerContainer = styled.div`
 
 const IntroduceActivityContainerInside = styled.div`
   position: relative;
-  width: 1920px;
 
   display: flex;
   align-items: center;
@@ -1607,7 +1644,7 @@ const MobileIntroductionCard = (group: introductionGroupType) => {
   return (
     <MobileIntroductionCardContainer
       data-aos="fade-right"
-      data-aos-delay="1000"
+      data-aos-delay="300"
       data-aos-easing="ease-in-sine"
     >
       <img src={group.img} width="36px" height="36px" />
@@ -1726,8 +1763,7 @@ const MobileManagementCard = (content: managementContentType) => {
     <MobileManagementCardContainer
       url={content.img}
       data-aos="fade-up"
-      data-aos-delay="1000"
-      data-aos-offset="400"
+      data-aos-delay="300"
       data-aos-easing="ease-in-sine"
     >
       <MobileManagementCardTitle>{content.title}</MobileManagementCardTitle>
@@ -1892,6 +1928,7 @@ const NumberContainer = styled.div`
 
   background-image: url(${backgroundImage});
   background-size: contain;
+  width: 100%;
 `;
 
 const NumberTitle = styled.p`
