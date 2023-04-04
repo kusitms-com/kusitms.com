@@ -224,9 +224,9 @@ const MainPage = () => {
   const { ref, inView } = useInView({ threshold: 0.5 });
 
   useEffect(() => {
-    window.addEventListener("load", () => {
+    setTimeout(function () {
       AOS.init();
-    });
+    }, 1000);
   }, []);
 
   useEffect(() => {
@@ -750,7 +750,7 @@ const MainPage = () => {
                   <CountUp
                     start={0}
                     end={1402}
-                    duration={1.5}
+                    duration={1.2}
                     useEasing={true}
                   />
                 )}
@@ -776,7 +776,7 @@ const MainPage = () => {
                     start={0}
                     end={203}
                     duration={1.2}
-                    delay={1.2}
+                    delay={0.8}
                     useEasing={true}
                   />
                 )}
@@ -801,7 +801,7 @@ const MainPage = () => {
                     start={0}
                     end={100}
                     duration={1.5}
-                    delay={2}
+                    delay={1.4}
                     useEasing={true}
                   />
                 )}
@@ -827,7 +827,7 @@ const MainPage = () => {
             data-aos-once="false"
           >
             <TitleText>{INTRODUCTION_TITLE_1}</TitleText>
-            <EmphasisImage />
+            <EmphasisImage style={{ marginLeft: "-140px" }} />
           </TitleTextContainer>
           <DescriptionText
             className="defaultTitle1"
@@ -876,7 +876,6 @@ const MainPage = () => {
             className="defaultTitle2"
             data-aos="fade-up"
             data-aos-duration="1000"
-            data-aos-anchor-placement="top-bottom"
             data-aos-once="false"
           >
             <TitleText>{INTRODUCTION_TITLE_2}</TitleText>
@@ -886,8 +885,8 @@ const MainPage = () => {
             className="defaultTitle2"
             data-aos="fade-up"
             data-aos-duration="1000"
-            data-aos-anchor-placement="top-bottom"
             data-aos-once="false"
+            data-aos-delay="300"
           >
             {INTRODUCTION_DESCRIPTION_2}
           </DescriptionText>
@@ -897,12 +896,10 @@ const MainPage = () => {
                 <IntroudceImageCard
                   data-aos="flip-down"
                   data-aos-duration="1000"
-                  data-aos-anchor-placement="top-bottom"
                   data-aos-once="false"
-                  data-aos-delay={index * 600}
+                  data-aos-delay={index * 300}
                   index={index}
                   className="imageDefault"
-                  data-aso-offset="400"
                 >
                   <img src={program} />
                 </IntroudceImageCard>
@@ -913,9 +910,22 @@ const MainPage = () => {
       </IntroduceProgramContainer>
       <IntroduceActivityContainer>
         <IntroduceActivityTitleDiv>
-          <TitleText id="activityContainer">{INTRODUCTION_TITLE_3}</TitleText>
-          <EmphasisImageWhite />
-          <DescriptionText>{INTRODUCTION_DESCRIPTION_3}</DescriptionText>
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-once="false"
+          >
+            <TitleText id="activityContainer">{INTRODUCTION_TITLE_3}</TitleText>
+            <EmphasisImageWhite style={{ marginLeft: "53px" }} />
+          </div>
+          <DescriptionText
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-once="false"
+            data-aos-delay="300"
+          >
+            {INTRODUCTION_DESCRIPTION_3}
+          </DescriptionText>
         </IntroduceActivityTitleDiv>
         <IntroduceActivityContainerInside>
           <ActivityWrapperImageTop />
@@ -926,10 +936,8 @@ const MainPage = () => {
                 <div
                   data-aos="flip-down"
                   data-aos-duration="1000"
-                  data-aos-anchor-placement="top-bottom"
                   data-aos-once="false"
-                  data-aos-delay={index * 600}
-                  data-aso-offset="400"
+                  data-aos-delay={index * 300}
                 >
                   <img src={activity} />
                 </div>
@@ -943,7 +951,6 @@ const MainPage = () => {
           className="defaultTitle4"
           data-aos="fade-up"
           data-aos-duration="1000"
-          data-aos-anchor-placement="top-bottom"
           data-aos-once="false"
         >
           <TitleText style={{ color: "#151519" }}>
@@ -951,28 +958,31 @@ const MainPage = () => {
           </TitleText>
           <EmphasisImage />
         </IntroduceActivityTitleDiv>
-        <LectureTag>{"전문가 초청 강연"}</LectureTag>
-        <img src={lectureImage1} />
-        <LectureTag color="#000" backgroundColor="#62EFE5">
-          {"OB 초청 강연"}
+        <LectureTag data-aos="fade-up" data-aos-duration="1000">
+          {"전문가 초청 강연"}
         </LectureTag>
-        <img src={lectureImage2} />
-      </LectureContainer>
-      <PartnerContainer>
-        <IntroduceActivityTitleDiv
-          className="defaultTitle5"
+        <img data-aos="fade-up" data-aos-duration="1000" src={lectureImage1} />
+        <LectureTag
           data-aos="fade-up"
           data-aos-duration="1000"
-          data-aos-anchor-placement="top-bottom"
-          data-aos-once="false"
+          color="#000"
+          backgroundColor="#62EFE5"
         >
-          <TitleText>{"파트너사"}</TitleText>
-          <EmphasisImage />
-          <DescriptionText>
+          {"OB 초청 강연"}
+        </LectureTag>
+        <img data-aos="fade-up" data-aos-duration="1000" src={lectureImage2} />
+      </LectureContainer>
+      <PartnerContainer>
+        <IntroduceActivityTitleDiv className="defaultTitle5">
+          <div data-aos="fade-up" data-aos-duration="1000">
+            <TitleText>{"파트너사"}</TitleText>
+            <EmphasisImage />
+          </div>
+          <DescriptionText data-aos="fade-up" data-aos-duration="1000">
             {"KUSITMS과 함께하는 파트너사를 소개해요."}
           </DescriptionText>
         </IntroduceActivityTitleDiv>
-        <img src={partnerImage} />
+        <img src={partnerImage} data-aos="fade-up" data-aos-duration="1000" />
       </PartnerContainer>
     </Layout>
   );
@@ -1086,7 +1096,7 @@ const ActivityWrapperImageTop = styled(ActivityTop)`
 const ActivityWrapperImageBottom = styled(ActivityBottom)`
   position: absolute;
   top: 900px;
-  right: -140px;
+  right: -290px;
 `;
 
 const IntroductionContainer = styled.div`
