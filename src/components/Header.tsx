@@ -49,7 +49,11 @@ const Header = (props: any) => {
   if (isMobile) {
     return (
       <MobileHeaderContainer>
-        <MobileLogoContainer>
+        <MobileLogoContainer
+          onClick={() => {
+            onClickCategory("학회소개", "/");
+          }}
+        >
           <img src={logo} />
           <img src={logoText} />
         </MobileLogoContainer>
@@ -67,7 +71,11 @@ const Header = (props: any) => {
 
   return (
     <HeaderContainer>
-      <LogoContainer>
+      <LogoContainer
+        onClick={() => {
+          onClickCategory("학회소개", "/");
+        }}
+      >
         <img src={logo} />
         <img src={logoText} />
       </LogoContainer>
@@ -100,7 +108,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  width: 100vw;
+  width: 100%;
   height: 72px;
 
   background: #151519;
@@ -148,7 +156,7 @@ const MobileHeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  width: 100vw;
+  width: 100%;
 
   background: #151519;
   font-family: "SUIT";

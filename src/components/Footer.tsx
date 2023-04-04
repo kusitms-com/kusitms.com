@@ -138,7 +138,7 @@ export default Footer;
 
 const FooterContainer = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 252px;
 
   padding: 0px 250px;
