@@ -248,6 +248,7 @@ export const m_ProjectAbstract = styled.div`
   height: 330px;
   border-radius: 10px;
   margin-top: 24px;
+  line-height: 20px;
   background-color: #5d5e67;
 `;
 
@@ -294,7 +295,7 @@ export const AbstractColumnContainer = styled.div`
 
 export const m_AbstractColumnContainer = styled.div`
   width: 100px;
-  height: 114px;
+  height: 96px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -327,7 +328,7 @@ export const m_VerticalLine = styled.div`
   width: 0.1px;
   height: 242px;
   border-color: #90909a;
-  margin-left: 10px;
+  margin-right: 4px;
 `;
 
 export const AbstractInfoText = styled.div`
