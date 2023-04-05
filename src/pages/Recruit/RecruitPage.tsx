@@ -326,7 +326,7 @@ const RecruitContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  width: 1920px;
+  width: 100%;
   height: 3730px;
   padding-top: 192px;
   white-space: pre-wrap;
@@ -550,10 +550,21 @@ const RecruitInner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  // overflow-x: hidden;
   width: 1180px;
   height: 3419px;
 `;
+
+// const RecruitInner = styled.div`
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   white-space: pre-wrap;
+//   text-align: center;
+//   padding-top: 264px;
+//   padding-bottom: 160px;
+// `;
 
 const TopText = styled.p`
   font-size: 72px;
@@ -593,7 +604,7 @@ const ApplyBoxs = styled.div`
   align-items: flex-start;
   gap: 20px;
 
-  width: 1180px;
+  width: 100%;
   height: 260px;
 
   margin-top: 100px;
