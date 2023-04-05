@@ -550,21 +550,9 @@ const RecruitInner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  // overflow-x: hidden;
   width: 1180px;
   height: 3419px;
 `;
-
-// const RecruitInner = styled.div`
-//   width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   white-space: pre-wrap;
-//   text-align: center;
-//   padding-top: 264px;
-//   padding-bottom: 160px;
-// `;
 
 const TopText = styled.p`
   font-size: 72px;
