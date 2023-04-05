@@ -143,7 +143,6 @@ const ProjectsPage = () => {
   };
 
   useEffect(() => {
-    console.log({ selectedMeetupId });
     const meetupDetails: Promise<any> =
       ProjectsAPI.getMeetupDetail(selectedMeetupId);
     meetupDetails
