@@ -13,7 +13,8 @@ export const Wrapper = styled.div`
   align-items: center;
   font-family: "SUIT";
   color: white;
-  max-width: 1180px;
+  /* max-width: 1180px; */
+  max-width: 944px;
   width: 100%;
 `;
 
@@ -40,6 +41,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  /* width: 80%; */
 `;
 
 export const m_Container = styled.div`
@@ -97,7 +99,8 @@ export const TopContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  margin-top: 112px;
+  /* margin-top: 112px; */
+  margin-top: 90px;
 `;
 
 export const m_TopContainer = styled.div`
@@ -121,7 +124,8 @@ export const m_Intro = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 48px;
+  /* font-size: 48px; */
+  font-size: 40px;
   font-weight: bold;
 `;
 
@@ -131,7 +135,8 @@ export const m_Title = styled.div`
 `;
 
 export const OneLineIntro = styled.div`
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: 18px;
   color: #e2e2eb;
   margin-top: 24px;
   font-weight: 400;
@@ -183,9 +188,12 @@ export const DetailContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 1180px;
-  height: 678px;
-  margin-top: 40px;
+  /* width: 1180px; */
+  width: 944px;
+  /* height: 678px; */
+  height: 542px;
+  /* margin-top: 40px; */
+  margin-top: 36px;
 `;
 
 export const m_DetailContainer = styled.div`
@@ -198,8 +206,10 @@ export const m_DetailContainer = styled.div`
 `;
 
 export const ItemPoster = styled.img`
-  width: 480px;
-  height: 678px;
+  /* width: 480px; */
+  width: 384px;
+  /* height: 678px; */
+  height: 542px;
   border-radius: 10px;
 `;
 
@@ -213,16 +223,20 @@ export const ProjectIntroduce = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 680px;
-  height: 678px;
+  /* width: 680px; */
+  width: 544px;
+  /* height: 678px; */
+  height: 542px;
   color: white;
 `;
 
 export const ProjectAbstract = styled.div`
   display: flex;
   flex-direction: column;
-  width: 680px;
-  height: 343px;
+  /* width: 680px; */
+  width: 544px;
+  /* height: 343px; */
+  height: 274px;
   border-radius: 10px;
   background-color: #5d5e67;
 `;
@@ -238,9 +252,12 @@ export const m_ProjectAbstract = styled.div`
 `;
 
 export const AbstractTitle = styled.div`
-  margin-top: 40px;
-  margin-left: 40px;
-  font-size: 24px;
+  /* margin-top: 40px; */
+  margin-top: 36px;
+  /* margin-left: 40px; */
+  margin-left: 36px;
+  /* font-size: 24px; */
+  font-size: 20px;
   font-weight: bold;
 `;
 
@@ -252,7 +269,8 @@ export const m_AbstractTitle = styled.div`
 `;
 
 export const ProjectAbstractContent = styled.div`
-  margin-top: 24px;
+  /* margin-top: 24px; */
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
 `;
@@ -264,11 +282,13 @@ export const m_ProjectAbstractContent = styled.div`
 `;
 
 export const AbstractColumnContainer = styled.div`
-  height: 100px;
+  /* height: 100px; */
+  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-left: 40px;
+  /* margin-left: 40px; */
+  margin-left: 36px;
   font-weight: 400;
 `;
 
@@ -284,7 +304,8 @@ export const m_AbstractColumnContainer = styled.div`
 `;
 
 export const AbstractColumn = styled.div`
-  font-size: 24px;
+  /* font-size: 24px; */
+  font-size: 16px;
 `;
 
 export const m_AbstractColumn = styled.div`
@@ -294,9 +315,11 @@ export const m_AbstractColumn = styled.div`
 export const VerticalLine = styled.div`
   border: 1px solid;
   width: 0.1px;
-  height: 210px;
+  /* height: 210px; */
+  height: 168px;
   border-color: #90909a;
-  margin-left: 60px;
+  /* margin-left: 60px; */
+  margin-left: 48px;
 `;
 
 export const m_VerticalLine = styled.div`
@@ -311,10 +334,13 @@ export const AbstractInfoText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: 16px;
   font-weight: 400;
-  margin-left: 60px;
-  height: 210px;
+  /* margin-left: 60px; */
+  margin-left: 48px;
+  /* height: 210px; */
+  height: 168px;
 `;
 
 export const m_AbstractInfoText = styled.div`
@@ -334,8 +360,10 @@ export const AbstractInfoTextItem = styled.div`
 export const ProjectIntroText = styled.div`
   display: flex;
   flex-direction: column;
-  width: 680px;
-  height: 315px;
+  /* width: 680px; */
+  width: 544px;
+  /* height: 315px; */
+  height: 252px;
   border-radius: 10px;
   background-color: #2f3038;
 `;
@@ -351,9 +379,12 @@ export const m_ProjectIntroText = styled.div`
 `;
 
 export const ProjectIntroTextTitle = styled.div`
-  margin-top: 40px;
-  margin-left: 40px;
-  font-size: 24px;
+  /* margin-top: 40px; */
+  margin-top: 36px;
+  /* margin-left: 40px; */
+  margin-left: 36px;
+  /* font-size: 24px; */
+  font-size: 20px;
   font-weight: bold;
 `;
 
@@ -365,13 +396,19 @@ export const m_ProjectIntroTextTitle = styled.div`
 `;
 
 export const ProjectIntroTextContent = styled.div`
-  width: 600px;
+  /* width: 600px; */
+  width : 480px;
   line-height: 25px;
-  margin-top: 24px;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-bottom: 24px;
-  font-size: 20px;
+  /* margin-top: 24px; */
+  margin-top: 20px;
+  /* margin-left: 40px; */
+  margin-left: 36px;
+  /* margin-right: 40px; */
+  margin-right: 36px;
+  /* margin-bottom: 24px; */
+  margin-bottom: 20px;
+  /* font-size: 20px; */
+  font-size: 16px;
   font-weight: 400;
   overflow: auto;
   white-space: pre-wrap;
