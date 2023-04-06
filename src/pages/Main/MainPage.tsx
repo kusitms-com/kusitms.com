@@ -290,7 +290,6 @@ const MainPage = () => {
                   <MobileWortText
                     data-aos="fade-right"
                     data-aos-duration="1000"
-                    data-aos-anchor="#defaultWorthText"
                     data-aos-once="false"
                     data-aos-easing="ease-in-sine"
                   >
@@ -299,7 +298,6 @@ const MainPage = () => {
                   <MobileWortText
                     data-aos="fade-right"
                     data-aos-duration="1000"
-                    data-aos-anchor="#defaultWorthText"
                     data-aos-once="false"
                     data-aos-easing="ease-in-sine"
                     data-aos-delay="300"
@@ -309,7 +307,6 @@ const MainPage = () => {
                   <MobileWortText
                     data-aos="fade-right"
                     data-aos-duration="1000"
-                    data-aos-anchor="#defaultWorthText"
                     data-aos-once="false"
                     data-aos-easing="ease-in-sine"
                     data-aos-delay="600"
