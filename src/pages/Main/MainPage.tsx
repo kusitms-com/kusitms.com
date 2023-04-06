@@ -289,7 +289,7 @@ const MainPage = () => {
                 <div>
                   <MobileWortText
                     data-aos="fade-right"
-                    data-aos-duration="2000"
+                    data-aos-duration="1000"
                     data-aos-anchor="#defaultWorthText"
                     data-aos-once="false"
                     data-aos-easing="ease-in-sine"
@@ -298,21 +298,21 @@ const MainPage = () => {
                   </MobileWortText>
                   <MobileWortText
                     data-aos="fade-right"
-                    data-aos-duration="2000"
+                    data-aos-duration="1000"
                     data-aos-anchor="#defaultWorthText"
                     data-aos-once="false"
                     data-aos-easing="ease-in-sine"
-                    data-aos-delay="500"
+                    data-aos-delay="300"
                   >
                     {WORTHTEXT2}
                   </MobileWortText>
                   <MobileWortText
                     data-aos="fade-right"
-                    data-aos-duration="2000"
+                    data-aos-duration="1000"
                     data-aos-anchor="#defaultWorthText"
                     data-aos-once="false"
                     data-aos-easing="ease-in-sine"
-                    data-aos-delay="1000"
+                    data-aos-delay="600"
                   >
                     {WORTHTEXT3}
                   </MobileWortText>
