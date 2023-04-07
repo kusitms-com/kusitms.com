@@ -15,7 +15,7 @@ interface SNSGroupsType {
 
 const ARTICLE = {
   title: "학회 정관",
-  link: "https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/upload/09c542a8-0612-4560-ac30-89639155d386KUSITMS_27th_constitution.pdf",
+  link: "https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/upload/481616b0-2f6d-405c-b24f-92e05a640856KUSITMS_27th_Constitution.pdf",
 };
 
 const RIGHTS =
