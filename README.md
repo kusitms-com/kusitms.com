@@ -47,4 +47,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Link
 
-[큐시즘 홈페이지](https://kusitms.com/).
+[큐시즘 홈페이지](https://kusitms.com/)
