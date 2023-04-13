@@ -19,6 +19,7 @@
 - 메인 : React, Typescript
 - 스타일 : Styled-components
 - 패키지 매니저: npm
+- 인프라 : Vercel
 
 ## 소프트웨어 아키텍쳐
 ![아키텍처](https://user-images.githubusercontent.com/115339354/231766692-9bff8d28-d7a0-4364-8fb4-5f76c0ad0473.png)
