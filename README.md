@@ -1,50 +1,28 @@
-# Getting Started with Create React App
+# kusitms.com
+>[KUSTIMS OFFICIAL WEB SITE](https://kusitms.com/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 스토리가 궁금하다면?
+[프로젝트 스토리↗️](https://insidious-spike-642.notion.site/TF-20493d67da6c428a9f6a9b9b30fa96ce)
 
-## Available Scripts
 
-In the project directory, you can run:
+## 팀원
+- `기획` 송예지 (26기, 27기)
+- `기획` 윤지원 (25기, 26기)
+- `디자인` 신민성 (26기)
+- `디자인` 최수경 (16기, 17기, 18기)
+- `프론트엔드` 박고은 (26기)
+- `프론트엔드` 박상준 (24기, 26기)
+- `프론트엔드` 황남주 (24기)
+- `PM & 백엔드` 유정민 (25기, 26기)
 
-### `npm start`
+## 기술스택
+- 메인 : React, Typescript
+- 스타일 : Styled-components
+- 패키지 매니저: npm
+- 인프라 : Vercel
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 소프트웨어 아키텍쳐
+![아키텍처](https://user-images.githubusercontent.com/115339354/231766692-9bff8d28-d7a0-4364-8fb4-5f76c0ad0473.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-## Link
-
-[큐시즘 홈페이지](https://kusitms.com/)
+## 관련 repository
+[큐시즘 공식 홈페이지 백엔드](https://github.com/kusitms-com/api.kusitms.com)

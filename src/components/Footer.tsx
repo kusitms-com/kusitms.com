@@ -40,7 +40,7 @@ const SNSGROUPS = [
   },
   {
     img: iconGithub,
-    link: "https://github.com/KUSITMS-Github",
+    link: "https://github.com/kusitms-com",
   },
 ];
 
