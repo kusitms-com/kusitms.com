@@ -198,9 +198,9 @@ const RecruitPage = () => {
             <img src={polygon} />
           </div>
           <MobileRecruitStateBox>
-            <MobileRecruitTitle>{RECRUIT_ALARM[0].title}</MobileRecruitTitle>
+            <MobileRecruitTitle>{RECRUIT_ALARM[1].title}</MobileRecruitTitle>
             <MobileRecruitStateMsg>
-              {RECRUIT_ALARM[0].msg}
+              {RECRUIT_ALARM[1].msg}
             </MobileRecruitStateMsg>
             <MobileRecruitBtn
               onClick={() => {
@@ -210,7 +210,7 @@ const RecruitPage = () => {
                 );
               }}
             >
-              {RECRUIT_ALARM[0].btn}
+              {RECRUIT_ALARM[1].btn}
             </MobileRecruitBtn>
           </MobileRecruitStateBox>
         </MobileRecruitContainer>
@@ -275,8 +275,8 @@ const RecruitPage = () => {
             <img src={polygon} />
           </div>
           <RecruitStateBox>
-            <RecruitTitle>{RECRUIT_ALARM[0].title}</RecruitTitle>
-            <RecruitStateMsg>{RECRUIT_ALARM[0].msg}</RecruitStateMsg>
+            <RecruitTitle>{RECRUIT_ALARM[1].title}</RecruitTitle>
+            <RecruitStateMsg>{RECRUIT_ALARM[1].msg}</RecruitStateMsg>
             <RecruitBtn
               onClick={() => {
                 window.open(
@@ -285,7 +285,7 @@ const RecruitPage = () => {
                 );
               }}
             >
-              {RECRUIT_ALARM[0].btn}
+              {RECRUIT_ALARM[1].btn}
             </RecruitBtn>
           </RecruitStateBox>
         </RecruitInner>

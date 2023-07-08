@@ -359,7 +359,7 @@ const MainPage = () => {
                     {true && (
                       <CountUp
                         start={0}
-                        end={1402}
+                        end={1472}
                         duration={1.5}
                         useEasing={true}
                       />
@@ -383,7 +383,7 @@ const MainPage = () => {
                     {true && (
                       <CountUp
                         start={0}
-                        end={203}
+                        end={239}
                         duration={1.2}
                         delay={1.2}
                         useEasing={true}
@@ -746,7 +746,7 @@ const MainPage = () => {
                 {isInView && (
                   <CountUp
                     start={0}
-                    end={1402}
+                    end={1472}
                     duration={1.2}
                     useEasing={true}
                   />
@@ -771,7 +771,7 @@ const MainPage = () => {
                 {isInView && (
                   <CountUp
                     start={0}
-                    end={203}
+                    end={239}
                     duration={1.2}
                     delay={0.8}
                     useEasing={true}

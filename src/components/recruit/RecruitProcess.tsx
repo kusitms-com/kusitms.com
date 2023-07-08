@@ -22,26 +22,26 @@ interface processInfo {
   period: string;
 }
 
-const KUSITMS_YEAR = "27기 활동";
+const KUSITMS_YEAR = "28기 활동";
 const PROCESS_INFO = [
   {
     img: level1,
-    period: "1월 23일(월) ~ 2월 12일(일)\n자정 마감",
+    period: "7월 17일(월) ~ 8월 6일(일)\n자정 마감",
   },
   {
     img: level2,
-    period: "2월 15일(수)\n합격자/불합격자 전체 연락",
+    period: "8월 14일(월)\n합격자/불합격자 전체 연락",
   },
   {
     img: level3,
-    period: "2월 18일(토) ~ 2월 19일(일)\n서류 합격자 개별 안내",
+    period: "8월 19일(토) ~ 8월 20일(일)\n서류 합격자 개별 안내",
   },
   {
     img: level4,
-    period: "2월 21일(화)\n합격자/불합격자 전체 연락",
+    period: "8월 22일(화)\n합격자/불합격자 전체 연락",
   },
 ];
-const KUSITMS_PERIOD = "2월 25일(토) ~ 5월 27일(토)";
+const KUSITMS_PERIOD = "8월 26일(토) ~ 12월 2일(토)";
 
 const RecruitProcess = () => {
   const isMobile = useIsMobile();
