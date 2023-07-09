@@ -51,9 +51,10 @@ import introduceActivityImageMobile4 from "../../images/main/mobile/introduce-ac
 
 import lectureImage1 from "../../images/main/lecture-image-1.png";
 import lectureImage2 from "../../images/main/lecture-image-2.png";
+// import lectureImage3 from "../../images/main/lecture-image-3.png";
 
-import lectureImageMobile1 from "../../images/main/mobile/lecture-image-1.png";
-import lectureImageMobile2 from "../../images/main/mobile/lecture-image-2.png";
+// import lectureImageMobile1 from "../../images/main/mobile/lecture-image-1.png";
+// import lectureImageMobile2 from "../../images/main/mobile/lecture-image-2.png";
 
 import partnerImage from "../../images/main/partner-image.png";
 import partnerMobileImage from "../../images/main/mobile/partner-image.png";
@@ -592,7 +593,12 @@ const MainPage = () => {
                 />
               </div>
               <MobileLectureTag>{"전문가 초청 강연"}</MobileLectureTag>
-              <img src={lectureImageMobile1} width="300px" height="260px" />
+              <img
+                src={lectureImage1}
+                width="300px"
+                height="260px"
+                style={{ objectFit: "contain" }}
+              />
               <MobileLectureTag
                 color="#000"
                 backgroundColor="#62EFE5"
@@ -600,7 +606,12 @@ const MainPage = () => {
               >
                 {"OB 초청 강연"}
               </MobileLectureTag>
-              <img src={lectureImageMobile2} width="300px" height="260px" />
+              <img
+                src={lectureImage2}
+                width="300px"
+                height="260px"
+                style={{ objectFit: "contain" }}
+              />
             </div>
           </MobileLectureContainer>
           <MobilePartnerContainer>
