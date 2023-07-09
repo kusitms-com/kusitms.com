@@ -24,13 +24,10 @@ import { ReactComponent as UpdownImage } from "../../images/main/up-down-image.s
 import backgroundImage from "../../images/main/background-image.png";
 import backgroundImageMobile from "../../images/main/mobile/background-image.png";
 
+import managementImage0 from "../../images/main/management-image-0.png";
 import managementImage1 from "../../images/main/management-image-1.png";
 import managementImage2 from "../../images/main/management-image-2.png";
 import managementImage3 from "../../images/main/management-image-3.png";
-
-import managementImageMobile1 from "../../images/main/mobile/management-image-1.png";
-import managementImageMobile2 from "../../images/main/mobile/management-image-2.png";
-import managementImageMobile3 from "../../images/main/mobile/management-image-3.png";
 
 import introduceProgramImage1 from "../../images/main/introduce-program-image-1.png";
 import introduceProgramImage2 from "../../images/main/introduce-program-image-2.png";
@@ -148,6 +145,12 @@ const MANAGEMENT_TITLE =
 
 const MANAGEMENT_CONTENTS = [
   {
+    img: managementImage0,
+    title: "학부학",
+    content:
+      "학회의 총체적 운영권과\n대내외적 대표권을 가지고 있으며,\n학회 운영 및 업무 총괄,\n파트너십을 위한 기업 미팅,\nOB 연락망 구축 등을 진행해요.",
+  },
+  {
     img: managementImage1,
     title: "경영총괄팀",
     content:
@@ -169,19 +172,25 @@ const MANAGEMENT_CONTENTS = [
 
 const MOBILE_MANAGEMENT_CONTENTS = [
   {
-    img: managementImageMobile1,
+    img: managementImage0,
+    title: "학부학",
+    content:
+      "학회의 총체적 운영권과\n대내외적 대표권을 가지고 있으며,\n학회 운영 및 업무 총괄,\n파트너십을 위한 기업 미팅,\nOB 연락망 구축 등을 진행해요.",
+  },
+  {
+    img: managementImage1,
     title: "경영총괄팀",
     content:
       "OT/LT, 큐시즘 데이, 큐시즘의 밤 등\n학회 행사를 기획하고,\n회원 관리, 장소 대관, 예산 관리 등\n학회 경영 관련 업무를 총괄해요.",
   },
   {
-    img: managementImageMobile2,
+    img: managementImage3,
     title: "교육기획팀",
     content:
       "초청 강연, 기업 프로젝트, 밋업데이 등\n학회의 전반적인 교육 커리큘럼을\n주관 및 진행하고, 학회원을 대상으로\n정기 교육 세션을 실시해요.",
   },
   {
-    img: managementImageMobile3,
+    img: managementImage2,
     title: "대외홍보팀",
     content:
       "학회 행사와 관련된 콘텐츠를 제작하고,\n전반적인 SNS 관리 및 마케팅,\n외부 기관과의 컨택 및 협찬제안을 담당해요.",
@@ -1399,16 +1408,20 @@ const ManagementCard = (content: managementContentType) => {
   return (
     <ManagementCardContainer
       url={content.img}
-      marginTop={content.title === "교육기획팀"}
+      marginTop={
+        content.title === "경영총괄팀" || content.title === "대외홍보팀"
+      }
       data-aos="fade-up"
       data-aos-duration="1000"
       data-aos-anchor-placement="top-bottom"
       data-aos-once="false"
       data-aos-delay={
-        content.title === "교육기획팀"
+        content.title === "경영총괄팀"
           ? 300
-          : content.title === "대외홍보팀"
+          : content.title === "교육기획팀"
           ? 600
+          : content.title === "대외홍보팀"
+          ? 900
           : 0
       }
     >
