@@ -57,7 +57,7 @@ const LinkBtn = styled.div`
   background-color: white;
   border-radius: 75px;
   width: 94px;
-  margin-left: 8px;
+  margin-left: 27px;
   cursor: pointer;
 `;
 
