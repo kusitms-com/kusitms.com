@@ -204,10 +204,7 @@ const RecruitPage = () => {
             </MobileRecruitStateMsg>
             <MobileRecruitBtn
               onClick={() => {
-                window.open(
-                  process.env.REACT_APP_KUSITMS_28TH_REGISTER_URL,
-                  "_blank"
-                );
+                window.open("https://forms.gle/gHHXmANWABWR5TUR6/", "_blank");
               }}
             >
               {RECRUIT_ALARM[1].btn}
