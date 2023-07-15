@@ -8,6 +8,7 @@ import { ReactComponent as IconMenu } from "../images/common/icon-menu.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useIsMobile } from "../hooks/useIsMobile";
 import Sidebar from "./SideBar";
+import Banner from "./Banner";
 
 interface CategoryOption {
   title: string;
@@ -70,41 +71,54 @@ const Header = (props: any) => {
   }
 
   return (
-    <HeaderContainer>
-      <LogoContainer
-        onClick={() => {
-          onClickCategory("학회소개", "/");
-        }}
-      >
-        <img src={logo} />
-        <img src={logoText} />
-      </LogoContainer>
-      <Categories>
-        {CATEGORY_OPTIONS.map((option: CategoryOption, index: number) => {
-          return (
-            <Category
-              selected={option.title === selectedOption}
-              key={index}
-              onClick={() => {
-                onClickCategory(option.title, option.link);
-              }}
-            >
-              {option.title}
-            </Category>
-          );
-        })}
-      </Categories>
-    </HeaderContainer>
+    <Wrapper>
+      <HeaderContainer>
+        <LogoContainer
+          onClick={() => {
+            onClickCategory("학회소개", "/");
+          }}
+        >
+          <img src={logo} />
+          <img src={logoText} />
+        </LogoContainer>
+        <Categories>
+          {CATEGORY_OPTIONS.map((option: CategoryOption, index: number) => {
+            return (
+              <Category
+                selected={option.title === selectedOption}
+                key={index}
+                onClick={() => {
+                  onClickCategory(option.title, option.link);
+                }}
+              >
+                {option.title}
+              </Category>
+            );
+          })}
+        </Categories>
+      </HeaderContainer>
+      <Banner />
+    </Wrapper>
   );
 };
 
 export default Header;
+
+const Wrapper = styled.div`
+  position: absolute;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 144px;
+`;
 
 const HeaderContainer = styled.div`
   position: absolute;
   top: 0px;
   bottom: 0px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 
