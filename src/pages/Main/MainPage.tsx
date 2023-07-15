@@ -1023,7 +1023,8 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  padding-top: 120px;
+  /* padding-top: 120px; */
+  padding-top: 192px;
 
   background: #151519;
 
@@ -1575,6 +1576,9 @@ const MobileTopContainer = styled.div`
 
   background: #151519;
   padding-top: 40px;
+
+  /* 상단 배너 등장 시 적용
+  margin-top: 58px; */
 `;
 
 const MobileMainText = styled.div`

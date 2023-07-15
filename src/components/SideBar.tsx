@@ -47,6 +47,20 @@ const IconDeleteCustom = styled(IconDelete)`
   margin-left: auto;
 `;
 
+const LinkBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #05f;
+  font-weight: 600;
+  height: 30px;
+  background-color: white;
+  border-radius: 75px;
+  width: 94px;
+  margin-left: 8px;
+  cursor: pointer;
+`;
+
 function Sidebar({
   isOpen,
   setIsOpen,
@@ -83,6 +97,9 @@ function Sidebar({
     navigate(link);
   };
 
+  const onClickLinkBtn = () => {
+    window.open(process.env.REACT_APP_KUSITMS_28TH_ALRAM_URL, "_blank");
+  };
   return (
     <SideBarWrap id="sidebar" ref={outside} className={isOpen ? "open" : ""}>
       <SideBarTopContainer>
@@ -106,6 +123,7 @@ function Sidebar({
           );
         })}
       </ul>
+      <LinkBtn onClick={onClickLinkBtn}>지원하기</LinkBtn>
     </SideBarWrap>
   );
 }
