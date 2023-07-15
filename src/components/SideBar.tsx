@@ -98,7 +98,7 @@ function Sidebar({
   };
 
   const onClickLinkBtn = () => {
-    window.open(process.env.REACT_APP_KUSITMS_28TH_ALRAM_URL, "_blank");
+    window.open(process.env.REACT_APP_KUSITMS_28TH_REGISTER_URL, "_blank");
   };
   return (
     <SideBarWrap id="sidebar" ref={outside} className={isOpen ? "open" : ""}>

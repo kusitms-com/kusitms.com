@@ -5,7 +5,7 @@ import LinkIcon from "../../images/common/LinkIcon.svg";
 const Banner = () => {
   const onClickBtn = () => {
     window.open(
-      process.env.REACT_APP_KUSITMS_28TH_ALRAM_URL,
+      process.env.REACT_APP_KUSITMS_28TH_REGISTER_URL,
       "_blank"
     );
   };
