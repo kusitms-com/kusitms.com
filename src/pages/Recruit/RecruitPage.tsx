@@ -55,8 +55,8 @@ const RECRUIT_ALARM = [
   // 모집 전
   {
     title: "모집 알림을 받아볼게요!",
-    msg: "아쉽게도 지금은 모집 기간이 아니에요!\n알림 신청을 통해 28기 모집 알림을 받아보세요. :)",
-    btn: "28기 모집 알림 신청하기",
+    msg: "아쉽게도 지금은 모집 기간이 아니에요!\n알림 신청을 통해 29기 모집 알림을 받아보세요. :)",
+    btn: "29기 모집 알림 신청하기",
   },
   // 학회원 모집 중
   {
@@ -198,16 +198,16 @@ const RecruitPage = () => {
             <img src={polygon} />
           </div>
           <MobileRecruitStateBox>
-            <MobileRecruitTitle>{RECRUIT_ALARM[1].title}</MobileRecruitTitle>
+            <MobileRecruitTitle>{RECRUIT_ALARM[0].title}</MobileRecruitTitle>
             <MobileRecruitStateMsg>
-              {RECRUIT_ALARM[1].msg}
+              {RECRUIT_ALARM[0].msg}
             </MobileRecruitStateMsg>
             <MobileRecruitBtn
               onClick={() => {
-                window.open("https://forms.gle/gHHXmANWABWR5TUR6/", "_blank");
+                window.open("https://forms.gle/4tCK1EUWk2ySf2Lx9", "_blank");
               }}
             >
-              {RECRUIT_ALARM[1].btn}
+              {RECRUIT_ALARM[0].btn}
             </MobileRecruitBtn>
           </MobileRecruitStateBox>
         </MobileRecruitContainer>
@@ -272,14 +272,14 @@ const RecruitPage = () => {
             <img src={polygon} />
           </div>
           <RecruitStateBox>
-            <RecruitTitle>{RECRUIT_ALARM[1].title}</RecruitTitle>
-            <RecruitStateMsg>{RECRUIT_ALARM[1].msg}</RecruitStateMsg>
+            <RecruitTitle>{RECRUIT_ALARM[0].title}</RecruitTitle>
+            <RecruitStateMsg>{RECRUIT_ALARM[0].msg}</RecruitStateMsg>
             <RecruitBtn
               onClick={() => {
-                window.open("https://forms.gle/gHHXmANWABWR5TUR6/", "_blank");
+                window.open("https://forms.gle/4tCK1EUWk2ySf2Lx9", "_blank");
               }}
             >
-              {RECRUIT_ALARM[1].btn}
+              {RECRUIT_ALARM[0].btn}
             </RecruitBtn>
           </RecruitStateBox>
         </RecruitInner>

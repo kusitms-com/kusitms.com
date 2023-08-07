@@ -115,7 +115,6 @@ const MobileTextBox = styled.div`
 
 const MobileLastContainer = styled.div`
   display: flex;
-  justify-contents: center;
   align-items: center;
   position: relative;
   padding-left: 94px;
@@ -148,7 +147,7 @@ const MobileLastContext = styled.span`
 const ProcessBox = styled.div`
   display: flex;
   margin-top: 100px;
-  postion: relative;
+  /* postion: relative; */
 `;
 
 const ProcessInnerBox = styled.div`
