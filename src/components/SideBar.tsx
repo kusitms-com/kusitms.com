@@ -47,19 +47,19 @@ const IconDeleteCustom = styled(IconDelete)`
   margin-left: auto;
 `;
 
-const LinkBtn = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #05f;
-  font-weight: 600;
-  height: 30px;
-  background-color: white;
-  border-radius: 75px;
-  width: 94px;
-  margin-left: 27px;
-  cursor: pointer;
-`;
+// const LinkBtn = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   color: #05f;
+//   font-weight: 600;
+//   height: 30px;
+//   background-color: white;
+//   border-radius: 75px;
+//   width: 94px;
+//   margin-left: 27px;
+//   cursor: pointer;
+// `;
 
 function Sidebar({
   isOpen,
@@ -97,9 +97,9 @@ function Sidebar({
     navigate(link);
   };
 
-  const onClickLinkBtn = () => {
-    window.open("https://forms.gle/gHHXmANWABWR5TUR6/", "_blank");
-  };
+  // const onClickLinkBtn = () => {
+  //   window.open("https://forms.gle/gHHXmANWABWR5TUR6/", "_blank");
+  // };
   return (
     <SideBarWrap id="sidebar" ref={outside} className={isOpen ? "open" : ""}>
       <SideBarTopContainer>
@@ -123,7 +123,7 @@ function Sidebar({
           );
         })}
       </ul>
-      <LinkBtn onClick={onClickLinkBtn}>지원하기</LinkBtn>
+      {/* <LinkBtn onClick={onClickLinkBtn}>지원하기</LinkBtn> */}
     </SideBarWrap>
   );
 }
