@@ -6,6 +6,7 @@ import iconGithub from "../images/common/icon-github.svg";
 import iconYoutube from "../images/common/icon-youtube.svg";
 import iconInstagram from "../images/common/icon-instagram.svg";
 import iconCafe from "../images/common/icon-cafe.svg";
+import iconBlog from "../images/common/icon-blog.svg";
 import { useIsMobile } from "hooks/useIsMobile";
 
 interface SNSGroupsType {
@@ -15,7 +16,7 @@ interface SNSGroupsType {
 
 const ARTICLE = {
   title: "학회 정관",
-  link: "https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/upload/481616b0-2f6d-405c-b24f-92e05a640856KUSITMS_27th_Constitution.pdf",
+  link: "https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/upload/89a42c24-82c8-48b5-b078-f27f82a3b458KUSITMS_28th_constitution.pdf",
 };
 
 const RIGHTS =
@@ -37,6 +38,10 @@ const SNSGROUPS = [
   {
     img: iconCafe,
     link: "https://cafe.naver.com/kusitms",
+  },
+  {
+    img: iconBlog,
+    link: "https://blog.naver.com/kusitms10",
   },
   {
     img: iconGithub,
@@ -197,7 +202,7 @@ const ContactContainer = styled.p`
 
 const CircleContainer = styled.div`
   display: flex;
-  gap: 24px;
+  gap: 20px;
 `;
 
 const Circle = styled.div`
@@ -244,7 +249,7 @@ const MobileTopContainer = styled.div`
   padding-top: 23px;
 `;
 const MobileBottomContainer = styled.div`
-  width: 296px;
+  width: 350px;
   height: 93px;
 `;
 
