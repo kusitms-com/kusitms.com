@@ -636,7 +636,7 @@ const MainPage = () => {
                 {"KUSITMS과 함께하는 파트너사를 소개해요."}
               </MobileDescriptionText>
             </div>
-            <img src={partnerMobileImage} width="240px" height="60px" />
+            <img src={partnerMobileImage} width="240px" height="612px" />
           </MobilePartnerContainer>
         </MobileContainer>
         <Footer />
