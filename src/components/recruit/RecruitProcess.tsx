@@ -165,7 +165,7 @@ const ProcessLast = styled.div`
 
 const ProcessLastContainer = styled.div`
   display: flex;
-  justify-contents: center;
+  justify-content: center;
   align-items: center;
   text-align: center;
   position: relative;

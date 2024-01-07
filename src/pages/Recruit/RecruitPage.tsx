@@ -45,15 +45,16 @@ const RECRUIT_PART_2 = "교육기획팀";
 const RECRUIT_PART_3 = "대외홍보팀";
 
 const PART_UNDER_SUB = "2024.01.06 - 2024.01.16 29기 운영진 모집중이에요 :)";
-const MOBILE_PART_UNDER_SUB = "* 팀별 인원 수는 매 기수 달라질 수 있어요 :)";
+const MOBILE_PART_UNDER_SUB =
+  "2024.01.06 - 2024.01.16\n29기 운영진 모집중이에요 :)";
 // const MOBILE_PART_SECOND_UNDER_SUB = "* 운영진도 학회원 활동에 참여해요.";
 
 // 학회원 모집 시
 // const WHERE_SUB = "일시: 매주 토요일 15시 ~ 18시\n장소: 서울 지역 내";
 // 운영진 모집 시
-const WHERE_SUB = "일시: 매주 토요일\n장소: 서울 지역 내";
+const WHERE_SUB = "일시: 매 주 토요일\n장소: 서울 지역 내";
 
-const MOBILE_WHEN_SUB = "토요일 15시 ~ 18시";
+const MOBILE_WHEN_SUB = "매 주 토요일";
 const MOBILE_WHERE_SUB = "서울 지역 내";
 
 const WHERE_UNDER_SUB =
@@ -165,6 +166,7 @@ const RecruitPage = () => {
           <div style={{ margin: "100px 0" }}>
             <img src={polygon} />
           </div>
+          <MobileRecruiteCurrent>{RECRUIT_CURRENT}</MobileRecruiteCurrent>
           <MobileRecruitTitle>{RECRUIT_TITLE_1}</MobileRecruitTitle>
           <MobileApplyBoxs>
             {WHO_APPLY.map((apply: applyType, index: number) => (
@@ -206,16 +208,16 @@ const RecruitPage = () => {
             <img src={polygon} />
           </div>
           <MobileRecruitStateBox>
-            <MobileRecruitTitle>{RECRUIT_ALARM[0].title}</MobileRecruitTitle>
+            <MobileRecruitTitle>{RECRUIT_ALARM[2].title}</MobileRecruitTitle>
             <MobileRecruitStateMsg>
-              {RECRUIT_ALARM[0].msg}
+              {RECRUIT_ALARM[2].msg}
             </MobileRecruitStateMsg>
             <MobileRecruitBtn
               onClick={() => {
                 window.open("https://forms.gle/ssoBW9swWhqr2rhs6", "_blank");
               }}
             >
-              {RECRUIT_ALARM[0].btn}
+              {RECRUIT_ALARM[2].btn}
             </MobileRecruitBtn>
           </MobileRecruitStateBox>
         </MobileRecruitContainer>
@@ -364,6 +366,14 @@ const MobileRecruitUnderText = styled.p`
   text-align: center;
   letter-spacing: -0.5px;
   white-space: pre-wrap;
+`;
+
+const MobileRecruiteCurrent = styled.p`
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  color: #ffffff;
+  margin-bottom: 20px;
 `;
 
 const MobileRecruitTitle = styled.p`
