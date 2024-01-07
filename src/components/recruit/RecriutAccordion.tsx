@@ -125,7 +125,7 @@ const MobileQIcon = styled.span`
   left: 28px;
   color: #0055ff;
   font-weight: 800;
-  font-size; 16px;
+  font-size: 16px;
   line-height: 25px;
   margin-right: 8px;
 `;
@@ -190,7 +190,7 @@ const Container = styled.div`
 const QIcon = styled.span`
   color: #0055ff;
   font-weight: 800;
-  font-size; 20px;
+  font-size: 20px;
   line-height: 25px;
   margin-right: 8px;
 `;

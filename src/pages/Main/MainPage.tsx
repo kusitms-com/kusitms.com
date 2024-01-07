@@ -766,7 +766,7 @@ const MainPage = () => {
                 {isInView && (
                   <CountUp
                     start={0}
-                    end={1472}
+                    end={1544}
                     duration={1.2}
                     useEasing={true}
                   />
@@ -791,7 +791,7 @@ const MainPage = () => {
                 {isInView && (
                   <CountUp
                     start={0}
-                    end={239}
+                    end={256}
                     duration={1.2}
                     delay={0.8}
                     useEasing={true}

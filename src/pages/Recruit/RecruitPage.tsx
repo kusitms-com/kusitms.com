@@ -28,24 +28,33 @@ const MOBILE_RECRUIT_UNDERTITLE =
 // ↓ 운영진 모집 시 지원 조건 3번째를 아래 문구로 변경
 // const RECRUIT_WHO_APPLY_STAFF3 = "활동 기간 동안 운영진 활동 및 학회 활동에\n적극적으로 참석 가능한 분",
 
+const RECRUIT_CURRENT = "현재 큐시즘 29기 운영진을 모집하고 있어요!";
+
 const RECRUIT_TITLE_1 = "누가 지원할 수 있어요?";
-const RECRUIT_TITLE_2 = "어떤 파트를 모집해요?";
+const RECRUIT_TITLE_2 = "어떤 팀을 모집해요?";
 const RECRUIT_TITLE_3 = "언제 어디서 모여요?";
 const RECRUIT_TITLE_4 = "모집 절차가 어떻게 돼요?";
 
-const RECRUIT_PART_1 = "기획";
-const RECRUIT_PART_2 = "개발";
-const RECRUIT_PART_3 = "디자인";
+// 학회원 모집 시
+// const RECRUIT_PART_1 = "기획";
+// const RECRUIT_PART_2 = "개발";
+// const RECRUIT_PART_3 = "디자인";
 // 운영진 모집 시
-// const RECRUIT_PART_1 = "경영총괄팀";
-// const RECRUIT_PART_2 = "교육기획팀";
-// const RECRUIT_PART_3 = "대외홍보팀";
+const RECRUIT_PART_1 = "경영총괄팀";
+const RECRUIT_PART_2 = "교육기획팀";
+const RECRUIT_PART_3 = "대외홍보팀";
 
-const PART_UNDER_SUB = "* 파트별 인원 수는 매 기수 달라질 수 있어요 :)";
-const MOBILE_PART_UNDER_SUB = "* 팀별 인원 수는 매 기수 달라질 수 있어요 :)";
+const PART_UNDER_SUB = "2024.01.06 - 2024.01.16 29기 운영진 모집중이에요 :)";
+const MOBILE_PART_UNDER_SUB =
+  "2024.01.06 - 2024.01.16\n29기 운영진 모집중이에요 :)";
 // const MOBILE_PART_SECOND_UNDER_SUB = "* 운영진도 학회원 활동에 참여해요.";
-const WHERE_SUB = "일시: 매주 토요일 15시 ~ 18시\n장소: 서울 지역 내";
-const MOBILE_WHEN_SUB = "토요일 15시 ~ 18시";
+
+// 학회원 모집 시
+// const WHERE_SUB = "일시: 매주 토요일 15시 ~ 18시\n장소: 서울 지역 내";
+// 운영진 모집 시
+const WHERE_SUB = "일시: 매 주 토요일\n장소: 서울 지역 내";
+
+const MOBILE_WHEN_SUB = "매 주 토요일";
 const MOBILE_WHERE_SUB = "서울 지역 내";
 
 const WHERE_UNDER_SUB =
@@ -61,13 +70,13 @@ const RECRUIT_ALARM = [
   // 학회원 모집 중
   {
     title: "이제 지원해볼게요!",
-    msg: "큐시즘 28기 신규 학회원 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
+    msg: "큐시즘 29기 신규 학회원 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
     btn: "함께하러 가기",
   },
   // 운영진 모집 중
   {
     title: "이제 지원해볼게요!",
-    msg: "큐시즘 28기 신규 운영진 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
+    msg: "큐시즘 29기 신규 운영진 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
     btn: "함께하러 가기",
   },
 ];
@@ -157,6 +166,7 @@ const RecruitPage = () => {
           <div style={{ margin: "100px 0" }}>
             <img src={polygon} />
           </div>
+          <MobileRecruiteCurrent>{RECRUIT_CURRENT}</MobileRecruiteCurrent>
           <MobileRecruitTitle>{RECRUIT_TITLE_1}</MobileRecruitTitle>
           <MobileApplyBoxs>
             {WHO_APPLY.map((apply: applyType, index: number) => (
@@ -198,16 +208,16 @@ const RecruitPage = () => {
             <img src={polygon} />
           </div>
           <MobileRecruitStateBox>
-            <MobileRecruitTitle>{RECRUIT_ALARM[0].title}</MobileRecruitTitle>
+            <MobileRecruitTitle>{RECRUIT_ALARM[2].title}</MobileRecruitTitle>
             <MobileRecruitStateMsg>
-              {RECRUIT_ALARM[0].msg}
+              {RECRUIT_ALARM[2].msg}
             </MobileRecruitStateMsg>
             <MobileRecruitBtn
               onClick={() => {
-                window.open("https://forms.gle/4tCK1EUWk2ySf2Lx9", "_blank");
+                window.open("https://forms.gle/ssoBW9swWhqr2rhs6", "_blank");
               }}
             >
-              {RECRUIT_ALARM[0].btn}
+              {RECRUIT_ALARM[2].btn}
             </MobileRecruitBtn>
           </MobileRecruitStateBox>
         </MobileRecruitContainer>
@@ -238,6 +248,7 @@ const RecruitPage = () => {
           <div style={{ margin: "100px 0" }}>
             <img src={polygon} />
           </div>
+          <RecruitCurrent>{RECRUIT_CURRENT}</RecruitCurrent>
           <RecruitTitle>{RECRUIT_TITLE_1}</RecruitTitle>
           <ApplyBoxs>
             {WHO_APPLY.map((apply: applyType, index: number) => (
@@ -272,14 +283,14 @@ const RecruitPage = () => {
             <img src={polygon} />
           </div>
           <RecruitStateBox>
-            <RecruitTitle>{RECRUIT_ALARM[0].title}</RecruitTitle>
-            <RecruitStateMsg>{RECRUIT_ALARM[0].msg}</RecruitStateMsg>
+            <RecruitTitle>{RECRUIT_ALARM[2].title}</RecruitTitle>
+            <RecruitStateMsg>{RECRUIT_ALARM[2].msg}</RecruitStateMsg>
             <RecruitBtn
               onClick={() => {
-                window.open("https://forms.gle/4tCK1EUWk2ySf2Lx9", "_blank");
+                window.open("https://forms.gle/ssoBW9swWhqr2rhs6", "_blank");
               }}
             >
-              {RECRUIT_ALARM[0].btn}
+              {RECRUIT_ALARM[2].btn}
             </RecruitBtn>
           </RecruitStateBox>
         </RecruitInner>
@@ -355,6 +366,14 @@ const MobileRecruitUnderText = styled.p`
   text-align: center;
   letter-spacing: -0.5px;
   white-space: pre-wrap;
+`;
+
+const MobileRecruiteCurrent = styled.p`
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  color: #ffffff;
+  margin-bottom: 20px;
 `;
 
 const MobileRecruitTitle = styled.p`
@@ -573,6 +592,13 @@ const RecruitUnderText = styled.p`
   letter-spacing: -0.5px;
 `;
 
+const RecruitCurrent = styled.p`
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 60px;
+  color: #ffffff;
+`;
+
 const RecruitTitle = styled.p`
   font-size: 48px;
   font-weight: 800;
@@ -656,7 +682,7 @@ const SquareBigBox = styled.div`
 `;
 
 const Parts = styled.div`
-  width: 467px;
+  width: 635px;
   display: flex;
   margin: 85.5px auto 40px auto;
   flex-direction: row;
