@@ -8,7 +8,7 @@ import { ReactComponent as IconMenu } from "../images/common/icon-menu.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useIsMobile } from "../hooks/useIsMobile";
 import Sidebar from "./SideBar";
-import Banner from "./Banner";
+// import Banner from "./Banner";
 
 interface CategoryOption {
   title: string;
@@ -97,7 +97,7 @@ const Header = (props: any) => {
           })}
         </Categories>
       </HeaderContainer>
-      <Banner />
+      {/* <Banner /> */}
     </Wrapper>
   );
 };
