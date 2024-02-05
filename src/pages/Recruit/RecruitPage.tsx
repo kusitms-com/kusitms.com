@@ -60,26 +60,26 @@ const MOBILE_WHERE_SUB = "서울 지역 내";
 const WHERE_UNDER_SUB =
   "* 활동 장소와 시간은\n 커리큘럼에 따라 변경될 수 있어요 :)";
 
-// const RECRUIT_ALARM = [
-//   // 모집 전
-//   {
-//     title: "모집 알림을 받아볼게요!",
-//     msg: "아쉽게도 지금은 모집 기간이 아니에요!\n알림 신청을 통해 30기 모집 알림을 받아보세요. :)",
-//     btn: "30기 모집 알림 신청하기",
-//   },
-//   // 학회원 모집 중
-//   {
-//     title: "이제 지원해볼게요!",
-//     msg: "큐시즘 30기 신규 학회원 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
-//     btn: "함께하러 가기",
-//   },
-//   // 운영진 모집 중
-//   {
-//     title: "이제 지원해볼게요!",
-//     msg: "큐시즘 30기 신규 운영진 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
-//     btn: "함께하러 가기",
-//   },
-// ];
+const RECRUIT_ALARM = [
+  // 모집 전
+  {
+    title: "모집 알림을 받아볼게요!",
+    msg: "아쉽게도 지금은 모집 기간이 아니에요!\n알림 신청을 통해 30기 모집 알림을 받아보세요. :)",
+    btn: "30기 모집 알림 신청하기",
+  },
+  // 학회원 모집 중
+  {
+    title: "이제 지원해볼게요!",
+    msg: "큐시즘 30기 신규 학회원 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
+    btn: "함께하러 가기",
+  },
+  // 운영진 모집 중
+  {
+    title: "이제 지원해볼게요!",
+    msg: "큐시즘 30기 신규 운영진 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
+    btn: "함께하러 가기",
+  },
+];
 
 const QNA = [
   {
@@ -204,7 +204,7 @@ const RecruitPage = () => {
           <MobileRecruitTitle>{RECRUIT_TITLE_4}</MobileRecruitTitle>
           <RecruitProcess />
 
-          {/* <div style={{ margin: "100px 0" }}>
+          <div style={{ margin: "100px 0" }}>
             <img src={polygon} />
           </div>
           <MobileRecruitStateBox>
@@ -222,7 +222,7 @@ const RecruitPage = () => {
             >
               {RECRUIT_ALARM[0].btn}
             </MobileRecruitBtn>
-          </MobileRecruitStateBox> */}
+          </MobileRecruitStateBox>
         </MobileRecruitContainer>
         <MobileQnaBox>
           <MobileQnaTitle>궁금한게 있어요!</MobileQnaTitle>
@@ -282,7 +282,7 @@ const RecruitPage = () => {
 
           <RecruitTitle>{RECRUIT_TITLE_4}</RecruitTitle>
           <RecruitProcess />
-          {/* <div style={{ margin: "100px 0" }}>
+          <div style={{ margin: "100px 0" }}>
             <img src={polygon} />
           </div>
           <RecruitStateBox>
@@ -290,15 +290,12 @@ const RecruitPage = () => {
             <RecruitStateMsg>{RECRUIT_ALARM[0].msg}</RecruitStateMsg>
             <RecruitBtn
               onClick={() => {
-                window.open(
-                  "https://docs.google.com/forms/d/e/1FAIpQLSfVjXycd48Ugg-Yjb9Srj5yZQU7hSTE575CncXCQqtRVJZh-Q/viewform",
-                  "_blank"
-                );
+                window.open("https://forms.gle/LJVQ9LWdmP2PvwrE7", "_blank");
               }}
             >
               {RECRUIT_ALARM[0].btn}
             </RecruitBtn>
-          </RecruitStateBox> */}
+          </RecruitStateBox>
         </RecruitInner>
       </RecruitContainer>
       <QnaBox>
@@ -515,34 +512,34 @@ const MobileBigSub = styled.p`
 
 // 프로세스 하기
 
-// const MobileRecruitStateBox = styled.div`
-//   width: 460px;
-//   height: 302px;
-// `;
+const MobileRecruitStateBox = styled.div`
+  width: 460px;
+  height: 302px;
+`;
 
-// const MobileRecruitStateMsg = styled.p`
-//   font-family: "SUIT";
-//   margin: 40px 0;
-//   line-height: 25px;
-//   color: #ffffff;
-//   font-size: 16px;
-//   font-weight: 400;
-//   text-align: center;
-//   letter-spacing: -0.5px;
-//   white-space: pre-wrap;
-// `;
+const MobileRecruitStateMsg = styled.p`
+  font-family: "SUIT";
+  margin: 40px 0;
+  line-height: 25px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: -0.5px;
+  white-space: pre-wrap;
+`;
 
-// const MobileRecruitBtn = styled.button`
-//   padding: 16px 32px;
-//   background: #0055ff;
-//   border-radius: 75px;
-//   font-family: "SUIT";
-//   font-weight: 600;
-//   font-size: 20px;
-//   color: #ffffff;
-//   cursor: pointer;
-//   border: none;
-// `;
+const MobileRecruitBtn = styled.button`
+  padding: 16px 32px;
+  background: #0055ff;
+  border-radius: 75px;
+  font-family: "SUIT";
+  font-weight: 600;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+`;
 
 const MobileQnaBox = styled.div`
   width: 100%;
@@ -709,33 +706,33 @@ const UnderSub = styled.p`
   white-space: nowrap;
 `;
 
-// const RecruitStateBox = styled.div`
-//   width: 460px;
-//   height: 302px;
-// `;
+const RecruitStateBox = styled.div`
+  width: 460px;
+  height: 302px;
+`;
 
-// const RecruitStateMsg = styled.p`
-//   font-family: "SUIT";
-//   margin: 66px 0;
-//   line-height: 30px;
-//   color: #ffffff;
-//   font-size: 20px;
-//   font-weight: 400;
-//   text-align: center;
-//   letter-spacing: -0.2px;
-// `;
+const RecruitStateMsg = styled.p`
+  font-family: "SUIT";
+  margin: 66px 0;
+  line-height: 30px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: -0.2px;
+`;
 
-// const RecruitBtn = styled.button`
-//   padding: 16px 32px;
-//   background: #0055ff;
-//   border-radius: 75px;
-//   font-family: "SUIT";
-//   font-weight: 600;
-//   font-size: 20px;
-//   color: #ffffff;
-//   cursor: pointer;
-//   border: none;
-// `;
+const RecruitBtn = styled.button`
+  padding: 16px 32px;
+  background: #0055ff;
+  border-radius: 75px;
+  font-family: "SUIT";
+  font-weight: 600;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+`;
 
 const QnaBox = styled.div`
   width: 100%;
