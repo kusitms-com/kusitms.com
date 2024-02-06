@@ -28,7 +28,7 @@ const MOBILE_RECRUIT_UNDERTITLE =
 // ↓ 운영진 모집 시 지원 조건 3번째를 아래 문구로 변경
 // const RECRUIT_WHO_APPLY_STAFF3 = "활동 기간 동안 운영진 활동 및 학회 활동에\n적극적으로 참석 가능한 분",
 
-const RECRUIT_CURRENT = "현재 큐시즘 29기 학회원을 모집하고 있어요!";
+// const RECRUIT_CURRENT = "현재 큐시즘 29기 학회원을 모집하고 있어요!";
 
 const RECRUIT_TITLE_1 = "누가 지원할 수 있어요?";
 const RECRUIT_TITLE_2 = "어떤 팀을 모집해요?";
@@ -166,7 +166,7 @@ const RecruitPage = () => {
           <div style={{ margin: "100px 0" }}>
             <img src={polygon} />
           </div>
-          <MobileRecruiteCurrent>{RECRUIT_CURRENT}</MobileRecruiteCurrent>
+          {/* <MobileRecruiteCurrent>{RECRUIT_CURRENT}</MobileRecruiteCurrent> */}
           <MobileRecruitTitle>{RECRUIT_TITLE_1}</MobileRecruitTitle>
           <MobileApplyBoxs>
             {WHO_APPLY.map((apply: applyType, index: number) => (
@@ -251,7 +251,7 @@ const RecruitPage = () => {
           <div style={{ margin: "100px 0" }}>
             <img src={polygon} />
           </div>
-          <RecruitCurrent>{RECRUIT_CURRENT}</RecruitCurrent>
+          {/* <RecruitCurrent>{RECRUIT_CURRENT}</RecruitCurrent> */}
           <RecruitTitle>{RECRUIT_TITLE_1}</RecruitTitle>
           <ApplyBoxs>
             {WHO_APPLY.map((apply: applyType, index: number) => (
@@ -371,13 +371,13 @@ const MobileRecruitUnderText = styled.p`
   white-space: pre-wrap;
 `;
 
-const MobileRecruiteCurrent = styled.p`
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 24px;
-  color: #ffffff;
-  margin-bottom: 20px;
-`;
+// const MobileRecruiteCurrent = styled.p`
+//   font-size: 20px;
+//   font-weight: 800;
+//   line-height: 24px;
+//   color: #ffffff;
+//   margin-bottom: 20px;
+// `;
 
 const MobileRecruitTitle = styled.p`
   font-size: 24px;
@@ -595,12 +595,12 @@ const RecruitUnderText = styled.p`
   letter-spacing: -0.5px;
 `;
 
-const RecruitCurrent = styled.p`
-  font-size: 30px;
-  font-weight: 800;
-  line-height: 60px;
-  color: #ffffff;
-`;
+// const RecruitCurrent = styled.p`
+//   font-size: 30px;
+//   font-weight: 800;
+//   line-height: 60px;
+//   color: #ffffff;
+// `;
 
 const RecruitTitle = styled.p`
   font-size: 48px;
