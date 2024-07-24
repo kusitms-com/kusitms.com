@@ -36,23 +36,23 @@ const RECRUIT_TITLE_3 = "언제 어디서 모여요?";
 const RECRUIT_TITLE_4 = "모집 절차가 어떻게 돼요?";
 
 // 학회원 모집 시
-// const RECRUIT_PART_1 = "기획";
-// const RECRUIT_PART_2 = "개발";
-// const RECRUIT_PART_3 = "디자인";
+const RECRUIT_PART_1 = "기획";
+const RECRUIT_PART_2 = "개발";
+const RECRUIT_PART_3 = "디자인";
 // 운영진 모집 시
-const RECRUIT_PART_1 = "경영총괄팀";
-const RECRUIT_PART_2 = "교육기획팀";
-const RECRUIT_PART_3 = "대외홍보팀";
+// const RECRUIT_PART_1 = "경영총괄팀";
+// const RECRUIT_PART_2 = "교육기획팀";
+// const RECRUIT_PART_3 = "대외홍보팀";
 
-const PART_UNDER_SUB = "2024.01.17 - 2024.01.30 29기 학회원 모집중이에요 :)";
+const PART_UNDER_SUB = "2024.07.25 - 2024.08.06 30기 학회원 모집중이에요 :)";
 const MOBILE_PART_UNDER_SUB =
-  "2024.01.17 - 2024.01.30\n29기 학회원 모집중이에요 :)";
+  "2024.07.25 - 2024.08.06\n30기 학회원 모집중이에요 :)";
 // const MOBILE_PART_SECOND_UNDER_SUB = "* 운영진도 학회원 활동에 참여해요.";
 
 // 학회원 모집 시
-// const WHERE_SUB = "일시: 매주 토요일 15시 ~ 18시\n장소: 서울 지역 내";
+const WHERE_SUB = "일시: 매주 토요일 15시 ~ 18시\n장소: 서울 지역 내";
 // 운영진 모집 시
-const WHERE_SUB = "일시: 매 주 토요일\n장소: 서울 지역 내";
+// const WHERE_SUB = "일시: 매 주 토요일\n장소: 서울 지역 내";
 
 const MOBILE_WHEN_SUB = "매 주 토요일";
 const MOBILE_WHERE_SUB = "서울 지역 내";
@@ -201,16 +201,19 @@ const RecruitPage = () => {
             </MobileWhenBox>
           </MobileWhenSquareBigBox>
 
+          {/* 모집 절차 */}
           <MobileRecruitTitle>{RECRUIT_TITLE_4}</MobileRecruitTitle>
           <RecruitProcess />
 
           <div style={{ margin: "100px 0" }}>
             <img src={polygon} />
           </div>
+
+          {/* 모집 알람, 지원 구글폼 */}
           <MobileRecruitStateBox>
-            <MobileRecruitTitle>{RECRUIT_ALARM[0].title}</MobileRecruitTitle>
+            <MobileRecruitTitle>{RECRUIT_ALARM[1].title}</MobileRecruitTitle>
             <MobileRecruitStateMsg>
-              {RECRUIT_ALARM[0].msg}
+              {RECRUIT_ALARM[1].msg}
             </MobileRecruitStateMsg>
             <MobileRecruitBtn
               onClick={() => {
@@ -220,7 +223,7 @@ const RecruitPage = () => {
                 );
               }}
             >
-              {RECRUIT_ALARM[0].btn}
+              {RECRUIT_ALARM[1].btn}
             </MobileRecruitBtn>
           </MobileRecruitStateBox>
         </MobileRecruitContainer>
@@ -286,14 +289,14 @@ const RecruitPage = () => {
             <img src={polygon} />
           </div>
           <RecruitStateBox>
-            <RecruitTitle>{RECRUIT_ALARM[0].title}</RecruitTitle>
-            <RecruitStateMsg>{RECRUIT_ALARM[0].msg}</RecruitStateMsg>
+            <RecruitTitle>{RECRUIT_ALARM[1].title}</RecruitTitle>
+            <RecruitStateMsg>{RECRUIT_ALARM[1].msg}</RecruitStateMsg>
             <RecruitBtn
               onClick={() => {
-                window.open("https://forms.gle/LJVQ9LWdmP2PvwrE7", "_blank");
+                window.open("https://forms.gle/XRby7aa9MTVUVYbU8", "_blank");
               }}
             >
-              {RECRUIT_ALARM[0].btn}
+              {RECRUIT_ALARM[1].btn}
             </RecruitBtn>
           </RecruitStateBox>
         </RecruitInner>
@@ -689,6 +692,8 @@ const Parts = styled.div`
   display: flex;
   margin: 85.5px auto 40px auto;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   gap: 160px;
 `;
 
