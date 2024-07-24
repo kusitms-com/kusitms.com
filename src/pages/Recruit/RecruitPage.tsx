@@ -50,7 +50,7 @@ const MOBILE_PART_UNDER_SUB =
 // const MOBILE_PART_SECOND_UNDER_SUB = "* 운영진도 학회원 활동에 참여해요.";
 
 // 학회원 모집 시
-const WHERE_SUB = "일시: 매주 토요일 15시 ~ 18시\n장소: 서울 지역 내";
+const WHERE_SUB = "일시: 매주 토요일 12시 ~ 18시\n장소: 서울 지역 내";
 // 운영진 모집 시
 // const WHERE_SUB = "일시: 매 주 토요일\n장소: 서울 지역 내";
 
