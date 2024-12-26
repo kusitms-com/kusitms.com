@@ -267,6 +267,8 @@ const MobileWriterReview = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+  height: 290px;
+  overflow: scroll;
 `;
 
 // 웹 버전

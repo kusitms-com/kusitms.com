@@ -12,8 +12,8 @@ import { ReactComponent as MobileMeetupIcons } from "../../images/projects/icons
 import { ReactComponent as CompanyIcons } from "../../images/projects/icons/CompanyIcons.svg";
 import { ReactComponent as MobileCompanyIcons } from "../../images/projects/icons/MobileCompanyIcons.svg";
 import MeetupProjectCard from "components/MeetupProjectCard";
-import company_tmpImg from "../../images/projects/tmp/company_tmpImg.png";
-import meetup_tmpImg from "../../images/projects/tmp/meetup_tmpImg.png";
+import company_tmpImg from "../../images/projects/tmp/company_tmpImg.jpeg";
+import meetup_tmpImg from "../../images/projects/tmp/meetup_tmpImg.jpeg";
 import CompanyProjectCard from "components/CompanyProjectCard";
 import ProjectsAPI from "api/ProjectsAPI";
 import ProjectDetail from "pages/ProjectDetail";
@@ -95,7 +95,7 @@ const ProjectsPage = () => {
 
   const CompanyIntroTitle = "기업프로젝트란?";
   const CompanyIntroDetail =
-    "큐시즘과 기업이 협업하여 실제 기업이 고민하고 있는 경영/마케팅 문제나 개발과 관련된 아이디어를 제시 받아, 조 단위로 과제를 수행하는 프로젝트에요. 26기 기준으로 큐시즘은 3개의 기업과 5개의 과제로 팀이 구성되었어요.";
+    "큐시즘과 기업이 협업하여 실제 기업이 고민하고 있는 경영/마케팅 문제나 개발과 관련된 아이디어를 제시 받아, 조 단위로 과제를 수행하는 프로젝트에요. 해당 프로젝트를 통해 기업은 새로운 인사이트를 얻으며, 학회원들은 실제 기업과의 귀중한 협업 경험을 얻을 수 있어요.";
 
   const [isMeetupSelected, setIsMeetupSelected] = useState(true);
   const selectedColors = ["#0055FF", "#62EFE5", "#2F3038"];

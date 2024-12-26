@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   :hover {
     transform: scale(1.03);
     transition: all 0.1s linear;
-  };
+  }
 `;
 
 export const PosterImg = styled.img`
@@ -32,6 +32,7 @@ export const LogoImg = styled.img`
   margin-top: 235px;
   width: 95px;
   height: 95px;
+  object-fit: contain;
   border-radius: 50px;
   top: 0px;
   right: 24px;
@@ -61,6 +62,10 @@ export const ProjectName = styled.div`
 export const OneLineIntro = styled.div`
   margin-top: 20px;
   margin-right: 20px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 `;
 
 export const IconContainer = styled.div`

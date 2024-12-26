@@ -64,19 +64,19 @@ const RECRUIT_ALARM = [
   // 모집 전
   {
     title: "모집 알림을 받아볼게요!",
-    msg: "아쉽게도 지금은 모집 기간이 아니에요!\n알림 신청을 통해 30기 모집 알림을 받아보세요. :)",
-    btn: "30기 모집 알림 신청하기",
+    msg: "현재는 리크루팅 기간이 아니에요! \n31기 학회원 모집을 기다려주세요 :)",
+    btn: "31기 모집 알림 신청하기",
   },
   // 학회원 모집 중
   {
     title: "이제 지원해볼게요!",
-    msg: "큐시즘 30기 신규 학회원 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
+    msg: "큐시즘 31기 신규 학회원 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
     btn: "함께하러 가기",
   },
   // 운영진 모집 중
   {
     title: "이제 지원해볼게요!",
-    msg: "큐시즘 30기 신규 운영진 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
+    msg: "큐시즘 31기 신규 운영진 리크루팅이 시작되었어요.\n큐시즘과 함께 성장할 열정 가득한 여러분을 기다려요!",
     btn: "함께하러 가기",
   },
 ];
@@ -211,19 +211,19 @@ const RecruitPage = () => {
 
           {/* 모집 알람, 지원 구글폼 */}
           <MobileRecruitStateBox>
-            <MobileRecruitTitle>{RECRUIT_ALARM[1].title}</MobileRecruitTitle>
+            <MobileRecruitTitle>{RECRUIT_ALARM[0].title}</MobileRecruitTitle>
             <MobileRecruitStateMsg>
-              {RECRUIT_ALARM[1].msg}
+              {RECRUIT_ALARM[0].msg}
             </MobileRecruitStateMsg>
             <MobileRecruitBtn
               onClick={() => {
                 window.open(
-                  "https://docs.google.com/forms/d/e/1FAIpQLSfVjXycd48Ugg-Yjb9Srj5yZQU7hSTE575CncXCQqtRVJZh-Q/viewform",
+                  "https://docs.google.com/forms/d/e/1FAIpQLSfXQ31V6hjUmJgeK-78RFb8J4Azl5lJdK-SRiavVEnWofJYsg/viewform?usp=sf_link",
                   "_blank"
                 );
               }}
             >
-              {RECRUIT_ALARM[1].btn}
+              {RECRUIT_ALARM[0].btn}
             </MobileRecruitBtn>
           </MobileRecruitStateBox>
         </MobileRecruitContainer>
@@ -289,14 +289,17 @@ const RecruitPage = () => {
             <img src={polygon} />
           </div>
           <RecruitStateBox>
-            <RecruitTitle>{RECRUIT_ALARM[1].title}</RecruitTitle>
-            <RecruitStateMsg>{RECRUIT_ALARM[1].msg}</RecruitStateMsg>
+            <RecruitTitle>{RECRUIT_ALARM[0].title}</RecruitTitle>
+            <RecruitStateMsg>{RECRUIT_ALARM[0].msg}</RecruitStateMsg>
             <RecruitBtn
               onClick={() => {
-                window.open("https://forms.gle/XRby7aa9MTVUVYbU8", "_blank");
+                window.open(
+                  "https://docs.google.com/forms/d/e/1FAIpQLSfXQ31V6hjUmJgeK-78RFb8J4Azl5lJdK-SRiavVEnWofJYsg/viewform?usp=sf_link",
+                  "_blank"
+                );
               }}
             >
-              {RECRUIT_ALARM[1].btn}
+              {RECRUIT_ALARM[0].btn}
             </RecruitBtn>
           </RecruitStateBox>
         </RecruitInner>
