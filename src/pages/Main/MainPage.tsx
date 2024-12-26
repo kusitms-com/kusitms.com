@@ -198,7 +198,8 @@ const MOBILE_MANAGEMENT_CONTENTS = [
   },
 ];
 
-const INTRODUCE_YOUTUBE_LINK = "https://youtu.be/B19m5WRdMjw";
+const INTRODUCE_YOUTUBE_LINK =
+  "https://www.youtube.com/watch?v=gaZ3MlO3FV8&t=15s";
 
 const INTRODUCE_PROGRAMS = [
   introduceProgramImage1,
@@ -369,7 +370,7 @@ const MainPage = () => {
                     {true && (
                       <CountUp
                         start={0}
-                        end={1472}
+                        end={1844}
                         duration={1.5}
                         useEasing={true}
                       />
@@ -393,7 +394,7 @@ const MainPage = () => {
                     {true && (
                       <CountUp
                         start={0}
-                        end={239}
+                        end={291}
                         duration={1.2}
                         delay={1.2}
                         useEasing={true}
@@ -418,7 +419,7 @@ const MainPage = () => {
                     {true && (
                       <CountUp
                         start={0}
-                        end={100}
+                        end={110}
                         duration={1.5}
                         delay={2}
                         useEasing={true}
@@ -766,7 +767,7 @@ const MainPage = () => {
                 {isInView && (
                   <CountUp
                     start={0}
-                    end={1544}
+                    end={1844}
                     duration={1.2}
                     useEasing={true}
                   />
@@ -791,7 +792,7 @@ const MainPage = () => {
                 {isInView && (
                   <CountUp
                     start={0}
-                    end={256}
+                    end={291}
                     duration={1.2}
                     delay={0.8}
                     useEasing={true}
@@ -816,7 +817,7 @@ const MainPage = () => {
                 {isInView && (
                   <CountUp
                     start={0}
-                    end={100}
+                    end={110}
                     duration={1.5}
                     delay={1.4}
                     useEasing={true}
