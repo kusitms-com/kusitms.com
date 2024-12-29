@@ -980,7 +980,7 @@ const MainPage = () => {
           {"전문가 초청 강연"}
         </LectureTag>
         <img data-aos="fade-up" data-aos-duration="1000" src={lectureImage1} />
-        <LectureTag
+        {/* <LectureTag
           data-aos="fade-up"
           data-aos-duration="1000"
           color="#000"
@@ -988,7 +988,7 @@ const MainPage = () => {
         >
           {"OB 초청 강연"}
         </LectureTag>
-        <img data-aos="fade-up" data-aos-duration="1000" src={lectureImage2} />
+        <img data-aos="fade-up" data-aos-duration="1000" src={lectureImage2} /> */}
       </LectureContainer>
       <PartnerContainer>
         <IntroduceActivityTitleDiv className="defaultTitle5">
