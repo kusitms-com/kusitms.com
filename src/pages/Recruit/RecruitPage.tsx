@@ -46,7 +46,7 @@ const RECRUIT_PART_3 = "디자인";
 
 const PART_UNDER_SUB = "2024.07.25 - 2024.08.06 30기 학회원 모집중이에요 :)";
 const MOBILE_PART_UNDER_SUB =
-  "2024.07.25 - 2024.08.06\n30기 학회원 모집중이에요 :)";
+  "2024.07.25 - 2024.08.06\n31기 학회원 모집중이에요 :)";
 // const MOBILE_PART_SECOND_UNDER_SUB = "* 운영진도 학회원 활동에 참여해요.";
 
 // 학회원 모집 시
