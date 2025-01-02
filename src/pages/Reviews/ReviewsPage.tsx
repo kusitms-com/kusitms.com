@@ -370,7 +370,7 @@ const WriterReview = styled.p`
   font-size: 16px;
   line-height: 25px;
   height: 290px;
-  overflow: scroll;
+  overflow-y: auto;
   // overflow: auto;
   // white-space: normal;
   // width: 316px;
