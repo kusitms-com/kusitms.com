@@ -26,7 +26,7 @@ const KUSITMS_YEAR = "31기 활동";
 const PROCESS_INFO = [
   {
     img: level1,
-    period: "1월 16일(목) ~ 1월 25일(토)\n23:59 마감",
+    period: "1월 16일(목) ~ 1월 25일(토) 23:59 마감",
   },
   {
     img: level2,
