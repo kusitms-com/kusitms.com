@@ -44,10 +44,11 @@ const RECRUIT_PART_3 = "디자인";
 // const RECRUIT_PART_2 = "교육기획팀";
 // const RECRUIT_PART_3 = "대외홍보팀";
 
-const PART_UNDER_SUB =
-  "현재는 리크루팅 기간이 아니에요! 31기 학회원 모집을 기다려주세요 :)";
+const PART_UNDER_SUB = "2025.01.15 ~ 2025.01.25 31기 학회원 모집중이에요 :)";
+// "현재는 리크루팅 기간이 아니에요! 31기 학회원 모집을 기다려주세요 :)";
 const MOBILE_PART_UNDER_SUB =
-  "현재는 리크루팅 기간이 아니에요! 31기 학회원 모집을 기다려주세요 :)";
+  "2025.01.15 ~ 2025.01.25 31기 학회원 모집중이에요 :)";
+// "현재는 리크루팅 기간이 아니에요! 31기 학회원 모집을 기다려주세요 :)";
 // const MOBILE_PART_SECOND_UNDER_SUB = "* 운영진도 학회원 활동에 참여해요.";
 
 // 학회원 모집 시
@@ -212,9 +213,9 @@ const RecruitPage = () => {
 
           {/* 모집 알람, 지원 구글폼 */}
           <MobileRecruitStateBox>
-            <MobileRecruitTitle>{RECRUIT_ALARM[0].title}</MobileRecruitTitle>
+            <MobileRecruitTitle>{RECRUIT_ALARM[1].title}</MobileRecruitTitle>
             <MobileRecruitStateMsg>
-              {RECRUIT_ALARM[0].msg}
+              {RECRUIT_ALARM[1].msg}
             </MobileRecruitStateMsg>
             <MobileRecruitBtn
               onClick={() => {
@@ -224,7 +225,7 @@ const RecruitPage = () => {
                 );
               }}
             >
-              {RECRUIT_ALARM[0].btn}
+              {RECRUIT_ALARM[1].btn}
             </MobileRecruitBtn>
           </MobileRecruitStateBox>
         </MobileRecruitContainer>
@@ -290,8 +291,8 @@ const RecruitPage = () => {
             <img src={polygon} />
           </div>
           <RecruitStateBox>
-            <RecruitTitle>{RECRUIT_ALARM[0].title}</RecruitTitle>
-            <RecruitStateMsg>{RECRUIT_ALARM[0].msg}</RecruitStateMsg>
+            <RecruitTitle>{RECRUIT_ALARM[1].title}</RecruitTitle>
+            <RecruitStateMsg>{RECRUIT_ALARM[1].msg}</RecruitStateMsg>
             <RecruitBtn
               onClick={() => {
                 window.open(
@@ -300,7 +301,7 @@ const RecruitPage = () => {
                 );
               }}
             >
-              {RECRUIT_ALARM[0].btn}
+              {RECRUIT_ALARM[1].btn}
             </RecruitBtn>
           </RecruitStateBox>
         </RecruitInner>
