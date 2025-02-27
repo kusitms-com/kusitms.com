@@ -69,7 +69,7 @@ export const OneLineIntro = styled.div`
 `;
 
 export const IconContainer = styled.div`
-  width: 104px;
+  width: 200px;
   display: flex;
   position: absolute;
   flex-direction: row;
