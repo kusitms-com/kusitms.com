@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "components/Layout";
 import styled from "styled-components";
-// import { useIsMobile } from "hooks/useIsMobile";
+import { useIsMobile } from "hooks/useIsMobile";
 
 import polygon from "../../images/recruit/Polygon.svg";
 import book from "../../images/recruit/apply-book.svg";
@@ -14,6 +14,7 @@ import ranking from "../../images/recruit/apply-ranking.svg";
 
 import RecruitProcess from "components/recruit/RecruitProcess";
 import RecruitAccordion from "components/recruit/RecriutAccordion";
+import { useNavigate } from "react-router-dom";
 
 interface applyType {
   icon: string;
@@ -139,7 +140,8 @@ const QNA = [
 ];
 const RecruitPage = () => {
   const [active, setActive] = useState<number | null>(null);
-  // const isMobile = useIsMobile();
+  const isMobile = useIsMobile();
+  const navigate = useNavigate();
 
   const WHO_APPLY = [
     {
@@ -155,6 +157,10 @@ const RecruitPage = () => {
       text: "활동 기간 동안 팀 모임에\n적극적으로 참석 가능한 분",
     },
   ];
+
+  if (isMobile) {
+    navigate("/");
+  }
 
   // const WHO_APPLY = [
   //   {

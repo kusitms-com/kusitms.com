@@ -41,7 +41,7 @@ const SNSGROUPS = [
   },
   {
     img: iconBlog,
-    link: "https://blog.naver.com/kusitms10",
+    link: "https://blog.naver.com/kusitms28",
   },
   {
     img: iconGithub,

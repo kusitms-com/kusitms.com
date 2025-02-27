@@ -17,7 +17,9 @@ import meetup_tmpImg from "../../images/projects/tmp/meetup_tmpImg.jpeg";
 import CompanyProjectCard from "components/CompanyProjectCard";
 import ProjectsAPI from "api/ProjectsAPI";
 import ProjectDetail from "pages/ProjectDetail";
-// import { useIsMobile } from "hooks/useIsMobile";
+import { useIsMobile } from "hooks/useIsMobile";
+import { useNavigate } from "react-router-dom";
+import useScrollRestoration from "hooks/useScrollRestoration";
 // import M_ImageSticker from "components/m_ImageSticker";
 
 export interface IMeetupList {
@@ -155,7 +157,14 @@ const ProjectsPage = () => {
       });
   }, [selectedMeetupId]);
 
-  // const isMobile: boolean = useIsMobile();
+  useScrollRestoration();
+
+  const isMobile: boolean = useIsMobile();
+  const navigate = useNavigate();
+
+  if (isMobile) {
+    navigate("/");
+  }
 
   // if (isMobile) {
   //   return (

@@ -2,7 +2,8 @@ import Layout from "components/Layout";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-// import { useIsMobile } from "hooks/useIsMobile";
+import { useIsMobile } from "hooks/useIsMobile";
+import { useNavigate } from "react-router-dom";
 
 interface reviewListType {
   name: string;
@@ -43,7 +44,8 @@ const Reviews = () => {
   const [lists, setLists] = useState<reviewListType[]>([]);
   const [data, setData] = useState<reviewListType[]>([]);
   const [btn, setBtn] = useState<string>("전체");
-  // const isMobile = useIsMobile();
+  const isMobile = useIsMobile();
+  const navigate = useNavigate();
 
   const onClick = (event: React.FormEvent<HTMLButtonElement>) => {
     const {
@@ -96,6 +98,10 @@ const Reviews = () => {
       return null;
     });
   });
+
+  if (isMobile) {
+    navigate("/");
+  }
 
   // if (isMobile) {
   //   return (
@@ -315,7 +321,7 @@ const PartsBtn = styled.button`
   border: none;
 
   font-size: 20px;
-  line-weight: 25px;
+  line-height: 25px;
   font-family: "SUIT";
   font-weight: 600;
   color: #ffffff;

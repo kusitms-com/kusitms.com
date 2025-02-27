@@ -7,7 +7,7 @@ import styled, { keyframes } from "styled-components";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "animate.css/animate.min.css";
-// import { useIsMobile } from "hooks/useIsMobile";
+import { useIsMobile } from "hooks/useIsMobile";
 
 import mainImage from "../../images/main/main-image.svg";
 // import mainImageMobile from "../../images/main/mobile/main-image.png";
@@ -230,7 +230,7 @@ const INTRODUCE_ACTIVITIES = [
 // ];
 
 const MainPage = () => {
-  // const isMobile = useIsMobile();
+  const isMobile = useIsMobile();
   const [isInView, setIsInView] = useState(false);
   const { ref, inView } = useInView({ threshold: 0.5 });
 
@@ -645,6 +645,24 @@ const MainPage = () => {
   //   );
   // }
 
+  if (isMobile) {
+    return (
+      <Layout>
+        <MainContainer>
+          <p style={{ textAlign: "center", color: "white" }}>
+            현재 서비스 개편 중에 있어
+            <br />
+            모바일 화면으로는 이용이 불가능합니다.
+            <br />
+            테블릿이나 PC를 이용해 주세요.
+            <br />
+            불편을 드려 죄송합니다.
+          </p>
+        </MainContainer>
+      </Layout>
+    );
+  }
+
   return (
     <Layout>
       <MainContainer>
@@ -1019,7 +1037,7 @@ const fadeInTop = keyframes`
     }
 `;
 
-const MainContainer = styled.div`
+export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
