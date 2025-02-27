@@ -63,6 +63,7 @@ export const CategoryBoxContainer = styled.div`
   position: absolute;
   flex-direction: row;
   bottom: 50px;
+  width: 150px;
 `;
 
 export const CategoryBox = styled.div`

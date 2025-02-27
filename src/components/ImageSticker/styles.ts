@@ -29,4 +29,5 @@ export const ImgContent = styled.img`
   width: 446px;
   height: 360px;
   display: flex;
+  object-fit: cover;
 `;

@@ -10,7 +10,7 @@ import "animate.css/animate.min.css";
 import { useIsMobile } from "hooks/useIsMobile";
 
 import mainImage from "../../images/main/main-image.svg";
-import mainImageMobile from "../../images/main/mobile/main-image.png";
+// import mainImageMobile from "../../images/main/mobile/main-image.png";
 import { ReactComponent as EmphasisImage } from "../../images/main/emphasis-image.svg";
 import { ReactComponent as EmphasisImageWhite } from "../../images/main/emphasis-image-white.svg";
 import designIcon from "../../images/main/icon-design.svg";
@@ -22,7 +22,7 @@ import { ReactComponent as MainLogoImage } from "../../images/main/logo-kusitms-
 import { ReactComponent as UpdownImage } from "../../images/main/up-down-image.svg";
 
 import backgroundImage from "../../images/main/background-image.png";
-import backgroundImageMobile from "../../images/main/mobile/background-image.png";
+// import backgroundImageMobile from "../../images/main/mobile/background-image.png";
 
 import managementImage0 from "../../images/main/management-image-0.png";
 import managementImage1 from "../../images/main/management-image-1.png";
@@ -34,37 +34,37 @@ import introduceProgramImage2 from "../../images/main/introduce-program-image-2.
 import introduceProgramImage3 from "../../images/main/introduce-program-image-3.png";
 import introduceProgramImage4 from "../../images/main/introduce-program-image-4.png";
 
-import introduceProgramImageMobile1 from "../../images/main/mobile/introduce-program-image-1.png";
-import introduceProgramImageMobile2 from "../../images/main/mobile/introduce-program-image-2.png";
-import introduceProgramImageMobile3 from "../../images/main/mobile/introduce-program-image-3.png";
-import introduceProgramImageMobile4 from "../../images/main/mobile/introduce-program-image-4.png";
+// import introduceProgramImageMobile1 from "../../images/main/mobile/introduce-program-image-1.png";
+// import introduceProgramImageMobile2 from "../../images/main/mobile/introduce-program-image-2.png";
+// import introduceProgramImageMobile3 from "../../images/main/mobile/introduce-program-image-3.png";
+// import introduceProgramImageMobile4 from "../../images/main/mobile/introduce-program-image-4.png";
 
 import introduceActivityImage1 from "../../images/main/introduce-activity-image-1.png";
 import introduceActivityImage2 from "../../images/main/introduce-activity-image-2.png";
 import introduceActivityImage3 from "../../images/main/introduce-activity-image-3.png";
 import introduceActivityImage4 from "../../images/main/introduce-activity-image-4.png";
 
-import introduceActivityImageMobile1 from "../../images/main/mobile/introduce-activity-image-1.png";
-import introduceActivityImageMobile2 from "../../images/main/mobile/introduce-activity-image-2.png";
-import introduceActivityImageMobile3 from "../../images/main/mobile/introduce-activity-image-3.png";
-import introduceActivityImageMobile4 from "../../images/main/mobile/introduce-activity-image-4.png";
+// import introduceActivityImageMobile1 from "../../images/main/mobile/introduce-activity-image-1.png";
+// import introduceActivityImageMobile2 from "../../images/main/mobile/introduce-activity-image-2.png";
+// import introduceActivityImageMobile3 from "../../images/main/mobile/introduce-activity-image-3.png";
+// import introduceActivityImageMobile4 from "../../images/main/mobile/introduce-activity-image-4.png";
 
 import lectureImage1 from "../../images/main/lecture-image-1.png";
-import lectureImage2 from "../../images/main/lecture-image-2.png";
+// import lectureImage2 from "../../images/main/lecture-image-2.png";
 // import lectureImage3 from "../../images/main/lecture-image-3.png";
 
 // import lectureImageMobile1 from "../../images/main/mobile/lecture-image-1.png";
 // import lectureImageMobile2 from "../../images/main/mobile/lecture-image-2.png";
 
 import partnerImage from "../../images/main/partner-image.png";
-import partnerMobileImage from "../../images/main/mobile/partner-image.png";
+// import partnerMobileImage from "../../images/main/mobile/partner-image.png";
 
 import { ReactComponent as ActivityTop } from "../../images/main/activity-top.svg";
 import { ReactComponent as ActivityBottom } from "../../images/main/activity-bottom.svg";
 import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
-import Header from "components/Header";
-import Footer from "components/Footer";
+// import Header from "components/Header";
+// import Footer from "components/Footer";
 
 interface introductionGroupType {
   img: string;
@@ -89,8 +89,8 @@ const INTRODUCTION_TITLE_2 = "학회 프로그램 소개";
 const INTRODUCTION_TITLE_3 = "학회 활동 소개";
 const INTRODUCTION_TITLE_4 = "지난 기수 연사님";
 
-const MOBILE_INTRODUCTION_DESCRIPTION_1 =
-  "KUSITMS은 기획, 개발, 디자인 팀으로 구성되어 있어요.\n각 팀에서 모인 팀원들이 하나의 조가 되어\n함께 프로젝트를 진행해요.";
+// const MOBILE_INTRODUCTION_DESCRIPTION_1 =
+//   "KUSITMS은 기획, 개발, 디자인 팀으로 구성되어 있어요.\n각 팀에서 모인 팀원들이 하나의 조가 되어\n함께 프로젝트를 진행해요.";
 
 const INTRODUCTION_DESCRIPTION_1 =
   "KUSITMS은 기획, 개발, 디자인 팀으로 구성되어 있어요.\n각 팀에서 모인 팀원들이 하나의 조가 되어 함께 프로젝트를 진행해요.";
@@ -120,26 +120,26 @@ const INTRODUCTION_GROUPS = [
   },
 ];
 
-const MOBILE_INTRODUCTION_GROUPS = [
-  {
-    img: planIcon,
-    title: "기획팀",
-    content:
-      "각 조에서 탄생한 아이디어를 바탕으로 실제 IT 서비스를 기획해요.\n개발팀과 디자인팀과의 협업을 통해 개발 가능성 있는 기능들을\n사용자 관점에서 기획할 수 있어요.",
-  },
-  {
-    img: developIcon,
-    title: "개발팀",
-    content:
-      "팀에서 정의한 문제를 기술적으로 해결하는 과정에 참여해요.\n아이디어에 가장 효과적인 플랫폼을 선택하고, 기획팀 그리고 디자인팀과 협력하며 서비스를 구체화해요.",
-  },
-  {
-    img: designIcon,
-    title: "디자인팀",
-    content:
-      "아이디어를 제품화하기 위해 UI 기획, 설계, 구현까지 비주얼적인 부분을 담당해요. 사용하기 쉬운 UX를\n고민하고, 확장성 있는 제품 개발을 위해 디자인 시스템을 구축하는 역할을 맡아요.",
-  },
-];
+// const MOBILE_INTRODUCTION_GROUPS = [
+//   {
+//     img: planIcon,
+//     title: "기획팀",
+//     content:
+//       "각 조에서 탄생한 아이디어를 바탕으로 실제 IT 서비스를 기획해요.\n개발팀과 디자인팀과의 협업을 통해 개발 가능성 있는 기능들을\n사용자 관점에서 기획할 수 있어요.",
+//   },
+//   {
+//     img: developIcon,
+//     title: "개발팀",
+//     content:
+//       "팀에서 정의한 문제를 기술적으로 해결하는 과정에 참여해요.\n아이디어에 가장 효과적인 플랫폼을 선택하고, 기획팀 그리고 디자인팀과 협력하며 서비스를 구체화해요.",
+//   },
+//   {
+//     img: designIcon,
+//     title: "디자인팀",
+//     content:
+//       "아이디어를 제품화하기 위해 UI 기획, 설계, 구현까지 비주얼적인 부분을 담당해요. 사용하기 쉬운 UX를\n고민하고, 확장성 있는 제품 개발을 위해 디자인 시스템을 구축하는 역할을 맡아요.",
+//   },
+// ];
 
 const MANAGEMENT_TITLE =
   "KUSITMS 활동을 이끄는 운영진이에요.\n학회원 활동과 운영진 활동을 함께해요.";
@@ -171,32 +171,32 @@ const MANAGEMENT_CONTENTS = [
   },
 ];
 
-const MOBILE_MANAGEMENT_CONTENTS = [
-  {
-    img: managementImage0,
-    title: "학부학",
-    content:
-      "학회의 총체적 운영권과\n대내외적 대표권을 가지고 있으며,\n학회 운영 및 업무 총괄,\n파트너십을 위한 기업 미팅,\nOB 연락망 구축 등을 진행해요.",
-  },
-  {
-    img: managementImage1,
-    title: "경영총괄팀",
-    content:
-      "OT/LT, 큐시즘 데이, 큐시즘의 밤 등\n학회 행사를 기획하고,\n회원 관리, 장소 대관, 예산 관리 등\n학회 경영 관련 업무를 총괄해요.",
-  },
-  {
-    img: managementImage3,
-    title: "교육기획팀",
-    content:
-      "초청 강연, 기업 프로젝트, 밋업데이 등\n학회의 전반적인 교육 커리큘럼을\n주관 및 진행하고, 학회원을 대상으로\n정기 교육 세션을 실시해요.",
-  },
-  {
-    img: managementImage2,
-    title: "대외홍보팀",
-    content:
-      "학회 행사와 관련된 콘텐츠를 제작하고,\n전반적인 SNS 관리 및 마케팅,\n외부 기관과의 컨택 및 협찬제안을 담당해요.",
-  },
-];
+// const MOBILE_MANAGEMENT_CONTENTS = [
+//   {
+//     img: managementImage0,
+//     title: "학부학",
+//     content:
+//       "학회의 총체적 운영권과\n대내외적 대표권을 가지고 있으며,\n학회 운영 및 업무 총괄,\n파트너십을 위한 기업 미팅,\nOB 연락망 구축 등을 진행해요.",
+//   },
+//   {
+//     img: managementImage1,
+//     title: "경영총괄팀",
+//     content:
+//       "OT/LT, 큐시즘 데이, 큐시즘의 밤 등\n학회 행사를 기획하고,\n회원 관리, 장소 대관, 예산 관리 등\n학회 경영 관련 업무를 총괄해요.",
+//   },
+//   {
+//     img: managementImage3,
+//     title: "교육기획팀",
+//     content:
+//       "초청 강연, 기업 프로젝트, 밋업데이 등\n학회의 전반적인 교육 커리큘럼을\n주관 및 진행하고, 학회원을 대상으로\n정기 교육 세션을 실시해요.",
+//   },
+//   {
+//     img: managementImage2,
+//     title: "대외홍보팀",
+//     content:
+//       "학회 행사와 관련된 콘텐츠를 제작하고,\n전반적인 SNS 관리 및 마케팅,\n외부 기관과의 컨택 및 협찬제안을 담당해요.",
+//   },
+// ];
 
 const INTRODUCE_YOUTUBE_LINK =
   "https://www.youtube.com/watch?v=gaZ3MlO3FV8&t=15s";
@@ -208,12 +208,12 @@ const INTRODUCE_PROGRAMS = [
   introduceProgramImage4,
 ];
 
-const MOBILE_INTRODUCE_PROGRAMS = [
-  introduceProgramImageMobile1,
-  introduceProgramImageMobile2,
-  introduceProgramImageMobile3,
-  introduceProgramImageMobile4,
-];
+// const MOBILE_INTRODUCE_PROGRAMS = [
+//   introduceProgramImageMobile1,
+//   introduceProgramImageMobile2,
+//   introduceProgramImageMobile3,
+//   introduceProgramImageMobile4,
+// ];
 
 const INTRODUCE_ACTIVITIES = [
   introduceActivityImage1,
@@ -222,12 +222,12 @@ const INTRODUCE_ACTIVITIES = [
   introduceActivityImage4,
 ];
 
-const MOBILE_INTRODUCE_ACTIVITIES = [
-  introduceActivityImageMobile1,
-  introduceActivityImageMobile2,
-  introduceActivityImageMobile3,
-  introduceActivityImageMobile4,
-];
+// const MOBILE_INTRODUCE_ACTIVITIES = [
+//   introduceActivityImageMobile1,
+//   introduceActivityImageMobile2,
+//   introduceActivityImageMobile3,
+//   introduceActivityImageMobile4,
+// ];
 
 const MainPage = () => {
   const isMobile = useIsMobile();
@@ -247,401 +247,419 @@ const MainPage = () => {
     console.log(inView);
   }, [inView]);
 
+  // if (isMobile) {
+  //   return (
+  //     <CustomContainer>
+  //       <MobileContainer>
+  //         <Header />
+  //         <MobileTopContainer>
+  //           <MobileMainText>
+  //             <div
+  //               style={{
+  //                 display: "flex",
+  //                 flexDirection: "row",
+  //                 textAlign: "center",
+  //               }}
+  //             >
+  //               {MAINTEXT.map((s: string, index: number) => {
+  //                 return (
+  //                   <MovingComponent
+  //                     type={"flash"}
+  //                     duration={"10000ms"}
+  //                     timing={"ease"}
+  //                     delay={`${index * 400}ms`}
+  //                     fillMode="backwards"
+  //                   >
+  //                     {s}
+  //                   </MovingComponent>
+  //                 );
+  //               })}
+  //             </div>
+  //             <div style={{ display: "flex", flexDirection: "row" }}>
+  //               {MAINTEXT2.map((s: string, index: number) => {
+  //                 return (
+  //                   <MovingComponent
+  //                     type={"flash"}
+  //                     duration={"10000ms"}
+  //                     timing={"ease"}
+  //                     delay={`${index * 400}ms`}
+  //                     direction="reverse"
+  //                   >
+  //                     {s}
+  //                   </MovingComponent>
+  //                 );
+  //               })}
+  //             </div>
+  //           </MobileMainText>
+  //           <img
+  //             src={mainImageMobile}
+  //             style={{ marginTop: "40px", height: "136px", width: "342px" }}
+  //           />
+  //           <MobileWorthContainer>
+  //             <MobileLeftContainer>
+  //               <div>
+  //                 <MobileWortText
+  //                   data-aos="fade-right"
+  //                   data-aos-duration="1000"
+  //                   data-aos-once="false"
+  //                   data-aos-easing="ease-in-sine"
+  //                 >
+  //                   {WORTHTEXT1}
+  //                 </MobileWortText>
+  //                 <MobileWortText
+  //                   data-aos="fade-right"
+  //                   data-aos-duration="1000"
+  //                   data-aos-once="false"
+  //                   data-aos-easing="ease-in-sine"
+  //                   data-aos-delay="300"
+  //                 >
+  //                   {WORTHTEXT2}
+  //                 </MobileWortText>
+  //                 <MobileWortText
+  //                   data-aos="fade-right"
+  //                   data-aos-duration="1000"
+  //                   data-aos-once="false"
+  //                   data-aos-easing="ease-in-sine"
+  //                   data-aos-delay="600"
+  //                 >
+  //                   {WORTHTEXT3}
+  //                 </MobileWortText>
+  //               </div>
+  //               <MobileKusitmsText id="defaultWorthText">
+  //                 {KUSTIMS}
+  //               </MobileKusitmsText>
+  //             </MobileLeftContainer>
+  //             <div style={{ position: "relative" }}>
+  //               <UpDownCustomImage
+  //                 data-aos="fade-down"
+  //                 data-aos-duration="3000"
+  //                 data-aos-anchor-placement="top-bottom"
+  //                 data-aos-anchor="#defaultWorthText"
+  //                 className="defaultImage"
+  //                 data-aos-once="false"
+  //                 data-aos-delay="800"
+  //                 style={{ width: "140px", height: "97px" }}
+  //               />
+  //               <MainLogoImage
+  //                 style={{
+  //                   position: "absolute",
+  //                   zIndex: 0,
+  //                   top: "-66px",
+  //                   left: "124px",
+  //                   width: "60px",
+  //                   height: "224px",
+  //                 }}
+  //               />
+  //             </div>
+  //           </MobileWorthContainer>
+  //         </MobileTopContainer>
+  //         <MobileNumberContainer>
+  //           <MobileNumberTitle>{"Since 2009"}</MobileNumberTitle>
+  //           <div style={{ display: "flex", gap: "55px" }}>
+  //             <div
+  //               style={{
+  //                 display: "flex",
+  //                 flexDirection: "column",
+  //                 alignItems: "center",
+  //                 justifyContent: "space-between",
+  //               }}
+  //             >
+  //               <Circle />
+  //               <MobileNumber>
+  //                 <div style={{ width: "53px", textAlign: "right" }}>
+  //                   {true && (
+  //                     <CountUp
+  //                       start={0}
+  //                       end={1844}
+  //                       duration={1.5}
+  //                       useEasing={true}
+  //                     />
+  //                   )}
+  //                 </div>
+  //                 {"명"}
+  //               </MobileNumber>
+  //               <MobileNumberSubTitle>{"누적 회원 수"}</MobileNumberSubTitle>
+  //             </div>
+  //             <div
+  //               style={{
+  //                 display: "flex",
+  //                 flexDirection: "column",
+  //                 alignItems: "center",
+  //                 justifyContent: "space-between",
+  //               }}
+  //             >
+  //               <Circle />
+  //               <MobileNumber>
+  //                 <div style={{ width: "37px", textAlign: "right" }}>
+  //                   {true && (
+  //                     <CountUp
+  //                       start={0}
+  //                       end={291}
+  //                       duration={1.2}
+  //                       delay={1.2}
+  //                       useEasing={true}
+  //                     />
+  //                   )}
+  //                 </div>
+  //                 {"개"}
+  //               </MobileNumber>
+  //               <MobileNumberSubTitle>{"프로젝트 결과물"}</MobileNumberSubTitle>
+  //             </div>
+  //             <div
+  //               style={{
+  //                 display: "flex",
+  //                 flexDirection: "column",
+  //                 alignItems: "center",
+  //                 justifyContent: "space-between",
+  //               }}
+  //             >
+  //               <Circle />
+  //               <MobileNumber>
+  //                 <div style={{ width: "36px", textAlign: "right" }}>
+  //                   {true && (
+  //                     <CountUp
+  //                       start={0}
+  //                       end={110}
+  //                       duration={1.5}
+  //                       delay={2}
+  //                       useEasing={true}
+  //                     />
+  //                   )}
+  //                 </div>
+  //                 {"개"}
+  //               </MobileNumber>
+  //               <MobileNumberSubTitle>{"참여 대학 수"}</MobileNumberSubTitle>
+  //             </div>
+  //           </div>
+  //         </MobileNumberContainer>
+  //         <MobileIntroduceContainer>
+  //           <TitleTextContainer data-aos="fade-up" data-aos-duration="3000">
+  //             <MobileTitleText>{INTRODUCTION_TITLE_1}</MobileTitleText>
+  //             <EmphasisImage
+  //               style={{
+  //                 width: "110px",
+  //                 height: "11px",
+  //                 marginLeft: "-14px",
+  //                 marginTop: "4px",
+  //               }}
+  //             />
+  //           </TitleTextContainer>
+  //           <MobileDescriptionText data-aos="fade-up" data-aos-duration="3000">
+  //             {MOBILE_INTRODUCTION_DESCRIPTION_1}
+  //           </MobileDescriptionText>
+  //           <div
+  //             style={{
+  //               marginTop: "40px",
+  //               display: "flex",
+  //               flexDirection: "column",
+  //               gap: "24px",
+  //               alignItems: "center",
+  //               justifyContent: "center",
+  //             }}
+  //           >
+  //             {MOBILE_INTRODUCTION_GROUPS.map(
+  //               (group: introductionGroupType, index: number) => {
+  //                 return <MobileIntroductionCard {...group} />;
+  //               }
+  //             )}
+  //           </div>
+  //           <a href={INTRODUCE_YOUTUBE_LINK} target="_blank" rel="noreferrer">
+  //             <MobileButton>
+  //               {"학회 소개영상 보러가기"}
+  //               <img src={rightArrowIcon} width={20} height={8} />
+  //             </MobileButton>
+  //           </a>
+  //           <MobileManagementContainer>
+  //             <MobileManagementTitle
+  //               data-aos="fade-up"
+  //               data-aos-duration="1000"
+  //             >
+  //               {MANAGEMENT_TITLE}
+  //             </MobileManagementTitle>
+  //             <div
+  //               style={{
+  //                 display: "flex",
+  //                 gap: "24px",
+  //                 flexDirection: "column",
+  //                 marginTop: "40px",
+  //               }}
+  //             >
+  //               {MOBILE_MANAGEMENT_CONTENTS.map(
+  //                 (content: managementContentType, index: number) => {
+  //                   return <MobileManagementCard {...content} />;
+  //                 }
+  //               )}
+  //             </div>
+  //           </MobileManagementContainer>
+  //         </MobileIntroduceContainer>
+  //         <MobileIntroduceProgramContainer>
+  //           <div
+  //             style={{ marginBottom: "98px" }}
+  //             data-aos="fade-up"
+  //             data-aos-duration="1000"
+  //             data-aos-delay="1000"
+  //           >
+  //             <MobileTitleText>{INTRODUCTION_TITLE_2}</MobileTitleText>
+  //             <EmphasisImage
+  //               style={{
+  //                 width: "110px",
+  //                 height: "11px",
+  //                 marginLeft: "114px",
+  //                 marginTop: "8px",
+  //               }}
+  //             />
+  //             <MobileDescriptionText>
+  //               {
+  //                 "KUSITMS에서는 학회원이 새로운 경험을 통해\n성장할 수 있도록 다양한 프로그램을 진행해요."
+  //               }
+  //             </MobileDescriptionText>
+  //           </div>
+  //           {MOBILE_INTRODUCE_PROGRAMS.map((program: string, index: number) => {
+  //             return (
+  //               <img
+  //                 width={321}
+  //                 height={400}
+  //                 src={program}
+  //                 style={{ marginTop: "-38px" }}
+  //                 data-aos="fade-up"
+  //                 data-aos-duration="1000"
+  //                 data-aos-easing="ease-in-sine"
+  //               />
+  //             );
+  //           })}
+  //         </MobileIntroduceProgramContainer>
+  //         <MobileIntroduceActivityContainer>
+  //           <div
+  //             style={{ marginBottom: "123px" }}
+  //             data-aos="fade-up"
+  //             data-aos-duration="3000"
+  //           >
+  //             <MobileTitleText>{INTRODUCTION_TITLE_3}</MobileTitleText>
+  //             <EmphasisImageWhite
+  //               style={{
+  //                 width: "110px",
+  //                 height: "11px",
+  //                 marginLeft: "44px",
+  //                 marginTop: "8px",
+  //               }}
+  //             />
+  //             <MobileDescriptionText>
+  //               {INTRODUCTION_DESCRIPTION_3}
+  //             </MobileDescriptionText>
+  //           </div>
+  //           {MOBILE_INTRODUCE_ACTIVITIES.map(
+  //             (activity: string, index: number) => {
+  //               return (
+  //                 <img
+  //                   width={325}
+  //                   height={400}
+  //                   src={activity}
+  //                   style={{ marginTop: "-38px" }}
+  //                   data-aos="fade-up"
+  //                   data-aos-duration="1000"
+  //                   data-aos-easing="ease-in-sine"
+  //                 />
+  //               );
+  //             }
+  //           )}
+  //         </MobileIntroduceActivityContainer>
+  //         <MobileLectureContainer>
+  //           <div
+  //             style={{
+  //               width: "390px",
+  //               display: "flex",
+  //               flexDirection: "column",
+  //               alignItems: "center",
+  //               padding: "80px 0 100px 0",
+  //             }}
+  //           >
+  //             <div
+  //               className="defaultTitle4"
+  //               data-aos="fade-up"
+  //               data-aos-duration="1000"
+  //               data-aos-anchor-placement="top-bottom"
+  //               data-aos-once="false"
+  //               style={{ marginBottom: "80px" }}
+  //             >
+  //               <MobileTitleText style={{ color: "#151519" }}>
+  //                 {INTRODUCTION_TITLE_4}
+  //               </MobileTitleText>
+  //               <EmphasisImage
+  //                 style={{
+  //                   width: "120px",
+  //                   height: "20px",
+  //                   marginLeft: "18px",
+  //                   marginTop: "8px",
+  //                 }}
+  //               />
+  //             </div>
+  //             <MobileLectureTag>{"전문가 초청 강연"}</MobileLectureTag>
+  //             <img
+  //               src={lectureImage1}
+  //               width="300px"
+  //               height="260px"
+  //               style={{ objectFit: "contain" }}
+  //             />
+  //             <MobileLectureTag
+  //               color="#000"
+  //               backgroundColor="#62EFE5"
+  //               style={{ marginTop: "100px" }}
+  //             >
+  //               {"OB 초청 강연"}
+  //             </MobileLectureTag>
+  //             <img
+  //               src={lectureImage2}
+  //               width="300px"
+  //               height="260px"
+  //               style={{ objectFit: "contain" }}
+  //             />
+  //           </div>
+  //         </MobileLectureContainer>
+  //         <MobilePartnerContainer>
+  //           <div
+  //             className="defaultTitle5"
+  //             data-aos="fade-up"
+  //             data-aos-duration="1000"
+  //             data-aos-anchor-placement="top-bottom"
+  //             data-aos-once="false"
+  //             style={{ marginBottom: "60px" }}
+  //           >
+  //             <MobileTitleText>{"파트너사"}</MobileTitleText>
+  //             <EmphasisImage
+  //               style={{
+  //                 width: "123px",
+  //                 height: "20px",
+  //                 marginLeft: "50px",
+  //                 marginTop: "8px",
+  //               }}
+  //             />
+  //             <MobileDescriptionText>
+  //               {"KUSITMS과 함께하는 파트너사를 소개해요."}
+  //             </MobileDescriptionText>
+  //           </div>
+  //           <img src={partnerMobileImage} width="240px" height="612px" />
+  //         </MobilePartnerContainer>
+  //       </MobileContainer>
+  //       <Footer />
+  //     </CustomContainer>
+  //   );
+  // }
+
   if (isMobile) {
     return (
-      <CustomContainer>
-        <MobileContainer>
-          <Header />
-          <MobileTopContainer>
-            <MobileMainText>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  textAlign: "center",
-                }}
-              >
-                {MAINTEXT.map((s: string, index: number) => {
-                  return (
-                    <MovingComponent
-                      type={"flash"}
-                      duration={"10000ms"}
-                      timing={"ease"}
-                      delay={`${index * 400}ms`}
-                      fillMode="backwards"
-                    >
-                      {s}
-                    </MovingComponent>
-                  );
-                })}
-              </div>
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                {MAINTEXT2.map((s: string, index: number) => {
-                  return (
-                    <MovingComponent
-                      type={"flash"}
-                      duration={"10000ms"}
-                      timing={"ease"}
-                      delay={`${index * 400}ms`}
-                      direction="reverse"
-                    >
-                      {s}
-                    </MovingComponent>
-                  );
-                })}
-              </div>
-            </MobileMainText>
-            <img
-              src={mainImageMobile}
-              style={{ marginTop: "40px", height: "136px", width: "342px" }}
-            />
-            <MobileWorthContainer>
-              <MobileLeftContainer>
-                <div>
-                  <MobileWortText
-                    data-aos="fade-right"
-                    data-aos-duration="1000"
-                    data-aos-once="false"
-                    data-aos-easing="ease-in-sine"
-                  >
-                    {WORTHTEXT1}
-                  </MobileWortText>
-                  <MobileWortText
-                    data-aos="fade-right"
-                    data-aos-duration="1000"
-                    data-aos-once="false"
-                    data-aos-easing="ease-in-sine"
-                    data-aos-delay="300"
-                  >
-                    {WORTHTEXT2}
-                  </MobileWortText>
-                  <MobileWortText
-                    data-aos="fade-right"
-                    data-aos-duration="1000"
-                    data-aos-once="false"
-                    data-aos-easing="ease-in-sine"
-                    data-aos-delay="600"
-                  >
-                    {WORTHTEXT3}
-                  </MobileWortText>
-                </div>
-                <MobileKusitmsText id="defaultWorthText">
-                  {KUSTIMS}
-                </MobileKusitmsText>
-              </MobileLeftContainer>
-              <div style={{ position: "relative" }}>
-                <UpDownCustomImage
-                  data-aos="fade-down"
-                  data-aos-duration="3000"
-                  data-aos-anchor-placement="top-bottom"
-                  data-aos-anchor="#defaultWorthText"
-                  className="defaultImage"
-                  data-aos-once="false"
-                  data-aos-delay="800"
-                  style={{ width: "140px", height: "97px" }}
-                />
-                <MainLogoImage
-                  style={{
-                    position: "absolute",
-                    zIndex: 0,
-                    top: "-66px",
-                    left: "124px",
-                    width: "60px",
-                    height: "224px",
-                  }}
-                />
-              </div>
-            </MobileWorthContainer>
-          </MobileTopContainer>
-          <MobileNumberContainer>
-            <MobileNumberTitle>{"Since 2009"}</MobileNumberTitle>
-            <div style={{ display: "flex", gap: "55px" }}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Circle />
-                <MobileNumber>
-                  <div style={{ width: "53px", textAlign: "right" }}>
-                    {true && (
-                      <CountUp
-                        start={0}
-                        end={1844}
-                        duration={1.5}
-                        useEasing={true}
-                      />
-                    )}
-                  </div>
-                  {"명"}
-                </MobileNumber>
-                <MobileNumberSubTitle>{"누적 회원 수"}</MobileNumberSubTitle>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Circle />
-                <MobileNumber>
-                  <div style={{ width: "37px", textAlign: "right" }}>
-                    {true && (
-                      <CountUp
-                        start={0}
-                        end={291}
-                        duration={1.2}
-                        delay={1.2}
-                        useEasing={true}
-                      />
-                    )}
-                  </div>
-                  {"개"}
-                </MobileNumber>
-                <MobileNumberSubTitle>{"프로젝트 결과물"}</MobileNumberSubTitle>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Circle />
-                <MobileNumber>
-                  <div style={{ width: "36px", textAlign: "right" }}>
-                    {true && (
-                      <CountUp
-                        start={0}
-                        end={110}
-                        duration={1.5}
-                        delay={2}
-                        useEasing={true}
-                      />
-                    )}
-                  </div>
-                  {"개"}
-                </MobileNumber>
-                <MobileNumberSubTitle>{"참여 대학 수"}</MobileNumberSubTitle>
-              </div>
-            </div>
-          </MobileNumberContainer>
-          <MobileIntroduceContainer>
-            <TitleTextContainer data-aos="fade-up" data-aos-duration="3000">
-              <MobileTitleText>{INTRODUCTION_TITLE_1}</MobileTitleText>
-              <EmphasisImage
-                style={{
-                  width: "110px",
-                  height: "11px",
-                  marginLeft: "-14px",
-                  marginTop: "4px",
-                }}
-              />
-            </TitleTextContainer>
-            <MobileDescriptionText data-aos="fade-up" data-aos-duration="3000">
-              {MOBILE_INTRODUCTION_DESCRIPTION_1}
-            </MobileDescriptionText>
-            <div
-              style={{
-                marginTop: "40px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "24px",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {MOBILE_INTRODUCTION_GROUPS.map(
-                (group: introductionGroupType, index: number) => {
-                  return <MobileIntroductionCard {...group} />;
-                }
-              )}
-            </div>
-            <a href={INTRODUCE_YOUTUBE_LINK} target="_blank" rel="noreferrer">
-              <MobileButton>
-                {"학회 소개영상 보러가기"}
-                <img src={rightArrowIcon} width={20} height={8} />
-              </MobileButton>
-            </a>
-            <MobileManagementContainer>
-              <MobileManagementTitle
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
-                {MANAGEMENT_TITLE}
-              </MobileManagementTitle>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "24px",
-                  flexDirection: "column",
-                  marginTop: "40px",
-                }}
-              >
-                {MOBILE_MANAGEMENT_CONTENTS.map(
-                  (content: managementContentType, index: number) => {
-                    return <MobileManagementCard {...content} />;
-                  }
-                )}
-              </div>
-            </MobileManagementContainer>
-          </MobileIntroduceContainer>
-          <MobileIntroduceProgramContainer>
-            <div
-              style={{ marginBottom: "98px" }}
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              data-aos-delay="1000"
-            >
-              <MobileTitleText>{INTRODUCTION_TITLE_2}</MobileTitleText>
-              <EmphasisImage
-                style={{
-                  width: "110px",
-                  height: "11px",
-                  marginLeft: "114px",
-                  marginTop: "8px",
-                }}
-              />
-              <MobileDescriptionText>
-                {
-                  "KUSITMS에서는 학회원이 새로운 경험을 통해\n성장할 수 있도록 다양한 프로그램을 진행해요."
-                }
-              </MobileDescriptionText>
-            </div>
-            {MOBILE_INTRODUCE_PROGRAMS.map((program: string, index: number) => {
-              return (
-                <img
-                  width={321}
-                  height={400}
-                  src={program}
-                  style={{ marginTop: "-38px" }}
-                  data-aos="fade-up"
-                  data-aos-duration="1000"
-                  data-aos-easing="ease-in-sine"
-                />
-              );
-            })}
-          </MobileIntroduceProgramContainer>
-          <MobileIntroduceActivityContainer>
-            <div
-              style={{ marginBottom: "123px" }}
-              data-aos="fade-up"
-              data-aos-duration="3000"
-            >
-              <MobileTitleText>{INTRODUCTION_TITLE_3}</MobileTitleText>
-              <EmphasisImageWhite
-                style={{
-                  width: "110px",
-                  height: "11px",
-                  marginLeft: "44px",
-                  marginTop: "8px",
-                }}
-              />
-              <MobileDescriptionText>
-                {INTRODUCTION_DESCRIPTION_3}
-              </MobileDescriptionText>
-            </div>
-            {MOBILE_INTRODUCE_ACTIVITIES.map(
-              (activity: string, index: number) => {
-                return (
-                  <img
-                    width={325}
-                    height={400}
-                    src={activity}
-                    style={{ marginTop: "-38px" }}
-                    data-aos="fade-up"
-                    data-aos-duration="1000"
-                    data-aos-easing="ease-in-sine"
-                  />
-                );
-              }
-            )}
-          </MobileIntroduceActivityContainer>
-          <MobileLectureContainer>
-            <div
-              style={{
-                width: "390px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                padding: "80px 0 100px 0",
-              }}
-            >
-              <div
-                className="defaultTitle4"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-                data-aos-anchor-placement="top-bottom"
-                data-aos-once="false"
-                style={{ marginBottom: "80px" }}
-              >
-                <MobileTitleText style={{ color: "#151519" }}>
-                  {INTRODUCTION_TITLE_4}
-                </MobileTitleText>
-                <EmphasisImage
-                  style={{
-                    width: "120px",
-                    height: "20px",
-                    marginLeft: "18px",
-                    marginTop: "8px",
-                  }}
-                />
-              </div>
-              <MobileLectureTag>{"전문가 초청 강연"}</MobileLectureTag>
-              <img
-                src={lectureImage1}
-                width="300px"
-                height="260px"
-                style={{ objectFit: "contain" }}
-              />
-              <MobileLectureTag
-                color="#000"
-                backgroundColor="#62EFE5"
-                style={{ marginTop: "100px" }}
-              >
-                {"OB 초청 강연"}
-              </MobileLectureTag>
-              <img
-                src={lectureImage2}
-                width="300px"
-                height="260px"
-                style={{ objectFit: "contain" }}
-              />
-            </div>
-          </MobileLectureContainer>
-          <MobilePartnerContainer>
-            <div
-              className="defaultTitle5"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              data-aos-anchor-placement="top-bottom"
-              data-aos-once="false"
-              style={{ marginBottom: "60px" }}
-            >
-              <MobileTitleText>{"파트너사"}</MobileTitleText>
-              <EmphasisImage
-                style={{
-                  width: "123px",
-                  height: "20px",
-                  marginLeft: "50px",
-                  marginTop: "8px",
-                }}
-              />
-              <MobileDescriptionText>
-                {"KUSITMS과 함께하는 파트너사를 소개해요."}
-              </MobileDescriptionText>
-            </div>
-            <img src={partnerMobileImage} width="240px" height="612px" />
-          </MobilePartnerContainer>
-        </MobileContainer>
-        <Footer />
-      </CustomContainer>
+      <Layout>
+        <MainContainer>
+          <p style={{ textAlign: "center", color: "white" }}>
+            현재 서비스 개편 중에 있어
+            <br />
+            모바일 화면으로는 이용이 불가능합니다.
+            <br />
+            테블릿이나 PC를 이용해 주세요.
+            <br />
+            불편을 드려 죄송합니다.
+          </p>
+        </MainContainer>
+      </Layout>
     );
   }
 
@@ -1019,7 +1037,7 @@ const fadeInTop = keyframes`
     }
 `;
 
-const MainContainer = styled.div`
+export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1559,391 +1577,391 @@ const IntroudceImageCard = styled.div<{ index: number }>`
 
 /// //////////////////////////////////////////
 
-const MobileContainer = styled.div`
-  width: 100vw;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const MobileTopContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  width: 390px;
-  height: 618px;
-
-  background: #151519;
-  padding-top: 40px;
-
-  /* 상단 배너 등장 시 적용
-  margin-top: 58px; */
-`;
-
-const MobileMainText = styled.div`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 24px;
-  line-height: 120%;
-
-  text-align: center;
-
-  color: #ffffff;
-
-  white-space: pre-wrap;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const MobileNumberContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 0;
-
-  width: 100vw;
-  height: 239px;
-
-  background: url(${backgroundImageMobile}) no-repeat;
-  background-size: cover;
-`;
-
-const MobileTitleText = styled.p`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 24px;
-  line-height: 120%;
-  text-align: center;
-  color: #ffffff;
-`;
-
-const MobileDescriptionText = styled.p`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 140%;
-
-  text-align: center;
-  letter-spacing: -0.5px;
-
-  color: #ffffff;
-
-  white-space: pre-line;
-  word-break: keep-all;
-  word-wrap: break-word;
-
-  margin-top: 20px;
-`;
-
-const MobileIntroduceContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 390px;
-  padding-top: 60px;
-`;
-
-const MobileIntroduceProgramContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 390px;
-  padding: 80px 0;
-`;
-
-const MobileIntroductionCard = (group: introductionGroupType) => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
-  return (
-    <MobileIntroductionCardContainer
-      data-aos="fade-right"
-      data-aos-delay="300"
-      data-aos-easing="ease-in-sine"
-    >
-      <img src={group.img} width="36px" height="36px" />
-      <MobileIntroductionCardSideContainer>
-        <MobileIntroductionCardTitle>{group.title}</MobileIntroductionCardTitle>
-        <MobileIntroductionCardContent width={group.title === "디자인팀"}>
-          {group.content}
-        </MobileIntroductionCardContent>
-      </MobileIntroductionCardSideContainer>
-    </MobileIntroductionCardContainer>
-  );
-};
-
-const MobileIntroductionCardContainer = styled.div`
-  width: 322px;
-  height: 209px;
-
-  background: #fff;
-  border-radius: 20px;
-
-  display: flex;
-  gap: 17px;
-
-  padding: 40px 32px 36px 32px;
-`;
-
-const MobileIntroductionCardSideContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-`;
-
-const MobileIntroductionCardTitle = styled.p`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 25px;
-
-  color: #0055ff;
-`;
-
-const MobileIntroductionCardContent = styled.p<{ width: boolean }>`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 140%;
-
-  letter-spacing: -0.5px;
-
-  color: #000000;
-
-  white-space: pre-line;
-  word-wrap: break-word;
-  word-break: keep-all;
-
-  width: ${(props) => (props.width ? "216px" : "205px")};
-`;
-
-const MobileManagementContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const MobileButton = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 8px 0;
-
-  width: 213px;
-  height: 40px;
-
-  background: #0055ff;
-  border-radius: 75px;
-
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 150%;
-
-  letter-spacing: -0.2px;
-
-  color: #ffffff;
-
-  margin-top: 40px;
-  margin-bottom: 60px;
-`;
-
-const MobileManagementTitle = styled.p`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 140%;
-  /* or 14px */
-
-  text-align: center;
-  letter-spacing: -0.5px;
-
-  color: #ffffff;
-
-  white-space: pre-line;
-`;
-
-const MobileManagementCard = (content: managementContentType) => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
-  return (
-    <MobileManagementCardContainer
-      url={content.img}
-      data-aos="fade-up"
-      data-aos-delay="300"
-      data-aos-easing="ease-in-sine"
-    >
-      <MobileManagementCardTitle>{content.title}</MobileManagementCardTitle>
-      <MobileManagementCardContent>
-        {content.content}
-      </MobileManagementCardContent>
-    </MobileManagementCardContainer>
-  );
-};
-
-const MobileManagementCardContainer = styled.div<{
-  url: string;
-}>`
-  width: 322px;
-  height: 440px;
-  background: url(${(props) => props.url}) no-repeat;
-  background-size: 322px 440px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding-bottom: 40px;
-  border-radius: 20px;
-`;
-
-const MobileManagementCardTitle = styled.p`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 25px;
-
-  text-align: center;
-
-  color: #ffffff;
-  margin-bottom: 16px;
-`;
-
-const MobileManagementCardContent = styled.p`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 140%;
-
-  text-align: center;
-  letter-spacing: -0.5px;
-
-  color: #ffffff;
-
-  white-space: pre-line;
-  word-break: keep-all;
-  word-wrap: break-word;
-`;
-
-const MobileIntroduceActivityContainer = styled.div`
-  width: 100vw;
-
-  background: #0055ff;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 0;
-`;
-
-const MobileNumberTitle = styled.div`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-
-  text-align: center;
-  letter-spacing: -0.5px;
-
-  color: #ffffff;
-  margin-bottom: 40px;
-`;
-
-const Circle = styled.div`
-  width: 8px;
-  height: 8px;
-
-  background: #dce1ff;
-  border-radius: 50%;
-  margin-bottom: 12px;
-`;
-
-const MobileNumber = styled.div`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 25px;
-  text-align: center;
-
-  color: #ffffff;
-
-  white-space: pre-wrap;
-  display: flex;
-`;
-
-const MobileNumberSubTitle = styled.p`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 150%;
-
-  letter-spacing: -0.5px;
-
-  color: #dce1ff;
-
-  margin-top: 8px;
-`;
-
-const MobileWorthContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px 64px 78px 32px;
-  width: 390px;
-`;
-
-const MobileLeftContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 159px;
-`;
-
-const MobileWortText = styled.p`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 24px;
-  line-height: 120%;
-
-  color: #ffffff;
-`;
-
-const MobileKusitmsText = styled.p`
-  font-family: "SUIT";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 150%;
-  letter-spacing: -0.5px;
-
-  color: #ffffff;
-  margin-top: 71px;
-`;
+// const MobileContainer = styled.div`
+//   width: 100vw;
+//   height: 100%;
+
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// `;
+// const MobileTopContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+
+//   width: 390px;
+//   height: 618px;
+
+//   background: #151519;
+//   padding-top: 40px;
+
+//   /* 상단 배너 등장 시 적용
+//   margin-top: 58px; */
+// `;
+
+// const MobileMainText = styled.div`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 800;
+//   font-size: 24px;
+//   line-height: 120%;
+
+//   text-align: center;
+
+//   color: #ffffff;
+
+//   white-space: pre-wrap;
+
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// `;
+
+// const MobileNumberContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   padding: 40px 0;
+
+//   width: 100vw;
+//   height: 239px;
+
+//   background: url(${backgroundImageMobile}) no-repeat;
+//   background-size: cover;
+// `;
+
+// const MobileTitleText = styled.p`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 800;
+//   font-size: 24px;
+//   line-height: 120%;
+//   text-align: center;
+//   color: #ffffff;
+// `;
+
+// const MobileDescriptionText = styled.p`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 14px;
+//   line-height: 140%;
+
+//   text-align: center;
+//   letter-spacing: -0.5px;
+
+//   color: #ffffff;
+
+//   white-space: pre-line;
+//   word-break: keep-all;
+//   word-wrap: break-word;
+
+//   margin-top: 20px;
+// `;
+
+// const MobileIntroduceContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+
+//   width: 390px;
+//   padding-top: 60px;
+// `;
+
+// const MobileIntroduceProgramContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+
+//   width: 390px;
+//   padding: 80px 0;
+// `;
+
+// const MobileIntroductionCard = (group: introductionGroupType) => {
+//   useEffect(() => {
+//     AOS.init();
+//   }, []);
+//   return (
+//     <MobileIntroductionCardContainer
+//       data-aos="fade-right"
+//       data-aos-delay="300"
+//       data-aos-easing="ease-in-sine"
+//     >
+//       <img src={group.img} width="36px" height="36px" />
+//       <MobileIntroductionCardSideContainer>
+//         <MobileIntroductionCardTitle>{group.title}</MobileIntroductionCardTitle>
+//         <MobileIntroductionCardContent width={group.title === "디자인팀"}>
+//           {group.content}
+//         </MobileIntroductionCardContent>
+//       </MobileIntroductionCardSideContainer>
+//     </MobileIntroductionCardContainer>
+//   );
+// };
+
+// const MobileIntroductionCardContainer = styled.div`
+//   width: 322px;
+//   height: 209px;
+
+//   background: #fff;
+//   border-radius: 20px;
+
+//   display: flex;
+//   gap: 17px;
+
+//   padding: 40px 32px 36px 32px;
+// `;
+
+// const MobileIntroductionCardSideContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 12px;
+// `;
+
+// const MobileIntroductionCardTitle = styled.p`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 800;
+//   font-size: 20px;
+//   line-height: 25px;
+
+//   color: #0055ff;
+// `;
+
+// const MobileIntroductionCardContent = styled.p<{ width: boolean }>`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 14px;
+//   line-height: 140%;
+
+//   letter-spacing: -0.5px;
+
+//   color: #000000;
+
+//   white-space: pre-line;
+//   word-wrap: break-word;
+//   word-break: keep-all;
+
+//   width: ${(props) => (props.width ? "216px" : "205px")};
+// `;
+
+// const MobileManagementContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// `;
+
+// const MobileButton = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 10px;
+//   padding: 8px 0;
+
+//   width: 213px;
+//   height: 40px;
+
+//   background: #0055ff;
+//   border-radius: 75px;
+
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 600;
+//   font-size: 16px;
+//   line-height: 150%;
+
+//   letter-spacing: -0.2px;
+
+//   color: #ffffff;
+
+//   margin-top: 40px;
+//   margin-bottom: 60px;
+// `;
+
+// const MobileManagementTitle = styled.p`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 14px;
+//   line-height: 140%;
+//   /* or 14px */
+
+//   text-align: center;
+//   letter-spacing: -0.5px;
+
+//   color: #ffffff;
+
+//   white-space: pre-line;
+// `;
+
+// const MobileManagementCard = (content: managementContentType) => {
+//   useEffect(() => {
+//     AOS.init();
+//   }, []);
+//   return (
+//     <MobileManagementCardContainer
+//       url={content.img}
+//       data-aos="fade-up"
+//       data-aos-delay="300"
+//       data-aos-easing="ease-in-sine"
+//     >
+//       <MobileManagementCardTitle>{content.title}</MobileManagementCardTitle>
+//       <MobileManagementCardContent>
+//         {content.content}
+//       </MobileManagementCardContent>
+//     </MobileManagementCardContainer>
+//   );
+// };
+
+// const MobileManagementCardContainer = styled.div<{
+//   url: string;
+// }>`
+//   width: 322px;
+//   height: 440px;
+//   background: url(${(props) => props.url}) no-repeat;
+//   background-size: 322px 440px;
+
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: flex-end;
+//   padding-bottom: 40px;
+//   border-radius: 20px;
+// `;
+
+// const MobileManagementCardTitle = styled.p`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 800;
+//   font-size: 20px;
+//   line-height: 25px;
+
+//   text-align: center;
+
+//   color: #ffffff;
+//   margin-bottom: 16px;
+// `;
+
+// const MobileManagementCardContent = styled.p`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 14px;
+//   line-height: 140%;
+
+//   text-align: center;
+//   letter-spacing: -0.5px;
+
+//   color: #ffffff;
+
+//   white-space: pre-line;
+//   word-break: keep-all;
+//   word-wrap: break-word;
+// `;
+
+// const MobileIntroduceActivityContainer = styled.div`
+//   width: 100vw;
+
+//   background: #0055ff;
+
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 80px 0;
+// `;
+
+// const MobileNumberTitle = styled.div`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 16px;
+//   line-height: 20px;
+
+//   text-align: center;
+//   letter-spacing: -0.5px;
+
+//   color: #ffffff;
+//   margin-bottom: 40px;
+// `;
+
+// const Circle = styled.div`
+//   width: 8px;
+//   height: 8px;
+
+//   background: #dce1ff;
+//   border-radius: 50%;
+//   margin-bottom: 12px;
+// `;
+
+// const MobileNumber = styled.div`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 800;
+//   font-size: 20px;
+//   line-height: 25px;
+//   text-align: center;
+
+//   color: #ffffff;
+
+//   white-space: pre-wrap;
+//   display: flex;
+// `;
+
+// const MobileNumberSubTitle = styled.p`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 14px;
+//   line-height: 150%;
+
+//   letter-spacing: -0.5px;
+
+//   color: #dce1ff;
+
+//   margin-top: 8px;
+// `;
+
+// const MobileWorthContainer = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 60px 64px 78px 32px;
+//   width: 390px;
+// `;
+
+// const MobileLeftContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   width: 159px;
+// `;
+
+// const MobileWortText = styled.p`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 800;
+//   font-size: 24px;
+//   line-height: 120%;
+
+//   color: #ffffff;
+// `;
+
+// const MobileKusitmsText = styled.p`
+//   font-family: "SUIT";
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 14px;
+//   line-height: 150%;
+//   letter-spacing: -0.5px;
+
+//   color: #ffffff;
+//   margin-top: 71px;
+// `;
 
 const NumberContainer = styled.div`
   display: flex;
@@ -2034,49 +2052,49 @@ const UpDownCustomImage = styled(UpdownImage)`
   }
 `;
 
-const MobileLectureContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
+// const MobileLectureContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 100vw;
 
-  background-color: #ffffff;
-`;
+//   background-color: #ffffff;
+// `;
 
-const MobilePartnerContainer = styled.div`
-  padding: 80px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+// const MobilePartnerContainer = styled.div`
+//   padding: 80px 0;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// `;
 
-const MobileLectureTag = styled.div<{
-  color?: string;
-  backgroundColor?: string;
-}>`
-  display: flex;
-  flex-direction: column;
-  padding: 12px 24px;
+// const MobileLectureTag = styled.div<{
+//   color?: string;
+//   backgroundColor?: string;
+// }>`
+//   display: flex;
+//   flex-direction: column;
+//   padding: 12px 24px;
 
-  color: ${(props) => (props.color ? props.color : "#fff")};
+//   color: ${(props) => (props.color ? props.color : "#fff")};
 
-  background: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : "#0055ff"};
-  border-radius: 75px;
-  font-family: "SUIT";
+//   background: ${(props) =>
+//     props.backgroundColor ? props.backgroundColor : "#0055ff"};
+//   border-radius: 75px;
+//   font-family: "SUIT";
 
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 150%;
-  margin-bottom: 48px;
-`;
+//   font-weight: 600;
+//   font-size: 16px;
+//   line-height: 150%;
+//   margin-bottom: 48px;
+// `;
 
-const CustomContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+// const CustomContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
 
-  background: #151519;
-  height: inherit;
-`;
+//   background: #151519;
+//   height: inherit;
+// `;
