@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useIsMobile } from "hooks/useIsMobile";
+import { useNavigate } from "react-router-dom";
 
 interface reviewListType {
   name: string;
@@ -16,7 +17,7 @@ interface categoryType {
 }
 
 const REVIEW_TITLE = "큐밀리의\n솔직 후기를 들어보세요!";
-const MOBILE_REVIEW_TITLE = "큐밀리의\n솔직 후기를\n들어보세요!";
+// const MOBILE_REVIEW_TITLE = "큐밀리의\n솔직 후기를\n들어보세요!";
 // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 const API_URL = `${process.env.REACT_APP_SERVER_BASE_ADDRESS}api/reviews`;
 const categories = [
@@ -44,6 +45,7 @@ const Reviews = () => {
   const [data, setData] = useState<reviewListType[]>([]);
   const [btn, setBtn] = useState<string>("전체");
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
 
   const onClick = (event: React.FormEvent<HTMLButtonElement>) => {
     const {
@@ -98,41 +100,45 @@ const Reviews = () => {
   });
 
   if (isMobile) {
-    return (
-      <Layout>
-        <MobileContainer>
-          <MobileTitle>{MOBILE_REVIEW_TITLE}</MobileTitle>
-          <MobileReviewsSubTitle>
-            <span style={{ color: "#0055ff" }}>{count}</span>개의 후기가
-            등록되어 있어요
-          </MobileReviewsSubTitle>
-          <MobilePartsContainer>
-            {categories.map((item: categoryType, idx: number) => (
-              <MobilePartsBtn
-                key={idx}
-                id={item.name}
-                onClick={(e: React.FormEvent<HTMLButtonElement>) => {
-                  activeCategory(item.value);
-                  onClick(e);
-                }}
-              >
-                {item.name}
-              </MobilePartsBtn>
-            ))}
-          </MobilePartsContainer>
-          <MobileReviewBoxContainer>
-            {data.map((item: reviewListType, index: number) => (
-              <MobileReviewBox key={index}>
-                <MobileReviewWriter>{item.name}</MobileReviewWriter>
-                <MobileWriterTeam>{item.team}</MobileWriterTeam>
-                <MobileWriterReview>{item.review}</MobileWriterReview>
-              </MobileReviewBox>
-            ))}
-          </MobileReviewBoxContainer>
-        </MobileContainer>
-      </Layout>
-    );
+    navigate("/");
   }
+
+  // if (isMobile) {
+  //   return (
+  //     <Layout>
+  //       <MobileContainer>
+  //         <MobileTitle>{MOBILE_REVIEW_TITLE}</MobileTitle>
+  //         <MobileReviewsSubTitle>
+  //           <span style={{ color: "#0055ff" }}>{count}</span>개의 후기가
+  //           등록되어 있어요
+  //         </MobileReviewsSubTitle>
+  //         <MobilePartsContainer>
+  //           {categories.map((item: categoryType, idx: number) => (
+  //             <MobilePartsBtn
+  //               key={idx}
+  //               id={item.name}
+  //               onClick={(e: React.FormEvent<HTMLButtonElement>) => {
+  //                 activeCategory(item.value);
+  //                 onClick(e);
+  //               }}
+  //             >
+  //               {item.name}
+  //             </MobilePartsBtn>
+  //           ))}
+  //         </MobilePartsContainer>
+  //         <MobileReviewBoxContainer>
+  //           {data.map((item: reviewListType, index: number) => (
+  //             <MobileReviewBox key={index}>
+  //               <MobileReviewWriter>{item.name}</MobileReviewWriter>
+  //               <MobileWriterTeam>{item.team}</MobileWriterTeam>
+  //               <MobileWriterReview>{item.review}</MobileWriterReview>
+  //             </MobileReviewBox>
+  //           ))}
+  //         </MobileReviewBoxContainer>
+  //       </MobileContainer>
+  //     </Layout>
+  //   );
+  // }
 
   return (
     <Layout>
@@ -172,104 +178,104 @@ const Reviews = () => {
 
 export default Reviews;
 
-const MobileContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background: #ffffff;
-`;
+// const MobileContainer = styled.div`
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   text-align: center;
+//   background: #ffffff;
+// `;
 
-const MobileTitle = styled.p`
-  padding-top: 60px;
-  font-family: "SUIT";
-  font-size: 48px;
-  font-weight: 800;
-  line-height: 60px;
-  margin-bottom: 40px;
-  letter-spacing: -0.2px;
-  white-space: pre-wrap;
-`;
+// const MobileTitle = styled.p`
+//   padding-top: 60px;
+//   font-family: "SUIT";
+//   font-size: 48px;
+//   font-weight: 800;
+//   line-height: 60px;
+//   margin-bottom: 40px;
+//   letter-spacing: -0.2px;
+//   white-space: pre-wrap;
+// `;
 
-const MobileReviewsSubTitle = styled.span`
-  font-family: "SUIT";
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 25px;
-  letter-spacing: -0.2px;
-`;
+// const MobileReviewsSubTitle = styled.span`
+//   font-family: "SUIT";
+//   font-size: 20px;
+//   font-weight: 400;
+//   line-height: 25px;
+//   letter-spacing: -0.2px;
+// `;
 
-const MobilePartsContainer = styled.div`
-  width: 320px;
-  display: flex;
-  justify-content: space-between;
-  padding: 60px 0;
-`;
+// const MobilePartsContainer = styled.div`
+//   width: 320px;
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 60px 0;
+// `;
 
-const MobilePartsBtn = styled.button`
-  padding: 8px 20px;
-  border-radius: 75px;
-  background-color: "#0055ff";
-  border: none;
+// const MobilePartsBtn = styled.button`
+//   padding: 8px 20px;
+//   border-radius: 75px;
+//   background-color: "#0055ff";
+//   border: none;
 
-  font-size: 16px;
-  font-family: "SUIT";
-  font-weight: 600;
-  color: #ffffff;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+//   font-size: 16px;
+//   font-family: "SUIT";
+//   font-weight: 600;
+//   color: #ffffff;
+//   cursor: pointer;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
 
-  &:hover {
-    background: "#0055ff";
-  }
-`;
+//   &:hover {
+//     background: "#0055ff";
+//   }
+// `;
 
-const MobileReviewBoxContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px;
-  width: 390px;
-  flex-wrap: wrap; // 복수의 행
-  margin-bottom: 60px;
-`;
+// const MobileReviewBoxContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   padding: 0px;
+//   width: 390px;
+//   flex-wrap: wrap; // 복수의 행
+//   margin-bottom: 60px;
+// `;
 
-const MobileReviewBox = styled.div`
-  width: 334px;
-  height: 368px;
-  background: #f2f2f8;
-  border-radius: 32px;
-  padding: 40px 24px;
-  margin-bottom: 24px;
-  text-align: left;
-  font-family: "SUIT";
-`;
+// const MobileReviewBox = styled.div`
+//   width: 334px;
+//   height: 368px;
+//   background: #f2f2f8;
+//   border-radius: 32px;
+//   padding: 40px 24px;
+//   margin-bottom: 24px;
+//   text-align: left;
+//   font-family: "SUIT";
+// `;
 
-const MobileReviewWriter = styled.p`
-  font-weight: 800;
-  font-size: 20px;
-  margin-bottom: 4px;
-`;
+// const MobileReviewWriter = styled.p`
+//   font-weight: 800;
+//   font-size: 20px;
+//   margin-bottom: 4px;
+// `;
 
-const MobileWriterTeam = styled.p`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  color: #0055ff;
-  margin-bottom: 24px;
-`;
+// const MobileWriterTeam = styled.p`
+//   font-weight: 400;
+//   font-size: 16px;
+//   line-height: 20px;
+//   color: #0055ff;
+//   margin-bottom: 24px;
+// `;
 
-const MobileWriterReview = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  height: 290px;
-  overflow: scroll;
-`;
+// const MobileWriterReview = styled.p`
+//   font-weight: 400;
+//   font-size: 14px;
+//   line-height: 20px;
+//   height: 290px;
+//   overflow: scroll;
+// `;
 
 // 웹 버전
 const ReviewsContainer = styled.div`
@@ -315,7 +321,7 @@ const PartsBtn = styled.button`
   border: none;
 
   font-size: 20px;
-  line-weight: 25px;
+  line-height: 25px;
   font-family: "SUIT";
   font-weight: 600;
   color: #ffffff;
