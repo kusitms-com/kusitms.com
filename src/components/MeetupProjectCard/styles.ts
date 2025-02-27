@@ -69,12 +69,13 @@ export const OneLineIntro = styled.div`
 `;
 
 export const IconContainer = styled.div`
-  width: 200px;
+  width: 130px;
   display: flex;
   position: absolute;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: start;
   bottom: 30px;
+  gap: 4px;
 `;
 
 export const IconBackground = styled.div`
