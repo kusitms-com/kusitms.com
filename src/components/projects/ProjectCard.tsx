@@ -26,7 +26,7 @@ const Poster = ({ src }: { src: string }) => (
 );
 
 const Logo = ({ src }: { src: string }) => (
-  <div className="absolute mt-[220px] w-[95px] h-[95px] rounded-full top-0 right-[24px] bg-white flex justify-center items-center overflow-hidden">
+  <div className="absolute mt-[230px] w-[95px] h-[95px] rounded-full top-0 right-[24px] bg-white flex justify-center items-center overflow-hidden">
     <Image src={src} alt="logo" width={95} height={95} />
   </div>
 );

@@ -21,7 +21,7 @@ const Sticker = ({ children }: { children: ReactNode }) => {
 
 const CardImage = ({ src }: { src: string }) => {
   return (
-    <div className="w-[480px] h-[380px] bg-white flex justify-center items-center rotate-[5deg]">
+    <div className="w-[480px] h-[410px] bg-white flex justify-center items-center rotate-[5deg]">
       <Image
         src={src}
         alt="content"
