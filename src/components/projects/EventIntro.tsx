@@ -4,7 +4,7 @@ interface EventIntroProps {
   type: "enterprise" | "meetup";
 }
 
-function EventIntro({ type }: EventIntroProps) {
+export const EventIntro = ({ type }: EventIntroProps) => {
   const content = {
     meetup: {
       title: "밋업(Meet-up)데이란?",
@@ -30,14 +30,26 @@ function EventIntro({ type }: EventIntroProps) {
         <div className="text-white text-[48px] font-bold mb-[10px]">
           {title}
         </div>
-        <Image src={icon} alt="하이라이트" width={180} height={16} priority />
+        <Image
+          src={icon}
+          alt="하이라이트"
+          width={180}
+          height={16}
+          priority
+          style={{ width: 180, height: 16 }}
+        />
       </div>
       <div className="text-[#90909A] text-[20px] mt-[60px] leading-[150%] mb-[40px]">
         {detail}
       </div>
-      <Image src={bottomIcon} alt="아이콘" width={590} height={96} priority />
+      <Image
+        src={bottomIcon}
+        alt="아이콘"
+        width={590}
+        height={96}
+        priority
+        style={{ width: 590, height: 96 }}
+      />
     </div>
   );
-}
-
-export default EventIntro;
+};

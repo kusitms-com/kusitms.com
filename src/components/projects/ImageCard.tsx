@@ -5,7 +5,7 @@ interface ImageCardProps {
   children: ReactNode;
 }
 
-const ImageCard = ({ children }: ImageCardProps) => {
+export const ImageCard = ({ children }: ImageCardProps) => {
   return (
     <div className="w-[600px] h-[500px] mt-[40px] relative">{children}</div>
   );
@@ -28,6 +28,8 @@ const CardImage = ({ src }: { src: string }) => {
         width={446}
         height={360}
         className="object-cover"
+        style={{ width: 446, height: 360 }}
+        priority
       />
     </div>
   );
@@ -35,5 +37,3 @@ const CardImage = ({ src }: { src: string }) => {
 
 ImageCard.Sticker = Sticker;
 ImageCard.Image = CardImage;
-
-export default ImageCard;
