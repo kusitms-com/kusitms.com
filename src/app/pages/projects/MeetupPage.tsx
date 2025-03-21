@@ -1,11 +1,10 @@
 import Image from "next/image";
 import React from "react";
-import { getMeetupProjects } from "@/service/projects";
 import { Card, EventIntro, Filter, ImageCard } from "@/components/projects";
+import { getMeetupProjects } from "@/service/projects";
 
-async function MeetupPage() {
+export const MeetupPage = async () => {
   const meetupProjectList = await getMeetupProjects();
-
   return (
     <section className=" w-full max-w-[1180px]">
       <div className="flex w-full gap-[90px] mt-[100px] justify-center items-center">
@@ -51,6 +50,6 @@ async function MeetupPage() {
       </div>
     </section>
   );
-}
+};
 
 export default MeetupPage;
