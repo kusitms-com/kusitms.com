@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ReactNode } from "react";
+import { NavButtons } from "@/components/projects";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -23,25 +23,7 @@ export default function ProjectsLayout({
           <span className="text-[#62EFE5]">45개</span>의 프로젝트를 볼 수
           있어요.
         </p>
-        <div className="flex gap-4 justify-center">
-          <Link href="/projects/meetup">
-            <button
-              className="flex cursor-pointer rounded-[75px] border-0 mx-[16px] 
-            mt-[48px] h-[53px] px-[32px] justify-center 
-            items-center bg-[#2f3038] font-bold"
-            >
-              밋업데이
-            </button>
-          </Link>
-          <Link href="/projects/enterprise">
-            <button
-              className="flex cursor-pointer rounded-[75px] border-0 mx-[16px] mt-[48px] 
-            h-[53px] px-[32px] justify-center items-center bg-[#2f3038] font-bold"
-            >
-              기업 프로젝트
-            </button>
-          </Link>
-        </div>
+        <NavButtons />
       </header>
       <main className="w-full max-w-6xl mx-auto">{children}</main>
     </div>
