@@ -1,5 +1,5 @@
 import React from "react";
-import { MeetupPage } from "@/app/pages/projects";
+import { CorporatePage, MeetupPage } from "@/app/pages/projects";
 
 async function BranchPage({
   params,
@@ -9,8 +9,8 @@ async function BranchPage({
   const { projectType } = await params;
   if (projectType === "meetup") {
     return <MeetupPage />;
-  } else if (projectType === "enterprice") {
-    return <MeetupPage />;
+  } else if (projectType === "corporate") {
+    return <CorporatePage />;
   }
 }
 

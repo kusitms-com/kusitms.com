@@ -54,7 +54,7 @@ const CategoryContainer = ({ children }: { children: ReactNode }) => (
 );
 
 const Category = ({ children }: { children: ReactNode }) => (
-  <div className="border border-[#2f3038] rounded-[15px] px-[12px] py-[4px] ml-[5px] text-[#2f3038]">
+  <div className="border border-[#2f3038] rounded-[15px] px-[12px] py-[4px] text-[#2f3038]">
     {children}
   </div>
 );

@@ -1,5 +1,5 @@
 import React from "react";
-import { getMeetupProjects } from "@/service/projects";
+import { getCorporateProjects, getMeetupProjects } from "@/service/projects";
 
 export const ProjectTotalCount = async ({ pathname }: { pathname: string }) => {
   if (pathname === "meetup") {
@@ -9,11 +9,11 @@ export const ProjectTotalCount = async ({ pathname }: { pathname: string }) => {
         {meetupProjectList.data.meetup_count}
       </span>
     );
-  } else if (pathname === "enterprice") {
-    const meetupProjectList = await getMeetupProjects();
+  } else if (pathname === "corporate") {
+    const corporateProjectsList = await getCorporateProjects();
     return (
       <span className="text-[#62EFE5]">
-        {meetupProjectList.data.meetup_count}
+        {corporateProjectsList.data.corporateCount}
       </span>
     );
   }

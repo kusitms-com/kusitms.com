@@ -1,17 +1,17 @@
 import Image from "next/image";
-import React from "react";
 import { Card, EventIntro, Filter, ImageCard } from "@/components/projects";
-import { getMeetupProjects } from "@/service/projects";
+import { getCorporateProjects } from "@/service/projects";
 
-export const MeetupPage = async () => {
-  const meetupProjectList = await getMeetupProjects();
+export const CorporatePage = async () => {
+  const corporateProjectsList = await getCorporateProjects();
+
   return (
     <section className=" w-full max-w-[1180px]">
       <div className="flex w-full gap-[90px] mt-[100px] justify-center items-center">
         <ImageCard>
           <ImageCard.Sticker>
             <Image
-              src="/projects/sticker/MeetupSticker.svg"
+              src="/projects/sticker/CompanyProjectSticker.svg"
               alt="스티커"
               width={70}
               height={100}
@@ -19,29 +19,25 @@ export const MeetupPage = async () => {
               style={{ width: 70, height: 100 }}
             />
           </ImageCard.Sticker>
-          <ImageCard.Image src="/projects/tmp/meetup_tmpImg.jpeg" />
+          <ImageCard.Image src="/projects/tmp/company_tmpImg.jpeg" />
         </ImageCard>
-        <EventIntro type="meetup" />
+        <EventIntro type="corporate" />
       </div>
       <div className="w-full mt-[100px]">
         <Filter />
         <div className="grid grid-cols-3 gap-5">
-          {meetupProjectList.data.meetup_list.map((project) => (
-            <Card key={project.meetup_id}>
-              <Card.Poster src={project.poster_url} />
+          {corporateProjectsList.data.corporateList.map((project) => (
+            <Card key={project.corporate_id}>
+              <Card.Poster src={project.banner_url.trim()} />
               <Card.Logo src={project.logo_url} />
               <Card.Info>
                 <Card.Cardinal>{project.cardinal}기</Card.Cardinal>
                 <Card.ProjectName>{project.name}</Card.ProjectName>
-                <Card.ContentIntro>{project.one_line_intro}</Card.ContentIntro>
+                <Card.ContentIntro>{project.content}</Card.ContentIntro>
                 <Card.CategoryContainer>
-                  {project.instagram_url && (
-                    <Card.Instagram href={project.instagram_url} />
-                  )}
-                  {project.github_url && (
-                    <Card.Github href={project.github_url} />
-                  )}
-                  {project.app_url && <Card.Link href={project.app_url} />}
+                  {project.category.map((category, index) => (
+                    <Card.Category key={index}>{category}</Card.Category>
+                  ))}
                 </Card.CategoryContainer>
               </Card.Info>
             </Card>

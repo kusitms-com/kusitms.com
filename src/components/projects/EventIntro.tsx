@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 interface EventIntroProps {
-  type: "enterprise" | "meetup";
+  type: "corporate" | "meetup";
 }
 
 export const EventIntro = ({ type }: EventIntroProps) => {
@@ -13,7 +13,7 @@ export const EventIntro = ({ type }: EventIntroProps) => {
         "큐시즘의 파이널 프로젝트인 밋업데이는, 아이디어톤 행사인 큐넥팅을 통해 발제된 아이디어를 9명의 기획자 개발자 디자이너로 구성된 8개의 팀이 3개월 동안 준비해서 발표하는 큐시즘의 메인 프로그램이에요.",
       bottomIcon: "/projects/icons/MeetupIcons.svg",
     },
-    enterprise: {
+    corporate: {
       title: "기업프로젝트란?",
       icon: "/projects/icons/CompanyHighlightIcon.svg",
       detail:
