@@ -25,7 +25,7 @@ interface MeetupItem {
   end_date: string;
 }
 
-interface MeetupResponse {
+export interface MeetupResponse {
   data: {
     meetup_count: number;
     meetup_list: MeetupItem[];
@@ -34,9 +34,11 @@ interface MeetupResponse {
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-export const getMeetupProjects = async (): Promise<MeetupResponse> => {
+export const getMeetupProjects = async (
+  order: "asc" | "desc"
+): Promise<MeetupResponse> => {
   try {
-    const res = await fetch(`${baseUrl}/api/projects/meetup`, {
+    const res = await fetch(`${baseUrl}/api/projects/meetup?order=${order}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

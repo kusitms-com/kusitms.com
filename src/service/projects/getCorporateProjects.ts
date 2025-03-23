@@ -1,4 +1,4 @@
-interface CorporateResponse {
+export interface CorporateResponse {
   data: {
     corporateCount: number;
     corporateList: [
@@ -17,16 +17,21 @@ interface CorporateResponse {
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-export const getCorporateProjects = async (): Promise<CorporateResponse> => {
+export const getCorporateProjects = async (
+  order: "asc" | "desc"
+): Promise<CorporateResponse> => {
   try {
-    const res = await fetch(`${baseUrl}/api/projects/corporate`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      cache: "force-cache",
-      next: { revalidate: 604800, tags: ["corporateProjects"] },
-    });
+    const res = await fetch(
+      `${baseUrl}/api/projects/corporate?order=${order}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        cache: "force-cache",
+        next: { revalidate: 604800, tags: ["corporateProjects"] },
+      }
+    );
 
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);

@@ -4,7 +4,7 @@ import { CorporatePage, MeetupPage } from "@/app/pages/projects";
 async function BranchPage({
   params,
 }: Readonly<{
-  params: { projectType: string };
+  params: Promise<{ projectType: string }>;
 }>) {
   const { projectType } = await params;
   if (projectType === "meetup") {

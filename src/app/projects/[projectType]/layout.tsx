@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { NavButtons } from "@/components/projects";
-import { ProjectTotalCount } from "@/components/projects/ProjectTotalCount";
+import { ProjectTotalCount } from "@/components/projects";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export default async function ProjectsLayout({
   params,
 }: Readonly<{
   children: ReactNode;
-  params: { projectType: string };
+  params: Promise<{ projectType: string }>;
 }>) {
   const { projectType } = await params;
 
