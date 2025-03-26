@@ -1,9 +1,12 @@
 import React from "react";
+import { getReviews } from "@/service/reviews";
 
-export const ReviewsTotalCount = () => {
+export const ReviewsTotalCount = async () => {
+  const reviews = await getReviews();
   return (
     <h2 className="text-4xl font-normal leading-[42px] tracking-[-1px] mb-[120px]">
-      <span className="text-[#05f]">90</span>개의 후기가 등록되어 있어요.
+      <span className="text-[#05f]">{reviews.data.review_count}</span>개의
+      후기가 등록되어 있어요.
     </h2>
   );
 };
