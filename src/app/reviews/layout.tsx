@@ -13,7 +13,7 @@ export default async function ReviewsLayout({
   children: ReactNode;
 }>) {
   return (
-    <div className="flex flex-col items-center bg-[#fff] text-[#000]">
+    <div className="flex flex-col items-center bg-[#fff] text-[#000] pt-[190px]">
       <h1 className=" font-extrabold text-7xl leading-[96px] tracking-[-1px] text-center mb-[64px]">
         큐밀리의
         <br />
