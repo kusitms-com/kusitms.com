@@ -1,7 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
-import { PageNav } from "@/components/shared";
+import { Footer, Header } from "@/components/shared";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -30,22 +28,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="w-full px-12 py-6">
-          <div className="max-w-[2000px] w-full mx-auto flex justify-between">
-            <Link href="/">
-              <Image
-                src="/headerLogo.svg"
-                alt="큐시즘 로고"
-                width={142}
-                height={26}
-                priority
-              />
-            </Link>
-
-            <PageNav />
-          </div>
-        </header>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
