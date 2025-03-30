@@ -19,7 +19,7 @@ export default async function ProjectsLayout({
 
   return (
     <div className="flex flex-col items-center">
-      <header className="w-full max-w-6xl mx-auto py-8 text-center">
+      <section className="w-full max-w-6xl mx-auto py-8 text-center">
         <h1 className="text-5xl font-black mb-4 mt-[180px] leading-[130%]">
           KUSITMS의 다양한 프로젝트를 <br />
           구경해보세요!
@@ -29,7 +29,7 @@ export default async function ProjectsLayout({
           있어요.
         </p>
         <NavButtons />
-      </header>
+      </section>
       <main className="w-full max-w-6xl mx-auto">{children}</main>
     </div>
   );

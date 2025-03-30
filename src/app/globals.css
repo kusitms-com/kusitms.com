@@ -5,3 +5,22 @@ body {
   background-color: #151519;
   color: #fff;
 }
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #f3f4f6; /* 트랙(배경) 색상 */
+  border-radius: 10px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: #9ca3af; /* 스크롤 핸들 색상 */
+  border-radius: 10px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: #6b7280; /* 마우스 오버 시 색상 */
+}
