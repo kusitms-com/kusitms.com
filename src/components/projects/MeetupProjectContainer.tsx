@@ -22,6 +22,7 @@ export const ProjectContainer = ({
   return (
     <div className="w-full mt-[100px]">
       <Filter order={order} onChange={handleFilterChange} />
+      {/* <MeetupProjectModal /> */}
       <div className="grid grid-cols-3 gap-5">
         {projects.meetup_list.map((project) => (
           <Card key={project.meetup_id}>
