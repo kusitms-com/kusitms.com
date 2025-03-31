@@ -14,6 +14,7 @@ export const Header = () => {
             width={142}
             height={26}
             priority
+            style={{ width: "142px", height: "26px" }}
           />
         </Link>
         <PageNav />

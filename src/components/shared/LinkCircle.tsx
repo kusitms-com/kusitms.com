@@ -14,7 +14,13 @@ export const LinkCircle = ({ img, link }: LinkCircleProps) => {
       target="_blank"
       className="w-[40px] h-[40px] rounded-full bg-[#45464F] flex justify-center items-center"
     >
-      <Image src={img} alt="SNS icon" width={20} height={20} />
+      <Image
+        src={img}
+        alt="SNS icon"
+        width={20}
+        height={20}
+        style={{ width: "20px", height: "20px" }}
+      />
     </Link>
   );
 };
