@@ -30,7 +30,7 @@ export default async function ProjectsLayout({
         </p>
         <NavButtons />
       </section>
-      <main className="w-full max-w-6xl mx-auto">{children}</main>
+      <main className="mx-auto w-full max-w-[1180px]">{children}</main>
     </div>
   );
 }

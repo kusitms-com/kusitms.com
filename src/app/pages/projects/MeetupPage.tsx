@@ -6,7 +6,7 @@ import { getMeetupProjects } from "@/service/projects";
 export const MeetupPage = async () => {
   const meetupProjectList = await getMeetupProjects("desc");
   return (
-    <section className=" w-full max-w-[1180px]">
+    <>
       <div className="flex w-full gap-[90px] mt-[100px] justify-center items-center">
         <ImageCard>
           <ImageCard.Sticker>
@@ -24,6 +24,6 @@ export const MeetupPage = async () => {
         <EventIntro type="meetup" />
       </div>
       <ProjectContainer data={meetupProjectList.data} />
-    </section>
+    </>
   );
 };
