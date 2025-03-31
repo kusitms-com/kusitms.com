@@ -3,7 +3,7 @@ import { getReviews } from "@/service/reviews";
 import { Reviews } from "@/components/review";
 
 async function ReviewsPage() {
-  const reviews = await getReviews();
+  const reviews = await getReviews("");
   return <Reviews reviews={reviews} />;
 }
 

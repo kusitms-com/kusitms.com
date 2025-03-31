@@ -16,9 +16,9 @@ export interface ReviewResponse {
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-export const getReviews = async (): Promise<ReviewResponse> => {
+export const getReviews = async (team: string): Promise<ReviewResponse> => {
   try {
-    const res = await fetch(`${baseUrl}/api/reviews`, {
+    const res = await fetch(`${baseUrl}/api/reviews?team=${team}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
