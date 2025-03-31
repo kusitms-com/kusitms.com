@@ -5,7 +5,7 @@ export interface Review {
   review_id: number;
 }
 
-interface ReviewResponse {
+export interface ReviewResponse {
   code: number;
   message: string;
   data: {
