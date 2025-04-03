@@ -1,6 +1,15 @@
 import React from "react";
 import { CorporatePage, MeetupPage } from "@/app/pages/projects";
 
+export async function generateStaticParams() {
+  return [
+    {
+      projectType: "meetup",
+    },
+    { projectType: "corporate" },
+  ];
+}
+
 async function BranchPage({
   params,
 }: Readonly<{

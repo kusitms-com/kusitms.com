@@ -6,3 +6,4 @@ export * from "./NavButtons";
 export * from "./MeetupProjectContainer";
 export * from "./ProjectTotalCount";
 export * from "./CorporateProjectContainer";
+export * from "./MeetupProjectModal";

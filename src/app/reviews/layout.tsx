@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { ReviewsTotalCount } from "@/components/review";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,7 +18,6 @@ export default async function ReviewsLayout({
         <br />
         솔직 후기를 들어보세요!
       </h1>
-      <ReviewsTotalCount />
       <main className="w-full max-w-6xl mx-auto bg-[#fff] flex flex-col items-center">
         {children}
       </main>

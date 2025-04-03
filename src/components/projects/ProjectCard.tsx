@@ -8,7 +8,10 @@ interface CardProps {
 
 export const Card = ({ children }: CardProps) => {
   return (
-    <div className="relative w-[370px] h-[494px] rounded-[40px] flex flex-col bg-white pb-6">
+    <div
+      className="relative w-[370px] h-[494px] rounded-[40px] flex flex-col bg-white pb-6 
+    hover:scale-102 hover:cursor-pointer transition-transform duration-200"
+    >
       {children}
     </div>
   );

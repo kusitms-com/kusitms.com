@@ -10,7 +10,7 @@ export const CorporatePage = async () => {
   const corporateProjectsList = await getCorporateProjects("desc");
 
   return (
-    <section className=" w-full max-w-[1180px]">
+    <>
       <div className="flex w-full gap-[90px] mt-[100px] justify-center items-center">
         <ImageCard>
           <ImageCard.Sticker>
@@ -28,6 +28,6 @@ export const CorporatePage = async () => {
         <EventIntro type="corporate" />
       </div>
       <CorporateProjectContainer data={corporateProjectsList.data} />
-    </section>
+    </>
   );
 };
