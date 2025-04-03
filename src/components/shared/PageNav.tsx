@@ -8,7 +8,7 @@ const navLinks = [
   { href: "", label: "학회소개" },
   { href: "/projects/meetup", label: "프로젝트" },
   { href: "/reviews", label: "후기" },
-  { href: "", label: "리크루팅" },
+  { href: "/recruit", label: "리크루팅" },
 ];
 
 export const PageNav = () => {
