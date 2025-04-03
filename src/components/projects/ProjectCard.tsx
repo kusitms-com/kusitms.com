@@ -4,13 +4,15 @@ import { ReactNode } from "react";
 
 interface CardProps {
   children: ReactNode;
+  onClick: () => void;
 }
 
-export const Card = ({ children }: CardProps) => {
+export const Card = ({ children, onClick }: CardProps) => {
   return (
     <div
       className="relative w-[370px] h-[494px] rounded-[40px] flex flex-col bg-white pb-6 
     hover:scale-102 hover:cursor-pointer transition-transform duration-200"
+      onClick={onClick}
     >
       {children}
     </div>
