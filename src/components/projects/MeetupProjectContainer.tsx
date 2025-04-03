@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { getMeetupProjects, MeetupResponse } from "@/service/projects";
-import useToggleHook from "@/hooks/useToggleHook";
+import useModal from "@/hooks/useModalHook";
 import { Filter } from "./Filter";
 import { Card } from "./ProjectCard";
 import { MeetupProjectModal } from "./MeetupProjectModal";
@@ -16,7 +16,7 @@ export const ProjectContainer = ({
   const [projects, setProjects] = useState(meetupProjectList);
   const [order, setOrder] = useState<"desc" | "asc">("desc");
 
-  const { isOpen, changeopenState, changecloseState } = useToggleHook();
+  const { openModal, handleModalOpen, handleModalClose } = useModal();
 
   const handleFilterChange = async (newOrder: "desc" | "asc") => {
     setOrder(newOrder);
@@ -26,9 +26,9 @@ export const ProjectContainer = ({
 
   return (
     <>
-      {isOpen &&
+      {openModal &&
         createPortal(
-          <MeetupProjectModal changecloseState={changecloseState} />,
+          <MeetupProjectModal handleModalClose={handleModalClose} />,
           document.body
         )}
       <div className="w-full mt-[100px]">
@@ -36,7 +36,7 @@ export const ProjectContainer = ({
         {/* <MeetupProjectModal /> */}
         <div className="grid grid-cols-3 gap-5">
           {projects.meetup_list.map((project) => (
-            <Card key={project.meetup_id} onClick={changeopenState}>
+            <Card key={project.meetup_id} onClick={handleModalOpen}>
               <Card.Poster src={project.poster_url} />
               <Card.Logo src={project.logo_url} />
               <Card.Info>

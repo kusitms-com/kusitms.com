@@ -1,16 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
+import useOutside from "@/hooks/useOutsideClickHook";
 
 interface MeetupProjectModalProps {
-  changecloseState: () => void;
+  handleModalClose: () => void;
 }
 
 export const MeetupProjectModal = ({
-  changecloseState,
+  handleModalClose,
 }: MeetupProjectModalProps) => {
+  const modalRef = useOutside<HTMLDivElement>({
+    onCloseToggle: handleModalClose,
+  });
+
   return (
     <div className="fixed inset-0 bg-black flex items-center justify-center z-10">
-      <div className="absolute max-w-[65%]">
+      <div className="absolute max-w-[65%]" ref={modalRef}>
         <div className="flex justify-between mb-6">
           <h2 className="text-4xl font-extrabold">조각조각</h2>
           <Image
@@ -20,7 +27,7 @@ export const MeetupProjectModal = ({
             width={28}
             height={28}
             style={{ width: "28px", height: "28px" }}
-            onClick={changecloseState}
+            onClick={handleModalClose}
           />
         </div>
         <div className="mb-10">
