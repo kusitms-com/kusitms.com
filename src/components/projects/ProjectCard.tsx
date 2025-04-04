@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 interface CardProps {
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const Card = ({ children, onClick }: CardProps) => {
@@ -66,6 +66,9 @@ const Category = ({ children }: { children: ReactNode }) => (
 
 const LinkCategory = ({ href }: { href: string }) => (
   <Link
+    onClick={(event) => {
+      event.stopPropagation();
+    }}
     href={href}
     target="_blank"
     className="w-[44px] h-[44px] bg-[#45464f] flex justify-center items-center p-3 rounded-full"
@@ -82,6 +85,9 @@ const LinkCategory = ({ href }: { href: string }) => (
 
 const GithubCategory = ({ href }: { href: string }) => (
   <Link
+    onClick={(event) => {
+      event.stopPropagation();
+    }}
     href={href}
     target="_blank"
     className="w-[44px] h-[44px] bg-[#45464f] flex justify-center items-center p-2 rounded-full"
@@ -98,6 +104,9 @@ const GithubCategory = ({ href }: { href: string }) => (
 
 const InstagramCategory = ({ href }: { href: string }) => (
   <Link
+    onClick={(event) => {
+      event.stopPropagation();
+    }}
     href={href}
     target="_blank"
     className="w-[44px] h-[44px] bg-[#45464f] flex justify-center items-center p-2 rounded-full"

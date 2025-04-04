@@ -15,6 +15,7 @@ export const ProjectContainer = ({
 }: ProjectContainerProps) => {
   const [projects, setProjects] = useState(meetupProjectList);
   const [order, setOrder] = useState<"desc" | "asc">("desc");
+  const [projectId, setProjectId] = useState(0);
 
   const { openModal, handleModalOpen, handleModalClose } = useModal();
 
@@ -24,19 +25,29 @@ export const ProjectContainer = ({
     setProjects(res.data);
   };
 
+  const handleModalStateChange = (projectId: number) => {
+    setProjectId(projectId);
+    handleModalOpen();
+  };
+
   return (
     <>
       {openModal &&
         createPortal(
-          <MeetupProjectModal handleModalClose={handleModalClose} />,
+          <MeetupProjectModal
+            handleModalClose={handleModalClose}
+            projectId={projectId}
+          />,
           document.body
         )}
       <div className="w-full mt-[100px]">
         <Filter order={order} onChange={handleFilterChange} />
-        {/* <MeetupProjectModal /> */}
         <div className="grid grid-cols-3 gap-5">
           {projects.meetup_list.map((project) => (
-            <Card key={project.meetup_id} onClick={handleModalOpen}>
+            <Card
+              key={project.meetup_id}
+              onClick={() => handleModalStateChange(project.meetup_id)}
+            >
               <Card.Poster src={project.poster_url} />
               <Card.Logo src={project.logo_url} />
               <Card.Info>
