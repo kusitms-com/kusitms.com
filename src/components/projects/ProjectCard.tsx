@@ -4,13 +4,15 @@ import { ReactNode } from "react";
 
 interface CardProps {
   children: ReactNode;
+  onClick?: () => void;
 }
 
-export const Card = ({ children }: CardProps) => {
+export const Card = ({ children, onClick }: CardProps) => {
   return (
     <div
       className="relative w-[370px] h-[494px] rounded-[40px] flex flex-col bg-white pb-6 
     hover:scale-102 hover:cursor-pointer transition-transform duration-200"
+      onClick={onClick}
     >
       {children}
     </div>
@@ -64,6 +66,9 @@ const Category = ({ children }: { children: ReactNode }) => (
 
 const LinkCategory = ({ href }: { href: string }) => (
   <Link
+    onClick={(event) => {
+      event.stopPropagation();
+    }}
     href={href}
     target="_blank"
     className="w-[44px] h-[44px] bg-[#45464f] flex justify-center items-center p-3 rounded-full"
@@ -80,6 +85,9 @@ const LinkCategory = ({ href }: { href: string }) => (
 
 const GithubCategory = ({ href }: { href: string }) => (
   <Link
+    onClick={(event) => {
+      event.stopPropagation();
+    }}
     href={href}
     target="_blank"
     className="w-[44px] h-[44px] bg-[#45464f] flex justify-center items-center p-2 rounded-full"
@@ -96,6 +104,9 @@ const GithubCategory = ({ href }: { href: string }) => (
 
 const InstagramCategory = ({ href }: { href: string }) => (
   <Link
+    onClick={(event) => {
+      event.stopPropagation();
+    }}
     href={href}
     target="_blank"
     className="w-[44px] h-[44px] bg-[#45464f] flex justify-center items-center p-2 rounded-full"
