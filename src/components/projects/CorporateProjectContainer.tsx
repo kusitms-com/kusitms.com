@@ -20,7 +20,7 @@ export const CorporateProjectContainer = ({
   };
 
   return (
-    <div className="w-full mt-[100px]">
+    <div className="w-full mt-[100px] mb-[180px]">
       <Filter order={order} onChange={handleFilterChange} />
       <div className="grid grid-cols-3 gap-5">
         {projects.corporateList.map((project) => (
