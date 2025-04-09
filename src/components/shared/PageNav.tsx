@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 
 const navLinks = [
-  { href: "", label: "학회소개" },
+  { href: "/", label: "학회소개" },
   { href: "/projects/meetup", label: "프로젝트" },
   { href: "/reviews", label: "후기" },
   { href: "/recruit", label: "리크루팅" },
