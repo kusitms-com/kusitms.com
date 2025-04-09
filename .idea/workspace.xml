@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ca24dfa0-067a-41a0-8266-2c47fe233bc5" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/public/main/img/네이버클라우드.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/main/img/스나이퍼 팩토리.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/main/img/인프런.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/main/화살표.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/PartnerSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/PartnerSection.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ummiih&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:kusitms-com/kusitms.com.git&quot;,
+    &quot;accountId&quot;: &quot;ee75d29c-9710-4e16-9129-941ceac6bf53&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2v2pgohOn3rabkZhebObEntvgSW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;re-dev에 #129개&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hwang-yulim/Documents/kusitms.com&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/hwang-yulim/Documents/kusitms.com/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/main/img" />
+      <recent name="$PROJECT_DIR$/public/main" />
+      <recent name="$PROJECT_DIR$/src/components/main" />
+      <recent name="$PROJECT_DIR$/public/recruit/icons" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="ca24dfa0-067a-41a0-8266-2c47fe233bc5" name="변경" comment="" />
+      <created>1743353136567</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1743353136567</updated>
+      <workItem from="1743353137618" duration="793000" />
+      <workItem from="1743353937863" duration="46000" />
+      <workItem from="1743353986452" duration="6000" />
+      <workItem from="1743354047247" duration="10359000" />
+      <workItem from="1743534485388" duration="7966000" />
+      <workItem from="1743674038854" duration="15963000" />
+      <workItem from="1743699906662" duration="1038000" />
+      <workItem from="1743754742102" duration="1168000" />
+      <workItem from="1743755915112" duration="9415000" />
+      <workItem from="1743873171995" duration="13078000" />
+      <workItem from="1744171891364" duration="659000" />
+      <workItem from="1744176168622" duration="491000" />
+      <workItem from="1744216660517" duration="2392000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

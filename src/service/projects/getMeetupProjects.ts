@@ -87,7 +87,7 @@ export const getMeetupProjects = async (
 };
 
 export const getMeetupProjectDetail = async (
-  projectId: number
+  projectId: string
 ): Promise<MeetupProjectDetailResponse> => {
   try {
     const res = await fetch(`${baseUrl}/api/projects/meetup/${projectId}`, {

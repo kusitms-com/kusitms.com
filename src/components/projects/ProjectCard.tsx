@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ReactNode } from "react";
 
 interface CardProps {
@@ -10,7 +9,7 @@ interface CardProps {
 export const Card = ({ children, onClick }: CardProps) => {
   return (
     <div
-      className="relative w-[370px] h-[494px] rounded-[40px] flex flex-col bg-white pb-6 
+      className="relative w-[370px] h-[494px] rounded-[40px] flex flex-col bg-[#2F3038] pb-6 
     hover:scale-102 hover:cursor-pointer transition-transform duration-200"
       onClick={onClick}
     >
@@ -37,11 +36,11 @@ const Logo = ({ src }: { src: string }) => (
 );
 
 const Info = ({ children }: { children: ReactNode }) => (
-  <div className="flex flex-col text-[#2F3038] px-6">{children}</div>
+  <div className="flex flex-col text-[#fff] px-6">{children}</div>
 );
 
 const Cardinal = ({ children }: { children: ReactNode }) => (
-  <div className="mt-[22px] text-[16px]">{children}</div>
+  <div className="mt-[22px] text-[16px] text-[#62EFE5]">{children}</div>
 );
 
 const ProjectName = ({ children }: { children: ReactNode }) => (
@@ -55,70 +54,13 @@ const ContentIntro = ({ children }: { children: ReactNode }) => (
 );
 
 const CategoryContainer = ({ children }: { children: ReactNode }) => (
-  <div className="flex flex-row gap-2 mt-2">{children}</div>
+  <div className="flex flex-row gap-3 mt-5">{children}</div>
 );
 
 const Category = ({ children }: { children: ReactNode }) => (
-  <div className="border border-[#2f3038] rounded-[15px] px-[12px] py-[4px] text-[#2f3038]">
+  <div className="bg-[#505157] rounded-[8px] px-[12px] py-[6px] text-[#E3E3E3] text-[14px]">
     {children}
   </div>
-);
-
-const LinkCategory = ({ href }: { href: string }) => (
-  <Link
-    onClick={(event) => {
-      event.stopPropagation();
-    }}
-    href={href}
-    target="_blank"
-    className="w-[44px] h-[44px] bg-[#45464f] flex justify-center items-center p-3 rounded-full"
-  >
-    <Image
-      src="/projects/icons/LinkIcon.svg"
-      alt="서비스 링크"
-      width={30}
-      height={30}
-      style={{ width: 30, height: 30 }}
-    />
-  </Link>
-);
-
-const GithubCategory = ({ href }: { href: string }) => (
-  <Link
-    onClick={(event) => {
-      event.stopPropagation();
-    }}
-    href={href}
-    target="_blank"
-    className="w-[44px] h-[44px] bg-[#45464f] flex justify-center items-center p-2 rounded-full"
-  >
-    <Image
-      src="/projects/icons/GithubIcon.svg"
-      alt="서비스 링크"
-      width={30}
-      height={30}
-      style={{ width: 30, height: 30 }}
-    />
-  </Link>
-);
-
-const InstagramCategory = ({ href }: { href: string }) => (
-  <Link
-    onClick={(event) => {
-      event.stopPropagation();
-    }}
-    href={href}
-    target="_blank"
-    className="w-[44px] h-[44px] bg-[#45464f] flex justify-center items-center p-2 rounded-full"
-  >
-    <Image
-      src="/projects/icons/InstagramIcon.svg"
-      alt="서비스 링크"
-      width={30}
-      height={30}
-      style={{ width: 30, height: 30 }}
-    />
-  </Link>
 );
 
 // 컴파운디드 패턴 연결
@@ -130,6 +72,3 @@ Card.ProjectName = ProjectName;
 Card.ContentIntro = ContentIntro;
 Card.CategoryContainer = CategoryContainer;
 Card.Category = Category;
-Card.Link = LinkCategory;
-Card.Github = GithubCategory;
-Card.Instagram = InstagramCategory;
