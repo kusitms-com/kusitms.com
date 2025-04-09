@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   description: "",
 };
 
-export default async function ProjectsLayout({
+export default async function ProjectDetailLayout({
   children,
 }: Readonly<{
   children: ReactNode;
-  params: Promise<{ projectType: string }>;
+  params: Promise<{ projectType: string; projectNumber: string }>;
 }>) {
-  return <main className="flex flex-col items-center">{children}</main>;
+  return <main className="mx-auto w-full max-w-[1180px]">{children}</main>;
 }

@@ -1,47 +1,29 @@
-"use client";
-
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import useOutside from "@/hooks/useOutsideClickHook";
-import {
-  getMeetupProjectDetail,
-  MeetupProjectDetailResponse,
-} from "@/service/projects";
-import { LinkCircle } from "../shared";
+import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
+import { LinkCircle } from "@/components/shared";
 
-interface MeetupProjectModalProps {
-  handleModalClose: () => void;
-  projectId: number;
+export async function generateStaticParams() {
+  const meetupProjectList = await getMeetupProjects("desc");
+
+  return meetupProjectList.data.meetup_list.map((poject) => ({
+    projectNumber: poject.meetup_id,
+  }));
 }
 
-export const MeetupProjectModal = ({
-  handleModalClose,
-  projectId,
-}: MeetupProjectModalProps) => {
-  const modalRef = useOutside<HTMLDivElement>({
-    onCloseToggle: handleModalClose,
-  });
+async function ProjectDetailPage({
+  params,
+}: Readonly<{
+  params: Promise<{ projectType: string; projectNumber: string }>;
+}>) {
+  const { projectNumber } = await params;
 
-  const [projectData, setProjectData] = useState<MeetupProjectDetailResponse>();
-
-  useEffect(() => {
-    getMeetupProjectDetail(projectId).then((res) => setProjectData(res));
-  }, [projectId]);
+  const projectData = await getMeetupProjectDetail(projectNumber);
 
   return (
-    <div className="fixed inset-0 bg-[rgba(0,0,0,0.9)] flex items-center justify-center z-10">
-      <div className="absolute max-w-[65%]" ref={modalRef}>
+    <div className="flex items-center justify-center z-10">
+      <div className="max-w-[65%]">
         <div className="flex justify-between mb-6">
           <h2 className="text-4xl font-extrabold">{projectData?.data.name}</h2>
-          <Image
-            className="cursor-pointer"
-            src="/projects/icons/CloseIcon.svg"
-            alt="모달 닫기"
-            width={28}
-            height={28}
-            style={{ width: "28px", height: "28px" }}
-            onClick={handleModalClose}
-          />
         </div>
         <div className="mb-3">
           <p className="text-xl font-normal">
@@ -132,4 +114,6 @@ export const MeetupProjectModal = ({
       </div>
     </div>
   );
-};
+}
+
+export default ProjectDetailPage;

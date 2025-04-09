@@ -17,9 +17,9 @@ async function BranchPage({
 }>) {
   const { projectType } = await params;
   if (projectType === "meetup") {
-    return <MeetupPage />;
+    return <MeetupPage projectType={projectType} />;
   } else if (projectType === "corporate") {
-    return <CorporatePage />;
+    return <CorporatePage projectType={projectType} />;
   }
 }
 
