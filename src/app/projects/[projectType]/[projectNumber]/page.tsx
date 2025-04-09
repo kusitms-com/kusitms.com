@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
-import { LinkCircle } from "@/components/shared";
+import { IconLink } from "@/components/shared";
+import { toUpperCaseOnlyLetters } from "@/utils";
 
 export async function generateStaticParams() {
   const meetupProjectList = await getMeetupProjects("desc");
-
-  return meetupProjectList.data.meetup_list.map((poject) => ({
-    projectNumber: poject.meetup_id,
+  return meetupProjectList.data.meetup_list.map((project) => ({
+    projectNumber: project.meetup_id,
   }));
 }
 
@@ -16,98 +16,124 @@ async function ProjectDetailPage({
   params: Promise<{ projectType: string; projectNumber: string }>;
 }>) {
   const { projectNumber } = await params;
+  const { data: project } = await getMeetupProjectDetail(projectNumber);
 
-  const projectData = await getMeetupProjectDetail(projectNumber);
+  const team = project.team;
+  const renderTeamSection = (role: string, members: string[]) => (
+    <p>
+      <span className="text-[18px] text-[#CCC]">{role} |</span>
+      {" " + members.join(", ")}
+    </p>
+  );
 
   return (
-    <div className="flex items-center justify-center z-10">
-      <div className="max-w-[65%]">
+    <div className="flex items-center justify-center z-10 w-full my-[120px]">
+      <div className="w-full">
         <div className="flex justify-between mb-6">
-          <h2 className="text-4xl font-extrabold">{projectData?.data.name}</h2>
+          <h2 className="text-5xl font-extrabold">{project.name}</h2>
         </div>
-        <div className="mb-3">
-          <p className="text-xl font-normal">
-            {projectData?.data.one_line_intro}
-          </p>
+
+        <div className="mb-3 flex justify-between items-center">
+          <p className="text-xl text-[#E2E2EB]">{project.one_line_intro}</p>
+          <div className="flex items-center gap-3 min-h-[40px] mb-2">
+            {project.instagram_url && (
+              <IconLink
+                className="w-[52px] h-[52px] rounded-2xl"
+                size={35}
+                img="/projects/icons/InstagramIcon.svg"
+                link={project.instagram_url}
+              />
+            )}
+            {project.github_url && (
+              <IconLink
+                className="w-[52px] h-[52px] rounded-2xl"
+                size={35}
+                img="/projects/icons/GithubIcon.svg"
+                link={project.github_url}
+              />
+            )}
+            {project.app_url && (
+              <IconLink
+                className="w-[52px] h-[52px] rounded-2xl"
+                size={25}
+                img="/projects/icons/DetailLinkIcon.svg"
+                link={project.app_url}
+              />
+            )}
+          </div>
         </div>
-        <div className="flex items-center justify-end gap-3 min-h-[40px] mb-2">
-          {projectData?.data.instagram_url && (
-            <LinkCircle
-              img="/projects/icons/InstagramIcon.svg"
-              link={projectData?.data.instagram_url}
-            />
-          )}
-          {projectData?.data.github_url && (
-            <LinkCircle
-              img="/projects/icons/GithubIcon.svg"
-              link={projectData?.data.github_url}
-            />
-          )}
-          {projectData?.data.app_url && (
-            <LinkCircle
-              img="/projects/icons/DetailLinkIcon.svg"
-              link={projectData?.data.app_url}
-            />
-          )}
-        </div>
-        <div className="grid grid-cols-[minmax(0,380px)_minmax(0,540px)] grid-rows-[minmax(0,270px)_minmax(0,250px)] gap-3">
+
+        <div className="grid grid-cols-[minmax(0,580px)_minmax(0,580px)] grid-rows-[minmax(0,470px)_minmax(0,330px)] gap-3">
           <div className="row-span-2 bg-gray-200 flex items-center justify-center rounded-xl overflow-hidden">
             <Image
-              src={projectData?.data.poster_url ?? "/footerLogo.svg"}
+              src={project.poster_url ?? "/footerLogo.svg"}
               alt="포스터"
-              width={380}
-              height={540}
-              style={{ width: "380px", height: "540px" }}
+              width={580}
+              height={820}
+              style={{ width: "580px", height: "820px" }}
             />
           </div>
-          <div className="bg-[#5D5E67] py-6 pl-8 pt-6 pr-12 rounded-xl">
-            <h3 className="text-xl font-extrabold mb-4">프로젝트 요약</h3>
-            <div className="flex justify-between">
-              <div className="border-r-[1px] pr-12 text-base font-normal flex flex-col gap-2">
-                <p>진행기수</p>
-                <p>프로젝트 형태 / 기간</p>
-                <p>팀 구성</p>
+
+          <div className="bg-[#5D5E67] p-10 rounded-xl">
+            <div className="flex gap-2 border-b border-dashed border-[#ccc] mb-6">
+              <Image
+                src="/projects/icons/Summation.svg"
+                className="pt-1"
+                alt="프로젝트 요약"
+                width={20}
+                height={25}
+              />
+              <h3 className="text-2xl font-extrabold mb-4">프로젝트 요약</h3>
+            </div>
+
+            <div className="flex gap-8">
+              <div className="text-xl font-normal flex flex-col gap-5">
+                {[
+                  ["/projects/icons/Horseman.svg", "진행기수"],
+                  ["/projects/icons/Project.svg", "프로젝트 형태"],
+                  ["/projects/icons/Watch.svg", "프로젝트 기간"],
+                  ["/projects/icons/Human.svg", "팀 구성"],
+                ].map(([src, alt], i) => (
+                  <div key={i} className="flex gap-2">
+                    <Image
+                      src={src}
+                      alt={alt}
+                      width={24}
+                      height={24}
+                      style={{ width: "24px", height: "24px" }}
+                    />
+                    <p>{alt}</p>
+                  </div>
+                ))}
               </div>
-              <div className="text-[#E2E2EB] text-base font-normal flex flex-col gap-2">
-                <p>{projectData?.data.cardinal}</p>
-                <p>{`${projectData?.data.type} (${projectData?.data.start_date} ~ ${projectData?.data.end_date})`}</p>
-                <p>
-                  기획 ({projectData?.data.team.planner.length}) :
-                  {" " + projectData?.data.team.planner.join(", ")}
-                </p>
-                <p>
-                  디자인 ({projectData?.data.team.designer.length}) :
-                  {" " + projectData?.data.team.designer.join(", ")}
-                </p>
-                {projectData?.data.team.frontend && (
-                  <p>
-                    프론트엔드 ({projectData?.data.team.frontend.length}) :
-                    {" " + projectData?.data.team.frontend.join(", ")}
-                  </p>
-                )}
-                {projectData?.data.team.ios && (
-                  <p>
-                    ios ({projectData?.data.team.ios.length}) :
-                    {" " + projectData?.data.team.ios.join(", ")}
-                  </p>
-                )}
-                {projectData?.data.team.aos && (
-                  <p>
-                    aos ({projectData?.data.team.aos.length}) :
-                    {" " + projectData?.data.team.aos.join(", ")}
-                  </p>
-                )}
-                <p>
-                  백엔드 ({projectData?.data.team.backend.length}) :
-                  {" " + projectData?.data.team.backend.join(", ")}
-                </p>
+
+              <div className="text-[#E2E2EB] text-xl font-normal flex flex-col gap-5">
+                <p>{project.cardinal}기</p>
+                <p>{toUpperCaseOnlyLetters(project.type)}</p>
+                <p>{`(${project.start_date} ~ ${project.end_date})`}</p>
+                {renderTeamSection("기획", team.planner)}
+                {renderTeamSection("디자인", team.designer)}
+                {team.frontend &&
+                  renderTeamSection("프론트엔드", team.frontend)}
+                {team.ios && renderTeamSection("IOS", team.ios)}
+                {team.aos && renderTeamSection("AOS", team.aos)}
+                {renderTeamSection("백엔드", team.backend)}
               </div>
             </div>
           </div>
-          <div className="bg-[#2F3038] py-6 px-10 pt-8 rounded-xl">
-            <h3 className="text-xl font-extrabold mb-6">프로젝트 설명</h3>
-            <p className="text-base font-normal overflow-y-auto custom-scrollbar-none h-[140px]">
-              {projectData?.data.intro}
+
+          <div className="bg-[#2F3038] p-10 rounded-xl">
+            <div className="flex gap-2 border-b border-dashed border-[#ccc] mb-6">
+              <Image
+                src="/projects/icons/Explanation.svg"
+                alt="프로젝트 설명"
+                width={24}
+                height={24}
+              />
+              <h3 className="text-2xl font-extrabold mb-4">프로젝트 설명</h3>
+            </div>
+            <p className="text-xl font-normal overflow-y-auto custom-scrollbar-none h-[180px]">
+              {project.intro}
             </p>
           </div>
         </div>

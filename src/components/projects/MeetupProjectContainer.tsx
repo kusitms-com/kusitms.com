@@ -42,13 +42,9 @@ export const ProjectContainer = ({
               <Card.ProjectName>{project.name}</Card.ProjectName>
               <Card.ContentIntro>{project.one_line_intro}</Card.ContentIntro>
               <Card.CategoryContainer>
-                {project.instagram_url && (
-                  <Card.Instagram href={project.instagram_url} />
-                )}
-                {project.github_url && (
-                  <Card.Github href={project.github_url} />
-                )}
-                {project.app_url && <Card.Link href={project.app_url} />}
+                <Card.Category>#지도</Card.Category>
+                <Card.Category>#반려견</Card.Category>
+                <Card.Category>#커뮤니티</Card.Category>
               </Card.CategoryContainer>
             </Card.Info>
           </Card>
