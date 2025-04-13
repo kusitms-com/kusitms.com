@@ -43,7 +43,6 @@ export const ActivityIntroSection = () => {
           alt="밑줄"
           width={161}
           height={16}
-          priority
           style={{ width: 161, height: 16 }}
         />
       </div>
@@ -54,7 +53,6 @@ export const ActivityIntroSection = () => {
         alt="로고"
         width={252}
         height={353}
-        priority
         style={{ width: 252, height: 353 }}
       />
 
@@ -86,7 +84,6 @@ export const ActivityIntroSection = () => {
         alt="로고"
         width={256}
         height={509}
-        priority
         style={{ width: 256, height: 509 }}
       />
     </section>

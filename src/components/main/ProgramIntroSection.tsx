@@ -40,7 +40,6 @@ export const ProgramIntroSection = () => {
             alt="로고"
             width={161}
             height={16}
-            priority
             style={{ width: 161, height: 16 }}
           />
         </div>

@@ -31,7 +31,6 @@ async function RecruitPage() {
           alt="화살표"
           width={106}
           height={46}
-          priority
           style={{ width: 106, height: 46 }}
         />
         <Recruit style={"gap-y-[64px]"} title={"이제 지원해볼게요!"}>

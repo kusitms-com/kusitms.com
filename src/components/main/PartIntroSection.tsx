@@ -91,7 +91,6 @@ export function PartIntroSection() {
             alt="밑줄"
             width={180}
             height={16}
-            priority
             style={{ width: 180, height: 16 }}
           />
         </div>
@@ -121,7 +120,6 @@ export function PartIntroSection() {
           alt="디자인"
           width={24}
           height={24}
-          priority
           style={{ width: 24, height: 24 }}
         />
       </button>
@@ -177,7 +175,6 @@ const TeamCard = ({
           alt={title}
           width={96}
           height={96}
-          priority
           style={{ width: 96, height: 96 }}
         />
       )}
@@ -195,7 +192,6 @@ const TeamCard = ({
           alt={title}
           width={96}
           height={96}
-          priority
           style={{ width: 96, height: 96 }}
         />
       )}
@@ -229,7 +225,6 @@ const ExecutiveCard = ({
         alt={title}
         width={347}
         height={520}
-        priority
         style={{ width: 347, height: 520 }}
       />
       <div

@@ -107,7 +107,6 @@ export const IntroSection = () => {
                 alt="로고"
                 width={400}
                 height={278}
-                priority
                 style={{ width: 400, height: 278 }}
               />
             </motion.div>

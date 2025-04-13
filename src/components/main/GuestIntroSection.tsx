@@ -27,7 +27,6 @@ export const GuestIntroSection = () => {
             alt="밑줄"
             width={161}
             height={16}
-            priority
             style={{ width: 161, height: 16 }}
           />
         </div>
@@ -43,7 +42,6 @@ export const GuestIntroSection = () => {
           alt="지난 기수 연사님"
           width={992}
           height={1300}
-          priority
           style={{ width: 992, height: 1300 }}
         />
       </motion.div>
