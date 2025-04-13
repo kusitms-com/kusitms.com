@@ -14,7 +14,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// app/layout.tsx 혹은 해당 page.tsx 상단
 export const metadata: Metadata = {
   title: "KUSITMS",
   description:
@@ -55,6 +54,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="KFgbBXJibXLrdaVRpqy8V3ko4k71bsoX3NJjv0cWbKw"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
