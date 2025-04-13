@@ -12,13 +12,13 @@ export const ProjectContainer = ({
   data: meetupProjectList,
 }: ProjectContainerProps) => {
   const [projects, setProjects] = useState(meetupProjectList);
-  const [order, setOrder] = useState<"desc" | "asc">("desc");
+  const [cardinal, setCardinal] = useState("");
 
   const router = useRouter();
 
-  const handleFilterChange = async (newOrder: "desc" | "asc") => {
-    setOrder(newOrder);
-    const res = await getMeetupProjects(newOrder);
+  const handleFilterChange = async (newCardinal: string) => {
+    setCardinal(newCardinal);
+    const res = await getMeetupProjects(newCardinal);
     setProjects(res.data);
   };
 
@@ -28,7 +28,11 @@ export const ProjectContainer = ({
 
   return (
     <div className="w-full mt-[100px] mb-[180px]">
-      <Filter order={order} onChange={handleFilterChange} />
+      <Filter
+        cardinal={cardinal}
+        onChange={handleFilterChange}
+        projectList={meetupProjectList.meetup_list}
+      />
       <div className="grid grid-cols-3 gap-5">
         {projects.meetup_list.map((project) => (
           <Card

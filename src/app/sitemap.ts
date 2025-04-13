@@ -2,7 +2,7 @@ import { getMeetupProjects } from "@/service/projects";
 import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const meetupProjectList = await getMeetupProjects("desc");
+  const meetupProjectList = await getMeetupProjects("");
 
   const dynamicRoutes = meetupProjectList.data.meetup_list.map((project) => ({
     url: `https://www.kusitms.com/projects/meetup/${project.meetup_id}`,

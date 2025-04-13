@@ -13,7 +13,7 @@ interface CorporatePageProps {
 }
 
 export const CorporatePage = async ({ projectType }: CorporatePageProps) => {
-  const corporateProjectsList = await getCorporateProjects("desc");
+  const corporateProjectsList = await getCorporateProjects("");
 
   return (
     <>

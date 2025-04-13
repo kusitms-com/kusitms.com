@@ -8,7 +8,7 @@ interface Team {
   aos: string[];
 }
 
-interface MeetupItem {
+export interface MeetupItem {
   cardinal: number;
   name: string;
   intro: string;
@@ -62,10 +62,16 @@ export interface MeetupProjectDetailResponse {
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export const getMeetupProjects = async (
-  order: "asc" | "desc"
+  cardinal: string
 ): Promise<MeetupResponse> => {
   try {
-    const res = await fetch(`${baseUrl}/api/projects/meetup?order=${order}`, {
+    const url =
+      cardinal !== ""
+        ? `${baseUrl}/api/projects/meetup?cardinal=${cardinal}&order=desc`
+        : `${baseUrl}/api/projects/meetup?order=desc`;
+
+    console.log(url);
+    const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -79,6 +85,7 @@ export const getMeetupProjects = async (
     }
 
     const data = await res.json();
+
     return data;
   } catch (err) {
     console.error("Failed to fetch meetup projects:", err);

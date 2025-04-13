@@ -14,7 +14,7 @@ interface MeetupPageProps {
 }
 
 export const MeetupPage = async ({ projectType }: MeetupPageProps) => {
-  const meetupProjectList = await getMeetupProjects("desc");
+  const meetupProjectList = await getMeetupProjects("");
   return (
     <>
       <section className="w-full max-w-6xl mx-auto py-8 text-center">

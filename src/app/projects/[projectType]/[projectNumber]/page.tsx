@@ -5,7 +5,7 @@ import { toUpperCaseOnlyLetters } from "@/utils";
 import { ProjectNavigation } from "@/components/projectDetail";
 
 export async function generateStaticParams() {
-  const meetupProjectList = await getMeetupProjects("desc");
+  const meetupProjectList = await getMeetupProjects("");
   return meetupProjectList.data.meetup_list.map((project) => ({
     projectNumber: project.meetup_id,
   }));
@@ -18,7 +18,7 @@ async function ProjectDetailPage({
 }>) {
   const { projectNumber } = await params;
   const { data: project } = await getMeetupProjectDetail(projectNumber);
-  const projectList = await getMeetupProjects("desc");
+  const projectList = await getMeetupProjects("");
 
   const currentIndex = projectList.data.meetup_list.findIndex(
     (item) => item.meetup_id.toString() === projectNumber
