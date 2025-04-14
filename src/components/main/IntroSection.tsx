@@ -51,7 +51,7 @@ export const IntroSection = () => {
           <Image
             className="relative z-10"
             src="/main/MainGroupSticker.svg"
-            alt="스티커"
+            alt="MainGroupSticker"
             width={1258}
             height={570}
             priority
@@ -60,7 +60,7 @@ export const IntroSection = () => {
           <Image
             className="absolute top-20 left-0 z-0"
             src="/main/MainBlueArrow.svg"
-            alt="화살표"
+            alt="MainBlueArrow"
             width={1430}
             height={246}
             priority
@@ -104,7 +104,7 @@ export const IntroSection = () => {
             >
               <Image
                 src="/main/LOGO.svg"
-                alt="로고"
+                alt="LOGO"
                 width={400}
                 height={278}
                 style={{ width: 400, height: 278 }}

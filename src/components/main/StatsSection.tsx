@@ -48,8 +48,8 @@ export function StatsSection() {
   return (
     <div className="relative" ref={ref}>
       <Image
-        src="/main/img/전문가초청강연1.png"
-        alt="로고"
+        src="/main/img/Special_Lecture_by_Expert_1.png"
+        alt="Special_Lecture_by_Expert_1"
         width={1920}
         height={447}
         priority

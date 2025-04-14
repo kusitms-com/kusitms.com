@@ -5,26 +5,26 @@ import { FlipImageCard } from "./FlipImageCard";
 export const ProgramIntroSection = () => {
   const programCards = [
     {
-      src: "/main/img/기업 프로젝트.png",
-      alt: "기업프로젝트",
+      src: "/main/img/Corporate_Project.png",
+      alt: "Corporate_Project",
       className: "absolute top-0 left-0",
       delay: 0,
     },
     {
-      src: "/main/img/큐넥팅 & 밋업데이.png",
-      alt: "큐넥팅",
+      src: "/main/img/Kunecting_and_Meetup_Day.png",
+      alt: "Kunecting_and_Meetup_Day",
       className: "absolute top-[104px] right-0",
       delay: 0.3,
     },
     {
-      src: "/main/img/강연 프로그램.png",
-      alt: "강연",
+      src: "/main/img/Lecture_Program.png",
+      alt: "Lecture_Program",
       className: "absolute bottom-[101px] left-0",
       delay: 0.6,
     },
     {
-      src: "/main/img/교육세션.png",
-      alt: "교육세션",
+      src: "/main/img/Education_Session.png",
+      alt: "Education_Session",
       className: "absolute bottom-0 right-0",
       delay: 0.9,
     },
@@ -37,7 +37,7 @@ export const ProgramIntroSection = () => {
           <h1 className={"text-[48px] font-black"}>학회 프로그램 소개</h1>
           <Image
             src="/main/BlueUnderlineIcon.svg"
-            alt="로고"
+            alt="BlueUnderlineIcon"
             width={161}
             height={16}
             style={{ width: 161, height: 16 }}

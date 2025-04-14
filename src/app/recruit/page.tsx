@@ -9,7 +9,7 @@ async function RecruitPage() {
       <div className="mx-auto flex flex-col gap-y-[100px] items-center w-full max-w-[1180px]">
         <Image
           src="/recruit/sticker/Arrow.svg"
-          alt="화살표"
+          alt="Arrow"
           width={106}
           height={46}
           priority
@@ -28,7 +28,7 @@ async function RecruitPage() {
         </section>
         <Image
           src="/recruit/sticker/Arrow.svg"
-          alt="화살표"
+          alt="Arrow"
           width={106}
           height={46}
           style={{ width: 106, height: 46 }}
