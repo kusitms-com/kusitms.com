@@ -24,7 +24,7 @@ export const GuestIntroSection = () => {
           </h1>
           <Image
             src="/main/BlueUnderlineIcon.svg"
-            alt="밑줄"
+            alt="BlueUnderlineIcon"
             width={161}
             height={16}
             style={{ width: 161, height: 16 }}
@@ -38,8 +38,8 @@ export const GuestIntroSection = () => {
           전문가 초청 강연
         </div>
         <Image
-          src="/main/img/지난 기수 연사님.png"
-          alt="지난 기수 연사님"
+          src="/main/img/Former_Member_Speaker.png"
+          alt="Former_Member_Speaker"
           width={992}
           height={1300}
           style={{ width: 992, height: 1300 }}

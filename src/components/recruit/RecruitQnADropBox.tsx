@@ -49,7 +49,7 @@ const RecruitQnADropBoxQuestion = ({
         src={
           isOpen ? "/recruit/icons/DropUp.svg" : "/recruit/icons/DropDown.svg"
         }
-        alt="화살표"
+        alt="DropDown"
         width={28}
         height={28}
         priority

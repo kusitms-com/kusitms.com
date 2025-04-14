@@ -34,7 +34,7 @@ export function PartIntroSection() {
 
   const executiveData = [
     {
-      image: "/main/img/31기 학부학.png",
+      image: "/main/img/31st_President_and_Vice_President.png",
       title: "학부학",
       description: `학회의 총체적 운영권과 
             대내외적 대표권을 가지고 있으며, 
@@ -45,7 +45,7 @@ export function PartIntroSection() {
       paddingTop: false,
     },
     {
-      image: "/main/img/31기 경영총괄팀.png",
+      image: "/main/img/31st_General_Management_Team.png",
       title: "경영총괄팀",
       description: `OT/LT, 큐시즘 데이, 큐시즘의 밤 등 
             학회 행사를 기획하고, 
@@ -55,7 +55,7 @@ export function PartIntroSection() {
       paddingTop: true,
     },
     {
-      image: "/main/img/31기 교육기획팀.png",
+      image: "/main/img/31st_Education_Planning_Team.png",
       title: "교육기획팀",
       description: `초청 강연, 기업 프로젝트, 밋업데이 등
             학회의 전반적인 교육 커리큘럼을
@@ -65,7 +65,7 @@ export function PartIntroSection() {
       paddingTop: false,
     },
     {
-      image: "/main/img/31기 대외홍보팀.png",
+      image: "/main/img/31st_External_Public_Relations_Team.png",
       title: "대외홍보팀",
       description: `학회 행사와 관련된 콘텐츠를 제작하고, 
             전반적인 SNS 관리 및 마케팅,
