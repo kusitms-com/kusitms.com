@@ -95,7 +95,7 @@ export const IntroSection = () => {
             </p>
           </div>
 
-          <div className={"relative "}>
+          <div className={"relative"}>
             <motion.div
               initial={{ opacity: 0, y: -50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -103,8 +103,8 @@ export const IntroSection = () => {
               viewport={{ once: true }}
             >
               <Image
-                src="/main/LOGO.svg"
-                alt="LOGO"
+                src="/main/Logo.svg"
+                alt="Logo"
                 width={400}
                 height={278}
                 style={{ width: 400, height: 278 }}
