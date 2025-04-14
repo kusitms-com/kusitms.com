@@ -11,21 +11,21 @@ export const PartnerSection = () => {
       name: "인프런",
       description:
         "IT기술 정보 플랫폼 ‘인프런'은 현재 3,000여개가 넘는 IT 분야 학습 콘텐츠를 보유하고 5,000명 이상의 지식 공유자, 140만 명 이상의 학습자가 함께 지식 생태계의 선순환을 만들고 있습니다.",
-      image: "/main/img/인프런.png",
+      image: "/main/img/Inflearn.png",
       url: "https://www.inflearn.com/",
     },
     {
       name: "네이버 클라우드 플랫폼",
       description:
         "네이버 클라우드 예비 개발자 지원 프로그램 Green Developers 네이버 클라우드 플랫폼은 클라우드 스터디, 토이 프로젝트 등 자기 개발 목적으로 클라우드를 활용하는 예비, 주니어 개발자의 성장을 지원합니다.",
-      image: "/main/img/네이버클라우드.png",
+      image: "/main/img/Naver_Cloud.png",
       url: "https://www.ncloud.com/",
     },
     {
       name: "스나이퍼 팩토리",
       description:
         "스나이퍼 팩토리는 국내 유수의 IT 인재 육성을 위한 자체 부트캠프를 운영하며 IT 서비스 기획, UIUX 디자인, 앱/웹 개발자, AI, 빅데이터, 유니티 등 청년 IT 인재 육성을 키워나가고 있습니다.",
-      image: "/main/img/스나이퍼 팩토리.png",
+      image: "/main/img/Sniper_Factory.png",
       url: "https://sniperfactory.com/",
     },
   ];
@@ -44,7 +44,7 @@ export const PartnerSection = () => {
         <h1 className={"text-[48px] font-black"}>파트너사</h1>
         <Image
           src="/main/BlueUnderlineIcon.svg"
-          alt="밑줄"
+          alt="BlueUnderlineIcon"
           width={161}
           height={16}
           priority
@@ -81,7 +81,7 @@ const PartnerCard = ({
       className="absolute top-0 right-0 flex flex-col items-center justify-center bg-black w-[82px] h-[82px] rounded-full"
     >
       <div className="flex flex-col items-center justify-center bg-[#0055FF] w-[66px] h-[66px] rounded-full">
-        <Image src="/main/화살표.svg" width={30} height={30} alt="화살표" />
+        <Image src="/main/Arrow.svg" width={30} height={30} alt="Arrow" />
       </div>
     </Link>
     <div className="border w-[391px] h-[450px] bg-white rounded-[32px] m-[6px]">
