@@ -46,9 +46,9 @@ export const ProjectContainer = ({
               <Card.ProjectName>{project.name}</Card.ProjectName>
               <Card.ContentIntro>{project.one_line_intro}</Card.ContentIntro>
               <Card.CategoryContainer>
-                <Card.Category>#지도</Card.Category>
-                <Card.Category>#반려견</Card.Category>
-                <Card.Category>#커뮤니티</Card.Category>
+                {project.tags.map((tag, index) => (
+                  <Card.Category key={index}>{tag}</Card.Category>
+                ))}
               </Card.CategoryContainer>
             </Card.Info>
           </Card>

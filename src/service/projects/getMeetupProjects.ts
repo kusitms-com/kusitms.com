@@ -23,6 +23,7 @@ export interface MeetupItem {
   app_url: string;
   start_date: string;
   end_date: string;
+  tags: string[];
 }
 
 export interface MeetupResponse {

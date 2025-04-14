@@ -16,7 +16,7 @@ export const ProjectNavigation = ({
       {prevId && (
         <Link
           href={`/projects/meetup/${prevId}`}
-          className="absolute left-25 top-1/2 -translate-y-1/2 
+          className="absolute left-[3.5%] top-[70%]
                      flex justify-center items-center bg-[#E2E2EB] rounded-full 
                      w-[70px] h-[70px] hover:scale-105 transition-transform"
         >
@@ -34,7 +34,7 @@ export const ProjectNavigation = ({
       {nextId && (
         <Link
           href={`/projects/meetup/${nextId}`}
-          className="absolute right-25 top-1/2 -translate-y-1/2 
+          className="absolute right-[3.5%] top-[70%]
                      flex justify-center items-center bg-[#E2E2EB] rounded-full 
                      w-[70px] h-[70px] hover:scale-105 transition-transform"
         >

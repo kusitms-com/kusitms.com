@@ -37,7 +37,7 @@ export const CorporateProjectContainer = ({
               <Card.ContentIntro>{project.content}</Card.ContentIntro>
               <Card.CategoryContainer>
                 {project.category.map((category, index) => (
-                  <Card.Category key={index}>{category}</Card.Category>
+                  <Card.Category key={index}>#{category}</Card.Category>
                 ))}
               </Card.CategoryContainer>
             </Card.Info>
