@@ -43,10 +43,6 @@ export async function generateMetadata({ params }: Props) {
         },
       ],
     },
-    robots: {
-      index: true,
-      follow: true,
-    },
   };
 }
 

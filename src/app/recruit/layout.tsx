@@ -42,10 +42,6 @@ export const metadata: Metadata = {
       "https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/upload/fdc0f561-9f61-47d0-be9b-1274cfe4814emarkup_banner.png",
     ],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
 };
 
 export default async function RecruitLayout({

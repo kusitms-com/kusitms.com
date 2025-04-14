@@ -46,10 +46,6 @@ export async function generateMetadata({ params }: Props) {
     icons: {
       icon: "../../../favicon.ico",
     },
-    robots: {
-      index: true,
-      follow: true,
-    },
   };
 }
 
