@@ -1,5 +1,5 @@
 import React from "react";
-import { CorporatePage, MeetupPage } from "@/app/pages/projects";
+import { CorporateSection, MeetupSection } from "@/components/projects";
 
 export async function generateStaticParams() {
   return [
@@ -17,9 +17,9 @@ async function BranchPage({
 }>) {
   const { projectType } = await params;
   if (projectType === "meetup") {
-    return <MeetupPage projectType={projectType} />;
+    return <MeetupSection projectType={projectType} />;
   } else if (projectType === "corporate") {
-    return <CorporatePage projectType={projectType} />;
+    return <CorporateSection projectType={projectType} />;
   }
 }
 

@@ -5,15 +5,15 @@ import React from "react";
 import { usePathname } from "next/navigation";
 
 export const NavButtons = () => {
-  const pathname = usePathname().slice(10);
-  console.log(pathname);
+  const pathname = usePathname();
+  const currentPath = pathname ? pathname.slice(10) : "";
 
   return (
     <nav className="w-full flex gap-4 mt-[64px]">
       <Link
         href="/projects/meetup"
         className={`w-[50%] flex justify-center items-center border-b-4 text-[28px] font-extrabold p-8 ${
-          pathname === "meetup"
+          currentPath === "meetup"
             ? "border-[#62EFE5]"
             : "border-transparent text-[#595A62]"
         }`}
@@ -23,7 +23,7 @@ export const NavButtons = () => {
       <Link
         href="/projects/corporate"
         className={`w-[50%] flex justify-center items-center border-b-4 text-[28px] font-extrabold p-8 ${
-          pathname === "corporate"
+          currentPath === "corporate"
             ? "border-[#62EFE5]"
             : "border-transparent text-[#595A62]"
         }`}

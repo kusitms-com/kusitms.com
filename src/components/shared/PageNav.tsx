@@ -13,14 +13,15 @@ const navLinks = [
 
 export const PageNav = () => {
   const pathname = usePathname();
+  const currentPath = pathname ? pathname : "";
 
   return (
     <nav className="flex text-center">
       {navLinks.map(({ href, label, matchPath }, index) => {
         const isActive =
           matchPath === "/"
-            ? pathname === matchPath
-            : pathname.startsWith(matchPath);
+            ? currentPath === matchPath
+            : currentPath.startsWith(matchPath);
 
         return (
           <Link

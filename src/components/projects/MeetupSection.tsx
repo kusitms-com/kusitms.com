@@ -1,20 +1,20 @@
 import Image from "next/image";
+import React from "react";
 import {
-  CorporateProjectContainer,
   EventIntro,
   ImageCard,
   NavButtons,
+  ProjectContainer,
   ProjectTotalCount,
 } from "@/components/projects";
-import { getCorporateProjects } from "@/service/projects";
+import { getMeetupProjects } from "@/service/projects";
 
-interface CorporatePageProps {
+interface MeetupSectionProps {
   projectType: string;
 }
 
-export const CorporatePage = async ({ projectType }: CorporatePageProps) => {
-  const corporateProjectsList = await getCorporateProjects("");
-
+export const MeetupSection = async ({ projectType }: MeetupSectionProps) => {
+  const meetupProjectList = await getMeetupProjects("");
   return (
     <>
       <section className="w-full max-w-6xl mx-auto py-8 text-center">
@@ -33,7 +33,7 @@ export const CorporatePage = async ({ projectType }: CorporatePageProps) => {
           <ImageCard>
             <ImageCard.Sticker>
               <Image
-                src="/projects/sticker/CompanyProjectSticker.svg"
+                src="/projects/sticker/MeetupSticker.svg"
                 alt="스티커"
                 width={70}
                 height={100}
@@ -41,11 +41,11 @@ export const CorporatePage = async ({ projectType }: CorporatePageProps) => {
                 style={{ width: 70, height: 100 }}
               />
             </ImageCard.Sticker>
-            <ImageCard.Image src="/projects/tmp/company_tmpImg.jpeg" />
+            <ImageCard.Image src="/projects/tmp/meetup_tmpImg.jpeg" />
           </ImageCard>
-          <EventIntro type="corporate" />
+          <EventIntro type="meetup" />
         </div>
-        <CorporateProjectContainer data={corporateProjectsList.data} />
+        <ProjectContainer data={meetupProjectList.data} />
       </section>
     </>
   );
