@@ -3,17 +3,19 @@ import React from "react";
 import {
   EventIntro,
   ImageCard,
-  NavButtons,
-  ProjectContainer,
   ProjectTotalCount,
 } from "@/components/projects";
 import { getMeetupProjects } from "@/service/projects";
+import NavButtons from "./NavButtons";
+import ProjectContainer from "./MeetupProjectContainer";
 
 interface MeetupSectionProps {
   projectType: string;
 }
 
-export const MeetupSection = async ({ projectType }: MeetupSectionProps) => {
+export default async function MeetupSection({
+  projectType,
+}: MeetupSectionProps) {
   const meetupProjectList = await getMeetupProjects("");
   return (
     <>
@@ -49,4 +51,4 @@ export const MeetupSection = async ({ projectType }: MeetupSectionProps) => {
       </section>
     </>
   );
-};
+}

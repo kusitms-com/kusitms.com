@@ -3,10 +3,10 @@ import {
   CorporateProjectContainer,
   EventIntro,
   ImageCard,
-  NavButtons,
   ProjectTotalCount,
 } from "@/components/projects";
 import { getCorporateProjects } from "@/service/projects";
+import NavButtons from "./NavButtons";
 
 interface CorporateSectionProps {
   projectType: string;

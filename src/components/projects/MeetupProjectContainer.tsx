@@ -8,9 +8,9 @@ import { Card } from "./ProjectCard";
 
 type ProjectContainerProps = MeetupResponse;
 
-export const ProjectContainer = ({
+export default function ProjectContainer({
   data: meetupProjectList,
-}: ProjectContainerProps) => {
+}: ProjectContainerProps) {
   const [projects, setProjects] = useState(meetupProjectList);
   const [cardinal, setCardinal] = useState("");
 
@@ -56,4 +56,4 @@ export const ProjectContainer = ({
       </div>
     </div>
   );
-};
+}

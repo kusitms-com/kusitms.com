@@ -1,6 +1,6 @@
 import React from "react";
-import { CorporateSection, MeetupSection } from "@/components/projects";
-
+import { CorporateSection } from "@/components/projects";
+import MeetupSection from "@/components/projects/MeetupSection";
 export async function generateStaticParams() {
   return [
     {

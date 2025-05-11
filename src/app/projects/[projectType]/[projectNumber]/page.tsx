@@ -85,6 +85,7 @@ async function ProjectDetailPage({
                 height={820}
                 style={{ width: "580px", height: "820px" }}
                 priority
+                unoptimized
               />
             </div>
 

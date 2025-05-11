@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
 
-export const NavButtons = () => {
+export default function NavButtons() {
   const pathname = usePathname();
   const currentPath = pathname ? pathname.slice(10) : "";
 
@@ -32,4 +32,4 @@ export const NavButtons = () => {
       </Link>
     </nav>
   );
-};
+}
