@@ -26,6 +26,7 @@ const Poster = ({ src }: { src: string }) => (
     width={370}
     height={285}
     style={{ width: 370, height: 285 }}
+    unoptimized
   />
 );
 
