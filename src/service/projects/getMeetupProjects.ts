@@ -71,7 +71,6 @@ export const getMeetupProjects = async (
         ? `${baseUrl}/api/projects/meetup?cardinal=${cardinal}&order=desc`
         : `${baseUrl}/api/projects/meetup?order=desc`;
 
-    console.log(url);
     const res = await fetch(url, {
       method: "GET",
       headers: {
