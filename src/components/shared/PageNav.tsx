@@ -7,6 +7,7 @@ import React from "react";
 const navLinks = [
   { href: "/", label: "학회소개", matchPath: "/" },
   { href: "/projects/meetup", label: "프로젝트", matchPath: "/projects" },
+  { href: "/display", label: "전시", matchPath: "/display" },
   { href: "/reviews", label: "후기", matchPath: "/reviews" },
   { href: "/recruit", label: "리크루팅", matchPath: "/recruit" },
 ];
