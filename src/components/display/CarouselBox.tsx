@@ -10,7 +10,7 @@ import {
 
 export function CarouselBox() {
   return (
-    <div className="w-full max-w-[1920px] max-h-[1080px] h-[1080px] mt-23 relative">
+    <section className="w-full max-w-[1920px] max-h-[1080px] h-[1080px] relative z-10">
       <Carousel>
         <CarouselContent className="w-full">
           {Array.from({ length: 5 }).map((_, index) => (
@@ -74,6 +74,6 @@ export function CarouselBox() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

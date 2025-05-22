@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import Image from "next/image";
+import { CarouselBox } from "@/components/display";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -40,6 +41,7 @@ export default async function RecruitLayout({
           </h2>
         </div>
       </section>
+      <CarouselBox />
       <main className="w-full flex flex-col items-center gap-y-12">
         {children}
       </main>
