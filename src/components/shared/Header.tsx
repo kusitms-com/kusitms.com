@@ -5,7 +5,7 @@ import { PageNav } from "./PageNav";
 
 export const Header = () => {
   return (
-    <header className="w-full px-12 py-6">
+    <header className="w-full px-12 py-6 bg-transparent fixed top-0 left-0 z-50 ">
       <div className="max-w-[2000px] w-full mx-auto flex justify-between">
         <Link href="/">
           <Image

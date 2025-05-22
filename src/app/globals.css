@@ -151,3 +151,7 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.display-gradient {
+  background: linear-gradient(180deg, #05f -28.5%, #151519 114.19%);
+}
