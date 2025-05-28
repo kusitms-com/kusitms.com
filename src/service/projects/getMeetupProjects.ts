@@ -63,13 +63,11 @@ export interface MeetupProjectDetailResponse {
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export const getMeetupProjects = async (
-  cardinal: string
+  cardinal: string,
+  batch?: string
 ): Promise<MeetupResponse> => {
   try {
-    const url =
-      cardinal !== ""
-        ? `${baseUrl}/api/projects/meetup?cardinal=${cardinal}&order=desc`
-        : `${baseUrl}/api/projects/meetup?order=desc`;
+    const url = `${baseUrl}/api/projects/meetup?batch=${batch}&cardinal=${cardinal}&order=desc`;
 
     const res = await fetch(url, {
       method: "GET",

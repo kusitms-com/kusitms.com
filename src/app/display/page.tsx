@@ -1,7 +1,10 @@
 import Image from "next/image";
-import { DisplayListContainer, OptionBar } from "@/components/display";
+import { DisplayListContainer } from "@/components/display";
+import { getMeetupProjects } from "@/service/projects";
 
 async function DisplayPage() {
+  const meetupProjectList = await getMeetupProjects("31", "");
+
   return (
     <div className="w-full flex flex-col items-center gap-y-12 py-80 relative">
       <Image
@@ -12,8 +15,7 @@ async function DisplayPage() {
         className="absolute right-0 top-0 w-full h-full object-cover z-0"
       />
       <section className="mx-auto w-full max-w-[1180px] flex flex-col z-10">
-        <OptionBar />
-        <DisplayListContainer />
+        <DisplayListContainer data={meetupProjectList.data} />
         <h2 className="text-5xl font-bold text-white text-center">
           큐밀리들의 31번째 여정
         </h2>
