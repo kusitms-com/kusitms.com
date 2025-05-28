@@ -52,6 +52,7 @@ export interface MeetupProjectDetailResponse {
     one_line_intro: string;
     logo_url: string;
     poster_url: string;
+    web_thumbnail_url: string;
     instagram_url: string;
     github_url: string;
     app_url: string;
