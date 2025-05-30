@@ -18,17 +18,19 @@ const DisplayDetailPage = async ({params}: Readonly<{
     params: Promise<{ displayNumber: string }>;
 }>) => {
     const { displayNumber } = await params;
-    const projectList = await getMeetupProjects("");
     const projectDetail = await getMeetupProjectDetail(displayNumber);
 
-    const currentIndex = projectList.data.meetup_list.findIndex(
-        (item) => item.meetup_id.toString() === displayNumber
-    );
+    const displayIdList = [47, 50, 51, 53, 48, 55, 52, 49, 54];
+
+    const positionInList = displayIdList.indexOf(parseInt(displayNumber));
+
+    const prevId =
+        positionInList > 0 ? displayIdList[positionInList - 1].toString() : undefined;
 
     const nextId =
-        projectList.data.meetup_list[currentIndex + 1]?.meetup_id.toString();
-    const prevId =
-        projectList.data.meetup_list[currentIndex - 1]?.meetup_id.toString();
+        positionInList < displayIdList.length - 1
+            ? displayIdList[positionInList + 1].toString()
+            : undefined;
 
     const team = projectDetail?.data.team;
     const renderTeamSection = (role: string, members: string[]) => (
