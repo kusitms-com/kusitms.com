@@ -18,25 +18,47 @@ const DisplayDetailPage = async ({params}: Readonly<{
     params: Promise<{ displayNumber: string }>;
 }>) => {
     const { displayNumber } = await params;
-    const projectList = await getMeetupProjects("");
     const projectDetail = await getMeetupProjectDetail(displayNumber);
 
-    const currentIndex = projectList.data.meetup_list.findIndex(
-        (item) => item.meetup_id.toString() === displayNumber
-    );
+    const displayIdList = [47, 50, 51, 53, 48, 55, 52, 49, 54];
+
+    const positionInList = displayIdList.indexOf(parseInt(displayNumber));
+
+    const prevId =
+        positionInList > 0 ? displayIdList[positionInList - 1].toString() : undefined;
 
     const nextId =
-        projectList.data.meetup_list[currentIndex + 1]?.meetup_id.toString();
-    const prevId =
-        projectList.data.meetup_list[currentIndex - 1]?.meetup_id.toString();
+        positionInList < displayIdList.length - 1
+            ? displayIdList[positionInList + 1].toString()
+            : undefined;
 
     const team = projectDetail?.data.team;
     const renderTeamSection = (role: string, members: string[]) => (
-        <p>
-            <span className="text-[18px] text-[#CCC]">{role} |</span>
-            {" " + members.join(", ")}
-        </p>
+        <div className="flex gap-x-4 items-center">
+            <div className="text-[18px] text-[#CCC] w-[78px]">{role}</div>
+            <div className="h-[16px] border-r border-[#949494]" />
+            <div> {members.join(", ")}</div>
+        </div>
     );
+    
+    const calculateMonthDiff = (start: string, end: string) => {
+        const [startYear, startMonth, startDay] = start.split("-").map(Number);
+        const [endYear, endMonth, endDay] = end.split("-").map(Number);
+
+        const startDate = new Date(startYear, startMonth - 1, startDay);
+        const endDate = new Date(endYear, endMonth - 1, endDay);
+
+        let months =
+            (endDate.getFullYear() - startDate.getFullYear()) * 12 +
+            (endDate.getMonth() - startDate.getMonth());
+
+        // 날짜도 비교해서, 말일까지면 +1개월
+        if (endDate.getDate() >= startDate.getDate()) {
+            months += 1;
+        }
+
+        return `${months}개월`;
+    };
 
     return (
         <>
@@ -52,7 +74,7 @@ const DisplayDetailPage = async ({params}: Readonly<{
                 <div className="absolute flex gap-x-[16px] z-10 bottom-[30px] right-[40px]">
                     {projectDetail.data.behance_url && (
                         <IconLink
-                            className="w-[52px] h-[52px] rounded-2xl"
+                            className="w-[52px] h-[52px] rounded-2xl bg-[#90909A]"
                             size={35}
                             img="/projects/icons/BehanceIcon.svg"
                             link={projectDetail.data.behance_url}
@@ -60,7 +82,7 @@ const DisplayDetailPage = async ({params}: Readonly<{
                     )}
                     {projectDetail.data.github_url && (
                         <IconLink
-                            className="w-[52px] h-[52px] rounded-2xl"
+                            className="w-[52px] h-[52px] rounded-2xl bg-[#90909A]"
                             size={35}
                             img="/projects/icons/GithubIcon.svg"
                             link={projectDetail.data.github_url}
@@ -68,7 +90,7 @@ const DisplayDetailPage = async ({params}: Readonly<{
                     )}
                     {projectDetail.data.app_url && (
                         <IconLink
-                            className="w-[52px] h-[52px] rounded-2xl"
+                            className="w-[52px] h-[52px] rounded-2xl bg-[#90909A]"
                             size={25}
                             img="/projects/icons/DetailLinkIcon.svg"
                             link={projectDetail.data.app_url}
@@ -114,7 +136,8 @@ const DisplayDetailPage = async ({params}: Readonly<{
                         <div className="text-[#E2E2EB] text-xl font-normal flex flex-col gap-5">
                             <p>{projectDetail.data.cardinal}기</p>
                             <p>{toUpperCaseOnlyLetters(projectDetail.data.type)}</p>
-                            <p>{`(${projectDetail.data.start_date} ~ ${projectDetail.data.end_date})`}</p>
+                            <p>{`${projectDetail.data.start_date} ~ ${projectDetail.data.end_date} 
+                            (${calculateMonthDiff(projectDetail.data.start_date, projectDetail.data.end_date)})`}</p>
                             {renderTeamSection("기획", team.planner)}
                             {renderTeamSection("디자인", team.designer)}
                             {team.frontend &&
