@@ -62,7 +62,7 @@ async function DisplayPage() {
                   key={index}
                   className="flex flex-col items-center gap-y-9 mt-[140px]"
                 >
-                  <h3 className="px-8 py-2 bg-[#05F] font-extrabold text-[28px] text-white w-[250px] mx-auto text-center rounded-full">
+                  <h3 className="px-8 py-4 bg-[#05F] font-extrabold text-2xl text-white w-[250px] mx-auto text-center rounded-full">
                     {section.title}
                   </h3>
                   <div className="flex items-center gap-x-5">

@@ -17,7 +17,7 @@ interface CarouselBoxProps {
 export function CarouselBox({ projectDetails }: CarouselBoxProps) {
   return (
     <section className="w-full max-w-[1920px] max-h-[1080px] h-[1080px] relative z-10">
-      <Carousel autoPlay={true}>
+      <Carousel autoPlay={true} opts={{ loop: true }}>
         <CarouselContent className="w-full">
           {projectDetails.map((projectDetail, index) => (
             <CarouselItem key={index} className="w-full relative">
@@ -61,7 +61,7 @@ export function CarouselBox({ projectDetails }: CarouselBoxProps) {
                       </p>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-y-4">
+                  <div className="flex flex-col gap-y-4 items-end">
                     <div className="flex items-center">
                       <h4 className="text-[24px] font-normal text-[#62EFE5] border-r border-white pr-3 h-[21px] flex items-center">
                         프론트엔드
