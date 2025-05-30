@@ -52,6 +52,7 @@ export interface MeetupProjectDetailResponse {
     one_line_intro: string;
     logo_url: string;
     poster_url: string;
+    behance_url: string;
     web_thumbnail_url: string;
     instagram_url: string;
     github_url: string;
@@ -76,7 +77,7 @@ export const getMeetupProjects = async (
         "Content-Type": "application/json",
       },
       cache: "force-cache",
-      next: { revalidate: 604800, tags: ["meetupProjects"] },
+      next: { revalidate: 86400, tags: ["meetupProjects"] },
     });
 
     if (!res.ok) {
@@ -102,7 +103,7 @@ export const getMeetupProjectDetail = async (
         "Content-Type": "application/json",
       },
       cache: "force-cache",
-      next: { revalidate: 604800, tags: ["meetupProject", "projectId"] },
+      next: { revalidate: 86400, tags: ["meetupProject", "projectId"] },
     });
 
     if (!res.ok) {
