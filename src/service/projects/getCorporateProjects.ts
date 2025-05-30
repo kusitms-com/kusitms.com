@@ -31,7 +31,7 @@ export const getCorporateProjects = async (
         "Content-Type": "application/json",
       },
       cache: "force-cache",
-      next: { revalidate: 604800, tags: ["corporateProjects"] },
+      next: { revalidate: 86400, tags: ["corporateProjects"] },
     });
 
     if (!res.ok) {
