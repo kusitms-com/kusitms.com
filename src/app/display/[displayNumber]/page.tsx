@@ -42,7 +42,7 @@ const DisplayDetailPage = async ({params}: Readonly<{
         <>
             <ProjectNavigation prevId={prevId} nextId={nextId} domain={"/display"}/>
             <div className="relative w-[1180px] h-[663px] mt-[180px]">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#ffffffb3] rounded-[20px] z-10" />
+                <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-b from-transparent to-[#ffffff80] rounded-b-[20px] z-10" />
                 <Image src={projectDetail.data.poster_url} className="object-cover rounded-[20px]" fill alt="poster" />
                 <div className="flex flex-col absolute bottom-10 left-[45px] z-10">
                     <h2 className="text-[48px] font-black text-black">{projectDetail.data.name}</h2>
