@@ -74,7 +74,7 @@ const DisplayDetailPage = async ({params}: Readonly<{
                 <div className="absolute flex gap-x-[16px] z-10 bottom-[30px] right-[40px]">
                     {projectDetail.data.behance_url && (
                         <IconLink
-                            className="w-[52px] h-[52px] rounded-2xl"
+                            className="w-[52px] h-[52px] rounded-2xl bg-[#90909A]"
                             size={35}
                             img="/projects/icons/BehanceIcon.svg"
                             link={projectDetail.data.behance_url}
@@ -82,7 +82,7 @@ const DisplayDetailPage = async ({params}: Readonly<{
                     )}
                     {projectDetail.data.github_url && (
                         <IconLink
-                            className="w-[52px] h-[52px] rounded-2xl"
+                            className="w-[52px] h-[52px] rounded-2xl bg-[#90909A]"
                             size={35}
                             img="/projects/icons/GithubIcon.svg"
                             link={projectDetail.data.github_url}
@@ -90,7 +90,7 @@ const DisplayDetailPage = async ({params}: Readonly<{
                     )}
                     {projectDetail.data.app_url && (
                         <IconLink
-                            className="w-[52px] h-[52px] rounded-2xl"
+                            className="w-[52px] h-[52px] rounded-2xl bg-[#90909A]"
                             size={25}
                             img="/projects/icons/DetailLinkIcon.svg"
                             link={projectDetail.data.app_url}
