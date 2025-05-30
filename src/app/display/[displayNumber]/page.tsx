@@ -43,12 +43,12 @@ const DisplayDetailPage = async ({params}: Readonly<{
                 </div>
 
                 <div className="absolute flex gap-x-[16px] z-10 bottom-[30px] right-[40px]">
-                    {projectDetail.data.instagram_url && (
+                    {projectDetail.data.behance_url && (
                         <IconLink
                             className="w-[52px] h-[52px] rounded-2xl"
                             size={35}
-                            img="/projects/icons/InstagramIcon.svg"
-                            link={projectDetail.data.instagram_url}
+                            img="/projects/icons/BehanceIcon.svg"
+                            link={projectDetail.data.behance_url}
                         />
                     )}
                     {projectDetail.data.github_url && (
