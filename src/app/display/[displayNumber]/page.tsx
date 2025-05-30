@@ -37,6 +37,25 @@ const DisplayDetailPage = async ({params}: Readonly<{
             {" " + members.join(", ")}
         </p>
     );
+    
+    const calculateMonthDiff = (start: string, end: string) => {
+        const [startYear, startMonth, startDay] = start.split("-").map(Number);
+        const [endYear, endMonth, endDay] = end.split("-").map(Number);
+
+        const startDate = new Date(startYear, startMonth - 1, startDay);
+        const endDate = new Date(endYear, endMonth - 1, endDay);
+
+        let months =
+            (endDate.getFullYear() - startDate.getFullYear()) * 12 +
+            (endDate.getMonth() - startDate.getMonth());
+
+        // 날짜도 비교해서, 말일까지면 +1개월
+        if (endDate.getDate() >= startDate.getDate()) {
+            months += 1;
+        }
+
+        return `${months}개월`;
+    };
 
     return (
         <>
@@ -114,7 +133,8 @@ const DisplayDetailPage = async ({params}: Readonly<{
                         <div className="text-[#E2E2EB] text-xl font-normal flex flex-col gap-5">
                             <p>{projectDetail.data.cardinal}기</p>
                             <p>{toUpperCaseOnlyLetters(projectDetail.data.type)}</p>
-                            <p>{`(${projectDetail.data.start_date} ~ ${projectDetail.data.end_date})`}</p>
+                            <p>{`${projectDetail.data.start_date} ~ ${projectDetail.data.end_date} 
+                            (${calculateMonthDiff(projectDetail.data.start_date, projectDetail.data.end_date)})`}</p>
                             {renderTeamSection("기획", team.planner)}
                             {renderTeamSection("디자인", team.designer)}
                             {team.frontend &&
