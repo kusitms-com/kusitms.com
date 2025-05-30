@@ -7,6 +7,13 @@ import {IconLink} from "@/components/shared";
 import {toUpperCaseOnlyLetters} from "@/utils";
 import {ProjectNavigation} from "@/components/projectDetail";
 
+export async function generateStaticParams() {
+    const meetupProjectList = await getMeetupProjects("");
+    return meetupProjectList.data.meetup_list.map((project) => ({
+        projectNumber: project.meetup_id,
+    }));
+}
+
 const DisplayDetailPage = async ({params}: Readonly<{
     params: Promise<{ displayNumber: string }>;
 }>) => {
