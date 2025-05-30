@@ -11,8 +11,8 @@ interface FilterProps {
 }
 
 export const Filter = ({ cardinal, onChange, projectList }: FilterProps) => {
-  // 25기부터 30기까지 배열 생성
-  const generations = Array.from({ length: 6 }, (_, i) => 30 - i);
+  // 26기부터 31기까지 배열 생성
+  const generations = Array.from({ length: 6 }, (_, i) => 31 - i);
 
   // 프로젝트 개수 계산
   const projectCounts = useMemo(() => {
