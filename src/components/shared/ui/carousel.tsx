@@ -20,6 +20,8 @@ type CarouselProps = {
   orientation?: "horizontal" | "vertical";
   // eslint-disable-next-line no-unused-vars
   setApi?: (api: CarouselApi) => void;
+  autoPlay?: boolean;
+  autoPlayInterval?: number; // ms 단위
 };
 
 type CarouselContextProps = {
@@ -50,6 +52,8 @@ function Carousel({
   plugins,
   className,
   children,
+  autoPlay = false,
+  autoPlayInterval = 5000,
   ...props
 }: React.ComponentProps<"div"> & CarouselProps) {
   const [carouselRef, api] = useEmblaCarousel(
@@ -104,6 +108,21 @@ function Carousel({
       api?.off("select", onSelect);
     };
   }, [api, onSelect]);
+
+  React.useEffect(() => {
+    if (!api || !autoPlay) return;
+
+    const interval = setInterval(() => {
+      if (!api) return;
+      if (api.canScrollNext()) {
+        api.scrollNext();
+      } else {
+        api.scrollTo(0); // 처음으로 이동
+      }
+    }, autoPlayInterval);
+
+    return () => clearInterval(interval);
+  }, [api, autoPlay, autoPlayInterval]);
 
   return (
     <CarouselContext.Provider
