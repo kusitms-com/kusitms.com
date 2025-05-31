@@ -23,8 +23,8 @@ export const getReviews = async (team: string): Promise<ReviewResponse> => {
       headers: {
         "Content-Type": "application/json",
       },
-      // cache: "force-cache",
-      // next: { revalidate: 86400, tags: ["reviews"] },
+      cache: "force-cache",
+      next: { revalidate: 86400, tags: ["reviews"] },
     });
 
     if (!res.ok) {
