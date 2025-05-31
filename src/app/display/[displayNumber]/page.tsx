@@ -40,7 +40,7 @@ const DisplayDetailPage = async ({params}: Readonly<{
             <div> {members.join(", ")}</div>
         </div>
     );
-    
+
     const calculateMonthDiff = (start: string, end: string) => {
         const [startYear, startMonth, startDay] = start.split("-").map(Number);
         const [endYear, endMonth, endDay] = end.split("-").map(Number);
@@ -52,9 +52,9 @@ const DisplayDetailPage = async ({params}: Readonly<{
             (endDate.getFullYear() - startDate.getFullYear()) * 12 +
             (endDate.getMonth() - startDate.getMonth());
 
-        // 날짜도 비교해서, 말일까지면 +1개월
-        if (endDate.getDate() >= startDate.getDate()) {
-            months += 1;
+        // 종료일의 일이 시작일보다 작으면, 아직 해당 달은 안 지났으므로 -1
+        if (endDay < startDay) {
+            months -= 1;
         }
 
         return `${months}개월`;
