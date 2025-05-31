@@ -76,8 +76,8 @@ export const getMeetupProjects = async (
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "force-cache",
-      next: { revalidate: 86400, tags: ["meetupProjects"] },
+      // cache: "force-cache",
+      // next: { revalidate: 86400, tags: ["meetupProjects"] },
     });
 
     if (!res.ok) {
@@ -102,8 +102,8 @@ export const getMeetupProjectDetail = async (
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "force-cache",
-      next: { revalidate: 86400, tags: ["meetupProject", "projectId"] },
+      // cache: "force-cache",
+      // next: { revalidate: 86400, tags: ["meetupProject", "projectId"] },
     });
 
     if (!res.ok) {

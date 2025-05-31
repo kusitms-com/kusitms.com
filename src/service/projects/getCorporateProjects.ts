@@ -30,8 +30,8 @@ export const getCorporateProjects = async (
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "force-cache",
-      next: { revalidate: 86400, tags: ["corporateProjects"] },
+      // cache: "force-cache",
+      // next: { revalidate: 86400, tags: ["corporateProjects"] },
     });
 
     if (!res.ok) {
