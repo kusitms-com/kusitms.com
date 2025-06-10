@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { CarouselBox, DisplayListContainer } from "@/components/display";
+import CarouselBox from "@/components/display/CarouselBox";
+import DisplayListContainer from "@/components/display/DisplayListContainer";
 import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
 import { DISPLAY_SECTIONS } from "@/constants/displayPictureList";
 

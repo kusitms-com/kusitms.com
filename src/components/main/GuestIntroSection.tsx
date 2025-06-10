@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
-export const GuestIntroSection = () => {
+export default function GuestIntroSection() {
   return (
     <div
       className={
@@ -47,4 +47,4 @@ export const GuestIntroSection = () => {
       </motion.div>
     </div>
   );
-};
+}

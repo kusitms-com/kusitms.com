@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 
-export function StatsSection() {
+export default function StatsSection() {
   const statData = [
     {
       end: 1409,

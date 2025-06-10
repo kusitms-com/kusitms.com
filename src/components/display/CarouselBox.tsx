@@ -14,7 +14,7 @@ interface CarouselBoxProps {
   projectDetails: MeetupProjectDetailResponse[];
 }
 
-export function CarouselBox({ projectDetails }: CarouselBoxProps) {
+export default function CarouselBox({ projectDetails }: CarouselBoxProps) {
   return (
     <section className="w-full max-w-[1920px] max-h-[1080px] h-[1080px] relative z-10">
       <Carousel autoPlay={true} opts={{ loop: true }}>

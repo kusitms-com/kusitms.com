@@ -10,7 +10,11 @@ interface FilterProps {
   projectList: MeetupItem[] | CorporateProjectItem[];
 }
 
-export const Filter = ({ cardinal, onChange, projectList }: FilterProps) => {
+export default function Filter({
+  cardinal,
+  onChange,
+  projectList,
+}: FilterProps) {
   // 26기부터 31기까지 배열 생성
   const generations = Array.from({ length: 6 }, (_, i) => 31 - i);
 
@@ -46,4 +50,4 @@ export const Filter = ({ cardinal, onChange, projectList }: FilterProps) => {
       </div>
     </div>
   );
-};
+}

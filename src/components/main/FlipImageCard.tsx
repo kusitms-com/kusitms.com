@@ -10,12 +10,12 @@ type FlipImageCardProps = {
   delay?: number;
 };
 
-export const FlipImageCard = ({
+export default function FlipImageCard({
   src,
   alt,
   className,
   delay = 0,
-}: FlipImageCardProps) => {
+}: FlipImageCardProps) {
   return (
     <motion.img
       src={src}
@@ -33,4 +33,4 @@ export const FlipImageCard = ({
       }}
     />
   );
-};
+}

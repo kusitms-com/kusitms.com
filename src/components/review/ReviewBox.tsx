@@ -1,7 +1,7 @@
 import React from "react";
 import { Review } from "@/service/reviews";
 
-export const ReviewBox = (props: Review) => {
+export default function ReviewBox(props: Review) {
   return (
     <div className="px-8 py-12 max-w-[380px] max-h-[450px] bg-[#F2F2F8] rounded-[32px]">
       <h3 className="text-2xl font-extrabold mb-2">{props.name}</h3>
@@ -11,4 +11,4 @@ export const ReviewBox = (props: Review) => {
       </p>
     </div>
   );
-};
+}

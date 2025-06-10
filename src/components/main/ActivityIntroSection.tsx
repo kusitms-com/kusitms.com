@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import { FlipImageCard } from "./FlipImageCard";
+import FlipImageCard from "./FlipImageCard";
 
-export const ActivityIntroSection = () => {
+export default function ActivityIntroSection() {
   const activityCards = [
     {
       src: "/main/img/Kusitms_Day.png",
@@ -88,4 +88,4 @@ export const ActivityIntroSection = () => {
       />
     </section>
   );
-};
+}

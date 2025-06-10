@@ -7,7 +7,7 @@ interface ReviewFilterProps {
   onChange: (team: "DEVELOPER" | "PLANNER" | "DESIGNER" | "") => void;
 }
 
-export const ReviewFilter = ({ team, onChange }: ReviewFilterProps) => {
+export default function ReviewFilter({ team, onChange }: ReviewFilterProps) {
   const getButtonClass = (value: "DEVELOPER" | "PLANNER" | "DESIGNER" | "") =>
     `px-8 py-4 rounded-[75px] text-xl cursor-pointer transition-colors ${
       team === value ? "bg-[#05f] text-white" : "bg-[#DCE1FF] text-black"
@@ -38,4 +38,4 @@ export const ReviewFilter = ({ team, onChange }: ReviewFilterProps) => {
       </button>
     </section>
   );
-};
+}

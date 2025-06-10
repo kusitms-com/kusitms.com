@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { getReviews, ReviewResponse } from "@/service/reviews";
-import { ReviewFilter } from "./ReviewFilter";
-import { ReviewBox } from "./ReviewBox";
-import { ReviewsTotalCount } from "./ReviewsTotalCount";
+import ReviewFilter from "./ReviewFilter";
+import ReviewBox from "./ReviewBox";
+import ReviewsTotalCount from "./ReviewsTotalCount";
 
 export type TeamType = "DEVELOPER" | "PLANNER" | "DESIGNER" | "";
 
@@ -12,7 +12,7 @@ interface ReviewsProps {
   reviews: ReviewResponse;
 }
 
-export const Reviews = ({ reviews }: ReviewsProps) => {
+export default function Reviews({ reviews }: ReviewsProps) {
   const [team, setTeam] = useState<TeamType>("");
   const [reviewList, setReviewList] = useState(reviews);
 
@@ -33,4 +33,4 @@ export const Reviews = ({ reviews }: ReviewsProps) => {
       ;
     </>
   );
-};
+}

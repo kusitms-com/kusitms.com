@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
 import { IconLink } from "@/components/shared";
 import { toUpperCaseOnlyLetters } from "@/utils";
-import { ProjectNavigation } from "@/components/projectDetail";
+import ProjectNavigation from "@/components/projectDetail/ProjectNavigation";
 
 export async function generateStaticParams() {
   const meetupProjectList = await getMeetupProjects("");

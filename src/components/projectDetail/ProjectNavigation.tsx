@@ -7,11 +7,11 @@ interface ProjectNavigationProps {
   domain?: string;
 }
 
-export const ProjectNavigation = ({
-                                    prevId,
-                                    nextId,
-                                    domain = "/projects/meetup",
-}: ProjectNavigationProps) => {
+export default function ProjectNavigation({
+  prevId,
+  nextId,
+  domain = "/projects/meetup",
+}: ProjectNavigationProps) {
   return (
     <div className="w-full">
       {/* 이전 게시물 */}
@@ -51,4 +51,4 @@ export const ProjectNavigation = ({
       )}
     </div>
   );
-};
+}

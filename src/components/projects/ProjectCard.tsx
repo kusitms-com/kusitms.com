@@ -6,7 +6,7 @@ interface CardProps {
   onClick?: () => void;
 }
 
-export const Card = ({ children, onClick }: CardProps) => {
+export default function Card({ children, onClick }: CardProps) {
   return (
     <div
       className="relative w-[370px] h-[494px] rounded-[40px] flex flex-col bg-[#2F3038] pb-6 
@@ -16,7 +16,7 @@ export const Card = ({ children, onClick }: CardProps) => {
       {children}
     </div>
   );
-};
+}
 
 const Poster = ({ src }: { src: string }) => (
   <Image

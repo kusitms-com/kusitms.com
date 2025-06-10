@@ -5,7 +5,7 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 
-export const PartnerSection = () => {
+export default function PartnerSection() {
   const partners = [
     {
       name: "인프런",
@@ -61,7 +61,7 @@ export const PartnerSection = () => {
       </section>
     </motion.div>
   );
-};
+}
 
 const PartnerCard = ({
   name,

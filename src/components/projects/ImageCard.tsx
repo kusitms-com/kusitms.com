@@ -5,11 +5,11 @@ interface ImageCardProps {
   children: ReactNode;
 }
 
-export const ImageCard = ({ children }: ImageCardProps) => {
+export default function ImageCard({ children }: ImageCardProps) {
   return (
     <div className="w-[600px] h-[500px] mt-[40px] relative">{children}</div>
   );
-};
+}
 
 const Sticker = ({ children }: { children: ReactNode }) => {
   return (

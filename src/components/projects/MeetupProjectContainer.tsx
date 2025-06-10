@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { getMeetupProjects, MeetupResponse } from "@/service/projects";
-import { Filter } from "./Filter";
-import { Card } from "./ProjectCard";
+import Filter from "./Filter";
+import Card from "./ProjectCard";
 
 type ProjectContainerProps = MeetupResponse;
 

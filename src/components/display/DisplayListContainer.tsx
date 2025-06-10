@@ -6,14 +6,15 @@ import {
   getMeetupProjects,
   MeetupResponse,
 } from "@/service/projects/getMeetupProjects";
-import { Card } from "../projects";
-import { OptionBar } from "./OptionBar";
+
+import Card from "../projects/ProjectCard";
+import OptionBar from "./OptionBar";
 
 type ProjectContainerProps = MeetupResponse;
 
-export const DisplayListContainer = ({
+export default function DisplayListContainer({
   data: meetupProjectList,
-}: ProjectContainerProps) => {
+}: ProjectContainerProps) {
   const [projects, setProjects] = useState(meetupProjectList);
   const [batch, setBatch] = useState("");
 
@@ -56,4 +57,4 @@ export const DisplayListContainer = ({
       </div>
     </>
   );
-};
+}

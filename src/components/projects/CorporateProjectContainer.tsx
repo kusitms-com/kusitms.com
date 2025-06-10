@@ -2,14 +2,14 @@
 
 import React, { useState } from "react";
 import { CorporateResponse, getCorporateProjects } from "@/service/projects";
-import { Filter } from "./Filter";
-import { Card } from "./ProjectCard";
+import Filter from "./Filter";
+import Card from "./ProjectCard";
 
 type ProjectContainerProps = CorporateResponse;
 
-export const CorporateProjectContainer = ({
+export default function CorporateProjectContainer({
   data: corporateProjectsList,
-}: ProjectContainerProps) => {
+}: ProjectContainerProps) {
   const [projects, setProjects] = useState(corporateProjectsList);
   const [cardinal, setCardinal] = useState("");
 
@@ -46,4 +46,4 @@ export const CorporateProjectContainer = ({
       </div>
     </div>
   );
-};
+}

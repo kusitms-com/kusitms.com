@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 
-export const RecruitQnADropBox = ({
+export default function RecruitQnADropBox({
   question,
   answer,
   isOpen,
@@ -12,7 +12,7 @@ export const RecruitQnADropBox = ({
   answer: (string | React.JSX.Element)[];
   isOpen: boolean;
   onToggle: () => void;
-}) => {
+}) {
   return (
     <div
       onClick={onToggle}
@@ -33,7 +33,7 @@ export const RecruitQnADropBox = ({
       </RecruitQnADropBox.Answer>
     </div>
   );
-};
+}
 
 const RecruitQnADropBoxQuestion = ({
   children,

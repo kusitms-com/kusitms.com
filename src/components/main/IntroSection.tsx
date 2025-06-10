@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
-export const IntroSection = () => {
+export default function IntroSection() {
   const wordVariants = {
     hidden: { opacity: 0, x: -50 },
     visible: (i: number) => ({
@@ -118,4 +118,4 @@ export const IntroSection = () => {
       </section>
     </div>
   );
-};
+}

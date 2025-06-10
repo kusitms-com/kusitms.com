@@ -1,7 +1,11 @@
 import React from "react";
 import { getCorporateProjects, getMeetupProjects } from "@/service/projects";
 
-export const ProjectTotalCount = async ({ pathname }: { pathname: string }) => {
+export default async function ProjectTotalCount({
+  pathname,
+}: {
+  pathname: string;
+}) {
   if (pathname === "meetup") {
     const meetupProjectList = await getMeetupProjects("");
     return (
@@ -17,4 +21,4 @@ export const ProjectTotalCount = async ({ pathname }: { pathname: string }) => {
       </span>
     );
   }
-};
+}

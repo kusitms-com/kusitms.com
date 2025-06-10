@@ -7,7 +7,7 @@ interface OptionBarProps {
   onChange: (batch: string) => void;
 }
 
-export const OptionBar = ({ batch, onChange }: OptionBarProps) => {
+export default function OptionBar({ batch, onChange }: OptionBarProps) {
   return (
     <div className="w-full flex gap-4 mt-[64px] max-w-[855px] mx-auto">
       <div
@@ -42,4 +42,4 @@ export const OptionBar = ({ batch, onChange }: OptionBarProps) => {
       </div>
     </div>
   );
-};
+}

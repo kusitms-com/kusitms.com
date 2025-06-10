@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { Recruit, RecruitQnA } from "@/components/recruit";
+
 import { recruitInfoList } from "@/utils/recruit";
+import Recruit from "@/components/recruit/Recruit";
+import RecruitQnA from "@/components/recruit/RecruitQnA";
 
 async function RecruitPage() {
   return (

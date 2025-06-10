@@ -2,7 +2,7 @@ interface EventIntroProps {
   type: "corporate" | "meetup";
 }
 
-export const EventIntro = ({ type }: EventIntroProps) => {
+export default function EventIntro({ type }: EventIntroProps) {
   const content = {
     meetup: {
       title: "밋업(Meet-up)데이란?",
@@ -24,4 +24,4 @@ export const EventIntro = ({ type }: EventIntroProps) => {
       <p className="text-[#90909A] text-[20px] leading-[150%]">{detail}</p>
     </div>
   );
-};
+}

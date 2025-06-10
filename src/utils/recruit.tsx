@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Recruit } from "@/components/recruit/index";
+import Recruit from "@/components/recruit/Recruit";
 
 export const qnaList = [
   {

@@ -7,7 +7,11 @@ interface JobRequirementProps {
   style?: string;
 }
 
-export const Recruit = ({ children, title, style }: JobRequirementProps) => {
+export default function Recruit({
+  children,
+  title,
+  style,
+}: JobRequirementProps) {
   return (
     <div
       className={twMerge(
@@ -21,7 +25,7 @@ export const Recruit = ({ children, title, style }: JobRequirementProps) => {
       {children}
     </div>
   );
-};
+}
 
 const RecruitCard = ({ children }: { children: ReactNode }) => {
   return <div className="relative pt-[50px]">{children}</div>;

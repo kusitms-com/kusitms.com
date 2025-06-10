@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { qnaList } from "@/utils/recruit";
-import { RecruitQnADropBox } from "@/components/recruit/RecruitQnADropBox";
+import RecruitQnADropBox from "@/components/recruit/RecruitQnADropBox";
 
-export const RecruitQnA = () => {
+export default function RecruitQnA() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
@@ -31,4 +31,4 @@ export const RecruitQnA = () => {
       </section>
     </div>
   );
-};
+}

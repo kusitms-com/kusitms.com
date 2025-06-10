@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import { FlipImageCard } from "./FlipImageCard";
+import FlipImageCard from "./FlipImageCard";
 
-export const ProgramIntroSection = () => {
+export default function ProgramIntroSection() {
   const programCards = [
     {
       src: "/main/img/Corporate_Project.png",
@@ -67,4 +67,4 @@ export const ProgramIntroSection = () => {
       </section>
     </div>
   );
-};
+}

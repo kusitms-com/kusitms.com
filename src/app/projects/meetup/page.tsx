@@ -1,11 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import { getMeetupProjects } from "@/service/projects";
-import {
-  EventIntro,
-  ImageCard,
-  ProjectTotalCount,
-} from "@/components/projects";
+import EventIntro from "@/components/projects/EventIntro";
+import ImageCard from "@/components/projects/ImageCard";
+import ProjectTotalCount from "@/components/projects/ProjectTotalCount";
 import NavButtons from "@/components/projects/NavButtons";
 import ProjectContainer from "@/components/projects/MeetupProjectContainer";
 

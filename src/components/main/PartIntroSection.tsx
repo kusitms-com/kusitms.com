@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
-export function PartIntroSection() {
+export default function PartIntroSection() {
   const teamData = [
     {
       icon: "/main/ManageIcon.svg",
