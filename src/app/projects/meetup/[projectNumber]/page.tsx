@@ -7,14 +7,14 @@ import { ProjectNavigation } from "@/components/projectDetail";
 export async function generateStaticParams() {
   const meetupProjectList = await getMeetupProjects("");
   return meetupProjectList.data.meetup_list.map((project) => ({
-    projectNumber: project.meetup_id,
+    projectNumber: project.meetup_id.toString(),
   }));
 }
 
 async function ProjectDetailPage({
   params,
 }: Readonly<{
-  params: Promise<{ projectType: string; projectNumber: string }>;
+  params: Promise<{ projectNumber: string }>;
 }>) {
   const { projectNumber } = await params;
   const { data: project } = await getMeetupProjectDetail(projectNumber);
