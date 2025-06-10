@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { getMeetupProjects, MeetupResponse } from "@/service/projects";
 import Filter from "./Filter";
 import Card from "./ProjectCard";
@@ -22,10 +23,6 @@ export default function ProjectContainer({
     setProjects(res.data);
   };
 
-  const projectNavigate = (projectId: number) => {
-    router.push(`/projects/meetup/${projectId}`);
-  };
-
   return (
     <div className="w-full mt-[100px] mb-[180px]">
       <Filter
@@ -35,23 +32,29 @@ export default function ProjectContainer({
       />
       <div className="grid grid-cols-3 gap-5">
         {projects.meetup_list.map((project) => (
-          <Card
+          <Link
+            href={`/projects/meetup/${project.meetup_id}`}
             key={project.meetup_id}
-            onClick={() => projectNavigate(project.meetup_id)}
+            prefetch={false}
+            onMouseEnter={() => {
+              router.prefetch(`/projects/meetup/${project.meetup_id}`);
+            }}
           >
-            <Card.Poster src={project.poster_url} />
-            <Card.Logo src={project.logo_url} />
-            <Card.Info>
-              <Card.Cardinal>{project.cardinal}기</Card.Cardinal>
-              <Card.ProjectName>{project.name}</Card.ProjectName>
-              <Card.ContentIntro>{project.one_line_intro}</Card.ContentIntro>
-              <Card.CategoryContainer>
-                {project.tags.map((tag, index) => (
-                  <Card.Category key={index}>{tag}</Card.Category>
-                ))}
-              </Card.CategoryContainer>
-            </Card.Info>
-          </Card>
+            <Card key={project.meetup_id}>
+              <Card.Poster src={project.poster_url} />
+              <Card.Logo src={project.logo_url} />
+              <Card.Info>
+                <Card.Cardinal>{project.cardinal}기</Card.Cardinal>
+                <Card.ProjectName>{project.name}</Card.ProjectName>
+                <Card.ContentIntro>{project.one_line_intro}</Card.ContentIntro>
+                <Card.CategoryContainer>
+                  {project.tags.map((tag, index) => (
+                    <Card.Category key={index}>{tag}</Card.Category>
+                  ))}
+                </Card.CategoryContainer>
+              </Card.Info>
+            </Card>
+          </Link>
         ))}
       </div>
     </div>
