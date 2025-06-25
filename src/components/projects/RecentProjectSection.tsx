@@ -1,45 +1,16 @@
 import Image from "next/image";
-import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
+import React from "react";
+import { MeetupProjectDetail } from "@/service/projects";
 import { IconLink } from "@/components/shared";
 import { toUpperCaseOnlyLetters } from "@/utils";
-import ProjectNavigation from "@/components/projectDetail/ProjectNavigation";
 
-export async function generateStaticParams() {
-  const meetupProjectList = await getMeetupProjects("");
-  return meetupProjectList.data.meetup_list.map((project) => ({
-    projectNumber: project.meetup_id,
-  }));
-}
-
-const DisplayDetailPage = async ({
-  params,
-}: Readonly<{
-  params: Promise<{ displayNumber: string }>;
-}>) => {
-  const { displayNumber } = await params;
-  const projectDetail = await getMeetupProjectDetail(displayNumber);
-
-  const displayIdList = [47, 50, 51, 53, 48, 55, 52, 49, 54];
-
-  const positionInList = displayIdList.indexOf(parseInt(displayNumber));
-
-  const prevId =
-    positionInList > 0
-      ? displayIdList[positionInList - 1].toString()
-      : undefined;
-
-  const nextId =
-    positionInList < displayIdList.length - 1
-      ? displayIdList[positionInList + 1].toString()
-      : undefined;
-
-  const team = projectDetail?.data.team;
+function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
+  const team = project.team;
   const renderTeamSection = (role: string, members: string[]) => (
-    <div className="flex gap-x-4 items-center">
-      <div className="text-[18px] text-[#CCC] w-[78px]">{role}</div>
-      <div className="h-[16px] border-r border-[#949494]" />
-      <div> {members.join(", ")}</div>
-    </div>
+    <p>
+      <span className="text-[18px] text-[#CCC]">{role} |</span>
+      {" " + members.join(", ")}
+    </p>
   );
 
   const calculateMonthDiff = (start: string, end: string) => {
@@ -62,48 +33,43 @@ const DisplayDetailPage = async ({
   };
 
   return (
-    <>
-      <ProjectNavigation prevId={prevId} nextId={nextId} domain={"/display"} />
+    <div>
       <div className="relative w-[1180px] h-[663px] mt-[180px]">
         <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-b from-transparent to-[#ffffff80] rounded-b-[20px] z-10" />
         <Image
-          src={projectDetail.data.poster_url}
+          src={project.poster_url}
           className="object-cover rounded-[20px]"
           fill
           alt="poster"
         />
         <div className="flex flex-col absolute bottom-10 left-[45px] z-10">
-          <h2 className="text-[48px] font-black text-black">
-            {projectDetail.data.name}
-          </h2>
-          <p className="text-[24px] text-black">
-            {projectDetail.data.one_line_intro}
-          </p>
+          <h2 className="text-[48px] font-black text-black">{project.name}</h2>
+          <p className="text-[24px] text-black">{project.one_line_intro}</p>
         </div>
 
         <div className="absolute flex gap-x-[16px] z-10 bottom-[30px] right-[40px]">
-          {projectDetail.data.behance_url && (
+          {project.behance_url && (
             <IconLink
               className="w-[52px] h-[52px] rounded-2xl bg-[#90909A]"
               size={35}
               img="/projects/icons/BehanceIcon.svg"
-              link={projectDetail.data.behance_url}
+              link={project.behance_url}
             />
           )}
-          {projectDetail.data.github_url && (
+          {project.github_url && (
             <IconLink
               className="w-[52px] h-[52px] rounded-2xl bg-[#90909A]"
               size={35}
               img="/projects/icons/GithubIcon.svg"
-              link={projectDetail.data.github_url}
+              link={project.github_url}
             />
           )}
-          {projectDetail.data.app_url && (
+          {project.app_url && (
             <IconLink
               className="w-[52px] h-[52px] rounded-2xl bg-[#90909A]"
               size={25}
               img="/projects/icons/DetailLinkIcon.svg"
-              link={projectDetail.data.app_url}
+              link={project.app_url}
             />
           )}
         </div>
@@ -144,15 +110,14 @@ const DisplayDetailPage = async ({
             </div>
 
             <div className="text-[#E2E2EB] text-xl font-normal flex flex-col gap-5">
-              <p>{projectDetail.data.cardinal}기</p>
-              <p>{toUpperCaseOnlyLetters(projectDetail.data.type)}</p>
-              <p>{`${projectDetail.data.start_date} ~ ${
-                projectDetail.data.end_date
-              } 
-                (${calculateMonthDiff(
-                  projectDetail.data.start_date,
-                  projectDetail.data.end_date
-                )})`}</p>
+              <p>{project.cardinal}기</p>
+              <p>{toUpperCaseOnlyLetters(project.type)}</p>
+              <p>{`${project.start_date} ~ ${
+                project.end_date
+              } (${calculateMonthDiff(
+                project.start_date,
+                project.end_date
+              )})`}</p>
               {renderTeamSection("기획", team.planner)}
               {renderTeamSection("디자인", team.designer)}
               {team.frontend && renderTeamSection("프론트엔드", team.frontend)}
@@ -174,11 +139,12 @@ const DisplayDetailPage = async ({
             <h3 className="text-2xl font-extrabold mb-4">프로젝트 설명</h3>
           </div>
           <p className="text-xl font-normal overflow-y-auto custom-scrollbar-none h-[180px]">
-            {projectDetail.data.intro}
+            {project.intro}
           </p>
         </section>
       </div>
-    </>
+    </div>
   );
-};
-export default DisplayDetailPage;
+}
+
+export default RecentProjectSection;

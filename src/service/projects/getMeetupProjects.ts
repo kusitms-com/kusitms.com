@@ -33,33 +33,35 @@ export interface MeetupResponse {
   };
 }
 
-export interface MeetupProjectDetailResponse {
-  data: {
-    cardinal: number;
+export interface MeetupProjectDetail {
+  cardinal: number;
+  name: string;
+  intro: string;
+  type: string;
+  team: {
     name: string;
-    intro: string;
-    type: string;
-    team: {
-      name: string;
-      planner: string[];
-      designer: string[];
-      frontend: string[];
-      backend: string[];
-      ios: string[];
-      aos: string[];
-    };
-    meetup_id: 0;
-    one_line_intro: string;
-    logo_url: string;
-    poster_url: string;
-    behance_url: string;
-    web_thumbnail_url: string;
-    instagram_url: string;
-    github_url: string;
-    app_url: string;
-    start_date: string;
-    end_date: string;
+    planner: string[];
+    designer: string[];
+    frontend: string[];
+    backend: string[];
+    ios: string[];
+    aos: string[];
   };
+  meetup_id: 0;
+  one_line_intro: string;
+  logo_url: string;
+  poster_url: string;
+  behance_url: string;
+  web_thumbnail_url: string;
+  instagram_url: string;
+  github_url: string;
+  app_url: string;
+  start_date: string;
+  end_date: string;
+}
+
+export interface MeetupProjectDetailResponse {
+  data: MeetupProjectDetail;
 }
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
