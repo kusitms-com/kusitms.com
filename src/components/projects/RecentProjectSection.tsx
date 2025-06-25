@@ -2,36 +2,10 @@ import Image from "next/image";
 import React from "react";
 import { MeetupProjectDetail } from "@/service/projects";
 import { IconLink } from "@/components/shared";
-import { toUpperCaseOnlyLetters } from "@/utils";
+import { getCalculateMonthDiff, toUpperCaseOnlyLetters } from "@/utils";
+import TeamMember from "./TeamMember";
 
 function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
-  const team = project.team;
-  const renderTeamSection = (role: string, members: string[]) => (
-    <p>
-      <span className="text-[18px] text-[#CCC]">{role} |</span>
-      {" " + members.join(", ")}
-    </p>
-  );
-
-  const calculateMonthDiff = (start: string, end: string) => {
-    const [startYear, startMonth, startDay] = start.split("-").map(Number);
-    const [endYear, endMonth, endDay] = end.split("-").map(Number);
-
-    const startDate = new Date(startYear, startMonth - 1, startDay);
-    const endDate = new Date(endYear, endMonth - 1, endDay);
-
-    let months =
-      (endDate.getFullYear() - startDate.getFullYear()) * 12 +
-      (endDate.getMonth() - startDate.getMonth());
-
-    // 종료일의 일이 시작일보다 작으면, 아직 해당 달은 안 지났으므로 -1
-    if (endDay < startDay) {
-      months -= 1;
-    }
-
-    return `${months}개월`;
-  };
-
   return (
     <div>
       <div className="relative w-[1180px] h-[663px] mt-[180px]">
@@ -114,16 +88,14 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
               <p>{toUpperCaseOnlyLetters(project.type)}</p>
               <p>{`${project.start_date} ~ ${
                 project.end_date
-              } (${calculateMonthDiff(
+              } (${getCalculateMonthDiff(
                 project.start_date,
                 project.end_date
               )})`}</p>
-              {renderTeamSection("기획", team.planner)}
-              {renderTeamSection("디자인", team.designer)}
-              {team.frontend && renderTeamSection("프론트엔드", team.frontend)}
-              {team.ios && renderTeamSection("IOS", team.ios)}
-              {team.aos && renderTeamSection("AOS", team.aos)}
-              {renderTeamSection("백엔드", team.backend)}
+              <TeamMember role="기획" members={project.team.planner} />
+              <TeamMember role="디자인" members={project.team.designer} />
+              <TeamMember role="프론트엔드" members={project.team.frontend} />
+              <TeamMember role="백엔드" members={project.team.backend} />
             </div>
           </div>
         </section>

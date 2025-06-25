@@ -1,8 +1,13 @@
 import Image from "next/image";
 import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
 import { IconLink } from "@/components/shared";
-import { toUpperCaseOnlyLetters } from "@/utils";
+import {
+  getAdjacentIds,
+  getCalculateMonthDiff,
+  toUpperCaseOnlyLetters,
+} from "@/utils";
 import ProjectNavigation from "@/components/projectDetail/ProjectNavigation";
+import TeamMember from "@/components/projects/TeamMember";
 
 export async function generateStaticParams() {
   const meetupProjectList = await getMeetupProjects("");
@@ -19,47 +24,10 @@ const DisplayDetailPage = async ({
   const { displayNumber } = await params;
   const projectDetail = await getMeetupProjectDetail(displayNumber);
 
+  const team = projectDetail?.data.team;
   const displayIdList = [47, 50, 51, 53, 48, 55, 52, 49, 54];
 
-  const positionInList = displayIdList.indexOf(parseInt(displayNumber));
-
-  const prevId =
-    positionInList > 0
-      ? displayIdList[positionInList - 1].toString()
-      : undefined;
-
-  const nextId =
-    positionInList < displayIdList.length - 1
-      ? displayIdList[positionInList + 1].toString()
-      : undefined;
-
-  const team = projectDetail?.data.team;
-  const renderTeamSection = (role: string, members: string[]) => (
-    <div className="flex gap-x-4 items-center">
-      <div className="text-[18px] text-[#CCC] w-[78px]">{role}</div>
-      <div className="h-[16px] border-r border-[#949494]" />
-      <div> {members.join(", ")}</div>
-    </div>
-  );
-
-  const calculateMonthDiff = (start: string, end: string) => {
-    const [startYear, startMonth, startDay] = start.split("-").map(Number);
-    const [endYear, endMonth, endDay] = end.split("-").map(Number);
-
-    const startDate = new Date(startYear, startMonth - 1, startDay);
-    const endDate = new Date(endYear, endMonth - 1, endDay);
-
-    let months =
-      (endDate.getFullYear() - startDate.getFullYear()) * 12 +
-      (endDate.getMonth() - startDate.getMonth());
-
-    // 종료일의 일이 시작일보다 작으면, 아직 해당 달은 안 지났으므로 -1
-    if (endDay < startDay) {
-      months -= 1;
-    }
-
-    return `${months}개월`;
-  };
+  const { prevId, nextId } = getAdjacentIds(displayIdList, displayNumber);
 
   return (
     <>
@@ -149,16 +117,14 @@ const DisplayDetailPage = async ({
               <p>{`${projectDetail.data.start_date} ~ ${
                 projectDetail.data.end_date
               } 
-                (${calculateMonthDiff(
+                (${getCalculateMonthDiff(
                   projectDetail.data.start_date,
                   projectDetail.data.end_date
                 )})`}</p>
-              {renderTeamSection("기획", team.planner)}
-              {renderTeamSection("디자인", team.designer)}
-              {team.frontend && renderTeamSection("프론트엔드", team.frontend)}
-              {team.ios && renderTeamSection("IOS", team.ios)}
-              {team.aos && renderTeamSection("AOS", team.aos)}
-              {renderTeamSection("백엔드", team.backend)}
+              <TeamMember role="기획" members={team.planner} />
+              <TeamMember role="디자인" members={team.designer} />
+              <TeamMember role="프론트엔드" members={team.frontend} />
+              <TeamMember role="백엔드" members={team.backend} />
             </div>
           </div>
         </section>

@@ -2,6 +2,7 @@ import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
 import ProjectNavigation from "@/components/projectDetail/ProjectNavigation";
 import OldProjectSection from "@/components/projects/OldProjectSection";
 import RecentProjectSection from "@/components/projects/RecentProjectSection";
+import { getAdjacentMeetupIds } from "@/utils";
 
 export async function generateStaticParams() {
   const meetupProjectList = await getMeetupProjects("");
@@ -19,16 +20,13 @@ async function ProjectDetailPage({
   const { data: project } = await getMeetupProjectDetail(projectNumber);
   const projectList = await getMeetupProjects("");
 
+  // 31기 프로젝트 ID 리스트
   const recentIdList = [47, 50, 51, 53, 48, 55, 52, 49, 54];
 
-  const currentIndex = projectList.data.meetup_list.findIndex(
-    (item) => item.meetup_id.toString() === projectNumber
+  const { prevId, nextId } = getAdjacentMeetupIds(
+    projectList.data.meetup_list,
+    projectNumber
   );
-
-  const nextId =
-    projectList.data.meetup_list[currentIndex + 1]?.meetup_id.toString();
-  const prevId =
-    projectList.data.meetup_list[currentIndex - 1]?.meetup_id.toString();
 
   return (
     <>

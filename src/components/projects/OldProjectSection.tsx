@@ -3,16 +3,9 @@ import React from "react";
 import { MeetupProjectDetail } from "@/service/projects";
 import { IconLink } from "@/components/shared";
 import { toUpperCaseOnlyLetters } from "@/utils";
+import TeamMember from "./TeamMember";
 
 function OldProjectSection({ project }: { project: MeetupProjectDetail }) {
-  const team = project.team;
-  const renderTeamSection = (role: string, members: string[]) => (
-    <p>
-      <span className="text-[18px] text-[#CCC]">{role} |</span>
-      {" " + members.join(", ")}
-    </p>
-  );
-
   return (
     <div className="flex items-center justify-center z-10 w-full my-[120px]">
       <div className="w-full">
@@ -100,13 +93,21 @@ function OldProjectSection({ project }: { project: MeetupProjectDetail }) {
                 <p>{project.cardinal}기</p>
                 <p>{toUpperCaseOnlyLetters(project.type)}</p>
                 <p>{`(${project.start_date} ~ ${project.end_date})`}</p>
-                {renderTeamSection("기획", team.planner)}
-                {renderTeamSection("디자인", team.designer)}
-                {team.frontend &&
-                  renderTeamSection("프론트엔드", team.frontend)}
-                {team.ios && renderTeamSection("IOS", team.ios)}
-                {team.aos && renderTeamSection("AOS", team.aos)}
-                {renderTeamSection("백엔드", team.backend)}
+                <TeamMember role="기획" members={project.team.planner} />
+                <TeamMember role="디자인" members={project.team.designer} />
+                {project.team.frontend && (
+                  <TeamMember
+                    role="프론트엔드"
+                    members={project.team.frontend}
+                  />
+                )}
+                {project.team.ios && (
+                  <TeamMember role="IOS" members={project.team.ios} />
+                )}
+                {project.team.aos && (
+                  <TeamMember role="AOS" members={project.team.aos} />
+                )}
+                <TeamMember role="백엔드" members={project.team.backend} />
               </div>
             </div>
           </div>
