@@ -33,7 +33,7 @@ const SNSGROUPS = [
 export const Footer = () => {
   return (
     <footer className="w-full pt-8 pb-14">
-      <div className="max-w-[1180px] w-full mx-auto flex justify-between">
+      <div className="max-w-[1180px] w-full mx-auto flex desktop:flex-row flex-col justify-between px-5">
         <div className="flex flex-col gap-4">
           <Image
             src="/footerLogo.svg"
@@ -56,7 +56,9 @@ export const Footer = () => {
           </p>
         </div>
         <div>
-          <h4 className="text-2xl font-extrabold mb-6 mt-[78px]">Contact</h4>
+          <h4 className="text-2xl font-extrabold mb-6 desktop:mt-[78px] mt-[40px]">
+            Contact
+          </h4>
           <div className="flex gap-6">
             {SNSGROUPS.map((social, index) => (
               <IconLink key={index} img={social.img} link={social.link} />

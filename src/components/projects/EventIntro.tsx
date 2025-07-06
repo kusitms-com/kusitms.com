@@ -5,14 +5,14 @@ interface EventIntroProps {
 export default function EventIntro({ type }: EventIntroProps) {
   const content = {
     meetup: {
-      title: "밋업(Meet-up)데이란?",
+      title: "밋업(Meet-up)프로젝트란?",
       detail:
-        "큐시즘의 파이널 프로젝트인 밋업데이는, 아이디어톤 행사인 큐넥팅을 통해 발제된 아이디어를 9명의 기획자 개발자 디자이너로 구성된 8개의 팀이 3개월 동안 준비해서 발표하는 큐시즘의 메인 프로그램이에요.",
+        "밋업 프로젝트는 기획, 디자인, 개발 파트가\n 팀을 이루어 2개월 동안 제작한\n IT 서비스의 프로토타입을 공개하고,\n 발표 및 시연하는 데모데이까지의 과정을 일컬어요.",
     },
     corporate: {
       title: "기업프로젝트란?",
       detail:
-        "큐시즘과 기업이 협업하여 실제 기업이 고민하고 있는 경영/마케팅 문제나 개발과 관련된 아이디어를 제시 받아, 조 단위로 과제를 수행하는 프로젝트에요. 해당 프로젝트를 통해 기업은 새로운 인사이트를 얻으며, 학회원들은 실제 기업과의 귀중한 협업 경험을 얻을 수 있어요.",
+        "밋업 프로젝트는 기획, 디자인, 개발 파트가\n 팀을 이루어 2개월 동안 제작한\n IT 서비스의 프로토타입을 공개하고,\n 발표 및 시연하는 데모데이까지의 과정을 일컬어요.",
     },
   };
 
@@ -20,8 +20,12 @@ export default function EventIntro({ type }: EventIntroProps) {
 
   return (
     <div>
-      <h2 className="text-white text-[48px] font-bold mb-7">{title}</h2>
-      <p className="text-[#90909A] text-[20px] leading-[150%]">{detail}</p>
+      <h2 className="text-white desktop:text-[48px] font-bold mb-7 desktop:block hidden">
+        {title}
+      </h2>
+      <p className="desktop:text-[#90909A] text-[15px] desktop:text-[20px] leading-[150%] text-white text-center desktop:text-left whitespace-pre-line desktop:whitespace-normal">
+        {detail}
+      </p>
     </div>
   );
 }

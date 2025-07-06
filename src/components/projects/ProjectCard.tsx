@@ -9,8 +9,8 @@ interface CardProps {
 export default function Card({ children, onClick }: CardProps) {
   return (
     <div
-      className="relative w-[370px] h-[494px] rounded-[40px] flex flex-col bg-[#2F3038] pb-6 
-    hover:scale-102 hover:cursor-pointer transition-transform duration-200"
+      className="relative desktop:w-[370px] desktop:h-[494px] w-[320px] h-[400px] desktop:rounded-[40px] rounded-[20px] flex flex-col bg-[#2F3038] pb-6 
+    hover:scale-102 hover:cursor-pointer transition-transform duration-200 overflow-hidden"
       onClick={onClick}
     >
       {children}
@@ -22,7 +22,7 @@ const Poster = ({ src }: { src: string }) => (
   <Image
     src={src}
     alt="poster"
-    className="object-cover overflow-hidden rounded-t-[40px]"
+    className="object-cover overflow-hidden"
     width={370}
     height={285}
     style={{ width: 370, height: 285 }}
@@ -31,7 +31,7 @@ const Poster = ({ src }: { src: string }) => (
 );
 
 const Logo = ({ src }: { src: string }) => (
-  <div className="absolute mt-[230px] w-[95px] h-[95px] rounded-full top-0 right-[24px] bg-white flex justify-center items-center overflow-hidden">
+  <div className="absolute mt-[230px] desktop:w-[95px] desktop:h-[95px] w-[78px] h-[78px] rounded-full desktop:top-0 top-[-60px] desktop:right-[24px] right-[16px] bg-white flex justify-center items-center overflow-hidden">
     <Image src={src} alt="logo" width={95} height={95} unoptimized />
   </div>
 );
@@ -41,25 +41,27 @@ const Info = ({ children }: { children: ReactNode }) => (
 );
 
 const Cardinal = ({ children }: { children: ReactNode }) => (
-  <div className="mt-[22px] text-[16px] text-[#62EFE5]">{children}</div>
+  <div className="mt-[22px] desktop:text-[16px] text-[13px] text-[#62EFE5]">
+    {children}
+  </div>
 );
 
 const ProjectName = ({ children }: { children: ReactNode }) => (
-  <div className="text-[24px] font-bold">{children}</div>
+  <div className="desktop:text-[24px] text-[20px] font-bold">{children}</div>
 );
 
 const ContentIntro = ({ children }: { children: ReactNode }) => (
-  <div className="text-[16px] font-normal mt-[10px] min-h-[50px] line-clamp-2">
+  <div className="desktop:text-[16px] text-[13px] font-normal mt-[10px] min-h-[50px] line-clamp-2">
     {children}
   </div>
 );
 
 const CategoryContainer = ({ children }: { children: ReactNode }) => (
-  <div className="flex flex-row gap-3 mt-5">{children}</div>
+  <div className="flex flex-row gap-3 desktop:mt-5 mt-3">{children}</div>
 );
 
 const Category = ({ children }: { children: ReactNode }) => (
-  <div className="bg-[#505157] rounded-[8px] px-[12px] py-[6px] text-[#E3E3E3] text-[14px]">
+  <div className="bg-[#505157] rounded-[8px] desktop:px-[12px] desktop:py-[6px] px-[8px] py-[4px] text-[#E3E3E3] desktop:text-[14px] text-[12px]">
     {children}
   </div>
 );

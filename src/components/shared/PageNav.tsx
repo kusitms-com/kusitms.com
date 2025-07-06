@@ -17,7 +17,7 @@ export const PageNav = () => {
   const currentPath = pathname ? pathname : "";
 
   return (
-    <nav className="flex text-center">
+    <nav className="desktop:flex hidden text-center desktop:block">
       {navLinks.map(({ href, label, matchPath }, index) => {
         const isActive =
           matchPath === "/"

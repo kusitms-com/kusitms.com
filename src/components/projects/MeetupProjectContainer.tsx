@@ -24,13 +24,13 @@ export default function ProjectContainer({
   };
 
   return (
-    <div className="w-full mt-[100px] mb-[180px]">
+    <div className="w-full mt-[100px] desktop:mb-[180px] mb-[32px]">
       <Filter
         cardinal={cardinal}
         onChange={handleFilterChange}
         projectList={meetupProjectList.meetup_list}
       />
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid desktop:grid-cols-3 grid-cols-1 gap-5 justify-items-center">
         {projects.meetup_list.map((project) => (
           <Link
             href={`/projects/meetup/${project.meetup_id}`}

@@ -24,12 +24,12 @@ export default function Filter({
   }, [projectList]);
 
   return (
-    <div className="flex justify-center gap-6 mb-12">
-      <div className="flex gap-3 mr-6">
+    <div className="flex desktop:justify-center justify-start gap-6 desktop:mb-12 mb-6 overflow-x-auto desktop:overflow-x-visible px-4 desktop:px-0 custom-scrollbar-none">
+      <div className="flex gap-3 mr-6 min-w-max">
         <button
           className={`${
             cardinal === "" ? "bg-[#05F]" : "bg-[#2F3038]"
-          } text-xl font-semibold leading-[150%] tracking-[-0.2px] py-2 rounded-[75px] w-[130px] cursor-pointer`}
+          } desktop:text-xl text-[10px] font-semibold leading-[150%] tracking-[-0.2px] desktop:py-2 py-1 rounded-[75px] desktop:w-[130px] w-[65px] cursor-pointer flex-shrink-0 h-[24px] desktop:h-[46px]`}
           type="button"
           onClick={() => onChange("")}
         >
@@ -40,7 +40,7 @@ export default function Filter({
             key={gen}
             className={`${
               cardinal === gen + "" ? "bg-[#05F]" : "bg-[#2F3038]"
-            } text-xl font-semibold leading-[150%] tracking-[-0.2px] py-2 rounded-[75px] w-[130px] cursor-pointer`}
+            } desktop:text-xl text-[10px] font-semibold leading-[150%] tracking-[-0.2px] desktop:py-2 py-1 rounded-[75px] desktop:w-[130px] w-[65px] cursor-pointer flex-shrink-0 h-[24px] desktop:h-[46px]`}
             type="button"
             onClick={() => onChange(gen.toString())}
           >
