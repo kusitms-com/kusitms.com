@@ -83,7 +83,7 @@ export default function IntroSection() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  variants={wordVariants}
+                  variants={wordVariants as any}
                 >
                   {word}
                 </motion.span>
