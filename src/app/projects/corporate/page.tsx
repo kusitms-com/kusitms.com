@@ -6,6 +6,7 @@ import ImageCard from "@/components/projects/ImageCard";
 import ProjectTotalCount from "@/components/projects/ProjectTotalCount";
 import NavButtons from "@/components/projects/NavButtons";
 import { getCorporateProjects } from "@/service/projects";
+import TopScrollButton from "@/components/shared/TopScrollButton";
 
 async function CorporateProjectPage() {
   const corporateProjectsList = await getCorporateProjects("");
@@ -13,7 +14,7 @@ async function CorporateProjectPage() {
   return (
     <>
       <section className="w-full max-w-6xl mx-auto py-8 text-center">
-        <h1 className="text-5xl font-black mb-4 mt-[180px] leading-[130%]">
+        <h1 className="text-2xl desktop:text-5xl font-black mb-4 desktop:mt-[180px] mt-[80px] leading-[130%]">
           KUSITMS의 다양한 프로젝트를 <br />
           구경해보세요!
         </h1>
@@ -23,7 +24,10 @@ async function CorporateProjectPage() {
         <NavButtons />
       </section>
       <section className="mx-auto w-full max-w-[1180px]">
-        <div className="flex w-full gap-[90px] mt-[100px] justify-center items-center">
+        <div className="flex flex-col desktop:flex-row w-full desktop:gap-[90px] gap-[40px] desktop:mt-[100px] mt-[40px] justify-center items-center">
+          <h2 className="text-white text-[24px] font-bold desktop:hidden block">
+            기업 프로젝트란?
+          </h2>
           <ImageCard>
             <ImageCard.Sticker>
               <Image
@@ -40,6 +44,7 @@ async function CorporateProjectPage() {
           <EventIntro type="corporate" />
         </div>
         <CorporateProjectContainer data={corporateProjectsList.data} />
+        <TopScrollButton />
       </section>
     </>
   );

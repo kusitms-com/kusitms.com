@@ -20,13 +20,13 @@ export default function CorporateProjectContainer({
   };
 
   return (
-    <div className="w-full mt-[100px] mb-[180px]">
+    <div className="w-full mt-[100px] desktop:mb-[180px] mb-[32px]">
       <Filter
         cardinal={cardinal}
         onChange={handleFilterChange}
         projectList={corporateProjectsList.corporateList}
       />
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid desktop:grid-cols-3 grid-cols-1 gap-5 justify-items-center">
         {projects.corporateList.map((project) => (
           <Card key={project.corporate_id}>
             <Card.Poster src={project.banner_url.trim()} />
