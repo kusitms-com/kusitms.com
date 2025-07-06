@@ -21,7 +21,7 @@ export const IconLink = ({
       href={link}
       target="_blank"
       className={twMerge(
-        "w-[40px] h-[40px] rounded-full bg-[#45464F] flex justify-center items-center",
+        "w-[40px] h-[40px] rounded-full bg-[#45464F] desktop:flex justify-center items-center  hidden",
         className
       )}
     >
