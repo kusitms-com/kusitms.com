@@ -25,7 +25,7 @@ export default function Reviews({ reviews }: ReviewsProps) {
     <>
       <ReviewsTotalCount reviewsCount={reviewList.data.review_count} />
       <ReviewFilter team={team} onChange={handleChangeReviewFilter} />
-      <section className="grid grid-cols-3 gap-5 mb-[160px]">
+      <section className="grid desktop:grid-cols-3 grid-cols-1 gap-5 desktop:mb-[160px] mb-[80px] px-5">
         {reviewList.data.review_list.map((review) => (
           <ReviewBox key={review.review_id} {...review} />
         ))}

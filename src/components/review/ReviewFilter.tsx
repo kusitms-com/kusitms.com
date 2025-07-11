@@ -9,12 +9,12 @@ interface ReviewFilterProps {
 
 export default function ReviewFilter({ team, onChange }: ReviewFilterProps) {
   const getButtonClass = (value: "DEVELOPER" | "PLANNER" | "DESIGNER" | "") =>
-    `px-8 py-4 rounded-[75px] text-xl cursor-pointer transition-colors ${
-      team === value ? "bg-[#05f] text-white" : "bg-[#DCE1FF] text-black"
+    `desktop:px-8 px-4 desktop:py-5 py-2 rounded-[75px] desktop:text-xl text-sm cursor-pointer transition-colors text-white ${
+      team === value ? "bg-[#05f]" : "bg-[#2F3038]"
     }`;
 
   return (
-    <section className="flex gap-12 mb-[120px]">
+    <section className="flex desktop:gap-12 gap-3 desktop:mb-[120px] mb-[60px]">
       <button className={getButtonClass("")} onClick={() => onChange("")}>
         전체
       </button>
