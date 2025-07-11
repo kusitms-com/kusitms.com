@@ -32,7 +32,7 @@ const DisplayDetailPage = async ({
   return (
     <>
       <ProjectNavigation prevId={prevId} nextId={nextId} domain={"/display"} />
-      <div className="relative w-[1180px] h-[663px] mt-[180px]">
+      <div className="relative desktop:w-[1180px] w-[280px] desktop:h-[663px] h-[160px] desktop:mt-[180px] mt-[20px] mx-auto">
         <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-b from-transparent to-[#ffffff80] rounded-b-[20px] z-10" />
         <Image
           src={projectDetail.data.poster_url}
@@ -41,15 +41,15 @@ const DisplayDetailPage = async ({
           alt="poster"
         />
         <div className="flex flex-col absolute bottom-10 left-[45px] z-10">
-          <h2 className="text-[48px] font-black text-black">
+          <h2 className="text-[48px] font-black text-black desktop:block hidden">
             {projectDetail.data.name}
           </h2>
-          <p className="text-[24px] text-black">
+          <p className="desktop:text-[24px] text-[12px] text-black desktop:block hidden">
             {projectDetail.data.one_line_intro}
           </p>
         </div>
 
-        <div className="absolute flex gap-x-[16px] z-10 bottom-[30px] right-[40px]">
+        <div className="absolute desktop:flex gap-x-[16px] z-10 bottom-[30px] right-[40px] hidden">
           {projectDetail.data.behance_url && (
             <IconLink
               className="w-[52px] h-[52px] rounded-2xl bg-[#90909A]"
@@ -77,21 +77,23 @@ const DisplayDetailPage = async ({
         </div>
       </div>
 
-      <div className="flex gap-x-5 w-[1180px] mt-5 pb-[30px]">
-        <section className="w-full bg-[#5D5E67] p-10 rounded-[24px]">
-          <div className="flex gap-2 border-b border-dashed border-[#ccc] mb-6 items-start ">
+      <div className="flex desktop:flex-row flex-col gap-x-5 desktop:w-[1180px] w-full mt-5 pb-[30px] px-5">
+        <section className="w-full bg-[#5D5E67] desktop:p-10 p-6 rounded-[24px]">
+          <div className="desktop:flex gap-2 border-b border-dashed border-[#ccc] mb-6 items-start hidden">
             <Image
               src="/projects/icons/Summation.svg"
-              className="pt-2"
+              className="pt-2 desktop:block hidden"
               alt="프로젝트 요약"
               width={20}
               height={25}
             />
-            <h3 className="text-2xl font-extrabold mb-4">프로젝트 요약</h3>
+            <h3 className="text-2xl font-extrabold mb-4 desktop:block hidden text-[#62EFE5]">
+              프로젝트 요약
+            </h3>
           </div>
 
-          <div className="flex gap-8">
-            <div className="text-xl font-normal flex flex-col gap-5">
+          <div className="flex desktop:gap-8 gap-4">
+            <div className="desktop:text-xl text-[12px] font-normal flex flex-col desktop:gap-5 gap-3">
               {[
                 ["/projects/icons/Horseman.svg", "진행기수"],
                 ["/projects/icons/Project.svg", "프로젝트 형태"],
@@ -105,13 +107,14 @@ const DisplayDetailPage = async ({
                     width={24}
                     height={24}
                     style={{ width: "24px", height: "24px" }}
+                    className="desktop:block hidden"
                   />
-                  <p>{alt}</p>
+                  <p className="text-[#62EFE5]">{alt}</p>
                 </div>
               ))}
             </div>
 
-            <div className="text-[#E2E2EB] text-xl font-normal flex flex-col gap-5">
+            <div className="text-[#E2E2EB] desktop:text-xl text-[12px] font-normal flex flex-col desktop:gap-5 gap-3">
               <p>{projectDetail.data.cardinal}기</p>
               <p>{toUpperCaseOnlyLetters(projectDetail.data.type)}</p>
               <p>{`${projectDetail.data.start_date} ~ ${
@@ -128,18 +131,20 @@ const DisplayDetailPage = async ({
             </div>
           </div>
         </section>
-        <section className="p-10 bg-[#292D32] w-full rounded-[24px]">
+        <section className="desktop:p-10 p-6 bg-[#292D32] w-full rounded-[24px] mt-5 desktop:mt-0">
           <div className="flex gap-2 border-b border-dashed border-[#ccc] mb-6 items-start">
             <Image
               src="/projects/icons/Explanation.svg"
-              className="pt-2"
+              className="pt-2 desktop:block hidden"
               alt="프로젝트 설명"
               width={24}
               height={24}
             />
-            <h3 className="text-2xl font-extrabold mb-4">프로젝트 설명</h3>
+            <h3 className="desktop:text-2xl text-[16px] font-extrabold mb-4 text-[#62EFE5]">
+              프로젝트 설명
+            </h3>
           </div>
-          <p className="text-xl font-normal overflow-y-auto custom-scrollbar-none h-[180px]">
+          <p className="desktop:text-xl text-[14px] font-normal overflow-y-auto custom-scrollbar-none h-[180px]">
             {projectDetail.data.intro}
           </p>
         </section>
