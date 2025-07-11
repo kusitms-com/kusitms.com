@@ -32,8 +32,8 @@ export default function DisplayListContainer({
   return (
     <>
       <OptionBar batch={batch} onChange={handleFilterChange} />
-      <div className="w-full mt-[100px] mb-[180px]">
-        <div className="grid grid-cols-3 gap-5">
+      <div className="w-full desktop:mt-[100px] mt-[50px] desktop:mb-[180px] mb-[100px]">
+        <div className="grid desktop:grid-cols-3 grid-cols-1 gap-5 justify-items-center">
           {projects.meetup_list.map((project) => (
             <Card
               key={project.meetup_id}
