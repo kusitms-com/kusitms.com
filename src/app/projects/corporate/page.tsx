@@ -19,7 +19,8 @@ async function CorporateProjectPage() {
           구경해보세요!
         </h1>
         <p className="font-normal text-[15px] tablet:text-[20px]">
-          <ProjectTotalCount pathname="corporate" />의 프로젝트를 볼 수 있어요.
+          <ProjectTotalCount pathname="corporate" />
+          개의 프로젝트를 볼 수 있어요.
         </p>
         <NavButtons />
       </section>
