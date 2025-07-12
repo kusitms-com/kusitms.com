@@ -1,16 +1,19 @@
 import Image from "next/image";
 import React from "react";
 import { MeetupProjectDetail } from "@/service/projects";
-import { IconLink } from "@/components/shared";
+import { IconLink, BackButton } from "@/components/shared";
 import { getCalculateMonthDiff, toUpperCaseOnlyLetters } from "@/utils";
 import TeamMember from "./TeamMember";
 
 function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
   return (
     <>
-      <h2 className="text-[20px] font-black text-white desktop:hidden block mt-[90px] text-center">
-        {project.name}
-      </h2>
+      <div className="flex justify-center items-center relative">
+        <h2 className="text-[20px] font-black text-white desktop:hidden block text-center">
+          {project.name}
+        </h2>
+        <BackButton className="w-[14px] h-[14px] absolute right-0" />
+      </div>
       <div className="relative desktop:w-[1180px] w-[280px] desktop:h-[663px] h-[160px] desktop:mt-[180px] mt-[20px] mx-auto">
         <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-b from-transparent to-[#ffffff80] rounded-b-[20px] z-10" />
         <Image

@@ -14,11 +14,11 @@ async function CorporateProjectPage() {
   return (
     <>
       <section className="w-full max-w-6xl mx-auto py-8 text-center">
-        <h1 className="text-2xl desktop:text-5xl font-black mb-4 desktop:mt-[180px] mt-[80px] leading-[130%]">
+        <h1 className="text-2xl desktop:text-5xl font-black mb-4 desktop:mt-[180px] leading-[130%]">
           KUSITMS의 다양한 프로젝트를 <br />
           구경해보세요!
         </h1>
-        <p className="font-normal text-[20px]">
+        <p className="font-normal text-[15px] tablet:text-[20px]">
           <ProjectTotalCount pathname="corporate" />의 프로젝트를 볼 수 있어요.
         </p>
         <NavButtons />

@@ -1,18 +1,19 @@
 import Image from "next/image";
 import React from "react";
 import { MeetupProjectDetail } from "@/service/projects";
-import { IconLink } from "@/components/shared";
+import { IconLink, BackButton } from "@/components/shared";
 import { toUpperCaseOnlyLetters } from "@/utils";
 import TeamMember from "./TeamMember";
 
 function OldProjectSection({ project }: { project: MeetupProjectDetail }) {
   return (
-    <div className="flex items-center justify-center z-10 w-full my-[60px] mb-[30px] px-0">
+    <div className="flex items-center justify-center z-10 w-full mb-[30px] px-0">
       <div className="w-full desktop:max-w-none max-w-[350px]">
-        <div className="flex justify-between mb-6">
-          <h2 className="w-full desktop:text-5xl text-2xl font-extrabold desktop:mt-20 mt-[20px] desktop:text-left text-center">
+        <div className="flex justify-between mb-6 relative">
+          <h2 className="w-full desktop:text-5xl text-2xl font-extrabold desktop:mt-20 desktop:text-left text-center">
             {project.name}
           </h2>
+          <BackButton className="w-[14px] h-[14px] absolute right-0 top-[10px]" />
         </div>
 
         <div className="mb-3 flex desktop:justify-between desktop:items-center desktop:flex-row flex-col desktop:gap-0 gap-3">

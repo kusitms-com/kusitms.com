@@ -14,7 +14,7 @@ async function MeetupProjectPage() {
   return (
     <>
       <section className="w-full max-w-6xl mx-auto py-8 text-center">
-        <h1 className="text-2xl desktop:text-5xl font-black mb-4 desktop:mt-[180px] mt-[80px] leading-[130%]">
+        <h1 className="text-2xl desktop:text-5xl font-black mb-4 desktop:mt-[180px] leading-[130%]">
           KUSITMS의 다양한 프로젝트를 <br />
           구경해보세요!
         </h1>
