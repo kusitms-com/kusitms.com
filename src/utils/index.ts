@@ -1,4 +1,3 @@
-export * from "./recruit";
 export * from "./toUpperCaseOnlyLetters";
 export * from "./getAdjacentMeetupIds";
 export * from "./projectCountUtils";
