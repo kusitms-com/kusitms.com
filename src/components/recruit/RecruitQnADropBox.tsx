@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
+import React, {ReactNode, useEffect, useRef, useState} from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function RecruitQnADropBox({
   question,
@@ -16,7 +16,7 @@ export default function RecruitQnADropBox({
   return (
     <div
       onClick={onToggle}
-      className="flex flex-col gap-y-6 rounded-[32px] bg-[#F2F2F8] px-12 py-10 w-[980px] cursor-pointer"
+      className="flex flex-col gap-y-6 rounded-[32px] bg-[#F2F2F8] px-12 pt-10 pb-4 w-[980px] cursor-pointer"
     >
       <RecruitQnADropBox.Question isOpen={isOpen}>
         <p className="flex gap-x-2 text-black text-[20px] font-semibold">
@@ -66,23 +66,38 @@ const RecruitQnADropBoxAnswer = ({
   children: ReactNode;
   isOpen: boolean;
 }) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      if (isOpen) {
+        setHeight(contentRef.current.scrollHeight);
+      } else {
+        setHeight(0);
+      }
+    }
+  }, [isOpen, children]);
+
   return (
-    <AnimatePresence initial={false}>
-      {isOpen && (
-        <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
+      <motion.div
+          initial={false}
+          animate={{height, opacity: isOpen ? 1 : 0}}
           transition={{
-            duration: 0.5,
-            ease: [0.25, 0.8, 0.25, 1],
+            height: {
+              duration: isOpen ? 0.3 : 0.5,
+              ease: [0.4, 0, 0.2, 1],
+            },
+            opacity: {
+              duration: isOpen ? 0.2 : 0.4,
+            },
           }}
-          className="overflow-hidden"
-        >
+          style={{overflow: "hidden"}}
+      >
+        <div ref={contentRef} className='pb-6'>
           {children}
-        </motion.div>
-      )}
-    </AnimatePresence>
+        </div>
+      </motion.div>
   );
 };
 
