@@ -19,7 +19,7 @@ export default function NavButtons() {
               : "border-transparent text-[#595A62]"
           }`}
         >
-          밋업데이
+          밋업 프로젝트
         </Link>
         <Link
           href="/projects/corporate"

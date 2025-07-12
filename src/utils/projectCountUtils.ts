@@ -7,7 +7,7 @@ export interface ProjectCount {
 
 export const calculateProjectCounts = (
   projectList: MeetupItem[] | CorporateProjectItem[],
-  generations: number[] = Array.from({ length: 6 }, (_, i) => 31 - i)
+  generations: number[] = Array.from({ length: 7 }, (_, i) => 31 - i)
 ): ProjectCount => {
   // 프로젝트 리스트가 없거나 형식이 맞지 않으면 빈 객체 반환
   if (!projectList) {

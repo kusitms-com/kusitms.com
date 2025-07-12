@@ -15,8 +15,8 @@ export default function Filter({
   onChange,
   projectList,
 }: FilterProps) {
-  // 26기부터 31기까지 배열 생성
-  const generations = Array.from({ length: 6 }, (_, i) => 31 - i);
+  // 25기부터 31기까지 배열 생성
+  const generations = Array.from({ length: 7 }, (_, i) => 31 - i);
 
   // 프로젝트 개수 계산
   const projectCounts = useMemo(() => {

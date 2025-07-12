@@ -17,7 +17,7 @@ export const BackButton = ({
   const router = useRouter();
 
   const handleGoBack = () => {
-    router.back();
+    router.push("/projects/meetup");
   };
 
   return (
