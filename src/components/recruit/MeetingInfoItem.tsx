@@ -12,7 +12,7 @@ export default function MeetingInfoItem() {
             >
                 <p
                     className={
-                        "font-extrabold text-[24px] leading-[120%] tracking-[0px] text-center"
+                        "font-extrabold text-[24px] tracking-[0px] text-center leading-relaxed"
                     }
                 >
                     일시: 매주 토요일 12시 ~ 18시 <br/>

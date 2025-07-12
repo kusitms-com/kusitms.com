@@ -61,7 +61,7 @@ export default function RecruitmentTargetInfoItem () {
                     <div
                         className={"rounded-[32px] bg-[#2F3038] w-[380px] pb-[63px] pt-[90px]"}
                     >
-                        <p className="font-normal text-[20px] leading-[100%] tracking-[-0.2px] text-center">
+                        <p className="font-normal text-[20px] leading-[100%] tracking-[-0.2px] leading-relaxed text-center">
                             {item.text}
                         </p>
                     </div>
