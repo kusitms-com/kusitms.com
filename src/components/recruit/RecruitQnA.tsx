@@ -93,12 +93,12 @@ export default function RecruitQnA() {
 
 
   return (
-    <div className="flex flex-col pt-[162px] pb-[179px] items-center justify-center w-full bg-white">
-      <section className="flex flex-col items-center justify-center gap-y-[120px]">
-        <h1 className="text-[#0055FF] text-[48px] font-black">
+    <div className="flex flex-col desktop:pt-[162px] desktop:pb-[179px] py-[48px] items-center justify-center w-full bg-white">
+      <section className="flex flex-col items-center justify-center desktop:gap-y-[120px] gap-y-[60px]">
+        <h1 className="text-[#0055FF] desktop:text-[48px] text-[24px] font-black">
           궁금한게 있어요!
         </h1>
-        <div className="flex flex-col gap-y-[28px]">
+        <div className="flex flex-col desktop:gap-y-[28px] gap-y-[26px]">
           {qnaList.map((qna, idx) => (
             <RecruitQnADropBox
               key={qna.question}

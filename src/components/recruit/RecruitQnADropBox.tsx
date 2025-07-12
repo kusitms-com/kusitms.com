@@ -16,16 +16,16 @@ export default function RecruitQnADropBox({
   return (
     <div
       onClick={onToggle}
-      className="flex flex-col gap-y-6 rounded-[32px] bg-[#F2F2F8] px-12 pt-10 pb-4 w-[980px] cursor-pointer"
+      className="flex flex-col desktop:gap-y-6 gap-y-[20px] rounded-[32px] bg-[#F2F2F8] desktop:px-12 desktop:pt-10 desktop:pb-4 px-[28px] py-[28px] pb-[6px]  desktop:w-[980px] w-[350px] cursor-pointer"
     >
       <RecruitQnADropBox.Question isOpen={isOpen}>
-        <p className="flex gap-x-2 text-black text-[20px] font-semibold">
+        <p className="flex gap-x-2 text-black desktop:text-[20px] text-[16px]">
           <span className="text-[#0055FF]">Q</span>
           {question}
         </p>
       </RecruitQnADropBox.Question>
       <RecruitQnADropBox.Answer isOpen={isOpen}>
-        <div className="text-[#5D5E67] text-[20px] flex flex-col gap-y-1">
+        <div className="text-[#5D5E67] desktop:text-[20px] text-[16px] flex flex-col gap-y-1">
           {answer.map((line, idx) => (
             <p key={idx}>{line}</p>
           ))}

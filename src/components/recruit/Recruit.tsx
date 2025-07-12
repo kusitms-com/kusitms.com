@@ -15,11 +15,11 @@ export default function Recruit({
   return (
     <div
       className={twMerge(
-        "flex flex-col items-center gap-y-[100px] w-full",
+        "flex flex-col items-center desktop:gap-y-[100px] gap-y-[48px] w-full",
         style
       )}
     >
-      <h1 className="font-extrabold text-[48px] leading-[100%] tracking-[0%]">
+      <h1 className="font-extrabold desktop:text-[48px] text-[24px] leading-[100%] tracking-[0%]">
         {title}
       </h1>
       {children}
