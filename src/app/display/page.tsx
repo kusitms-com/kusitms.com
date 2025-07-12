@@ -25,10 +25,10 @@ async function DisplayPage() {
           className="absolute right-0 top-0 w-[1018px] h-[472px] object-cover z-0 hidden desktop:block"
         />
         <Image
-          src="/display/mobileBanner.svg"
+          src="/display/mobileBanner.jpg"
           alt="KUSITMS 31ST EXHIBITON"
-          width={1018}
-          height={472}
+          width={375}
+          height={100}
           className=" w-full object-cover z-0 desktop:hidden"
         />
         <div className="desktop:flex flex-col gap-y-5 mt-22 mb-22 relative z-10 hidden">
@@ -51,7 +51,7 @@ async function DisplayPage() {
       </section>
       <main className="w-full flex flex-col items-center desktop:gap-y-12">
         <CarouselBox projectDetails={projectDetails} />
-        <div className="w-full flex flex-col items-center desktop:gap-y-12 py-20 relative">
+        <div className="w-full flex flex-col items-center desktop:gap-y-12 py-4 relative">
           <Image
             src="/display/pageBackgrond.png"
             alt="background"
@@ -81,7 +81,7 @@ async function DisplayPage() {
                         alt={section.title}
                         width={image.mobileWidth}
                         height={image.mobileHeight}
-                        className={`${image.className} desktop:w-[${image.width}px] desktop:h-[${image.height}px] w-[${image.mobileWidth}px] h-[${image.mobileHeight}px]`}
+                        className={`desktop:w-[${image.width}px] desktop:h-[${image.height}px] w-[${image.mobileWidth}px] h-[${image.mobileHeight}px]`}
                       />
                     ))}
                   </div>

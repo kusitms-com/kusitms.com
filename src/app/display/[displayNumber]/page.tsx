@@ -31,6 +31,9 @@ const DisplayDetailPage = async ({
 
   return (
     <>
+      <h2 className="text-[20px] font-black text-white desktop:hidden block mt-[90px] text-center">
+        {projectDetail.data.name}
+      </h2>
       <ProjectNavigation prevId={prevId} nextId={nextId} domain={"/display"} />
       <div className="relative desktop:w-[1180px] w-[280px] desktop:h-[663px] h-[160px] desktop:mt-[180px] mt-[20px] mx-auto">
         <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-b from-transparent to-[#ffffff80] rounded-b-[20px] z-10" />

@@ -57,7 +57,7 @@ export default function ProjectNavigation({
         {prevId && (
           <Link
             href={`${domain}/${prevId}`}
-            className="absolute left-[-10px] top-[190px]
+            className="absolute left-[-10px] top-[270px]
                      flex justify-center items-center rounded-full 
                      w-[70px] h-[70px] hover:scale-105 transition-transform"
           >
@@ -75,7 +75,7 @@ export default function ProjectNavigation({
         {nextId && (
           <Link
             href={`${domain}/${nextId}`}
-            className="absolute right-[-10px] top-[190px]
+            className="absolute right-[-10px] top-[270px]
                      flex justify-center items-center rounded-full 
                      w-[70px] h-[70px] hover:scale-105 transition-transform"
           >

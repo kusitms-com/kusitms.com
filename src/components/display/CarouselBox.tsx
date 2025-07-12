@@ -31,7 +31,7 @@ export default function CarouselBox({ projectDetails }: CarouselBoxProps) {
               <div
                 key={index}
                 className=" bg-[rgba(47,48,56,0.5)] 
-            w-full backdrop-blur-[30px] absolute bottom-0 left-0 px-9 
+            w-full backdrop-blur-[30px] absolute bottom-15 left-0 px-9 
             desktop:py-9 py-4 flex desktop:flex-row flex-col justify-between desktop:items-center items-start z-10"
               >
                 <div className="flex flex-col desktop:gap-y-2 gap-y-0">
