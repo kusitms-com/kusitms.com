@@ -39,7 +39,7 @@ export default function NavButtons() {
             currentPath === "meetup" ? "bg-[#05F]" : "bg-[#2F3038]"
           }`}
         >
-          밋업데이
+          밋업 프로젝트
         </Link>
         <Link
           href="/projects/corporate"
