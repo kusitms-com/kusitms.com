@@ -64,15 +64,14 @@ const RecruitStep = ({ step }: { step: Step }) => (
 );
 
 const ArrowIcon = ({ rotate = 0, flip = false }: { rotate?: number; flip?: boolean }) => {
-    const rotation = `rotate-${rotate}`;
-    const flipX = flip ? "scale-y-[-1]" : "";
+    const transform = `rotate(${rotate}deg) ${flip ? "scaleY(-1)" : ""}`;
     return (
         <Image
             src="/recruit/icons/BlueArrow.svg"
             alt="파란색 화살표"
             width={32}
             height={32}
-            className={`${rotation} ${flipX}`}
+            style={{transform}}
         />
     );
 };
