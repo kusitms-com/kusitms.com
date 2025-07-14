@@ -52,7 +52,6 @@ const RecruitQnADropBoxQuestion = ({
         alt="DropDown"
         width={28}
         height={28}
-        priority
         style={{ width: 28, height: 28 }}
       />
     </div>

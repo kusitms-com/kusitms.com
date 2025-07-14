@@ -42,7 +42,6 @@ async function RecruitPage() {
               alt="Arrow"
               width={24}
               height={24}
-              priority
               style={{width: 24, height: 24}}
           />
         </button>
@@ -53,7 +52,6 @@ async function RecruitPage() {
               alt="Arrow"
               width={106}
               height={46}
-              priority
               style={{width: 106, height: 46}}
           />
           <section className="flex flex-col w-full desktop:gap-y-[200px] gap-y-[100px] justify-center items-center">
@@ -83,7 +81,6 @@ async function RecruitPage() {
                     alt="Arrow"
                     width={24}
                     height={24}
-                    priority
                     style={{width: 24, height: 24}}
                 />
               </button>

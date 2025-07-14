@@ -58,7 +58,6 @@ export default function RecruitmentTargetInfoItem () {
                                 alt={item.icon.alt}
                                 width={item.mobileSize.width}
                                 height={item.mobileSize.height}
-                                priority
                             />
                         </div>
                         <div className="hidden desktop:block">
@@ -67,7 +66,6 @@ export default function RecruitmentTargetInfoItem () {
                                 alt={item.icon.alt}
                                 width={item.icon.width}
                                 height={item.icon.height}
-                                priority
                             />
                         </div>
                     </div>
