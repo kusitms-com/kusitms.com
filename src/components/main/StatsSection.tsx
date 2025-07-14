@@ -13,21 +13,21 @@ export default function StatsSection() {
       suffix: "명",
       label: "누적 회원 수",
       delay: 0,
-      width: "w-[372px]",
+      width: "w-[90px] desktop:w-[372px]",
     },
     {
       end: 230,
-      suffix: "개 프로젝트",
+      suffix: "개",
       label: "프로젝트 결과물",
       delay: 0.3,
-      width: "w-[400px]",
+      width: "w-[90px] desktop:w-[400px]",
     },
     {
       end: 100,
-      suffix: "개 대학",
+      suffix: "개",
       label: "참여 대학 수",
       delay: 0.6,
-      width: "w-[372px]",
+      width: "w-[90px] desktop:w-[372px]",
     },
   ];
 
@@ -48,16 +48,26 @@ export default function StatsSection() {
   return (
     <div className="relative" ref={ref}>
       <Image
-        src="/main/img/Special_Lecture_by_Expert_1.png"
-        alt="Special_Lecture_by_Expert_1"
-        width={1920}
-        height={447}
-        priority
-        style={{ width: 1920, height: 447 }}
+          className="block desktop:hidden"
+          src="/main/img/Special_Lecture_by_Expert_1.png"
+          alt="Special_Lecture_by_Expert_1"
+          width={375}
+          height={229}
+          priority
+          style={{ width: 375, height: 229 }}
       />
-      <div className="flex flex-col gap-y-[88px] items-center justify-center absolute top-0 bg-[#0055FF]/80 w-full h-[447px]">
-        <div className="text-[24px] font-bold text-white">Since 2009</div>
-        <div className="flex gap-x-[80px]">
+      <Image
+          className="hidden desktop:block"
+          src="/main/img/Special_Lecture_by_Expert_1.png"
+          alt="Special_Lecture_by_Expert_1"
+          width={1920}
+          height={447}
+          priority
+          style={{ width: 1920, height: 447 }}
+      />
+      <div className="flex flex-col gap-y-[45px] desktop:gap-y-[88px] items-center justify-center absolute top-0 bg-[#0055FF]/80 w-full h-[229px] desktop:h-[447px]">
+        <div className="text-[16px] desktop:text-[24px] text-white">Since 2009</div>
+        <div className="flex gap-x-[30px] desktop:gap-x-[50px] desktop:gap-x-[80px]">
           {statData.map(({ end, suffix, label, delay, width }) => (
             <StatItem
               key={label}
@@ -94,15 +104,15 @@ const StatItem = ({
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.6, delay }}
-    className={`flex flex-col items-center justify-center gap-y-6 text-white ${
-      width ? width : " w-[372px]"
+    className={`flex flex-col items-center justify-center gap-y-[11px] desktop:gap-y-[14px] desktop:gap-y-6 text-white ${
+      width ? width : " desktop:w-[372px]"
     }`}
   >
-    <div className="w-[11px] h-[11px] rounded-full bg-white" />
-    <div className="text-[60px] font-bold">
+    <div className="h-[5px] w-[5px] desktop:w-[11px] desktop:h-[11px] rounded-full bg-white" />
+    <div className="text-[24px] desktop:text-[60px] font-bold">
       {startCount ? <CountUp end={end} duration={2} delay={delay} /> : 0}
       {suffix}
     </div>
-    <div className="text-[16px] text-[#DCE1FF]">{label}</div>
+    <div className="text-[13px] desktop:text-[16px] text-[#DCE1FF]">{label}</div>
   </motion.div>
 );

@@ -5,18 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca24dfa0-067a-41a0-8266-2c47fe233bc5" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/recruit/DesktopRecruitmentProcessItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/recruit/MobileRecruitmentProcessItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/main/img/31th_Staff_Group.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/main/img/MT.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/main/img/MeetUp_Project.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/main/img/Mobile_Former_Member_Speaker.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/recruit/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/recruit/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/recruit/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/recruit/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/recruit/MeetingInfoItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/recruit/MeetingInfoItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/recruit/Recruit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/recruit/Recruit.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/recruit/RecruitQnA.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/recruit/RecruitQnA.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/recruit/RecruitQnADropBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/recruit/RecruitQnADropBox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/recruit/RecruitingTeamInfoItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/recruit/RecruitingTeamInfoItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/recruit/RecruitmentProcessItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/recruit/RecruitmentProcessItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/recruit/RecruitmentTargetInfoItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/recruit/RecruitmentTargetInfoItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main/img/31st_Education_Planning_Team.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/main/img/31st_Education_Planning_Team.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main/img/31st_External_Public_Relations_Team.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/main/img/31st_External_Public_Relations_Team.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main/img/31st_General_Management_Team.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/main/img/31st_General_Management_Team.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main/img/31st_President_and_Vice_President.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/main/img/31st_President_and_Vice_President.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main/img/Club_Activity.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/main/img/Club_Activity.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main/img/Corporate_Project.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/main/img/Corporate_Project.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main/img/Former_Member_Speaker.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/main/img/Former_Member_Speaker.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main/img/Night_of_Kusitms.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/main/img/Night_of_Kusitms.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main/img/Study_Group.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/main/img/Study_Group.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/ActivityIntroSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/ActivityIntroSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/FlipImageCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/FlipImageCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/GuestIntroSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/GuestIntroSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/IntroSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/IntroSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/PartIntroSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/PartIntroSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/PartnerSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/PartnerSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/ProgramIntroSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/ProgramIntroSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/StatsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/StatsSection.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +60,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature-141/responsive-recruiting-ui",
+    "git-widget-placeholder": "feature-143/responsive-main-ui",
     "last_opened_file_path": "/Users/hwang-yulim/Documents/kusitms.com",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
