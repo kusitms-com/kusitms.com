@@ -8,7 +8,7 @@ export default function GuestIntroSection() {
   return (
     <div
       className={
-        "py-[100px] desktop:py-[200px] flex flex-col items-center justify-center desktop:bg-white"
+        "py-[100px] desktop:py-[200px] flex flex-col items-center justify-center"
       }
     >
       <motion.div
@@ -19,7 +19,7 @@ export default function GuestIntroSection() {
         className="flex flex-col justify-center items-center"
       >
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-[23px] desktop:text-[48px] font-black desktop:text-black">
+          <h1 className="text-[23px] desktop:text-[48px] font-black desktop:text-white">
             지난 기수 연사님
           </h1>
           <Image
@@ -44,8 +44,8 @@ export default function GuestIntroSection() {
             src="/main/img/Mobile_Former_Member_Speaker.png"
             alt="Mobile_Former_Member_Speaker"
             width={288}
-            height={269}
-            style={{ width: 288, height: 269 }}
+            height={965}
+            style={{ width: 288, height: 965 }}
         />
         <Image
             className="hidden desktop:block desktop:mt-[100px]"
