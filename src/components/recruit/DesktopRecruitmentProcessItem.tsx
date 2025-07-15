@@ -12,7 +12,7 @@ export default function DesktopRecruitmentProcessItem() {
                         "font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"
                     }
                 >
-                    7월 10일(목) ~ 7월 17일(수)
+                    7월 17일(목) ~ 7월 26일(토)
                     <br />
                     자정 마감
                 </p>
@@ -26,7 +26,7 @@ export default function DesktopRecruitmentProcessItem() {
                         "font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"
                     }
                 >
-                    7월 17일(목) 합격자/불합격자 <br />
+                    7월 29일(화) 합격자/불합격자 <br />
                     전체 연락
                 </p>
             ),
@@ -39,7 +39,7 @@ export default function DesktopRecruitmentProcessItem() {
                         "font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"
                     }
                 >
-                    7월 19일(토) ~ 7월 20일(일) <br />
+                    8월 2일(토) ~ 8월 3일(일) <br />
                     서류 합격자 개별 안내
                 </p>
             ),
@@ -52,7 +52,7 @@ export default function DesktopRecruitmentProcessItem() {
                         "font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"
                     }
                 >
-                    7월 21일(일) <br />
+                    8월 0일() <br />
                     합격자/불합격자 전체 연락
                 </p>
             ),

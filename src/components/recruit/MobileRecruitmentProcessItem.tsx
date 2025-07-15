@@ -11,25 +11,25 @@ type Step = {
 const steps: Step[] = [
     {
         title: "서류 지원 기간",
-        date: "7월 10일(목) ~ 7월 17일(수)\n자정 마감",
+        date: "7월 17일(목) ~ 7월 26일(토)\n자정 마감",
         bgColor: "white",
         textColor: "#0055FF",
     },
     {
         title: "서류 합격 발표",
-        date: "7월 17일(목)\n합격자/불합격자 전체 연락",
+        date: "7월 29일(화)\n합격자/불합격자 전체 연락",
         bgColor: "#0055FF",
         textColor: "white",
     },
     {
         title: "면접 기간",
-        date: "7월 19일(토) ~ 7월 20일(일)\n서류 합격자 개별 안내",
+        date: "8월 2일(토) ~ 8월 3일(일)\n서류 합격자 개별 안내",
         bgColor: "white",
         textColor: "#0055FF",
     },
     {
         title: "최종 합격 발표",
-        date: "7월 21일(일)\n합격자/불합격자 전체 연락",
+        date: "8월 0일()\n합격자/불합격자 전체 연락",
         bgColor: "#0055FF",
         textColor: "white",
     },
