@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
+import React, {ReactNode, useEffect, useRef, useState} from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function RecruitQnADropBox({
   question,
@@ -16,16 +16,16 @@ export default function RecruitQnADropBox({
   return (
     <div
       onClick={onToggle}
-      className="flex flex-col gap-y-6 rounded-[32px] bg-[#F2F2F8] px-12 py-10 w-[980px] cursor-pointer"
+      className="flex flex-col desktop:gap-y-6 gap-y-[20px] rounded-[32px] bg-[#F2F2F8] desktop:px-12 desktop:pt-10 desktop:pb-4 px-[28px] py-[28px] pb-[6px]  desktop:w-[980px] w-[350px] cursor-pointer"
     >
       <RecruitQnADropBox.Question isOpen={isOpen}>
-        <p className="flex gap-x-2 text-black text-[20px] font-semibold">
+        <p className="flex gap-x-2 text-black desktop:text-[20px] text-[16px]">
           <span className="text-[#0055FF]">Q</span>
           {question}
         </p>
       </RecruitQnADropBox.Question>
       <RecruitQnADropBox.Answer isOpen={isOpen}>
-        <div className="text-[#5D5E67] text-[20px] flex flex-col gap-y-1">
+        <div className="text-[#5D5E67] desktop:text-[20px] text-[16px] flex flex-col gap-y-1">
           {answer.map((line, idx) => (
             <p key={idx}>{line}</p>
           ))}
@@ -52,7 +52,6 @@ const RecruitQnADropBoxQuestion = ({
         alt="DropDown"
         width={28}
         height={28}
-        priority
         style={{ width: 28, height: 28 }}
       />
     </div>
@@ -66,23 +65,38 @@ const RecruitQnADropBoxAnswer = ({
   children: ReactNode;
   isOpen: boolean;
 }) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      if (isOpen) {
+        setHeight(contentRef.current.scrollHeight);
+      } else {
+        setHeight(0);
+      }
+    }
+  }, [isOpen, children]);
+
   return (
-    <AnimatePresence initial={false}>
-      {isOpen && (
-        <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
+      <motion.div
+          initial={false}
+          animate={{height, opacity: isOpen ? 1 : 0}}
           transition={{
-            duration: 0.5,
-            ease: [0.25, 0.8, 0.25, 1],
+            height: {
+              duration: isOpen ? 0.3 : 0.5,
+              ease: [0.4, 0, 0.2, 1],
+            },
+            opacity: {
+              duration: isOpen ? 0.2 : 0.4,
+            },
           }}
-          className="overflow-hidden"
-        >
+          style={{overflow: "hidden"}}
+      >
+        <div ref={contentRef} className='pb-6'>
           {children}
-        </motion.div>
-      )}
-    </AnimatePresence>
+        </div>
+      </motion.div>
   );
 };
 

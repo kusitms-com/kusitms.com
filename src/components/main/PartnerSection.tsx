@@ -37,26 +37,43 @@ export default function PartnerSection() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
       className={
-        "pt-[200px] pb-[120px] flex flex-col justify-center items-center"
+        "desktop:pt-[200px] pb-[100px] desktop:pb-[120px] flex flex-col justify-center items-center"
       }
     >
-      <div className={"flex flex-col items-center justify-center"}>
-        <h1 className={"text-[48px] font-black"}>파트너사</h1>
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-[23px] desktop:text-[48px] font-black">파트너사</h1>
         <Image
-          src="/main/BlueUnderlineIcon.svg"
-          alt="BlueUnderlineIcon"
-          width={161}
-          height={16}
-          priority
-          style={{ width: 161, height: 16 }}
+            className="block desktop:hidden mt-[7px]"
+            src="/main/BlueUnderlineIcon.svg"
+            alt="BlueUnderlineIcon"
+            width={113}
+            height={13}
+            style={{ width: 113, height: 13 }}
+        />
+        <Image
+            className="hidden desktop:block"
+            src="/main/BlueUnderlineIcon.svg"
+            alt="BlueUnderlineIcon"
+            width={161}
+            height={16}
+            style={{ width: 161, height: 16 }}
         />
       </div>
-      <p className={"mt-[48px] text-[20px]"}>
+      <p className="mt-[20px] desktop:mt-[48px] text-[13px] desktop:text-[20px]">
         KUSITMS과 함께하는 파트너사를 소개해요.
       </p>
-      <section className="flex gap-x-[80px] mt-[100px]">
+      <section className="hidden desktop:block  desktop:flex flex-row gap-x-[80px] mt-[64px] desktop:mt-[100px]">
         {partners.map((partner, idx) => (
           <PartnerCard key={idx} {...partner} />
+        ))}
+      </section>
+      <section className="block desktop:hidden flex flex-col gap-y-[30px] mt-[64px]">
+        {partners.map((partner) => (
+            <div
+                key={partner.name}
+                className="flex flex-col items-center px-5 py-5 justify-center bg-white">
+              <Image src={partner.image} width={235} height={165} alt={partner.image}/>
+            </div>
         ))}
       </section>
     </motion.div>
@@ -64,11 +81,11 @@ export default function PartnerSection() {
 }
 
 const PartnerCard = ({
-  name,
-  description,
-  image,
-  url,
-}: {
+                       name,
+                       description,
+                       image,
+                       url,
+                     }: {
   name: string;
   description: string;
   image: string;
