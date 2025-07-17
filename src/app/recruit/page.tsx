@@ -7,10 +7,11 @@ import RecruitmentTargetInfoItem from "@/components/recruit/RecruitmentTargetInf
 import RecruitingTeamInfoItem from "@/components/recruit/RecruitingTeamInfoItem";
 import MeetingInfoItem from "@/components/recruit/MeetingInfoItem";
 import RecruitmentProcessItem from "@/components/recruit/RecruitmentProcessItem";
+import Link from "next/link";
 
 async function RecruitPage() {
 
-  const recruitInfoList = [{id:1, title: "누가 지원할 수 있나요?"}, {id:2, title: "어떤 팀을 모집해요?"}, {id:3, title: "언제 어디서 모여요?"}, {id:4, title: "모집 절차가 어떻게 돼요?"}];
+  const recruitInfoList = [{id:1, title: "누가 지원할 수 있나요?"}, {id:2, title: "어떤 파트를 모집해요?"}, {id:3, title: "언제 어디서 모여요?"}, {id:4, title: "모집 절차가 어떻게 돼요?"}];
 
   const renderRecruitComponent = (id: number) => {
     switch (id) {
@@ -35,7 +36,7 @@ async function RecruitPage() {
 
   return (
       <main className="flex flex-col items-center">
-        <button className="flex gap-x-1 items-center font-semibold text-[20px] px-8 py-4 rounded-full bg-[#0055FF] hover:scale-105 transition cursor-pointer mt-[24px] desktop:hidden">
+        <Link href={"https://linktr.ee/kusitms.official?fbclid=PAQ0xDSwLkjtxleHRuA2FlbQIxMQABp1reIDGc9rGLYwcFWw6nIUwveL3LZsO_wkCAUv1bCVqJV1bpZ3OiOuxnG9hf_aem_8WqYpMfygHNOS6ebzkuCrw"} className="flex gap-x-1 items-center font-semibold text-[20px] px-8 py-4 rounded-full bg-[#0055FF] hover:scale-105 transition cursor-pointer mt-[24px] desktop:mb-[100px]">
           함께하러 가기
           <Image
               src="/recruit/icons/WhiteArrow.svg"
@@ -44,7 +45,7 @@ async function RecruitPage() {
               height={24}
               style={{width: 24, height: 24}}
           />
-        </button>
+        </Link>
         {/* 리쿠리팅 Info */}
         <div className="mx-auto flex flex-col gap-y-[100px] items-center w-full desktop:max-w-[1180px] desktop:mt-0 mt-[100px]">
           <Image
@@ -74,7 +75,7 @@ async function RecruitPage() {
                   큐시즘 32기 신규 운영진 리크루팅이 시작되었어요. <br/>
                   큐시즘을 함께 이끌어 갈 여러분을 기다려요!
               </p>
-              <button className="flex gap-x-1 items-center font-semibold text-[20px] px-8 py-4 rounded-full bg-[#0055FF] hover:scale-105 transition cursor-pointer">
+              <Link href={"https://linktr.ee/kusitms.official?fbclid=PAQ0xDSwLkjtxleHRuA2FlbQIxMQABp1reIDGc9rGLYwcFWw6nIUwveL3LZsO_wkCAUv1bCVqJV1bpZ3OiOuxnG9hf_aem_8WqYpMfygHNOS6ebzkuCrw"} className="flex gap-x-1 items-center font-semibold text-[20px] px-8 py-4 rounded-full bg-[#0055FF] hover:scale-105 transition cursor-pointer">
                 함께하러 가기
                 <Image
                     src="/recruit/icons/WhiteArrow.svg"
@@ -83,7 +84,7 @@ async function RecruitPage() {
                     height={24}
                     style={{width: 24, height: 24}}
                 />
-              </button>
+              </Link>
             </div>
           </Recruit>
         </div>
