@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
 
+import Link from "next/link";
 import Recruit from "@/components/recruit/Recruit";
 import RecruitQnA from "@/components/recruit/RecruitQnA";
 import RecruitmentTargetInfoItem from "@/components/recruit/RecruitmentTargetInfoItem";
 import RecruitingTeamInfoItem from "@/components/recruit/RecruitingTeamInfoItem";
 import MeetingInfoItem from "@/components/recruit/MeetingInfoItem";
 import RecruitmentProcessItem from "@/components/recruit/RecruitmentProcessItem";
-import Link from "next/link";
 
 async function RecruitPage() {
 
