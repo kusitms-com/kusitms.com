@@ -159,6 +159,6 @@ body {
 @theme {
   --breakpoint-*: initial;
   --breakpoint-tablet: 768px;
-  --breakpoint-desktop: 1200px;
+  --breakpoint-desktop: 1024px;
   --breakpoint-wide: 1440px;
 }
