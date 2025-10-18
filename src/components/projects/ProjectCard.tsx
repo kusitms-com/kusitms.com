@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface CardProps {
   children: ReactNode;
@@ -41,9 +41,7 @@ const Info = ({ children }: { children: ReactNode }) => (
 );
 
 const Cardinal = ({ children }: { children: ReactNode }) => (
-  <div className="mt-[22px] desktop:text-[16px] text-[13px] text-[#62EFE5]">
-    {children}
-  </div>
+  <div className="mt-[22px] desktop:text-[16px] text-[13px] text-[#62EFE5]">{children}</div>
 );
 
 const ProjectName = ({ children }: { children: ReactNode }) => (

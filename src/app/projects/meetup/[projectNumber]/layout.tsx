@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { getMeetupProjectDetail } from "@/service/projects";
 
 interface Props {
@@ -55,9 +55,5 @@ export default async function ProjectDetailLayout({
   children: ReactNode;
   params: Promise<{ projectNumber: string }>;
 }>) {
-  return (
-    <main className="mx-auto w-full desktop:max-w-[1180px] max-w-[330px]">
-      {children}
-    </main>
-  );
+  return <main className="mx-auto w-full desktop:max-w-[1180px] max-w-[330px]">{children}</main>;
 }

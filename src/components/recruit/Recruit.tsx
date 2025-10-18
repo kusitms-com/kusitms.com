@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface JobRequirementProps {
@@ -7,16 +7,12 @@ interface JobRequirementProps {
   style?: string;
 }
 
-export default function Recruit({
-  children,
-  title,
-  style,
-}: JobRequirementProps) {
+export default function Recruit({ children, title, style }: JobRequirementProps) {
   return (
     <div
       className={twMerge(
         "flex flex-col items-center desktop:gap-y-[100px] gap-y-[48px] w-full",
-        style
+        style,
       )}
     >
       <h1 className="font-extrabold desktop:text-[48px] text-[24px] leading-[100%] tracking-[0%]">

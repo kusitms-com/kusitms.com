@@ -1,5 +1,5 @@
 import React from "react";
-import { Review } from "@/service/reviews";
+import type { Review } from "@/service/reviews";
 
 export default function ReviewBox(props: Review) {
   return (

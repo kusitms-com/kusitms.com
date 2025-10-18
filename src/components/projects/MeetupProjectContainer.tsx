@@ -1,17 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { getMeetupProjects, MeetupResponse } from "@/service/projects";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { getMeetupProjects, type MeetupResponse } from "@/service/projects";
 import Filter from "./Filter";
 import Card from "./ProjectCard";
 
 type ProjectContainerProps = MeetupResponse;
 
-export default function ProjectContainer({
-  data: meetupProjectList,
-}: ProjectContainerProps) {
+export default function ProjectContainer({ data: meetupProjectList }: ProjectContainerProps) {
   const [projects, setProjects] = useState(meetupProjectList);
   const [cardinal, setCardinal] = useState("");
 

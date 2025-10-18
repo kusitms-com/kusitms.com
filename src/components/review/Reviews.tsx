@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { getReviews, ReviewResponse } from "@/service/reviews";
-import ReviewFilter from "./ReviewFilter";
+import { getReviews, type ReviewResponse } from "@/service/reviews";
 import ReviewBox from "./ReviewBox";
+import ReviewFilter from "./ReviewFilter";
 import ReviewsTotalCount from "./ReviewsTotalCount";
 
 export type TeamType = "DEVELOPER" | "PLANNER" | "DESIGNER" | "";

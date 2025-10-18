@@ -1,20 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import {
-  getMeetupProjects,
-  MeetupResponse,
-} from "@/service/projects/getMeetupProjects";
+import React, { useState } from "react";
+import { getMeetupProjects, type MeetupResponse } from "@/service/projects/getMeetupProjects";
 
 import Card from "../projects/ProjectCard";
 import OptionBar from "./OptionBar";
 
 type ProjectContainerProps = MeetupResponse;
 
-export default function DisplayListContainer({
-  data: meetupProjectList,
-}: ProjectContainerProps) {
+export default function DisplayListContainer({ data: meetupProjectList }: ProjectContainerProps) {
   const [projects, setProjects] = useState(meetupProjectList);
   const [batch, setBatch] = useState("");
 
@@ -35,10 +30,7 @@ export default function DisplayListContainer({
       <div className="w-full desktop:mt-[100px] mt-[50px] desktop:mb-[180px] mb-[100px]">
         <div className="grid desktop:grid-cols-3 grid-cols-1 gap-5 justify-items-center">
           {projects.meetup_list.map((project) => (
-            <Card
-              key={project.meetup_id}
-              onClick={() => projectNavigate(project.meetup_id)}
-            >
+            <Card key={project.meetup_id} onClick={() => projectNavigate(project.meetup_id)}>
               <Card.Poster src={project.poster_url} />
               <Card.Logo src={project.logo_url} />
               <Card.Info>

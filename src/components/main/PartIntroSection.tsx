@@ -1,9 +1,9 @@
 "use client";
 
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
-import clsx from "clsx";
 
 export default function PartIntroSection() {
   const teamData = [
@@ -88,33 +88,37 @@ export default function PartIntroSection() {
         <div>
           <p className="text-[23px] desktop:text-[48px] font-black">함께하는 큐밀리</p>
           <Image
-              className="block desktop:hidden"
-              src="/main/BlueUnderlineIcon.svg"
-              alt="밑줄"
-              width={88}
-              height={7}
-              style={{ width: 88, height: 7 }}
+            className="block desktop:hidden"
+            src="/main/BlueUnderlineIcon.svg"
+            alt="밑줄"
+            width={88}
+            height={7}
+            style={{ width: 88, height: 7 }}
           />
           <Image
-              className="hidden desktop:block"
-              src="/main/BlueUnderlineIcon.svg"
-              alt="밑줄"
-              width={180}
-              height={16}
-              style={{ width: 180, height: 16 }}
+            className="hidden desktop:block"
+            src="/main/BlueUnderlineIcon.svg"
+            alt="밑줄"
+            width={180}
+            height={16}
+            style={{ width: 180, height: 16 }}
           />
         </div>
         <div className="flex flex-col text-center">
-          <p className="text-[13px] desktop:text-[20px]">KUSITMS은 기획, 개발, 디자인 파트로 구성되어 있어요</p>
+          <p className="text-[13px] desktop:text-[20px]">
+            KUSITMS은 기획, 개발, 디자인 파트로 구성되어 있어요
+          </p>
           <div className="flex desktop:flex-row flex-col">
-            <p className="text-[13px] desktop:text-[20px]">각 팀에서 모인 팀원들이 하나의 팀이 되어</p>
+            <p className="text-[13px] desktop:text-[20px]">
+              각 팀에서 모인 팀원들이 하나의 팀이 되어
+            </p>
             <p className="text-[13px] desktop:text-[20px]">함께 프로젝트를 진행해요</p>
           </div>
         </div>
       </motion.div>
 
       <section className="flex flex-col gap-y-[20px] pt-[30px] desktop:pt-[80px] mb-[40px]">
-        {teamData.map(({icon, title, description, reverse, delay }) => (
+        {teamData.map(({ icon, title, description, reverse, delay }) => (
           <TeamCard
             key={title}
             icon={icon}
@@ -126,8 +130,13 @@ export default function PartIntroSection() {
         ))}
       </section>
 
-      <button className="flex gap-x-1 bg-[#0055FF] py-2 px-5 desktop:py-3 desktop:px-7 rounded-full w-fit">
-        <span className="text-[15px] desktop:text-[16px] font-semibold">학회 소개영상 보러가기</span>
+      <button
+        type="button"
+        className="flex gap-x-1 bg-[#0055FF] py-2 px-5 desktop:py-3 desktop:px-7 rounded-full w-fit"
+      >
+        <span className="text-[15px] desktop:text-[16px] font-semibold">
+          학회 소개영상 보러가기
+        </span>
         <Image
           src="/recruit/icons/WhiteArrow.svg"
           alt="디자인"
@@ -140,20 +149,20 @@ export default function PartIntroSection() {
       <section className="flex flex-col gap-y-[80px] pt-[100px] desktop:pt-[180px]">
         <div className="flex flex-col items-center desktop:gap-y-[100px] gap-y-[24px]">
           <Image
-              className="block desktop:hidden"
-              src="/main/img/31th_Staff_Group.jpg"
-              alt="전체 사진"
-              width={311}
-              height={222}
-              style={{ width: 311, height: 222 }}
+            className="block desktop:hidden"
+            src="/main/img/31th_Staff_Group.jpg"
+            alt="전체 사진"
+            width={311}
+            height={222}
+            style={{ width: 311, height: 222 }}
           />
           <Image
-              className="hidden desktop:block"
-              src="/main/img/31th_Staff_Group.jpg"
-              alt="전체 사진"
-              width={980}
-              height={700}
-              style={{ width: 980, height: 700 }}
+            className="hidden desktop:block"
+            src="/main/img/31th_Staff_Group.jpg"
+            alt="전체 사진"
+            width={980}
+            height={700}
+            style={{ width: 980, height: 700 }}
           />
           <p className="text-[13px] desktop:text-[20px] text-center">
             KUSITMS 활동을 이끄는 운영진이에요. <br />
@@ -162,18 +171,16 @@ export default function PartIntroSection() {
         </div>
 
         <div className="flex desktop:flex-row flex-col gap-x-[20px] gap-y-[40px] desktop:mt-[80px]">
-          {executiveData.map(
-            ({ image, title, description, delay, paddingTop }) => (
-              <ExecutiveCard
-                key={title}
-                image={image}
-                title={title}
-                description={description}
-                delay={delay}
-                paddingTop={paddingTop}
-              />
-            )
-          )}
+          {executiveData.map(({ image, title, description, delay, paddingTop }) => (
+            <ExecutiveCard
+              key={title}
+              image={image}
+              title={title}
+              description={description}
+              delay={delay}
+              paddingTop={paddingTop}
+            />
+          ))}
         </div>
       </section>
     </div>
@@ -200,33 +207,33 @@ const TeamCard = ({
       transition={{ duration: 0.7, ease: "easeOut", delay: delay || 0 }}
       viewport={{ once: true }}
       className={clsx(
-          "flex gap-x-[10px] desktop:gap-x-[40px] rounded-[32px] pt-[38px] pb-[34px] px-[30px] desktop:py-[56px] desktop:px-[64px] bg-white w-[310px] desktop:w-[980px]",
-          reverse ? "desktop:flex-row-reverse" : "desktop:flex-row",
+        "flex gap-x-[10px] desktop:gap-x-[40px] rounded-[32px] pt-[38px] pb-[34px] px-[30px] desktop:py-[56px] desktop:px-[64px] bg-white w-[310px] desktop:w-[980px]",
+        reverse ? "desktop:flex-row-reverse" : "desktop:flex-row",
       )}
     >
       <Image
-          src={icon}
-          alt={title}
-          width={34}
-          height={34}
-          className="mb-2 desktop:mb-0 block desktop:hidden"
-          style={{ width: 34, height: 34 }}
+        src={icon}
+        alt={title}
+        width={34}
+        height={34}
+        className="mb-2 desktop:mb-0 block desktop:hidden"
+        style={{ width: 34, height: 34 }}
       />
       <Image
-          src={icon}
-          alt={title}
-          width={96}
-          height={96}
-          className="mb-2 desktop:mb-0 hidden desktop:block"
-          style={{ width: 96, height: 96 }}
+        src={icon}
+        alt={title}
+        width={96}
+        height={96}
+        className="mb-2 desktop:mb-0 hidden desktop:block"
+        style={{ width: 96, height: 96 }}
       />
 
       {/* 텍스트 블록 */}
       <div
-          className={clsx(
-              "flex flex-col gap-y-[10px] desktop:gap-y-[20px]",
-              reverse && "desktop:items-end desktop:text-end"
-          )}
+        className={clsx(
+          "flex flex-col gap-y-[10px] desktop:gap-y-[20px]",
+          reverse && "desktop:items-end desktop:text-end",
+        )}
       >
         <p className="text-[19px] desktop:text-[24px] text-[#0055FF] font-black">{title}</p>
         <p className="text-[13px] desktop:text-[16px] leading-[150%] text-black whitespace-pre-line">
@@ -259,7 +266,7 @@ const ExecutiveCard = ({
       className={`relative ${paddingTop ? "desktop:pt-[120px]" : ""}`}
     >
       <Image
-          className="block desktop:hidden"
+        className="block desktop:hidden"
         src={image}
         alt={title}
         width={311}
@@ -267,16 +274,18 @@ const ExecutiveCard = ({
         style={{ width: 311, height: 420 }}
       />
       <Image
-          className="hidden desktop:block"
-          src={image}
-          alt={title}
-          width={347}
-          height={520}
-          style={{ width: 347, height: 520 }}
+        className="hidden desktop:block"
+        src={image}
+        alt={title}
+        width={347}
+        height={520}
+        style={{ width: 347, height: 520 }}
       />
       <div
         className={`absolute left-1/2 transform -translate-x-1/2 w-full flex flex-col gap-y-4 desktop:gap-y-6 items-center justify-center ${
-          paddingTop ? "bottom-[32px] desktop:bottom-[55px]" : "bottom-[32px] desktop:bottom-[185px]"
+          paddingTop
+            ? "bottom-[32px] desktop:bottom-[55px]"
+            : "bottom-[32px] desktop:bottom-[185px]"
         }`}
       >
         <p className="text-[20px] desktop:text-[24px] font-bold">{title}</p>

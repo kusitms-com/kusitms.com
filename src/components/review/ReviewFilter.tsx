@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { TeamType } from "./Reviews";
+import type { TeamType } from "./Reviews";
 
 interface ReviewFilterProps {
   team: TeamType;
@@ -18,22 +18,13 @@ export default function ReviewFilter({ team, onChange }: ReviewFilterProps) {
       <button className={getButtonClass("")} onClick={() => onChange("")}>
         전체
       </button>
-      <button
-        className={getButtonClass("PLANNER")}
-        onClick={() => onChange("PLANNER")}
-      >
+      <button className={getButtonClass("PLANNER")} onClick={() => onChange("PLANNER")}>
         기획
       </button>
-      <button
-        className={getButtonClass("DEVELOPER")}
-        onClick={() => onChange("DEVELOPER")}
-      >
+      <button className={getButtonClass("DEVELOPER")} onClick={() => onChange("DEVELOPER")}>
         개발
       </button>
-      <button
-        className={getButtonClass("DESIGNER")}
-        onClick={() => onChange("DESIGNER")}
-      >
+      <button className={getButtonClass("DESIGNER")} onClick={() => onChange("DESIGNER")}>
         디자인
       </button>
     </section>

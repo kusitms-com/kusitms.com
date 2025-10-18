@@ -1,5 +1,5 @@
-import { getMeetupProjects } from "@/service/projects";
 import type { MetadataRoute } from "next";
+import { getMeetupProjects } from "@/service/projects";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const meetupProjectList = await getMeetupProjects("");

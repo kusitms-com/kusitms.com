@@ -68,7 +68,7 @@ const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export const getMeetupProjects = async (
   cardinal: string,
-  batch?: string
+  batch?: string,
 ): Promise<MeetupResponse> => {
   try {
     const url = `${baseUrl}/api/projects/meetup?batch=${batch}&cardinal=${cardinal}&order=desc`;
@@ -96,7 +96,7 @@ export const getMeetupProjects = async (
 };
 
 export const getMeetupProjectDetail = async (
-  projectId: string
+  projectId: string,
 ): Promise<MeetupProjectDetailResponse> => {
   try {
     const res = await fetch(`${baseUrl}/api/projects/meetup/${projectId}`, {

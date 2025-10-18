@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import { MeetupProjectDetail } from "@/service/projects";
-import { IconLink, BackButton } from "@/components/shared";
+import { BackButton, IconLink } from "@/components/shared";
+import type { MeetupProjectDetail } from "@/service/projects";
 import { getCalculateMonthDiff, toUpperCaseOnlyLetters } from "@/utils";
 import TeamMember from "./TeamMember";
 

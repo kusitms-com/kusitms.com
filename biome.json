@@ -14,13 +14,17 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 100,
-    "lineEnding": "lf",
+    "lineEnding": "crlf",
     "formatWithErrors": true
   },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
+      "style": {
+        "useNodejsImportProtocol": "warn",
+        "useImportType": "warn"
+      },
       "suspicious": {
         "noArrayIndexKey": "off"
       }

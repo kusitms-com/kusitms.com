@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 const navLinks = [
   { href: "/", label: "학회소개", matchPath: "/" },

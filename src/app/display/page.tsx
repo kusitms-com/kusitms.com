@@ -1,8 +1,8 @@
 import Image from "next/image";
 import CarouselBox from "@/components/display/CarouselBox";
 import DisplayListContainer from "@/components/display/DisplayListContainer";
-import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
 import { DISPLAY_SECTIONS } from "@/constants/displayPictureList";
+import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
 
 const PROJECT_IDS = ["50", "52", "54", "48", "53", "51", "49", "47"];
 
@@ -10,9 +10,7 @@ async function DisplayPage() {
   const meetupProjectList = await getMeetupProjects("31", "");
 
   // 모든 프로젝트 상세 정보를 병렬로 가져오기
-  const projectDetails = await Promise.all(
-    PROJECT_IDS.map((id) => getMeetupProjectDetail(id))
-  );
+  const projectDetails = await Promise.all(PROJECT_IDS.map((id) => getMeetupProjectDetail(id)));
 
   return (
     <>
@@ -44,9 +42,7 @@ async function DisplayPage() {
           />
         </div>
         <div className="absolute right-0 bottom-0 px-9 py-5 bg-black hidden desktop:block">
-          <h2 className="text-4xl font-semibold text-white">
-            Starting Point For Challengers
-          </h2>
+          <h2 className="text-4xl font-semibold text-white">Starting Point For Challengers</h2>
         </div>
       </section>
       <main className="w-full flex flex-col items-center desktop:gap-y-12">

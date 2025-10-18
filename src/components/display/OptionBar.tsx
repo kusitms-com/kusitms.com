@@ -12,9 +12,7 @@ export default function OptionBar({ batch, onChange }: OptionBarProps) {
     <div className="w-full flex gap-4 desktop:mt-[64px] mt-[0px] max-w-[855px] mx-auto">
       <div
         className={`w-[50%] flex justify-center items-center border-b-4 desktop:text-[28px] text-[14px] font-extrabold p-8 cursor-pointer ${
-          batch === ""
-            ? "border-[#62EFE5]"
-            : "border-transparent text-[#595A62]"
+          batch === "" ? "border-[#62EFE5]" : "border-transparent text-[#595A62]"
         }`}
         onClick={() => onChange("")}
       >
@@ -22,9 +20,7 @@ export default function OptionBar({ batch, onChange }: OptionBarProps) {
       </div>
       <div
         className={`w-[50%] flex justify-center items-center border-b-4 desktop:text-[28px] text-[14px] font-extrabold p-8 cursor-pointer ${
-          batch === "OB"
-            ? "border-[#62EFE5]"
-            : "border-transparent text-[#595A62]"
+          batch === "OB" ? "border-[#62EFE5]" : "border-transparent text-[#595A62]"
         }`}
         onClick={() => onChange("OB")}
       >
@@ -32,9 +28,7 @@ export default function OptionBar({ batch, onChange }: OptionBarProps) {
       </div>
       <div
         className={`w-[50%] flex justify-center items-center border-b-4 desktop:text-[28px] text-[14px] font-extrabold p-8 cursor-pointer ${
-          batch === "YB"
-            ? "border-[#62EFE5]"
-            : "border-transparent text-[#595A62]"
+          batch === "YB" ? "border-[#62EFE5]" : "border-transparent text-[#595A62]"
         }`}
         onClick={() => onChange("YB")}
       >
