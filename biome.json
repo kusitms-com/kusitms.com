@@ -5,9 +5,7 @@
     "clientKind": "git",
     "useIgnoreFile": true
   },
-  "files": {
-    "ignoreUnknown": false
-  },
+  "files": { "ignoreUnknown": true },
   "formatter": {
     "enabled": true,
     "attributePosition": "auto",
@@ -21,6 +19,13 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "a11y": {
+        "useKeyWithClickEvents": "off",
+        "noStaticElementInteractions": "off",
+        "useValidAriaRole": "warn",
+        "useSemanticElements": "warn",
+        "useButtonType": "off"
+      },
       "style": {
         "useNodejsImportProtocol": "warn",
         "useImportType": "warn"
