@@ -24,20 +24,20 @@ export default function ProgramIntroSection() {
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-[24px] desktop:text-[48px] font-black">학회 프로젝트 소개</h1>
           <Image
-              className="block desktop:hidden"
-              src="/main/BlueUnderlineIcon.svg"
-              alt="BlueUnderlineIcon"
-              width={88}
-              height={7}
-              style={{ width: 88, height: 7 }}
+            className="block desktop:hidden"
+            src="/main/BlueUnderlineIcon.svg"
+            alt="BlueUnderlineIcon"
+            width={88}
+            height={7}
+            style={{ width: 88, height: 7 }}
           />
           <Image
-              className="hidden desktop:block"
-              src="/main/BlueUnderlineIcon.svg"
-              alt="BlueUnderlineIcon"
-              width={161}
-              height={16}
-              style={{ width: 161, height: 16 }}
+            className="hidden desktop:block"
+            src="/main/BlueUnderlineIcon.svg"
+            alt="BlueUnderlineIcon"
+            width={161}
+            height={16}
+            style={{ width: 161, height: 16 }}
           />
         </div>
         <p className="text-[13px] desktop:text-[20px] mt-[20px] desktop:mt-[48px] text-center">
@@ -52,13 +52,7 @@ export default function ProgramIntroSection() {
           }
         >
           {programCards.map(({ src, alt, className, delay }) => (
-            <FlipImageCard
-              key={alt}
-              src={src}
-              alt={alt}
-              className={className}
-              delay={delay}
-            />
+            <FlipImageCard key={alt} src={src} alt={alt} className={className} delay={delay} />
           ))}
         </section>
       </section>

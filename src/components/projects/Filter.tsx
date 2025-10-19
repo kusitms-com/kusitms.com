@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useMemo } from "react";
+import type { CorporateProjectItem, MeetupItem } from "@/service/projects";
 import { calculateProjectCounts } from "@/utils/projectCountUtils";
-import { MeetupItem, CorporateProjectItem } from "@/service/projects";
 
 interface FilterProps {
   cardinal: string;
@@ -10,11 +10,7 @@ interface FilterProps {
   projectList: MeetupItem[] | CorporateProjectItem[];
 }
 
-export default function Filter({
-  cardinal,
-  onChange,
-  projectList,
-}: FilterProps) {
+export default function Filter({ cardinal, onChange, projectList }: FilterProps) {
   // 25기부터 31기까지 배열 생성
   const generations = Array.from({ length: 7 }, (_, i) => 31 - i);
 

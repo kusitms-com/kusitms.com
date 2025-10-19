@@ -6,11 +6,7 @@ export default function DesktopRecruitmentProcessItem() {
     {
       title: "서류 지원 기간",
       notice: (
-        <p
-          className={
-            "font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"
-          }
-        >
+        <p className={"font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"}>
           7월 17일(목) ~ 7월 26일(토)
           <br />
           자정 마감
@@ -20,11 +16,7 @@ export default function DesktopRecruitmentProcessItem() {
     {
       title: "서류 합격 발표",
       notice: (
-        <p
-          className={
-            "font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"
-          }
-        >
+        <p className={"font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"}>
           7월 29일(화) 합격자/불합격자 <br />
           전체 연락
         </p>
@@ -33,11 +25,7 @@ export default function DesktopRecruitmentProcessItem() {
     {
       title: "면접 기간",
       notice: (
-        <p
-          className={
-            "font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"
-          }
-        >
+        <p className={"font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"}>
           8월 2일(토) ~ 8월 3일(일) <br />
           서류 합격자 개별 안내
         </p>
@@ -46,11 +34,7 @@ export default function DesktopRecruitmentProcessItem() {
     {
       title: "최종 합격 발표",
       notice: (
-        <p
-          className={
-            "font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"
-          }
-        >
+        <p className={"font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"}>
           8월 5일(화) <br />
           합격자/불합격자 전체 연락
         </p>
@@ -59,11 +43,7 @@ export default function DesktopRecruitmentProcessItem() {
     {
       title: "32기 활동",
       notice: (
-        <p
-          className={
-            "font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"
-          }
-        >
+        <p className={"font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"}>
           8월 9일(토) ~ 12월 6일(토)
         </p>
       ),
@@ -91,8 +71,7 @@ export default function DesktopRecruitmentProcessItem() {
                     className={`relative z-10 flex justify-center items-center w-[172px] h-[172px] rounded-full 
                                             ${
                                               index % 2 === 0
-                                                ? index ===
-                                                  recruitmentProcess.length - 1
+                                                ? index === recruitmentProcess.length - 1
                                                   ? "bg-[#0055FF] opacity-100 m-6"
                                                   : "bg-white"
                                                 : "bg-[#0055FF] opacity-100"
@@ -102,8 +81,7 @@ export default function DesktopRecruitmentProcessItem() {
                       className={`font-[SUIT] font-extrabold text-[20px] leading-[100%] tracking-[0px] text-center 
                                             ${
                                               index % 2 === 0
-                                                ? index ===
-                                                  recruitmentProcess.length - 1
+                                                ? index === recruitmentProcess.length - 1
                                                   ? "text-white"
                                                   : "text-[#0055FF]"
                                                 : "text-white"

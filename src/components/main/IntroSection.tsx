@@ -57,12 +57,12 @@ export default function IntroSection() {
             style={{ width: 328, height: 129 }}
           />
           <Image
-              className="relative z-10 hidden desktop:block"
-              src="/main/MainGroupSticker.svg"
-              alt="MainGroupSticker"
-              width={1258}
-              height={570}
-              style={{ width: 1258, height: 570 }}
+            className="relative z-10 hidden desktop:block"
+            src="/main/MainGroupSticker.svg"
+            alt="MainGroupSticker"
+            width={1258}
+            height={570}
+            style={{ width: 1258, height: 570 }}
           />
           <Image
             className="absolute top-6 left-0 z-0 block desktop:hidden"
@@ -73,18 +73,16 @@ export default function IntroSection() {
             style={{ width: 328, height: 56 }}
           />
           <Image
-              className="absolute top-20 left-0 z-0 hidden desktop:block"
-              src="/main/MainBlueArrow.svg"
-              alt="MainBlueArrow"
-              width={1430}
-              height={246}
-              style={{ width: 1430, height: 246 }}
+            className="absolute top-20 left-0 z-0 hidden desktop:block"
+            src="/main/MainBlueArrow.svg"
+            alt="MainBlueArrow"
+            width={1430}
+            height={246}
+            style={{ width: 1430, height: 246 }}
           />
         </div>
       </section>
-      <section
-        className="flex flex-col justify-center items-center pt-[58px] desktop:pt-[140px] pb-[73px] desktop:pb-[162px]"
-      >
+      <section className="flex flex-col justify-center items-center pt-[58px] desktop:pt-[140px] pb-[73px] desktop:pb-[162px]">
         <div className="flex desktop:gap-x-[370px] items-center">
           <div className="flex flex-col gap-y-[67px] desktop:gap-y-[200px]">
             <p className="flex flex-col text-[23px] desktop:text-[72px] font-bold">
@@ -115,7 +113,7 @@ export default function IntroSection() {
               viewport={{ once: true }}
             >
               <Image
-                  className="hidden desktop:block"
+                className="hidden desktop:block"
                 src="/main/Logo.svg"
                 alt="Logo"
                 width={400}
@@ -123,12 +121,12 @@ export default function IntroSection() {
                 style={{ width: 400, height: 278 }}
               />
               <Image
-                  className="block desktop:hidden"
-                  src="/main/Logo.svg"
-                  alt="Logo"
-                  width={134}
-                  height={93}
-                  style={{ width: 134, height: 93 }}
+                className="block desktop:hidden"
+                src="/main/Logo.svg"
+                alt="Logo"
+                width={134}
+                height={93}
+                style={{ width: 134, height: 93 }}
               />
             </motion.div>
             <p className="absolute top-10 text-[#F2F2F8] text-[46px] desktop:text-[170px] opacity-5 transform rotate-270 inline-block">

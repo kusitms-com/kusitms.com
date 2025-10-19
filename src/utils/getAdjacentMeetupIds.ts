@@ -4,11 +4,9 @@ interface MeetupItem {
 
 export function getAdjacentMeetupIds(
   meetupList: MeetupItem[],
-  currentId: string
+  currentId: string,
 ): { prevId?: string; nextId?: string } {
-  const currentIndex = meetupList.findIndex(
-    (item) => item.meetup_id.toString() === currentId
-  );
+  const currentIndex = meetupList.findIndex((item) => item.meetup_id.toString() === currentId);
   return {
     prevId: meetupList[currentIndex - 1]?.meetup_id.toString(),
     nextId: meetupList[currentIndex + 1]?.meetup_id.toString(),

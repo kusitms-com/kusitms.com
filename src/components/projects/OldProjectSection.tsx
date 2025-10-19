@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import { MeetupProjectDetail } from "@/service/projects";
-import { IconLink, BackButton } from "@/components/shared";
+import { BackButton, IconLink } from "@/components/shared";
+import type { MeetupProjectDetail } from "@/service/projects";
 import { toUpperCaseOnlyLetters } from "@/utils";
 import TeamMember from "./TeamMember";
 
@@ -107,17 +107,10 @@ function OldProjectSection({ project }: { project: MeetupProjectDetail }) {
                 <TeamMember role="기획" members={project.team.planner} />
                 <TeamMember role="디자인" members={project.team.designer} />
                 {project.team.frontend && (
-                  <TeamMember
-                    role="프론트엔드"
-                    members={project.team.frontend}
-                  />
+                  <TeamMember role="프론트엔드" members={project.team.frontend} />
                 )}
-                {project.team.ios && (
-                  <TeamMember role="IOS" members={project.team.ios} />
-                )}
-                {project.team.aos && (
-                  <TeamMember role="AOS" members={project.team.aos} />
-                )}
+                {project.team.ios && <TeamMember role="IOS" members={project.team.ios} />}
+                {project.team.aos && <TeamMember role="AOS" members={project.team.aos} />}
                 <TeamMember role="백엔드" members={project.team.backend} />
               </div>
             </div>

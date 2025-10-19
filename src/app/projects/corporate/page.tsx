@@ -1,12 +1,12 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
 import CorporateProjectContainer from "@/components/projects/CorporateProjectContainer";
 import EventIntro from "@/components/projects/EventIntro";
 import ImageCard from "@/components/projects/ImageCard";
-import ProjectTotalCount from "@/components/projects/ProjectTotalCount";
 import NavButtons from "@/components/projects/NavButtons";
-import { getCorporateProjects } from "@/service/projects";
+import ProjectTotalCount from "@/components/projects/ProjectTotalCount";
 import TopScrollButton from "@/components/shared/TopScrollButton";
+import { getCorporateProjects } from "@/service/projects";
 
 async function CorporateProjectPage() {
   const corporateProjectsList = await getCorporateProjects("");

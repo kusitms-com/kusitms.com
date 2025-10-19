@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
 import Link from "next/link";
+import React, { useState } from "react";
 import RecruitQnADropBox from "@/components/recruit/RecruitQnADropBox";
 
 export default function RecruitQnA() {
@@ -82,15 +82,13 @@ export default function RecruitQnA() {
       ],
     },
     {
-      question:
-          "운영진 지원 후 불합격이 되었을 때, 일반 학회원으로 재신청해도 불이익은 없나요?",
+      question: "운영진 지원 후 불합격이 되었을 때, 일반 학회원으로 재신청해도 불이익은 없나요?",
       answer: [
         "네, 전혀 불이익 없어요!",
         "모든 지원 서류는 모집이 끝난 후 즉시 폐기하므로 학회원으로 재신청하셔도 전혀 문제되지 않아요.",
       ],
     },
   ];
-
 
   return (
     <div className="flex flex-col desktop:pt-[162px] desktop:pb-[179px] py-[48px] items-center justify-center w-full bg-white">

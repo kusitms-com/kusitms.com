@@ -1,2 +1,2 @@
-export * from "./getMeetupProjects";
 export * from "./getCorporateProjects";
+export * from "./getMeetupProjects";

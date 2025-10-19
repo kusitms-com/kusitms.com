@@ -1,6 +1,6 @@
 import React from "react";
-import { getReviews } from "@/service/reviews";
 import Reviews from "@/components/review/Reviews";
+import { getReviews } from "@/service/reviews";
 
 async function ReviewsPage() {
   const reviews = await getReviews("");

@@ -20,17 +20,13 @@ export const PageNav = () => {
     <nav className="desktop:flex hidden text-center">
       {navLinks.map(({ href, label, matchPath }, index) => {
         const isActive =
-          matchPath === "/"
-            ? currentPath === matchPath
-            : currentPath.startsWith(matchPath);
+          matchPath === "/" ? currentPath === matchPath : currentPath.startsWith(matchPath);
 
         return (
           <Link
             key={index}
             href={href}
-            className={`px-7 font-semibold ${
-              isActive ? "text-white" : "text-[#90909A]"
-            }`}
+            className={`px-7 font-semibold ${isActive ? "text-white" : "text-[#90909A]"}`}
           >
             {label}
           </Link>

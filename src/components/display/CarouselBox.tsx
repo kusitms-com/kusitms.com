@@ -1,6 +1,5 @@
-import * as React from "react";
-
 import Image from "next/image";
+import * as React from "react";
 import {
   Carousel,
   CarouselContent,
@@ -8,7 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/shared/ui/carousel";
-import { MeetupProjectDetailResponse } from "@/service/projects";
+import type { MeetupProjectDetailResponse } from "@/service/projects";
 
 interface CarouselBoxProps {
   projectDetails: MeetupProjectDetailResponse[];

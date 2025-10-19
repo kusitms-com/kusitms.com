@@ -17,9 +17,7 @@ export interface CorporateResponse {
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-export const getCorporateProjects = async (
-  cardinal: string
-): Promise<CorporateResponse> => {
+export const getCorporateProjects = async (cardinal: string): Promise<CorporateResponse> => {
   const url =
     cardinal !== ""
       ? `${baseUrl}/api/projects/corporate?cardinal=${cardinal}&order=desc`

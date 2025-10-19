@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { CorporateResponse, getCorporateProjects } from "@/service/projects";
+import { type CorporateResponse, getCorporateProjects } from "@/service/projects";
 import Filter from "./Filter";
 import Card from "./ProjectCard";
 

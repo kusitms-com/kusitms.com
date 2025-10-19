@@ -1,4 +1,4 @@
-import { CorporateProjectItem, MeetupItem } from "@/service/projects";
+import type { CorporateProjectItem, MeetupItem } from "@/service/projects";
 
 export interface ProjectCount {
   [key: string]: number; // 기수별 프로젝트 개수 (예: "30": 5)
@@ -7,7 +7,7 @@ export interface ProjectCount {
 
 export const calculateProjectCounts = (
   projectList: MeetupItem[] | CorporateProjectItem[],
-  generations: number[] = Array.from({ length: 7 }, (_, i) => 31 - i)
+  generations: number[] = Array.from({ length: 7 }, (_, i) => 31 - i),
 ): ProjectCount => {
   // 프로젝트 리스트가 없거나 형식이 맞지 않으면 빈 객체 반환
   if (!projectList) {
@@ -33,10 +33,7 @@ export const calculateProjectCounts = (
   return counts;
 };
 
-export const formatProjectCount = (
-  counts: ProjectCount,
-  cardinalKey: string
-): string => {
+export const formatProjectCount = (counts: ProjectCount, cardinalKey: string): string => {
   if (!counts) return "";
 
   // 전체 개수인 경우

@@ -31,21 +31,19 @@ export default function ActivityIntroSection() {
   ];
 
   return (
-    <section
-      className="relative flex flex-col justify-center items-center bg-[#0055FF] py-[100px] desktop:py-[200px]"
-    >
+    <section className="relative flex flex-col justify-center items-center bg-[#0055FF] py-[100px] desktop:py-[200px]">
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-[24px] desktop:text-[48px] font-black">학회 활동 소개</h1>
         <Image
-            className="block desktop:hidden"
-            src="/main/WhiteUnderlineIcon.svg"
-            alt="WhiteUnderlineIcon"
-            width={88}
-            height={7}
-            style={{ width: 88, height: 7 }}
+          className="block desktop:hidden"
+          src="/main/WhiteUnderlineIcon.svg"
+          alt="WhiteUnderlineIcon"
+          width={88}
+          height={7}
+          style={{ width: 88, height: 7 }}
         />
         <Image
-            className="hidden desktop:block"
+          className="hidden desktop:block"
           src="/main/WhiteUnderlineIcon.svg"
           alt="WhiteUnderlineIcon"
           width={161}
@@ -75,13 +73,7 @@ export default function ActivityIntroSection() {
         }
       >
         {activityCards.map(({ src, alt, className, delay }) => (
-          <FlipImageCard
-            key={alt}
-            src={src}
-            alt={alt}
-            className={className}
-            delay={delay}
-          />
+          <FlipImageCard key={alt} src={src} alt={alt} className={className} delay={delay} />
         ))}
       </section>
 

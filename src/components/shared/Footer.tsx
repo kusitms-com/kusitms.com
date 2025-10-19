@@ -1,6 +1,6 @@
 import Image from "next/image";
-import React from "react";
 import Link from "next/link";
+import React from "react";
 import { IconLink } from "./LinkCircle";
 
 const SNSGROUPS = [
@@ -56,9 +56,7 @@ export const Footer = () => {
           </p>
         </div>
         <div>
-          <h4 className="text-2xl font-extrabold mb-6 desktop:mt-[78px] mt-[40px]">
-            Contact
-          </h4>
+          <h4 className="text-2xl font-extrabold mb-6 desktop:mt-[78px] mt-[40px]">Contact</h4>
           <div className="flex gap-6">
             {SNSGROUPS.map((social, index) => (
               <IconLink key={index} img={social.img} link={social.link} />

@@ -1,8 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 
@@ -48,22 +48,22 @@ export default function StatsSection() {
   return (
     <div className="relative" ref={ref}>
       <Image
-          className="block desktop:hidden"
-          src="/main/img/Special_Lecture_by_Expert_1.png"
-          alt="Special_Lecture_by_Expert_1"
-          width={375}
-          height={229}
-          priority
-          style={{ width: 375, height: 229 }}
+        className="block desktop:hidden"
+        src="/main/img/Special_Lecture_by_Expert_1.png"
+        alt="Special_Lecture_by_Expert_1"
+        width={375}
+        height={229}
+        priority
+        style={{ width: 375, height: 229 }}
       />
       <Image
-          className="hidden desktop:block"
-          src="/main/img/Special_Lecture_by_Expert_1.png"
-          alt="Special_Lecture_by_Expert_1"
-          width={1920}
-          height={447}
-          priority
-          style={{ width: 1920, height: 447 }}
+        className="hidden desktop:block"
+        src="/main/img/Special_Lecture_by_Expert_1.png"
+        alt="Special_Lecture_by_Expert_1"
+        width={1920}
+        height={447}
+        priority
+        style={{ width: 1920, height: 447 }}
       />
       <div className="flex flex-col gap-y-[45px] desktop:gap-y-[88px] items-center justify-center absolute top-0 bg-[#0055FF]/80 w-full h-[229px] desktop:h-[447px]">
         <div className="text-[16px] desktop:text-[24px] text-white">Since 2009</div>

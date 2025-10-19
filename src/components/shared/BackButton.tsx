@@ -9,11 +9,7 @@ interface CloseButtonProps {
   height?: number;
 }
 
-export const BackButton = ({
-  className = "",
-  width = 14,
-  height = 14,
-}: CloseButtonProps) => {
+export const BackButton = ({ className = "", width = 14, height = 14 }: CloseButtonProps) => {
   const router = useRouter();
 
   const handleGoBack = () => {

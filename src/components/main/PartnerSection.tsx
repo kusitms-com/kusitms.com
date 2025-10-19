@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React from "react";
 import Link from "next/link";
+import React from "react";
 
 export default function PartnerSection() {
   const partners = [
@@ -43,20 +43,20 @@ export default function PartnerSection() {
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-[23px] desktop:text-[48px] font-black">파트너사</h1>
         <Image
-            className="block desktop:hidden mt-[7px]"
-            src="/main/BlueUnderlineIcon.svg"
-            alt="BlueUnderlineIcon"
-            width={113}
-            height={13}
-            style={{ width: 113, height: 13 }}
+          className="block desktop:hidden mt-[7px]"
+          src="/main/BlueUnderlineIcon.svg"
+          alt="BlueUnderlineIcon"
+          width={113}
+          height={13}
+          style={{ width: 113, height: 13 }}
         />
         <Image
-            className="hidden desktop:block"
-            src="/main/BlueUnderlineIcon.svg"
-            alt="BlueUnderlineIcon"
-            width={161}
-            height={16}
-            style={{ width: 161, height: 16 }}
+          className="hidden desktop:block"
+          src="/main/BlueUnderlineIcon.svg"
+          alt="BlueUnderlineIcon"
+          width={161}
+          height={16}
+          style={{ width: 161, height: 16 }}
         />
       </div>
       <p className="mt-[20px] desktop:mt-[48px] text-[13px] desktop:text-[20px]">
@@ -69,11 +69,12 @@ export default function PartnerSection() {
       </section>
       <section className="block desktop:hidden flex flex-col gap-y-[30px] mt-[64px]">
         {partners.map((partner) => (
-            <div
-                key={partner.name}
-                className="flex flex-col items-center px-5 py-5 justify-center bg-white">
-              <Image src={partner.image} width={235} height={165} alt={partner.image}/>
-            </div>
+          <div
+            key={partner.name}
+            className="flex flex-col items-center px-5 py-5 justify-center bg-white"
+          >
+            <Image src={partner.image} width={235} height={165} alt={partner.image} />
+          </div>
         ))}
       </section>
     </motion.div>
@@ -81,11 +82,11 @@ export default function PartnerSection() {
 }
 
 const PartnerCard = ({
-                       name,
-                       description,
-                       image,
-                       url,
-                     }: {
+  name,
+  description,
+  image,
+  url,
+}: {
   name: string;
   description: string;
   image: string;

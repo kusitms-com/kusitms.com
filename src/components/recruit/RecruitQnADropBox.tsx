@@ -1,6 +1,7 @@
-import React, {ReactNode, useEffect, useRef, useState} from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import type React from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
 export default function RecruitQnADropBox({
   question,
@@ -46,9 +47,7 @@ const RecruitQnADropBoxQuestion = ({
     <div className="flex justify-between items-center w-full">
       {children}
       <Image
-        src={
-          isOpen ? "/recruit/icons/DropUp.svg" : "/recruit/icons/DropDown.svg"
-        }
+        src={isOpen ? "/recruit/icons/DropUp.svg" : "/recruit/icons/DropDown.svg"}
         alt="DropDown"
         width={28}
         height={28}
@@ -79,24 +78,24 @@ const RecruitQnADropBoxAnswer = ({
   }, [isOpen, children]);
 
   return (
-      <motion.div
-          initial={false}
-          animate={{height, opacity: isOpen ? 1 : 0}}
-          transition={{
-            height: {
-              duration: isOpen ? 0.3 : 0.5,
-              ease: [0.4, 0, 0.2, 1],
-            },
-            opacity: {
-              duration: isOpen ? 0.2 : 0.4,
-            },
-          }}
-          style={{overflow: "hidden"}}
-      >
-        <div ref={contentRef} className='pb-6'>
-          {children}
-        </div>
-      </motion.div>
+    <motion.div
+      initial={false}
+      animate={{ height, opacity: isOpen ? 1 : 0 }}
+      transition={{
+        height: {
+          duration: isOpen ? 0.3 : 0.5,
+          ease: [0.4, 0, 0.2, 1],
+        },
+        opacity: {
+          duration: isOpen ? 0.2 : 0.4,
+        },
+      }}
+      style={{ overflow: "hidden" }}
+    >
+      <div ref={contentRef} className="pb-6">
+        {children}
+      </div>
+    </motion.div>
   );
 };
 
