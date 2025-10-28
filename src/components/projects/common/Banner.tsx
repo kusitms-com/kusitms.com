@@ -11,7 +11,7 @@ export default function Banner() {
           <p className="text-[25px] font-extrabold text-dark-blue-600">
             프로젝트
           </p>
-          <p className="text-[18px]  font-semibold text-dark-blue-600 ">
+          <p className="text-[clamp(10px,1.6vw,18px)] font-semibold text-dark-blue-600">
             KUSITMS의 기업, 밋업(Meet-up) 프로젝트를 만나보세요
           </p>
         </div>
