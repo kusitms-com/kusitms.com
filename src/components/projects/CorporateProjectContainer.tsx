@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { type CorporateResponse, getCorporateProjects } from "@/service/projects";
-import Filter from "./Filter";
+import {
+  type CorporateResponse,
+  getCorporateProjects,
+} from "@/service/projects";
+import ProjectFilter from "./common/ProjectFilter";
 import Card from "./ProjectCard";
 
 type ProjectContainerProps = CorporateResponse;
@@ -20,8 +23,8 @@ export default function CorporateProjectContainer({
   };
 
   return (
-    <div className="w-full mt-[100px] desktop:mb-[180px] mb-[32px]">
-      <Filter
+    <div className="w-full desktop:mb-[180px] mb-[32px] px-10">
+      <ProjectFilter
         cardinal={cardinal}
         onChange={handleFilterChange}
         projectList={corporateProjectsList.corporateList}

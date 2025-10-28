@@ -4,12 +4,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { getMeetupProjects, type MeetupResponse } from "@/service/projects";
-import Filter from "./Filter";
+import ProjectFilter from "./common/ProjectFilter";
 import Card from "./ProjectCard";
 
 type ProjectContainerProps = MeetupResponse;
 
-export default function ProjectContainer({ data: meetupProjectList }: ProjectContainerProps) {
+export default function ProjectContainer({
+  data: meetupProjectList,
+}: ProjectContainerProps) {
   const [projects, setProjects] = useState(meetupProjectList);
   const [cardinal, setCardinal] = useState("");
 
@@ -22,8 +24,8 @@ export default function ProjectContainer({ data: meetupProjectList }: ProjectCon
   };
 
   return (
-    <div className="w-full mt-[100px] desktop:mb-[180px] mb-[32px]">
-      <Filter
+    <div className="w-full desktop:mb-[180px] mb-[32px] px-10">
+      <ProjectFilter
         cardinal={cardinal}
         onChange={handleFilterChange}
         projectList={meetupProjectList.meetup_list}

@@ -16,12 +16,6 @@ async function MeetupProjectPage() {
             "기획 파트에서 발제된 아이디어를 디자인, 개발 파트와 함께\n3개월 동안 준비해서 발표하는 큐시즘의 메인 프로젝트예요."
           }
         />
-
-        <div className="flex items-center justify-between mt-6">
-          <div className="text-sm text-gray-500">
-            전체 프로젝트 <ProjectTotalCount pathname="meetup" />
-          </div>
-        </div>
         <ProjectContainer data={meetupProjectList.data} />
         <TopScrollButton />
       </section>
