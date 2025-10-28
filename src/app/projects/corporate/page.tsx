@@ -1,9 +1,5 @@
-import Image from "next/image";
-import React from "react";
 import CorporateProjectContainer from "@/components/projects/CorporateProjectContainer";
-import EventIntro from "@/components/projects/EventIntro";
-import ImageCard from "@/components/projects/ImageCard";
-import NavButtons from "@/components/projects/NavButtons";
+import ProjectTypeBanner from "@/components/projects/common/ProjectTypeBanner";
 import ProjectTotalCount from "@/components/projects/ProjectTotalCount";
 import TopScrollButton from "@/components/shared/TopScrollButton";
 import { getCorporateProjects } from "@/service/projects";
@@ -13,36 +9,18 @@ async function CorporateProjectPage() {
 
   return (
     <>
-      <section className="w-full max-w-6xl mx-auto py-8 text-center">
-        <h1 className="text-2xl desktop:text-5xl font-black mb-4 desktop:mt-[180px] leading-[130%]">
-          KUSITMS의 다양한 프로젝트를 <br />
-          구경해보세요!
-        </h1>
-        <p className="font-normal text-[15px] tablet:text-[20px]">
-          <ProjectTotalCount pathname="corporate" />
-          개의 프로젝트를 볼 수 있어요.
-        </p>
-        <NavButtons />
-      </section>
-      <section className="mx-auto w-full max-w-[1180px]">
-        <div className="flex flex-col desktop:flex-row w-full desktop:gap-[90px] gap-[40px] desktop:mt-[100px] mt-[40px] justify-center items-center">
-          <h2 className="text-white text-[24px] font-bold desktop:hidden block">
-            기업 프로젝트란?
-          </h2>
-          <ImageCard>
-            <ImageCard.Sticker>
-              <Image
-                src="/projects/sticker/CompanyProjectSticker.svg"
-                alt="스티커"
-                width={70}
-                height={100}
-                priority
-                style={{ width: 70, height: 100 }}
-              />
-            </ImageCard.Sticker>
-            <ImageCard.Image src="/projects/tmp/company_tmpImg.jpeg" />
-          </ImageCard>
-          <EventIntro type="corporate" />
+      <section className="mx-auto w-full ">
+        <ProjectTypeBanner
+          title="기업 연계 프로젝트란?"
+          detail={
+            "실제 기업이 고민하고 있는 경영/마케팅 문제나 개발과 관련된 과제를 받아\n팀별로 아이디어를 제시해 과제를 수행하는 프로젝트에요."
+          }
+        />
+
+        <div className="flex items-center justify-between mt-6">
+          <div className="text-sm text-gray-500">
+            전체 프로젝트 <ProjectTotalCount pathname="corporate" />
+          </div>
         </div>
         <CorporateProjectContainer data={corporateProjectsList.data} />
         <TopScrollButton />
