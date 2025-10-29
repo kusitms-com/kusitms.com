@@ -4,13 +4,24 @@ import type { ReactNode } from "react";
 interface CardProps {
   children: ReactNode;
   onClick?: () => void;
+  hoverable?: boolean;
 }
 
-export default function Card({ children, onClick }: CardProps) {
+interface CardinalProps {
+  cardinal: number;
+  type?: string;
+}
+
+export default function Card({
+  children,
+  onClick,
+  hoverable = false,
+}: CardProps) {
+  const hoverClass = hoverable ? " hover:scale-105" : "";
+
   return (
     <div
-      className="relative desktop:w-[370px] desktop:h-[494px] w-[320px] h-[400px] desktop:rounded-[40px] rounded-[20px] flex flex-col bg-[#2F3038] pb-6 
-    hover:scale-102 hover:cursor-pointer transition-transform duration-200 overflow-hidden"
+      className={`transition-transform duration-300 ease-in-out relative rounded-[16px] flex flex-col bg-gray-0 overflow-hidden shadow-[0px_1px_10px_rgba(179,179,188,0.25)]${hoverClass}`}
       onClick={onClick}
     >
       {children}
@@ -22,10 +33,10 @@ const Poster = ({ src }: { src: string }) => (
   <Image
     src={src}
     alt="poster"
-    className="object-cover overflow-hidden"
-    width={370}
-    height={285}
-    style={{ width: 370, height: 285 }}
+    className="object-cover overflow-hidden aspect-[300/190]"
+    width={300}
+    height={190}
+    style={{ width: "100%", height: "100%" }}
     unoptimized
   />
 );
@@ -37,19 +48,29 @@ const Logo = ({ src }: { src: string }) => (
 );
 
 const Info = ({ children }: { children: ReactNode }) => (
-  <div className="flex flex-col text-[#fff] px-6">{children}</div>
+  <div className="flex flex-col px-4 gap-1 py-5">{children}</div>
 );
 
-const Cardinal = ({ children }: { children: ReactNode }) => (
-  <div className="mt-[22px] desktop:text-[16px] text-[13px] text-[#62EFE5]">{children}</div>
+const Cardinal = ({ cardinal, type }: CardinalProps) => (
+  <div className="flex items-center">
+    <span className="text-dark-blue-500 text-body-5">{cardinal}기</span>
+    {type && (
+      <>
+        <span className="mx-1 text-gray-500 text-body-8">&middot;</span>
+        <span className="text-gray-500 text-body-8">{type}</span>
+      </>
+    )}
+  </div>
 );
 
 const ProjectName = ({ children }: { children: ReactNode }) => (
-  <div className="desktop:text-[24px] text-[20px] font-bold">{children}</div>
+  <div className="text-body-3 text-[20px] text-gray-700 font-bold">
+    {children}
+  </div>
 );
 
 const ContentIntro = ({ children }: { children: ReactNode }) => (
-  <div className="desktop:text-[16px] text-[13px] font-normal mt-[10px] min-h-[50px] line-clamp-2">
+  <div className="text-[16px] text-[13px] h-[47px] text-gray-500 line-clamp-2 font-semibold">
     {children}
   </div>
 );

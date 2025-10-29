@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { getMeetupProjects, type MeetupResponse } from "@/service/projects";
 import ProjectFilter from "./common/ProjectFilter";
-import Card from "./ProjectCard";
+import Card from "./common/ProjectCard";
 
 type ProjectContainerProps = MeetupResponse;
 
@@ -30,7 +30,7 @@ export default function ProjectContainer({
         onChange={handleFilterChange}
         projectList={meetupProjectList.meetup_list}
       />
-      <div className="grid desktop:grid-cols-3 grid-cols-1 gap-5 justify-items-center">
+      <div className="grid tablet:grid-cols-3 grid-cols-1 gap-5 gap-x-[22px] justify-items-center ">
         {projects.meetup_list.map((project) => (
           <Link
             href={`/projects/meetup/${project.meetup_id}`}
@@ -40,18 +40,15 @@ export default function ProjectContainer({
               router.prefetch(`/projects/meetup/${project.meetup_id}`);
             }}
           >
-            <Card key={project.meetup_id}>
+            <Card key={project.meetup_id} hoverable>
               <Card.Poster src={project.poster_url} />
-              <Card.Logo src={project.logo_url} />
               <Card.Info>
-                <Card.Cardinal>{project.cardinal}기</Card.Cardinal>
+                <Card.Cardinal
+                  cardinal={project.cardinal}
+                  type={project.type}
+                />
                 <Card.ProjectName>{project.name}</Card.ProjectName>
                 <Card.ContentIntro>{project.one_line_intro}</Card.ContentIntro>
-                <Card.CategoryContainer>
-                  {project.tags.map((tag, index) => (
-                    <Card.Category key={index}>{tag}</Card.Category>
-                  ))}
-                </Card.CategoryContainer>
               </Card.Info>
             </Card>
           </Link>

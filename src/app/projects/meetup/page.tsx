@@ -1,6 +1,5 @@
 import ProjectTypeBanner from "@/components/projects/common/ProjectTypeBanner";
 import ProjectContainer from "@/components/projects/MeetupProjectContainer";
-import ProjectTotalCount from "@/components/projects/ProjectTotalCount";
 import TopScrollButton from "@/components/shared/TopScrollButton";
 import { getMeetupProjects } from "@/service/projects";
 
