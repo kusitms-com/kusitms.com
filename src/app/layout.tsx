@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Footer, Header } from "@/components/shared";
 import "./globals.css";
 import { GoogleTagManager } from "@next/third-parties/google";
+import PageViewTracker from "@/components/shared/analytics/PageViewTracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,6 +68,7 @@ export default function RootLayout({
         <Footer />
         <SpeedInsights />
         {gtmId && <GoogleTagManager gtmId={gtmId} />}
+        <PageViewTracker />
       </body>
     </html>
   );
