@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import type { MeetupProjectDetail } from "@/service/projects";
-import TeamMember from "./TeamMember";
+import TeamMember from "./common/TeamMember";
 
 function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
   return (

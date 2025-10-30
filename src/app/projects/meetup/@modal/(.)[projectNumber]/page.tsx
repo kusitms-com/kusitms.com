@@ -32,7 +32,6 @@ async function ProjectDetailModalPage({
   return (
     <ProjectModalShell>
       <ProjectNavigation prevId={prevId} nextId={nextId} />
-
       {recentIdList.includes(parseInt(projectNumber)) ? (
         <RecentProjectSection project={project} />
       ) : (

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Banner from "@/components/projects/common/Banner";
-import NavButtons from "@/components/projects/common/NavButtons";
+
 export const metadata: Metadata = {
   title: "KUSITMS | Projects",
   description: "큐시즘에서 진행한 다양한 프로젝트들을 한눈에 확인해보세요.",

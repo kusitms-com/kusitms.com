@@ -1,8 +1,6 @@
-import ProjectNavigation from "@/components/projectDetail/ProjectNavigation";
 import OldProjectSection from "@/components/projects/OldProjectSection";
 import RecentProjectSection from "@/components/projects/RecentProjectSection";
 import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
-import { getAdjacentMeetupIds } from "@/utils";
 
 export async function generateStaticParams() {
   const meetupProjectList = await getMeetupProjects("");

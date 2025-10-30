@@ -21,7 +21,7 @@ export default function Card({
 
   return (
     <div
-      className={`transition-transform duration-300 ease-in-out relative rounded-[16px] flex flex-col bg-gray-0 overflow-hidden shadow-[0px_1px_10px_rgba(179,179,188,0.25)]${hoverClass}`}
+      className={`transition-transform duration-300  ease-in-out relative rounded-[16px] flex flex-col overflow-hidden shadow-[0px_1px_10px_rgba(179,179,188,0.25)] ${hoverClass}`}
       onClick={onClick}
     >
       {children}
