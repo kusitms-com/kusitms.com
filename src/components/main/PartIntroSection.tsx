@@ -1,5 +1,4 @@
 "use client";
-
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -8,28 +7,32 @@ import React from "react";
 export default function PartIntroSection() {
   const teamData = [
     {
-      icon: "/main/ManageIcon.svg",
-      title: "기획파트",
-      description: `각 조에서 탄생한 아이디어를 바탕으로 실제 IT 서비스를 기획해요. 
-      개발파트와 디자인파트의 협업을 통해 개발 가능성 있는 기능들을 사용자 관점에서 기획할 수 있어요.`,
-      reverse: false,
+      mainIcon: "/main/Mange.svg",
+      bgIcon: "/main/MangeBg.svg",
+      title: "01 Planner",
+      subtitle: "기획자",
       delay: 0,
     },
     {
-      icon: "/main/DevelopIcon.svg",
-      title: "개발파트",
-      description: `기획파트에서 정의한 문제를 기술적으로 해결하는 과정에 참여해요. 
-      아이디어에 가장 효과적인 플랫폼을 선택하고, 기획파트와 디자인파트와협력하며 서비스를 구체화해요.`,
-      reverse: true,
+      mainIcon: "/main/Mange.svg",
+      bgIcon: "/main/MangeBg.svg",
+      title: "02 Designer",
+      subtitle: "디자이너",
       delay: 0.2,
     },
     {
-      icon: "/main/DesignIcon.svg",
-      title: "디자인파트",
-      description: `아이디어를 제품화하기 위해 UI기획 설계, 구현까지 비주얼적인 부분을 담당해요. 
-      사용하기 쉬운 UX를 고민하고, 확장성 있는 제품 개발을 위해 디자인 시스템을 구축하는 역할을 맡아요.`,
-      reverse: false,
+      mainIcon: "/main/Mange.svg",
+      bgIcon: "/main/MangeBg.svg",
+      title: "03 Frontend",
+      subtitle: "프론트엔드",
       delay: 0.4,
+    },
+    {
+      mainIcon: "/main/Mange.svg",
+      bgIcon: "/main/MangeBg.svg",
+      title: "04 Backend",
+      subtitle: "백엔드",
+      delay: 0.6,
     },
   ];
 
@@ -77,60 +80,45 @@ export default function PartIntroSection() {
   ];
 
   return (
-    <div className="flex flex-col pt-[100px] desktop:pt-[240px] items-center">
+    <div
+      className="flex flex-col pt-[100px] desktop:pt-[240px] items-center"
+      style={{
+        background: "linear-gradient(180deg, #F0FAFF 4.82%, #FFF 108.77%)",
+      }}
+    >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="flex flex-col gap-y-[20px] desktop:gap-y-[48px] items-center justify-center"
+        className="flex flex-col gap-y-[16px] items-center justify-center"
       >
-        <div>
-          <p className="text-[23px] desktop:text-[48px] font-black">함께하는 큐밀리</p>
-          <Image
-            className="block desktop:hidden"
-            src="/main/BlueUnderlineIcon.svg"
-            alt="밑줄"
-            width={88}
-            height={7}
-            style={{ width: 88, height: 7 }}
-          />
-          <Image
-            className="hidden desktop:block"
-            src="/main/BlueUnderlineIcon.svg"
-            alt="밑줄"
-            width={180}
-            height={16}
-            style={{ width: 180, height: 16 }}
-          />
-        </div>
-        <div className="flex flex-col text-center">
-          <p className="text-[13px] desktop:text-[20px]">
-            KUSITMS은 기획, 개발, 디자인 파트로 구성되어 있어요
-          </p>
-          <div className="flex desktop:flex-row flex-col">
-            <p className="text-[13px] desktop:text-[20px]">
-              각 팀에서 모인 팀원들이 하나의 팀이 되어
-            </p>
-            <p className="text-[13px] desktop:text-[20px]">함께 프로젝트를 진행해요</p>
-          </div>
-        </div>
+        <p
+          className="text-title-5 desktop:text-[48px] text-black"
+          style={{ textShadow: "0 1px 20px rgba(121, 212, 255, 0.40)" }}
+        >
+          함께하는 큐밀리
+        </p>
+        <p className="text-center text-body-4 desktop:text-[20px] text-gray-500">
+          학회원이 새로운 경험을 통해 성장할 수 있도록 <br />
+          다양한 프로젝트를 진행해요.
+        </p>
       </motion.div>
 
-      <section className="flex flex-col gap-y-[20px] pt-[30px] desktop:pt-[80px] mb-[40px]">
-        {teamData.map(({ icon, title, description, reverse, delay }) => (
+      <section className="flex flex-wrap justify-center gap-4 pt-[30px] desktop:pt-[80px] mb-[40px] px-4 desktop:px-0">
+        {teamData.map(({ mainIcon, bgIcon, title, subtitle, delay }) => (
           <TeamCard
             key={title}
-            icon={icon}
+            mainIcon={mainIcon}
+            bgIcon={bgIcon}
             title={title}
-            description={description}
-            reverse={reverse}
+            subtitle={subtitle}
             delay={delay}
           />
         ))}
       </section>
 
-      <button
+      {/* <button
         type="button"
         className="flex gap-x-1 bg-[#0055FF] py-2 px-5 desktop:py-3 desktop:px-7 rounded-full w-fit"
       >
@@ -144,7 +132,7 @@ export default function PartIntroSection() {
           height={24}
           style={{ width: 24, height: 24 }}
         />
-      </button>
+      </button> */}
 
       <section className="flex flex-col gap-y-[80px] pt-[100px] desktop:pt-[180px]">
         <div className="flex flex-col items-center desktop:gap-y-[100px] gap-y-[24px]">
@@ -188,57 +176,63 @@ export default function PartIntroSection() {
 }
 
 const TeamCard = ({
-  icon,
+  mainIcon,
+  bgIcon,
   title,
-  description,
-  reverse,
+  subtitle,
   delay,
 }: {
-  icon: string;
+  mainIcon: string;
+  bgIcon: string;
   title: string;
-  description: string;
+  subtitle: string;
   reverse?: boolean;
   delay?: number;
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: reverse ? -50 : 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut", delay: delay || 0 }}
       viewport={{ once: true }}
       className={clsx(
-        "flex gap-x-[10px] desktop:gap-x-[40px] rounded-[32px] pt-[38px] pb-[34px] px-[30px] desktop:py-[56px] desktop:px-[64px] bg-white w-[310px] desktop:w-[980px]",
-        reverse ? "desktop:flex-row-reverse" : "desktop:flex-row",
+        "relative px-[18.1px] py-[13.6px] flex-shrink-0 overflow-hidden bg-sky-50",
+        "max-w-[calc(50%-8px)] desktop:max-w-none"
       )}
+      style={{
+        width: "224px",
+        height: "317.692px",
+        borderRadius: "9.077px",
+        border: "2px solid #F0F4FF",
+        boxShadow: "0px 4px 10px 0px rgba(121, 212, 255, 0.20)",
+      }}
     >
-      <Image
-        src={icon}
-        alt={title}
-        width={34}
-        height={34}
-        className="mb-2 desktop:mb-0 block desktop:hidden"
-        style={{ width: 34, height: 34 }}
-      />
-      <Image
-        src={icon}
-        alt={title}
-        width={96}
-        height={96}
-        className="mb-2 desktop:mb-0 hidden desktop:block"
-        style={{ width: 96, height: 96 }}
-      />
-
-      {/* 텍스트 블록 */}
-      <div
-        className={clsx(
-          "flex flex-col gap-y-[10px] desktop:gap-y-[20px]",
-          reverse && "desktop:items-end desktop:text-end",
-        )}
-      >
-        <p className="text-[19px] desktop:text-[24px] text-[#0055FF] font-black">{title}</p>
-        <p className="text-[13px] desktop:text-[16px] leading-[150%] text-black whitespace-pre-line">
-          {description}
-        </p>
+      <div className="absolute top-0 left-0">
+        <Image
+          src={bgIcon}
+          alt={title}
+          width={152}
+          height={158}
+        />
+      </div>
+      <div className="relative z-10">
+        <div className="flex flex-col gap-[8px]">
+          <div className="flex items-baseline gap-2">
+            <span className="text-dark-blue-500 text-[22.692px] font-semibold leading-none">{title.split(" ")[0]}</span>
+            <div>
+              <span className="text-gray-900 text-[27.2px] font-semibold leading-none">{title.split(" ")[1]}</span>
+              <p className="text-[15.88px] font-semibold text-gray-600">{subtitle}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute right-0">
+        <Image
+          src={mainIcon}
+          alt={title}
+          width={189}
+          height={197}
+        />
       </div>
     </motion.div>
   );
