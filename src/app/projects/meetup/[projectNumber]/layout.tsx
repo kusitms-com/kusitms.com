@@ -55,5 +55,5 @@ export default async function ProjectDetailLayout({
   children: ReactNode;
   params: Promise<{ projectNumber: string }>;
 }>) {
-  return <main className="mx-auto w-full  ">{children}</main>;
+  return <main className="w-full mx-auto">{children}</main>;
 }

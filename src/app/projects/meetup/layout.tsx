@@ -1,12 +1,11 @@
 import { ReactNode } from "react";
 
-export default function MeetupLayout({
-  children,
-  modal,
-}: {
+interface MeetupLayoutProps {
   children: ReactNode;
   modal: ReactNode;
-}) {
+}
+
+export default function MeetupLayout({ children, modal }: MeetupLayoutProps) {
   return (
     <>
       {children}

@@ -22,7 +22,7 @@ export default function ProjectModalShell({ children }: Props) {
       >
         <div className="flex justify-between h-[88px] border-b mb-7 px-10 items-center">
           <p className="text-title-7 text-gray-700">프로젝트 소개</p>
-          <button className="cursor-pointer" onClick={() => router.back()}>
+          <button onClick={() => router.back()}>
             <Image
               src="/projects/icons/CloseIcon2.svg"
               alt="Close"

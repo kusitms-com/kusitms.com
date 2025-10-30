@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { toUpperCaseOnlyLetters } from "@/utils";
 
 interface CardProps {
   children: ReactNode;
@@ -17,11 +18,11 @@ export default function Card({
   onClick,
   hoverable = false,
 }: CardProps) {
-  const hoverClass = hoverable ? " hover:scale-105" : "";
-
   return (
     <div
-      className={`transition-transform duration-300  ease-in-out relative rounded-[16px] flex flex-col overflow-hidden shadow-[0px_1px_10px_rgba(179,179,188,0.25)] ${hoverClass}`}
+      className={`relative flex flex-col overflow-hidden rounded-[16px] shadow-[0px_1px_10px_rgba(179,179,188,0.25)] transition-transform duration-300 ease-in-out ${
+        hoverable ? "hover:scale-105 cursor-pointer" : ""
+      }`}
       onClick={onClick}
     >
       {children}
@@ -33,59 +34,57 @@ const Poster = ({ src }: { src: string }) => (
   <Image
     src={src}
     alt="poster"
-    className="object-cover overflow-hidden aspect-[300/190]"
+    className="aspect-[300/190] w-full h-full object-cover"
     width={300}
     height={190}
-    style={{ width: "100%", height: "100%" }}
     unoptimized
   />
 );
 
 const Logo = ({ src }: { src: string }) => (
-  <div className="absolute mt-[230px] desktop:w-[95px] desktop:h-[95px] w-[78px] h-[78px] rounded-full desktop:top-0 top-[-60px] desktop:right-[24px] right-[16px] bg-white flex justify-center items-center overflow-hidden">
+  <div className="absolute top-[-60px] right-[16px] desktop:top-0 desktop:right-[24px] w-[78px] h-[78px] desktop:w-[95px] desktop:h-[95px] flex items-center justify-center overflow-hidden rounded-full bg-white">
     <Image src={src} alt="logo" width={95} height={95} unoptimized />
   </div>
 );
 
 const Info = ({ children }: { children: ReactNode }) => (
-  <div className="flex flex-col px-4 gap-1 py-5">{children}</div>
+  <div className="flex flex-col gap-1 px-4 py-5">{children}</div>
 );
 
 const Cardinal = ({ cardinal, type }: CardinalProps) => (
-  <div className="flex items-center">
-    <span className="text-dark-blue-500 text-body-5">{cardinal}기</span>
+  <div className="flex items-center gap-1">
+    <span className="text-body-5 text-dark-blue-500">{cardinal}기</span>
     {type && (
       <>
-        <span className="mx-1 text-gray-500 text-body-8">&middot;</span>
-        <span className="text-gray-500 text-body-8">{type}</span>
+        <span className="text-body-8 text-gray-500">&middot;</span>
+        <span className="text-body-8 text-gray-500">
+          {toUpperCaseOnlyLetters(type)}
+        </span>
       </>
     )}
   </div>
 );
 
 const ProjectName = ({ children }: { children: ReactNode }) => (
-  <div className="text-body-3 text-[20px] text-gray-700 font-bold">
-    {children}
-  </div>
+  <h2 className="text-[20px] font-bold text-gray-700">{children}</h2>
 );
 
 const ContentIntro = ({ children }: { children: ReactNode }) => (
-  <div className="text-[16px] text-[13px] h-[47px] text-gray-500 line-clamp-2 font-semibold">
+  <p className="h-[47px] text-[13px] font-semibold text-gray-500 line-clamp-2">
     {children}
-  </div>
+  </p>
 );
 
 const CategoryContainer = ({ children }: { children: ReactNode }) => (
-  <div className="flex flex-row gap-3 desktop:mt-5 mt-3">{children}</div>
+  <div className="flex flex-row gap-3 mt-3 desktop:mt-5">{children}</div>
 );
 
 const Category = ({ children }: { children: ReactNode }) => (
-  <div className="bg-[#505157] rounded-[8px] desktop:px-[12px] desktop:py-[6px] px-[8px] py-[4px] text-[#E3E3E3] desktop:text-[14px] text-[12px]">
+  <span className="px-[8px] desktop:px-[12px] py-[4px] desktop:py-[6px] text-[12px] desktop:text-[14px] rounded-[8px] bg-[#505157] text-[#E3E3E3]">
     {children}
-  </div>
+  </span>
 );
 
-// 컴파운디드 패턴 연결
 Card.Poster = Poster;
 Card.Logo = Logo;
 Card.Info = Info;

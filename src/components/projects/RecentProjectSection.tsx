@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import type { MeetupProjectDetail } from "@/service/projects";
 import TeamMember from "./common/TeamMember";
+import { toUpperCaseOnlyLetters } from "@/utils";
 
 function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
   return (
@@ -16,7 +17,9 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
             </p>
           </div>
           <div className="bg-sky-blue-100 rounded-[8px] px-4 py-1">
-            <p className="text-sky-blue-700 text-body-5">{project.type}</p>
+            <p className="text-sky-blue-700 text-body-5">
+              {toUpperCaseOnlyLetters(project.type)}
+            </p>
           </div>
         </div>
       </div>
