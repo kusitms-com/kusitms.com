@@ -56,7 +56,6 @@ export default function GuestIntroSection() {
             직무에 대한 설명과 조언을 들을 수 있는 활동입니다.
           </p>
         </div>
-        {/* Guests grid */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
