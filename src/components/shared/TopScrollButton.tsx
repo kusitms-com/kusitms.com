@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
 
 function TopScrollButton() {
@@ -14,16 +13,9 @@ function TopScrollButton() {
   return (
     <button
       onClick={scrollToTop}
-      className="flex justify-center items-center gap-1 px-3 py-2 rounded-[72px] bg-[#45464F] mx-auto"
+      className="flex cursor-pointer justify-center items-center w-[56px] h-[56px] rounded-full bg-[#ffffff] mx-auto shadow-[0px_1px_20px_rgba(179,179,188,0.4)]"
     >
-      <Image
-        src="/projects/icons/arrow_warm_up.svg"
-        alt="top"
-        width={15}
-        height={15}
-        className="w-[15px] h-[15px]"
-      />
-      <span className="text-[14px] font-bold text-white">위로 가기</span>
+      <span className="text-body-5  font-semibold text-black">TOP</span>
     </button>
   );
 }

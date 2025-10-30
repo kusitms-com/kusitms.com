@@ -1,6 +1,5 @@
 import CorporateProjectContainer from "@/components/projects/CorporateProjectContainer";
 import ProjectTypeBanner from "@/components/projects/common/ProjectTypeBanner";
-import TopScrollButton from "@/components/shared/TopScrollButton";
 import { getCorporateProjects } from "@/service/projects";
 import Banner from "@/components/projects/common/Banner";
 import NavButtons from "@/components/projects/common/NavButtons";
@@ -20,7 +19,6 @@ async function CorporateProjectPage() {
           }
         />
         <CorporateProjectContainer data={corporateProjectsList.data} />
-        <TopScrollButton />
       </section>
     </>
   );

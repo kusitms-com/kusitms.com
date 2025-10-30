@@ -7,6 +7,7 @@ import {
 } from "@/service/projects";
 import ProjectFilter from "./common/ProjectFilter";
 import Card from "./common/ProjectCard";
+import TopScrollButton from "@/components/shared/TopScrollButton";
 
 type ProjectContainerProps = CorporateResponse;
 
@@ -23,7 +24,7 @@ export default function CorporateProjectContainer({
   };
 
   return (
-    <div className="w-full desktop:mb-[180px] mb-[32px] px-10">
+    <div className="w-full  mb-[32px] px-10">
       <ProjectFilter
         cardinal={cardinal}
         onChange={handleFilterChange}
@@ -41,6 +42,11 @@ export default function CorporateProjectContainer({
           </Card>
         ))}
       </div>
+      {cardinal === "" && (
+        <div className="mt-6">
+          <TopScrollButton />
+        </div>
+      )}
     </div>
   );
 }

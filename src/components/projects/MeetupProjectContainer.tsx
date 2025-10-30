@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { getMeetupProjects, type MeetupResponse } from "@/service/projects";
 import ProjectFilter from "./common/ProjectFilter";
 import Card from "./common/ProjectCard";
+import TopScrollButton from "@/components/shared/TopScrollButton";
 
 type ProjectContainerProps = MeetupResponse;
 
@@ -24,7 +25,7 @@ export default function ProjectContainer({
   };
 
   return (
-    <div className="w-full desktop:mb-[180px] mb-[32px] px-10">
+    <div className="w-full  mb-[32px] px-10">
       <ProjectFilter
         cardinal={cardinal}
         onChange={handleFilterChange}
@@ -54,6 +55,11 @@ export default function ProjectContainer({
           </Link>
         ))}
       </div>
+      {cardinal === "" && (
+        <div className="mt-6">
+          <TopScrollButton />
+        </div>
+      )}
     </div>
   );
 }

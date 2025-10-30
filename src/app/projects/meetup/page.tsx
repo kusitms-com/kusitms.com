@@ -1,6 +1,5 @@
 import ProjectTypeBanner from "@/components/projects/common/ProjectTypeBanner";
 import ProjectContainer from "@/components/projects/MeetupProjectContainer";
-import TopScrollButton from "@/components/shared/TopScrollButton";
 import { getMeetupProjects } from "@/service/projects";
 import Banner from "@/components/projects/common/Banner";
 import NavButtons from "@/components/projects/common/NavButtons";
@@ -19,7 +18,6 @@ async function MeetupProjectPage() {
           }
         />
         <ProjectContainer data={meetupProjectList.data} />
-        <TopScrollButton />
       </section>
     </>
   );
