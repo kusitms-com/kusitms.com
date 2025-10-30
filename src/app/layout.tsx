@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Footer, Header } from "@/components/shared";
 import "./globals.css";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,6 +44,8 @@ export const metadata: Metadata = {
   },
 };
 
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -63,6 +66,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <SpeedInsights />
+        {gtmId && <GoogleTagManager gtmId={gtmId} />}
       </body>
     </html>
   );
