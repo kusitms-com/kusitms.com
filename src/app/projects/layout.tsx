@@ -38,8 +38,6 @@ export default async function ProjectsLayout({
 }>) {
   return (
     <main className="flex flex-col items-center desktop:pt-[72px]">
-      <Banner />
-      <NavButtons />
       {children}
     </main>
   );
