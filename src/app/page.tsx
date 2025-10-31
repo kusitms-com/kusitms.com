@@ -5,8 +5,17 @@ import PartIntroSection from "@/components/main/PartIntroSection";
 import PartnerSection from "@/components/main/PartnerSection";
 import ProgramIntroSection from "@/components/main/ProgramIntroSection";
 import StatsSection from "@/components/main/StatsSection";
+import { getMeetupProjects, MeetupItem } from "@/service/projects";
 
-export default function Home() {
+export default async function Home() {
+  let meetupProjects: MeetupItem[] = [];
+  try {
+    const response = await getMeetupProjects("31", "");
+    meetupProjects = response.data?.meetup_list || [];
+  } catch (error) {
+    console.error("Failed to fetch meetup projects:", error);
+  }
+
   return (
     <main
       className="font-[family-name:var(--font-geist-sans)]"
@@ -18,7 +27,7 @@ export default function Home() {
       <IntroSection />
       <StatsSection />
       <PartIntroSection />
-      <ProgramIntroSection />
+      <ProgramIntroSection meetupProjects={meetupProjects} />
       {/* <ActivityIntroSection /> */}
       <GuestIntroSection />
       <PartnerSection />

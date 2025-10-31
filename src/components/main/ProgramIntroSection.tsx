@@ -1,9 +1,15 @@
 "use client";
+import { MeetupItem } from "@/service/projects/getMeetupProjects";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
+import MeetupProjectCarousel from "./MeetupProjectCarousel";
 
-export default function ProgramIntroSection() {
+interface ProgramIntroSectionProps {
+  meetupProjects?: MeetupItem[];
+}
+
+export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntroSectionProps) {
   const row1 = [
     "/main/img/company/LG.png",
     "/main/img/company/LifeZip.png",
@@ -69,14 +75,15 @@ export default function ProgramIntroSection() {
         </div>
       </section>
       <section>
-        <div className="mt-[100px] py-4 flex items-center justify-center gap-2">
+        <div className="mt-[100px] flex items-center justify-center gap-2">
           <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-800 text-white text-body-1">2</span>
           <p className="text-[16px] desktop:text-title-7 text-gray-800">밋업 프로젝트</p>
         </div>
-        <p className="text-[13px] desktop:text-body-6 text-center text-gray-600">
+        <p className="text-[13px] desktop:text-body-6 text-center text-gray-500">
         기획파트에서 발제된 아이디어를 디자인, 개발파트와 함꼐 3개월동안 <br />
         준비하여 발표하는 KUSITMS의 메인 프로젝트예요
         </p>
+        {meetupProjects.length > 0 && <MeetupProjectCarousel projects={meetupProjects} />}
       </section>
     </div>
   );
