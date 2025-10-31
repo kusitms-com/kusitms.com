@@ -19,7 +19,7 @@ export default function Home() {
       <StatsSection />
       <PartIntroSection />
       <ProgramIntroSection />
-      <ActivityIntroSection />
+      {/* <ActivityIntroSection /> */}
       <GuestIntroSection />
       <PartnerSection />
     </main>
