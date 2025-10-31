@@ -1,0 +1,117 @@
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import React, { useCallback, useState } from "react";
+
+type ExecutiveItem = {
+  image: string;
+  title: string;
+  description: string;
+};
+
+function ExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
+  const [index, setIndex] = useState(0);
+  const prev = useCallback(() => setIndex((i) => (i === 0 ? items.length - 1 : i - 1)), [items.length]);
+  const next = useCallback(() => setIndex((i) => (i === items.length - 1 ? 0 : i + 1)), [items.length]);
+  const current = items[index];
+
+  return (
+    <div className="relative w-full px-10 pb-[100px] desktop:pb-[240px]">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="flex flex-col gap-y-[16px] items-center justify-center mb-16"
+      >
+        <p className="text-title-5 desktop:text-title-5 text-black">큐밀리를 이끌어나갈 운영진</p>
+        <p className="text-center text-body-4 desktop:text-[20px] text-gray-500">
+          KUSITMS 활동을 이끄는 운영진으로 네 가지 팀으로 이루어져있어요
+          <br />학부학, 경영총괄팀, 대외홍보팀, 교육기획팀으로 구성돼요
+        </p>
+      </motion.div>
+
+      <motion.div
+        key={current.image}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -30 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="relative"
+      >
+        <Image className="w-full h-auto rounded-[16px]" src={current.image} alt={current.title} width={944} height={571} />
+
+        <div className="absolute inset-x-0 bottom-0 px-[108px] pb-[50px]">
+          <p className="text-[18px] desktop:text-title-7 font-bold text-gray-900">{current.title}</p>
+          <p className="mt-2 text-[13px] desktop:text-body-6 text-gray-600 leading-relaxed">{current.description}</p>
+        </div>
+
+        <button
+          type="button"
+          aria-label="previous"
+          onClick={prev}
+          className="cursor-pointer absolute left-9 top-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/30 text-gray-900 flex items-center justify-center"
+        >
+          <Image src="/projects/icons/ArrowLeft.svg" alt="prev" width={20} height={20} />
+        </button>
+        <button
+          type="button"
+          aria-label="next"
+          onClick={next}
+          className="cursor-pointer absolute right-9 top-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/30  text-gray-900 flex items-center justify-center"
+        >
+          <Image src="/projects/icons/ArrowRight.svg" alt="next" width={20} height={20} />
+        </button>
+      </motion.div>
+
+      <div className="mt-2 flex items-center justify-center gap-2">
+        {items.map((_, i) => (
+          <span key={i} className={i === index ? "w-2 h-2 rounded-full bg-gray-400" : "w-2 h-2 rounded-full bg-gray-100"} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function ExecutiveSection() {
+  const executiveData: ExecutiveItem[] = [
+    {
+      image: "/main/img/manage/Manage1.png",
+      title: "32기 운영진",
+      description:
+        "큐시즘을 이끄는 든든한 힘! 학부학부터 교육기획팀, 경영총괄팀, 대외홍보팀까지 각 운영팀의 역할과 업무를 소개합니다.",
+    },
+    {
+      image: "/main/img/manage/Manage2.png",
+      title: "학부학",
+      description:
+        "학회의 총체적 운영권과 대내외적 대표권을 가지고 있으며, 학회 운영 및 업무 총괄, 파트너십을 위한 기업 미팅, OB 연락망 구축 등을 진행해요..",
+    },
+    {
+      image: "/main/img/manage/Manage3.png",
+      title: "경영총괄팀",
+      description:
+        "기획, 사무대관, 회계까지 경영 전반의 실무를 총괄하며 큐밀리가 연결될 수 있는 자리를 만들어요. OT와 MT 기획, 전문가 초청 강연, OB 초청데이, 소모임과 스터디 활동을 진행해요.",
+    },
+    {
+      image: "/main/img/manage/Manage4.png",
+      title: "교육기획팀",
+      description:
+        "큐시즘 활동의 핵심이 되는 교육과 성장경험을 설계하고 운영하는 팀이에요. 세션 기획 및 진행을 담당하며, 기업과 소통하며 기업연계 프로젝트를 구성해요.",
+    },
+    {
+      image: "/main/img/manage/Manage5.png",
+      title: "대외홍보팀",
+      description:
+        "큐시즘의 콘텐츠와 브랜드를 관리하는 팀이에요. 정규세션과 행사 관련 콘텐츠를 제작하며 외부기관과 협력하고 협찬을 유지, 공식 SNS를 운영하며 큐시즘의 이미지를 관리해요.",
+    },
+  ];
+
+  return (
+    <section className="flex flex-col gap-y-[40px] pt-4 w-full items-center">
+      <ExecutiveCarousel items={executiveData} />
+    </section>
+  );
+}
+
+

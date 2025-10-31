@@ -27,7 +27,7 @@ export default function ProgramIntroSection() {
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center py-[100px] desktop:py-[200px]">
+    <div className="flex flex-col justify-center items-center pt-4 pb-[100px] desktop:pb-[200px]">
       <section>
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-[24px] desktop:text-title-5 text-gray-900" style={{ textShadow: "0 1px 20px rgba(121, 212, 255, 0.40)" }}>학회 프로젝트 소개</h1>
