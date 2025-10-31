@@ -32,7 +32,7 @@ export default function PartnerSection() {
         "pt-4 px-10 pb-[100px] desktop:pb-[120px] flex flex-col justify-center items-center"
       }
     >
-      <h1 className="text-[23px] desktop:text-title-5 text-gray-900 text-center">KUSITMS 파트너사</h1>
+      <h1 className="text-[23px] desktop:text-title-5 text-gray-900 text-center font-semibold">KUSITMS 파트너사</h1>
       <p className="mt-4 text-[13px] desktop:text-body-4 text-center text-gray-500">
       큐시즘과 함께 청년 IT경영의 내일을 만들어갈 다양한 후원사를 기다립니다.<br />여러분의 후원이 IT경영의 미래를 만듭니다
       </p>

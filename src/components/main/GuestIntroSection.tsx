@@ -48,7 +48,7 @@ export default function GuestIntroSection() {
         className="flex flex-col justify-center items-center"
       >
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-[23px] desktop:text-title-5 text-gray-900">
+          <h1 className="text-[23px] desktop:text-title-5 text-gray-900 font-semibold">
             전문가 초정 강연
           </h1>
           <p className="text-[13px] desktop:text-body-4 mt-[20px] desktop:mt-4 text-center text-gray-500">

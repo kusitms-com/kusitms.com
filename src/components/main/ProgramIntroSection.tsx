@@ -36,7 +36,7 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
     <div className="flex flex-col justify-center items-center pt-4 pb-[100px] desktop:pb-[200px] w-full overflow-x-hidden">
       <section className="w-full">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-[24px] desktop:text-title-5 text-gray-900">학회 프로젝트 소개</h1>
+          <h1 className="text-[24px] desktop:text-title-5 text-gray-900 font-semibold">학회 프로젝트 소개</h1>
         </div>
         <div className="mt-[60px] py-4 flex items-center justify-center gap-2">
           <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-800 text-white text-body-1">1</span>
