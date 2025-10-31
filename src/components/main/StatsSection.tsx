@@ -58,14 +58,14 @@ export default function StatsSection() {
       />
       <Image
         className="hidden desktop:block"
-        src="/main/img/Special_Lecture_by_Expert_1.png"
+        src="/main/img/Background.png"
         alt="Special_Lecture_by_Expert_1"
         width={1920}
         height={447}
         priority
         style={{ width: 1920, height: 447 }}
       />
-      <div className="flex flex-col gap-y-[45px] desktop:gap-y-[88px] items-center justify-center absolute top-0 bg-[#0055FF]/80 w-full h-[229px] desktop:h-[447px]">
+      <div className="flex flex-col gap-y-[45px] desktop:gap-y-[88px] items-center justify-center absolute top-0 w-full h-[229px] desktop:h-[447px]">
         <div className="text-[16px] desktop:text-[24px] text-white">Since 2009</div>
         <div className="flex gap-x-[30px] desktop:gap-x-[50px] desktop:gap-x-[80px]">
           {statData.map(({ end, suffix, label, delay, width }) => (
