@@ -27,10 +27,10 @@ export default function ProgramIntroSection() {
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center pt-4 pb-[100px] desktop:pb-[200px]">
-      <section>
+    <div className="flex flex-col justify-center items-center pt-4 pb-[100px] desktop:pb-[200px] w-full overflow-x-hidden">
+      <section className="w-full">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-[24px] desktop:text-title-5 text-gray-900" style={{ textShadow: "0 1px 20px rgba(121, 212, 255, 0.40)" }}>학회 프로젝트 소개</h1>
+          <h1 className="text-[24px] desktop:text-title-5 text-gray-900">학회 프로젝트 소개</h1>
         </div>
         <div className="mt-[60px] py-4 flex items-center justify-center gap-2">
           <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-800 text-white text-body-1">1</span>
@@ -41,7 +41,7 @@ export default function ProgramIntroSection() {
         팀별로 아이디어를 제시해 과제를 수행하는 프로젝트예요
         </p>
 
-        <div className="mt-[40px] desktop:mt-[56px] w-full max-w-[1100px] px-10">
+        <div className="mt-[40px] desktop:mt-[56px] w-full px-[40px]">
           <div className="relative overflow-hidden h-[110px]">
             <motion.div
               className="flex items-center w-[max-content] flex-nowrap whitespace-nowrap"
@@ -67,6 +67,16 @@ export default function ProgramIntroSection() {
             </motion.div>
           </div>
         </div>
+      </section>
+      <section>
+        <div className="mt-[100px] py-4 flex items-center justify-center gap-2">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-800 text-white text-body-1">2</span>
+          <p className="text-[16px] desktop:text-title-7 text-gray-800">밋업 프로젝트</p>
+        </div>
+        <p className="text-[13px] desktop:text-body-6 text-center text-gray-600">
+        기획파트에서 발제된 아이디어를 디자인, 개발파트와 함꼐 3개월동안 <br />
+        준비하여 발표하는 KUSITMS의 메인 프로젝트예요
+        </p>
       </section>
     </div>
   );
