@@ -13,14 +13,14 @@ export default function ProjectModalShell({ children }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
       onClick={() => router.back()}
     >
       <div
-        className="relative tablet:w-[624px] h-[90vh] mx-20 bg-white rounded-xl pb-10 overflow-y-auto"
+        className="relative tablet:w-[624px] h-[90vh] mx-20 bg-white rounded-xl pb-10 flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex justify-between h-[88px] border-b mb-7 px-10 items-center">
+        <div className="flex justify-between h-[88px] border-b px-10 items-center bg-white rounded-xl">
           <p className="text-title-7 text-gray-700">프로젝트 소개</p>
           <button onClick={() => router.back()}>
             <Image
@@ -31,7 +31,7 @@ export default function ProjectModalShell({ children }: Props) {
             />
           </button>
         </div>
-        {children}
+        <div className="overflow-y-auto px-6 pt-4 pb-10 flex-1">{children}</div>
       </div>
     </div>
   );
