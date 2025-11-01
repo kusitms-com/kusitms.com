@@ -144,7 +144,7 @@ export default function TeamCardsSection() {
         viewport={{ once: true }}
         className="flex flex-col gap-y-[16px] items-center justify-center"
       >
-        <p className="text-title-5 desktop:text-[48px] text-black">함께하는 큐밀리</p>
+        <p className="text-title-5 text-black">함께하는 큐밀리</p>
         <p className="text-center text-body-4 desktop:text-[20px] text-gray-500">
           학회원이 새로운 경험을 통해 성장할 수 있도록 <br />
           다양한 프로젝트를 진행해요.
