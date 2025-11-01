@@ -12,6 +12,7 @@ export default function ProjectTypeBanner({ title, detail }: Props) {
         <Image
           src={"/projects/img/Project.png"}
           alt={"Projects type banner"}
+          priority
           className="object-cover rounded-[12px] max-h-[320px]"
           fill
         />
