@@ -71,6 +71,7 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
                 <Link
                   key={link.label}
                   href={link.url}
+                  target="_blank"
                   className="flex items-center gap-2 bg-gray-50 w-fit rounded-[8px] px-4 py-[10px] h-10"
                 >
                   <Image
