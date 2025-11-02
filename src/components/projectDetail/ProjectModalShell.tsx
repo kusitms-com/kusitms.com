@@ -20,13 +20,13 @@ export default function ProjectModalShell({ children }: Props) {
         className="relative tablet:w-[624px] max-h-[90vh] mx-20 pb-4  bg-white rounded-xl flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex justify-between h-[88px] border-b px-10 items-center bg-white rounded-t-xl">
+        <div className="flex justify-between min-h-[88px] border-b px-10 items-center bg-white rounded-t-xl">
           <p className="text-title-7 text-gray-700">프로젝트 소개</p>
           <button onClick={() => router.back()}>
             <Image src="/projects/icons/CloseIcon2.svg" alt="Close" width={32} height={32} />
           </button>
         </div>
-        <div className="overflow-y-auto px-6 pt-4 flex-1">{children}</div>
+        <div className="overflow-y-auto pt-4 flex-1">{children}</div>
       </div>
     </div>
   );
