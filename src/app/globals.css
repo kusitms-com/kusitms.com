@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 body {
-  background-color: #151519;
+  background-color: #fff;
   color: #fff;
 }
 
@@ -285,7 +285,7 @@ body {
 
 @utility text-title-7 {
   font-weight: var(--font-weight-semibold);
-  font-size: var(--text-28);
+  font-size: var(--text-24);
   letter-spacing: var(--letter-spacing);
   line-height: var(--line-height-heading);
 }

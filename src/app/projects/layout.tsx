@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Banner from "@/components/projects/common/Banner";
 
 export const metadata: Metadata = {
   title: "KUSITMS | Projects",
@@ -35,5 +36,10 @@ export default async function ProjectsLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  return <main className="flex flex-col items-center">{children}</main>;
+  return (
+    <main className="flex flex-col items-center desktop:pt-[72px]">
+      <Banner />
+      {children}
+    </main>
+  );
 }
