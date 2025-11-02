@@ -7,7 +7,7 @@ async function MeetupProjectPage() {
   const meetupProjectList = await getMeetupProjects("");
 
   return (
-    <section className="w-full mx-auto max-w-[1440px]">
+    <section className="w-full mx-auto max-w-[1024px]">
       <NavButtons />
       <ProjectTypeBanner
         title={"밋업 프로젝트란?"}

@@ -7,7 +7,7 @@ async function CorporateProjectPage() {
   const corporateProjectsList = await getCorporateProjects("");
 
   return (
-    <section className="w-full mx-auto max-w-[1440px]">
+    <section className="w-full mx-auto max-w-[1024px]">
       <NavButtons />
       <ProjectTypeBanner
         title="기업 연계 프로젝트란?"
