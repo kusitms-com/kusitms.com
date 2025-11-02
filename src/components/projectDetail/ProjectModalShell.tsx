@@ -13,11 +13,11 @@ export default function ProjectModalShell({ children }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+      className="fixed inset-0 z-50 flex  items-center justify-center bg-black/70"
       onClick={() => router.back()}
     >
       <div
-        className="relative tablet:w-[624px] h-[90vh] mx-20 pb-4  bg-white rounded-xl flex flex-col"
+        className="relative tablet:w-[624px] max-h-[90vh] mx-20 pb-4  bg-white rounded-xl flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between h-[88px] border-b px-10 items-center bg-white rounded-t-xl">
