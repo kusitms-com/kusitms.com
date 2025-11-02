@@ -1,14 +1,13 @@
+import NavButtons from "@/components/projects/common/NavButtons";
 import ProjectTypeBanner from "@/components/projects/common/ProjectTypeBanner";
 import ProjectContainer from "@/components/projects/MeetupProjectContainer";
 import { getMeetupProjects } from "@/service/projects";
-import Banner from "@/components/projects/common/Banner";
-import NavButtons from "@/components/projects/common/NavButtons";
+
 async function MeetupProjectPage() {
   const meetupProjectList = await getMeetupProjects("");
 
   return (
-    <section className="mx-auto w-full ">
-      <Banner />
+    <section className="w-full mx-auto max-w-[1440px]">
       <NavButtons />
       <ProjectTypeBanner
         title={"밋업 프로젝트란?"}

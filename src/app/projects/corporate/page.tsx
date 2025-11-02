@@ -1,15 +1,13 @@
 import CorporateProjectContainer from "@/components/projects/CorporateProjectContainer";
+import NavButtons from "@/components/projects/common/NavButtons";
 import ProjectTypeBanner from "@/components/projects/common/ProjectTypeBanner";
 import { getCorporateProjects } from "@/service/projects";
-import Banner from "@/components/projects/common/Banner";
-import NavButtons from "@/components/projects/common/NavButtons";
 
 async function CorporateProjectPage() {
   const corporateProjectsList = await getCorporateProjects("");
 
   return (
-    <section className="w-full mx-auto">
-      <Banner />
+    <section className="w-full mx-auto max-w-[1440px]">
       <NavButtons />
       <ProjectTypeBanner
         title="기업 연계 프로젝트란?"
