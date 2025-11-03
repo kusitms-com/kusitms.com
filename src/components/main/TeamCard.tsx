@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { type TeamItem } from "@/constants/teamData";
+import Image from "next/image";
 
 export default function TeamCard({
     mainIcon,
     bgIcon,
+    mainIconWidth,
+    mainIconHeight,
+    bgIconWidth,
+    bgIconHeight,
     title,
     subtitle,
     delay,
@@ -41,7 +46,7 @@ export default function TeamCard({
           animate={{ scale: active ? 1.5 : 1, x: active ? 10 : 0, y: active ? 10 : 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 260, damping: 18 }}
         >
-          <img src={bgIcon} alt={title} className="w-full h-full object-cover" />
+          <Image src={bgIcon} alt={title} width={bgIconWidth} height={bgIconHeight} className="w-full h-full object-cover" />
         </motion.div>
         <div className="relative z-10 pr-2">
           <div className="flex flex-col gap-[8px]">
@@ -63,7 +68,7 @@ export default function TeamCard({
           animate={{ scale: active ? 1.3 : 1, rotate: active ? 28 : 0, x: active ? -40 : 0, y: active ? -10 : 0 }}
           transition={{ type: "spring", stiffness: 180, damping: 22, mass: 0.9 }}
         >
-          <img src={mainIcon} alt={title} />
+          <Image src={mainIcon} alt={title} width={mainIconWidth} height={mainIconHeight} />
         </motion.div>
         <motion.div
           className="absolute left-[53px] bottom-[33px]"

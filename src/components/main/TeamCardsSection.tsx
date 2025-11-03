@@ -22,7 +22,6 @@ export default function TeamCardsSection() {
           다양한 프로젝트를 진행해요.
         </p>
       </motion.div>
-
       <section className="flex flex-nowrap justify-start gap-4 pt-[30px] desktop:pt-[80px] desktop:mb-[300px] mb-[100px] px-4 desktop:px-0 w-full overflow-hidden">
         {TEAM_DATA.map((item, idx) => (
           <TeamCard

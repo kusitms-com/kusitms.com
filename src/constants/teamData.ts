@@ -1,6 +1,10 @@
 export type TeamItem = {
   mainIcon: string;
+  mainIconWidth: number;
+  mainIconHeight: number;
   bgIcon: string;
+  bgIconWidth: number;
+  bgIconHeight: number;
   title: string;
   subtitle: string;
   delay?: number;
@@ -9,8 +13,12 @@ export type TeamItem = {
 
 export const TEAM_DATA: TeamItem[] = [
   {
-    mainIcon: "/main/MangeIcon.svg",
-    bgIcon: "/main/MangeBg.svg",
+    mainIcon: "/main/ManageIcon.svg",
+    mainIconWidth: 219,
+    mainIconHeight: 225,
+    bgIcon: "/main/ManageBg.svg",
+    bgIconWidth: 146,
+    bgIconHeight: 152,
     title: "01 Planner",
     subtitle: "기획자",
     delay: 0,
@@ -19,7 +27,11 @@ export const TEAM_DATA: TeamItem[] = [
   },
   {
     mainIcon: "/main/DesignIcon.svg",
+    mainIconWidth: 224,
+    mainIconHeight: 246,
     bgIcon: "/main/DesignBg.svg",
+    bgIconWidth: 151,
+    bgIconHeight: 163,
     title: "02 Designer",
     subtitle: "디자이너",
     delay: 0.2,
@@ -28,7 +40,11 @@ export const TEAM_DATA: TeamItem[] = [
   },
   {
     mainIcon: "/main/FrontendIcon.svg",
+    mainIconWidth: 222,
+    mainIconHeight: 220,
     bgIcon: "/main/FrontendBg.svg",
+    bgIconWidth: 147,
+    bgIconHeight: 151,
     title: "03 Frontend",
     subtitle: "프론트엔드",
     delay: 0.4,
@@ -37,7 +53,11 @@ export const TEAM_DATA: TeamItem[] = [
   },
   {
     mainIcon: "/main/BackendIcon.svg",
+    mainIconWidth: 172,
+    mainIconHeight: 181,
     bgIcon: "/main/BackendBg.svg",
+    bgIconWidth: 130,
+    bgIconHeight: 143,
     title: "04 Backend",
     subtitle: "백엔드",
     delay: 0.6,
