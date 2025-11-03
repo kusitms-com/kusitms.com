@@ -31,7 +31,7 @@ export default function PartnerSection() {
           {[...PARTNERS, ...PARTNERS].map((partner, idx) => (
             <Image
               key={idx}
-              src={partner.image}
+              src={partner}
               alt={`partner-${idx}`}
               width={224}
               height={153}

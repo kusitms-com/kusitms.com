@@ -4,33 +4,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 import MeetupProjectCarousel from "./MeetupProjectCarousel";
+import { COMPANY_ROW1, COMPANY_ROW2 } from "@/constants/companyRows";
 
 interface ProgramIntroSectionProps {
   meetupProjects?: MeetupItem[];
 }
 
 export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntroSectionProps) {
-  const row1 = [
-    "/main/img/company/LG.png",
-    "/main/img/company/LifeZip.png",
-    "/main/img/company/ZigHang.png",
-    "/main/img/company/SeoulMilk.png",
-    "/main/img/company/Kobaco.png",
-    "/main/img/company/CodeIt.png",
-    "/main/img/company/HDMedi.png",
-    "/main/img/company/FitPet.png",
-  ];
-
-  const row2 = [
-    "/main/img/company/QanDa.png",
-    "/main/img/company/HDMedi.png",
-    "/main/img/company/BringKo.png",
-    "/main/img/company/Elice.png",
-    "/main/img/company/PabloAir.png",
-    "/main/img/company/WeFlo.png",
-    "/main/img/company/SoulLive.png",
-    "/main/img/company/DevOcean.png",
-  ];
 
   return (
     <div className="flex flex-col justify-center items-center pt-4 pb-[100px] desktop:pb-[200px] w-full overflow-x-hidden">
@@ -55,7 +35,7 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
               animate={{ x: ["-50%", "0%"] }}
               transition={{ duration: 30, ease: "linear", repeat: Infinity }}
             >
-              {[...row1, ...row1].map((src, idx) => (
+              {[...COMPANY_ROW1, ...COMPANY_ROW1].map((src, idx) => (
                 <Image key={`r1-${idx}`} src={src} alt={`company-${idx}`} width={180} height={80} />
               ))}
             </motion.div>
@@ -67,7 +47,7 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
               animate={{ x: ["0%", "-50%"] }}
               transition={{ duration: 30, ease: "linear", repeat: Infinity, delay: 1.5 }}
             >
-              {[...row2, ...row2].map((src, idx) => (
+              {[...COMPANY_ROW2, ...COMPANY_ROW2].map((src, idx) => (
                 <Image key={`r2-${idx}`} src={src} alt={`company2-${idx}`} width={180} height={88} />
               ))}
             </motion.div>
