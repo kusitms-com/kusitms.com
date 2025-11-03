@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { motion } from "framer-motion";
 import React from "react";
 import { type TeamItem } from "@/constants/teamData";
@@ -19,7 +18,6 @@ export default function TeamCard({
   
     return (
       <motion.div
-        className={clsx("relative flex-shrink-0 overflow-visible cursor-pointer")}
         onMouseEnter={onActivate}
         onMouseLeave={onDeactivate}
         onClick={() => (active ? onDeactivate() : onActivate())}
@@ -33,15 +31,10 @@ export default function TeamCard({
           height: { type: "spring", stiffness: 180, damping: 22, mass: 0.9 },
         }}
         viewport={{ once: true }}
-        style={{ height: 317.692, willChange: "width, transform" }}
+        className="relative flex-shrink-0 overflow-visible cursor-pointer h-[317.692px] [will-change:width,transform]"
       >
         <div
-          className={clsx("relative w-full h-full px-[18.1px] py-[13.6px] bg-sky-50 overflow-hidden")}
-          style={{
-            borderRadius: "9.077px",
-            border: "2px solid #F0F4FF",
-            boxShadow: "0px 4px 10px 0px rgba(121, 212, 255, 0.20)",
-          }}
+          className="relative w-full h-full px-[18.1px] py-[13.6px] bg-sky-50 overflow-hidden rounded-[9.077px] border-2 border-[#F0F4FF] shadow-[0px_4px_10px_0px_rgba(121,212,255,0.20)]"
         >
         <motion.div
           className="absolute top-0 left-0"
@@ -66,7 +59,7 @@ export default function TeamCard({
           </div>
         </div>
         <motion.div
-          className={clsx("absolute", title.includes("Backend") ? "right-[-30px] bottom-[35px]" : "right-[-45px]")}
+          className={`absolute ${title.includes("Backend") ? "right-[-30px] bottom-[35px]" : "right-[-45px]"}`}
           animate={{ scale: active ? 1.3 : 1, rotate: active ? 28 : 0, x: active ? -40 : 0, y: active ? -10 : 0 }}
           transition={{ type: "spring", stiffness: 180, damping: 22, mass: 0.9 }}
         >
