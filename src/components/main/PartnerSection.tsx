@@ -2,26 +2,9 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
+import { PARTNERS } from "@/constants/partners";
 
 export default function PartnerSection() {
-  const partners = [
-    {
-      image: "/main/img/partner/Seoul.png",
-    },
-    {
-      image: "/main/img/partner/LetsCareer.png",
-    },
-    {
-      image: "/main/img/partner/SniperFactory.png",
-    },
-    {
-      image: "/main/img/partner/FLab.png",
-    },
-    {
-      image: "/main/img/partner/Dcamp.png",
-    },
-  ];
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 60 }}
@@ -45,7 +28,7 @@ export default function PartnerSection() {
           animate={{ x: ["-50%", "0%"] }}
           transition={{ duration: 25, ease: "linear", repeat: Infinity }}
         >
-          {[...partners, ...partners].map((partner, idx) => (
+          {[...PARTNERS, ...PARTNERS].map((partner, idx) => (
             <Image
               key={idx}
               src={partner.image}
