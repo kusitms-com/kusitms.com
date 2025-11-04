@@ -1,9 +1,13 @@
 import Image from "next/image";
 import ProjectNavigation from "@/components/projectDetail/ProjectNavigation";
-import TeamMember from "@/components/projects/TeamMember";
+import TeamMember from "@/components/projects/common/TeamMember";
 import { IconLink } from "@/components/shared";
 import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
-import { getAdjacentIds, getCalculateMonthDiff, toUpperCaseOnlyLetters } from "@/utils";
+import {
+  getAdjacentIds,
+  getCalculateMonthDiff,
+  toUpperCaseOnlyLetters,
+} from "@/utils";
 
 export async function generateStaticParams() {
   const meetupProjectList = await getMeetupProjects("");
@@ -116,10 +120,12 @@ const DisplayDetailPage = async ({
             <div className="text-[#E2E2EB] desktop:text-xl text-[12px] font-normal flex flex-col desktop:gap-5 gap-3">
               <p>{projectDetail.data.cardinal}기</p>
               <p>{toUpperCaseOnlyLetters(projectDetail.data.type)}</p>
-              <p>{`${projectDetail.data.start_date} ~ ${projectDetail.data.end_date} 
+              <p>{`${projectDetail.data.start_date} ~ ${
+                projectDetail.data.end_date
+              } 
                 (${getCalculateMonthDiff(
                   projectDetail.data.start_date,
-                  projectDetail.data.end_date,
+                  projectDetail.data.end_date
                 )})`}</p>
               <TeamMember role="기획" members={team.planner} />
               <TeamMember role="디자인" members={team.designer} />

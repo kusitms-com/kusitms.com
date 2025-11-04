@@ -1,53 +1,22 @@
-import Image from "next/image";
-import React from "react";
-import EventIntro from "@/components/projects/EventIntro";
-import ImageCard from "@/components/projects/ImageCard";
+import NavButtons from "@/components/projects/common/NavButtons";
+import ProjectTypeBanner from "@/components/projects/common/ProjectTypeBanner";
 import ProjectContainer from "@/components/projects/MeetupProjectContainer";
-import NavButtons from "@/components/projects/NavButtons";
-import ProjectTotalCount from "@/components/projects/ProjectTotalCount";
-import TopScrollButton from "@/components/shared/TopScrollButton";
 import { getMeetupProjects } from "@/service/projects";
 
 async function MeetupProjectPage() {
   const meetupProjectList = await getMeetupProjects("");
 
   return (
-    <>
-      <section className="w-full max-w-6xl mx-auto py-8 text-center">
-        <h1 className="text-2xl desktop:text-5xl font-black mb-4 desktop:mt-[180px] leading-[130%]">
-          KUSITMS의 다양한 프로젝트를 <br />
-          구경해보세요!
-        </h1>
-        <p className="font-normal text-[15px] tablet:text-[20px]">
-          <ProjectTotalCount pathname="meetup" />
-          개의 프로젝트를 볼 수 있어요.
-        </p>
-        <NavButtons />
-      </section>
-      <section className="mx-auto w-full max-w-[1180px]">
-        <div className="flex flex-col desktop:flex-row w-full desktop:gap-[90px] gap-[40px] desktop:mt-[100px] mt-[40px] justify-center items-center">
-          <h2 className="text-white text-[24px] font-bold desktop:hidden block">
-            밋업(Meet-up) 프로젝트란?
-          </h2>
-          <ImageCard>
-            <ImageCard.Sticker>
-              <Image
-                src="/projects/sticker/MeetupSticker.svg"
-                alt="스티커"
-                width={70}
-                height={100}
-                priority
-                style={{ width: 70, height: 100 }}
-              />
-            </ImageCard.Sticker>
-            <ImageCard.Image src="/projects/tmp/meetup_tmpImg.png" />
-          </ImageCard>
-          <EventIntro type="meetup" />
-        </div>
-        <ProjectContainer data={meetupProjectList.data} />
-        <TopScrollButton />
-      </section>
-    </>
+    <section className="w-full mx-auto max-w-[1024px]">
+      <NavButtons />
+      <ProjectTypeBanner
+        title={"밋업 프로젝트란?"}
+        detail={
+          "기획 파트에서 발제된 아이디어를 디자인, 개발 파트와 함께\n3개월 동안 준비해서 발표하는 큐시즘의 메인 프로젝트예요."
+        }
+      />
+      <ProjectContainer data={meetupProjectList.data} />
+    </section>
   );
 }
 

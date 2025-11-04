@@ -14,21 +14,20 @@ export default function ProjectNavigation({
 }: ProjectNavigationProps) {
   return (
     <>
-      <div className="w-full desktop:block hidden">
+      <div className="w-full tablet:block hidden">
         {/* 이전 게시물 */}
         {prevId && (
           <Link
             href={`${domain}/${prevId}`}
-            className="absolute left-[3.5%] top-[70%]
-                     flex justify-center items-center bg-[#E2E2EB] rounded-full 
-                     w-[70px] h-[70px] hover:scale-105 transition-transform"
+            replace
+            className="fixed left-[calc(50%_-_312px_-_44px)] left-[calc(50%_-_312px_-_88px)] top-1/2 -translate-y-1/2 flex justify-center items-center bg-white/30 rounded-full w-[52px] h-[52px] hover:scale-105 transition-transform z-[9999]"
           >
             <Image
-              src="/projects/icons/ArrowLeft.svg"
-              alt="이전 페이지"
-              width={38}
-              height={38}
-              style={{ width: "38px", height: "38px" }}
+              src="/projects/icons/ArrowLeftWhite.svg"
+              alt="ArrowLeft"
+              width={13}
+              height={23}
+              style={{ width: "13px", height: "23px" }}
             />
           </Link>
         )}
@@ -37,54 +36,15 @@ export default function ProjectNavigation({
         {nextId && (
           <Link
             href={`${domain}/${nextId}`}
-            className="absolute right-[3.5%] top-[70%]
-                     flex justify-center items-center bg-[#E2E2EB] rounded-full 
-                     w-[70px] h-[70px] hover:scale-105 transition-transform"
+            replace
+            className="fixed right-[calc(50%_-_312px_-_82px)]  top-1/2 -translate-y-1/2 flex justify-center items-center bg-white/30 rounded-full  w-[52px] h-[52px] hover:scale-105 transition-transform z-[9999]"
           >
             <Image
-              src="/projects/icons/ArrowRight.svg"
-              alt="다음 페이지"
-              width={38}
-              height={38}
-              style={{ width: "38px", height: "38px" }}
-            />
-          </Link>
-        )}
-      </div>
-      {/* 모바일 */}
-      <div className="w-full desktop:hidden block">
-        {/* 이전 게시물 */}
-        {prevId && (
-          <Link
-            href={`${domain}/${prevId}`}
-            className="absolute left-[-10px] top-[180px]
-                     flex justify-center items-center rounded-full 
-                     w-[70px] h-[70px] hover:scale-105 transition-transform"
-          >
-            <Image
-              src="/projects/icons/arrow_back_ios_left.svg"
-              alt="이전 페이지"
-              width={20}
-              height={20}
-              style={{ width: "20px", height: "20px" }}
-            />
-          </Link>
-        )}
-
-        {/* 다음 게시물 */}
-        {nextId && (
-          <Link
-            href={`${domain}/${nextId}`}
-            className="absolute right-[-10px] top-[180px]
-                     flex justify-center items-center rounded-full 
-                     w-[70px] h-[70px] hover:scale-105 transition-transform"
-          >
-            <Image
-              src="/projects/icons/arrow_back_ios.svg"
-              alt="다음 페이지"
-              width={20}
-              height={20}
-              style={{ width: "20px", height: "20px" }}
+              src="/projects/icons/ArrowRightWhite.svg"
+              alt="ArrowRight"
+              width={13}
+              height={23}
+              style={{ width: "13px", height: "23px" }}
             />
           </Link>
         )}
