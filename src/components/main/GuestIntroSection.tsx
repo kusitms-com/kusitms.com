@@ -39,7 +39,7 @@ export default function GuestIntroSection() {
   ];
 
   return (
-    <div className={"pb-[100px] desktop:pb-[200px] pt-4 flex flex-col items-center justify-center"}>
+    <div className="max-w-[1024px] mx-auto pb-[100px] desktop:pb-[200px] pt-4 flex flex-col items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}

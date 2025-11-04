@@ -13,7 +13,7 @@ interface ProgramIntroSectionProps {
 export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntroSectionProps) {
 
   return (
-    <div className="flex flex-col justify-center items-center pt-4 pb-[100px] desktop:pb-[200px] w-full overflow-x-hidden">
+    <div className="max-w-[1024px] mx-auto flex flex-col justify-center items-center pt-4 pb-[100px] desktop:pb-[200px] w-full overflow-x-hidden">
       <section className="w-full">
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-[24px] desktop:text-title-5 text-gray-900 font-semibold">학회 프로젝트 소개</h1>

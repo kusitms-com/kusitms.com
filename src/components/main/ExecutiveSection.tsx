@@ -66,7 +66,7 @@ function ExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
 
 export default function ExecutiveSection() {
   return (
-    <section className="flex flex-col gap-y-[40px] pt-4 w-full items-center">
+    <section className="max-w-[1024px] mx-auto flex flex-col gap-y-[40px] pt-4 w-full items-center">
       <ExecutiveCarousel items={EXECUTIVE_DATA} />
     </section>
   );

@@ -12,7 +12,7 @@ export default function PartnerSection() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
       className={
-        "pt-4 px-10 pb-[100px] desktop:pb-[120px] flex flex-col justify-center items-center"
+        "max-w-[1024px] mx-auto pt-4 px-10 pb-[100px] desktop:pb-[120px] flex flex-col justify-center items-center"
       }
     >
       <h1 className="text-[23px] desktop:text-title-5 text-gray-900 text-center font-semibold">KUSITMS 파트너사</h1>
