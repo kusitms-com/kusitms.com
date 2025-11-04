@@ -8,7 +8,7 @@ export default function TeamCardsSection() {
   const [activeIdx, setActiveIdx] = React.useState<number | null>(null);
 
   return (
-    <div className="flex flex-col items-center overflow-hidden">
+    <div className="flex flex-col items-center overflow-hidden pt-[100px] desktop:pt-[240px]">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -22,7 +22,7 @@ export default function TeamCardsSection() {
           다양한 프로젝트를 진행해요.
         </p>
       </motion.div>
-      <section className="flex flex-nowrap justify-start gap-4 pt-[30px] desktop:pt-[80px] desktop:mb-[300px] mb-[100px] px-4 desktop:px-0 w-full overflow-hidden">
+      <section className="flex flex-nowrap justify-center gap-4 pt-[30px] desktop:pt-[80px] desktop:mb-[300px] mb-[100px] px-4 desktop:px-0 w-full overflow-hidden">
         {TEAM_DATA.map((item, idx) => (
           <TeamCard
             key={item.title}

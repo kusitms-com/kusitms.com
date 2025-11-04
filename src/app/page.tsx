@@ -1,7 +1,7 @@
-import ActivityIntroSection from "@/components/main/ActivityIntroSection";
 import GuestIntroSection from "@/components/main/GuestIntroSection";
 import IntroSection from "@/components/main/IntroSection";
-import PartIntroSection from "@/components/main/PartIntroSection";
+import TeamCardsSection from "@/components/main/TeamCardsSection";
+import ExecutiveSection from "@/components/main/ExecutiveSection";
 import PartnerSection from "@/components/main/PartnerSection";
 import ProgramIntroSection from "@/components/main/ProgramIntroSection";
 import StatsSection from "@/components/main/StatsSection";
@@ -18,17 +18,13 @@ export default async function Home() {
 
   return (
     <main
-      className="font-[family-name:var(--font-geist-sans)]"
-      style={{
-        background:
-          "linear-gradient(180deg, #FFF 13.61%, #F0FAFF 23.29%, #FFF 36.05%, #F3FBFF 46.56%, #FFF 79.61%, #F0FAFF 109.62%)",
-      }}
+      className="font-[family-name:var(--font-geist-sans)] bg-[linear-gradient(180deg,_#FFF_13.61%,_#F0FAFF_23.29%,_#FFF_36.05%,_#F3FBFF_46.56%,_#FFF_79.61%,_#F0FAFF_109.62%)]"
     >
       <IntroSection />
       <StatsSection />
-      <PartIntroSection />
+      <TeamCardsSection />
+      <ExecutiveSection />
       <ProgramIntroSection meetupProjects={meetupProjects} />
-      {/* <ActivityIntroSection /> */}
       <GuestIntroSection />
       <PartnerSection />
     </main>
