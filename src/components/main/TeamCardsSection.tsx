@@ -8,7 +8,7 @@ export default function TeamCardsSection() {
   const [activeIdx, setActiveIdx] = React.useState<number | null>(null);
 
   return (
-    <div className="max-w-[1024px] mx-auto flex flex-col items-center overflow-hidden pt-[100px] desktop:pt-[240px]">
+    <div className="flex flex-col items-center overflow-hidden pt-[100px] desktop:pt-[240px]">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}

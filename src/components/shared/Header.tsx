@@ -13,7 +13,7 @@ export const Header = () => {
   return (
     <header
       className={`w-full desktop:px-12 px-4 py-6 desktop:fixed top-0 left-0 z-50 ${
-        pathname === "/display" ? "bg-transparent" : "bg-[#151519]"
+        pathname === "/display" ? "bg-transparent" : "bg-white"
       }`}
     >
       <div className="max-w-[2000px] w-full mx-auto flex justify-between">

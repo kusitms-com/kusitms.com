@@ -21,12 +21,11 @@ export const PageNav = () => {
       {navLinks.map(({ href, label, matchPath }, index) => {
         const isActive =
           matchPath === "/" ? currentPath === matchPath : currentPath.startsWith(matchPath);
-
         return (
           <Link
             key={index}
             href={href}
-            className={`px-7 font-semibold ${isActive ? "text-white" : "text-[#90909A]"}`}
+            className={`px-7 ${isActive ? "text-body-5 text-dark-blue-600" : "text-body-6 text-gray-700 hover:text-body-5"}`}
           >
             {label}
           </Link>
