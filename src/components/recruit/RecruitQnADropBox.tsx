@@ -17,19 +17,22 @@ export default function RecruitQnADropBox({
   return (
     <div
       onClick={onToggle}
-      className="flex flex-col desktop:gap-y-6 gap-y-[20px] rounded-[32px] bg-[#F2F2F8] desktop:px-12 desktop:pt-10 desktop:pb-4 px-[28px] py-[28px] pb-[6px]  desktop:w-[980px] w-[350px] cursor-pointer"
+      className="flex flex-col rounded-[20px] bg-gray-50 px-[40px] py-[32px] cursor-pointer"
     >
       <RecruitQnADropBox.Question isOpen={isOpen}>
-        <p className="flex gap-x-2 text-black desktop:text-[20px] text-[16px]">
-          <span className="text-[#0055FF]">Q</span>
+        <p className="flex gap-x-2 text-black text-body-2">
+          <span className="text-dark-blue-500 text-body-2">Q.</span>
           {question}
         </p>
       </RecruitQnADropBox.Question>
       <RecruitQnADropBox.Answer isOpen={isOpen}>
-        <div className="text-[#5D5E67] desktop:text-[20px] text-[16px] flex flex-col gap-y-1">
-          {answer.map((line, idx) => (
-            <p key={idx}>{line}</p>
-          ))}
+        <div className="flex gap-x-2 pt-[20px] text-body-2">
+          <span className="text-dark-blue-300">A.</span>
+          <div className="text-gray-700 text-body-2">
+            {answer.map((line, idx) => (
+              <p key={idx}>{line}</p>
+            ))}
+          </div>
         </div>
       </RecruitQnADropBox.Answer>
     </div>
@@ -49,9 +52,8 @@ const RecruitQnADropBoxQuestion = ({
       <Image
         src={isOpen ? "/recruit/icons/DropUp.svg" : "/recruit/icons/DropDown.svg"}
         alt="DropDown"
-        width={28}
-        height={28}
-        style={{ width: 28, height: 28 }}
+        width={16}
+        height={8}
       />
     </div>
   );
@@ -75,7 +77,7 @@ const RecruitQnADropBoxAnswer = ({
         setHeight(0);
       }
     }
-  }, [isOpen, children]);
+  }, [isOpen]);
 
   return (
     <motion.div
@@ -92,7 +94,7 @@ const RecruitQnADropBoxAnswer = ({
       }}
       style={{ overflow: "hidden" }}
     >
-      <div ref={contentRef} className="pb-6">
+      <div ref={contentRef} className="">
         {children}
       </div>
     </motion.div>
