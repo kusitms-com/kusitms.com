@@ -1,7 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import MeetingInfoItem from "@/components/recruit/MeetingInfoItem";
 import Recruit from "@/components/recruit/Recruit";
 import RecruitingTeamInfoItem from "@/components/recruit/RecruitingTeamInfoItem";
 import RecruitmentProcessItem from "@/components/recruit/RecruitmentProcessItem";
@@ -10,10 +6,10 @@ import RecruitQnA from "@/components/recruit/RecruitQnA";
 
 async function RecruitPage() {
   const recruitInfoList = [
-    { id: 1, title: "누가 지원할 수 있나요?" },
-    { id: 2, title: "어떤 파트를 모집해요?" },
-    { id: 3, title: "언제 어디서 모여요?" },
-    { id: 4, title: "모집 절차가 어떻게 돼요?" },
+    { id: 1, title: "모집 대상", englishTitle: "Target" },
+    { id: 2, title: "모집 파트", englishTitle: "Position" },
+    { id: 3, title: "모집 일정", englishTitle: "Schedule" },
+    { id: 4, title: "자주 묻는 질문", englishTitle: "FAQ" },
   ];
 
   const renderRecruitComponent = (id: number) => {
@@ -23,9 +19,9 @@ async function RecruitPage() {
       case 2:
         return <RecruitingTeamInfoItem />;
       case 3:
-        return <MeetingInfoItem />;
-      default:
         return <RecruitmentProcessItem />;
+      case 4:
+        return <RecruitQnA />;
     }
   };
 
@@ -93,9 +89,6 @@ async function RecruitPage() {
           </div>
         </Recruit>
       </div>
-
-      {/* QnA */}
-      <RecruitQnA />
     </main>
   );
 }
