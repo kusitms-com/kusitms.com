@@ -1,0 +1,149 @@
+"use client";
+
+import { MeetupItem } from "@/service/projects/getMeetupProjects";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import React, { useState, useCallback, useMemo } from "react";
+import { useRouter } from "next/navigation";
+
+interface MeetupProjectCarouselProps {
+  projects: MeetupItem[];
+}
+
+export default function MeetupProjectCarousel({ projects }: MeetupProjectCarouselProps) {
+  const router = useRouter();
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const BASE_W = 404;
+  const BASE_H = 255;
+
+  const SCALE = { 0: 1, 1: 0.75, 2: 0.6 } as const;
+  const BLUR = { 0: 0, 1: 2.5, 2: 2.5 } as const;
+  const OPACITY = { 0: 1, 1: 0.9, 2: 0.7 } as const;
+
+  const OVERLAP1 = -20;
+  const OVERLAP2 = 0;
+
+  const handlePrev = useCallback(() => {
+    setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+  }, [projects.length]);
+
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+  }, [projects.length]);
+
+  const visibleCards = useMemo(() => {
+    const res: Array<{ index: number; offset: number }> = [];
+    for (let i = -2; i <= 2; i++) {
+      const index = (currentIndex + i + projects.length) % projects.length;
+      res.push({ index, offset: i });
+    }
+    return res;
+  }, [currentIndex, projects.length]);
+
+  const handleCardClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>, offset: number) => {
+      if (offset === 0) {
+        const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const leftZone = rect.width * 0.3;
+        const rightZone = rect.width * 0.7;
+        if (clickX < leftZone) handlePrev();
+        else if (clickX > rightZone) handleNext();
+      } else {
+        const targetIndex = (currentIndex + offset + projects.length) % projects.length;
+        setCurrentIndex(targetIndex);
+      }
+    },
+    [currentIndex, projects.length, handlePrev, handleNext]
+  );
+
+  const firstPos = BASE_W / 2 - OVERLAP1;
+  const secondPos = firstPos + (BASE_W * SCALE[1]) / 2 - OVERLAP2;
+
+  const getX = (offset: number) => {
+    const abs = Math.abs(offset) as 0 | 1 | 2;
+    if (abs === 0) return 0;
+    const dir = offset > 0 ? 1 : -1;
+    return dir * (abs === 1 ? firstPos : secondPos);
+  };
+
+  return (
+    <div className="w-full flex flex-col items-center mt-[54px]">
+      <div
+        className="relative w-full flex items-center justify-center"
+        style={{ height: 260, overflow: "visible" }}
+      >
+        {visibleCards.map(({ index, offset }) => {
+          const project = projects[index];
+          const abs = Math.abs(offset) as 0 | 1 | 2;
+
+          const scale = SCALE[abs];
+          const blur = BLUR[abs];
+          const opacity = OPACITY[abs];
+          const zIndex = 10 - abs;
+
+          const cardW = BASE_W * scale;
+          const cardH = BASE_H * scale;
+
+          return (
+            <motion.div
+              key={`${project.meetup_id}-${index}`}
+              animate={{
+                x: getX(offset),
+                filter: `blur(${blur}px)`,
+                opacity,
+              }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+              className="absolute cursor-pointer"
+              style={{
+                zIndex,
+                left: "50%",
+                marginLeft: `-${cardW / 2}px`,
+                transformOrigin: "center center",
+              }}
+              onClick={(e) => handleCardClick(e, offset)}
+            >
+              <div
+                className="relative rounded-2xl overflow-hidden shadow"
+                style={{
+                  width: cardW,
+                  height: cardH,
+                }}
+              >
+                <Image
+                  src={project.poster_url}
+                  alt={project.name}
+                  fill
+                  className="object-cover select-none"
+                  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 560px, 404px"
+                  draggable={false}
+                  priority={abs === 0}
+                />
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+      <div className="flex items-center justify-center gap-2 mt-5">
+        {projects.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => setCurrentIndex(i)}
+            className={`transition-all duration-200 rounded-full ${
+              i === currentIndex ? "w-2 h-2 bg-gray-400" : "w-2 h-2 bg-gray-100"
+            }`}
+            aria-label={`프로젝트 ${i + 1}로 이동`}
+          />
+        ))}
+      </div>
+      <button
+        onClick={() => router.push("/projects/meetup")}
+        className="cursor-pointer mt-8 px-5 py-[10px] rounded-[20px] bg-dark-blue-500 text-white font-semibold text-[16px] desktop:text-body-3"
+      >
+        프로젝트 더 보기 →
+      </button>
+    </div>
+  );
+}
