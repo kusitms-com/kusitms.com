@@ -143,7 +143,7 @@ export default function RecruitQnA() {
             key={category}
             type="button"
             onClick={() => setSelectedField(category)}
-            className={`w-[120px] py-[10px] rounded-full text-body-2 
+            className={`w-[120px] cursor-pointer py-[10px] rounded-full text-body-2 
               ${
                 selectedField === category ? "bg-dark-blue-50 text-dark-blue-600" : "text-gray-700"
               }`}

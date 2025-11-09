@@ -72,7 +72,7 @@ export default function RecruitingTeamInfoItem() {
             key={item.role}
             type="button"
             onClick={() => setSelectedRole(item.role)}
-            className={`w-[120px] py-[10px] rounded-full text-body-2 
+            className={`w-[120px] py-[10px] cursor-pointer rounded-full text-body-2 
               ${
                 selectedRole === item.role ? "bg-dark-blue-50 text-dark-blue-600" : "text-gray-700"
               }`}

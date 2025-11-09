@@ -46,7 +46,8 @@ export default function DesktopRecruitmentProcessItem() {
           </div>
         ))}
       </div>
-      <button className="text-gray-0 rounded-full w-fit text-body-4 flex gap-[12px] justify-center items-center px-[24px] py-[10px] bg-dark-blue-500">
+      {/* TODO: 실제 지원 링크로 이동 */}
+      <button className="text-gray-0 rounded-full cursor-pointer w-fit text-body-4 flex gap-[12px] justify-center items-center px-[24px] py-[10px] bg-dark-blue-500">
         <p>지원하러 가기</p>
         <Image
           src="/recruit/icons/WhiteArrow.svg"
