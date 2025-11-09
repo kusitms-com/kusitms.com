@@ -72,7 +72,7 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
                   key={link.label}
                   href={link.url}
                   target="_blank"
-                  className="flex items-center gap-2 bg-gray-50 w-fit rounded-[8px] px-4 py-[10px] h-10"
+                  className="flex items-center gap-2 bg-gray-50 w-fit rounded-[8px] pl-4 pr-2 py-[10px] h-10"
                 >
                   <Image
                     src={`/projects/icons/${link.icon}`}
@@ -82,8 +82,8 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
                   />
                   <p className="text-body-6 text-gray-700 ">{link.label}</p>
                   <Image
-                    src="/projects/icons/ArrowRight.svg"
-                    alt=""
+                    src="/projects/icons/ProjectArrowRight.svg"
+                    alt="right arrow"
                     width={20}
                     height={20}
                   />
