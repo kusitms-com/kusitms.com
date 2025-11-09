@@ -1,16 +1,20 @@
 "use client";
 
-import { MeetupItem } from "@/service/projects/getMeetupProjects";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React, { useState, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
+import { useCallback, useMemo, useState } from "react";
+import type { MeetupItem } from "@/service/projects/getMeetupProjects";
 
 interface MeetupProjectCarouselProps {
   projects: MeetupItem[];
+  archiveMode?: boolean;
 }
 
-export default function MeetupProjectCarousel({ projects }: MeetupProjectCarouselProps) {
+export default function MeetupProjectCarousel({
+  projects,
+  archiveMode = false,
+}: MeetupProjectCarouselProps) {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -55,7 +59,7 @@ export default function MeetupProjectCarousel({ projects }: MeetupProjectCarouse
         setCurrentIndex(targetIndex);
       }
     },
-    [currentIndex, projects.length, handlePrev, handleNext]
+    [currentIndex, projects.length, handlePrev, handleNext],
   );
 
   const firstPos = BASE_W / 2 - OVERLAP1;
@@ -68,12 +72,23 @@ export default function MeetupProjectCarousel({ projects }: MeetupProjectCarouse
     return dir * (abs === 1 ? firstPos : secondPos);
   };
 
+  const archiveClassName = archiveMode
+    ? "h-[588px] align-center items-end"
+    : "mt-[54px] min-h-[260px] overflow-visible items-center";
+
   return (
-    <div className="w-full flex flex-col items-center mt-[54px]">
-      <div
-        className="relative w-full flex items-center justify-center"
-        style={{ height: 260, overflow: "visible" }}
-      >
+    <div className="w-full flex flex-col items-center ">
+      <div className={`relative w-full flex   ${archiveClassName}`}>
+        {archiveMode && (
+          <div className="absolute top-[160px] items-center flex flex-col w-full gap-4">
+            <p className="text-title-5 text-gray-900 font-bold">32기 큐시즘 전시회</p>
+            <p className="text-body-4 text-gray-500 text-center">
+              큐밀리들의 두 달간의 여정, 밋업프로젝트의 서비스들을 소개합니다.
+              <br />
+              이번 전시회에서는 아래 서비스들을 직접 만나보실 수 있어요.
+            </p>
+          </div>
+        )}
         {visibleCards.map(({ index, offset }) => {
           const project = projects[index];
           const abs = Math.abs(offset) as 0 | 1 | 2;
@@ -94,7 +109,7 @@ export default function MeetupProjectCarousel({ projects }: MeetupProjectCarouse
                 filter: `blur(${blur}px)`,
                 opacity,
               }}
-              transition={{ duration: 0.35, ease: "easeInOut" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
               className="absolute cursor-pointer"
               style={{
                 zIndex,
@@ -138,12 +153,14 @@ export default function MeetupProjectCarousel({ projects }: MeetupProjectCarouse
           />
         ))}
       </div>
-      <button
-        onClick={() => router.push("/projects/meetup")}
-        className="cursor-pointer mt-8 px-5 py-[10px] rounded-[20px] bg-dark-blue-500 text-white font-semibold text-[16px] desktop:text-body-3"
-      >
-        프로젝트 더 보기 →
-      </button>
+      {archiveMode === false && (
+        <button
+          onClick={() => router.push("/projects/meetup")}
+          className="cursor-pointer mt-8 px-5 py-[10px] rounded-[20px] bg-dark-blue-500 text-white font-semibold text-[16px] desktop:text-body-3"
+        >
+          프로젝트 더 보기 →
+        </button>
+      )}
     </div>
   );
 }

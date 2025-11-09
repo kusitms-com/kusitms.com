@@ -381,3 +381,9 @@ body {
   letter-spacing: var(--letter-spacing);
   line-height: var(--line-height-body);
 }
+
+/* 아카이브 페이지 유틸리티 */
+@utility line-dash-passed {
+  background-image: linear-gradient(to bottom, #c7d7ff 7px, transparent 0%);
+  background-size: 1px 12px;
+}
