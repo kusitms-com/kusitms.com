@@ -7,7 +7,7 @@ import RecruitQnADropBox from "./RecruitQnADropBox";
 export default function RecruitQnA() {
   const qnaList = [
     {
-      field: "지원",
+      field: "선발",
       question: "모집시기가 언제인가요?",
       answer: [
         "큐시즘은 상반기, 하반기 총 2번 신규 운영진 및 학회원을 모집해요.",
@@ -85,11 +85,42 @@ export default function RecruitQnA() {
       ],
     },
     {
-      field: "지원",
-      question: "운영진 지원 후 불합격이 되었을 때, 일반 학회원으로 재신청해도 불이익은 없나요?",
+      field: "선발",
+      question: "운영진 지원 후 불합격이면, 일반 학회원으로 재신청해도 불이익은 없나요?",
       answer: [
         "네, 전혀 불이익 없어요!",
         "모든 지원 서류는 모집이 끝난 후 즉시 폐기하므로 학회원으로 재신청하셔도 전혀 문제되지 않아요.",
+      ],
+    },
+    {
+      field: "선발",
+      question: "서류/면접 전형은 어떻게 진행되나요?",
+      answer: ["서류는 위더스 웹을 통해 받고있으며 면접은 오프라인 대면 면접으로 진행하고 있어요."],
+    },
+    {
+      field: "선발",
+      question: "한 기수에 몇 명 정도 뽑나요?",
+      answer: ["한 기수에 64명이 활동하며, 활동연장한 OB를 제외한 인원을 뽑아 기수별로 상이해요."],
+    },
+    {
+      field: "지원",
+      question: "전공자가 아니어도 지원 가능한가요?",
+      answer: ["네, 전공이 아니더라도 큐시즘에 대한 열정만 있다면 참여할 수 있어요!"],
+    },
+    {
+      field: "지원",
+      question: "이전 기수에서 떨어졌는데 다시 지원해도 되나요?",
+      answer: [
+        "네, 재지원 가능해요.",
+        "모든 지원 서류는 모집이 끝난 후 즉시 폐기하므로 학회원으로 재신청하셔도 전혀 문제되지 않아요.",
+      ],
+    },
+    {
+      field: "활동",
+      question: "정규 세션 말고도 추가 스터디가 있나요?",
+      answer: [
+        "네, 정규 세션 외에 자율적으로 스터디를 열어 공부할 수 있어요.",
+        "성장하고 싶은 주제라면 모두 가능해요!",
       ],
     },
   ];
@@ -97,7 +128,7 @@ export default function RecruitQnA() {
   const [selectedField, setSelectedField] = useState("전체");
   const [openQuestionId, setOpenQuestionId] = useState<string | null>(null);
 
-  const categories = ["전체", "지원", "선발", "활동"];
+  const categories = ["전체", "선발", "지원", "활동"];
 
   const handleToggle = (questionId: string) => {
     setOpenQuestionId(openQuestionId === questionId ? null : questionId);
