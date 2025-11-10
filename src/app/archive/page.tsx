@@ -1,12 +1,16 @@
-import ArchiveCarousel from "@/components/archive/ArchiveCarousel";
 import ArchiveContainerPage from "@/components/archive/ArchiveContainer";
 import Banner from "@/components/archive/Banner";
+import MeetupProjectCarousel from "@/components/main/MeetupProjectCarousel";
+import { getMeetupProjects } from "@/service/projects";
+import type { MeetupItem } from "@/service/projects/getMeetupProjects";
 
 async function ArchivePage() {
+  const response = await getMeetupProjects("31", "");
+  const meetupProjects: MeetupItem[] = response.data?.meetup_list || [];
   return (
     <main className="desktop:pt-[72px] mx-auto bg-gradient">
       <Banner />
-      <ArchiveCarousel />
+      <MeetupProjectCarousel projects={meetupProjects} archiveMode={true} />
       <ArchiveContainerPage />
     </main>
   );
