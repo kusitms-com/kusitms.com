@@ -4,8 +4,8 @@ export default function Banner() {
   return (
     <section className="w-full relative bg-[linear-gradient(120deg,_#EAF9FF_0%,_#99DEFF_90%,_#4688FE_120%)]">
       <div className="max-w-[2000px] mx-auto relative">
-        <div className="max-w-[1024px] mx-auto relative h-[180px]">
-          <div className="max-w-[727px] h-[180px] relative ml-auto">
+        <div className="max-w-[1024px] mx-auto relative h-[180px] overflow-hidden">
+          <div className="max-w-[727px] h-[464px] relative ml-auto -top-[205px]">
             <Image
               src={"/projects/Banner.svg"}
               alt={"Projects banner"}
