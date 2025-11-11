@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Banner from "@/components/projects/common/Banner";
 
 export const metadata: Metadata = {
   title: "KUSITMS | REVIEWS",
@@ -45,13 +46,9 @@ export default async function ReviewsLayout({
   children: ReactNode;
 }>) {
   return (
-    <div className="flex flex-col items-center text-[#white] pt-[190px]">
-      <h1 className="font-extrabold desktop:text-7xl text-5xl desktop:leading-[96px] leading-[72px] tracking-[-1px] text-center desktop:mb-[64px] mb-[40px]">
-        큐밀리의
-        <br />
-        솔직 후기를 <br className="desktop:hidden" /> 들어보세요!
-      </h1>
-      <main className="w-full max-w-6xl mx-auto flex flex-col items-center">{children}</main>
-    </div>
+    <main className="flex flex-col items-center desktop:pt-[72px]">
+      <Banner title="후기" description="큐밀리의 솔직 후기를 들어보세요!" />
+      {children}
+    </main>
   );
 }
