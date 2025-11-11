@@ -92,7 +92,7 @@ const RecruitQnADropBoxAnswer = ({
           duration: isOpen ? 0.2 : 0.4,
         },
       }}
-      style={{ overflow: "hidden" }}
+      className="overflow-hidden"
     >
       <div ref={contentRef} className="">
         {children}
