@@ -1,114 +1,62 @@
 import Image from "next/image";
-import React from "react";
 
 export default function DesktopRecruitmentProcessItem() {
   const recruitmentProcess = [
     {
+      icon: { src: "/recruit/icons/Paper.svg", alt: "서류 지원" },
       title: "서류 지원 기간",
-      notice: (
-        <p className={"font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"}>
-          7월 17일(목) ~ 7월 26일(토)
-          <br />
-          자정 마감
-        </p>
-      ),
+      notice: ["7월 17일(목) ~ 7월 26일(토)", "자정 마감"],
     },
     {
+      icon: { src: "/recruit/icons/Call.svg", alt: "서류 합격" },
       title: "서류 합격 발표",
-      notice: (
-        <p className={"font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"}>
-          7월 29일(화) 합격자/불합격자 <br />
-          전체 연락
-        </p>
-      ),
+      notice: ["7월 29일(화)", "합격자/불합격자 전체 연락"],
     },
     {
+      icon: { src: "/recruit/icons/People.svg", alt: "면접 기간" },
       title: "면접 기간",
-      notice: (
-        <p className={"font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"}>
-          8월 2일(토) ~ 8월 3일(일) <br />
-          서류 합격자 개별 안내
-        </p>
-      ),
+      notice: ["8월 2일(토) ~ 8월 3일(일)", "서류 합격자 개별 안내"],
     },
     {
+      icon: { src: "/recruit/icons/Medal.svg", alt: "최종 발표" },
       title: "최종 합격 발표",
-      notice: (
-        <p className={"font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"}>
-          8월 5일(화) <br />
-          합격자/불합격자 전체 연락
-        </p>
-      ),
-    },
-    {
-      title: "32기 활동",
-      notice: (
-        <p className={"font-semibold text-[16px] leading-[150%] tracking-[-0.5px] text-center"}>
-          8월 9일(토) ~ 12월 6일(토)
-        </p>
-      ),
+      notice: ["8월 5일(화)", "합격자/불합격자 전체 연락"],
     },
   ];
 
   return (
-    <section className="hidden desktop:block desktop:flex flex-col">
-      <div className="flex">
-        {recruitmentProcess.map((process, index) => {
-          return (
-            <div key={process.title} className="relative flex pr-9">
-              <div className="flex flex-col items-center">
-                <div
-                  className={
-                    index === recruitmentProcess.length - 1
-                      ? "relative rounded-full"
-                      : "relative rounded-full p-5"
-                  }
-                >
-                  {index === recruitmentProcess.length - 1 && (
-                    <div className="absolute w-[220px] h-[220px] rounded-full bg-[#0055FF] opacity-20 z-0" />
-                  )}
-                  <div
-                    className={`relative z-10 flex justify-center items-center w-[172px] h-[172px] rounded-full 
-                                            ${
-                                              index % 2 === 0
-                                                ? index === recruitmentProcess.length - 1
-                                                  ? "bg-[#0055FF] opacity-100 m-6"
-                                                  : "bg-white"
-                                                : "bg-[#0055FF] opacity-100"
-                                            }`}
-                  >
-                    <p
-                      className={`font-[SUIT] font-extrabold text-[20px] leading-[100%] tracking-[0px] text-center 
-                                            ${
-                                              index % 2 === 0
-                                                ? index === recruitmentProcess.length - 1
-                                                  ? "text-white"
-                                                  : "text-[#0055FF]"
-                                                : "text-white"
-                                            }`}
-                    >
-                      {process.title}
-                    </p>
-                  </div>
-                </div>
-                <div className="h-[6px] bg-[#0055FF] w-[28px] mt-5 mb-10" />
-                {process.notice}
-              </div>
-              <div className="absolute right-0 top-[25%] flex items-center">
-                {index !== recruitmentProcess.length - 1 && (
-                  <Image
-                    className={""}
-                    src={"/recruit/icons/BlueArrow.svg"}
-                    alt={"파란색 화살표"}
-                    width={32}
-                    height={32}
-                  />
-                )}
-              </div>
+    <section className="flex flex-col items-center gap-[60px]">
+      <div className="flex gap-[20px]">
+        {recruitmentProcess.map((process, index) => (
+          <div
+            key={index}
+            className="flex flex-col gap-[20px] w-[220px] py-[20px] items-center bg-dark-blue-50 justify-center rounded-2xl"
+          >
+            <div className="flex justify-center items-center bg-gray-0 rounded-full w-[80px] h-[80px]">
+              <Image src={process.icon.src} alt={process.icon.alt} width={50} height={50} />
             </div>
-          );
-        })}
+            <div className="flex flex-col items-center gap-[12px]">
+              <h3 className="text-body-3 text-blue-600">{process.title}</h3>
+              <div className="w-[10.5px] h-[2px] bg-gray-200 rounded-xs" />
+              <span className="text-body-8 text-gray-700 flex flex-col items-center">
+                <p>{process.notice[0]}</p>
+                <p>{process.notice[1]}</p>
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
+      {/* TODO: 실제 지원 링크로 이동 */}
+      <button className="text-gray-0 rounded-full cursor-pointer w-fit text-body-4 flex gap-[12px] justify-center items-center px-[24px] py-[10px] bg-dark-blue-500">
+        <p>지원하러 가기</p>
+        <Image
+          src="/recruit/icons/WhiteArrow.svg"
+          alt="Arrow"
+          width={24}
+          height={24}
+          style={{ width: 24, height: 24 }}
+        />
+      </button>
     </section>
   );
 }
