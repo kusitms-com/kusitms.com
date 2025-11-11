@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { categories } from "@/constants/recruitData";
 import RecruitQnADropBox from "./RecruitQnADropBox";
 
 export default function RecruitQnA() {
@@ -127,8 +128,6 @@ export default function RecruitQnA() {
 
   const [selectedField, setSelectedField] = useState("전체");
   const [openQuestionId, setOpenQuestionId] = useState<string | null>(null);
-
-  const categories = ["전체", "선발", "지원", "활동"];
 
   const handleToggle = (questionId: string) => {
     setOpenQuestionId(openQuestionId === questionId ? null : questionId);
