@@ -1,6 +1,7 @@
 export interface Review {
   name: string;
   team: string;
+  cardinal: number;
   review: string;
   review_id: number;
 }
