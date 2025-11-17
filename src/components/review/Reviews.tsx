@@ -43,9 +43,11 @@ export default function Reviews({ reviews }: ReviewsProps) {
         onTeamChange={handleChangeTeamFilter}
         onCardinalChange={handleChangeCardinalFilter}
       />
-      <section className="grid desktop:grid-cols-3 grid-cols-1 gap-5 desktop:mb-[160px] mb-[80px] px-10">
+      <section className="desktop:columns-3 columns-1 gap-4 desktop:mb-[160px] mb-[80px] px-10">
         {filteredReviews.map((review) => (
-          <ReviewBox key={review.review_id} {...review} />
+          <div key={review.review_id} className="break-inside-avoid mb-4">
+            <ReviewBox {...review} />
+          </div>
         ))}
       </section>
     </>
