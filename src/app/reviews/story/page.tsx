@@ -1,15 +1,15 @@
 import React from "react";
 import ReviewNavButtons from "@/components/review/ReviewNavButtons";
-import Reviews from "@/components/review/Reviews";
-import { getReviews } from "@/service/reviews";
+import Stories from "@/components/review/story/Stories";
+import { getStories } from "@/service/reviews/getStories";
 
 async function ReviewsStoryPage() {
-  const reviews = await getReviews("");
+  const storiesResponse = await getStories({ page: 0 });
 
   return (
     <section className="w-full mx-auto max-w-[1024px]">
       <ReviewNavButtons />
-      <Reviews reviews={reviews} />
+      <Stories initialData={storiesResponse.data} />
     </section>
   );
 }
