@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { BlogCategory, BlogPosition } from "@/constants/blogTypes";
 import type { StoriesParams } from "@/service/reviews/getStories";
 import Dropdown from "../../projects/common/DropDown";
@@ -11,6 +11,23 @@ interface StoryFilterProps {
   onChange: (params: StoriesParams) => void;
 }
 
+const CATEGORIES = {
+  "모든 활동": undefined,
+  "서류 후기": BlogCategory.DOCUMENT,
+  "면접 후기": BlogCategory.INTERVIEW,
+  "기업 프로젝트": BlogCategory.GIFT,
+  "밋업 프로젝트": BlogCategory.MEETUP,
+  "소모임 · TF": BlogCategory.GROUP_TF,
+} as const;
+
+const POSITIONS = {
+  "모든 파트": undefined,
+  프론트엔드: BlogPosition.FRONTEND,
+  백엔드: BlogPosition.BACKEND,
+  디자이너: BlogPosition.DESIGNER,
+  기획: BlogPosition.PLAN,
+} as const;
+
 export default function StoryFilter({
   generation,
   position,
@@ -18,59 +35,13 @@ export default function StoryFilter({
   totalCount,
   onChange,
 }: StoryFilterProps) {
-  const generations = Array.from({ length: 7 }, (_, i) => `${31 - i}기`);
-  const genOptions = ["모든 기수", ...generations];
+  const genOptions = useMemo(
+    () => ["모든 기수", ...Array.from({ length: 7 }, (_, i) => `${31 - i}기`)],
+    [],
+  );
 
-  const categoryOptions = [
-    "모든 활동",
-    "서류 후기",
-    "면접 후기",
-    "기업 프로젝트",
-    "밋업 프로젝트",
-    "소모임 · TF",
-  ];
-  const categoryMap: Record<string, BlogCategory | undefined> = {
-    "모든 활동": undefined,
-    "서류 후기": BlogCategory.DOCUMENT,
-    "면접 후기": BlogCategory.INTERVIEW,
-    "기업 프로젝트": BlogCategory.GIFT,
-    "밋업 프로젝트": BlogCategory.MEETUP,
-    "소모임 · TF": BlogCategory.GROUP_TF,
-  };
-
-  const partOptions = ["모든 파트", "프론트엔드", "백엔드", "디자이너", "기획"];
-  const positionMap: Record<string, BlogPosition | undefined> = {
-    "모든 파트": undefined,
-    프론트엔드: BlogPosition.FRONTEND,
-    백엔드: BlogPosition.BACKEND,
-    디자이너: BlogPosition.DESIGNER,
-    기획: BlogPosition.PLAN,
-  };
-
-  const handleCategoryChange = (value: string) => {
-    const newCategory = categoryMap[value];
-    onChange({ generation, position, category: newCategory });
-  };
-
-  const handleGenerationChange = (value: string) => {
-    const newGeneration = value === "모든 기수" ? undefined : parseInt(value.replace("기", ""));
-    onChange({ generation: newGeneration, position, category });
-  };
-
-  const handlePositionChange = (value: string) => {
-    const newPosition = positionMap[value];
-    onChange({ generation, position: newPosition, category });
-  };
-
-  const getCategoryLabel = () => {
-    if (!category) return "모든 활동";
-    return Object.keys(categoryMap).find((k) => categoryMap[k] === category) || "모든 활동";
-  };
-
-  const getPositionLabel = () => {
-    if (!position) return "모든 파트";
-    return Object.keys(positionMap).find((k) => positionMap[k] === position) || "모든 파트";
-  };
+  const getSelectedLabel = <T,>(value: T | undefined, options: Record<string, T | undefined>) =>
+    Object.entries(options).find(([, v]) => v === value)?.[0] || Object.keys(options)[0];
 
   return (
     <div className="flex justify-between">
@@ -79,19 +50,37 @@ export default function StoryFilter({
       </p>
       <div className="flex gap-[12px]">
         <Dropdown
-          options={categoryOptions}
-          selected={getCategoryLabel()}
-          onSelect={handleCategoryChange}
+          options={Object.keys(CATEGORIES)}
+          selected={getSelectedLabel(category, CATEGORIES)}
+          onSelect={(value) =>
+            onChange({
+              generation,
+              position,
+              category: CATEGORIES[value as keyof typeof CATEGORIES],
+            })
+          }
         />
         <Dropdown
           options={genOptions}
           selected={generation ? `${generation}기` : "모든 기수"}
-          onSelect={handleGenerationChange}
+          onSelect={(value) =>
+            onChange({
+              generation: value === "모든 기수" ? undefined : parseInt(value.replace("기", "")),
+              position,
+              category,
+            })
+          }
         />
         <Dropdown
-          options={partOptions}
-          selected={getPositionLabel()}
-          onSelect={handlePositionChange}
+          options={Object.keys(POSITIONS)}
+          selected={getSelectedLabel(position, POSITIONS)}
+          onSelect={(value) =>
+            onChange({
+              generation,
+              position: POSITIONS[value as keyof typeof POSITIONS],
+              category,
+            })
+          }
         />
       </div>
     </div>
