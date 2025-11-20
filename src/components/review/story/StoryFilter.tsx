@@ -1,31 +1,30 @@
 import React, { useMemo } from "react";
-import { BlogCategory, BlogPosition } from "@/constants/blogTypes";
 import type { StoriesParams } from "@/service/reviews/getStories";
 import Dropdown from "../../projects/common/DropDown";
 
 interface StoryFilterProps {
   generation?: number;
-  position?: BlogPosition;
-  category?: BlogCategory;
+  position?: string;
+  category?: string;
   totalCount: number;
   onChange: (params: StoriesParams) => void;
 }
 
 const CATEGORIES = {
   "모든 활동": undefined,
-  "서류 후기": BlogCategory.DOCUMENT,
-  "면접 후기": BlogCategory.INTERVIEW,
-  "기업 프로젝트": BlogCategory.GIFT,
-  "밋업 프로젝트": BlogCategory.MEETUP,
-  "소모임 · TF": BlogCategory.GROUP_TF,
+  "서류 후기": "DOCUMENT",
+  "면접 후기": "INTERVIEW",
+  "기업 프로젝트": "GIFT",
+  "밋업 프로젝트": "MEETUP",
+  "소모임 · TF": "GROUP_TF",
 } as const;
 
 const POSITIONS = {
   "모든 파트": undefined,
-  프론트엔드: BlogPosition.FRONTEND,
-  백엔드: BlogPosition.BACKEND,
-  디자이너: BlogPosition.DESIGNER,
-  기획: BlogPosition.PLAN,
+  프론트엔드: "FRONTEND",
+  백엔드: "BACKEND",
+  디자이너: "DESIGNER",
+  기획: "PLAN",
 } as const;
 
 export default function StoryFilter({
@@ -40,7 +39,7 @@ export default function StoryFilter({
     [],
   );
 
-  const getSelectedLabel = <T,>(value: T | undefined, options: Record<string, T | undefined>) =>
+  const getSelectedLabel = (value: unknown, options: Record<string, unknown>) =>
     Object.entries(options).find(([, v]) => v === value)?.[0] || Object.keys(options)[0];
 
   return (

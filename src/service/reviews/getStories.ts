@@ -1,5 +1,3 @@
-import type { BlogCategory, BlogPosition } from "@/constants/blogTypes";
-
 export type Story = {
   title: string;
   address: string;
@@ -13,8 +11,8 @@ export type Story = {
 
 export type StoriesParams = {
   generation?: number;
-  position?: BlogPosition;
-  category?: BlogCategory;
+  position?: string;
+  category?: string;
   page?: number;
   size?: number;
 };

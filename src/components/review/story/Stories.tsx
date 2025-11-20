@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import TopScrollButton from "@/components/shared/TopScrollButton";
-import type { BlogCategory, BlogPosition } from "@/constants/blogTypes";
 import { getStories, type StoriesData, type StoriesParams } from "@/service/reviews/getStories";
 import Pagination from "./Pagination";
 import StoryCard from "./StoryCard";
@@ -17,8 +16,8 @@ type StoriesContainerProps = {
 export default function Stories({ initialData }: StoriesContainerProps) {
   const [storiesData, setStoriesData] = useState(initialData);
   const [generation, setGeneration] = useState<number | undefined>();
-  const [position, setPosition] = useState<BlogPosition | undefined>();
-  const [category, setCategory] = useState<BlogCategory | undefined>();
+  const [position, setPosition] = useState<string | undefined>();
+  const [category, setCategory] = useState<string | undefined>();
   const [currentPage, setCurrentPage] = useState(0);
 
   const router = useRouter();
