@@ -85,8 +85,7 @@ export const getStories = async (params?: StoriesParams): Promise<StoriesRespons
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "force-cache",
-      next: { revalidate: 604800, tags: ["stories"] },
+      cache: "no-store",
     });
 
     if (!res.ok) {
