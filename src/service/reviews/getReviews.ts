@@ -17,23 +17,19 @@ export interface ReviewResponse {
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-export const getReviews = async (team: string): Promise<ReviewResponse> => {
+export const getReviews = async (team: string, cardinal?: number): Promise<ReviewResponse> => {
   try {
-    const res = await fetch(`${baseUrl}/api/reviews?team=${team}`, {
+    const query = new URLSearchParams({ team });
+    if (cardinal !== undefined) query.append("cardinal", String(cardinal));
+
+    const res = await fetch(`${baseUrl}/api/reviews?${query.toString()}`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      cache: "force-cache",
-      next: { revalidate: 604800, tags: ["reviews"] },
+      headers: { "Content-Type": "application/json" },
     });
 
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
-    const data = await res.json();
-    return data;
+    return res.json();
   } catch (err) {
     console.error("Failed to fetch meetup projects:", err);
     throw err;
