@@ -17,7 +17,7 @@ export default function Dropdown({ options, selected, onSelect }: DropdownProps)
       <button
         onClick={() => setOpen(!open)}
         className={
-          "cursor-pointer flex px-5 items-center justify-between py-[10px] pr-[16px] pl-[20px] rounded-[8px] border border-gray-100 bg-white text-body-3 text-gray-600"
+          "cursor-pointer flex px-5 gap-[8px] items-center justify-between py-[10px] pr-[16px] pl-[20px] rounded-[8px] border border-gray-100 bg-white text-body-3 text-gray-600"
         }
       >
         {selected || "모든 기수"}
