@@ -57,7 +57,7 @@ export const Footer = () => {
         </div>
         <div>
           <h4 className="text-body-5 text-gray-800 mb-5 desktop:mt-[79px] mt-[40px]">Contact</h4>
-          <div className="flex gap-5">
+          <div className="flex desktop:gap-5 gap-[14px]">
             {SNSGROUPS.map((social, index) => (
               <IconLink key={index} img={social.img} link={social.link} />
             ))}
