@@ -32,7 +32,7 @@ export default function TimelineContainer({ children }: { children: React.ReactN
       </div>
       <motion.div
         aria-hidden
-        className="desktop:block absolute left-1/2 -translate-x-1/2 pointer-events-none flex items-center justify-center w-[48px]"
+        className="hidden desktop:block absolute left-1/2 -translate-x-1/2 pointer-events-none desktop:flex items-center justify-center w-[48px]"
         style={{ top: snowflakeY }}
       >
         <div className="absolute w-[80px] h-[80px] rounded-full blur-[14px] bg-[rgba(158,231,255,0.18)]" />
