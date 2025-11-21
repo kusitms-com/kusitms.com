@@ -2,10 +2,11 @@ import Image from "next/image";
 
 export default function Banner() {
   return (
-    <section className="w-full relative bg-[linear-gradient(120deg,_#EAF9FF_0%,_#99DEFF_90%,_#4688FE_120%)] overflow-hidden">
-      <div className="max-w-[2000px] mx-auto relative">
-        <div className="max-w-[1024px] mx-auto relative h-[320px] overflow-hidden">
-          <div className="max-w-[727px] h-[464px] relative ml-auto -top-[144px]">
+    <>
+      {/* 데스크톱 배너 */}
+      <section className="w-full hidden desktop:block relative overflow-hidden">
+        <div className="w-full mx-auto relative h-[400px] overflow-hidden">
+          <div className="h-[400px] relative ml-auto">
             <Image
               src={"/projects/Banner.svg"}
               alt={"Projects banner"}
@@ -14,16 +15,42 @@ export default function Banner() {
               className="object-cover"
             />
           </div>
-          <div className="absolute inset-0 flex mt-[51px] justify-start pl-[44px] pointer-events-none">
-            <div className="w-full">
-              <p className="text-[25px] font-extrabold text-dark-blue-600">More it, MORE IT</p>
-              <p className="text-[clamp(10px,1.6vw,18px)] font-semibold text-dark-blue-600">
-                KUSITMS 32기 학회원을 위한 페이지입니다
-              </p>
-            </div>
+          <div className="absolute inset-0 left-1/2 -translate-x-1/2 flex-col min-w-[1024px] flex p-[48px] justify-between pointer-events-none">
+            <Image src={"/projects/BannerDate.svg"} alt={"Banner date"} width={425} height={61} />
+            <Image src={"/projects/BannerText.svg"} alt={"Banner text"} width={582} height={154} />
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      {/* 모바일 배너 */}
+      <section className="w-full block desktop:hidden relative overflow-hidden">
+        <div className="w-full mx-auto relative h-[297px] overflow-hidden">
+          <div className="h-[297px] relative ml-auto">
+            <Image
+              src={"/projects/Banner.svg"}
+              alt={"Projects banner"}
+              priority
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="absolute inset-0 flex-col flex py-[36px] justify-between pointer-events-none">
+            <Image
+              src={"/projects/BannerDate.svg"}
+              alt={"Banner date"}
+              width={268}
+              height={42}
+              className="ml-[27px]"
+            />
+            <Image
+              src={"/projects/BannerText.svg"}
+              alt={"Banner text"}
+              width={281}
+              height={76}
+              className="ml-[20px]"
+            />
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
