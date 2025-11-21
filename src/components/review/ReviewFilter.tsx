@@ -1,32 +1,66 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
-import type { TeamType } from "./Reviews";
+"use client";
+
+import { useMemo } from "react";
+import Dropdown from "../projects/common/DropDown";
 
 interface ReviewFilterProps {
-  team: TeamType;
-  onChange: (team: "DEVELOPER" | "PLANNER" | "DESIGNER" | "") => void;
+  team: string;
+  cardinal?: number;
+  totalCount: number;
+  onChange: (params: { team?: string; cardinal?: number }) => void;
 }
 
-export default function ReviewFilter({ team, onChange }: ReviewFilterProps) {
-  const getButtonClass = (value: "DEVELOPER" | "PLANNER" | "DESIGNER" | "") =>
-    `desktop:px-8 px-4 desktop:py-5 py-2 rounded-[75px] desktop:text-xl text-sm cursor-pointer transition-colors text-white ${
-      team === value ? "bg-[#05f]" : "bg-[#2F3038]"
-    }`;
+const CARDINALS = {
+  "모든 기수": undefined,
+  "31기": 31,
+  "30기": 30,
+  "29기": 29,
+  "28기": 28,
+  "27기": 27,
+} as const;
+
+const TEAMS = {
+  "모든 파트": "",
+  기획: "PLANNER",
+  디자인: "DESIGNER",
+  프론트: "FRONTEND",
+  백엔드: "BACKEND",
+} as const;
+
+const getSelectedLabel = <T,>(value: T | undefined, options: Record<string, T | undefined>) =>
+  Object.entries(options).find(([, v]) => v === value)?.[0] || Object.keys(options)[0];
+
+export default function ReviewFilter({ team, cardinal, totalCount, onChange }: ReviewFilterProps) {
+  const cardinalOptions = useMemo(() => Object.keys(CARDINALS), []);
+  const teamOptions = useMemo(() => Object.keys(TEAMS), []);
 
   return (
-    <section className="flex desktop:gap-12 gap-3 desktop:mb-[120px] mb-[60px]">
-      <button className={getButtonClass("")} onClick={() => onChange("")}>
-        전체
-      </button>
-      <button className={getButtonClass("PLANNER")} onClick={() => onChange("PLANNER")}>
-        기획
-      </button>
-      <button className={getButtonClass("DEVELOPER")} onClick={() => onChange("DEVELOPER")}>
-        개발
-      </button>
-      <button className={getButtonClass("DESIGNER")} onClick={() => onChange("DESIGNER")}>
-        디자인
-      </button>
-    </section>
+    <div className="flex justify-between px-10 pb-[39px]">
+      <p className="text-title-7 text-gray-700">
+        전체 후기 <span className="text-dark-blue-600">{totalCount}</span>개
+      </p>
+      <div className="flex gap-[12px]">
+        <Dropdown
+          options={cardinalOptions}
+          selected={getSelectedLabel(cardinal, CARDINALS)}
+          onSelect={(value) =>
+            onChange({
+              team,
+              cardinal: CARDINALS[value as keyof typeof CARDINALS],
+            })
+          }
+        />
+        <Dropdown
+          options={teamOptions}
+          selected={getSelectedLabel(team, TEAMS)}
+          onSelect={(value) =>
+            onChange({
+              team: TEAMS[value as keyof typeof TEAMS],
+              cardinal,
+            })
+          }
+        />
+      </div>
+    </div>
   );
 }

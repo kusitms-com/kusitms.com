@@ -1,36 +1,51 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { getReviews, type ReviewResponse } from "@/service/reviews";
 import ReviewBox from "./ReviewBox";
 import ReviewFilter from "./ReviewFilter";
-import ReviewsTotalCount from "./ReviewsTotalCount";
-
-export type TeamType = "DEVELOPER" | "PLANNER" | "DESIGNER" | "";
 
 interface ReviewsProps {
   reviews: ReviewResponse;
 }
 
 export default function Reviews({ reviews }: ReviewsProps) {
-  const [team, setTeam] = useState<TeamType>("");
+  const [team, setTeam] = useState<string>("");
+  const [cardinal, setCardinal] = useState<number | undefined>(undefined);
   const [reviewList, setReviewList] = useState(reviews);
 
-  const handleChangeReviewFilter = async (team: TeamType) => {
-    setTeam(team);
-    const reviews = await getReviews(team);
-    setReviewList(reviews);
+  const fetchReviews = async (nextTeam: string, nextCardinal?: number) => {
+    const response = await getReviews(nextTeam, nextCardinal);
+    setReviewList(response);
   };
+
+  const handleFilterChange = (params: { team?: string; cardinal?: number }) => {
+    const hasNextCardinal = Object.hasOwn(params, "cardinal");
+    const updatedTeam = params.team ?? team;
+    const updatedCardinal = hasNextCardinal ? params.cardinal : cardinal;
+    setTeam(updatedTeam);
+    setCardinal(updatedCardinal);
+    fetchReviews(updatedTeam, updatedCardinal);
+  };
+
+  const reviewCount = reviewList.data.review_count;
+  const reviewItems = reviewList.data.review_list;
+
   return (
     <>
-      <ReviewsTotalCount reviewsCount={reviewList.data.review_count} />
-      <ReviewFilter team={team} onChange={handleChangeReviewFilter} />
-      <section className="grid desktop:grid-cols-3 grid-cols-1 gap-5 desktop:mb-[160px] mb-[80px] px-5">
-        {reviewList.data.review_list.map((review) => (
-          <ReviewBox key={review.review_id} {...review} />
+      <ReviewFilter
+        team={team}
+        cardinal={cardinal}
+        totalCount={reviewCount}
+        onChange={handleFilterChange}
+      />
+      <section className="desktop:columns-3 columns-1 gap-4 desktop:mb-[160px] mb-[80px] px-10 desktop:max-w-none max-w-[420px] mx-auto">
+        {reviewItems.map((review) => (
+          <div key={review.review_id} className="break-inside-avoid mb-4">
+            <ReviewBox {...review} />
+          </div>
         ))}
       </section>
-      ;
     </>
   );
 }
