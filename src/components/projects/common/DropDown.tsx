@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 
 interface DropdownProps {
   options: string[];
@@ -9,11 +9,7 @@ interface DropdownProps {
   onSelect: (value: string) => void;
 }
 
-export default function Dropdown({
-  options,
-  selected,
-  onSelect,
-}: DropdownProps) {
+export default function Dropdown({ options, selected, onSelect }: DropdownProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -21,16 +17,12 @@ export default function Dropdown({
       <button
         onClick={() => setOpen(!open)}
         className={
-          "cursor-pointer flex px-5 items-center justify-between w-[138px] h-[43px] rounded-[8px] border border-gray-100 bg-white text-body-3 text-gray-600"
+          "cursor-pointer flex px-5 gap-[8px] items-center justify-between py-[10px] pr-[16px] pl-[20px] rounded-[8px] border border-gray-100 bg-white text-body-3 text-gray-600"
         }
       >
         {selected || "모든 기수"}
         <Image
-          src={
-            open
-              ? "/projects/icons/ArrowUp.svg"
-              : "/projects/icons/ArrowDown.svg"
-          }
+          src={open ? "/projects/icons/ArrowUp.svg" : "/projects/icons/ArrowDown.svg"}
           alt={open ? "Arrow up" : "Arrow down"}
           width={24}
           height={24}
@@ -48,7 +40,7 @@ export default function Dropdown({
               }}
               className={`cursor-pointer block w-full  text-left px-4 py-3 text-body-3 hover:bg-gray-50 ${
                 selected === option ? "text-dark-blue-600" : "text-gray-600"
-              }`}
+              } whitespace-nowrap`}
             >
               {option}
             </button>
