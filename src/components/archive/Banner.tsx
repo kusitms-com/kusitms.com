@@ -5,32 +5,34 @@ export default function Banner() {
     <>
       {/* 데스크톱 배너 */}
       <section className="w-full hidden desktop:block relative overflow-hidden">
-        <div className="w-full mx-auto relative h-[400px] overflow-hidden">
-          <div className="h-[400px] relative ml-auto">
+        <div className="w-full mx-auto relative h-[400px]">
+          <div className="relative h-[400px] w-full">
             <Image
               src={"/projects/Banner.svg"}
               alt={"Projects banner"}
               priority
               fill
-              className="object-cover"
+              className="object-cover object-center"
             />
           </div>
-          <div className="absolute inset-0 left-1/2 -translate-x-1/2 flex-col min-w-[1024px] flex p-[48px] justify-between pointer-events-none">
-            <Image src={"/projects/BannerDate.svg"} alt={"Banner date"} width={425} height={61} />
-            <Image src={"/projects/BannerText.svg"} alt={"Banner text"} width={582} height={154} />
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="flex flex-col w-full max-w-[1024px] px-[48px] h-full justify-between py-[48px]">
+              <Image src={"/projects/BannerDate.svg"} alt={"Banner date"} width={425} height={61} />
+              <Image src={"/projects/BannerText.svg"} alt={"Banner text"} width={582} height={154} />
+            </div>
           </div>
         </div>
       </section>
       {/* 모바일 배너 */}
       <section className="w-full block desktop:hidden relative overflow-hidden">
-        <div className="w-full mx-auto relative h-[297px] overflow-hidden">
-          <div className="h-[297px] relative ml-auto">
+        <div className="w-full mx-auto relative h-[297px]">
+          <div className="h-[297px] w-full relative">
             <Image
               src={"/projects/Banner.svg"}
               alt={"Projects banner"}
               priority
               fill
-              className="object-cover"
+              className="object-cover object-center"
             />
           </div>
           <div className="absolute inset-0 flex-col flex py-[36px] justify-between pointer-events-none">
