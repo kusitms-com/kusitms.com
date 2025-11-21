@@ -8,7 +8,7 @@ async function ArchivePage() {
   const response = await getMeetupProjects("31", "");
   const meetupProjects: MeetupItem[] = response.data?.meetup_list || [];
   return (
-    <main className="desktop:pt-[72px] mx-auto bg-gradient overflow-x-hidden">
+    <main className="desktop:pt-[72px] mx-auto bg-gradient-1 overflow-x-hidden">
       <Banner />
       <MeetupProjectCarousel projects={meetupProjects} archiveMode={true} />
       <ArchiveContainerPage />
