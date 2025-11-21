@@ -6,7 +6,7 @@ import TimelineItem from "./interaction/TimelineItem";
 
 export default function ArchiveContainerPage() {
   return (
-    <main className="mx-auto desktop:max-w-[1024px] max-w-[320px]">
+    <main className="mx-auto desktop:max-w-[1024px] desktop:pb-0 pb-40 max-w-[320px]">
       <TimelineHeader />
       <TimelineContainer>
         {TIMELINE_DATA.map((item, index) => {
