@@ -6,21 +6,25 @@ import TimelineItem from "./interaction/TimelineItem";
 
 export default function ArchiveContainerPage() {
   return (
-    <main>
+    <main className="mx-auto desktop:max-w-[1024px] desktop:pb-0 pb-40 max-w-[320px]">
       <TimelineHeader />
       <TimelineContainer>
         {TIMELINE_DATA.map((item, index) => {
           return (
             <TimelineItem key={index} isLeft={item.isLeft}>
-              <p className="text-body-1 font-bold mb-[10px] text-gray-700">{item.title}</p>
-              <p className="text-gray-500 text-body-8 mb-9">{item.description}</p>
+              <p className="desktop:text-body-1 text-body-5 font-bold mb-[10px] text-gray-700">
+                {item.title}
+              </p>
+              <p className="text-gray-500 text-body-8 desktop:mb-9 mb-8">{item.description}</p>
               <Image
                 src={item.src}
                 alt={item.alt}
                 priority
                 width={368}
                 height={245}
-                className={"rounded-[16px] min-w-[368px] min-h-[245px]"}
+                className={
+                  "desktop:rounded-[16px] rounded-[12px] w-[288px] h-[192px] desktop:min-w-[368px] desktop:min-h-[245px]"
+                }
               />
             </TimelineItem>
           );

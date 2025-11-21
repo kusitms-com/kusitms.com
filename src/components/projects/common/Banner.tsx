@@ -15,7 +15,7 @@ export default function Banner({
         <div className="max-w-[1024px] mx-auto relative h-[180px] overflow-hidden">
           <div className="max-w-[727px] h-[464px] relative ml-auto -top-[205px]">
             <Image
-              src={"/projects/Banner.svg"}
+              src={"/projects/ProjectBanner.svg"}
               alt={"Projects banner"}
               priority
               fill

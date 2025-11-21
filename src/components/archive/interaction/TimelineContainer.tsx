@@ -17,8 +17,8 @@ export default function TimelineContainer({ children }: { children: React.ReactN
     ["0%", "20%", "45%", "70%", "99%"],
   );
   return (
-    <div ref={containerRef} className="relative max-w-[1024px] mx-auto pt-[248px]">
-      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[2px] h-full">
+    <div ref={containerRef} className="relative max-w-[1024px] mx-auto desktop:pt-[248px]">
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[2px] h-full desktop:block hidden">
         <motion.div
           aria-hidden
           className="absolute w-full overflow-hidden"
@@ -32,7 +32,7 @@ export default function TimelineContainer({ children }: { children: React.ReactN
       </div>
       <motion.div
         aria-hidden
-        className="absolute left-1/2 -translate-x-1/2 pointer-events-none flex items-center justify-center w-[48px]"
+        className="hidden desktop:block absolute left-1/2 -translate-x-1/2 pointer-events-none desktop:flex items-center justify-center w-[48px]"
         style={{ top: snowflakeY }}
       >
         <div className="absolute w-[80px] h-[80px] rounded-full blur-[14px] bg-[rgba(158,231,255,0.18)]" />

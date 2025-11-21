@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { IconLink } from "./LinkCircle";
+import TopScrollButton from "./TopScrollButton";
 
 const SNSGROUPS = [
   {
@@ -35,18 +36,23 @@ export const Footer = () => {
     <footer className="w-full py-[60px]">
       <div className="max-w-[1180px] w-full mx-auto flex desktop:flex-row flex-col justify-between px-10">
         <div className="flex flex-col mt-1">
-          <Image
-            src="/footerLogo.svg"
-            alt="큐시즘 로고"
-            width={121}
-            height={20}
-            priority
-            className="py-[7px] pr-[10.2px]"
-          />
+          <div className="flex items-center justify-between">
+            <Image
+              src="/footerLogo.svg"
+              alt="큐시즘 로고"
+              width={121}
+              height={20}
+              priority
+              className="py-[7px] pr-[10.2px]"
+            />
+            <div className="desktop:hidden block">
+              <TopScrollButton />
+            </div>
+          </div>
           <Link
             href="https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/policy/kusitms_31st_policy.pdf"
             target="_blank"
-            className="text-body-6 text-gray-800 underline mt-10"
+            className="text-body-6 text-gray-800 underline desktop:mt-10 mt-4"
           >
             학회정관
           </Link>
@@ -57,7 +63,7 @@ export const Footer = () => {
         </div>
         <div>
           <h4 className="text-body-5 text-gray-800 mb-5 desktop:mt-[79px] mt-[40px]">Contact</h4>
-          <div className="flex gap-5">
+          <div className="flex desktop:gap-5 gap-[14px]">
             {SNSGROUPS.map((social, index) => (
               <IconLink key={index} img={social.img} link={social.link} />
             ))}

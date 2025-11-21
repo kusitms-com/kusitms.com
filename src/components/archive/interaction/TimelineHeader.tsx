@@ -18,17 +18,26 @@ export default function TimelineHeader() {
   };
   return (
     <motion.div
-      className="flex w-full justify-center pt-[460px] pb-16 overflow-hidden"
+      className="flex w-full justify-center desktop:pt-[460px] pt-[160px] pb-20 desktop:pb-16 overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 1 }}
     >
-      <div className="flex gap-[15px] items-center">
+      <div className="flex gap-[8px] desktop:gap-[15px] items-center">
         <motion.div variants={itemVariants}>
-          <Image src="/display/snowflake_1.svg" alt="Interaction Image" width={38} height={41} />
+          <Image
+            src="/display/snowflake_1.svg"
+            alt="Interaction Image"
+            width={38}
+            height={41}
+            className="desktop:w-[38px] desktop:h-[41px] w-[20px] h-[21.7px]"
+          />
         </motion.div>
-        <motion.p className="text-dark-blue-500 text-title-5 font-bold" variants={itemVariants}>
+        <motion.p
+          className="text-dark-blue-500 desktop:text-title-5 text-title-7 font-bold"
+          variants={itemVariants}
+        >
           32th KUSITMS
         </motion.p>
       </div>

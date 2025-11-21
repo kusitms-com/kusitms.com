@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { MeetupItem } from "@/service/projects/getMeetupProjects";
 
 interface MeetupProjectCarouselProps {
@@ -18,15 +18,23 @@ export default function MeetupProjectCarousel({
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const BASE_W = 404;
-  const BASE_H = 255;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const BASE_W = isMobile ? 200 : 404;
+  const BASE_H = isMobile ? 126 : 255;
+  const OVERLAP1 = isMobile ? 50 : -20;
+  const OVERLAP2 = isMobile ? 40 : 0;
 
   const SCALE = { 0: 1, 1: 0.75, 2: 0.6 } as const;
   const BLUR = { 0: 0, 1: 2.5, 2: 2.5 } as const;
   const OPACITY = { 0: 1, 1: 0.9, 2: 0.7 } as const;
-
-  const OVERLAP1 = -20;
-  const OVERLAP2 = 0;
 
   const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
@@ -73,19 +81,29 @@ export default function MeetupProjectCarousel({
   };
 
   const archiveClassName = archiveMode
-    ? "h-[588px] align-center items-end"
+    ? "desktop:h-[588px] h-[408px] align-center items-end"
     : "mt-[54px] min-h-[260px] overflow-visible items-center";
 
   return (
     <div className="w-full flex flex-col items-center ">
       <div className={`relative w-full flex   ${archiveClassName}`}>
         {archiveMode && (
-          <div className="absolute top-[160px] items-center flex flex-col w-full gap-4">
-            <p className="text-title-5 text-gray-900 font-bold">32기 큐시즘 전시회</p>
-            <p className="text-body-4 text-gray-500 text-center">
-              큐밀리들의 두 달간의 여정, 밋업프로젝트의 서비스들을 소개합니다.
+          <div className="absolute desktop:top-[160px] top-[90px] items-center flex flex-col w-full gap-4">
+            <p className="text-title-7 desktop:text-title-5 text-gray-900 font-bold">
+              32기 큐시즘 전시회
+            </p>
+            <p className="text-body-8 desktop:text-body-4 text-gray-500 text-center">
+              큐밀리들의 두 달간의 여정,&nbsp;
+              <span className="desktop:hidden">
+                <br />
+              </span>
+              밋업프로젝트의 서비스들을 소개합니다.
               <br />
-              이번 전시회에서는 아래 서비스들을 직접 만나보실 수 있어요.
+              이번 전시회에서는 아래 서비스들을&nbsp;
+              <span className="desktop:hidden">
+                <br />
+              </span>
+              직접 만나보실 수 있어요.
             </p>
           </div>
         )}

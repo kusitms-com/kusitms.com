@@ -23,7 +23,11 @@ export default function TimelineItem({ isLeft, children }: TimelineItemProps) {
       variants={itemVariants}
       viewport={{ once: true, amount: 0.7 }}
     >
-      <div className={`w-[368px] mx-10 ${isLeft ? "text-right" : "text-left"}`}>{children}</div>
+      <div
+        className={`desktop:w-[368px] desktop:mx-10 px-4 flex flex-col items-center text-left desktop:${isLeft ? "text-right" : "text-left"}`}
+      >
+        {children}
+      </div>
     </motion.div>
   );
 }
