@@ -40,15 +40,15 @@ function MobilePageNav() {
   return (
     <>
       {/* 햄버거 메뉴 버튼 */}
-      <div className="desktop:hidden">
+      <div className="desktop:hidden flex items-center">
         <button onClick={toggleMenu}>
           {!isMenuOpen ? (
             <Image
               src="/projects/icons/menu.svg"
               alt="메뉴"
-              width={32}
-              height={32}
-              className="w-[32px] h-[32px]"
+              width={24}
+              height={24}
+              className="w-[24px] h-[24px]"
             />
           ) : (
             <Image
@@ -64,21 +64,19 @@ function MobilePageNav() {
 
       {/* 헤더 아래 메뉴 오버레이 */}
       {isMenuOpen && (
-        <div className="fixed top-[74px] left-0 right-0 bottom-0 bg-[#151519] z-40 flex flex-col justify-center">
+        <div className="fixed top-[69px] left-0 right-0 bottom-0 bg-white z-40 flex flex-col ">
           {/* 메뉴 항목들 */}
-          <div className="flex flex-col justify-center items-center space-y-8 px-8">
-            {navLinks.map((link, index) => (
+          <div className="flex flex-col justify-center items-center">
+            {navLinks.map((link) => (
               <React.Fragment key={link.href}>
                 <Link
                   href={link.href}
                   onClick={closeMenu}
-                  className="text-white text-2xl font-medium text-center"
+                  className="px-[20px] py-[16px] flex flex-col gap-[12px] text-center text-gray-800 text-body-2"
                 >
                   {link.label}
+                  <div className="w-[288px] max-w-md h-[2px] bg-gray-100" />
                 </Link>
-                {index < navLinks.length - 1 && (
-                  <div className="w-full max-w-md h-px bg-[#4A4B52]" />
-                )}
               </React.Fragment>
             ))}
           </div>
