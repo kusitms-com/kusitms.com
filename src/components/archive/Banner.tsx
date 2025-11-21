@@ -18,7 +18,12 @@ export default function Banner() {
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="flex flex-col w-full max-w-[1024px] px-[48px] h-full justify-between py-[48px]">
               <Image src={"/projects/BannerDate.svg"} alt={"Banner date"} width={425} height={61} />
-              <Image src={"/projects/BannerText.svg"} alt={"Banner text"} width={582} height={154} />
+              <Image
+                src={"/projects/BannerText.svg"}
+                alt={"Banner text"}
+                width={582}
+                height={154}
+              />
             </div>
           </div>
         </div>
@@ -32,7 +37,7 @@ export default function Banner() {
               alt={"Projects banner"}
               priority
               fill
-              className="object-cover object-center"
+              style={{ objectFit: "none", objectPosition: "center top" }}
             />
           </div>
           <div className="absolute inset-0 flex-col flex py-[36px] justify-between pointer-events-none">
