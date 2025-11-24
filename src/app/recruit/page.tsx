@@ -28,7 +28,7 @@ async function RecruitPage() {
 
   return (
     <main className="flex flex-col items-center w-full">
-      <div className="w-[1024px] flex flex-col items-center gap-[200px] pt-[172px] px-[40px]">
+      <div className="desktop:w-[1024px] w-[320px] flex flex-col items-center gap-[100px] desktop:gap-[200px] pt-[80px] desktop:pt-[172px] desktop:px-[40px]">
         <RecruitmentTogether />
         {/* 모집 정보 */}
         <div className="w-full flex flex-col gap-y-[100px] items-center">
