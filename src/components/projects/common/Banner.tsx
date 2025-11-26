@@ -2,7 +2,7 @@ import Image from "next/image";
 
 interface BannerProps {
   title?: string;
-  description?: string;
+  description?: string | React.ReactNode;
 }
 
 export default function Banner({
