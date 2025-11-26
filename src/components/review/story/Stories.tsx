@@ -97,7 +97,7 @@ export default function Stories({ initialData }: StoriesContainerProps) {
           />
         )}
         {!generation && !position && !category && (
-          <div className="mt-6">
+          <div className="mt-6 desktop:block hidden">
             <TopScrollButton />
           </div>
         )}
