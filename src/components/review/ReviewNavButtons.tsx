@@ -12,18 +12,24 @@ export default function ReviewNavButtons() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full h-[158px] flex px-10 pt-5">
+    <nav className="w-full desktop:h-[158px] h-[104px] flex desktop:px-10 pt-5">
       {NAV_ITEMS.map((item) => {
         const isActive = pathname === item.path;
         return (
           <Link
             key={item.path}
             href={item.href}
-            className={`w-1/2 h-[78px] flex justify-center items-center ${
+            className={`w-1/2 desktop:h-[78px] h-[48px] flex justify-center items-center ${
               isActive ? "border-dark-blue-500 border-b-[3px]" : "border-gray-100 border-b-[2px]"
             }`}
           >
-            <p className={`text-gray-700 ${isActive ? "text-body-1" : "text-body-2"}`}>
+            <p
+              className={[
+                "text-gray-700",
+                isActive ? "text-body-5" : "text-body-6",
+                isActive ? "desktop:text-body-1" : "desktop:text-body-2",
+              ].join(" ")}
+            >
               {item.label}
             </p>
           </Link>
