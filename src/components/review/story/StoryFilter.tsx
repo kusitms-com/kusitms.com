@@ -43,11 +43,11 @@ export default function StoryFilter({
     Object.entries(options).find(([, v]) => v === value)?.[0] || Object.keys(options)[0];
 
   return (
-    <div className="flex justify-between">
-      <p className="text-title-7 text-gray-700 pb-[39px]">
+    <div className="flex desktop:flex-row flex-col justify-between">
+      <p className="desktop:text-title-7 text-body-5 text-gray-700 desktop:pb-[39px] pb-[12px]">
         전체 게시글 <span className="text-dark-blue-600">{totalCount}</span>개
       </p>
-      <div className="flex gap-[12px]">
+      <div className="flex desktop:gap-[12px] gap-[8px] pb-[20px] desktop:pb-0">
         <Dropdown
           options={Object.keys(CATEGORIES)}
           selected={getSelectedLabel(category, CATEGORIES)}

@@ -49,55 +49,59 @@ export default function Stories({ initialData }: StoriesContainerProps) {
   };
 
   return (
-    <div className="w-full mb-[32px] px-10">
-      <StoryFilter
-        generation={generation}
-        position={position}
-        category={category}
-        totalCount={storiesData.totalElements}
-        onChange={handleFilterChange}
-      />
-      <div className="flex flex-col gap-8">
-        {storiesData.content.length > 0 ? (
-          storiesData.content.map((story) => (
-            <Link
-              key={story.blog_post_id}
-              href={story.address}
-              prefetch={false}
-              onMouseEnter={() => {
-                router.prefetch(story.address);
-              }}
-            >
-              <StoryCard>
-                <StoryCard.Thumbnail src={story.imageAddress} />
-                <StoryCard.Info>
-                  <StoryCard.Title>{story.title}</StoryCard.Title>
-                  <StoryCard.Content>{story.content}</StoryCard.Content>
-                  <StoryCard.TagContainer>
-                    <StoryCard.Tag>{story.categoryName}</StoryCard.Tag>
-                    <StoryCard.Tag>{story.cardinal}기</StoryCard.Tag>
-                    <StoryCard.Tag>{story.position}</StoryCard.Tag>
-                  </StoryCard.TagContainer>
-                </StoryCard.Info>
-              </StoryCard>
-            </Link>
-          ))
-        ) : (
-          <p className="text-center text-gray-500 py-10">후기가 없습니다.</p>
+    <>
+      <div className="desktop:px-10 pl-4">
+        <StoryFilter
+          generation={generation}
+          position={position}
+          category={category}
+          totalCount={storiesData.totalElements}
+          onChange={handleFilterChange}
+        />
+      </div>
+      <div className="w-full mb-[32px] desktop:px-10 px-4 desktop:max-w-[1024px] mx-auto">
+        <div className="flex flex-col desktop:gap-8 gap-5 desktop:mb-14 mb-9">
+          {storiesData.content.length > 0 ? (
+            storiesData.content.map((story) => (
+              <Link
+                key={story.blog_post_id}
+                href={story.address}
+                prefetch={false}
+                onMouseEnter={() => {
+                  router.prefetch(story.address);
+                }}
+              >
+                <StoryCard>
+                  <StoryCard.Thumbnail src={story.imageAddress} />
+                  <StoryCard.Info>
+                    <StoryCard.Title>{story.title}</StoryCard.Title>
+                    <StoryCard.Content>{story.content}</StoryCard.Content>
+                    <StoryCard.TagContainer>
+                      <StoryCard.Tag>{story.categoryName}</StoryCard.Tag>
+                      <StoryCard.Tag>{story.cardinal}기</StoryCard.Tag>
+                      <StoryCard.Tag>{story.position}</StoryCard.Tag>
+                    </StoryCard.TagContainer>
+                  </StoryCard.Info>
+                </StoryCard>
+              </Link>
+            ))
+          ) : (
+            <p className="text-center text-gray-500 py-10">후기가 없습니다.</p>
+          )}
+        </div>
+        {storiesData.totalPages > 0 && (
+          <Pagination
+            currentPage={currentPage + 1}
+            totalPages={storiesData.totalPages}
+            onPageChange={handlePageChange}
+          />
+        )}
+        {!generation && !position && !category && (
+          <div className="mt-6">
+            <TopScrollButton />
+          </div>
         )}
       </div>
-      {storiesData.totalPages > 0 && (
-        <Pagination
-          currentPage={currentPage + 1}
-          totalPages={storiesData.totalPages}
-          onPageChange={handlePageChange}
-        />
-      )}
-      {!generation && !position && !category && (
-        <div className="mt-6">
-          <TopScrollButton />
-        </div>
-      )}
-    </div>
+    </>
   );
 }
