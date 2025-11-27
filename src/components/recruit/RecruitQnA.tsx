@@ -142,10 +142,10 @@ export default function RecruitQnA() {
             key={category}
             type="button"
             onClick={() => setSelectedField(category)}
-            className={`desktop:w-[120px] w-[80px] cursor-pointer desktop:py-[10px] py-[8px] rounded-full text-body-6 desktop:text-body-2 
-              ${
-                selectedField === category ? "bg-dark-blue-50 text-dark-blue-600" : "text-gray-700"
-              }`}
+            className={`desktop:w-[120px] w-[80px] cursor-pointer desktop:py-[10px] py-[8px] rounded-full text-body-6 desktop:text-body-2
+    transition-colors duration-300
+    ${selectedField === category ? "bg-dark-blue-50 text-dark-blue-600" : "text-gray-700"}
+  `}
           >
             {category}
           </button>
