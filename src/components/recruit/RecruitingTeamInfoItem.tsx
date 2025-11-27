@@ -12,7 +12,7 @@ export default function RecruitingTeamInfoItem() {
   return (
     <section className="flex flex-col gap-[40px] desktop:gap-[60px] w-full">
       {/* 파트 선택 네비게이션 */}
-      <div className="flex desktop:gap-[20px] justify-center">
+      <div className="flex desktop:gap-[20px] gap-3 justify-center">
         {recruitInfoItems.map((item) => (
           <button
             key={item.role}
