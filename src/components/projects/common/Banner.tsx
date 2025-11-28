@@ -6,8 +6,8 @@ interface BannerProps {
 }
 
 export default function Banner({
-  title = "프로젝트",
-  description = "KUSITMS의 기업, 밋업(Meet-up) 프로젝트를 만나보세요",
+  title,
+  description 
 }: BannerProps) {
   return (
     <>

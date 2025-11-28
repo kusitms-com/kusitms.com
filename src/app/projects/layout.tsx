@@ -38,7 +38,16 @@ export default async function ProjectsLayout({
 }>) {
   return (
     <main className="flex flex-col items-center desktop:pt-[72px]">
-      <Banner />
+      <Banner 
+        title="프로젝트"
+        description={
+          <>
+            KUSITMS의 기업, 밋업(Meet-up) 
+            <br className="desktop:hidden" />
+            프로젝트를 만나보세요
+          </>
+        } 
+      />
       {children}
     </main>
   );
