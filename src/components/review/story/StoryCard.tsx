@@ -9,7 +9,7 @@ interface CardProps {
 export default function StoryCard({ children, onClick }: CardProps) {
   return (
     <div
-      className="relative flex gap-7 items-center overflow-hidden rounded-[16px]"
+      className="relative flex desktop:gap-7 gap-3 items-center  overflow-hidden rounded-[16px]"
       onClick={onClick}
     >
       {children}
@@ -21,7 +21,7 @@ const Thumbnail = ({ src }: { src: string }) => (
   <Image
     src={src}
     alt="thumbnail"
-    className="aspect-[240/164] min-w-60 object-cover rounded-2xl bg-gray-100"
+    className="w-[104px] h-[104px] desktop:aspect-[240/164] desktop:min-w-60 desktop:h-auto object-cover rounded-2xl bg-gray-100"
     width={240}
     height={164}
     unoptimized
@@ -33,19 +33,21 @@ const Info = ({ children }: { children: ReactNode }) => (
 );
 
 const Title = ({ children }: { children: ReactNode }) => (
-  <p className="text-body-1 text-gray-700">{children}</p>
+  <p className="desktop:text-body-1 text-body-5 text-gray-700">{children}</p>
 );
 
 const Content = ({ children }: { children: ReactNode }) => (
-  <p className="text-gray-500 text-body-6 line-clamp-2">{children}</p>
+  <p className="text-gray-500 desktop:text-body-6 text-body-8 line-clamp-2">{children}</p>
 );
 
 const TagContainer = ({ children }: { children: ReactNode }) => (
-  <div className="flex gap-2 mt-4">{children}</div>
+  <div className="flex desktop:gap-2 gap-1 desktop:mt-4 mt-2 flex-wrap">{children}</div>
 );
 
 const Tag = ({ children }: { children: ReactNode }) => (
-  <span className="px-3 py-1 bg-gray-50 text-body-8 text-gray-500 rounded-[6px]">{children}</span>
+  <span className="px-3 py-1 bg-gray-50 text-body-8 text-gray-500 rounded-[6px] truncate">
+    {children}
+  </span>
 );
 
 StoryCard.Thumbnail = Thumbnail;

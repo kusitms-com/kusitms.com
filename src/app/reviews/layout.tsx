@@ -47,7 +47,16 @@ export default async function ReviewsLayout({
 }>) {
   return (
     <main className="flex flex-col items-center desktop:pt-[72px]">
-      <Banner title="후기" description="큐밀리의 솔직 후기를 들어보세요!" />
+      <Banner
+        title="후기"
+        description={
+          <>
+            큐밀리의 솔직 후기를
+            <br className="desktop:hidden" />
+            들어보세요!
+          </>
+        }
+      />
       {children}
     </main>
   );
