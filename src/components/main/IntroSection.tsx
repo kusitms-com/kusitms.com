@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 const BACKGROUND_GRADIENT =
@@ -17,19 +18,78 @@ export default function IntroSection() {
         <br />
         It, Management Society
       </p>
-      <div className="absolute z-10 top-[72px] left-[84px] space-y-4">
-        <p className={`${OUTLINE_TEXT_BASE} text-[42px]`}>KUSITMS 32nd</p>
-        <div className="flex items-center gap-x-9">
-          <p className={`${OUTLINE_TEXT_BASE} text-[68px]`}>More it, MORE IT</p>
-          <Image src="/main/Snow.svg" alt="Snow" width={54} height={59} />
-        </div>
-      </div>
-      <Image
-        src="/main/img/Main_Graphic.png"
-        alt="Main Graphic"
-        fill
-        className="z-0 object-cover object-center"
-      />
+      <motion.div
+        className="absolute z-10 top-[72px] left-[84px] space-y-4"
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          y: {
+            duration: 2,
+            ease: "easeOut",
+          },
+          opacity: {
+            duration: 2,
+            ease: "easeOut",
+          },
+        }}
+      >
+        <motion.div
+          animate={{ y: [0, -8, 0] }}
+          transition={{ y: { duration: 3, repeat: 4, ease: "easeInOut", delay: 2 } }}
+        >
+          <p className={`${OUTLINE_TEXT_BASE} text-[42px]`}>KUSITMS 32nd</p>
+          <div className="flex items-center gap-x-9">
+            <p className={`${OUTLINE_TEXT_BASE} text-[68px]`}>More it, MORE IT</p>
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{
+                rotate: {
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "linear",
+                },
+              }}
+            >
+              <Image src="/main/Snow.svg" alt="Snow" width={54} height={59} />
+            </motion.div>
+          </div>
+        </motion.div>
+      </motion.div>
+      <motion.div
+        className="absolute inset-0 z-0"
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          y: {
+            duration: 2.2,
+            ease: "easeOut",
+          },
+          opacity: {
+            duration: 2.2,
+            ease: "easeOut",
+          },
+        }}
+      >
+        <motion.div
+          className="absolute inset-0"
+          animate={{ y: [0, -20, 0] }}
+          transition={{
+            y: {
+              duration: 4,
+              repeat: 3,
+              ease: "easeInOut",
+              delay: 2.2,
+            },
+          }}
+        >
+          <Image
+            src="/main/img/Main_Graphic.png"
+            alt="Main Graphic"
+            fill
+            className="object-cover object-center"
+          />
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
