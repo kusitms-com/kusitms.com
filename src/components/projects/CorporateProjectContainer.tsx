@@ -24,7 +24,7 @@ export default function CorporateProjectContainer({
   };
 
   return (
-    <div className="w-full  mb-[32px] px-10">
+    <div className="w-full tablet:mb-[32px] mb-5 tablet:px-10 px-4">
       <ProjectFilter
         cardinal={cardinal}
         onChange={handleFilterChange}
