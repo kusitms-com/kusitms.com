@@ -82,7 +82,7 @@ export default function MeetupProjectCarousel({
 
   const archiveClassName = archiveMode
     ? "desktop:h-[588px] h-[408px] align-center items-end"
-    : "mt-[36px] min-[768px]:mt-[54px] min-h-[126px] overflow-visible items-center";
+    : "mt-[36px] min-[768px]:mt-[54px] min-h-[126px] min-[768px]:min-h-[260px] overflow-visible items-center";
 
   return (
     <div className="w-full flex flex-col items-center ">
@@ -178,7 +178,7 @@ export default function MeetupProjectCarousel({
           onClick={() => router.push("/projects/meetup")}
           className="cursor-pointer min-w-[148px] mt-7 min-[768px]:mt-8 py-2 px-3 min-[768px]:py-[10px] min-[768px]:px-5 rounded-[20px] bg-dark-blue-500 text-white font-semibold text-body-8 min-[768px]:text-body-3"
         >
-          프로젝트 더 보기 →
+          프로젝트 더보기 →
         </button>
       )}
     </div>
