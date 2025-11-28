@@ -1,33 +1,36 @@
 "use client";
-import { MeetupItem } from "@/service/projects/getMeetupProjects";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
-import MeetupProjectCarousel from "./MeetupProjectCarousel";
 import { COMPANY_ROW1, COMPANY_ROW2 } from "@/constants/companyRows";
+import type { MeetupItem } from "@/service/projects/getMeetupProjects";
+import MeetupProjectCarousel from "./MeetupProjectCarousel";
 
 interface ProgramIntroSectionProps {
   meetupProjects?: MeetupItem[];
 }
 
 export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntroSectionProps) {
-
   return (
-    <div className="max-w-[1024px] mx-auto flex flex-col justify-center items-center pt-4 pb-[100px] desktop:pb-[200px] w-full overflow-x-hidden">
+    <div className="px-4 min-[768px]:px-6 max-w-[1024px] mx-auto flex flex-col justify-center items-center pt-4 pb-[100px] min-[768px]:pb-[200px] w-full overflow-x-hidden">
       <section className="w-full">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-[24px] desktop:text-title-5 text-gray-900 font-semibold">학회 프로젝트 소개</h1>
+          <h1 className="text-title-7 min-[768px]:text-title-5 text-gray-900 font-semibold">
+            학회 프로젝트 소개
+          </h1>
         </div>
-        <div className="mt-[60px] py-4 flex items-center justify-center gap-2">
-          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-800 text-white text-body-1">1</span>
-          <p className="text-[16px] desktop:text-title-7 text-gray-800">기업 연계프로젝트</p>
+        <div className="mt-[52px] min-[768px]:mt-[60px] py-4 flex items-center justify-center gap-2">
+          <span className="inline-flex items-center justify-center min-[768px]:w-7 min-[768px]:h-7 w-[18px] h-[18px] rounded-full bg-gray-800 text-white min-[768px]:text-body-1 text-body-7">
+            1
+          </span>
+          <p className="text-body-5 min-[768px]:text-title-7 text-gray-800">기업 연계프로젝트</p>
         </div>
-        <p className="text-[13px] desktop:text-body-6 text-center text-gray-600">
-        실제 기업이 고민하고 있는 경영 · 마케팅 문제나 개발과 관련된 과제를 받아 <br />
-        팀별로 아이디어를 제시해 과제를 수행하는 프로젝트예요
+        <p className="text-body-8 min-[768px]:text-body-6 text-center text-gray-500">
+          실제 기업이 고민하고 있는 경영 · 마케팅 문제나 개발과 관련된 과제를 받아{" "}
+          <br className="hidden min-[768px]:block" />
+          팀별로 아이디어를 제시해 과제를 수행하는 프로젝트예요
         </p>
-
-        <div className="mt-[40px] desktop:mt-[56px] w-full px-[40px]">
+        <div className="mt-[36px] min-[768px]:mt-[56px] w-full">
           <div className="relative overflow-hidden h-[110px]">
             <motion.div
               className="flex items-center w-[max-content] flex-nowrap whitespace-nowrap"
@@ -36,11 +39,26 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
               transition={{ duration: 30, ease: "linear", repeat: Infinity }}
             >
               {[...COMPANY_ROW1, ...COMPANY_ROW1].map((src, idx) => (
-                <Image key={`r1-${idx}`} src={src} alt={`company-${idx}`} width={180} height={80} />
+                <React.Fragment key={`r1-${idx}`}>
+                  <Image
+                    src={src}
+                    alt={`company-${idx}`}
+                    width={120}
+                    height={53}
+                    className="block min-[768px]:hidden"
+                  />
+                  <Image
+                    src={src}
+                    alt={`company-${idx}`}
+                    width={180}
+                    height={80}
+                    className="hidden min-[768px]:block"
+                  />
+                </React.Fragment>
               ))}
             </motion.div>
           </div>
-          <div className="relative overflow-hidden h-[110px]">
+          <div className="relative overflow-hidden h-[110px] -mt-10 min-[768px]:mt-0">
             <motion.div
               className="flex items-center w-[max-content] flex-nowrap whitespace-nowrap "
               initial={{ x: "0%" }}
@@ -48,20 +66,38 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
               transition={{ duration: 30, ease: "linear", repeat: Infinity, delay: 1.5 }}
             >
               {[...COMPANY_ROW2, ...COMPANY_ROW2].map((src, idx) => (
-                <Image key={`r2-${idx}`} src={src} alt={`company2-${idx}`} width={180} height={88} />
+                <React.Fragment key={`r2-${idx}`}>
+                  <Image
+                    src={src}
+                    alt={`company2-${idx}`}
+                    width={120}
+                    height={59}
+                    className="block min-[768px]:hidden"
+                  />
+                  <Image
+                    src={src}
+                    alt={`company2-${idx}`}
+                    width={180}
+                    height={88}
+                    className="hidden min-[768px]:block"
+                  />
+                </React.Fragment>
               ))}
             </motion.div>
           </div>
         </div>
       </section>
       <section>
-        <div className="mt-[100px] flex items-center justify-center gap-2">
-          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-800 text-white text-body-1">2</span>
-          <p className="text-[16px] desktop:text-title-7 text-gray-800">밋업 프로젝트</p>
+        <div className="min-[768px]:mt-[100px] mt-[80px] flex items-center justify-center gap-2 py-4">
+          <span className="inline-flex items-center justify-center min-[768px]:w-7 min-[768px]:h-7 w-[18px] h-[18px] rounded-full bg-gray-800 text-white min-[768px]:text-body-1 text-body-7">
+            2
+          </span>
+          <p className="text-body-5 min-[768px]:text-title-7 text-gray-800">밋업 프로젝트</p>
         </div>
-        <p className="text-[13px] desktop:text-body-6 text-center text-gray-500">
-        기획파트에서 발제된 아이디어를 디자인, 개발파트와 함꼐 3개월동안 <br />
-        준비하여 발표하는 KUSITMS의 메인 프로젝트예요
+        <p className="text-body-8 min-[768px]:text-body-6 text-center text-gray-500">
+          기획파트에서 발제된 아이디어를 디자인, 개발파트와 함꼐 3개월동안{" "}
+          <br className="hidden min-[768px]:block" />
+          준비하여 발표하는 KUSITMS의 메인 프로젝트예요
         </p>
         {meetupProjects.length > 0 && <MeetupProjectCarousel projects={meetupProjects} />}
       </section>

@@ -82,7 +82,7 @@ export default function MeetupProjectCarousel({
 
   const archiveClassName = archiveMode
     ? "desktop:h-[588px] h-[408px] align-center items-end"
-    : "mt-[54px] min-h-[260px] overflow-visible items-center";
+    : "mt-[36px] min-[768px]:mt-[54px] min-h-[126px] overflow-visible items-center";
 
   return (
     <div className="w-full flex flex-col items-center ">
@@ -158,14 +158,16 @@ export default function MeetupProjectCarousel({
           );
         })}
       </div>
-      <div className="flex items-center justify-center gap-2 mt-5">
+      <div className="flex items-center justify-center min-[768px]:gap-2 gap-[6px] mt-[12px] min-[768px]:mt-5">
         {projects.map((_, i) => (
           <button
             key={i}
             type="button"
             onClick={() => setCurrentIndex(i)}
             className={`transition-all duration-200 rounded-full ${
-              i === currentIndex ? "w-2 h-2 bg-gray-400" : "w-2 h-2 bg-gray-100"
+              i === currentIndex
+                ? "w-[6px] h-[6px] min-[768px]:w-2 min-[768px]:h-2 bg-gray-400"
+                : "w-[6px] h-[6px] min-[768px]:w-2 min-[768px]:h-2 bg-gray-100"
             }`}
             aria-label={`프로젝트 ${i + 1}로 이동`}
           />
@@ -174,7 +176,7 @@ export default function MeetupProjectCarousel({
       {archiveMode === false && (
         <button
           onClick={() => router.push("/projects/meetup")}
-          className="cursor-pointer mt-8 px-5 py-[10px] rounded-[20px] bg-dark-blue-500 text-white font-semibold text-[16px] desktop:text-body-3"
+          className="cursor-pointer min-w-[148px] mt-7 min-[768px]:mt-8 py-2 px-3 min-[768px]:py-[10px] min-[768px]:px-5 rounded-[20px] bg-dark-blue-500 text-white font-semibold text-body-8 min-[768px]:text-body-3"
         >
           프로젝트 더 보기 →
         </button>
