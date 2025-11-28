@@ -9,21 +9,27 @@ const OUTLINE_TEXT_BASE = `${OUTFIT_FONT} text-[#0077FF] leading-[100%] -trackin
 export default function IntroSection() {
   return (
     <div
-      className="relative w-full h-[808px] mt-[40px] desktop:mt-[74px]"
+      className="relative w-full h-[808px] desktop:mt-[74px]"
       style={{ background: BACKGROUND_GRADIENT }}
     >
-      <p className="absolute top-[72px] right-[75px] text-body-6 text-[#0077FF] text-right">
+      <p className="absolute z-10 top-[72px] right-[75px] text-body-6 text-[#0077FF] text-right">
         Korean University Students
         <br />
         It, Management Society
       </p>
-      <div className="absolute top-[72px] left-[84px] space-y-4">
+      <div className="absolute z-10 top-[72px] left-[84px] space-y-4">
         <p className={`${OUTLINE_TEXT_BASE} text-[42px]`}>KUSITMS 32nd</p>
         <div className="flex items-center gap-x-9">
           <p className={`${OUTLINE_TEXT_BASE} text-[68px]`}>More it, MORE IT</p>
           <Image src="/main/Snow.svg" alt="Snow" width={54} height={59} />
         </div>
       </div>
+      <Image
+        src="/main/img/Main_Graphic.png"
+        alt="Main Graphic"
+        fill
+        className="z-0 object-cover object-center"
+      />
     </div>
   );
 }
