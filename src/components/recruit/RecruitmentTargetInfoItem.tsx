@@ -26,7 +26,7 @@ export default function RecruitmentTargetInfoItem() {
   ];
 
   return (
-    <section className="flex px-[40px] gap-[22px]">
+    <section className="flex desktop:flex-row flex-col desktop:px-[40px] px-[10px] gap-[16px] desktop:gap-[22px]">
       {recruitItems.map((item, index) => (
         <section
           key={index}
@@ -35,7 +35,7 @@ export default function RecruitmentTargetInfoItem() {
           <div className="flex justify-center items-center bg-gray-0 rounded-full w-[80px] h-[80px]">
             <Image src={item.icon.src} alt={item.icon.alt} width={58} height={58} />
           </div>
-          <p className="flex flex-col items-center text-body-6 text-gray-800 gap-[4px]">
+          <p className="flex flex-col items-center text-body-8 desktop:text-body-6 text-gray-800 gap-[4px]">
             <span>{item.text[0]}</span>
             <span>{item.text[1]}</span>
           </p>

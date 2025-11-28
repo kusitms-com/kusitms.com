@@ -134,25 +134,25 @@ export default function RecruitQnA() {
   };
 
   return (
-    <section className="flex flex-col gap-[70px] w-full">
+    <section className="flex flex-col desktop:gap-[70px] gap-[40px] pb-[100px] desktop:pb-[200px] w-full">
       {/* 질문 선택 네비게이션 */}
-      <div className="flex gap-[20px] justify-center">
+      <div className="flex desktop:gap-[20px] gap-[4px] justify-center">
         {categories.map((category) => (
           <button
             key={category}
             type="button"
             onClick={() => setSelectedField(category)}
-            className={`w-[120px] cursor-pointer py-[10px] rounded-full text-body-2 
-              ${
-                selectedField === category ? "bg-dark-blue-50 text-dark-blue-600" : "text-gray-700"
-              }`}
+            className={`desktop:w-[120px] w-[80px] cursor-pointer desktop:py-[10px] py-[8px] rounded-full text-body-6 desktop:text-body-2
+    transition-colors duration-300
+    ${selectedField === category ? "bg-dark-blue-50 text-dark-blue-600" : "text-gray-700"}
+  `}
           >
             {category}
           </button>
         ))}
       </div>
       {/* QnA 정보 */}
-      <div className="flex flex-col gap-[20px]">
+      <div className="flex flex-col gap-[12px] desktop:gap-[20px]">
         {qnaList
           .filter((item) => selectedField === "전체" || item.field === selectedField)
           .map((item) => (
