@@ -6,6 +6,7 @@ import TeamCard from "./TeamCard";
 
 export default function TeamCardsSection() {
   const [activeIdx, setActiveIdx] = React.useState<number | null>(null);
+  const [mobileExpandedIdx, setMobileExpandedIdx] = React.useState<number | null>(null);
 
   return (
     <div className="flex flex-col items-center overflow-hidden pt-[100px] desktop:pt-[240px]">
@@ -30,6 +31,10 @@ export default function TeamCardsSection() {
             active={activeIdx === idx}
             onActivate={() => setActiveIdx(idx)}
             onDeactivate={() => setActiveIdx((cur) => (cur === idx ? null : cur))}
+            index={idx}
+            mobileExpanded={mobileExpandedIdx}
+            onMobileExpand={(idx) => setMobileExpandedIdx(idx)}
+            onMobileCollapse={() => setMobileExpandedIdx(null)}
           />
         ))}
       </section>
