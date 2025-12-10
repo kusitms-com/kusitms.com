@@ -1,6 +1,7 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
+import type { MouseEvent } from "react";
 import { useEffect, useRef } from "react";
 import type { TeamItem } from "@/constants/teamData";
 
@@ -19,6 +20,7 @@ export default function TeamCard({
   subtitle,
   delay,
   description,
+  descriptionMobile,
   active,
   onActivate,
   onDeactivate,
@@ -40,7 +42,6 @@ export default function TeamCard({
 
   return (
     <>
-      {/* Desktop Card (with expand animation) */}
       <motion.div
         onMouseEnter={onActivate}
         onMouseLeave={onDeactivate}
@@ -113,8 +114,7 @@ export default function TeamCard({
           </motion.div>
         </div>
       </motion.div>
-
-      {/* Mobile/Tablet Card (scroll-based expand) */}
+      {/* Mobile Card (scroll-based, 767px 미만) */}
       <MobileTeamCard
         mainIcon={mainIcon}
         bgIcon={bgIcon}
@@ -125,6 +125,25 @@ export default function TeamCard({
         title={title}
         subtitle={subtitle}
         description={description}
+        descriptionMobile={descriptionMobile}
+        delay={delay}
+        index={index}
+        isExpanded={mobileExpanded === index}
+        onExpand={onMobileExpand}
+        onCollapse={onMobileCollapse}
+      />
+      {/* Tablet Card (hover/click-based, 768px ~ 1023px) */}
+      <TabletTeamCard
+        mainIcon={mainIcon}
+        bgIcon={bgIcon}
+        mainIconWidthMobile={mainIconWidthMobile}
+        mainIconHeightMobile={mainIconHeightMobile}
+        bgIconWidthMobile={bgIconWidthMobile}
+        bgIconHeightMobile={bgIconHeightMobile}
+        title={title}
+        subtitle={subtitle}
+        description={description}
+        descriptionMobile={descriptionMobile}
         delay={delay}
         index={index}
         isExpanded={mobileExpanded === index}
@@ -144,7 +163,7 @@ function MobileTeamCard({
   bgIconHeightMobile,
   title,
   subtitle,
-  description,
+  descriptionMobile,
   delay,
   index,
   isExpanded,
@@ -160,6 +179,7 @@ function MobileTeamCard({
   title: string;
   subtitle: string;
   description?: string;
+  descriptionMobile?: string;
   delay?: number;
   index: number;
   isExpanded: boolean;
@@ -170,6 +190,10 @@ function MobileTeamCard({
   const isInView = useInView(ref, { once: false, margin: "0px 0px -20% 0px" });
 
   useEffect(() => {
+    // Only work on mobile (below 768px)
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      return;
+    }
     if (isInView) {
       onExpand(index);
     } else if (isExpanded) {
@@ -183,9 +207,9 @@ function MobileTeamCard({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="desktop:hidden relative w-[224px] overflow-visible"
+      className="max-[767px]:block min-[768px]:hidden relative w-[224px] overflow-visible"
       animate={{
-        height: isExpanded ? "auto" : 162,
+        height: isExpanded ? 208 : 162,
       }}
       transition={{
         opacity: { duration: 0.7, ease: "easeOut", delay: delay || 0 },
@@ -222,6 +246,7 @@ function MobileTeamCard({
         <motion.div
           className={`absolute ${title.includes("Backend") ? "right-[-10px] bottom-[-15px]" : "bottom-[-30px] right-[-20px]"}`}
           animate={{
+            scale: isExpanded ? 1.2 : 1,
             opacity: isExpanded ? 0.1 : 1,
             rotate: isExpanded ? 15 : 0,
           }}
@@ -235,7 +260,7 @@ function MobileTeamCard({
           />
         </motion.div>
         <motion.div
-          className="relative z-10 mt-4"
+          className="relative z-10 mt-[50px]"
           initial={false}
           animate={{
             opacity: isExpanded ? 1 : 0,
@@ -244,8 +269,140 @@ function MobileTeamCard({
           transition={{ duration: 0.4, ease: "easeInOut" }}
           style={{ overflow: "hidden" }}
         >
-          <p className="ml-[29px] text-body-9 text-gray-600 leading-5 whitespace-pre-line pt-2">
-            {description}
+          <p className="ml-[29px] text-body-9 text-gray-600 whitespace-pre-line">
+            {descriptionMobile}
+          </p>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+}
+
+function TabletTeamCard({
+  mainIcon,
+  bgIcon,
+  mainIconWidthMobile,
+  mainIconHeightMobile,
+  bgIconWidthMobile,
+  bgIconHeightMobile,
+  title,
+  subtitle,
+  description,
+  descriptionMobile,
+  delay,
+  index,
+  isExpanded,
+  onExpand,
+  onCollapse,
+}: {
+  mainIcon: string;
+  bgIcon: string;
+  mainIconWidthMobile: number;
+  mainIconHeightMobile: number;
+  bgIconWidthMobile: number;
+  bgIconHeightMobile: number;
+  title: string;
+  subtitle: string;
+  description?: string;
+  descriptionMobile?: string;
+  delay?: number;
+  index: number;
+  isExpanded: boolean;
+  onExpand: (idx: number) => void;
+  onCollapse: () => void;
+}) {
+  const handleClick = (e: MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (isExpanded) {
+      onCollapse();
+    } else {
+      onExpand(index);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (!isExpanded) {
+      onExpand(index);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    onCollapse();
+  };
+
+  return (
+    <motion.div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="hidden min-[768px]:block desktop:hidden relative w-[224px] overflow-visible cursor-pointer"
+      animate={{
+        height: isExpanded ? 208 : 162,
+      }}
+      transition={{
+        opacity: { duration: 0.7, ease: "easeOut", delay: delay || 0 },
+        y: { duration: 0.7, ease: "easeOut", delay: delay || 0 },
+        height: { duration: 0.4, ease: "easeInOut" },
+      }}
+    >
+      <div className="relative w-full h-full px-[18.1px] py-[13.6px] bg-sky-50 overflow-hidden rounded-[9.077px] border-2 border-[#F0F4FF] shadow-[0px_4px_10px_0px_rgba(121,212,255,0.20)]">
+        <motion.div
+          className="absolute top-0 left-0"
+          animate={{
+            scale: isExpanded ? 1.2 : 1,
+            opacity: isExpanded ? 0.3 : 1,
+          }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <Image src={bgIcon} alt={title} width={bgIconWidthMobile} height={bgIconHeightMobile} />
+        </motion.div>
+        <div className="relative z-10 pr-2">
+          <div className="flex flex-col gap-[8px]">
+            <div className="flex items-baseline gap-2">
+              <span className="text-dark-blue-500 text-body-3 leading-none">
+                {title.split(" ")[0]}
+              </span>
+              <div>
+                <span className="text-gray-900 text-body-3 leading-none">
+                  {title.split(" ")[1]}
+                </span>
+                <p className="text-body-10 text-gray-600">{subtitle}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <motion.div
+          className={`absolute ${title.includes("Backend") ? "right-[-10px] bottom-[-15px]" : "bottom-[-30px] right-[-20px]"}`}
+          animate={{
+            scale: isExpanded ? 1.2 : 1,
+            opacity: isExpanded ? 0.1 : 1,
+            rotate: isExpanded ? 15 : 0,
+          }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <Image
+            src={mainIcon}
+            alt={title}
+            width={mainIconWidthMobile}
+            height={mainIconHeightMobile}
+          />
+        </motion.div>
+        <motion.div
+          className="relative z-10 mt-[50px]"
+          initial={false}
+          animate={{
+            opacity: isExpanded ? 1 : 0,
+            height: isExpanded ? "auto" : 0,
+          }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          style={{ overflow: "hidden" }}
+        >
+          <p className="ml-[29px] text-body-9 text-gray-600 whitespace-pre-line">
+            {descriptionMobile || description}
           </p>
         </motion.div>
       </div>
