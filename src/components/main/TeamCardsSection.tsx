@@ -22,7 +22,7 @@ export default function TeamCardsSection() {
           다양한 프로젝트를 진행해요.
         </p>
       </motion.div>
-      <section className="flex flex-col items-center min-[767px]:grid min-[767px]:grid-cols-2 desktop:!flex desktop:flex-row desktop:flex-nowrap desktop:justify-center gap-4 pt-[30px] desktop:pt-[80px] desktop:mb-[300px] mb-[100px] px-4 w-full min-[767px]:max-w-[600px] desktop:max-w-none desktop:overflow-x-auto">
+      <section className="flex flex-col items-center gap-4 min-[767px]:grid min-[767px]:grid-cols-[auto_auto] min-[767px]:gap-4 min-[767px]:justify-center min-[767px]:justify-items-center desktop:!flex desktop:flex-row desktop:flex-nowrap desktop:justify-center desktop:gap-4 desktop:max-w-none desktop:overflow-x-auto pt-[30px] desktop:pt-[80px] desktop:mb-[300px] mb-[100px] px-4 w-full">
         {TEAM_DATA.map((item, idx) => (
           <TeamCard
             key={item.title}

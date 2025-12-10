@@ -2,9 +2,13 @@ export type TeamItem = {
   mainIcon: string;
   mainIconWidth: number;
   mainIconHeight: number;
+  mainIconWidthMobile: number;
+  mainIconHeightMobile: number;
   bgIcon: string;
   bgIconWidth: number;
   bgIconHeight: number;
+  bgIconWidthMobile: number;
+  bgIconHeightMobile: number;
   title: string;
   subtitle: string;
   delay?: number;
@@ -16,9 +20,13 @@ export const TEAM_DATA: TeamItem[] = [
     mainIcon: "/main/ManageIcon.svg",
     mainIconWidth: 219,
     mainIconHeight: 225,
+    mainIconWidthMobile: 146,
+    mainIconHeightMobile: 150,
     bgIcon: "/main/ManageBg.svg",
     bgIconWidth: 146,
     bgIconHeight: 152,
+    bgIconWidthMobile: 105,
+    bgIconHeightMobile: 108,
     title: "01 Planner",
     subtitle: "기획자",
     delay: 0,
@@ -29,9 +37,13 @@ export const TEAM_DATA: TeamItem[] = [
     mainIcon: "/main/DesignIcon.svg",
     mainIconWidth: 224,
     mainIconHeight: 246,
+    mainIconWidthMobile: 149,
+    mainIconHeightMobile: 164,
     bgIcon: "/main/DesignBg.svg",
     bgIconWidth: 151,
     bgIconHeight: 163,
+    bgIconWidthMobile: 108,
+    bgIconHeightMobile: 116,
     title: "02 Designer",
     subtitle: "디자이너",
     delay: 0.2,
@@ -42,9 +54,13 @@ export const TEAM_DATA: TeamItem[] = [
     mainIcon: "/main/FrontendIcon.svg",
     mainIconWidth: 222,
     mainIconHeight: 220,
+    mainIconWidthMobile: 148,
+    mainIconHeightMobile: 147,
     bgIcon: "/main/FrontendBg.svg",
     bgIconWidth: 147,
     bgIconHeight: 151,
+    bgIconWidthMobile: 105,
+    bgIconHeightMobile: 108,
     title: "03 Frontend",
     subtitle: "프론트엔드",
     delay: 0.4,
@@ -55,9 +71,13 @@ export const TEAM_DATA: TeamItem[] = [
     mainIcon: "/main/BackendIcon.svg",
     mainIconWidth: 172,
     mainIconHeight: 181,
+    mainIconWidthMobile: 115,
+    mainIconHeightMobile: 121,
     bgIcon: "/main/BackendBg.svg",
     bgIconWidth: 130,
     bgIconHeight: 143,
+    bgIconWidthMobile: 93,
+    bgIconHeightMobile: 101,
     title: "04 Backend",
     subtitle: "백엔드",
     delay: 0.6,
@@ -65,4 +85,3 @@ export const TEAM_DATA: TeamItem[] = [
       "프로젝트의 요구\n 사항과 규모, 팀의 \n 상황에 따라 기술\n 스택을 선정하고\n 오류원인을 분석해요",
   },
 ];
-
