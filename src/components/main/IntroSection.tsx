@@ -104,6 +104,7 @@ export default function IntroSection() {
         </motion.div>
       </div>
       <motion.div
+        className="absolute inset-0 z-0"
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{
@@ -118,6 +119,7 @@ export default function IntroSection() {
         }}
       >
         <motion.div
+          className="absolute inset-0"
           animate={{ y: [0, -20, 0] }}
           transition={{
             y: {
@@ -128,12 +130,14 @@ export default function IntroSection() {
             },
           }}
         >
-          <Image
-            src="/main/img/Main_Graphic.png"
-            alt="Main Graphic"
-            fill
-            className="object-cover object-center"
-          />
+          <div className="absolute inset-0 max-[767px]:top-[-60px] max-[767px]:bottom-0 min-[768px]:inset-0">
+            <Image
+              src="/main/img/Main_Graphic.png"
+              alt="Main Graphic"
+              fill
+              className="object-cover max-[767px]:translate-y-[60px] max-[767px]:object-[60%_120%] min-[768px]:translate-y-0 min-[768px]:object-center"
+            />
+          </div>
         </motion.div>
       </motion.div>
     </div>
