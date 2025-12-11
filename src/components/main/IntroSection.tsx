@@ -41,7 +41,7 @@ export default function IntroSection() {
                   animate={{ rotate: 360 }}
                   transition={{
                     rotate: {
-                      duration: 6,
+                      duration: 5,
                       repeat: Infinity,
                       ease: "linear",
                     },
@@ -91,7 +91,7 @@ export default function IntroSection() {
                 animate={{ rotate: 360 }}
                 transition={{
                   rotate: {
-                    duration: 3,
+                    duration: 5,
                     repeat: Infinity,
                     ease: "linear",
                   },
