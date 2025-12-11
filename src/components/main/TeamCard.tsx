@@ -1,7 +1,7 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { TeamItem } from "@/constants/teamData";
 
 export default function TeamCard({
@@ -193,10 +193,61 @@ function MobileTeamCard({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: false, margin: "0px 0px -20% 0px" });
+  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
     // Only work on mobile (below 768px)
     if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      return;
+    }
+
+    let scrollTimer: NodeJS.Timeout;
+    let lastScrollTop = window.scrollY;
+    let rafId: number | null = null;
+
+    const handleScroll = () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+
+      rafId = requestAnimationFrame(() => {
+        const currentScrollTop = window.scrollY;
+        const scrollDelta = Math.abs(currentScrollTop - lastScrollTop);
+
+        // 빠르게 스크롤할 때만 비활성화 (스크롤 속도가 5px 이상일 때)
+        if (scrollDelta > 5) {
+          setIsScrolling(true);
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(() => {
+            setIsScrolling(false);
+          }, 100);
+        } else {
+          // 느리게 스크롤하거나 멈췄을 때는 바로 활성화
+          setIsScrolling(false);
+        }
+
+        lastScrollTop = currentScrollTop;
+        rafId = null;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+      clearTimeout(scrollTimer);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Only work on mobile (below 768px)
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      return;
+    }
+    // 스크롤 중일 때는 상태 변경하지 않음
+    if (isScrolling) {
       return;
     }
     if (isInView) {
@@ -204,7 +255,7 @@ function MobileTeamCard({
     } else if (isExpanded) {
       onCollapse();
     }
-  }, [isInView, index, isExpanded, onExpand, onCollapse]);
+  }, [isInView, index, isExpanded, onExpand, onCollapse, isScrolling]);
 
   return (
     <motion.div
@@ -320,23 +371,81 @@ function TabletTeamCard({
   const isInView = useInView(ref, { once: false, margin: "0px 0px -20% 0px" });
   const row = Math.floor(index / 2); // 태블릿은 2x2 그리드이므로 줄 번호 계산
   const isExpanded = tabletExpandedRow === row;
+  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
-    // Only work on tablet (768px ~ 1023px)
+    if (typeof window !== "undefined") {
+      const width = window.innerWidth;
+      if (width < 768 || width >= 1024) {
+        return;
+      }
+
+      let scrollTimer: NodeJS.Timeout;
+      let lastScrollTop = window.scrollY;
+      let rafId: number | null = null;
+
+      const handleScroll = () => {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+        }
+
+        rafId = requestAnimationFrame(() => {
+          const currentScrollTop = window.scrollY;
+          const scrollDelta = currentScrollTop - lastScrollTop;
+          const scrollSpeed = Math.abs(scrollDelta);
+
+          // 빠르게 위로 스크롤할 때만 비활성화 (스크롤 속도가 10px 이상이고 위로 스크롤할 때)
+          if (scrollSpeed > 10 && scrollDelta < 0) {
+            setIsScrolling(true);
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(() => {
+              setIsScrolling(false);
+            }, 150);
+          } else if (scrollSpeed <= 10) {
+            // 느리게 스크롤하거나 멈췄을 때는 바로 활성화
+            setIsScrolling(false);
+          }
+
+          lastScrollTop = currentScrollTop;
+          rafId = null;
+        });
+      };
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+        }
+        clearTimeout(scrollTimer);
+      };
+    }
+  }, []);
+
+  useEffect(() => {
     if (typeof window !== "undefined") {
       const width = window.innerWidth;
       if (width < 768 || width >= 1024) {
         return;
       }
     }
-    // 각 줄의 첫 번째 카드(인덱스가 짝수)가 뷰포트에 들어오면 해당 줄을 펼침
+    if (isScrolling) {
+      return;
+    }
     if (isInView && index % 2 === 0) {
       onTabletRowExpand(row);
     } else if (!isInView && tabletExpandedRow === row) {
-      // 해당 줄의 첫 번째 카드가 뷰포트를 벗어나면 접음
       onTabletRowCollapse();
     }
-  }, [isInView, index, row, tabletExpandedRow, onTabletRowExpand, onTabletRowCollapse]);
+  }, [
+    isInView,
+    index,
+    row,
+    tabletExpandedRow,
+    onTabletRowExpand,
+    onTabletRowCollapse,
+    isScrolling,
+  ]);
 
   return (
     <motion.div
