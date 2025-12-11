@@ -17,7 +17,7 @@ function MobileExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
   const current = items[index];
 
   return (
-    <div className="relative w-full px-4 pb-[100px] block max-[767px]:block min-[768px]:hidden">
+    <div className="relative w-full px-4 pb-[160px] block max-[767px]:block min-[768px]:hidden">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}

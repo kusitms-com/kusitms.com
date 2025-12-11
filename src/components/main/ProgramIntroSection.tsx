@@ -25,9 +25,13 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
           </span>
           <p className="text-body-5 min-[768px]:text-title-7 text-gray-800">기업 연계프로젝트</p>
         </div>
-        <p className="text-body-8 min-[768px]:text-body-6 text-center text-gray-500">
-          실제 기업이 고민하고 있는 경영 · 마케팅 문제나 개발과 관련된 과제를 받아{" "}
-          <br className="hidden min-[768px]:block" />
+        <p className="text-body-8 min-[768px]:hidden text-center text-gray-500">
+          실제 기업이 고민하고 있는 경영 · 마케팅
+          <br /> 문제나 개발과 관련된 과제를 받아 팀별로
+          <br /> 아이디어를 제시해 과제를 수행하는 프로젝트예요
+        </p>
+        <p className="hidden min-[768px]:block text-body-6 text-center text-gray-500">
+          실제 기업이 고민하고 있는 경영 · 마케팅 문제나 개발과 관련된 과제를 받아 <br />
           팀별로 아이디어를 제시해 과제를 수행하는 프로젝트예요
         </p>
         <div className="mt-[36px] min-[768px]:mt-[56px] w-full">
@@ -94,9 +98,12 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
           </span>
           <p className="text-body-5 min-[768px]:text-title-7 text-gray-800">밋업 프로젝트</p>
         </div>
-        <p className="text-body-8 min-[768px]:text-body-6 text-center text-gray-500">
-          기획파트에서 발제된 아이디어를 디자인, 개발파트와 함꼐 3개월동안{" "}
-          <br className="hidden min-[768px]:block" />
+        <p className="text-body-8 min-[768px]:hidden text-center text-gray-500">
+          기획파트에서 발제된 아이디어를 디자인,
+          <br /> 개발파트와 함꼐 3개월동안 준비하여 발표하는 <br /> KUSITMS의 메인 프로젝트예요
+        </p>
+        <p className="hidden min-[768px]:block text-body-6 text-center text-gray-500">
+          기획파트에서 발제된 아이디어를 디자인, 개발파트와 함꼐 3개월동안 <br />
           준비하여 발표하는 KUSITMS의 메인 프로젝트예요
         </p>
         {meetupProjects.length > 0 && <MeetupProjectCarousel projects={meetupProjects} />}

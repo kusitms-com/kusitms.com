@@ -38,7 +38,7 @@ export default function GuestIntroSection() {
   ];
 
   return (
-    <div className="max-w-[1024px] px-4 mx-auto pb-[100px] min-[768px]:pb-[200px] pt-4 flex flex-col items-center justify-center">
+    <div className="max-w-[1024px] px-4 mx-auto pb-[120px] min-[768px]:pb-[200px] pt-4 flex flex-col items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -48,11 +48,15 @@ export default function GuestIntroSection() {
       >
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-title-7 min-[768px]:text-title-5 text-gray-900 font-semibold">
-            전문가 초정 강연
+            전문가 초청 강연
           </h1>
-          <p className="text-body-8 min-[768px]:text-body-4 mt-[20px] min-[768px]:mt-4 text-center text-gray-500">
-            현업에서 활발히 활동 중이신 기획 · 개발 · 디자인 분야의 전문가 및 실무자에게{" "}
-            <br className="hidden min-[768px]:block" />
+          <p className="text-body-8 min-[768px]:hidden mt-[20px] text-center text-gray-500">
+            현업에서 활발히 활동 중이신 기획 · 개발 · 디자인 <br />
+            분야의 전문가 및 실무자에게 직무에 대한 설명과
+            <br /> 조언을 들을 수 있는 활동입니다.
+          </p>
+          <p className="hidden min-[768px]:block text-body-4 mt-4 text-center text-gray-500">
+            현업에서 활발히 활동 중이신 기획 · 개발 · 디자인 분야의 전문가 및 실무자에게 <br />
             직무에 대한 설명과 조언을 들을 수 있는 활동입니다.
           </p>
         </div>
@@ -61,9 +65,9 @@ export default function GuestIntroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.2 }}
-          className="mt-[64px] min-[768px]:mt-[100px] w-full max-w-[1100px] px-4 min-[768px]:px-0"
+          className="my-[52px] min-[768px]:mt-[100px] w-full max-w-[1100px] px-4 min-[768px]:px-0"
         >
-          <div className="grid grid-cols-1 min-[768px]:grid-cols-3 desktop:grid-cols-4 gap-x-6 gap-y-10 place-items-center">
+          <div className="grid grid-cols-1 min-[768px]:grid-cols-3 desktop:grid-cols-4 gap-x-6 gap-y-8 place-items-center">
             {guestData.map(({ mainIcon, title, subtitle }, idx) => (
               <div
                 key={idx}
@@ -81,9 +85,16 @@ export default function GuestIntroSection() {
                   <Image
                     src={mainIcon}
                     alt={title}
-                    width={220}
-                    height={220}
-                    style={{ width: 220, height: 220 }}
+                    width={160}
+                    height={167}
+                    className="block min-[1024px]:hidden"
+                  />
+                  <Image
+                    src={mainIcon}
+                    alt={title}
+                    width={192}
+                    height={200}
+                    className="hidden min-[1024px]:block"
                   />
                 </motion.div>
                 <div className="mt-4 text-center">
