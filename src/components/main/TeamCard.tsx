@@ -1,7 +1,6 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-import type { MouseEvent } from "react";
 import { useEffect, useRef } from "react";
 import type { TeamItem } from "@/constants/teamData";
 
@@ -28,6 +27,9 @@ export default function TeamCard({
   mobileExpanded,
   onMobileExpand,
   onMobileCollapse,
+  tabletExpandedRow,
+  onTabletRowExpand,
+  onTabletRowCollapse,
 }: TeamItem & {
   active: boolean;
   onActivate: () => void;
@@ -36,6 +38,9 @@ export default function TeamCard({
   mobileExpanded: number | null;
   onMobileExpand: (idx: number) => void;
   onMobileCollapse: () => void;
+  tabletExpandedRow: number | null;
+  onTabletRowExpand: (row: number) => void;
+  onTabletRowCollapse: () => void;
 }) {
   const baseWidth = 224;
   const expandedWidth = baseWidth * 2;
@@ -146,9 +151,9 @@ export default function TeamCard({
         descriptionMobile={descriptionMobile}
         delay={delay}
         index={index}
-        isExpanded={mobileExpanded === index}
-        onExpand={onMobileExpand}
-        onCollapse={onMobileCollapse}
+        tabletExpandedRow={tabletExpandedRow}
+        onTabletRowExpand={onTabletRowExpand}
+        onTabletRowCollapse={onTabletRowCollapse}
       />
     </>
   );
@@ -291,9 +296,9 @@ function TabletTeamCard({
   descriptionMobile,
   delay,
   index,
-  isExpanded,
-  onExpand,
-  onCollapse,
+  tabletExpandedRow,
+  onTabletRowExpand,
+  onTabletRowCollapse,
 }: {
   mainIcon: string;
   bgIcon: string;
@@ -307,39 +312,39 @@ function TabletTeamCard({
   descriptionMobile?: string;
   delay?: number;
   index: number;
-  isExpanded: boolean;
-  onExpand: (idx: number) => void;
-  onCollapse: () => void;
+  tabletExpandedRow: number | null;
+  onTabletRowExpand: (row: number) => void;
+  onTabletRowCollapse: () => void;
 }) {
-  const handleClick = (e: MouseEvent) => {
-    e.stopPropagation();
-    e.preventDefault();
-    if (isExpanded) {
-      onCollapse();
-    } else {
-      onExpand(index);
-    }
-  };
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: false, margin: "0px 0px -20% 0px" });
+  const row = Math.floor(index / 2); // 태블릿은 2x2 그리드이므로 줄 번호 계산
+  const isExpanded = tabletExpandedRow === row;
 
-  const handleMouseEnter = () => {
-    if (!isExpanded) {
-      onExpand(index);
+  useEffect(() => {
+    // Only work on tablet (768px ~ 1023px)
+    if (typeof window !== "undefined") {
+      const width = window.innerWidth;
+      if (width < 768 || width >= 1024) {
+        return;
+      }
     }
-  };
-
-  const handleMouseLeave = () => {
-    onCollapse();
-  };
+    // 각 줄의 첫 번째 카드(인덱스가 짝수)가 뷰포트에 들어오면 해당 줄을 펼침
+    if (isInView && index % 2 === 0) {
+      onTabletRowExpand(row);
+    } else if (!isInView && tabletExpandedRow === row) {
+      // 해당 줄의 첫 번째 카드가 뷰포트를 벗어나면 접음
+      onTabletRowCollapse();
+    }
+  }, [isInView, index, row, tabletExpandedRow, onTabletRowExpand, onTabletRowCollapse]);
 
   return (
     <motion.div
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
+      ref={ref}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="hidden min-[768px]:block desktop:hidden relative w-[224px] overflow-visible cursor-pointer"
+      className="hidden min-[768px]:block desktop:hidden relative w-[224px] overflow-visible"
       animate={{
         height: isExpanded ? 208 : 162,
       }}

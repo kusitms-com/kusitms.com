@@ -7,6 +7,7 @@ import TeamCard from "./TeamCard";
 export default function TeamCardsSection() {
   const [activeIdx, setActiveIdx] = React.useState<number | null>(null);
   const [mobileExpandedIdx, setMobileExpandedIdx] = React.useState<number | null>(null);
+  const [tabletExpandedRow, setTabletExpandedRow] = React.useState<number | null>(null);
 
   return (
     <div className="flex flex-col items-center overflow-hidden desktop:pt-[240px] pt-[80px] desktop:pb-[300px] pb-[160px]">
@@ -35,6 +36,9 @@ export default function TeamCardsSection() {
             mobileExpanded={mobileExpandedIdx}
             onMobileExpand={(idx) => setMobileExpandedIdx(idx)}
             onMobileCollapse={() => setMobileExpandedIdx(null)}
+            tabletExpandedRow={tabletExpandedRow}
+            onTabletRowExpand={(row) => setTabletExpandedRow(row)}
+            onTabletRowCollapse={() => setTabletExpandedRow(null)}
           />
         ))}
       </section>
