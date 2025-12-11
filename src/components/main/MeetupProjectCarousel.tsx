@@ -19,9 +19,14 @@ export default function MeetupProjectCarousel({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setIsTablet(width >= 768 && width < 1024);
+    };
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -77,7 +82,10 @@ export default function MeetupProjectCarousel({
     const abs = Math.abs(offset) as 0 | 1 | 2;
     if (abs === 0) return 0;
     const dir = offset > 0 ? 1 : -1;
-    return dir * (abs === 1 ? firstPos : secondPos);
+    const baseX = abs === 1 ? firstPos : secondPos;
+    // 태블릿 뷰에서 카드가 더 안쪽으로 모이도록 스케일 조정
+    const tabletScale = isTablet ? 0.7 : 1;
+    return dir * baseX * tabletScale;
   };
 
   const archiveClassName = archiveMode
