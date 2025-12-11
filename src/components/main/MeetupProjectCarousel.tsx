@@ -39,7 +39,6 @@ export default function MeetupProjectCarousel({
 
   const SCALE = { 0: 1, 1: 0.75, 2: 0.6 } as const;
   const BLUR = { 0: 0, 1: 2.5, 2: 2.5 } as const;
-  const OPACITY = { 0: 1, 1: 0.9, 2: 0.7 } as const;
 
   const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
@@ -83,7 +82,6 @@ export default function MeetupProjectCarousel({
     if (abs === 0) return 0;
     const dir = offset > 0 ? 1 : -1;
     const baseX = abs === 1 ? firstPos : secondPos;
-    // 태블릿 뷰에서 카드가 더 안쪽으로 모이도록 스케일 조정
     const tabletScale = isTablet ? 0.7 : 1;
     return dir * baseX * tabletScale;
   };
@@ -121,7 +119,6 @@ export default function MeetupProjectCarousel({
 
           const scale = SCALE[abs];
           const blur = BLUR[abs];
-          const opacity = OPACITY[abs];
           const zIndex = 10 - abs;
 
           const cardW = BASE_W * scale;
@@ -133,7 +130,6 @@ export default function MeetupProjectCarousel({
               animate={{
                 x: getX(offset),
                 filter: `blur(${blur}px)`,
-                opacity,
               }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
               className="absolute cursor-pointer"
@@ -146,7 +142,7 @@ export default function MeetupProjectCarousel({
               onClick={(e) => handleCardClick(e, offset)}
             >
               <div
-                className="relative rounded-2xl overflow-hidden shadow"
+                className={`relative overflow-hidden shadow ${isMobile ? "rounded-lg" : "rounded-2xl"}`}
                 style={{
                   width: cardW,
                   height: cardH,

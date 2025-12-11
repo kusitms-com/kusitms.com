@@ -10,7 +10,7 @@ import { getMeetupProjects, type MeetupItem } from "@/service/projects";
 export default async function Home() {
   let meetupProjects: MeetupItem[] = [];
   try {
-    const response = await getMeetupProjects("31", "");
+    const response = await getMeetupProjects("32", "");
     meetupProjects = response.data?.meetup_list || [];
   } catch (error) {
     console.error("Failed to fetch meetup projects:", error);
