@@ -30,14 +30,16 @@ async function ProjectDetailModalPage({
   );
 
   return (
-    <ProjectModalShell>
+    <>
+      <ProjectModalShell>
+        {recentIdList.includes(parseInt(projectNumber)) ? (
+          <RecentProjectSection project={project} />
+        ) : (
+          <OldProjectSection project={project} />
+        )}
+      </ProjectModalShell>
       <ProjectNavigation prevId={prevId} nextId={nextId} />
-      {recentIdList.includes(parseInt(projectNumber)) ? (
-        <RecentProjectSection project={project} />
-      ) : (
-        <OldProjectSection project={project} />
-      )}
-    </ProjectModalShell>
+    </>
   );
 }
 
