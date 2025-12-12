@@ -58,7 +58,7 @@ export default function StatsSection() {
       </div>
       <div className="flex flex-col gap-y-[24px] desktop:gap-y-[88px] items-center justify-center absolute top-0 w-full h-[308px] desktop:h-[447px]">
         <div className="text-body-6 text-white">Since 2009</div>
-        <div className="flex gap-0 min-[768px]:gap-12 desktop:gap-0">
+        <div className="flex gap-0 tablet:gap-12 desktop:gap-0">
           {statData.map(({ end, suffix, label, delay, width }) => (
             <StatItem
               key={label}

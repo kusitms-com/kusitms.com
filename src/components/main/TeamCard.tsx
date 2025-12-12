@@ -263,7 +263,7 @@ function MobileTeamCard({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="max-[767px]:block min-[768px]:hidden relative w-[224px] overflow-visible"
+      className="max-[767px]:block tablet:hidden relative w-[224px] overflow-visible"
       animate={{
         height: isExpanded ? 208 : 162,
       }}
@@ -453,7 +453,7 @@ function TabletTeamCard({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="hidden min-[768px]:block desktop:hidden relative w-[224px] overflow-visible"
+      className="hidden tablet:block desktop:hidden relative w-[224px] overflow-visible"
       animate={{
         height: isExpanded ? 208 : 162,
       }}

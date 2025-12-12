@@ -17,7 +17,7 @@ function MobileExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
   const current = items[index];
 
   return (
-    <div className="relative w-full px-4 pb-[160px] block max-[767px]:block min-[768px]:hidden">
+    <div className="relative w-full px-4 pb-[160px] block tablet:hidden">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ function MobileExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
           width={944}
           height={571}
         />
-        <div className="bg-white rounded-b-[16px] px-5 min-[768px]:px-6 pb-4 -mt-2">
+        <div className="bg-white rounded-b-[16px] px-5 tablet:px-6 pb-4 -mt-2">
           <p className="text-body-7 font-bold text-gray-700">{current.title}</p>
           <p className="mt-1 text-body-9 text-gray-500 leading-relaxed">{current.description}</p>
         </div>
@@ -100,7 +100,7 @@ function DesktopExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
   const current = items[index];
 
   return (
-    <div className="relative w-full min-[768px]:px-6 desktop:px-10 pb-[240px] hidden min-[768px]:block">
+    <div className="relative w-full tablet:px-6 desktop:px-10 pb-[240px] hidden tablet:block">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}

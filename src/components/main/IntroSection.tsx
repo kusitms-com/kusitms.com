@@ -10,10 +10,10 @@ const OUTLINE_TEXT_BASE = `${OUTFIT_FONT} text-[#0077FF] leading-[100%] -trackin
 export default function IntroSection() {
   return (
     <div
-      className="relative w-full h-[400px] min-[768px]:h-[808px] desktop:mt-[74px] overflow-hidden"
+      className="relative w-full h-[400px] tablet:h-[808px] desktop:mt-[74px] overflow-hidden"
       style={{ background: BACKGROUND_GRADIENT }}
     >
-      <div className="max-[767px]:block min-[768px]:hidden relative z-10 flex flex-col items-center justify-center h-full">
+      <div className="max-[767px]:block tablet:hidden relative z-10 flex flex-col items-center justify-center h-full">
         <div className="flex flex-col px-9">
           <motion.div
             initial={{ y: -50, opacity: 0 }}
@@ -59,7 +59,7 @@ export default function IntroSection() {
           </p>
         </div>
       </div>
-      <div className="hidden min-[768px]:block">
+      <div className="hidden tablet:block">
         <p className="absolute z-10 top-[72px] right-[75px] text-body-6 text-[#0077FF] text-right">
           Korean University Students
           <br />
@@ -130,12 +130,12 @@ export default function IntroSection() {
             },
           }}
         >
-          <div className="absolute inset-0 max-[767px]:top-[-60px] max-[767px]:bottom-0 min-[768px]:inset-0">
+          <div className="absolute inset-0 max-[767px]:top-[-60px] max-[767px]:bottom-0 tablet:inset-0">
             <Image
               src="/main/img/Main_Graphic.png"
               alt="Main Graphic"
               fill
-              className="object-cover max-[767px]:translate-y-[60px] max-[767px]:object-[60%_120%] min-[768px]:translate-y-0 min-[768px]:object-center"
+              className="object-cover max-[767px]:translate-y-[60px] max-[767px]:object-[60%_120%] tablet:translate-y-0 tablet:object-center"
             />
           </div>
         </motion.div>
