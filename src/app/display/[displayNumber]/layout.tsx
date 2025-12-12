@@ -53,7 +53,7 @@ export default async function DisplayDetailLayout({
   children,
 }: Readonly<{
   children: ReactNode;
-  params: Promise<{ projectType: string; projectNumber: string }>;
+  params: Promise<{ displayNumber: string }>;
 }>) {
   return <main className="mx-auto w-full max-w-[1180px]">{children}</main>;
 }
