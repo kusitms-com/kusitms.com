@@ -43,7 +43,7 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
               transition={{ duration: 30, ease: "linear", repeat: Infinity }}
             >
               {[...COMPANY_ROW1, ...COMPANY_ROW1].map((src, idx) => (
-                <React.Fragment key={`r1-${idx}`}>
+                <div key={`r1-${idx}`}>
                   <Image
                     src={src}
                     alt={`company-${idx}`}
@@ -58,7 +58,7 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
                     height={80}
                     className="hidden tablet:block"
                   />
-                </React.Fragment>
+                </div>
               ))}
             </motion.div>
           </div>
