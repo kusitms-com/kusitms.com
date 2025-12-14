@@ -1,18 +1,15 @@
 import type { MetadataRoute } from "next";
 import { getMeetupProjects } from "@/service/projects";
 
+type SitemapEntry = MetadataRoute.Sitemap[number];
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  let dynamicRoutes: Array<{
-    url: string;
-    lastModified: Date;
-    changeFrequency: "monthly";
-    priority: number;
-  }> = [];
+  let meetupRoutes: SitemapEntry[] = [];
 
   try {
     const meetupProjectList = await getMeetupProjects("", "");
     if (meetupProjectList?.data?.meetup_list) {
-      dynamicRoutes = meetupProjectList.data.meetup_list.map((project) => ({
+      meetupRoutes = meetupProjectList.data.meetup_list.map((project) => ({
         url: `https://www.kusitms.com/projects/meetup/${project.meetup_id}`,
         lastModified: new Date(),
         changeFrequency: "monthly" as const,
@@ -54,6 +51,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    ...dynamicRoutes,
+    ...meetupRoutes,
   ];
 }
