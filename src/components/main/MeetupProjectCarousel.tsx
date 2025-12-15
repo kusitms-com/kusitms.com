@@ -86,33 +86,31 @@ export default function MeetupProjectCarousel({
     return dir * baseX * tabletScale;
   };
 
-  const archiveClassName = archiveMode
-    ? "desktop:h-[588px] h-[408px] align-center items-end"
-    : "mt-[36px] tablet:mt-[54px] min-h-[126px] tablet:min-h-[260px] overflow-visible items-center";
-
   return (
     <div className="w-full flex flex-col items-center ">
-      <div className={`relative w-full flex   ${archiveClassName}`}>
-        {archiveMode && (
-          <div className="absolute desktop:top-[160px] top-[90px] items-center flex flex-col w-full gap-4">
-            <p className="text-title-7 desktop:text-title-5 text-gray-900 font-bold">
-              32기 큐시즘 전시회
-            </p>
-            <p className="text-body-8 desktop:text-body-4 text-gray-500 text-center">
-              큐밀리들의 두 달간의 여정,&nbsp;
-              <span className="desktop:hidden">
-                <br />
-              </span>
-              밋업프로젝트의 서비스들을 소개합니다.
+      {archiveMode && (
+        <div className="desktop:mt-[160px] mt-[80px] items-center flex flex-col w-full gap-4">
+          <p className="text-title-7 desktop:text-title-5 text-gray-900 font-bold">
+            32기 큐시즘 전시회
+          </p>
+          <p className="text-body-8 desktop:text-body-4 text-gray-500 text-center">
+            큐밀리들의 두 달간의 여정,&nbsp;
+            <span className="desktop:hidden">
               <br />
-              이번 전시회에서는 아래 서비스들을&nbsp;
-              <span className="desktop:hidden">
-                <br />
-              </span>
-              직접 만나보실 수 있어요.
-            </p>
-          </div>
-        )}
+            </span>
+            밋업프로젝트의 서비스들을 소개합니다.
+            <br />
+            이번 전시회에서는 아래 서비스들을&nbsp;
+            <span className="desktop:hidden">
+              <br />
+            </span>
+            직접 만나보실 수 있어요.
+          </p>
+        </div>
+      )}
+      <div
+        className={`relative w-full flex mt-[36px] tablet:mt-[54px] min-h-[126px] tablet:min-h-[260px] overflow-visible items-center`}
+      >
         {visibleCards.map(({ index, offset }) => {
           const project = projects[index];
           const abs = Math.abs(offset) as 0 | 1 | 2;
