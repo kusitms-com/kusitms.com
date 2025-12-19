@@ -1,9 +1,9 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useScrollDetection } from "@/hooks/useScrollDetection";
 
-// Types
 interface DesktopTeamCardProps {
   mainIcon: string;
   bgIcon: string;
@@ -52,153 +52,7 @@ interface TabletCardProps {
   onTabletRowCollapse: () => void;
 }
 
-// Custom hook for scroll detection
-function useScrollDetection(
-  isActive: boolean,
-  threshold: number = 5,
-  direction: "up" | "down" | "both" = "both",
-) {
-  const [isScrolling, setIsScrolling] = useState(false);
-
-  useEffect(() => {
-    if (!isActive) return;
-
-    let scrollTimer: NodeJS.Timeout;
-    let lastScrollTop = window.scrollY;
-    let rafId: number | null = null;
-
-    const handleScroll = () => {
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
-
-      rafId = requestAnimationFrame(() => {
-        const currentScrollTop = window.scrollY;
-        const scrollDelta = currentScrollTop - lastScrollTop;
-        const scrollSpeed = Math.abs(scrollDelta);
-
-        const shouldDisable =
-          scrollSpeed > threshold &&
-          (direction === "both" ||
-            (direction === "up" && scrollDelta < 0) ||
-            (direction === "down" && scrollDelta > 0));
-
-        if (shouldDisable) {
-          setIsScrolling(true);
-          clearTimeout(scrollTimer);
-          scrollTimer = setTimeout(
-            () => {
-              setIsScrolling(false);
-            },
-            direction === "up" ? 150 : 100,
-          );
-        } else if (scrollSpeed <= threshold) {
-          setIsScrolling(false);
-        }
-
-        lastScrollTop = currentScrollTop;
-        rafId = null;
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
-      clearTimeout(scrollTimer);
-    };
-  }, [isActive, threshold, direction]);
-
-  return isScrolling;
-}
-
-interface CardContentProps {
-  bgIcon: string;
-  bgIconWidthMobile: number;
-  bgIconHeightMobile: number;
-  title: string;
-  subtitle: string;
-  descriptionMobile?: string;
-  isExpanded: boolean;
-  mainIcon: string;
-  mainIconWidthMobile: number;
-  mainIconHeightMobile: number;
-}
-
-function CardContent({
-  bgIcon,
-  bgIconWidthMobile,
-  bgIconHeightMobile,
-  title,
-  subtitle,
-  descriptionMobile,
-  isExpanded,
-  mainIcon,
-  mainIconWidthMobile,
-  mainIconHeightMobile,
-}: CardContentProps) {
-  return (
-    <>
-      <motion.div
-        className="absolute top-0 left-0"
-        animate={{
-          scale: isExpanded ? 1.2 : 1,
-          opacity: isExpanded ? 0.3 : 1,
-        }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-      >
-        <Image src={bgIcon} alt={title} width={bgIconWidthMobile} height={bgIconHeightMobile} />
-      </motion.div>
-      <div className="relative z-10 pr-2">
-        <div className="flex flex-col gap-[8px]">
-          <div className="flex items-baseline gap-2">
-            <span className="text-dark-blue-500 text-body-3 leading-none">
-              {title.split(" ")[0]}
-            </span>
-            <div>
-              <span className="text-gray-900 text-body-3 leading-none">{title.split(" ")[1]}</span>
-              <p className="text-body-10 text-gray-600">{subtitle}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <motion.div
-        className={`absolute ${title.includes("Backend") ? "right-[-10px] bottom-[-15px]" : "bottom-[-30px] right-[-20px]"}`}
-        animate={{
-          scale: isExpanded ? 1.2 : 1,
-          opacity: isExpanded ? 0.1 : 1,
-          rotate: isExpanded ? 15 : 0,
-        }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-      >
-        <Image
-          src={mainIcon}
-          alt={title}
-          width={mainIconWidthMobile}
-          height={mainIconHeightMobile}
-        />
-      </motion.div>
-      <motion.div
-        className="relative z-10 mt-[50px]"
-        initial={false}
-        animate={{
-          opacity: isExpanded ? 1 : 0,
-          height: isExpanded ? "auto" : 0,
-        }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-        style={{ overflow: "hidden" }}
-      >
-        <p className="ml-[29px] text-body-9 text-gray-600 whitespace-pre-line">
-          {descriptionMobile}
-        </p>
-      </motion.div>
-    </>
-  );
-}
-
-// Desktop Card Component
+// 데스크탑 카드 컴포넌트
 export function DesktopTeamCard({
   mainIcon,
   bgIcon,
@@ -293,7 +147,7 @@ export function DesktopTeamCard({
   );
 }
 
-// Mobile Card Component
+// 모바일 카드 컴포넌트
 export function MobileTeamCard({
   mainIcon,
   bgIcon,
@@ -346,24 +200,67 @@ export function MobileTeamCard({
       }}
     >
       <div className="relative w-full h-full px-[18.1px] py-[13.6px] bg-sky-50 overflow-hidden rounded-[9.077px] border-2 border-[#F0F4FF] shadow-[0px_4px_10px_0px_rgba(121,212,255,0.20)]">
-        <CardContent
-          bgIcon={bgIcon}
-          bgIconWidthMobile={bgIconWidthMobile}
-          bgIconHeightMobile={bgIconHeightMobile}
-          title={title}
-          subtitle={subtitle}
-          descriptionMobile={descriptionMobile}
-          mainIcon={mainIcon}
-          mainIconWidthMobile={mainIconWidthMobile}
-          mainIconHeightMobile={mainIconHeightMobile}
-          isExpanded={isExpanded}
-        />
+        <motion.div
+          className="absolute top-0 left-0"
+          animate={{
+            scale: isExpanded ? 1.2 : 1,
+            opacity: isExpanded ? 0.3 : 1,
+          }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <Image src={bgIcon} alt={title} width={bgIconWidthMobile} height={bgIconHeightMobile} />
+        </motion.div>
+        <div className="relative z-10 pr-2">
+          <div className="flex flex-col gap-[8px]">
+            <div className="flex items-baseline gap-2">
+              <span className="text-dark-blue-500 text-body-3 leading-none">
+                {title.split(" ")[0]}
+              </span>
+              <div>
+                <span className="text-gray-900 text-body-3 leading-none">
+                  {title.split(" ")[1]}
+                </span>
+                <p className="text-body-10 text-gray-600">{subtitle}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <motion.div
+          className={`absolute ${title.includes("Backend") ? "right-[-10px] bottom-[-15px]" : "bottom-[-30px] right-[-20px]"}`}
+          animate={{
+            scale: isExpanded ? 1.2 : 1,
+            opacity: isExpanded ? 0.1 : 1,
+            rotate: isExpanded ? 15 : 0,
+          }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <Image
+            src={mainIcon}
+            alt={title}
+            width={mainIconWidthMobile}
+            height={mainIconHeightMobile}
+          />
+        </motion.div>
+        <motion.div
+          className="relative z-10 mt-[50px]"
+          initial={false}
+          animate={{
+            opacity: isExpanded ? 1 : 0,
+            height: isExpanded ? "auto" : 0,
+          }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          style={{ overflow: "hidden" }}
+        >
+          <p className="ml-[29px] text-body-9 text-gray-600 whitespace-pre-line">
+            {descriptionMobile}
+          </p>
+        </motion.div>
       </div>
     </motion.div>
   );
 }
 
-// Tablet Card Component
+// 태블릿 카드 컴포넌트
 export function TabletTeamCard({
   mainIcon,
   bgIcon,
@@ -429,18 +326,61 @@ export function TabletTeamCard({
       }}
     >
       <div className="relative w-full h-full px-[18.1px] py-[13.6px] bg-sky-50 overflow-hidden rounded-[9.077px] border-2 border-[#F0F4FF] shadow-[0px_4px_10px_0px_rgba(121,212,255,0.20)]">
-        <CardContent
-          bgIcon={bgIcon}
-          bgIconWidthMobile={bgIconWidthMobile}
-          bgIconHeightMobile={bgIconHeightMobile}
-          title={title}
-          subtitle={subtitle}
-          descriptionMobile={descriptionMobile}
-          mainIcon={mainIcon}
-          mainIconWidthMobile={mainIconWidthMobile}
-          mainIconHeightMobile={mainIconHeightMobile}
-          isExpanded={isExpanded}
-        />
+        <motion.div
+          className="absolute top-0 left-0"
+          animate={{
+            scale: isExpanded ? 1.2 : 1,
+            opacity: isExpanded ? 0.3 : 1,
+          }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <Image src={bgIcon} alt={title} width={bgIconWidthMobile} height={bgIconHeightMobile} />
+        </motion.div>
+        <div className="relative z-10 pr-2">
+          <div className="flex flex-col gap-[8px]">
+            <div className="flex items-baseline gap-2">
+              <span className="text-dark-blue-500 text-body-3 leading-none">
+                {title.split(" ")[0]}
+              </span>
+              <div>
+                <span className="text-gray-900 text-body-3 leading-none">
+                  {title.split(" ")[1]}
+                </span>
+                <p className="text-body-10 text-gray-600">{subtitle}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <motion.div
+          className={`absolute ${title.includes("Backend") ? "right-[-10px] bottom-[-15px]" : "bottom-[-30px] right-[-20px]"}`}
+          animate={{
+            scale: isExpanded ? 1.2 : 1,
+            opacity: isExpanded ? 0.1 : 1,
+            rotate: isExpanded ? 15 : 0,
+          }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <Image
+            src={mainIcon}
+            alt={title}
+            width={mainIconWidthMobile}
+            height={mainIconHeightMobile}
+          />
+        </motion.div>
+        <motion.div
+          className="relative z-10 mt-[50px]"
+          initial={false}
+          animate={{
+            opacity: isExpanded ? 1 : 0,
+            height: isExpanded ? "auto" : 0,
+          }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          style={{ overflow: "hidden" }}
+        >
+          <p className="ml-[29px] text-body-9 text-gray-600 whitespace-pre-line">
+            {descriptionMobile}
+          </p>
+        </motion.div>
       </div>
     </motion.div>
   );
