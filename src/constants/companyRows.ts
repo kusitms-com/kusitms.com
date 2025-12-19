@@ -19,5 +19,3 @@ export const COMPANY_ROW2: string[] = [
   "/main/img/company/SoulLive.png",
   "/main/img/company/DevOcean.png",
 ];
-
-

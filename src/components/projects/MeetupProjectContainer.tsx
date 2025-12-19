@@ -3,16 +3,14 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { getMeetupProjects, type MeetupResponse } from "@/service/projects";
-import ProjectFilter from "./common/ProjectFilter";
-import Card from "./common/ProjectCard";
 import TopScrollButton from "@/components/shared/TopScrollButton";
+import { getMeetupProjects, type MeetupResponse } from "@/service/projects";
+import Card from "./common/ProjectCard";
+import ProjectFilter from "./common/ProjectFilter";
 
 type ProjectContainerProps = MeetupResponse;
 
-export default function ProjectContainer({
-  data: meetupProjectList,
-}: ProjectContainerProps) {
+export default function ProjectContainer({ data: meetupProjectList }: ProjectContainerProps) {
   const [projects, setProjects] = useState(meetupProjectList);
   const [cardinal, setCardinal] = useState("");
 
@@ -44,10 +42,7 @@ export default function ProjectContainer({
             <Card key={project.meetup_id} hoverable>
               <Card.Poster src={project.poster_url} />
               <Card.Info>
-                <Card.Cardinal
-                  cardinal={project.cardinal}
-                  type={project.type}
-                />
+                <Card.Cardinal cardinal={project.cardinal} type={project.type} />
                 <Card.ProjectName>{project.name}</Card.ProjectName>
                 <Card.ContentIntro>{project.one_line_intro}</Card.ContentIntro>
               </Card.Info>

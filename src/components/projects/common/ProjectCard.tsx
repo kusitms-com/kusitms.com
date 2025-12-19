@@ -13,11 +13,7 @@ interface CardinalProps {
   type?: string;
 }
 
-export default function Card({
-  children,
-  onClick,
-  hoverable = false,
-}: CardProps) {
+export default function Card({ children, onClick, hoverable = false }: CardProps) {
   return (
     <div
       className={`relative flex flex-col overflow-hidden rounded-[16px] shadow-[0px_1px_10px_rgba(179,179,188,0.25)] transition-transform duration-300 ease-in-out ${
@@ -57,9 +53,7 @@ const Cardinal = ({ cardinal, type }: CardinalProps) => (
     {type && (
       <>
         <span className="text-body-8 text-gray-500">&middot;</span>
-        <span className="text-body-8 text-gray-500">
-          {toUpperCaseOnlyLetters(type)}
-        </span>
+        <span className="text-body-8 text-gray-500">{toUpperCaseOnlyLetters(type)}</span>
       </>
     )}
   </div>
@@ -70,9 +64,7 @@ const ProjectName = ({ children }: { children: ReactNode }) => (
 );
 
 const ContentIntro = ({ children }: { children: ReactNode }) => (
-  <p className="h-[47px] text-[13px] font-semibold text-gray-500 line-clamp-2">
-    {children}
-  </p>
+  <p className="h-[47px] text-[13px] font-semibold text-gray-500 line-clamp-2">{children}</p>
 );
 
 const CategoryContainer = ({ children }: { children: ReactNode }) => (

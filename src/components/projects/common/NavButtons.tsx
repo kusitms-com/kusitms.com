@@ -21,16 +21,10 @@ export default function NavButtons() {
             key={item.path}
             href={item.href}
             className={`w-1/2 h-[78px] flex justify-center items-center ${
-              isActive
-                ? "border-dark-blue-500 border-b-[3px]"
-                : "border-gray-100 border-b-[2px]"
+              isActive ? "border-dark-blue-500 border-b-[3px]" : "border-gray-100 border-b-[2px]"
             }`}
           >
-            <p
-              className={`text-gray-700 ${
-                isActive ? "text-body-1" : "text-body-2"
-              }`}
-            >
+            <p className={`text-gray-700 ${isActive ? "text-body-1" : "text-body-2"}`}>
               {item.label}
             </p>
           </Link>

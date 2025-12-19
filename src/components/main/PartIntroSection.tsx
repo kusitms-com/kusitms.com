@@ -86,9 +86,7 @@ export default function PartIntroSection() {
         className="flex flex-col gap-y-[20px] desktop:gap-y-[48px] items-center justify-center"
       >
         <div>
-          <p className="text-[23px] desktop:text-[48px] font-black">
-            함께하는 큐밀리
-          </p>
+          <p className="text-[23px] desktop:text-[48px] font-black">함께하는 큐밀리</p>
           <Image
             className="block desktop:hidden"
             src="/main/BlueUnderlineIcon.svg"
@@ -114,9 +112,7 @@ export default function PartIntroSection() {
             <p className="text-[13px] desktop:text-[20px]">
               각 팀에서 모인 팀원들이 하나의 팀이 되어
             </p>
-            <p className="text-[13px] desktop:text-[20px]">
-              함께 프로젝트를 진행해요
-            </p>
+            <p className="text-[13px] desktop:text-[20px]">함께 프로젝트를 진행해요</p>
           </div>
         </div>
       </motion.div>
@@ -175,18 +171,16 @@ export default function PartIntroSection() {
         </div>
 
         <div className="flex desktop:flex-row flex-col gap-x-[20px] gap-y-[40px] desktop:mt-[80px]">
-          {executiveData.map(
-            ({ image, title, description, delay, paddingTop }) => (
-              <ExecutiveCard
-                key={title}
-                image={image}
-                title={title}
-                description={description}
-                delay={delay}
-                paddingTop={paddingTop}
-              />
-            )
-          )}
+          {executiveData.map(({ image, title, description, delay, paddingTop }) => (
+            <ExecutiveCard
+              key={title}
+              image={image}
+              title={title}
+              description={description}
+              delay={delay}
+              paddingTop={paddingTop}
+            />
+          ))}
         </div>
       </section>
     </div>
@@ -214,7 +208,7 @@ const TeamCard = ({
       viewport={{ once: true }}
       className={clsx(
         "flex gap-x-[10px] desktop:gap-x-[40px] rounded-[32px] pt-[38px] pb-[34px] px-[30px] desktop:py-[56px] desktop:px-[64px] bg-white w-[310px] desktop:w-[980px]",
-        reverse ? "desktop:flex-row-reverse" : "desktop:flex-row"
+        reverse ? "desktop:flex-row-reverse" : "desktop:flex-row",
       )}
     >
       <Image
@@ -238,12 +232,10 @@ const TeamCard = ({
       <div
         className={clsx(
           "flex flex-col gap-y-[10px] desktop:gap-y-[20px]",
-          reverse && "desktop:items-end desktop:text-end"
+          reverse && "desktop:items-end desktop:text-end",
         )}
       >
-        <p className="text-[19px] desktop:text-[24px] text-[#0055FF] font-black">
-          {title}
-        </p>
+        <p className="text-[19px] desktop:text-[24px] text-[#0055FF] font-black">{title}</p>
         <p className="text-[13px] desktop:text-[16px] leading-[150%] text-black whitespace-pre-line">
           {description}
         </p>

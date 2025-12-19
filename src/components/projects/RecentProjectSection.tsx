@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import type { MeetupProjectDetail } from "@/service/projects";
-import TeamMember from "./common/TeamMember";
 import { toUpperCaseOnlyLetters } from "@/utils";
+import TeamMember from "./common/TeamMember";
 
 function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
   return (
@@ -12,14 +12,10 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
         <p className="text-title-6 text-gray-900 font-bold">{project.name}</p>
         <div className="flex gap-2">
           <div className="bg-sky-blue-100 rounded-[8px] px-4 py-1">
-            <p className="text-sky-blue-700 text-body-5">
-              {project.cardinal}기
-            </p>
+            <p className="text-sky-blue-700 text-body-5">{project.cardinal}기</p>
           </div>
           <div className="bg-sky-blue-100 rounded-[8px] px-4 py-1">
-            <p className="text-sky-blue-700 text-body-5">
-              {toUpperCaseOnlyLetters(project.type)}
-            </p>
+            <p className="text-sky-blue-700 text-body-5">{toUpperCaseOnlyLetters(project.type)}</p>
           </div>
         </div>
       </div>
@@ -88,7 +84,7 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
                     height={20}
                   />
                 </Link>
-              )
+              ),
           )}
         </div>
       </div>

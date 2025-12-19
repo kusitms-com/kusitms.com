@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 export default function GuestIntroSection() {
-  
   const guestData = [
     {
       mainIcon: "/main/img/guest/Guest_1.png",
