@@ -1,13 +1,33 @@
 "use client";
 import { motion } from "framer-motion";
-import React from "react";
+import { useEffect, useState } from "react";
 import { TEAM_DATA } from "@/constants/teamData";
-import TeamCard from "./TeamCard";
+import { DesktopTeamCard, MobileTeamCard, TabletTeamCard } from "./TeamCard";
+
+type LayoutType = "mobile" | "tablet" | "desktop";
 
 export default function TeamCardsSection() {
-  const [activeIdx, setActiveIdx] = React.useState<number | null>(null);
-  const [mobileExpandedIdx, setMobileExpandedIdx] = React.useState<number | null>(null);
-  const [tabletExpandedRow, setTabletExpandedRow] = React.useState<number | null>(null);
+  const [layout, setLayout] = useState<LayoutType>("desktop");
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [mobileExpandedIdx, setMobileExpandedIdx] = useState<number | null>(null);
+  const [tabletExpandedRow, setTabletExpandedRow] = useState<number | null>(null);
+
+  useEffect(() => {
+    const updateLayout = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setLayout("mobile");
+      } else if (width < 1024) {
+        setLayout("tablet");
+      } else {
+        setLayout("desktop");
+      }
+    };
+
+    updateLayout();
+    window.addEventListener("resize", updateLayout);
+    return () => window.removeEventListener("resize", updateLayout);
+  }, []);
 
   return (
     <div className="flex flex-col items-center overflow-hidden desktop:pt-[240px] pt-[80px] desktop:pb-[300px] pb-[160px]">
@@ -25,22 +45,69 @@ export default function TeamCardsSection() {
         </p>
       </motion.div>
       <section className="flex flex-col items-center gap-4 tablet:grid tablet:grid-cols-[auto_auto] tablet:gap-4 tablet:justify-center tablet:justify-items-center desktop:!flex desktop:flex-row desktop:flex-nowrap desktop:justify-center desktop:gap-4 desktop:max-w-none desktop:overflow-x-auto pt-[30px] desktop:pt-[80px] px-4 w-full">
-        {TEAM_DATA.map((item, idx) => (
-          <TeamCard
-            key={item.title}
-            {...item}
-            active={activeIdx === idx}
-            onActivate={() => setActiveIdx(idx)}
-            onDeactivate={() => setActiveIdx((cur) => (cur === idx ? null : cur))}
-            index={idx}
-            mobileExpanded={mobileExpandedIdx}
-            onMobileExpand={(idx) => setMobileExpandedIdx(idx)}
-            onMobileCollapse={() => setMobileExpandedIdx(null)}
-            tabletExpandedRow={tabletExpandedRow}
-            onTabletRowExpand={(row) => setTabletExpandedRow(row)}
-            onTabletRowCollapse={() => setTabletExpandedRow(null)}
-          />
-        ))}
+        {TEAM_DATA.map((item, idx) => {
+          if (layout === "desktop") {
+            return (
+              <DesktopTeamCard
+                key={item.title}
+                mainIcon={item.mainIcon}
+                bgIcon={item.bgIcon}
+                mainIconWidth={item.mainIconWidth}
+                mainIconHeight={item.mainIconHeight}
+                bgIconWidth={item.bgIconWidth}
+                bgIconHeight={item.bgIconHeight}
+                title={item.title}
+                subtitle={item.subtitle}
+                delay={item.delay}
+                description={item.description}
+                active={activeIdx === idx}
+                onActivate={() => setActiveIdx(idx)}
+                onDeactivate={() => setActiveIdx((cur) => (cur === idx ? null : cur))}
+              />
+            );
+          }
+
+          if (layout === "mobile") {
+            return (
+              <MobileTeamCard
+                key={item.title}
+                mainIcon={item.mainIcon}
+                bgIcon={item.bgIcon}
+                mainIconWidthMobile={item.mainIconWidthMobile}
+                mainIconHeightMobile={item.mainIconHeightMobile}
+                bgIconWidthMobile={item.bgIconWidthMobile}
+                bgIconHeightMobile={item.bgIconHeightMobile}
+                title={item.title}
+                subtitle={item.subtitle}
+                descriptionMobile={item.descriptionMobile}
+                index={idx}
+                isExpanded={mobileExpandedIdx === idx}
+                onExpand={(idx) => setMobileExpandedIdx(idx)}
+                onCollapse={() => setMobileExpandedIdx(null)}
+              />
+            );
+          }
+
+          // tablet
+          return (
+            <TabletTeamCard
+              key={item.title}
+              mainIcon={item.mainIcon}
+              bgIcon={item.bgIcon}
+              mainIconWidthMobile={item.mainIconWidthMobile}
+              mainIconHeightMobile={item.mainIconHeightMobile}
+              bgIconWidthMobile={item.bgIconWidthMobile}
+              bgIconHeightMobile={item.bgIconHeightMobile}
+              title={item.title}
+              subtitle={item.subtitle}
+              descriptionMobile={item.descriptionMobile}
+              index={idx}
+              tabletExpandedRow={tabletExpandedRow}
+              onTabletRowExpand={(row) => setTabletExpandedRow(row)}
+              onTabletRowCollapse={() => setTabletExpandedRow(null)}
+            />
+          );
+        })}
       </section>
     </div>
   );
