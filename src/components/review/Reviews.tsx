@@ -39,9 +39,9 @@ export default function Reviews({ reviews }: ReviewsProps) {
         totalCount={reviewCount}
         onChange={handleFilterChange}
       />
-      <section className="desktop:columns-3 columns-1 gap-4 desktop:mb-[160px] mb-[80px] px-10 desktop:max-w-none max-w-[420px] mx-auto">
+      <section className="desktop:columns-3 tablet:columns-2 columns-1 gap-4 tablet:mb-[160px] mb-[80px] px-10 mx-auto">
         {reviewItems.map((review) => (
-          <div key={review.review_id} className="break-inside-avoid desktop:mb-4 mb-3">
+          <div key={review.review_id} className="break-inside-avoid tablet:mb-4 mb-3">
             <ReviewBox {...review} />
           </div>
         ))}
