@@ -35,8 +35,8 @@ export default function ReviewFilter({ team, cardinal, totalCount, onChange }: R
   const teamOptions = useMemo(() => Object.keys(TEAMS), []);
 
   return (
-    <div className="flex desktop:flex-row flex-col justify-between gap-2  px-10 desktop:pb-[39px] pb-5">
-      <p className="desktop:text-title-7 text-body-5 text-gray-700">
+    <div className="flex tablet:flex-row flex-col justify-between gap-2 px-10 tablet:pb-[39px] pb-5">
+      <p className="tablet:text-title-7 text-body-5 text-gray-700">
         전체 후기 <span className="text-dark-blue-600">{totalCount}</span>개
       </p>
       <div className="flex gap-[12px]">
