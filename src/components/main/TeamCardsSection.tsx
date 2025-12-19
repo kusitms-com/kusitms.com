@@ -49,17 +49,8 @@ export default function TeamCardsSection() {
           if (layout === "desktop") {
             return (
               <DesktopTeamCard
-                key={item.title}
-                mainIcon={item.mainIcon}
-                bgIcon={item.bgIcon}
-                mainIconWidth={item.mainIconWidth}
-                mainIconHeight={item.mainIconHeight}
-                bgIconWidth={item.bgIconWidth}
-                bgIconHeight={item.bgIconHeight}
-                title={item.title}
-                subtitle={item.subtitle}
-                delay={item.delay}
-                description={item.description}
+                key={idx}
+                {...item}
                 active={activeIdx === idx}
                 onActivate={() => setActiveIdx(idx)}
                 onDeactivate={() => setActiveIdx((cur) => (cur === idx ? null : cur))}
@@ -70,16 +61,8 @@ export default function TeamCardsSection() {
           if (layout === "mobile") {
             return (
               <MobileTeamCard
-                key={item.title}
-                mainIcon={item.mainIcon}
-                bgIcon={item.bgIcon}
-                mainIconWidthMobile={item.mainIconWidthMobile}
-                mainIconHeightMobile={item.mainIconHeightMobile}
-                bgIconWidthMobile={item.bgIconWidthMobile}
-                bgIconHeightMobile={item.bgIconHeightMobile}
-                title={item.title}
-                subtitle={item.subtitle}
-                descriptionMobile={item.descriptionMobile}
+                key={idx}
+                {...item}
                 index={idx}
                 isExpanded={mobileExpandedIdx === idx}
                 onExpand={(idx) => setMobileExpandedIdx(idx)}
@@ -87,20 +70,10 @@ export default function TeamCardsSection() {
               />
             );
           }
-
-          // tablet
           return (
             <TabletTeamCard
-              key={item.title}
-              mainIcon={item.mainIcon}
-              bgIcon={item.bgIcon}
-              mainIconWidthMobile={item.mainIconWidthMobile}
-              mainIconHeightMobile={item.mainIconHeightMobile}
-              bgIconWidthMobile={item.bgIconWidthMobile}
-              bgIconHeightMobile={item.bgIconHeightMobile}
-              title={item.title}
-              subtitle={item.subtitle}
-              descriptionMobile={item.descriptionMobile}
+              key={idx}
+              {...item}
               index={idx}
               tabletExpandedRow={tabletExpandedRow}
               onTabletRowExpand={(row) => setTabletExpandedRow(row)}
