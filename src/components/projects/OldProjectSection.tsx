@@ -7,10 +7,10 @@ import { toUpperCaseOnlyLetters } from "@/utils";
 
 function OldProjectSection({ project }: { project: MeetupProjectDetail }) {
   return (
-    <div className="flex flex-col gap-5 tablet:px-10 px-5">
-      <div className="flex justify-start items-center relative gap-3">
+    <div className="flex flex-col gap-5 tablet:px-10 px-4">
+      <div className="flex justify-start items-center relative tablet:gap-3 gap-2">
         <p className="tablet:text-title-6 text-body-5 text-gray-900 font-bold">{project.name}</p>
-        <div className="flex gap-2">
+        <div className="flex tablet:gap-2 gap-1">
           <div className="bg-sky-blue-100 tablet:rounded-[8px] rounded-[4px] tablet:px-4 px-2 tablet:py-1 py-0.5">
             <p className="text-sky-blue-700 tablet:text-body-5 text-body-11">
               {project.cardinal}기
@@ -23,12 +23,15 @@ function OldProjectSection({ project }: { project: MeetupProjectDetail }) {
           </div>
         </div>
       </div>
-      <div className="relative px-10 w-full h-[663px]">
+      <div className="relative rounded-[20px] overflow-hidden border border-gray-200">
         <Image
           src={project.poster_url ?? "/footerLogo.svg"}
-          className="object-cover rounded-[20px]"
-          fill
           alt="poster"
+          width={1000}
+          height={1400}
+          unoptimized
+          className="w-full h-auto object-contain"
+          priority
         />
       </div>
       <div className="flex flex-col gap-2">
