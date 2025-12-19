@@ -3,7 +3,7 @@ import React from "react";
 
 interface Props {
   title: string;
-  detail: string | React.ReactNode;
+  detail: React.ReactNode;
 }
 
 export default function ProjectTypeBanner({ title, detail }: Props) {
