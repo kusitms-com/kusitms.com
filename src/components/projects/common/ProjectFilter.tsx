@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
-import Dropdown from "./DropDown";
-import { calculateProjectCounts } from "@/utils/projectCountUtils";
 import type { CorporateProjectItem, MeetupItem } from "@/service/projects";
+import { calculateProjectCounts } from "@/utils/projectCountUtils";
+import Dropdown from "./DropDown";
 
 interface ProjectFilterProps {
   cardinal: string;

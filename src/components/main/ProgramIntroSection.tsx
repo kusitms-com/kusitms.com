@@ -1,10 +1,10 @@
 "use client";
-import { MeetupItem } from "@/service/projects/getMeetupProjects";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
-import MeetupProjectCarousel from "./MeetupProjectCarousel";
 import { COMPANY_ROW1, COMPANY_ROW2 } from "@/constants/companyRows";
+import type { MeetupItem } from "@/service/projects/getMeetupProjects";
+import MeetupProjectCarousel from "./MeetupProjectCarousel";
 
 interface ProgramIntroSectionProps {
   meetupProjects?: MeetupItem[];

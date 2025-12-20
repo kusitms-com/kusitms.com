@@ -1,8 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import React from "react";
-import TeamCard from "./TeamCard";
 import { TEAM_DATA } from "@/constants/teamData";
+import TeamCard from "./TeamCard";
 
 export default function TeamCardsSection() {
   const [activeIdx, setActiveIdx] = React.useState<number | null>(null);

@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import type { MeetupProjectDetail } from "@/service/projects";
-import TeamMember from "./common/TeamMember";
 import { toUpperCaseOnlyLetters } from "@/utils";
+import TeamMember from "./common/TeamMember";
 
 function OldProjectSection({ project }: { project: MeetupProjectDetail }) {
   return (
