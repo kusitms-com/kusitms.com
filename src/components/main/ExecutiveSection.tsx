@@ -6,8 +6,14 @@ import { EXECUTIVE_DATA, type ExecutiveItem } from "@/constants/executiveData";
 
 function ExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
   const [index, setIndex] = useState(0);
-  const prev = useCallback(() => setIndex((i) => (i === 0 ? items.length - 1 : i - 1)), [items.length]);
-  const next = useCallback(() => setIndex((i) => (i === items.length - 1 ? 0 : i + 1)), [items.length]);
+  const prev = useCallback(
+    () => setIndex((i) => (i === 0 ? items.length - 1 : i - 1)),
+    [items.length],
+  );
+  const next = useCallback(
+    () => setIndex((i) => (i === items.length - 1 ? 0 : i + 1)),
+    [items.length],
+  );
   const current = items[index];
 
   return (
@@ -22,7 +28,8 @@ function ExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
         <p className="text-title-5 desktop:text-title-5 text-black">큐밀리를 이끌어나갈 운영진</p>
         <p className="text-center text-body-4 desktop:text-[20px] text-gray-500">
           KUSITMS 활동을 이끄는 운영진으로 네 가지 팀으로 이루어져있어요
-          <br />학부학, 경영총괄팀, 대외홍보팀, 교육기획팀으로 구성돼요
+          <br />
+          학부학, 경영총괄팀, 대외홍보팀, 교육기획팀으로 구성돼요
         </p>
       </motion.div>
       <motion.div
@@ -33,10 +40,20 @@ function ExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="relative"
       >
-        <Image className="w-full h-auto rounded-[16px]" src={current.image} alt={current.title} width={944} height={571} />
+        <Image
+          className="w-full h-auto rounded-[16px]"
+          src={current.image}
+          alt={current.title}
+          width={944}
+          height={571}
+        />
         <div className="absolute inset-x-0 bottom-0 px-[108px] pb-[50px]">
-          <p className="text-[18px] desktop:text-title-7 font-bold text-gray-900">{current.title}</p>
-          <p className="mt-2 text-[13px] desktop:text-body-6 text-gray-600 leading-relaxed">{current.description}</p>
+          <p className="text-[18px] desktop:text-title-7 font-bold text-gray-900">
+            {current.title}
+          </p>
+          <p className="mt-2 text-[13px] desktop:text-body-6 text-gray-600 leading-relaxed">
+            {current.description}
+          </p>
         </div>
         <button
           type="button"
@@ -57,7 +74,12 @@ function ExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
       </motion.div>
       <div className="mt-2 flex items-center justify-center gap-2">
         {items.map((_, i) => (
-          <span key={i} className={i === index ? "w-2 h-2 rounded-full bg-gray-400" : "w-2 h-2 rounded-full bg-gray-100"} />
+          <span
+            key={i}
+            className={
+              i === index ? "w-2 h-2 rounded-full bg-gray-400" : "w-2 h-2 rounded-full bg-gray-100"
+            }
+          />
         ))}
       </div>
     </div>
@@ -71,5 +93,3 @@ export default function ExecutiveSection() {
     </section>
   );
 }
-
-

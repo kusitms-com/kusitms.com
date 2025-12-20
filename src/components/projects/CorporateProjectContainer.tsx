@@ -1,10 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  type CorporateResponse,
-  getCorporateProjects,
-} from "@/service/projects";
+import { type CorporateResponse, getCorporateProjects } from "@/service/projects";
 import ProjectFilter from "./common/ProjectFilter";
 import Card from "./common/ProjectCard";
 import TopScrollButton from "@/components/shared/TopScrollButton";

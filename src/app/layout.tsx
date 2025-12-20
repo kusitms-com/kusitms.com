@@ -19,8 +19,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "KUSITMS",
-  description:
-    "비전을 가지고 함께 성장하는 학회, 큐시즘의 공식 홈페이지입니다.",
+  description: "비전을 가지고 함께 성장하는 학회, 큐시즘의 공식 홈페이지입니다.",
   applicationName: "KUSITMS",
   generator: "Next.js",
   keywords: ["KUSITMS", "큐시즘", "학회", "공식 홈페이지"],
@@ -31,8 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     title: "KUSITMS",
-    description:
-      "비전을 가지고 함께 성장하는 학회, 큐시즘의 공식 홈페이지입니다.",
+    description: "비전을 가지고 함께 성장하는 학회, 큐시즘의 공식 홈페이지입니다.",
     url: "https://www.kusitms.com",
     images: [
       {
@@ -61,9 +59,7 @@ export default function RootLayout({
           content="KFgbBXJibXLrdaVRpqy8V3ko4k71bsoX3NJjv0cWbKw"
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
         {children}
         <Footer />

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -24,7 +24,7 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
           </div>
         </div>
       </div>
-       <div className="relative rounded-[20px] overflow-hidden border border-gray-200">
+      <div className="relative rounded-[20px] overflow-hidden border border-gray-200">
         <Image
           src={project.poster_url}
           alt="poster"
@@ -41,7 +41,7 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
       </div>
       <div
         className="grid gap-5"
-        style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}
       >
         <div className="min-w-[220px] flex flex-col gap-3">
           <p className="tablet:text-body-3 text-body-7 text-gray-700 font-bold">프로젝트 팀원</p>
@@ -93,7 +93,7 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
                     className="tablet:w-[20px] tablet:h-[20px] w-[18px] h-[18px]"
                   />
                 </Link>
-              )
+              ),
           )}
         </div>
       </div>

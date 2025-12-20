@@ -26,7 +26,9 @@ export default function ProjectModalShell({ children }: Props) {
             <Image src="/projects/icons/CloseIcon2.svg" alt="Close" width={32} height={32} />
           </button>
         </div>
-        <div className="overflow-y-auto tablet:pt-4 pt-5 flex-1 tablet:custom-scrollbar-default custom-scrollbar-none">{children}</div>
+        <div className="overflow-y-auto tablet:pt-4 pt-5 flex-1 tablet:custom-scrollbar-default custom-scrollbar-none">
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ function OldProjectSection({ project }: { project: MeetupProjectDetail }) {
       </div>
       <div
         className="grid gap-5"
-        style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}
       >
         <div className="min-w-[220px] flex flex-col gap-3">
           <p className="tablet:text-body-3 text-body-7 text-gray-700 font-bold">프로젝트 팀원</p>
@@ -49,12 +49,8 @@ function OldProjectSection({ project }: { project: MeetupProjectDetail }) {
           {project.team.frontend && (
             <TeamMember role="프론트엔드" members={project.team.frontend} />
           )}
-          {project.team.ios && (
-            <TeamMember role="IOS" members={project.team.ios} />
-          )}
-          {project.team.aos && (
-            <TeamMember role="AOS" members={project.team.aos} />
-          )}
+          {project.team.ios && <TeamMember role="IOS" members={project.team.ios} />}
+          {project.team.aos && <TeamMember role="AOS" members={project.team.aos} />}
           <TeamMember role="백엔드" members={project.team.backend} />
         </div>
         <div className="min-w-[220px] flex flex-col gap-3">
@@ -100,7 +96,7 @@ function OldProjectSection({ project }: { project: MeetupProjectDetail }) {
                     className="tablet:w-[20px] tablet:h-[20px] w-[18px] h-[18px]"
                   />
                 </Link>
-              )
+              ),
           )}
         </div>
       </div>

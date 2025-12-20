@@ -51,8 +51,7 @@ export default async function ReviewsLayout({
         title="후기"
         description={
           <>
-            큐밀리의 솔직 후기를{' '}
-            <br className="tablet:hidden" />
+            큐밀리의 솔직 후기를 <br className="tablet:hidden" />
             들어보세요!
           </>
         }

@@ -5,14 +5,17 @@
     "clientKind": "git",
     "useIgnoreFile": true
   },
-  "files": { "ignoreUnknown": true },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": ["**/*.{js,jsx,ts,tsx,json}"]
+  },
   "formatter": {
     "enabled": true,
     "attributePosition": "auto",
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 100,
-    "lineEnding": "crlf",
+    "lineEnding": "lf",
     "formatWithErrors": true
   },
   "linter": {

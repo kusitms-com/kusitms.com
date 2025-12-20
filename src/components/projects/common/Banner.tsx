@@ -5,10 +5,7 @@ interface BannerProps {
   description?: string | React.ReactNode;
 }
 
-export default function Banner({
-  title,
-  description 
-}: BannerProps) {
+export default function Banner({ title, description }: BannerProps) {
   return (
     <>
       {/* 데스크톱 */}
@@ -27,9 +24,7 @@ export default function Banner({
             <div className="absolute inset-0 flex items-center justify-start pl-[44px] pointer-events-none">
               <div className="w-full">
                 <p className="text-[25px] font-extrabold text-dark-blue-600">{title}</p>
-                <p className="text-[18px] font-semibold text-dark-blue-600">
-                  {description}
-                </p>
+                <p className="text-[18px] font-semibold text-dark-blue-600">{description}</p>
               </div>
             </div>
           </div>

@@ -21,9 +21,7 @@ export default function NavButtons() {
             key={item.path}
             href={item.href}
             className={`w-1/2 tablet:h-[78px] h-[48px] flex justify-center items-center ${
-              isActive
-                ? "border-dark-blue-500 border-b-[3px]"
-                : "border-gray-100 border-b-[2px]"
+              isActive ? "border-dark-blue-500 border-b-[3px]" : "border-gray-100 border-b-[2px]"
             }`}
           >
             <p

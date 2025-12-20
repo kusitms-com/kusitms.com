@@ -11,20 +11,23 @@ interface ProgramIntroSectionProps {
 }
 
 export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntroSectionProps) {
-
   return (
     <div className="max-w-[1024px] mx-auto flex flex-col justify-center items-center pt-4 pb-[100px] desktop:pb-[200px] w-full overflow-x-hidden">
       <section className="w-full">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-[24px] desktop:text-title-5 text-gray-900 font-semibold">학회 프로젝트 소개</h1>
+          <h1 className="text-[24px] desktop:text-title-5 text-gray-900 font-semibold">
+            학회 프로젝트 소개
+          </h1>
         </div>
         <div className="mt-[60px] py-4 flex items-center justify-center gap-2">
-          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-800 text-white text-body-1">1</span>
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-800 text-white text-body-1">
+            1
+          </span>
           <p className="text-[16px] desktop:text-title-7 text-gray-800">기업 연계프로젝트</p>
         </div>
         <p className="text-[13px] desktop:text-body-6 text-center text-gray-600">
-        실제 기업이 고민하고 있는 경영 · 마케팅 문제나 개발과 관련된 과제를 받아 <br />
-        팀별로 아이디어를 제시해 과제를 수행하는 프로젝트예요
+          실제 기업이 고민하고 있는 경영 · 마케팅 문제나 개발과 관련된 과제를 받아 <br />
+          팀별로 아이디어를 제시해 과제를 수행하는 프로젝트예요
         </p>
 
         <div className="mt-[40px] desktop:mt-[56px] w-full px-[40px]">
@@ -48,7 +51,13 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
               transition={{ duration: 30, ease: "linear", repeat: Infinity, delay: 1.5 }}
             >
               {[...COMPANY_ROW2, ...COMPANY_ROW2].map((src, idx) => (
-                <Image key={`r2-${idx}`} src={src} alt={`company2-${idx}`} width={180} height={88} />
+                <Image
+                  key={`r2-${idx}`}
+                  src={src}
+                  alt={`company2-${idx}`}
+                  width={180}
+                  height={88}
+                />
               ))}
             </motion.div>
           </div>
@@ -56,12 +65,14 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
       </section>
       <section>
         <div className="mt-[100px] flex items-center justify-center gap-2">
-          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-800 text-white text-body-1">2</span>
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-800 text-white text-body-1">
+            2
+          </span>
           <p className="text-[16px] desktop:text-title-7 text-gray-800">밋업 프로젝트</p>
         </div>
         <p className="text-[13px] desktop:text-body-6 text-center text-gray-500">
-        기획파트에서 발제된 아이디어를 디자인, 개발파트와 함꼐 3개월동안 <br />
-        준비하여 발표하는 KUSITMS의 메인 프로젝트예요
+          기획파트에서 발제된 아이디어를 디자인, 개발파트와 함꼐 3개월동안 <br />
+          준비하여 발표하는 KUSITMS의 메인 프로젝트예요
         </p>
         {meetupProjects.length > 0 && <MeetupProjectCarousel projects={meetupProjects} />}
       </section>
