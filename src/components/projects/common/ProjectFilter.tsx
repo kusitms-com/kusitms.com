@@ -10,7 +10,7 @@ interface ProjectFilterProps {
 }
 
 export default function ProjectFilter({ cardinal, onChange, projectList }: ProjectFilterProps) {
-  const generations = Array.from({ length: 7 }, (_, i) => `${31 - i}기`);
+  const generations = Array.from({ length: 7 }, (_, i) => `${32 - i}기`);
   const options = ["모든 기수", ...generations];
 
   const projectCounts = useMemo(() => calculateProjectCounts(projectList), [projectList]);
@@ -19,8 +19,8 @@ export default function ProjectFilter({ cardinal, onChange, projectList }: Proje
     cardinal === "" || !cardinal ? projectCounts.total : (projectCounts[cardinal] ?? 0);
 
   return (
-    <div className="flex justify-between  ">
-      <p className="text-title-7 text-gray-700 pb-[39px]">
+    <div className="flex justify-between">
+      <p className="tablet:text-title-7 text-body-5 text-gray-700 pb-[39px] pt-[4.5px]">
         전체 프로젝트 <span className="text-dark-blue-600">{visibleCount}</span>개
       </p>
       <Dropdown

@@ -7,46 +7,81 @@ interface ProjectNavigationProps {
   domain?: string;
 }
 
+interface NavButtonProps {
+  href: string;
+  positionClass: string;
+  icon: "left" | "right";
+  size: "large" | "small";
+  className?: string;
+}
+
+function NavButton({ href, positionClass, icon, size }: NavButtonProps) {
+  const iconSize = size === "large" ? { width: 13, height: 23 } : { width: 8, height: 14 };
+
+  return (
+    <Link
+      href={href}
+      replace
+      className={`fixed z-[9999] flex justify-center items-center 
+        bg-white/30 rounded-full hover:scale-105 transition-transform
+        ${positionClass} 
+        ${size === "large" ? "w-[52px] h-[52px]" : "w-[32px] h-[32px]"}
+      `}
+    >
+      <Image
+        src={`/projects/icons/${icon === "left" ? "ArrowLeftWhite" : "ArrowRightWhite"}.svg`}
+        alt={icon === "left" ? "ArrowLeft" : "ArrowRight"}
+        width={iconSize.width}
+        height={iconSize.height}
+        style={{ width: `${iconSize.width}px`, height: `${iconSize.height}px` }}
+      />
+    </Link>
+  );
+}
+
 export default function ProjectNavigation({
   prevId,
   nextId,
   domain = "/projects/meetup",
 }: ProjectNavigationProps) {
   return (
-    <div className="w-full tablet:block hidden">
-      {/* 이전 게시물 */}
-      {prevId && (
-        <Link
-          href={`${domain}/${prevId}`}
-          replace
-          className="fixed left-[calc(50%_-_312px_-_44px)] left-[calc(50%_-_312px_-_88px)] top-1/2 -translate-y-1/2 flex justify-center items-center bg-white/30 rounded-full w-[52px] h-[52px] hover:scale-105 transition-transform z-[9999]"
-        >
-          <Image
-            src="/projects/icons/ArrowLeftWhite.svg"
-            alt="ArrowLeft"
-            width={13}
-            height={23}
-            style={{ width: "13px", height: "23px" }}
+    <>
+      <div className="hidden tablet:flex">
+        {prevId && (
+          <NavButton
+            href={`${domain}/${prevId}`}
+            icon="left"
+            size="large"
+            positionClass="left-[calc(50%_-_312px_-_82px)] top-1/2 -translate-y-1/2"
           />
-        </Link>
-      )}
-
-      {/* 다음 게시물 */}
-      {nextId && (
-        <Link
-          href={`${domain}/${nextId}`}
-          replace
-          className="fixed right-[calc(50%_-_312px_-_82px)]  top-1/2 -translate-y-1/2 flex justify-center items-center bg-white/30 rounded-full  w-[52px] h-[52px] hover:scale-105 transition-transform z-[9999]"
-        >
-          <Image
-            src="/projects/icons/ArrowRightWhite.svg"
-            alt="ArrowRight"
-            width={13}
-            height={23}
-            style={{ width: "13px", height: "23px" }}
+        )}
+        {nextId && (
+          <NavButton
+            href={`${domain}/${nextId}`}
+            icon="right"
+            size="large"
+            positionClass="right-[calc(50%_-_312px_-_82px)] top-1/2 -translate-y-1/2"
           />
-        </Link>
-      )}
-    </div>
+        )}
+      </div>
+      <>
+        {prevId && (
+          <NavButton
+            href={`${domain}/${prevId}`}
+            icon="left"
+            size="small"
+            positionClass="tablet:hidden top-[580px] left-4"
+          />
+        )}
+        {nextId && (
+          <NavButton
+            href={`${domain}/${nextId}`}
+            icon="right"
+            size="small"
+            positionClass="tablet:hidden top-[580px] right-4"
+          />
+        )}
+      </>
+    </>
   );
 }
