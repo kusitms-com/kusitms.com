@@ -3,7 +3,7 @@ import MailInput from "./MailInput";
 
 const RecruitmentTogether = () => {
   // 모집기간 여부에 따라 문구와 버튼 다르게 처리
-  const isRecruiting = true;
+  const isRecruiting = false;
 
   return (
     <div className="flex flex-col items-center">
