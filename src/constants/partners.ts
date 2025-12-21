@@ -5,5 +5,3 @@ export const PARTNERS: string[] = [
   "/main/img/partner/FLab.png",
   "/main/img/partner/Dcamp.png",
 ];
-
-

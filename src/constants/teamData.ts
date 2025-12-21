@@ -65,4 +65,3 @@ export const TEAM_DATA: TeamItem[] = [
       "프로젝트의 요구\n 사항과 규모, 팀의 \n 상황에 따라 기술\n 스택을 선정하고\n 오류원인을 분석해요",
   },
 ];
-

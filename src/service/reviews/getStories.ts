@@ -84,7 +84,7 @@ export const getStories = async (params?: StoriesParams): Promise<StoriesRespons
         "Content-Type": "application/json",
       },
       cache: "force-cache",
-      next: { revalidate: 3600 },
+      next: { revalidate: 3600 }, // 1시간마다 재검증
     });
 
     if (!res.ok) {
