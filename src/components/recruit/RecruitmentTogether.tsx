@@ -22,7 +22,7 @@ const RecruitmentTogether = () => {
             <p>함께 큐밀리가 되시겠어요?</p>
           </span>
           {/* TODO: 실제 지원 링크로 이동 */}
-          <button className="text-gray-0 rounded-full text-body-8 desktop:text-body-4 flex gap-[4px] desktop:gap-[12px] justify-center items-center px-[12px] desktop:px-[24px] py-[8px] desktop:py-[10px] bg-dark-blue-500">
+          <button className="text-gray-0 cursor-pointer rounded-full text-body-8 desktop:text-body-4 flex gap-[4px] desktop:gap-[12px] justify-center items-center px-[12px] desktop:px-[24px] py-[8px] desktop:py-[10px] bg-dark-blue-500">
             <p>함께하러 가기</p>
             <Image
               src="/recruit/icons/WhiteArrow.svg"
