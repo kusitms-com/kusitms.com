@@ -1,13 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import {
-  type CorporateResponse,
-  getCorporateProjects,
-} from "@/service/projects";
-import ProjectFilter from "./common/ProjectFilter";
-import Card from "./common/ProjectCard";
 import TopScrollButton from "@/components/shared/TopScrollButton";
+import { type CorporateResponse, getCorporateProjects } from "@/service/projects";
+import Card from "./common/ProjectCard";
+import ProjectFilter from "./common/ProjectFilter";
 
 type ProjectContainerProps = CorporateResponse;
 
@@ -24,7 +21,7 @@ export default function CorporateProjectContainer({
   };
 
   return (
-    <div className="w-full  mb-[32px] px-10">
+    <div className="w-full tablet:mb-[32px] mb-5 tablet:px-10 px-4">
       <ProjectFilter
         cardinal={cardinal}
         onChange={handleFilterChange}
