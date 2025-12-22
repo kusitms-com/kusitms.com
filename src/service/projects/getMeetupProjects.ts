@@ -70,29 +70,21 @@ export const getMeetupProjects = async (
   cardinal: string,
   batch?: string,
 ): Promise<MeetupResponse> => {
-  try {
-    const url = `${baseUrl}/api/projects/meetup?batch=${batch}&cardinal=${cardinal}&order=desc`;
+  const url = `${baseUrl}/api/projects/meetup?batch=${batch}&cardinal=${cardinal}&order=desc`;
+  const res = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    cache: "force-cache",
+    next: { revalidate: 604800, tags: ["meetupProjects"] },
+  });
 
-    const res = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      cache: "force-cache",
-      next: { revalidate: 604800, tags: ["meetupProjects"] },
-    });
-
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-
-    const data = await res.json();
-
-    return data;
-  } catch (err) {
-    console.error("Failed to fetch meetup projects:", err);
-    throw err;
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
   }
+  const data = await res.json();
+  return data;
 };
 
 export const getMeetupProjectDetail = async (

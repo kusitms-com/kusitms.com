@@ -19,9 +19,14 @@ export default function MeetupProjectCarousel({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setIsTablet(width >= 768 && width < 1024);
+    };
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -34,7 +39,6 @@ export default function MeetupProjectCarousel({
 
   const SCALE = { 0: 1, 1: 0.75, 2: 0.6 } as const;
   const BLUR = { 0: 0, 1: 2.5, 2: 2.5 } as const;
-  const OPACITY = { 0: 1, 1: 0.9, 2: 0.7 } as const;
 
   const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
@@ -77,43 +81,42 @@ export default function MeetupProjectCarousel({
     const abs = Math.abs(offset) as 0 | 1 | 2;
     if (abs === 0) return 0;
     const dir = offset > 0 ? 1 : -1;
-    return dir * (abs === 1 ? firstPos : secondPos);
+    const baseX = abs === 1 ? firstPos : secondPos;
+    const tabletScale = isTablet ? 0.7 : 1;
+    return dir * baseX * tabletScale;
   };
-
-  const archiveClassName = archiveMode
-    ? "desktop:h-[588px] h-[408px] align-center items-end"
-    : "mt-[54px] min-h-[260px] overflow-visible items-center";
 
   return (
     <div className="w-full flex flex-col items-center ">
-      <div className={`relative w-full flex   ${archiveClassName}`}>
-        {archiveMode && (
-          <div className="absolute desktop:top-[160px] top-[90px] items-center flex flex-col w-full gap-4">
-            <p className="text-title-7 desktop:text-title-5 text-gray-900 font-bold">
-              32기 큐시즘 전시회
-            </p>
-            <p className="text-body-8 desktop:text-body-4 text-gray-500 text-center">
-              큐밀리들의 두 달간의 여정,&nbsp;
-              <span className="desktop:hidden">
-                <br />
-              </span>
-              밋업프로젝트의 서비스들을 소개합니다.
+      {archiveMode && (
+        <div className="desktop:mt-[160px] mt-[80px] items-center flex flex-col w-full gap-4">
+          <p className="text-title-7 desktop:text-title-5 text-gray-900 font-bold">
+            32기 큐시즘 전시회
+          </p>
+          <p className="text-body-8 desktop:text-body-4 text-gray-500 text-center">
+            큐밀리들의 두 달간의 여정,&nbsp;
+            <span className="desktop:hidden">
               <br />
-              이번 전시회에서는 아래 서비스들을&nbsp;
-              <span className="desktop:hidden">
-                <br />
-              </span>
-              직접 만나보실 수 있어요.
-            </p>
-          </div>
-        )}
+            </span>
+            밋업프로젝트의 서비스들을 소개합니다.
+            <br />
+            이번 전시회에서는 아래 서비스들을&nbsp;
+            <span className="desktop:hidden">
+              <br />
+            </span>
+            직접 만나보실 수 있어요.
+          </p>
+        </div>
+      )}
+      <div
+        className={`relative w-full flex mt-[36px] tablet:mt-[54px] min-h-[126px] tablet:min-h-[260px] overflow-visible items-center`}
+      >
         {visibleCards.map(({ index, offset }) => {
           const project = projects[index];
           const abs = Math.abs(offset) as 0 | 1 | 2;
 
           const scale = SCALE[abs];
           const blur = BLUR[abs];
-          const opacity = OPACITY[abs];
           const zIndex = 10 - abs;
 
           const cardW = BASE_W * scale;
@@ -125,7 +128,6 @@ export default function MeetupProjectCarousel({
               animate={{
                 x: getX(offset),
                 filter: `blur(${blur}px)`,
-                opacity,
               }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
               className="absolute cursor-pointer"
@@ -138,7 +140,7 @@ export default function MeetupProjectCarousel({
               onClick={(e) => handleCardClick(e, offset)}
             >
               <div
-                className="relative rounded-2xl overflow-hidden shadow"
+                className={`relative overflow-hidden shadow ${isMobile ? "rounded-lg" : "rounded-2xl"}`}
                 style={{
                   width: cardW,
                   height: cardH,
@@ -158,14 +160,16 @@ export default function MeetupProjectCarousel({
           );
         })}
       </div>
-      <div className="flex items-center justify-center gap-2 mt-5">
+      <div className="flex items-center justify-center tablet:gap-2 gap-[6px] mt-[12px] tablet:mt-5">
         {projects.map((_, i) => (
           <button
             key={i}
             type="button"
             onClick={() => setCurrentIndex(i)}
             className={`transition-all duration-200 rounded-full ${
-              i === currentIndex ? "w-2 h-2 bg-gray-400" : "w-2 h-2 bg-gray-100"
+              i === currentIndex
+                ? "w-[6px] h-[6px] tablet:w-2 tablet:h-2 bg-gray-400"
+                : "w-[6px] h-[6px] tablet:w-2 tablet:h-2 bg-gray-100"
             }`}
             aria-label={`프로젝트 ${i + 1}로 이동`}
           />
@@ -174,9 +178,9 @@ export default function MeetupProjectCarousel({
       {archiveMode === false && (
         <button
           onClick={() => router.push("/projects/meetup")}
-          className="cursor-pointer mt-8 px-5 py-[10px] rounded-[20px] bg-dark-blue-500 text-white font-semibold text-[16px] desktop:text-body-3"
+          className="cursor-pointer min-w-[148px] mt-7 tablet:mt-8 py-2 px-3 tablet:py-[10px] tablet:px-5 rounded-[20px] bg-dark-blue-500 text-white font-semibold text-body-8 tablet:text-body-3"
         >
-          프로젝트 더 보기 →
+          프로젝트 더보기 →
         </button>
       )}
     </div>
