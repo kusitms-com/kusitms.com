@@ -242,14 +242,13 @@ export function MobileTeamCard({
           />
         </motion.div>
         <motion.div
-          className="relative z-10 mt-[50px]"
+          className="relative z-10 mt-[50px] overflow-hidden"
           initial={false}
           animate={{
             opacity: isExpanded ? 1 : 0,
             height: isExpanded ? "auto" : 0,
           }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          style={{ overflow: "hidden" }}
         >
           <p className="ml-[29px] text-body-9 text-gray-600 whitespace-pre-line">
             {descriptionMobile}
@@ -368,14 +367,13 @@ export function TabletTeamCard({
           />
         </motion.div>
         <motion.div
-          className="relative z-10 mt-[50px]"
+          className="relative z-10 mt-[50px] overflow-hidden"
           initial={false}
           animate={{
             opacity: isExpanded ? 1 : 0,
             height: isExpanded ? "auto" : 0,
           }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          style={{ overflow: "hidden" }}
         >
           <p className="ml-[29px] text-body-9 text-gray-600 whitespace-pre-line">
             {descriptionMobile}

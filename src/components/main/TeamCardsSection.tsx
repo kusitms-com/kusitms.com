@@ -49,7 +49,7 @@ export default function TeamCardsSection() {
           if (layout === "desktop") {
             return (
               <DesktopTeamCard
-                key={idx}
+                key={item.title}
                 {...item}
                 active={activeIdx === idx}
                 onActivate={() => setActiveIdx(idx)}
@@ -61,7 +61,7 @@ export default function TeamCardsSection() {
           if (layout === "mobile") {
             return (
               <MobileTeamCard
-                key={idx}
+                key={item.title}
                 {...item}
                 index={idx}
                 isExpanded={mobileExpandedIdx === idx}
@@ -72,7 +72,7 @@ export default function TeamCardsSection() {
           }
           return (
             <TabletTeamCard
-              key={idx}
+              key={item.title}
               {...item}
               index={idx}
               tabletExpandedRow={tabletExpandedRow}
