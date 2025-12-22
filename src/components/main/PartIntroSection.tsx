@@ -3,8 +3,6 @@
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React from "react";
-
 export default function PartIntroSection() {
   const teamData = [
     {

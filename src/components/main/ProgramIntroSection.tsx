@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React from "react";
 import { COMPANY_ROW1, COMPANY_ROW2 } from "@/constants/companyRows";
 import type { MeetupItem } from "@/service/projects/getMeetupProjects";
 import MeetupProjectCarousel from "./MeetupProjectCarousel";

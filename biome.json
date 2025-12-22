@@ -26,8 +26,11 @@
         "useKeyWithClickEvents": "off",
         "noStaticElementInteractions": "off",
         "useValidAriaRole": "warn",
-        "useSemanticElements": "warn",
+        "useSemanticElements": "off",
         "useButtonType": "off"
+      },
+      "correctness": {
+        "noUnusedImports": "error"
       },
       "style": {
         "useNodejsImportProtocol": "warn",

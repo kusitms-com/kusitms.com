@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import type { StoriesParams } from "@/service/reviews/getStories";
 import Dropdown from "../../projects/common/DropDown";
 
@@ -64,7 +64,7 @@ export default function StoryFilter({
           selected={generation ? `${generation}기` : "모든 기수"}
           onSelect={(value) =>
             onChange({
-              generation: value === "모든 기수" ? undefined : parseInt(value.replace("기", "")),
+              generation: value === "모든 기수" ? undefined : parseInt(value.replace("기", ""), 10),
               position,
               category,
             })

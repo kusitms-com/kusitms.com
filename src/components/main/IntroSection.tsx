@@ -1,11 +1,12 @@
 "use client";
 
+import type { Variants } from "framer-motion";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
 export default function IntroSection() {
-  const wordVariants = {
+  const wordVariants: Variants = {
     hidden: { opacity: 0, x: -50 },
     visible: (i: number) => ({
       opacity: 1,
@@ -93,7 +94,7 @@ export default function IntroSection() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  variants={wordVariants as any}
+                  variants={wordVariants}
                 >
                   {word}
                 </motion.span>

@@ -1,4 +1,3 @@
-import React from "react";
 import type { Review } from "@/service/reviews";
 
 export default function ReviewBox(props: Review) {

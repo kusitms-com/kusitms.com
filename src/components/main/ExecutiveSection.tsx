@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { EXECUTIVE_DATA, type ExecutiveItem } from "@/constants/executiveData";
 
 function ExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {

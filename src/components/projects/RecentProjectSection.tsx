@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import type { MeetupProjectDetail } from "@/service/projects";
 import { toUpperCaseOnlyLetters } from "@/utils";
 import TeamMember from "./common/TeamMember";
@@ -45,10 +44,10 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
       >
         <div className="min-w-[220px] flex flex-col gap-3">
           <p className="tablet:text-body-3 text-body-7 text-gray-700 font-bold">프로젝트 팀원</p>
-          <TeamMember role="기획" members={project.team.planner} />
-          <TeamMember role="디자인" members={project.team.designer} />
-          <TeamMember role="프론트엔드" members={project.team.frontend} />
-          <TeamMember role="백엔드" members={project.team.backend} />
+          <TeamMember position="기획" members={project.team.planner} />
+          <TeamMember position="디자인" members={project.team.designer} />
+          <TeamMember position="프론트엔드" members={project.team.frontend} />
+          <TeamMember position="백엔드" members={project.team.backend} />
         </div>
         <div className="min-w-[220px] flex flex-col gap-3">
           <p className="tablet:text-body-3 text-body-7 text-gray-700 font-bold">링크</p>

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React from "react";
 import type { TeamItem } from "@/constants/teamData";
 
 export default function TeamCard({

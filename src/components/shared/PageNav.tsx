@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 
 const navLinks = [
   { href: "/", label: "학회소개", matchPath: "/" },

@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React from "react";
 import { PARTNERS } from "@/constants/partners";
 
 export default function PartnerSection() {
