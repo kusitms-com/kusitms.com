@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import React, { type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "KUSITMS | RECRUIT",

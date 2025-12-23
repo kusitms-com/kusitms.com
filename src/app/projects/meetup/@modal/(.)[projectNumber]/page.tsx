@@ -57,7 +57,7 @@ async function ProjectDetailModalPage({
   return (
     <ProjectModalShell>
       <ProjectNavigation prevId={prevId} nextId={nextId} />
-      {recentIdList.includes(parseInt(projectNumber)) ? (
+      {recentIdList.includes(parseInt(projectNumber, 10)) ? (
         <RecentProjectSection project={project} />
       ) : (
         <OldProjectSection project={project} />

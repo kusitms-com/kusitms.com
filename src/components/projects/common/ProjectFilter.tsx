@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import type { CorporateProjectItem, MeetupItem } from "@/service/projects";
 import { calculateProjectCounts } from "@/utils/projectCountUtils";
 import Dropdown from "./DropDown";

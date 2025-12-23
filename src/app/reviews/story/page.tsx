@@ -1,4 +1,3 @@
-import React from "react";
 import ReviewNavButtons from "@/components/review/ReviewNavButtons";
 import Stories from "@/components/review/story/Stories";
 import { getStories } from "@/service/reviews/getStories";

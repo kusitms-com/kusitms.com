@@ -15,7 +15,7 @@ export default function useOutside<T extends Element>({
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       const target = event.target as Element;
-      if (callback && callback(target)) return;
+      if (callback?.(target)) return;
       if (ref.current && !ref.current.contains(target)) onCloseToggle();
     };
     document.addEventListener("click", handleClick);

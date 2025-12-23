@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 import TopScrollButton from "@/components/shared/TopScrollButton";
 import { getMeetupProjects, type MeetupResponse } from "@/service/projects";
 import Card from "./common/ProjectCard";

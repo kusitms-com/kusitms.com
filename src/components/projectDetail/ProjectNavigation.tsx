@@ -64,24 +64,22 @@ export default function ProjectNavigation({
           />
         )}
       </div>
-      <>
-        {prevId && (
-          <NavButton
-            href={`${domain}/${prevId}`}
-            icon="left"
-            size="small"
-            positionClass="tablet:hidden top-[580px] left-4"
-          />
-        )}
-        {nextId && (
-          <NavButton
-            href={`${domain}/${nextId}`}
-            icon="right"
-            size="small"
-            positionClass="tablet:hidden top-[580px] right-4"
-          />
-        )}
-      </>
+      {prevId && (
+        <NavButton
+          href={`${domain}/${prevId}`}
+          icon="left"
+          size="small"
+          positionClass="tablet:hidden top-[580px] left-4"
+        />
+      )}
+      {nextId && (
+        <NavButton
+          href={`${domain}/${nextId}`}
+          icon="right"
+          size="small"
+          positionClass="tablet:hidden top-[580px] right-4"
+        />
+      )}
     </>
   );
 }
