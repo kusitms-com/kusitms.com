@@ -1,15 +1,24 @@
 import type { MetadataRoute } from "next";
 import { getMeetupProjects } from "@/service/projects";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const meetupProjectList = await getMeetupProjects("");
+type SitemapEntry = MetadataRoute.Sitemap[number];
 
-  const dynamicRoutes = meetupProjectList.data.meetup_list.map((project) => ({
-    url: `https://www.kusitms.com/projects/meetup/${project.meetup_id}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 1,
-  }));
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  let meetupRoutes: SitemapEntry[] = [];
+
+  try {
+    const meetupProjectList = await getMeetupProjects("", "");
+    if (meetupProjectList?.data?.meetup_list) {
+      meetupRoutes = meetupProjectList.data.meetup_list.map((project) => ({
+        url: `https://www.kusitms.com/projects/meetup/${project.meetup_id}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly" as const,
+        priority: 1,
+      }));
+    }
+  } catch (error) {
+    console.error("Failed to fetch meetup projects for sitemap:", error);
+  }
 
   return [
     {
@@ -42,6 +51,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    ...dynamicRoutes,
+    ...meetupRoutes,
   ];
 }

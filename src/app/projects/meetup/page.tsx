@@ -2,9 +2,16 @@ import NavButtons from "@/components/projects/common/NavButtons";
 import ProjectTypeBanner from "@/components/projects/common/ProjectTypeBanner";
 import ProjectContainer from "@/components/projects/MeetupProjectContainer";
 import { getMeetupProjects } from "@/service/projects";
+import type { MeetupResponse } from "@/service/projects/getMeetupProjects";
 
 async function MeetupProjectPage() {
-  const meetupProjectList = await getMeetupProjects("");
+  let meetupProjectList: MeetupResponse;
+  try {
+    meetupProjectList = await getMeetupProjects("", "");
+  } catch (error) {
+    console.error("Failed to fetch meetup projects:", error);
+    meetupProjectList = { data: { meetup_list: [], meetup_count: 0 } };
+  }
 
   return (
     <section className="w-full mx-auto max-w-[1024px]">

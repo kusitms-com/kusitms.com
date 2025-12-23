@@ -9,10 +9,18 @@ import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
 import { getAdjacentMeetupIds } from "@/utils";
 
 export async function generateStaticParams() {
-  const meetupProjectList = await getMeetupProjects("");
-  return meetupProjectList.data.meetup_list.map((project) => ({
-    projectNumber: project.meetup_id.toString(),
-  }));
+  try {
+    const meetupProjectList = await getMeetupProjects("", "");
+    if (!meetupProjectList?.data?.meetup_list) {
+      return [];
+    }
+    return meetupProjectList.data.meetup_list.map((project) => ({
+      projectNumber: project.meetup_id.toString(),
+    }));
+  } catch (error) {
+    console.error("Failed to generate static params for meetup projects:", error);
+    return [];
+  }
 }
 
 async function ProjectDetailPage({
@@ -23,7 +31,7 @@ async function ProjectDetailPage({
   const { projectNumber } = await params;
 
   const { data: project } = await getMeetupProjectDetail(projectNumber);
-  const projectList = await getMeetupProjects("");
+  const projectList = await getMeetupProjects("", "");
 
   const recentIdList = [47, 50, 51, 53, 48, 55, 52, 49, 54];
 

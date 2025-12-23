@@ -1,141 +1,145 @@
 "use client";
-
-import type { Variants } from "framer-motion";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React from "react";
+
+const BACKGROUND_GRADIENT =
+  "radial-gradient(118.65% 100.42% at 0% 0%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(129deg, rgba(70, 136, 254, 0.00) 44.57%, rgba(70, 136, 254, 0.20) 100%), linear-gradient(104deg, #EAF9FF 23.85%, #99DEFF 100%), #FFF";
+const OUTFIT_FONT = "font-[family-name:var(--font-outfit)]";
+const OUTLINE_TEXT_BASE = `${OUTFIT_FONT} text-[#0077FF] leading-[100%] -tracking-[1.36px] font-medium`;
 
 export default function IntroSection() {
-  const wordVariants: Variants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: (i: number) => ({
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: i * 0.3,
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    }),
-  };
-  const sentence = "비전을 가지고 \n 함께 성장하는 학회";
   return (
-    <div className="mt-[40px] desktop:mt-[120px] flex flex-col items-center justify-center">
-      <section>
-        <div className="text-[23px] desktop:text-[72px] font-black text-center leading-tight">
-          {sentence.split("").map((char, index) => {
-            const delay = index * 0.1;
-
-            return (
-              <React.Fragment key={index}>
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 1, 0.3, 1] }}
-                  transition={{
-                    duration: 3,
-                    delay,
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    ease: "easeInOut",
-                  }}
-                  className="inline-block"
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-
-                {sentence.slice(0, index + 1) === "비전을 가지고" && <br />}
-              </React.Fragment>
-            );
-          })}
-        </div>
-        <div className="relative mt-[40px]">
-          <Image
-            className="relative z-10 block desktop:hidden"
-            src="/main/MainGroupSticker.svg"
-            alt="MainGroupSticker"
-            width={328}
-            height={129}
-            style={{ width: 328, height: 129 }}
-          />
-          <Image
-            className="relative z-10 hidden desktop:block"
-            src="/main/MainGroupSticker.svg"
-            alt="MainGroupSticker"
-            width={1258}
-            height={570}
-            style={{ width: 1258, height: 570 }}
-          />
-          <Image
-            className="absolute top-6 left-0 z-0 block desktop:hidden"
-            src="/main/MainBlueArrow.svg"
-            alt="MainBlueArrow"
-            width={328}
-            height={56}
-            style={{ width: 328, height: 56 }}
-          />
-          <Image
-            className="absolute top-20 left-0 z-0 hidden desktop:block"
-            src="/main/MainBlueArrow.svg"
-            alt="MainBlueArrow"
-            width={1430}
-            height={246}
-            style={{ width: 1430, height: 246 }}
-          />
-        </div>
-      </section>
-      <section className="flex flex-col justify-center items-center pt-[58px] desktop:pt-[140px] pb-[73px] desktop:pb-[162px]">
-        <div className="flex desktop:gap-x-[370px] items-center">
-          <div className="flex flex-col gap-y-[67px] desktop:gap-y-[200px]">
-            <p className="flex flex-col text-[23px] desktop:text-[72px] font-bold">
-              {["Vision", "Growth", "Together"].map((word, i) => (
-                <motion.span
-                  key={word}
-                  custom={i}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={wordVariants}
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </p>
-            <p className="text-[14px] desktop:text-[36px]">
-              Korean University Students <br />
-              IT, Management Society
-            </p>
-          </div>
-
-          <div className="relative">
+    <div
+      className="relative w-full h-[400px] tablet:h-[808px] desktop:mt-[74px] overflow-hidden"
+      style={{ background: BACKGROUND_GRADIENT }}
+    >
+      <div className="max-[767px]:block tablet:hidden relative z-10 flex flex-col items-center justify-center h-full">
+        <div className="flex flex-col px-9">
+          <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              y: {
+                duration: 2,
+                ease: "easeOut",
+              },
+              opacity: {
+                duration: 2,
+                ease: "easeOut",
+              },
+            }}
+          >
             <motion.div
-              initial={{ opacity: 0, y: -50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
+              animate={{ y: [0, -8, 0] }}
+              transition={{ y: { duration: 3, repeat: 4, ease: "easeInOut", delay: 2 } }}
+              className="flex flex-col gap-1 mt-8"
             >
-              <Image
-                className="hidden desktop:block"
-                src="/main/Logo.svg"
-                alt="Logo"
-                width={400}
-                height={278}
-                style={{ width: 400, height: 278 }}
-              />
-              <Image
-                className="block desktop:hidden"
-                src="/main/Logo.svg"
-                alt="Logo"
-                width={134}
-                height={93}
-                style={{ width: 134, height: 93 }}
-              />
+              <p className={`${OUTLINE_TEXT_BASE} text-[18px]`}>KUSITMS 32nd</p>
+              <div className="flex items-center gap-x-2">
+                <p className={`${OUTLINE_TEXT_BASE} text-[28px]`}>More it, MORE IT</p>
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    rotate: {
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "linear",
+                    },
+                  }}
+                >
+                  <Image src="/main/Snow.svg" alt="Snow" width={20} height={20} />
+                </motion.div>
+              </div>
             </motion.div>
-            <p className="absolute top-10 text-[#F2F2F8] text-[46px] desktop:text-[170px] opacity-5 transform rotate-270 inline-block">
-              KUSITMS
-            </p>
-          </div>
+          </motion.div>
+          <p className="text-body-8 text-[#0077FF] pt-6">
+            Korean University Students
+            <br />
+            It, Management Society
+          </p>
         </div>
-      </section>
+      </div>
+      <div className="hidden tablet:block">
+        <p className="absolute z-10 top-[72px] right-[75px] text-body-6 text-[#0077FF] text-right">
+          Korean University Students
+          <br />
+          It, Management Society
+        </p>
+        <motion.div
+          className="absolute z-10 top-[72px] left-[84px] space-y-4"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            y: {
+              duration: 2,
+              ease: "easeOut",
+            },
+            opacity: {
+              duration: 2,
+              ease: "easeOut",
+            },
+          }}
+        >
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ y: { duration: 3, repeat: 4, ease: "easeInOut", delay: 2 } }}
+          >
+            <p className={`${OUTLINE_TEXT_BASE} text-[42px]`}>KUSITMS 32nd</p>
+            <div className="flex items-center gap-x-9">
+              <p className={`${OUTLINE_TEXT_BASE} text-[68px]`}>More it, MORE IT</p>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{
+                  rotate: {
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "linear",
+                  },
+                }}
+              >
+                <Image src="/main/Snow.svg" alt="Snow" width={54} height={59} />
+              </motion.div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+      <motion.div
+        className="absolute inset-0 z-0"
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          y: {
+            duration: 2.2,
+            ease: "easeOut",
+          },
+          opacity: {
+            duration: 2.2,
+            ease: "easeOut",
+          },
+        }}
+      >
+        <motion.div
+          className="absolute inset-0"
+          animate={{ y: [0, -20, 0] }}
+          transition={{
+            y: {
+              duration: 4,
+              repeat: 3,
+              ease: "easeInOut",
+              delay: 2.2,
+            },
+          }}
+        >
+          <div className="absolute inset-0 max-[767px]:top-[-60px] max-[767px]:bottom-0 tablet:inset-0">
+            <Image
+              src="/main/img/Main_Graphic.png"
+              alt="Main Graphic"
+              fill
+              className="object-cover max-[767px]:translate-y-[60px] max-[767px]:object-[60%_120%] tablet:translate-y-0 tablet:object-center"
+            />
+          </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
