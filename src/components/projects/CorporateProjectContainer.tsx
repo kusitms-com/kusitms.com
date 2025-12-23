@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
+import TopScrollButton from "@/components/shared/TopScrollButton";
 import { type CorporateResponse, getCorporateProjects } from "@/service/projects";
-import Filter from "./Filter";
-import Card from "./ProjectCard";
+import Card from "./common/ProjectCard";
+import ProjectFilter from "./common/ProjectFilter";
 
 type ProjectContainerProps = CorporateResponse;
 
@@ -20,30 +21,29 @@ export default function CorporateProjectContainer({
   };
 
   return (
-    <div className="w-full mt-[100px] desktop:mb-[180px] mb-[32px]">
-      <Filter
+    <div className="w-full tablet:mb-[32px] mb-5 tablet:px-10 px-4">
+      <ProjectFilter
         cardinal={cardinal}
         onChange={handleFilterChange}
         projectList={corporateProjectsList.corporateList}
       />
-      <div className="grid desktop:grid-cols-3 grid-cols-1 gap-5 justify-items-center">
+      <div className="grid tablet:grid-cols-3 grid-cols-1 gap-5 gap-x-[22px] justify-items-center">
         {projects.corporateList.map((project) => (
           <Card key={project.corporate_id}>
             <Card.Poster src={project.banner_url.trim()} />
-            <Card.Logo src={project.logo_url} />
             <Card.Info>
-              <Card.Cardinal>{project.cardinal}기</Card.Cardinal>
+              <Card.Cardinal cardinal={project.cardinal} />
               <Card.ProjectName>{project.name}</Card.ProjectName>
               <Card.ContentIntro>{project.content}</Card.ContentIntro>
-              <Card.CategoryContainer>
-                {project.category.map((category, index) => (
-                  <Card.Category key={index}>#{category}</Card.Category>
-                ))}
-              </Card.CategoryContainer>
             </Card.Info>
           </Card>
         ))}
       </div>
+      {cardinal === "" && (
+        <div className="mt-6">
+          <TopScrollButton />
+        </div>
+      )}
     </div>
   );
 }

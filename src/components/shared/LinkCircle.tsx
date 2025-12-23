@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { twMerge } from "tailwind-merge";
 
 interface LinkCircleProps {
@@ -10,13 +9,13 @@ interface LinkCircleProps {
   size?: number;
 }
 
-export const IconLink = ({ img, link, className, size = 20 }: LinkCircleProps) => {
+export const IconLink = ({ img, link, className, size = 24 }: LinkCircleProps) => {
   return (
     <Link
       href={link}
       target="_blank"
       className={twMerge(
-        "w-[40px] h-[40px] rounded-full bg-[#45464F] desktop:flex justify-center items-center  hidden",
+        "w-[36px] h-[36px] rounded-full bg-dark-blue-50 flex justify-center items-center",
         className,
       )}
     >

@@ -13,6 +13,7 @@
     "format": "biome format . --write"
   },
   "dependencies": {
+    "@next/third-parties": "^16.0.1",
     "@radix-ui/react-slot": "^1.2.2",
     "@vercel/speed-insights": "^1.2.0",
     "class-variance-authority": "^0.7.1",

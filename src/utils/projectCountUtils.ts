@@ -23,7 +23,7 @@ export const calculateProjectCounts = (
   });
 
   // 각 프로젝트를 순회하며 해당 기수의 카운트 증가
-  projects.forEach((project: any) => {
+  projects.forEach((project: MeetupItem | CorporateProjectItem) => {
     const projectCardinal = project.cardinal?.toString();
     if (projectCardinal && counts[projectCardinal] !== undefined) {
       counts[projectCardinal]++;

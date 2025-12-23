@@ -1,8 +1,7 @@
 "use client";
-
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 
@@ -46,28 +45,20 @@ export default function StatsSection() {
   }, [inView]);
 
   return (
-    <div className="relative" ref={ref}>
-      <Image
-        className="block desktop:hidden"
-        src="/main/img/Special_Lecture_by_Expert_1.png"
-        alt="Special_Lecture_by_Expert_1"
-        width={375}
-        height={229}
-        priority
-        style={{ width: 375, height: 229 }}
-      />
-      <Image
-        className="hidden desktop:block"
-        src="/main/img/Special_Lecture_by_Expert_1.png"
-        alt="Special_Lecture_by_Expert_1"
-        width={1920}
-        height={447}
-        priority
-        style={{ width: 1920, height: 447 }}
-      />
-      <div className="flex flex-col gap-y-[45px] desktop:gap-y-[88px] items-center justify-center absolute top-0 bg-[#0055FF]/80 w-full h-[229px] desktop:h-[447px]">
-        <div className="text-[16px] desktop:text-[24px] text-white">Since 2009</div>
-        <div className="flex gap-x-[30px] desktop:gap-x-[50px] desktop:gap-x-[80px]">
+    <div className="relative w-full" ref={ref}>
+      <div className="relative w-full h-[308px] desktop:h-[447px]">
+        <Image
+          src="/main/img/Background.png"
+          alt="Special_Lecture_by_Expert_1"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
+      <div className="flex flex-col gap-y-[24px] desktop:gap-y-[88px] items-center justify-center absolute top-0 w-full h-[308px] desktop:h-[447px]">
+        <div className="text-body-6 text-white">Since 2009</div>
+        <div className="flex gap-0 tablet:gap-12 desktop:gap-0">
           {statData.map(({ end, suffix, label, delay, width }) => (
             <StatItem
               key={label}
@@ -104,15 +95,15 @@ const StatItem = ({
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.6, delay }}
-    className={`flex flex-col items-center justify-center gap-y-[11px] desktop:gap-y-[14px] desktop:gap-y-6 text-white ${
+    className={`flex flex-col items-center justify-center desktop:gap-y-[14px] desktop:gap-y-6 text-white ${
       width ? width : " desktop:w-[372px]"
     }`}
   >
-    <div className="h-[5px] w-[5px] desktop:w-[11px] desktop:h-[11px] rounded-full bg-white" />
-    <div className="text-[24px] desktop:text-[60px] font-bold">
+    <div className="h-[8px] w-[8px] desktop:w-[11px] desktop:h-[11px] rounded-full bg-white" />
+    <div className="mt-[2px] text-title-7 desktop:text-[60px] font-bold">
       {startCount ? <CountUp end={end} duration={2} delay={delay} /> : 0}
       {suffix}
     </div>
-    <div className="text-[13px] desktop:text-[16px] text-[#DCE1FF]">{label}</div>
+    <div className="mt-1 text-body-9 desktop:text-[16px] text-[#DCE1FF]">{label}</div>
   </motion.div>
 );

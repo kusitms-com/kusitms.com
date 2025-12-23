@@ -2,7 +2,9 @@
 
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import React from "react";
+import Image from "next/image";
+
+const MotionImage = motion(Image);
 
 type FlipImageCardProps = {
   src: string;
@@ -13,7 +15,7 @@ type FlipImageCardProps = {
 
 export default function FlipImageCard({ src, alt, className, delay = 0 }: FlipImageCardProps) {
   return (
-    <motion.img
+    <MotionImage
       src={src}
       alt={alt}
       className={clsx("w-[315px] h-[384px] desktop:w-[486px] desktop:h-[593px]", className)}

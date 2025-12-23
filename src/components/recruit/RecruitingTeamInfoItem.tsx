@@ -1,52 +1,91 @@
-/** biome-ignore-all lint/security/noDangerouslySetInnerHtml: only inserting a controlled <br/>*/
-import React from "react";
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+import { recruitInfoItems } from "@/constants/recruitData";
 
 export default function RecruitingTeamInfoItem() {
+  const [selectedRole, setSelectedRole] = useState("기획");
+
+  const selectedInfo = recruitInfoItems.find((item) => item.role === selectedRole);
+
   return (
-    <section
-      className={
-        "rounded-[32px] bg-[#2F3038] desktop:w-[1180px] w-[334px] desktop:py-[67px] pt-[60px] pb-[40px]"
-      }
-    >
-      <div className={"flex flex-col gap-y-[40px] items-center justify-center"}>
-        <div
-          className={
-            "flex flex-col desktop:flex-row gap-x-[100px] gap-y-[36px] items-center"
-          }
-        >
-          {["기획", "디자인", "개발<br/>(프론트엔드,백엔드)"].map(
-            (content, idx) => {
-              return (
-                <div
-                  key={idx}
-                  className={`${
-                    content === "디자인"
-                      ? "desktop:ml-35"
-                      : content === "개발<br/>(프론트엔드,백엔드)"
-                      ? "desktop:ml-10"
-                      : ""
-                  } font-extrabold text-[24px] leading-[120%] tracking-[0px] text-center`}
-                  dangerouslySetInnerHTML={{ __html: content }}
-                />
-              );
-            }
-          )}
+    <section className="flex flex-col gap-[40px] desktop:gap-[60px] w-full">
+      {/* 파트 선택 네비게이션 */}
+      <div className="flex desktop:gap-[20px] gap-3 justify-center">
+        {recruitInfoItems.map((item) => (
+          <button
+            key={item.role}
+            type="button"
+            onClick={() => setSelectedRole(item.role)}
+            className={`desktop:w-[120px] py-[8px] desktop:py-[10px] cursor-pointer rounded-full text-body-6 desktop:text-body-2 
+              ${
+                selectedRole === item.role
+                  ? "bg-dark-blue-50 text-dark-blue-600 w-[80px]"
+                  : "text-gray-700"
+              }`}
+          >
+            {item.role}
+          </button>
+        ))}
+      </div>
+
+      {/* 파트 정보 */}
+      <div className="flex flex-col gap-[12px]">
+        <div className="flex gap-[8px] px-[4px] items-center">
+          <Image
+            src="/recruit/icons/Union.svg"
+            width={30}
+            height={33}
+            className="w-[22px] h-[24px] desktop:w-[30px] desktop:h-[33px]"
+            alt="아이콘"
+          />
+          <h3 className="text-body-5 desktop:text-body-1 text-gray-900">
+            {selectedRole} 파트는 이런 활동을 해요
+          </h3>
         </div>
-        <div className="flex flex-col gap-y-2">
-          <p
-            className={
-              "text-[#90909A] font-normal text-[16px] leading-[100%] tracking-[-0.5px] text-center"
-            }
-          >
-            * 팀별 인원 수는 매 기수 달라질 수 있어요 :)
-          </p>
-          <p
-            className={
-              "text-[#90909A] font-normal text-[16px] leading-[100%] tracking-[-0.5px] text-center"
-            }
-          >
-            * 운영진도 학회원 활동에 참여해요.
-          </p>
+        <div className="flex flex-col gap-[16px] px-[16px] desktop:px-[28px] py-[24px] bg-gray-50 rounded-2xl">
+          {selectedInfo?.activity.map((activity, index) => (
+            <p key={index} className="flex">
+              <Image
+                src="/recruit/icons/Dot.svg"
+                width={30}
+                height={30}
+                className="w-[21px] h-[21px] desktop:w-[30px] desktop:h-[30px]"
+                alt="아이콘"
+              />
+              <span className="text-gray-700 text-body-8 desktop:text-body-2">{activity}</span>
+            </p>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-[12px]">
+        <div className="flex gap-[8px] px-[4px] items-center">
+          <Image
+            src="/recruit/icons/Union.svg"
+            width={30}
+            height={33}
+            className="w-[22px] h-[24px] desktop:w-[30px] desktop:h-[33px]"
+            alt="아이콘"
+          />
+          <h3 className="text-body-5 desktop:text-body-1 text-gray-900">
+            이런 분과 함께하고 싶어요
+          </h3>
+        </div>
+        <div className="flex flex-col gap-[16px] px-[16px] desktop:px-[28px] py-[24px] bg-gray-50 rounded-2xl">
+          {selectedInfo?.people.map((person, index) => (
+            <p key={index} className="flex">
+              <Image
+                src="/recruit/icons/Dot.svg"
+                width={30}
+                height={30}
+                className="w-[21px] h-[21px] desktop:w-[30px] desktop:h-[30px]"
+                alt="아이콘"
+              />
+              <span className="text-gray-700 text-body-8 desktop:text-body-2">{person}</span>
+            </p>
+          ))}
         </div>
       </div>
     </section>

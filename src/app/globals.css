@@ -4,8 +4,9 @@
 @custom-variant dark (&:is(.dark *));
 
 body {
-  background-color: #151519;
+  background-color: #fff;
   color: #fff;
+  font-family: var(--font-geist-sans);
 }
 
 .scrollbar-custom::-webkit-scrollbar {
@@ -112,6 +113,8 @@ body {
 }
 
 :root {
+  --font-geist-sans: "Geist", system-ui, -apple-system, sans-serif;
+
   --radius: 0.625rem;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
@@ -285,7 +288,7 @@ body {
 
 @utility text-title-7 {
   font-weight: var(--font-weight-semibold);
-  font-size: var(--text-28);
+  font-size: var(--text-24);
   letter-spacing: var(--letter-spacing);
   line-height: var(--line-height-heading);
 }
@@ -380,4 +383,32 @@ body {
   font-size: var(--text-10);
   letter-spacing: var(--letter-spacing);
   line-height: var(--line-height-body);
+}
+
+/* 아카이브 페이지 유틸리티 */
+@utility line-dash-passed {
+  background-image: linear-gradient(to bottom, #c7d7ff 7px, transparent 0%);
+  background-size: 1px 12px;
+}
+
+/* 배경색 유틸리티  */
+@utility bg-gradient-1 {
+  background-image: linear-gradient(
+    180deg,
+    #F0FAFF 4.82%,
+    #FFFFFF 108.77%
+  );
+}
+
+/* 홈 배경색 유틸리티 */
+@utility bg-gradient-2 {
+  background-image: linear-gradient(
+    180deg,
+    #FFF 13.61%,
+    #F0FAFF 23.29%,
+    #FFF 36.05%,
+    #F3FBFF 46.56%,
+    #FFF 79.61%,
+    #F0FAFF 109.62%
+  );
 }

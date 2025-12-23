@@ -7,6 +7,38 @@ interface ProjectNavigationProps {
   domain?: string;
 }
 
+interface NavButtonProps {
+  href: string;
+  positionClass: string;
+  icon: "left" | "right";
+  size: "large" | "small";
+  className?: string;
+}
+
+function NavButton({ href, positionClass, icon, size }: NavButtonProps) {
+  const iconSize = size === "large" ? { width: 13, height: 23 } : { width: 8, height: 14 };
+
+  return (
+    <Link
+      href={href}
+      replace
+      className={`fixed z-[9999] flex justify-center items-center 
+        bg-white/30 rounded-full hover:scale-105 transition-transform
+        ${positionClass} 
+        ${size === "large" ? "w-[52px] h-[52px]" : "w-[32px] h-[32px]"}
+      `}
+    >
+      <Image
+        src={`/projects/icons/${icon === "left" ? "ArrowLeftWhite" : "ArrowRightWhite"}.svg`}
+        alt={icon === "left" ? "ArrowLeft" : "ArrowRight"}
+        width={iconSize.width}
+        height={iconSize.height}
+        style={{ width: `${iconSize.width}px`, height: `${iconSize.height}px` }}
+      />
+    </Link>
+  );
+}
+
 export default function ProjectNavigation({
   prevId,
   nextId,
@@ -14,81 +46,40 @@ export default function ProjectNavigation({
 }: ProjectNavigationProps) {
   return (
     <>
-      <div className="w-full desktop:block hidden">
-        {/* 이전 게시물 */}
+      <div className="hidden tablet:flex">
         {prevId && (
-          <Link
+          <NavButton
             href={`${domain}/${prevId}`}
-            className="absolute left-[3.5%] top-[70%]
-                     flex justify-center items-center bg-[#E2E2EB] rounded-full 
-                     w-[70px] h-[70px] hover:scale-105 transition-transform"
-          >
-            <Image
-              src="/projects/icons/ArrowLeft.svg"
-              alt="이전 페이지"
-              width={38}
-              height={38}
-              style={{ width: "38px", height: "38px" }}
-            />
-          </Link>
+            icon="left"
+            size="large"
+            positionClass="left-[calc(50%_-_312px_-_82px)] top-1/2 -translate-y-1/2"
+          />
         )}
-
-        {/* 다음 게시물 */}
         {nextId && (
-          <Link
+          <NavButton
             href={`${domain}/${nextId}`}
-            className="absolute right-[3.5%] top-[70%]
-                     flex justify-center items-center bg-[#E2E2EB] rounded-full 
-                     w-[70px] h-[70px] hover:scale-105 transition-transform"
-          >
-            <Image
-              src="/projects/icons/ArrowRight.svg"
-              alt="다음 페이지"
-              width={38}
-              height={38}
-              style={{ width: "38px", height: "38px" }}
-            />
-          </Link>
+            icon="right"
+            size="large"
+            positionClass="right-[calc(50%_-_312px_-_82px)] top-1/2 -translate-y-1/2"
+          />
         )}
       </div>
-      {/* 모바일 */}
-      <div className="w-full desktop:hidden block">
-        {/* 이전 게시물 */}
-        {prevId && (
-          <Link
-            href={`${domain}/${prevId}`}
-            className="absolute left-[-10px] top-[180px]
-                     flex justify-center items-center rounded-full 
-                     w-[70px] h-[70px] hover:scale-105 transition-transform"
-          >
-            <Image
-              src="/projects/icons/arrow_back_ios_left.svg"
-              alt="이전 페이지"
-              width={20}
-              height={20}
-              style={{ width: "20px", height: "20px" }}
-            />
-          </Link>
-        )}
-
-        {/* 다음 게시물 */}
-        {nextId && (
-          <Link
-            href={`${domain}/${nextId}`}
-            className="absolute right-[-10px] top-[180px]
-                     flex justify-center items-center rounded-full 
-                     w-[70px] h-[70px] hover:scale-105 transition-transform"
-          >
-            <Image
-              src="/projects/icons/arrow_back_ios.svg"
-              alt="다음 페이지"
-              width={20}
-              height={20}
-              style={{ width: "20px", height: "20px" }}
-            />
-          </Link>
-        )}
-      </div>
+      {prevId && (
+        <NavButton
+          href={`${domain}/${prevId}`}
+          icon="left"
+          size="small"
+          positionClass="tablet:hidden top-[580px] left-4"
+        />
+      )}
+      {nextId && (
+        <NavButton
+          href={`${domain}/${nextId}`}
+          icon="right"
+          size="small"
+          positionClass="tablet:hidden top-[580px] right-4"
+        />
+      )}
     </>
   );
 }

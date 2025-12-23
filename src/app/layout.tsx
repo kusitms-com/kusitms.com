@@ -1,8 +1,11 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Outfit } from "next/font/google";
 import { Footer, Header } from "@/components/shared";
 import "./globals.css";
+import { GoogleTagManager } from "@next/third-parties/google";
+import { Suspense } from "react";
+import PageViewTracker from "@/components/shared/analytics/PageViewTracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,10 +17,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "KUSITMS",
-  description:
-    "비전을 가지고 함께 성장하는 학회, 큐시즘의 공식 홈페이지입니다.",
+  description: "비전을 가지고 함께 성장하는 학회, 큐시즘의 공식 홈페이지입니다.",
   applicationName: "KUSITMS",
   generator: "Next.js",
   keywords: ["KUSITMS", "큐시즘", "학회", "공식 홈페이지"],
@@ -28,8 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     title: "KUSITMS",
-    description:
-      "비전을 가지고 함께 성장하는 학회, 큐시즘의 공식 홈페이지입니다.",
+    description: "비전을 가지고 함께 성장하는 학회, 큐시즘의 공식 홈페이지입니다.",
     url: "https://www.kusitms.com",
     images: [
       {
@@ -42,6 +48,8 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
   },
 };
+
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
 export default function RootLayout({
   children,
@@ -57,12 +65,16 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable} antialiased`}
       >
         <Header />
         {children}
         <Footer />
         <SpeedInsights />
+        {gtmId && <GoogleTagManager gtmId={gtmId} />}
+        <Suspense>
+          <PageViewTracker />
+        </Suspense>
       </body>
     </html>
   );

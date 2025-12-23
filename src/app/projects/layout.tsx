@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Banner from "@/components/projects/common/Banner";
 
 export const metadata: Metadata = {
   title: "KUSITMS | Projects",
@@ -35,5 +36,19 @@ export default async function ProjectsLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  return <main className="flex flex-col items-center">{children}</main>;
+  return (
+    <main className="flex flex-col items-center desktop:pt-[72px]">
+      <Banner
+        title="프로젝트"
+        description={
+          <>
+            KUSITMS의 기업, 밋업(Meet-up)
+            <br className="desktop:hidden" />
+            프로젝트를 만나보세요
+          </>
+        }
+      />
+      {children}
+    </main>
+  );
 }

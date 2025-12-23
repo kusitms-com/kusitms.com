@@ -1,19 +1,28 @@
-import ActivityIntroSection from "@/components/main/ActivityIntroSection";
+import ExecutiveSection from "@/components/main/ExecutiveSection";
 import GuestIntroSection from "@/components/main/GuestIntroSection";
 import IntroSection from "@/components/main/IntroSection";
-import PartIntroSection from "@/components/main/PartIntroSection";
 import PartnerSection from "@/components/main/PartnerSection";
 import ProgramIntroSection from "@/components/main/ProgramIntroSection";
 import StatsSection from "@/components/main/StatsSection";
+import TeamCardsSection from "@/components/main/TeamCardsSection";
+import { getMeetupProjects, type MeetupItem } from "@/service/projects";
 
-export default function Home() {
+export default async function Home() {
+  let meetupProjects: MeetupItem[] = [];
+  try {
+    const response = await getMeetupProjects("32", "");
+    meetupProjects = response.data?.meetup_list || [];
+  } catch (error) {
+    console.error("Failed to fetch meetup projects:", error);
+  }
+
   return (
-    <main className="font-[family-name:var(--font-geist-sans)]">
+    <main className="mx-auto font-[family-name:var(--font-geist-sans)] bg-gradient-2">
       <IntroSection />
       <StatsSection />
-      <PartIntroSection />
-      <ProgramIntroSection />
-      <ActivityIntroSection />
+      <TeamCardsSection />
+      <ExecutiveSection />
+      <ProgramIntroSection meetupProjects={meetupProjects} />
       <GuestIntroSection />
       <PartnerSection />
     </main>

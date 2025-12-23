@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 
 const navLinks = [
   { href: "/", label: "학회소개", matchPath: "/" },
   { href: "/projects/meetup", label: "프로젝트", matchPath: "/projects" },
-  { href: "/display", label: "전시", matchPath: "/display" },
-  { href: "/reviews", label: "후기", matchPath: "/reviews" },
+  { href: "/archive", label: "32기 아카이브", matchPath: "/archive" },
+  { href: "/reviews/activity", label: "후기", matchPath: "/reviews" },
   { href: "/recruit", label: "리크루팅", matchPath: "/recruit" },
 ];
 
@@ -21,12 +20,15 @@ export const PageNav = () => {
       {navLinks.map(({ href, label, matchPath }, index) => {
         const isActive =
           matchPath === "/" ? currentPath === matchPath : currentPath.startsWith(matchPath);
-
         return (
           <Link
             key={index}
             href={href}
-            className={`px-7 font-semibold ${isActive ? "text-white" : "text-[#90909A]"}`}
+            className={`px-7 ${
+              isActive
+                ? "text-body-5 text-dark-blue-600"
+                : "text-body-6 text-gray-700 hover:text-body-5"
+            }`}
           >
             {label}
           </Link>
