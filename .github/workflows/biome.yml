@@ -3,9 +3,7 @@ name: Biome Code Convention Check
 on:
   pull_request:
     branches:
-      - main
-      - dev
-      - 32th-dev
+      - "**"
 
 jobs:
   biome:
