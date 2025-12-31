@@ -17,7 +17,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="mx-auto font-[family-name:var(--font-geist-sans)] bg-gradient-2">
+    <main className="mx-auto font-[family-name:var(--font-pretendard)] bg-gradient-2">
       <IntroSection />
       <StatsSection />
       <TeamCardsSection />

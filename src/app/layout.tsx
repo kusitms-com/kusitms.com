@@ -1,15 +1,18 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Outfit } from "next/font/google";
+import { Geist_Mono, Outfit } from "next/font/google";
+import localFont from "next/font/local";
 import { Footer, Header } from "@/components/shared";
 import "./globals.css";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { Suspense } from "react";
 import PageViewTracker from "@/components/shared/analytics/PageViewTracker";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const pretendard = localFont({
+  src: "../../public/fonts/PretendardVariable.woff2",
+  variable: "--font-pretendard",
+  display: "swap",
+  weight: "45 920",
 });
 
 const geistMono = Geist_Mono({
@@ -65,7 +68,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable} antialiased`}
+        className={`${pretendard.variable} ${geistMono.variable} ${outfit.variable} antialiased`}
       >
         <Header />
         {children}

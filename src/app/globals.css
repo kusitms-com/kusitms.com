@@ -6,7 +6,7 @@
 body {
   background-color: #fff;
   color: #fff;
-  font-family: var(--font-geist-sans);
+  font-family: var(--font-pretendard);
 }
 
 .scrollbar-custom::-webkit-scrollbar {
@@ -113,8 +113,6 @@ body {
 }
 
 :root {
-  --font-geist-sans: "Geist", system-ui, -apple-system, sans-serif;
-
   --radius: 0.625rem;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
