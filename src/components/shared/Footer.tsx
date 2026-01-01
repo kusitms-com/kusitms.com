@@ -44,9 +44,6 @@ export const Footer = () => {
               priority
               className="w-[91px] h-[24px] desktop:w-[132px] desktop:h-[35px]"
             />
-            <div className="desktop:hidden block">
-              <TopScrollButton />
-            </div>
           </div>
           <Link
             href="https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/policy/kusitms_31st_policy.pdf"
@@ -60,8 +57,8 @@ export const Footer = () => {
             <br />ⓒ 2023. KUSITMS. All rights reserved.
           </p>
         </div>
-        <div>
-          <h4 className="text-body-5 text-gray-800 mb-5 desktop:mt-[79px] mt-[40px]">Contact</h4>
+        <div className="flex-col desktop:pt-0 pt-7 desktop:self-end">
+          <h4 className="text-body-5 text-gray-800 desktop:mb-5 mb-2">Contact</h4>
           <div className="flex desktop:gap-5 gap-[14px]">
             {SNSGROUPS.map((social, index) => (
               <IconLink key={index} img={social.img} link={social.link} />
@@ -69,6 +66,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+      <TopScrollButton />
     </footer>
   );
 };
