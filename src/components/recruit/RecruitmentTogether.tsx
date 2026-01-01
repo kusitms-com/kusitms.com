@@ -6,7 +6,7 @@ const RecruitmentTogether = () => {
   const isRecruiting = false;
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col w-full items-center">
       <h2 className="desktop:text-title-3 text-title-6 text-dark-blue-400">Recruitment</h2>
       {isRecruiting ? (
         <>
@@ -24,7 +24,7 @@ const RecruitmentTogether = () => {
         </>
       ) : (
         <>
-          <span className="text-body-8 desktop:text-body-2 items-center flex flex-col desktop:pt-[20px] pt-[16px] text-gray-900 pb-[40px] desktop:pb-[80px]">
+          <span className="text-body-8 w-full desktop:text-body-2 items-center flex flex-col desktop:pt-[20px] pt-[16px] text-gray-900 pb-[40px] desktop:pb-[80px]">
             <p>지금은 모집 기간이 아니에요</p>
             <p>모집 기간이 되면 메일로 알려드릴게요</p>
           </span>

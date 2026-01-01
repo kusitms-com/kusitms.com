@@ -26,12 +26,12 @@ export default function RecruitmentProcessItem() {
   ];
 
   return (
-    <section className="flex flex-col items-center desktop:gap-[60px] gap-[20px]">
-      <div className="flex gap-[20px] desktop:flex-row flex-col">
+    <section className="flex flex-col w-full items-center gap-[60px]">
+      <div className="flex gap-[20px] w-full desktop:flex-row flex-col">
         {recruitmentProcess.map((process, index) => (
           <div
             key={index}
-            className="flex flex-col gap-[20px] desktop:w-[220px] w-[300px] py-[20px] items-center bg-dark-blue-50 justify-center rounded-2xl"
+            className="flex flex-col gap-[20px] desktop:w-[220px] w-full py-[20px] items-center bg-dark-blue-50 justify-center rounded-2xl"
           >
             <div className="flex justify-center items-center bg-gray-0 rounded-full w-[80px] h-[80px]">
               <Image src={process.icon.src} alt={process.icon.alt} width={50} height={50} />
