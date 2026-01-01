@@ -9,7 +9,7 @@ interface CardProps {
 export default function StoryCard({ children, onClick }: CardProps) {
   return (
     <div
-      className="relative flex desktop:gap-7 gap-3 items-center  overflow-hidden rounded-[16px]"
+      className="relative flex desktop:gap-7 gap-3 items-center overflow-hidden"
       onClick={onClick}
     >
       {children}
@@ -21,7 +21,7 @@ const Thumbnail = ({ src }: { src: string }) => (
   <Image
     src={src}
     alt="thumbnail"
-    className="w-[104px] h-[104px] desktop:aspect-[240/164] desktop:min-w-60 desktop:h-auto object-cover rounded-2xl bg-gray-100"
+    className="w-[104px] h-[104px] desktop:aspect-[240/164] desktop:min-w-60 desktop:h-auto object-cover desktop:rounded-2xl rounded-[8px] bg-gray-100"
     width={240}
     height={164}
     unoptimized
