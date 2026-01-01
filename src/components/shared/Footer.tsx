@@ -39,10 +39,10 @@ export const Footer = () => {
             <Image
               src="/footerLogo.svg"
               alt="큐시즘 로고"
-              width={121}
-              height={20}
+              width={132}
+              height={35}
               priority
-              className="py-[7px] pr-[10.2px]"
+              className="w-[91px] h-[24px] desktop:w-[132px] desktop:h-[35px]"
             />
             <div className="desktop:hidden block">
               <TopScrollButton />
@@ -51,11 +51,11 @@ export const Footer = () => {
           <Link
             href="https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/policy/kusitms_31st_policy.pdf"
             target="_blank"
-            className="text-body-6 text-gray-800 underline desktop:mt-10 mt-4"
+            className="desktop:text-body-6 text-body-10 text-gray-800 underline desktop:mt-10 mt-4"
           >
             학회정관
           </Link>
-          <p className="text-body-6 text-gray-800 mt-3">
+          <p className="desktop:text-body-6 text-body-10 text-gray-800 mt-3">
             KUSITMS (큐시즘, 한국대학생IT경영학회)
             <br />ⓒ 2023. KUSITMS. All rights reserved.
           </p>
