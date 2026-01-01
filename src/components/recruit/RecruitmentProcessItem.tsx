@@ -1,4 +1,5 @@
 import Image from "next/image";
+import LinkButton from "../shared/LinkButton";
 
 export default function RecruitmentProcessItem() {
   const recruitmentProcess = [
@@ -47,16 +48,7 @@ export default function RecruitmentProcessItem() {
         ))}
       </div>
       {/* TODO: 실제 지원 링크로 이동 */}
-      <button className="text-gray-0 rounded-full cursor-pointer w-fit text-body-8 desktop:text-body-4 flex gap-[12px] justify-center items-center px-[24px] py-[10px] bg-dark-blue-500">
-        <p>지원하러 가기</p>
-        <Image
-          src="/recruit/icons/WhiteArrow.svg"
-          alt="Arrow"
-          width={24}
-          height={24}
-          className="w-[20px] h-[20px] desktop:w-[24px] desktop:h-[24px]"
-        />
-      </button>
+      <LinkButton title="지원하러 가기" />
     </section>
   );
 }
