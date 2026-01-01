@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 function TopScrollButton() {
   const scrollToTop = () => {
     window.scrollTo({
@@ -9,11 +11,14 @@ function TopScrollButton() {
   };
 
   return (
-    <button
-      onClick={scrollToTop}
-      className="flex cursor-pointer justify-center items-center desktop:w-[56px] desktop:h-[56px] w-[36px] h-[36px] rounded-full bg-[#ffffff] mx-auto shadow-[0px_1px_20px_rgba(179,179,188,0.4)]"
-    >
-      <span className="desktop:text-body-5 text-body-9 font-semibold text-black">TOP</span>
+    <button onClick={scrollToTop} className="cursor-pointer">
+      <Image
+        src="/topScroll.svg"
+        alt="Top Scroll"
+        width={48}
+        height={48}
+        className="desktop:w-12 desktop:h-12 w-10 h-10"
+      />
     </button>
   );
 }
