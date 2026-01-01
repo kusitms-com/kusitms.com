@@ -17,7 +17,7 @@ export default function RecruitQnADropBox({
   return (
     <div
       onClick={onToggle}
-      className="flex flex-col rounded-[20px] bg-gray-50 px-[28px] desktop:px-[40px] py-[20px] desktop:py-[32px] cursor-pointer"
+      className="flex flex-col rounded-[20px] bg-gray-50 px-[28px] desktop:px-[40px] py-[20px] desktop:py-[28px] cursor-pointer"
     >
       <RecruitQnADropBox.Question isOpen={isOpen}>
         <p className="flex gap-x-2 text-black text-body-6 desktop:text-body-2 items-baseline">
@@ -26,7 +26,7 @@ export default function RecruitQnADropBox({
         </p>
       </RecruitQnADropBox.Question>
       <RecruitQnADropBox.Answer isOpen={isOpen}>
-        <div className="flex gap-x-2 pt-[20px] text-body-6 desktop:text-body-2 items-baseline">
+        <div className="flex gap-x-2 pt-[16px] text-body-6 desktop:text-body-2 items-baseline">
           <span className="text-dark-blue-300 text-body-1 desktop:text-title-7">A.</span>
           <div className="text-gray-700">
             {answer.map((line, idx) => (

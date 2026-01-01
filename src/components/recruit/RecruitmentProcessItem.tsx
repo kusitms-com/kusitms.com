@@ -26,7 +26,7 @@ export default function RecruitmentProcessItem() {
   ];
 
   return (
-    <section className="flex flex-col items-center gap-[60px]">
+    <section className="flex flex-col items-center desktop:gap-[60px] gap-[20px]">
       <div className="flex gap-[20px] desktop:flex-row flex-col">
         {recruitmentProcess.map((process, index) => (
           <div

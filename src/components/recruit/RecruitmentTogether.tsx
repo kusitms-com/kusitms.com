@@ -7,12 +7,10 @@ const RecruitmentTogether = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="desktop:text-title-3 text-title-6 text-dark-blue-400 pb-[40px]">
-        Recruitment
-      </h2>
+      <h2 className="desktop:text-title-3 text-title-6 text-dark-blue-400">Recruitment</h2>
       {isRecruiting ? (
         <>
-          <span className="desktop:text-body-2 text-body-8 items-center flex flex-col text-gray-900 pb-[40px] desktop:pb-[80px]">
+          <span className="desktop:text-body-2 text-body-8 items-center flex desktop:pt-[40px] pt-[20px] flex-col text-gray-900 pb-[40px] desktop:pb-[80px]">
             <p className="text-center">
               큐시즘은 혼자서는 해낼 수 없는 일들을
               <br className="desktop:hidden" />
@@ -26,7 +24,7 @@ const RecruitmentTogether = () => {
         </>
       ) : (
         <>
-          <span className="text-body-8 desktop:text-body-2 items-center flex flex-col text-gray-900 pb-[40px] desktop:pb-[80px]">
+          <span className="text-body-8 desktop:text-body-2 items-center flex flex-col desktop:pt-[20px] pt-[16px] text-gray-900 pb-[40px] desktop:pb-[80px]">
             <p>지금은 모집 기간이 아니에요</p>
             <p>모집 기간이 되면 메일로 알려드릴게요</p>
           </span>
