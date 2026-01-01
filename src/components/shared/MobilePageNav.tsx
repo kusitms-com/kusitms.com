@@ -54,9 +54,9 @@ function MobilePageNav() {
             <Image
               src="/projects/icons/CloseIcon.svg"
               alt="닫기"
-              width={26}
-              height={26}
-              className="w-[26px] h-[26px]"
+              width={24}
+              height={24}
+              className="w-[24px] h-[24px]"
             />
           )}
         </button>

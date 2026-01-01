@@ -15,7 +15,7 @@ export const Header = () => {
             alt="큐시즘 로고"
             width={142}
             height={26}
-            className="w-[110px] h-[20px] desktop:w-[142px] desktop:h-[26px]"
+            className="w-[120px] h-[21px] desktop:w-[142px] desktop:h-[26px]"
             priority
           />
         </Link>
