@@ -44,7 +44,7 @@ export default function StoryFilter({
 
   return (
     <div className="flex tablet:flex-row flex-col justify-between">
-      <p className="tablet:text-title-7 text-body-5 text-gray-700 tablet:pb-[39px] pb-[12px]">
+      <p className="tablet:text-title-7 text-body-3 text-gray-700 tablet:pb-[39px] pb-[12px]">
         전체 게시글 <span className="text-dark-blue-600">{totalCount}</span>개
       </p>
       <div className="flex tablet:gap-[12px] gap-[8px] pb-[20px] tablet:pb-0">
