@@ -26,7 +26,7 @@ export default function RecruitQnADropBox({
         </p>
       </RecruitQnADropBox.Question>
       <RecruitQnADropBox.Answer isOpen={isOpen}>
-        <div className="flex gap-x-2 pt-[16px] text-body-6 desktop:text-body-2 items-baseline">
+        <div className="flex gap-x-2 desktop:pt-[16px] pt-[4px] text-body-6 desktop:text-body-2 items-baseline">
           <span className="text-dark-blue-300 text-body-1 desktop:text-title-7">A.</span>
           <div className="text-gray-700">
             {answer.map((line, idx) => (

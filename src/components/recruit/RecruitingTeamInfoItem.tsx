@@ -12,17 +12,17 @@ export default function RecruitingTeamInfoItem() {
   return (
     <section className="flex flex-col gap-[40px] desktop:gap-[60px] w-full">
       {/* 파트 선택 네비게이션 */}
-      <div className="flex desktop:gap-[20px] gap-3 justify-center">
+      <div className="flex desktop:gap-[20px] gap-1 justify-center">
         {recruitInfoItems.map((item) => (
           <button
             key={item.role}
             type="button"
             onClick={() => setSelectedRole(item.role)}
-            className={`desktop:w-[120px] py-[8px] w-[80px] desktop:py-[10px] cursor-pointer rounded-full 
+            className={`cursor-pointer rounded-full py-[4px] desktop:w-[120px] transition-colors duration-300
               ${
                 selectedRole === item.role
-                  ? "bg-dark-blue-50 text-dark-blue-600 text-body-5 desktop:text-body-1"
-                  : "text-gray-700 text-body-6 desktop:text-body-2 hover:bg-gray-50"
+                  ? "bg-dark-blue-50 text-dark-blue-600 text-body-5 desktop:text-body-1 px-[16px] desktop:py-[10px] "
+                  : "text-gray-700 text-body-6 desktop:text-body-2 hover:bg-gray-50  hover:px-[16px] px-[12px] hover:desktop:py-[10px]"
               }`}
           >
             {item.role}
