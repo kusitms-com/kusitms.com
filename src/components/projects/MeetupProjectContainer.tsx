@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import TopScrollButton from "@/components/shared/TopScrollButton";
 import { getMeetupProjects, type MeetupResponse } from "@/service/projects";
 import Card from "./common/ProjectCard";
 import ProjectFilter from "./common/ProjectFilter";
@@ -50,11 +49,6 @@ export default function ProjectContainer({ data: meetupProjectList }: ProjectCon
           </Link>
         ))}
       </div>
-      {cardinal === "" && (
-        <div className="mt-6">
-          <TopScrollButton />
-        </div>
-      )}
     </div>
   );
 }

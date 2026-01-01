@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import TopScrollButton from "@/components/shared/TopScrollButton";
 import { getStories, type StoriesData, type StoriesParams } from "@/service/reviews/getStories";
 import Pagination from "./Pagination";
 import StoryCard from "./StoryCard";
@@ -95,11 +94,6 @@ export default function Stories({ initialData }: StoriesContainerProps) {
             totalPages={storiesData.totalPages}
             onPageChange={handlePageChange}
           />
-        )}
-        {!generation && !position && !category && (
-          <div className="mt-6 desktop:block hidden">
-            <TopScrollButton />
-          </div>
         )}
       </div>
     </>

@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+// 이걸로 통일. 기존 top버튼 모두 제거
+
 function TopScrollButton() {
   const [bottom, setBottom] = useState(40);
   const [isDesktop, setIsDesktop] = useState(true);
