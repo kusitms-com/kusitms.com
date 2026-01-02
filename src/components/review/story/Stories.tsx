@@ -59,7 +59,7 @@ export default function Stories({ initialData }: StoriesContainerProps) {
         />
       </div>
       <div className="w-full mb-[32px] tablet:px-10 px-4 tablet:max-w-[1024px] mx-auto">
-        <div className="flex flex-col tablet:gap-8 gap-5 tablet:mb-14 mb-9">
+        <div className="flex flex-col tablet:gap-8 gap-5 tablet:mb-17 mb-9">
           {storiesData.content.length > 0 ? (
             storiesData.content.map((story) => (
               <Link

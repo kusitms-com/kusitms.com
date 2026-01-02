@@ -21,7 +21,7 @@ const CATEGORIES = {
 
 const POSITIONS = {
   "모든 파트": undefined,
-  프론트엔드: "FRONTEND",
+  프론트: "FRONTEND",
   백엔드: "BACKEND",
   디자이너: "DESIGNER",
   기획: "PLAN",
