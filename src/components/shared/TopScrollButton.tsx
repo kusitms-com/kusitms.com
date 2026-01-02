@@ -30,8 +30,9 @@ function TopScrollButton() {
       const minBottom = isDesktop ? 177 : 226;
       const defaultBottom = isDesktop ? 40 : 16;
 
-      if (remain <= minBottom - defaultBottom) {
-        setBottom(minBottom);
+      if (remain <= minBottom) {
+        const dynamicBottom = defaultBottom + (minBottom - remain);
+        setBottom(Math.min(dynamicBottom, minBottom));
       } else {
         setBottom(defaultBottom);
       }
