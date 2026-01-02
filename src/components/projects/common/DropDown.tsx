@@ -17,8 +17,9 @@ export default function Dropdown({ options, selected, onSelect }: DropdownProps)
       <button
         onClick={() => setOpen(!open)}
         className={
-          "cursor-pointer truncate flex desktop:gap-[8px] gap-[2px] items-center justify-between desktop:py-[10px] py-[6px] desktop:pr-[16px] pr-[8px] desktop:pl-[20px] pl-[12px] rounded-[8px] border border-gray-100 bg-white desktop:text-body-3 text-body-8 text-gray-600"
+          "cursor-pointer truncate flex desktop:gap-[8px] gap-[2px] items-center justify-between desktop:py-[8px] py-[6px] desktop:pr-[16px] pr-[8px] desktop:pl-[20px] pl-[12px] rounded-[8px] border border-gray-100 bg-white desktop:text-body-3 text-body-8 text-gray-600 focus:outline-none focus:ring-1 focus:ring-dark-blue-600 focus:border-dark-blue-600"
         }
+        tabIndex={0}
       >
         {selected || "모든 기수"}
         <Image
