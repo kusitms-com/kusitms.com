@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import TopScrollButton from "@/components/shared/TopScrollButton";
 import { type CorporateResponse, getCorporateProjects } from "@/service/projects";
 import Card from "./common/ProjectCard";
 import ProjectFilter from "./common/ProjectFilter";
@@ -39,11 +38,6 @@ export default function CorporateProjectContainer({
           </Card>
         ))}
       </div>
-      {cardinal === "" && (
-        <div className="mt-6">
-          <TopScrollButton />
-        </div>
-      )}
     </div>
   );
 }

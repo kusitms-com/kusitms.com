@@ -30,7 +30,7 @@ const MailInput = () => {
   };
 
   return (
-    <div className="w-[288px] desktop:w-[652px] flex items-center bg-gray-50 desktop:py-[12px] py-[8px] pl-[20px] desktop:pl-[28px] pr-[10px] desktop:pr-[20px] rounded-full text-body-8 desktop:text-body-2">
+    <div className="w-full desktop:w-[652px] flex items-center bg-gray-50 desktop:py-[12px] py-[8px] pl-[20px] desktop:pl-[28px] pr-[10px] desktop:pr-[20px] rounded-full text-body-8 desktop:text-body-2">
       <input
         type="email"
         placeholder="메일을 입력해주세요"

@@ -12,7 +12,7 @@ export default function ReviewNavButtons() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full tablet:h-[158px] h-[104px] flex tablet:px-10 pt-5">
+    <nav className="w-full tablet:pb-15 pb-9 flex tablet:px-10 pt-5">
       {NAV_ITEMS.map((item) => {
         const isActive = pathname === item.path;
         return (

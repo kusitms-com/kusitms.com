@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import TopScrollButton from "@/components/shared/TopScrollButton";
 import { getStories, type StoriesData, type StoriesParams } from "@/service/reviews/getStories";
 import Pagination from "./Pagination";
 import StoryCard from "./StoryCard";
@@ -60,7 +59,7 @@ export default function Stories({ initialData }: StoriesContainerProps) {
         />
       </div>
       <div className="w-full mb-[32px] tablet:px-10 px-4 tablet:max-w-[1024px] mx-auto">
-        <div className="flex flex-col tablet:gap-8 gap-5 tablet:mb-14 mb-9">
+        <div className="flex flex-col tablet:gap-8 gap-5 tablet:mb-17 mb-9">
           {storiesData.content.length > 0 ? (
             storiesData.content.map((story) => (
               <Link
@@ -95,11 +94,6 @@ export default function Stories({ initialData }: StoriesContainerProps) {
             totalPages={storiesData.totalPages}
             onPageChange={handlePageChange}
           />
-        )}
-        {!generation && !position && !category && (
-          <div className="mt-6 desktop:block hidden">
-            <TopScrollButton />
-          </div>
         )}
       </div>
     </>

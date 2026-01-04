@@ -26,11 +26,11 @@ export default function RecruitmentTargetInfoItem() {
   ];
 
   return (
-    <section className="flex desktop:flex-row flex-col desktop:px-[40px] px-[10px] gap-[16px] desktop:gap-[22px]">
+    <section className="flex desktop:flex-row flex-col w-full desktop:px-[40px] px-[10px] gap-[16px] desktop:gap-[22px]">
       {recruitItems.map((item, index) => (
         <section
           key={index}
-          className="bg-dark-blue-50 w-[300px] rounded-2xl flex gap-[20px] flex-col items-center pt-[28px] pb-[32px]"
+          className="bg-dark-blue-50 min-w-[300px] w-full rounded-2xl flex gap-[20px] flex-col items-center pt-[28px] pb-[32px]"
         >
           <div className="flex justify-center items-center bg-gray-0 rounded-full w-[80px] h-[80px]">
             <Image src={item.icon.src} alt={item.icon.alt} width={58} height={58} />

@@ -43,7 +43,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage, onPage
         </button>
       </div>
 
-      <div className="body-6 flex gap-3">
+      <div className="body-6 flex gap-4">
         {visiblePages.map((num) => (
           <button
             key={num}

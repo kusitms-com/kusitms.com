@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { MeetupItem } from "@/service/projects/getMeetupProjects";
+import LinkButton from "../shared/LinkButton";
 
 interface MeetupProjectCarouselProps {
   projects: MeetupItem[];
@@ -15,7 +15,6 @@ export default function MeetupProjectCarousel({
   projects,
   archiveMode = false,
 }: MeetupProjectCarouselProps) {
-  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [isMobile, setIsMobile] = useState(false);
@@ -176,12 +175,7 @@ export default function MeetupProjectCarousel({
         ))}
       </div>
       {archiveMode === false && (
-        <button
-          onClick={() => router.push("/projects/meetup")}
-          className="cursor-pointer min-w-[148px] mt-7 tablet:mt-8 py-2 px-3 tablet:py-[10px] tablet:px-5 rounded-[20px] bg-dark-blue-500 text-white font-semibold text-body-8 tablet:text-body-3"
-        >
-          프로젝트 더보기 →
-        </button>
+        <LinkButton title="프로젝트 더보기" link="/projects/meetup" className="mt-7 desktop:mt-8" />
       )}
     </div>
   );

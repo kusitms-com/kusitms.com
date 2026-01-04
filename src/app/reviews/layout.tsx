@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "KUSITMS",
     images: [
       {
-        url: "https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/upload/fdc0f561-9f61-47d0-be9b-1274cfe4814emarkup_banner.png",
+        url: "https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/meetup/OG/456ed518-7489-4106-9d33-94c491ef358732__OG_.png",
         alt: "KUSITMS Reviews",
       },
     ],
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "KUSITMS | REVIEWS",
     description: "큐시즘의 다양한 프로젝트와 활동에 대한 생생한 후기를 확인해보세요.",
     images: [
-      "https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/upload/fdc0f561-9f61-47d0-be9b-1274cfe4814emarkup_banner.png",
+      "https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/meetup/OG/456ed518-7489-4106-9d33-94c491ef358732__OG_.png",
     ],
   },
 };

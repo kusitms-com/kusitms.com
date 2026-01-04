@@ -1,36 +1,37 @@
 import Image from "next/image";
+import LinkButton from "../shared/LinkButton";
 
 export default function RecruitmentProcessItem() {
   const recruitmentProcess = [
     {
       icon: { src: "/recruit/icons/Paper.svg", alt: "서류 지원" },
       title: "서류 지원 기간",
-      notice: ["7월 17일(목) ~ 7월 26일(토)", "자정 마감"],
+      notice: ["1월 17일(토) ~ 1월 24일(토)", "자정 마감"],
     },
     {
       icon: { src: "/recruit/icons/Call.svg", alt: "서류 합격" },
       title: "서류 합격 발표",
-      notice: ["7월 29일(화)", "합격자/불합격자 전체 연락"],
+      notice: ["1월 28일(수)", "합격자/불합격자 전체 연락"],
     },
     {
       icon: { src: "/recruit/icons/People.svg", alt: "면접 기간" },
       title: "면접 기간",
-      notice: ["8월 2일(토) ~ 8월 3일(일)", "서류 합격자 개별 안내"],
+      notice: ["1월 31일(토) ~ 2월 1일(일)", "서류 합격자 개별 안내"],
     },
     {
       icon: { src: "/recruit/icons/Medal.svg", alt: "최종 발표" },
       title: "최종 합격 발표",
-      notice: ["8월 5일(화)", "합격자/불합격자 전체 연락"],
+      notice: ["2월 4일(수)", "합격자/불합격자 전체 연락"],
     },
   ];
 
   return (
-    <section className="flex flex-col items-center gap-[60px]">
-      <div className="flex gap-[20px] desktop:flex-row flex-col">
+    <section className="flex flex-col w-full items-center gap-[60px]">
+      <div className="flex gap-[20px] w-full desktop:flex-row flex-col">
         {recruitmentProcess.map((process, index) => (
           <div
             key={index}
-            className="flex flex-col gap-[20px] desktop:w-[220px] w-[300px] py-[20px] items-center bg-dark-blue-50 justify-center rounded-2xl"
+            className="flex flex-col gap-[20px] desktop:w-[220px] w-full py-[20px] items-center bg-dark-blue-50 justify-center rounded-2xl"
           >
             <div className="flex justify-center items-center bg-gray-0 rounded-full w-[80px] h-[80px]">
               <Image src={process.icon.src} alt={process.icon.alt} width={50} height={50} />
@@ -47,16 +48,7 @@ export default function RecruitmentProcessItem() {
         ))}
       </div>
       {/* TODO: 실제 지원 링크로 이동 */}
-      <button className="text-gray-0 rounded-full cursor-pointer w-fit text-body-8 desktop:text-body-4 flex gap-[12px] justify-center items-center px-[24px] py-[10px] bg-dark-blue-500">
-        <p>지원하러 가기</p>
-        <Image
-          src="/recruit/icons/WhiteArrow.svg"
-          alt="Arrow"
-          width={24}
-          height={24}
-          className="w-[20px] h-[20px] desktop:w-[24px] desktop:h-[24px]"
-        />
-      </button>
+      <LinkButton title="지원하러 가기" />
     </section>
   );
 }
