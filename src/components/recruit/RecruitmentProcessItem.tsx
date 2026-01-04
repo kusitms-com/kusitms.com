@@ -6,22 +6,22 @@ export default function RecruitmentProcessItem() {
     {
       icon: { src: "/recruit/icons/Paper.svg", alt: "서류 지원" },
       title: "서류 지원 기간",
-      notice: ["7월 17일(목) ~ 7월 26일(토)", "자정 마감"],
+      notice: ["1월 17일(토) ~ 1월 24일(토)", "자정 마감"],
     },
     {
       icon: { src: "/recruit/icons/Call.svg", alt: "서류 합격" },
       title: "서류 합격 발표",
-      notice: ["7월 29일(화)", "합격자/불합격자 전체 연락"],
+      notice: ["1월 28일(수)", "합격자/불합격자 전체 연락"],
     },
     {
       icon: { src: "/recruit/icons/People.svg", alt: "면접 기간" },
       title: "면접 기간",
-      notice: ["8월 2일(토) ~ 8월 3일(일)", "서류 합격자 개별 안내"],
+      notice: ["1월 31일(토) ~ 2월 1일(일)", "서류 합격자 개별 안내"],
     },
     {
       icon: { src: "/recruit/icons/Medal.svg", alt: "최종 발표" },
       title: "최종 합격 발표",
-      notice: ["8월 5일(화)", "합격자/불합격자 전체 연락"],
+      notice: ["2월 4일(수)", "합격자/불합격자 전체 연락"],
     },
   ];
 
