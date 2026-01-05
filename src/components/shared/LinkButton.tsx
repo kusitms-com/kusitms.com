@@ -17,7 +17,7 @@ const LinkButton = ({ title, link, className }: LinkButtonProps) => {
       onClick={() => {
         link && router.push(link);
       }}
-      className={`text-gray-0 rounded-full cursor-pointer w-fit text-body-8 desktop:text-body-4 flex gap-[12px] justify-center items-center pl-[32px] pr-[24px] py-[10px] bg-dark-blue-500 ${className}`}
+      className={`text-gray-0 rounded-full cursor-pointer w-fit text-body-8 desktop:text-body-4 flex gap-[12px] justify-center items-center pl-[32px] pr-[24px] py-[10px] bg-dark-blue-500 hover:bg-dark-blue-400 active:bg-dark-blue-600 ${className}`}
     >
       <p>{title}</p>
       <Image
