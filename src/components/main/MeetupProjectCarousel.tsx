@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { MeetupItem } from "@/service/projects/getMeetupProjects";
 import LinkButton from "../shared/LinkButton";
 
@@ -16,6 +16,8 @@ export default function MeetupProjectCarousel({
   archiveMode = false,
 }: MeetupProjectCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [carouselRect, setCarouselRect] = useState({ top: 0, height: 126 });
 
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
@@ -29,6 +31,31 @@ export default function MeetupProjectCarousel({
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const updateCarouselRect = () => {
+      if (carouselRef.current) {
+        const rect = carouselRef.current.getBoundingClientRect();
+        setCarouselRect({ top: rect.top, height: rect.height });
+      }
+    };
+    updateCarouselRect();
+    let rafId: number;
+    const scheduleUpdate = () => {
+      rafId = requestAnimationFrame(() => {
+        updateCarouselRect();
+        scheduleUpdate();
+      });
+    };
+    scheduleUpdate();
+    window.addEventListener("resize", updateCarouselRect);
+    window.addEventListener("scroll", updateCarouselRect);
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", updateCarouselRect);
+      window.removeEventListener("scroll", updateCarouselRect);
+    };
   }, []);
 
   const BASE_W = isMobile ? 200 : 404;
@@ -85,7 +112,7 @@ export default function MeetupProjectCarousel({
   };
 
   return (
-    <div className="w-full flex flex-col items-center ">
+    <div className="w-full flex flex-col items-center relative">
       {archiveMode && (
         <div className="desktop:mt-[160px] mt-[80px] items-center flex flex-col w-full gap-4">
           <p className="text-title-7 desktop:text-title-5 text-gray-900 font-bold">
@@ -107,8 +134,47 @@ export default function MeetupProjectCarousel({
         </div>
       )}
       <div
+        ref={carouselRef}
         className={`relative w-full flex mt-[36px] tablet:mt-[54px] min-h-[126px] tablet:min-h-[260px] overflow-visible items-center`}
       >
+        <motion.button
+          type="button"
+          aria-label="previous"
+          className="fixed left-0 w-1/2 cursor-pointer z-10"
+          style={{
+            top: `${carouselRect.top}px`,
+            height: `${carouselRect.height}px`,
+          }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onClick={handlePrev}
+          onDragEnd={(_, info) => {
+            const threshold = 50;
+            if (info.offset.x > threshold) {
+              handlePrev();
+            }
+          }}
+        />
+        <motion.button
+          type="button"
+          aria-label="next"
+          className="fixed right-0 w-1/2 cursor-pointer z-10"
+          style={{
+            top: `${carouselRect.top}px`,
+            height: `${carouselRect.height}px`,
+          }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onClick={handleNext}
+          onDragEnd={(_, info) => {
+            const threshold = 50;
+            if (info.offset.x < -threshold) {
+              handleNext();
+            }
+          }}
+        />
         {visibleCards.map(({ index, offset }) => {
           const project = projects[index];
           const abs = Math.abs(offset) as 0 | 1 | 2;
