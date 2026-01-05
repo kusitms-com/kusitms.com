@@ -1,6 +1,6 @@
 export const COMPANY_ROW1: string[] = [
   "/main/img/company/LG.png",
-  "/main/img/company/LifeZip.png",
+  //"/main/img/company/LifeZip.png",
   "/main/img/company/ZigHang.png",
   "/main/img/company/SeoulMilk.png",
   "/main/img/company/Kobaco.png",
