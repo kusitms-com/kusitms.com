@@ -145,17 +145,29 @@ function DesktopExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
           type="button"
           aria-label="previous"
           onClick={prev}
-          className="cursor-pointer absolute left-9 top-1/2 -translate-y-1/2 w-15 h-15 min-w-15 min-h-15 rounded-full bg-white/30 text-gray-900 flex items-center justify-center"
+          className="cursor-pointer absolute left-9 top-1/2 -translate-y-1/2 w-13 h-13 min-w-13 min-h-13 rounded-full bg-black/20 text-gray-900 flex items-center justify-center"
         >
-          <Image src="/projects/icons/ArrowLeft.svg" alt="prev" width={19} height={30} />
+          <Image
+            src="/projects/icons/ArrowLeft.svg"
+            alt="prev"
+            width={14}
+            height={24}
+            className="block mr-[2px]"
+          />
         </button>
         <button
           type="button"
           aria-label="next"
           onClick={next}
-          className="cursor-pointer absolute right-9 top-1/2 -translate-y-1/2 w-15 h-15 min-w-15 min-h-15 rounded-full bg-white/30 text-gray-900 flex items-center justify-center"
+          className="cursor-pointer absolute right-9 top-1/2 -translate-y-1/2 w-13 h-13 min-w-13 min-h-13 rounded-full bg-black/20 text-gray-900 flex items-center justify-center"
         >
-          <Image src="/projects/icons/ArrowRight.svg" alt="next" width={19} height={30} />
+          <Image
+            src="/projects/icons/ArrowRight.svg"
+            alt="next"
+            width={14}
+            height={24}
+            className="block ml-[2px]"
+          />
         </button>
       </motion.div>
       <div className="mt-[20px] flex items-center justify-center gap-2">
