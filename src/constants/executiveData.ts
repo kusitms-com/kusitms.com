@@ -15,7 +15,7 @@ export const EXECUTIVE_DATA: ExecutiveItem[] = [
     image: "/main/img/manage/Manage2.png",
     title: "학부학",
     description:
-      "학회의 총체적 운영권과 대내외적 대표권을 가지고 있으며, 학회 운영 및 업무 총괄, 파트너십을 위한 기업 미팅, OB 연락망 구축 등을 진행해요..",
+      "학회의 총체적 운영권과 대내외적 대표권을 가지고 있으며, 학회 운영 및 업무 총괄, 파트너십을 위한 기업 미팅, OB 연락망 구축 등을 진행해요.",
   },
   {
     image: "/main/img/manage/Manage3.png",
