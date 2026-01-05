@@ -158,7 +158,7 @@ function DesktopExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
           <Image src="/projects/icons/ArrowRight.svg" alt="next" width={19} height={30} />
         </button>
       </motion.div>
-      <div className="mt-2 flex items-center justify-center gap-2">
+      <div className="mt-[20px] flex items-center justify-center gap-2">
         {items.map((_, i) => (
           <span
             key={i}
