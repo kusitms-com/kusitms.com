@@ -105,7 +105,7 @@ export default function IntroSection() {
         >
           <div>
             <p className={`${OUTLINE_TEXT_BASE} text-[42px]`}>KUSITMS 32nd</p>
-            <div className="flex items-center gap-x-9">
+            <div className="flex items-center gap-x-6">
               <p className={`${OUTLINE_TEXT_BASE} text-[68px]`}>More it, MORE IT</p>
               <motion.div
                 animate={{ rotate: 360 }}
