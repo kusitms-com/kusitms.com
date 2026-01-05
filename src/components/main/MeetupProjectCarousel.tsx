@@ -37,7 +37,6 @@ export default function MeetupProjectCarousel({
   const OVERLAP2 = isMobile ? 40 : 0;
 
   const SCALE = { 0: 1, 1: 0.75, 2: 0.6 } as const;
-  const BLUR = { 0: 0, 1: 2.5, 2: 2.5 } as const;
 
   const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
@@ -115,8 +114,8 @@ export default function MeetupProjectCarousel({
           const abs = Math.abs(offset) as 0 | 1 | 2;
 
           const scale = SCALE[abs];
-          const blur = BLUR[abs];
           const zIndex = 10 - abs;
+          const hasOverlay = abs > 0;
 
           const cardW = BASE_W * scale;
           const cardH = BASE_H * scale;
@@ -126,7 +125,6 @@ export default function MeetupProjectCarousel({
               key={`${project.meetup_id}-${index}`}
               animate={{
                 x: getX(offset),
-                filter: `blur(${blur}px)`,
               }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
               className="absolute cursor-pointer"
@@ -139,7 +137,7 @@ export default function MeetupProjectCarousel({
               onClick={(e) => handleCardClick(e, offset)}
             >
               <div
-                className={`relative overflow-hidden shadow ${isMobile ? "rounded-lg" : "rounded-2xl"}`}
+                className={`relative overflow-hidden ${isMobile ? "rounded-lg" : "rounded-2xl"}`}
                 style={{
                   width: cardW,
                   height: cardH,
@@ -154,6 +152,9 @@ export default function MeetupProjectCarousel({
                   draggable={false}
                   priority={abs === 0}
                 />
+                {hasOverlay && (
+                  <div className="absolute inset-0 pointer-events-none rounded-2xl bg-white/40 backdrop-blur-[2.5px]" />
+                )}
               </div>
             </motion.div>
           );
@@ -164,7 +165,7 @@ export default function MeetupProjectCarousel({
           <button
             key={i}
             type="button"
-            onClick={() => setCurrentIndex(i)}
+            //onClick={() => setCurrentIndex(i)}
             className={`transition-all duration-200 rounded-full ${
               i === currentIndex
                 ? "w-[6px] h-[6px] tablet:w-2 tablet:h-2 bg-gray-400"
