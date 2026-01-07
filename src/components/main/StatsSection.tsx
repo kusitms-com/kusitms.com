@@ -12,21 +12,18 @@ export default function StatsSection() {
       suffix: "명",
       label: "누적 회원 수",
       delay: 0,
-      width: "w-[90px] desktop:w-[372px]",
     },
     {
       end: 230,
       suffix: "개",
       label: "프로젝트 결과물",
       delay: 0.3,
-      width: "w-[90px] desktop:w-[400px]",
     },
     {
       end: 100,
       suffix: "개",
       label: "참여 대학 수",
       delay: 0.6,
-      width: "w-[90px] desktop:w-[372px]",
     },
   ];
 
@@ -56,10 +53,10 @@ export default function StatsSection() {
           sizes="100vw"
         />
       </div>
-      <div className="flex flex-col gap-y-[24px] desktop:gap-y-[88px] items-center justify-center absolute top-0 w-full h-[308px] desktop:h-[447px]">
-        <div className="text-body-6 text-white">Since 2009</div>
+      <div className="flex flex-col gap-y-[24px] desktop:gap-y-[40px] items-center justify-center absolute top-0 w-full desktop:h-[447px] h-[308px]">
+        <div className="desktop:text-title-7 text-body-6 text-white">Since 2009</div>
         <div className="flex gap-0 tablet:gap-12 desktop:gap-0">
-          {statData.map(({ end, suffix, label, delay, width }) => (
+          {statData.map(({ end, suffix, label, delay }) => (
             <StatItem
               key={label}
               end={end}
@@ -67,7 +64,6 @@ export default function StatsSection() {
               label={label}
               delay={delay}
               startCount={startCount}
-              width={width}
             />
           ))}
         </div>
@@ -95,15 +91,13 @@ const StatItem = ({
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.6, delay }}
-    className={`flex flex-col items-center justify-center desktop:gap-y-[14px] desktop:gap-y-6 text-white ${
-      width ? width : " desktop:w-[372px]"
-    }`}
+    className="flex flex-col items-center justify-center text-white w-[96px] desktop:w-[315px]"
   >
-    <div className="h-[8px] w-[8px] desktop:w-[11px] desktop:h-[11px] rounded-full bg-white" />
-    <div className="mt-[2px] text-title-7 desktop:text-[60px] font-bold">
+    <div className="mb-[-2px] h-[8px] w-[8px] desktop:w-[12px] desktop:h-[12px] rounded-full bg-white" />
+    <div className="text-title-7 desktop:text-title-2 font-extrabold">
       {startCount ? <CountUp end={end} duration={2} delay={delay} /> : 0}
       {suffix}
     </div>
-    <div className="mt-1 text-body-9 desktop:text-[16px] text-[#DCE1FF]">{label}</div>
+    <div className="text-body-9 desktop:text-body-6 text-gray-200">{label}</div>
   </motion.div>
 );
