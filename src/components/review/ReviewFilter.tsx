@@ -23,7 +23,7 @@ const TEAMS = {
   "모든 파트": "",
   기획: "PLANNER",
   디자인: "DESIGNER",
-  프론트: "FRONTEND",
+  프론트엔드: "FRONTEND",
   백엔드: "BACKEND",
 } as const;
 
