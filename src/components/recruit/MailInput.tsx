@@ -40,7 +40,7 @@ const MailInput = () => {
       />
       <button
         onClick={handleSubmit}
-        className="bg-dark-blue-500 text-gray-0 rounded-full cursor-pointer text-body-8 px-[12px] py-[8px] desktop:text-body-4 desktop:px-[24px] desktop:py-[10px] flex-shrink-0 min-w-[72px]"
+        className="bg-dark-blue-500 active:bg-dark-blue-600 text-gray-0 rounded-full cursor-pointer text-body-8 px-[12px] py-[8px] desktop:text-body-4 desktop:px-[24px] desktop:py-[10px] flex-shrink-0 min-w-[72px]"
       >
         알림 받기
       </button>
