@@ -26,7 +26,7 @@ export default function ProjectModalShell({ children }: Props) {
       onClick={() => router.back()}
     >
       <div
-        className="relative w-[624px] max-h-[480px] tablet:max-h-[800px] tablet:mx-20 mx-5 pb-4 bg-white rounded-xl flex flex-col"
+        className="relative w-[624px] max-h-[480px] tablet:max-h-[800px] tablet:mx-20 mx-5 tablet:pb-10 pb-5 bg-white rounded-xl flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="hidden tablet:flex justify-between min-h-[88px] border-b px-10 items-center bg-white rounded-t-xl">
