@@ -88,7 +88,7 @@ export function DesktopTeamCard({
       viewport={{ once: true }}
       className="relative flex-shrink-0 overflow-visible cursor-pointer h-[317.692px] [will-change:width,transform]"
     >
-      <div className="relative w-full h-full px-[18.1px] py-[13.6px] bg-sky-50 overflow-hidden rounded-[9px] border-2 border-[#F0F4FF] shadow-[0px_4px_10px_0px_rgba(121,212,255,0.20)]">
+      <div className="relative w-full h-full px-[18.1px] py-[13.6px] bg-sky-50 overflow-hidden rounded-[9px] border-1 border-dark-blue-50 shadow-[0_1px_10px_0_rgba(179,179,188,0.25)]">
         <motion.div
           className="absolute top-0 left-0"
           animate={{
@@ -109,7 +109,7 @@ export function DesktopTeamCard({
         </motion.div>
         <div className="relative z-10 pr-2">
           <div className="flex flex-col gap-[8px]">
-            <div className="flex items-baseline gap-2">
+            <div className="flex items-start gap-2">
               <span className="text-dark-blue-500 text-[22.7px] font-semibold leading-none">
                 {title.split(" ")[0]}
               </span>
@@ -117,7 +117,7 @@ export function DesktopTeamCard({
                 <span className="text-gray-900 text-[27.2px] font-semibold leading-none">
                   {title.split(" ")[1]}
                 </span>
-                <p className="text-[15.88px] font-semibold text-gray-600">{subtitle}</p>
+                <p className="text-[15.88px] font-semibold text-gray-500">{subtitle}</p>
               </div>
             </div>
           </div>
@@ -199,7 +199,7 @@ export function MobileTeamCard({
         height: { duration: 0.4, ease: "easeInOut" },
       }}
     >
-      <div className="relative w-full h-full px-[18.1px] py-[13.6px] bg-sky-50 overflow-hidden rounded-[9px] border-2 border-[#F0F4FF] shadow-[0px_4px_10px_0px_rgba(121,212,255,0.20)]">
+      <div className="relative w-full h-full px-[18.1px] py-[13.6px] bg-sky-50 border-1 border-dark-blue-50 overflow-hidden rounded-[9px] shadow-[0_1px_10px_0_rgba(179,179,188,0.25)]">
         <motion.div
           className="absolute top-0 left-0"
           animate={{
@@ -324,7 +324,7 @@ export function TabletTeamCard({
         height: { duration: 0.4, ease: "easeInOut" },
       }}
     >
-      <div className="relative w-full h-full px-[18.1px] py-[13.6px] bg-sky-50 overflow-hidden rounded-[9px] border-2 border-[#F0F4FF] shadow-[0px_4px_10px_0px_rgba(121,212,255,0.20)]">
+      <div className="relative w-full h-full px-[18.1px] py-[13.6px] bg-sky-50 border-1 border-dark-blue-50 overflow-hidden rounded-[9px] shadow-[0_1px_10px_0_rgba(179,179,188,0.25)]">
         <motion.div
           className="absolute top-0 left-0"
           animate={{
