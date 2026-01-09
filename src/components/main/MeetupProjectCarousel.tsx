@@ -123,7 +123,7 @@ export default function MeetupProjectCarousel({
             <span className="desktop:hidden">
               <br />
             </span>
-            밋업프로젝트의 서비스들을 소개합니다.
+            밋업프로젝트의 서비스들을 소개해요.
             <br />
             이번 전시회에서는 아래 서비스들을&nbsp;
             <span className="desktop:hidden">
