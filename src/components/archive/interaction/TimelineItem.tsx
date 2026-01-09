@@ -17,7 +17,7 @@ export default function TimelineItem({ isLeft, children }: TimelineItemProps) {
 
   return (
     <motion.div
-      className={`relative w-full flex mb-8 ${isLeft ? "justify-start" : "justify-end"}`}
+      className={`relative w-full flex tablet:mb-8 mb-[76px] ${isLeft ? "justify-start" : "justify-end"}`}
       initial="hidden"
       whileInView="visible"
       variants={itemVariants}
