@@ -7,7 +7,7 @@ import TeamMember from "./common/TeamMember";
 
 function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
   return (
-    <div className="flex flex-col gap-5 tablet:px-10 px-4">
+    <div className="flex flex-col gap-5 tablet:px-10 px-4 tablet:pt-7">
       <div className="flex justify-start items-center relative tablet:gap-3 gap-2">
         <p className="tablet:text-title-6 text-body-3 text-gray-900 font-bold">{project.name}</p>
         <div className="flex tablet:gap-2 gap-1">
@@ -23,7 +23,7 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
           </div>
         </div>
       </div>
-      <div className="relative rounded-[20px] overflow-hidden border border-gray-200">
+      <div className="relative rounded-[16px] overflow-hidden border border-gray-200">
         <Image
           src={project.poster_url}
           alt="poster"
@@ -39,7 +39,7 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
         <p className="tablet:text-body-6 text-body-8 text-gray-500">{project.intro}</p>
       </div>
       <div
-        className="grid gap-5"
+        className="grid gap-5 pt-5"
         style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}
       >
         <div className="min-w-[220px] flex flex-col gap-3">

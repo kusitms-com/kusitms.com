@@ -30,12 +30,12 @@ export default function ProjectModalShell({ children }: Props) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="hidden tablet:flex justify-between min-h-[88px] border-b px-10 items-center bg-white rounded-t-xl">
-          <p className="text-title-7 text-gray-700">프로젝트 소개</p>
+          <p className="text-title-7 text-gray-700 font-semibold">프로젝트 소개</p>
           <button onClick={() => router.back()}>
             <Image src="/projects/icons/CloseIcon2.svg" alt="Close" width={32} height={32} />
           </button>
         </div>
-        <div className="overflow-y-auto tablet:pt-4 pt-5 flex-1 tablet:custom-scrollbar-default custom-scrollbar-none">
+        <div className="overflow-y-auto flex-1 tablet:custom-scrollbar-default custom-scrollbar-none">
           {children}
         </div>
       </div>
