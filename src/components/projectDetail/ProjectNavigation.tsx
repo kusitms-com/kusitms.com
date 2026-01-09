@@ -16,16 +16,18 @@ interface NavButtonProps {
 }
 
 function NavButton({ href, positionClass, icon, size }: NavButtonProps) {
-  const iconSize = size === "large" ? { width: 13, height: 23 } : { width: 8, height: 14 };
+  const iconSize = size === "large" ? { width: 16, height: 25 } : { width: 8.15, height: 14.31 };
+  const paddingClass = size === "small" ? icon === "left" ? "pr-0.6" : "pl-0.6" : "";
 
   return (
     <Link
       href={href}
       replace
       className={`fixed z-[9999] flex justify-center items-center 
-        bg-white/30 rounded-full hover:scale-105 transition-transform
+        bg-white/30 rounded-full 
         ${positionClass} 
         ${size === "large" ? "w-[52px] h-[52px]" : "w-[32px] h-[32px]"}
+        ${paddingClass}
       `}
     >
       <Image
