@@ -38,7 +38,7 @@ export default function TimelineHeader() {
           className="text-dark-blue-500 desktop:text-title-5 text-title-7 font-bold"
           variants={itemVariants}
         >
-          32th KUSITMS
+          32nd KUSITMS
         </motion.p>
       </div>
     </motion.div>
