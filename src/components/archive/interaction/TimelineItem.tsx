@@ -24,7 +24,7 @@ export default function TimelineItem({ isLeft, children }: TimelineItemProps) {
       viewport={{ once: true, amount: 0.7 }}
     >
       <div
-        className={`desktop:w-[368px] desktop:mx-10 px-4 flex flex-col items-center text-left desktop:${isLeft ? "text-right" : "text-left"}`}
+        className={`desktop:w-[368px] desktop:mx-10 tablet:px-0 px-4 flex flex-col items-center text-left desktop:${isLeft ? "text-right" : "text-left"}`}
       >
         {children}
       </div>
