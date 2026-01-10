@@ -8,13 +8,13 @@ export interface ProjectCount {
 export const calculateProjectCounts = (
   projectList: MeetupItem[] | CorporateProjectItem[],
 ): ProjectCount => {
-  if (!projectList) return {total:0};
+  if (!projectList) return { total: 0 };
 
-  const counts: ProjectCount ={total: projectList.length};
+  const counts: ProjectCount = { total: projectList.length };
 
   projectList.forEach((project) => {
     const cardinal = project.cardinal?.toString();
-    if(!cardinal) return
+    if (!cardinal) return;
 
     counts[cardinal] = (counts[cardinal] ?? 0) + 1;
   });

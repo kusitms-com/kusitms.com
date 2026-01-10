@@ -17,7 +17,7 @@ interface NavButtonProps {
 
 function NavButton({ href, positionClass, icon, size }: NavButtonProps) {
   const iconSize = size === "large" ? { width: 16, height: 25 } : { width: 8.15, height: 14.31 };
-  const paddingClass = size === "small" ? icon === "left" ? "pr-0.6" : "pl-0.6" : "";
+  const paddingClass = size === "small" ? (icon === "left" ? "pr-0.6" : "pl-0.6") : "";
 
   return (
     <Link

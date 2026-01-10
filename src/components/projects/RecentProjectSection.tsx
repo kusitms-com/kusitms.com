@@ -12,9 +12,7 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
         <p className="tablet:text-title-6 text-body-3 text-gray-900 font-bold">{project.name}</p>
         <div className="flex tablet:gap-2 gap-1">
           <div className="bg-sky-blue-100 tablet:rounded-[8px] rounded-[4px] tablet:px-4 px-2 tablet:py-1 py-0.5">
-            <p className="text-sky-blue-700 tablet:text-body-5 text-body-7">
-              {project.cardinal}기
-            </p>
+            <p className="text-sky-blue-700 tablet:text-body-5 text-body-7">{project.cardinal}기</p>
           </div>
           <div className="bg-sky-blue-100 tablet:rounded-[8px] rounded-[4px] tablet:px-4 px-2 tablet:py-1 py-0.5">
             <p className="text-sky-blue-700 tablet:text-body-5 text-body-7">
