@@ -71,7 +71,13 @@ export default function Stories({ initialData }: StoriesContainerProps) {
                 }}
               >
                 <StoryCard>
-                  <StoryCard.Thumbnail src={story.imageAddress} />
+                  <StoryCard.Thumbnail
+                    src={
+                      story.imageAddress?.trim()
+                        ? story.imageAddress.trim()
+                        : "/reviews/null_image.png"
+                    }
+                  />
                   <StoryCard.Info>
                     <StoryCard.Title>{story.title}</StoryCard.Title>
                     <StoryCard.Content>{story.content}</StoryCard.Content>
