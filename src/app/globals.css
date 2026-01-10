@@ -207,7 +207,8 @@ body {
   --font-weight-bold: 700;
 
   --letter-spacing: -0.02em;
-  --line-height: 1.5em;
+  --line-height-heading: 1.35em;
+  --line-height-body: 1.5em;
 
   --font-size-10: 10px;
   --font-size-12: 12px;
