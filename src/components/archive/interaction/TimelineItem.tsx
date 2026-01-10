@@ -17,14 +17,14 @@ export default function TimelineItem({ isLeft, children }: TimelineItemProps) {
 
   return (
     <motion.div
-      className={`relative w-full flex mb-8 ${isLeft ? "justify-start" : "justify-end"}`}
+      className={`relative w-full flex tablet:mb-8 mb-[76px] ${isLeft ? "justify-start" : "justify-end"}`}
       initial="hidden"
       whileInView="visible"
       variants={itemVariants}
       viewport={{ once: true, amount: 0.7 }}
     >
       <div
-        className={`desktop:w-[368px] desktop:mx-10 px-4 flex flex-col items-center text-left desktop:${isLeft ? "text-right" : "text-left"}`}
+        className={`desktop:w-[368px] desktop:mx-10 tablet:px-0 px-4 flex flex-col items-center text-left desktop:${isLeft ? "text-right" : "text-left"}`}
       >
         {children}
       </div>

@@ -20,7 +20,7 @@ export default function ProjectFilter({ cardinal, onChange, projectList }: Proje
 
   return (
     <div className="flex justify-between">
-      <p className="tablet:text-title-7 text-body-5 text-gray-700 pb-[39px] pt-[4.5px]">
+      <p className="tablet:text-title-7 text-body-3 text-gray-700 pb-[39px] pt-[4.5px]">
         전체 프로젝트 <span className="text-dark-blue-600">{visibleCount}</span>개
       </p>
       <Dropdown

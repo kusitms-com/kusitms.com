@@ -7,27 +7,16 @@ export interface ProjectCount {
 
 export const calculateProjectCounts = (
   projectList: MeetupItem[] | CorporateProjectItem[],
-  generations: number[] = Array.from({ length: 7 }, (_, i) => 31 - i),
 ): ProjectCount => {
-  // 프로젝트 리스트가 없거나 형식이 맞지 않으면 빈 객체 반환
-  if (!projectList) {
-    return { total: 0 };
-  }
+  if (!projectList) return { total: 0 };
 
-  const projects = projectList;
-  const counts: ProjectCount = { total: projects.length };
+  const counts: ProjectCount = { total: projectList.length };
 
-  // 각 기수별 카운트 초기화
-  generations.forEach((gen) => {
-    counts[gen.toString()] = 0;
-  });
+  projectList.forEach((project) => {
+    const cardinal = project.cardinal?.toString();
+    if (!cardinal) return;
 
-  // 각 프로젝트를 순회하며 해당 기수의 카운트 증가
-  projects.forEach((project: MeetupItem | CorporateProjectItem) => {
-    const projectCardinal = project.cardinal?.toString();
-    if (projectCardinal && counts[projectCardinal] !== undefined) {
-      counts[projectCardinal]++;
-    }
+    counts[cardinal] = (counts[cardinal] ?? 0) + 1;
   });
 
   return counts;

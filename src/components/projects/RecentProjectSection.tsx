@@ -7,23 +7,21 @@ import TeamMember from "./common/TeamMember";
 
 function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
   return (
-    <div className="flex flex-col gap-5 tablet:px-10 px-4">
+    <div className="flex flex-col gap-5 tablet:px-10 px-4 tablet:pt-7">
       <div className="flex justify-start items-center relative tablet:gap-3 gap-2">
-        <p className="tablet:text-title-6 text-body-5 text-gray-900 font-bold">{project.name}</p>
+        <p className="tablet:text-title-6 text-body-3 text-gray-900 font-bold">{project.name}</p>
         <div className="flex tablet:gap-2 gap-1">
           <div className="bg-sky-blue-100 tablet:rounded-[8px] rounded-[4px] tablet:px-4 px-2 tablet:py-1 py-0.5">
-            <p className="text-sky-blue-700 tablet:text-body-5 text-body-11">
-              {project.cardinal}기
-            </p>
+            <p className="text-sky-blue-700 tablet:text-body-5 text-body-7">{project.cardinal}기</p>
           </div>
           <div className="bg-sky-blue-100 tablet:rounded-[8px] rounded-[4px] tablet:px-4 px-2 tablet:py-1 py-0.5">
-            <p className="text-sky-blue-700 tablet:text-body-5 text-body-11">
+            <p className="text-sky-blue-700 tablet:text-body-5 text-body-7">
               {toUpperCaseOnlyLetters(project.type)}
             </p>
           </div>
         </div>
       </div>
-      <div className="relative rounded-[20px] overflow-hidden border border-gray-200">
+      <div className="relative rounded-[16px] overflow-hidden border border-gray-200">
         <Image
           src={project.poster_url}
           alt="poster"
@@ -35,22 +33,22 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <p className="tablet:text-body-3 text-body-7 text-gray-700 font-bold">프로젝트 설명</p>
-        <p className="tablet:text-body-6 text-body-9 text-gray-500">{project.intro}</p>
+        <p className="tablet:text-body-3 text-body-5 text-gray-700 font-bold">프로젝트 설명</p>
+        <p className="tablet:text-body-6 text-body-8 text-gray-500">{project.intro}</p>
       </div>
       <div
-        className="grid gap-5"
+        className="grid gap-5 pt-5"
         style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}
       >
         <div className="min-w-[220px] flex flex-col gap-3">
-          <p className="tablet:text-body-3 text-body-7 text-gray-700 font-bold">프로젝트 팀원</p>
+          <p className="tablet:text-body-3 text-body-5 text-gray-700 font-bold">프로젝트 팀원</p>
           <TeamMember position="기획" members={project.team.planner} />
           <TeamMember position="디자인" members={project.team.designer} />
           <TeamMember position="프론트엔드" members={project.team.frontend} />
           <TeamMember position="백엔드" members={project.team.backend} />
         </div>
         <div className="min-w-[220px] flex flex-col gap-3">
-          <p className="tablet:text-body-3 text-body-7 text-gray-700 font-bold">링크</p>
+          <p className="tablet:text-body-3 text-body-5 text-gray-700 font-bold">링크</p>
           {[
             {
               url: project.behance_url,

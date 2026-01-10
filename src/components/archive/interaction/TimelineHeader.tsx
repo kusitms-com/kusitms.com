@@ -18,7 +18,7 @@ export default function TimelineHeader() {
   };
   return (
     <motion.div
-      className="flex w-full justify-center desktop:pt-[460px] pt-[160px] pb-20 desktop:pb-16 overflow-hidden"
+      className="flex w-full justify-center desktop:pt-[360px] pt-[60px] pb-20 desktop:pb-16 overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
@@ -38,7 +38,7 @@ export default function TimelineHeader() {
           className="text-dark-blue-500 desktop:text-title-5 text-title-7 font-bold"
           variants={itemVariants}
         >
-          32th KUSITMS
+          32nd KUSITMS
         </motion.p>
       </div>
     </motion.div>

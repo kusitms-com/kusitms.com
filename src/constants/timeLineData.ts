@@ -10,7 +10,7 @@ export const TIMELINE_DATA: TimelineContent[] = [
   {
     title: "오리엔테이션",
     description:
-      "학부학 및 운영진 소개, 출결 및 상벌점 안내 등 큐시즘에 대한 안내를 받은 후 큐시즘의 기업 연계프로젝트를 함께할 기업 직행, LG전자를 소개받았어요",
+      "학부학 및 운영진 소개, 출결 및 상벌점 안내 등 큐시즘에 대한 안내를 받은 후 큐시즘의 기업 연계프로젝트를 함께할 기업 직행, LG전자를 소개받았어요.",
     isLeft: true,
     src: "/display/ot.png",
     alt: "오리엔테이션",
