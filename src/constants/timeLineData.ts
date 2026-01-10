@@ -16,12 +16,12 @@ export const TIMELINE_DATA: TimelineContent[] = [
     alt: "오리엔테이션",
   },
   {
-    title: "기업 연계프로젝트",
+    title: "기업 연계 프로젝트",
     description:
       "큐시즘의 첫 번째 프로젝트로 32기는 직행, LG전자와 5주동안 각 기업에서 제시해준 주제를 바탕으로 프로젝트를 진행했어요.",
     isLeft: false,
     src: "/display/coporate.png",
-    alt: "기업 연계프로젝트",
+    alt: "기업 연계 프로젝트",
   },
   {
     title: "전문가 초청 강연",

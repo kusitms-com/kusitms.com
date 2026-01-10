@@ -22,7 +22,7 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
           <span className="inline-flex items-center justify-center tablet:w-7 tablet:h-7 w-[18px] h-[18px] rounded-full bg-gray-800 text-white tablet:text-body-1 text-body-7">
             1
           </span>
-          <p className="text-body-5 tablet:text-title-7 text-gray-800">기업 연계프로젝트</p>
+          <p className="text-body-5 tablet:text-title-7 text-gray-800">기업 연계 프로젝트</p>
         </div>
         <p className="text-body-8 tablet:hidden text-center text-gray-500">
           실제 기업이 고민하고 있는 경영 · 마케팅

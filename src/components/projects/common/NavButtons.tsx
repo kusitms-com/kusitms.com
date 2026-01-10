@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
   { href: "/projects/meetup", label: "밋업 프로젝트", path: "meetup" },
-  { href: "/projects/corporate", label: "기업 연계프로젝트", path: "corporate" },
+  { href: "/projects/corporate", label: "기업 연계 프로젝트", path: "corporate" },
 ];
 
 export default function NavButtons() {
