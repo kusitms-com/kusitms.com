@@ -35,10 +35,11 @@ export default function RecruitingTeamInfoItem() {
         <div className="flex gap-[8px] px-[4px] items-center">
           <Image
             src="/recruit/icons/Union.svg"
-            width={50}
-            height={52}
+            width={30}
+            height={33}
             className="w-[22px] h-[24px] desktop:w-[30px] desktop:h-[33px]"
             alt="아이콘"
+            unoptimized
           />
           <h3 className="text-body-5 desktop:text-body-1 text-gray-900">
             {selectedRole} 파트는 이런 활동을 해요
