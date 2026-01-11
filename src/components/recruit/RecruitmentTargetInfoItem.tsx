@@ -26,7 +26,7 @@ export default function RecruitmentTargetInfoItem() {
   ];
 
   return (
-    <section className="flex desktop:flex-row flex-col w-full desktop:px-[40px] px-[10px] gap-[16px] desktop:gap-[22px]">
+    <section className="flex desktop:flex-row flex-col w-full desktop:px-0 px-[10px] gap-[16px] desktop:gap-[22px]">
       {recruitItems.map((item, index) => (
         <section
           key={index}
