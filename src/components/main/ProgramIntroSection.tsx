@@ -14,15 +14,13 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
     <div className="px-4 tablet:px-6 max-w-[1024px] mx-auto flex flex-col justify-center items-center pt-4 pb-[100px] tablet:pb-[200px] w-full overflow-x-hidden">
       <section className="w-full">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-title-7 tablet:text-title-5 text-gray-900 font-semibold">
-            학회 프로젝트 소개
-          </h1>
+          <h1 className="text-title-7 tablet:text-title-5 text-gray-900">학회 프로젝트 소개</h1>
         </div>
         <div className="mt-[52px] tablet:mt-[60px] py-4 flex items-center justify-center gap-2">
           <span className="inline-flex items-center justify-center tablet:w-7 tablet:h-7 w-[18px] h-[18px] rounded-full bg-gray-800 text-white tablet:text-body-1 text-body-7">
             1
           </span>
-          <p className="text-body-5 tablet:text-title-7 text-gray-800">기업 연계프로젝트</p>
+          <p className="text-body-5 tablet:text-title-7 text-gray-800">기업 연계 프로젝트</p>
         </div>
         <p className="text-body-8 tablet:hidden text-center text-gray-500">
           실제 기업이 고민하고 있는 경영 · 마케팅

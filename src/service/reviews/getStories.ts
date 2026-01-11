@@ -1,7 +1,7 @@
 export type Story = {
   title: string;
   address: string;
-  imageAddress: string;
+  imageAddress: string | null;
   content: string;
   categoryName: string;
   cardinal: number;
