@@ -28,7 +28,7 @@ async function RecruitPage() {
 
   return (
     <main className="mx-auto w-full flex justify-center">
-      <div className="desktop:max-w-[1024px] px-[16px] desktop:min-w-0 min-w-[320px] max-w-[393px] flex flex-col items-center gap-[100px] desktop:gap-[200px] pt-[80px] desktop:pt-[172px] desktop:px-[40px]">
+      <div className="desktop:max-w-[1024px] px-[16px] desktop:min-w-0 min-w-[393px] flex flex-col items-center gap-[100px] desktop:gap-[200px] pt-[80px] desktop:pt-[172px] desktop:px-[40px]">
         <RecruitmentTogether />
         {/* 모집 정보 */}
         <div className="w-full flex flex-col gap-y-[100px] items-center">

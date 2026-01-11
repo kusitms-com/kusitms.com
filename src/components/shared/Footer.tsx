@@ -48,11 +48,11 @@ export const Footer = () => {
           <Link
             href="https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/policy/kusitms_31st_policy.pdf"
             target="_blank"
-            className="desktop:text-body-6 text-body-10 text-gray-800 underline desktop:mt-10 mt-4"
+            className="desktop:text-body-6 text-body-8 text-gray-800 underline desktop:mt-10 mt-4"
           >
             학회정관
           </Link>
-          <p className="desktop:text-body-6 text-body-10 text-gray-800 mt-3">
+          <p className="desktop:text-body-6 text-body-8 text-gray-800 mt-3">
             KUSITMS (큐시즘, 한국대학생IT경영학회)
             <br />ⓒ 2023. KUSITMS. All rights reserved.
           </p>
