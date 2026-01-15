@@ -14,7 +14,7 @@ const SNSGROUPS = [
   },
   {
     img: "/projects/icons/YoutubeIcon.svg", // 유튜브 아이콘 경로
-    link: "https://www.youtube.com/@KUSITMS", // 유튜브 링크
+    link: "https://www.youtube.com/@KUSITMS_Official", // 유튜브 링크
   },
   {
     img: "/projects/icons/GithubIcon.svg", // 깃허브 아이콘 경로
