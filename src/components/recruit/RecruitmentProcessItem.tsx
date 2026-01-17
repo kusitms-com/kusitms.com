@@ -48,7 +48,10 @@ export default function RecruitmentProcessItem() {
         ))}
       </div>
       {/* TODO: 실제 지원 링크로 이동 */}
-      <LinkButton title="지원하러 가기" />
+      <LinkButton
+        title="지원하러 가기"
+        link="https://www.recruit-withus.co.kr/%ED%95%9C%EA%B5%AD%EB%8C%80%ED%95%99%EC%83%9DIT%EA%B2%BD%EC%98%81%ED%95%99%ED%9A%8C-KUSITMS/fIdzmzwic"
+      />
     </section>
   );
 }
