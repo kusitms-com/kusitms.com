@@ -16,8 +16,8 @@ interface NavButtonProps {
 }
 
 function NavButton({ href, positionClass, icon, size }: NavButtonProps) {
-  const iconSize = size === "large" ? { width: 16, height: 25 } : { width: 8.15, height: 14.31 };
-  const paddingClass = size === "small" ? (icon === "left" ? "pr-0.6" : "pl-0.6") : "";
+  const iconSize = size === "large" ? { width: 16, height: 25 } : { width: 10, height: 18 };
+  const paddingClass = size === "small" ? (icon === "left" ? "pr-[1.2px]" : "pl-[1px]") : (icon === "left" ? "pr-[2px]" : "pl-[4px]");
 
   return (
     <Link
@@ -26,7 +26,7 @@ function NavButton({ href, positionClass, icon, size }: NavButtonProps) {
       className={`fixed z-[9999] flex justify-center items-center 
         bg-white/30 rounded-full 
         ${positionClass} 
-        ${size === "large" ? "w-[52px] h-[52px]" : "w-[32px] h-[32px]"}
+        ${size === "large" ? "w-[52px] h-[52px]" : "w-[40px] h-[40px]"}
         ${paddingClass}
       `}
     >

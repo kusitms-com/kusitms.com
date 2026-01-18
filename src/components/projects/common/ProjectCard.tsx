@@ -49,22 +49,22 @@ const Info = ({ children }: { children: ReactNode }) => (
 
 const Cardinal = ({ cardinal, type }: CardinalProps) => (
   <div className="flex items-center gap-1">
-    <span className="text-body-5 text-dark-blue-500">{cardinal}기</span>
+    <span className="tablet:text-body-5 text-body-9 text-dark-blue-500">{cardinal}기</span>
     {type && (
       <>
         <span className="text-body-8 text-gray-500">&middot;</span>
-        <span className="text-body-8 text-gray-500">{toUpperCaseOnlyLetters(type)}</span>
+        <span className="tablet:text-body-8 text-body-9 text-gray-500">{toUpperCaseOnlyLetters(type)}</span>
       </>
     )}
   </div>
 );
 
 const ProjectName = ({ children }: { children: ReactNode }) => (
-  <h2 className="text-[20px] font-bold text-gray-700">{children}</h2>
+  <h2 className="tablet:text-body-3 text-body-5 font-bold text-gray-700">{children}</h2>
 );
 
 const ContentIntro = ({ children }: { children: ReactNode }) => (
-  <p className="h-[47px] text-[13px] font-semibold text-gray-500 line-clamp-2">{children}</p>
+  <p className="h-[47px] tablet:text-body-6 text-body-8 font-semibold text-gray-500 line-clamp-2">{children}</p>
 );
 
 const CategoryContainer = ({ children }: { children: ReactNode }) => (
