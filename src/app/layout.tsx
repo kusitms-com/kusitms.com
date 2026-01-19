@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   description: "비전을 가지고 함께 성장하는 학회, 큐시즘의 공식 홈페이지입니다.",
   applicationName: "큐시즘",
   generator: "Next.js",
-  keywords: ["KUSITMS", "큐시즘","한국대학생IT경영학회", "학회", "공식 홈페이지"],
+  keywords: ["KUSITMS", "큐시즘", "한국대학생IT경영학회", "학회", "공식 홈페이지"],
   openGraph: {
     type: "website",
     title: "큐시즘(KUSITMS) - 한국대학생IT경영학회",
@@ -68,10 +68,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="R2qZKJEnprutZz2bbtWEH9yiKRlDKeZbwQHhaP7D6rg"
         />
-        <meta 
-          name="naver-site-verification" 
-          content="32cae4782e453d247eba34971f56488764aa20a5" 
-        />
+        <meta name="naver-site-verification" content="32cae4782e453d247eba34971f56488764aa20a5" />
       </head>
       <body
         className={`${pretendard.variable} ${geistMono.variable} ${outfit.variable} antialiased`}

@@ -53,7 +53,9 @@ const Cardinal = ({ cardinal, type }: CardinalProps) => (
     {type && (
       <>
         <span className="text-body-8 text-gray-500">&middot;</span>
-        <span className="tablet:text-body-8 text-body-9 text-gray-500">{toUpperCaseOnlyLetters(type)}</span>
+        <span className="tablet:text-body-8 text-body-9 text-gray-500">
+          {toUpperCaseOnlyLetters(type)}
+        </span>
       </>
     )}
   </div>
@@ -64,7 +66,9 @@ const ProjectName = ({ children }: { children: ReactNode }) => (
 );
 
 const ContentIntro = ({ children }: { children: ReactNode }) => (
-  <p className="h-[47px] tablet:text-body-6 text-body-8 font-semibold text-gray-500 line-clamp-2">{children}</p>
+  <p className="h-[47px] tablet:text-body-6 text-body-8 font-semibold text-gray-500 line-clamp-2">
+    {children}
+  </p>
 );
 
 const CategoryContainer = ({ children }: { children: ReactNode }) => (
