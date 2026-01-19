@@ -252,7 +252,7 @@ export function MobileTeamCard({
           }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
-          <p className="ml-[29px] text-body-9 font-medium text-gray-600 leading-6 tracking-[-0.32px] whitespace-pre-line">
+          <p className="ml-[29px] text-body-9 text-gray-600 whitespace-pre-line">
             {descriptionMobile}
           </p>
         </motion.div>
@@ -377,7 +377,7 @@ export function TabletTeamCard({
           }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
-          <p className="ml-[29px] text-body-9 font-medium text-gray-600 leading-6 tracking-[-0.32px] whitespace-pre-line">
+          <p className="ml-[29px] text-body-9 text-gray-600 whitespace-pre-line">
             {descriptionMobile}
           </p>
         </motion.div>
