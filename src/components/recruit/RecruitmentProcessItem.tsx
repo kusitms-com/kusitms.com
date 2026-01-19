@@ -6,7 +6,7 @@ export default function RecruitmentProcessItem() {
     {
       icon: { src: "/recruit/icons/Paper.svg", alt: "서류 지원" },
       title: "서류 지원 기간",
-      notice: ["1월 17일(토) ~ 1월 24일(토)", "자정 마감"],
+      notice: ["1월 17일(토) ~ 1월 24일(토) 23:59"],
     },
     {
       icon: { src: "/recruit/icons/Call.svg", alt: "서류 합격" },
