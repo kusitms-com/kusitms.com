@@ -12,7 +12,7 @@ const RecruitmentTogether = () => {
         <>
           <span className="desktop:text-body-2 text-body-8 items-center flex desktop:pt-[40px] pt-[20px] flex-col text-gray-900 pb-[40px] desktop:pb-[80px]">
             <p className="text-center">
-              큐시즘은 혼자서는 해낼 수 없는 일들을
+              큐시즘은 혼자서는 해낼 수 없는 일들을{` `}
               <br className="desktop:hidden" />
               함께 이루어내고 있어요.
             </p>
