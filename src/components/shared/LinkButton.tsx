@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 interface LinkButtonProps {
   title?: string;
@@ -10,12 +9,11 @@ interface LinkButtonProps {
 }
 
 const LinkButton = ({ title, link, className }: LinkButtonProps) => {
-  const router = useRouter();
-
   return (
     <button
       onClick={() => {
-        link && router.push(link);
+        if (!link) return;
+        window.open(link, "_blank");
       }}
       className={`text-gray-0 rounded-full cursor-pointer w-fit text-body-8 desktop:text-body-4 flex gap-[12px] justify-center items-center pl-[32px] pr-[24px] py-[10px] bg-dark-blue-500 hover:bg-dark-blue-400 active:bg-dark-blue-600 ${className}`}
     >
