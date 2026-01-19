@@ -140,10 +140,14 @@ export default function MeetupProjectCarousel({
         <motion.button
           type="button"
           aria-label="previous"
-          className="fixed left-0 w-1/2 cursor-pointer z-10"
+          className="fixed left-0 w-1/2 cursor-pointer z-[30]"
           style={{
             top: `${carouselRect.top}px`,
             height: `${carouselRect.height}px`,
+            touchAction: "pan-x",
+            WebkitTouchCallout: "none",
+            WebkitUserSelect: "none",
+            userSelect: "none",
           }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
@@ -159,10 +163,14 @@ export default function MeetupProjectCarousel({
         <motion.button
           type="button"
           aria-label="next"
-          className="fixed right-0 w-1/2 cursor-pointer z-10"
+          className="fixed right-0 w-1/2 cursor-pointer z-[30]"
           style={{
             top: `${carouselRect.top}px`,
             height: `${carouselRect.height}px`,
+            touchAction: "pan-x",
+            WebkitTouchCallout: "none",
+            WebkitUserSelect: "none",
+            userSelect: "none",
           }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}

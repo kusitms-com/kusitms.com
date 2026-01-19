@@ -18,7 +18,7 @@ function MobileExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
   const current = items[index];
 
   return (
-    <div className="relative w-full px-4 pb-[160px] block tablet:hidden">
+    <div className="relative w-full px-4 pb-[160px] block tablet:hidden overflow-x-hidden">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -43,6 +43,12 @@ function MobileExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
         exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
         className="relative"
+        style={{
+          touchAction: "pan-x",
+          WebkitTouchCallout: "none",
+          WebkitUserSelect: "none",
+          userSelect: "none",
+        }}
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.2}
@@ -154,7 +160,7 @@ function DesktopExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
             alt="prev"
             width={14}
             height={24}
-            className="block mr-[2px]"
+            className="block mr-[4px]"
           />
         </button>
         <button
@@ -168,7 +174,7 @@ function DesktopExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
             alt="next"
             width={14}
             height={24}
-            className="block ml-[3px]"
+            className="block ml-[4px]"
           />
         </button>
       </motion.div>

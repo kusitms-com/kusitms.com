@@ -97,10 +97,10 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
         </div>
         <p className="text-body-8 tablet:hidden text-center text-gray-500">
           기획파트에서 발제된 아이디어를 디자인,
-          <br /> 개발파트와 함꼐 3개월동안 준비하여 발표하는 <br /> KUSITMS의 메인 프로젝트예요
+          <br /> 개발파트와 함께 3개월동안 준비하여 발표하는 <br /> KUSITMS의 메인 프로젝트예요
         </p>
         <p className="hidden tablet:block text-body-6 text-center text-gray-500">
-          기획파트에서 발제된 아이디어를 디자인, 개발파트와 함꼐 3개월동안 <br />
+          기획파트에서 발제된 아이디어를 디자인, 개발파트와 함께 3개월동안 <br />
           준비하여 발표하는 KUSITMS의 메인 프로젝트예요
         </p>
         {meetupProjects.length > 0 && <MeetupProjectCarousel projects={meetupProjects} />}
