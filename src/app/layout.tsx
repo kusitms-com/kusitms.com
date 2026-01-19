@@ -68,6 +68,10 @@ export default function RootLayout({
           name="google-site-verification"
           content="R2qZKJEnprutZz2bbtWEH9yiKRlDKeZbwQHhaP7D6rg"
         />
+        <meta 
+          name="naver-site-verification" 
+          content="32cae4782e453d247eba34971f56488764aa20a5" 
+        />
       </head>
       <body
         className={`${pretendard.variable} ${geistMono.variable} ${outfit.variable} antialiased`}
