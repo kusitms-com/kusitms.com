@@ -139,7 +139,7 @@ export default function IntroSection() {
               </motion.div>
             </div>
             <LinkButton
-              title="33기 지원하러가기!"
+              title="33기 지원하러 가기"
               link="/recruit"
               className="mt-6 inline-flex"
             />
