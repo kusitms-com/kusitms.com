@@ -151,7 +151,8 @@ export default function MeetupProjectCarousel({
           }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
+          dragElastic={0.1}
+          dragMomentum={false}
           onClick={handlePrev}
           onDragEnd={(_, info) => {
             const threshold = 50;
@@ -174,7 +175,8 @@ export default function MeetupProjectCarousel({
           }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
+          dragElastic={0.1}
+          dragMomentum={false}
           onClick={handleNext}
           onDragEnd={(_, info) => {
             const threshold = 50;
@@ -194,13 +196,27 @@ export default function MeetupProjectCarousel({
           const cardW = BASE_W * scale;
           const cardH = BASE_H * scale;
 
+          const getDelay = () => {
+            if (offset > 0) {
+              return offset * 0.03;
+            }
+            if (offset < 0) {
+              return Math.abs(offset) * 0.03;
+            }
+            return 0;
+          };
+
           return (
             <motion.div
               key={`${project.meetup_id}-${index}`}
               animate={{
                 x: getX(offset),
               }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              transition={{
+                duration: 0.5,
+                ease: [0.4, 0, 0.2, 1],
+                delay: getDelay(),
+              }}
               className="absolute cursor-pointer"
               style={{
                 zIndex,
