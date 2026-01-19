@@ -31,6 +31,7 @@ const SNSGROUPS = [
   {
     img: "/projects/icons/LinkedinIcon.svg", // 링크드인 아이콘 경로
     link: "https://www.linkedin.com/company/kusitms-official/", // 링크드인 링크
+    size: 20,
   },
 ];
 
@@ -65,7 +66,7 @@ export const Footer = () => {
           <h4 className="text-body-5 text-gray-800 desktop:mb-5 mb-2">Contact</h4>
           <div className="flex desktop:gap-5 gap-[14px]">
             {SNSGROUPS.map((social, index) => (
-              <IconLink key={index} img={social.img} link={social.link} />
+              <IconLink key={index} img={social.img} link={social.link} size={social.size} />
             ))}
           </div>
         </div>
