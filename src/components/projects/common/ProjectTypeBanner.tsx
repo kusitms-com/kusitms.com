@@ -8,7 +8,7 @@ interface Props {
 
 export default function ProjectTypeBanner({ title, detail }: Props) {
   return (
-    <section className="w-full relative tablet:h-[420px] h-[149px] tablet:pb-25 pb-15 tablet:px-10 px-4 rounded-[12px] ">
+    <section className="w-full relative tablet:h-[420px] h-[209px] tablet:pb-25 pb-15 tablet:px-10 px-4 rounded-[12px] ">
       <div className="w-full h-full overflow-hidden relative">
         <Image
           src={"/projects/img/Project.png"}
