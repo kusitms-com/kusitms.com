@@ -219,7 +219,9 @@ export default function MeetupProjectCarousel({
                   priority={abs === 0}
                 />
                 {hasOverlay && (
-                  <div className="absolute inset-0 pointer-events-none rounded-2xl bg-white/40 backdrop-blur-[2.5px]" />
+                  <div
+                    className={`absolute inset-0 pointer-events-none ${isMobile ? "rounded-lg" : "rounded-2xl"} bg-white/40 backdrop-blur-[2.5px]`}
+                  />
                 )}
               </div>
             </motion.div>
