@@ -140,7 +140,9 @@ export function DesktopTeamCard({
           animate={{ opacity: active ? 1 : 0 }}
           transition={{ duration: 0.25 }}
         >
-          <p className="text-body-6 text-gray-600 leading-5 whitespace-pre-line">{description}</p>
+          <p className="text-body-6 font-medium text-gray-600 leading-6 tracking-[-0.32px] whitespace-pre-line">
+            {description}
+          </p>
         </motion.div>
       </div>
     </motion.div>
@@ -250,7 +252,7 @@ export function MobileTeamCard({
           }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
-          <p className="ml-[29px] text-body-9 text-gray-600 whitespace-pre-line">
+          <p className="ml-[29px] text-body-9 font-medium text-gray-600 leading-6 tracking-[-0.32px] whitespace-pre-line">
             {descriptionMobile}
           </p>
         </motion.div>
@@ -375,7 +377,7 @@ export function TabletTeamCard({
           }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
-          <p className="ml-[29px] text-body-9 text-gray-600 whitespace-pre-line">
+          <p className="ml-[29px] text-body-9 font-medium text-gray-600 leading-6 tracking-[-0.32px] whitespace-pre-line">
             {descriptionMobile}
           </p>
         </motion.div>
