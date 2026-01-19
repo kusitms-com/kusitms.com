@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import LinkButton from "../shared/LinkButton";
 
 const BACKGROUND_GRADIENT =
   "radial-gradient(118.65% 100.42% at 0% 0%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(129deg, rgba(70, 136, 254, 0.00) 44.57%, rgba(70, 136, 254, 0.20) 100%), linear-gradient(104deg, #EAF9FF 23.85%, #99DEFF 100%), #FFF";
@@ -66,6 +67,23 @@ export default function IntroSection() {
             <br />
             It, Management Society
           </motion.p>
+          <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              y: {
+                duration: 2,
+                ease: "easeInOut",
+              },
+              opacity: {
+                duration: 2,
+                ease: "easeInOut",
+              },
+            }}
+            className="pt-6"
+          >
+            <LinkButton title="33기 지원하러가기!" link="/recruit" />
+          </motion.div>
         </div>
       </div>
       <div className="hidden tablet:block">
@@ -120,6 +138,11 @@ export default function IntroSection() {
                 <Image src="/main/Snow.svg" alt="Snow" width={54} height={59} />
               </motion.div>
             </div>
+            <LinkButton
+              title="33기 지원하러가기!"
+              link="/recruit"
+              className="mt-6 inline-flex"
+            />
           </div>
         </motion.div>
       </div>
