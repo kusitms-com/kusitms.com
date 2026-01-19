@@ -6,14 +6,15 @@ import { EXECUTIVE_DATA, type ExecutiveItem } from "@/constants/executiveData";
 
 function MobileExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
   const [index, setIndex] = useState(0);
-  const prev = useCallback(
-    () => setIndex((i) => (i === 0 ? items.length - 1 : i - 1)),
-    [items.length],
-  );
-  const next = useCallback(
-    () => setIndex((i) => (i === items.length - 1 ? 0 : i + 1)),
-    [items.length],
-  );
+  const [direction, setDirection] = useState(0);
+  const prev = useCallback(() => {
+    setDirection(-1);
+    setIndex((i) => (i === 0 ? items.length - 1 : i - 1));
+  }, [items.length]);
+  const next = useCallback(() => {
+    setDirection(1);
+    setIndex((i) => (i === items.length - 1 ? 0 : i + 1));
+  }, [items.length]);
   const current = items[index];
 
   return (
@@ -37,10 +38,10 @@ function MobileExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
       </motion.div>
       <motion.div
         key={current.image}
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -30 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
         className="relative"
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
@@ -96,14 +97,15 @@ function MobileExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
 
 function DesktopExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
   const [index, setIndex] = useState(0);
-  const prev = useCallback(
-    () => setIndex((i) => (i === 0 ? items.length - 1 : i - 1)),
-    [items.length],
-  );
-  const next = useCallback(
-    () => setIndex((i) => (i === items.length - 1 ? 0 : i + 1)),
-    [items.length],
-  );
+  const [direction, setDirection] = useState(0);
+  const prev = useCallback(() => {
+    setDirection(-1);
+    setIndex((i) => (i === 0 ? items.length - 1 : i - 1));
+  }, [items.length]);
+  const next = useCallback(() => {
+    setDirection(1);
+    setIndex((i) => (i === items.length - 1 ? 0 : i + 1));
+  }, [items.length]);
   const current = items[index];
 
   return (
@@ -124,10 +126,10 @@ function DesktopExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
       </motion.div>
       <motion.div
         key={current.image}
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -30 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
         className="relative"
       >
         <Image
@@ -166,7 +168,7 @@ function DesktopExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
             alt="next"
             width={14}
             height={24}
-            className="block ml-[2px]"
+            className="block ml-[3px]"
           />
         </button>
       </motion.div>
