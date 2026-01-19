@@ -138,11 +138,7 @@ export default function IntroSection() {
                 <Image src="/main/Snow.svg" alt="Snow" width={54} height={59} />
               </motion.div>
             </div>
-            <LinkButton
-              title="33기 지원하러 가기"
-              link="/recruit"
-              className="mt-6 inline-flex"
-            />
+            <LinkButton title="33기 지원하러 가기" link="/recruit" className="mt-6 inline-flex" />
           </div>
         </motion.div>
       </div>
