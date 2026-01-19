@@ -78,14 +78,12 @@ const StatItem = ({
   label,
   delay,
   startCount,
-  width,
 }: {
   end: number;
   suffix: string;
   label: string;
   delay: number;
   startCount: boolean;
-  width?: string;
 }) => (
   <motion.div
     initial={{ opacity: 0 }}
