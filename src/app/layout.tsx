@@ -26,18 +26,14 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "KUSITMS",
+  title: "큐시즘(KUSITMS) - 한국대학생IT경영학회",
   description: "비전을 가지고 함께 성장하는 학회, 큐시즘의 공식 홈페이지입니다.",
-  applicationName: "KUSITMS",
+  applicationName: "큐시즘",
   generator: "Next.js",
-  keywords: ["KUSITMS", "큐시즘", "학회", "공식 홈페이지"],
-  other: {
-    "google-site-verification": "KFgbBXJibXLrdaVRpqy8V3ko4k71bsoX3NJjv0cWbKw",
-    google: "notranslate",
-  },
+  keywords: ["KUSITMS", "큐시즘","한국대학생IT경영학회", "학회", "공식 홈페이지"],
   openGraph: {
     type: "website",
-    title: "KUSITMS",
+    title: "큐시즘(KUSITMS) - 한국대학생IT경영학회",
     description: "비전을 가지고 함께 성장하는 학회, 큐시즘의 공식 홈페이지입니다.",
     url: "https://www.kusitms.com",
     images: [
@@ -70,7 +66,7 @@ export default function RootLayout({
       <head>
         <meta
           name="google-site-verification"
-          content="KFgbBXJibXLrdaVRpqy8V3ko4k71bsoX3NJjv0cWbKw"
+          content="R2qZKJEnprutZz2bbtWEH9yiKRlDKeZbwQHhaP7D6rg"
         />
       </head>
       <body
