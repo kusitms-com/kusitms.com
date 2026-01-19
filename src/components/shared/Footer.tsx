@@ -28,6 +28,10 @@ const SNSGROUPS = [
     img: "/projects/icons/CafeIcon.svg", // 카페 아이콘 경로
     link: "https://cafe.naver.com/kusitms", // 카페 링크
   },
+  {
+    img: "/projects/icons/LinkedinIcon.svg", // 링크드인 아이콘 경로
+    link: "https://www.linkedin.com/company/kusitms-official/", // 링크드인 링크
+  },
 ];
 
 export const Footer = () => {
