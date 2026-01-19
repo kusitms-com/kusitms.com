@@ -59,7 +59,7 @@ export const Footer = () => {
           </Link>
           <p className="desktop:text-body-6 text-body-8 text-gray-800 mt-3">
             KUSITMS (큐시즘, 한국대학생IT경영학회)
-            <br />ⓒ 2023. KUSITMS. All rights reserved.
+            <br />ⓒ 2025. KUSITMS. All rights reserved.
           </p>
         </div>
         <div className="flex-col desktop:pt-0 pt-7 desktop:self-end">

@@ -33,7 +33,7 @@ function MobileExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
         <p className="text-center text-body-8 text-gray-500">
           KUSITMS 활동을 이끄는 운영진으로 네 가지
           <br /> 팀으로 이루어져있어요. 학부학, 경영총괄팀,
-          <br /> 대외홍보팀, 교육기획팀으로 구성돼요
+          <br /> 대외홍보팀, 교육기획팀으로 구성돼요.
         </p>
       </motion.div>
       <motion.div

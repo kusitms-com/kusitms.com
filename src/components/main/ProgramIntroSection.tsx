@@ -25,11 +25,11 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
         <p className="text-body-8 tablet:hidden text-center text-gray-500">
           실제 기업이 고민하고 있는 경영 · 마케팅
           <br /> 문제나 개발과 관련된 과제를 받아 팀별로
-          <br /> 아이디어를 제시해 과제를 수행하는 프로젝트예요
+          <br /> 아이디어를 제시해 과제를 수행하는 프로젝트예요.
         </p>
         <p className="hidden tablet:block text-body-6 text-center text-gray-500">
           실제 기업이 고민하고 있는 경영 · 마케팅 문제나 개발과 관련된 과제를 받아 <br />
-          팀별로 아이디어를 제시해 과제를 수행하는 프로젝트예요
+          팀별로 아이디어를 제시해 과제를 수행하는 프로젝트예요.
         </p>
         <div className="mt-[36px] tablet:mt-[56px] w-full">
           <div className="relative overflow-hidden h-[110px]">
@@ -97,11 +97,11 @@ export default function ProgramIntroSection({ meetupProjects = [] }: ProgramIntr
         </div>
         <p className="text-body-8 tablet:hidden text-center text-gray-500">
           기획파트에서 발제된 아이디어를 디자인,
-          <br /> 개발파트와 함께 3개월동안 준비하여 발표하는 <br /> KUSITMS의 메인 프로젝트예요
+          <br /> 개발파트와 함께 3개월동안 준비하여 발표하는 <br /> KUSITMS의 메인 프로젝트예요.
         </p>
         <p className="hidden tablet:block text-body-6 text-center text-gray-500">
           기획파트에서 발제된 아이디어를 디자인, 개발파트와 함께 3개월동안 <br />
-          준비하여 발표하는 KUSITMS의 메인 프로젝트예요
+          준비하여 발표하는 KUSITMS의 메인 프로젝트예요.
         </p>
         {meetupProjects.length > 0 && <MeetupProjectCarousel projects={meetupProjects} />}
       </section>
