@@ -20,7 +20,7 @@ export default function PartnerSection() {
       <p className="mt-4 text-[13px] tablet:text-body-4 text-center text-gray-500">
         큐시즘과 함께 청년 IT경영의 내일을 만들어갈 다양한 후원사를 기다립니다.
         <br />
-        여러분의 후원이 IT경영의 미래를 만듭니다
+        여러분의 후원이 IT경영의 미래를 만들어 나가요.
       </p>
       <div className="relative mt-[48px] tablet:mt-[54px] w-full overflow-hidden">
         <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-transparent" />

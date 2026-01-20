@@ -70,9 +70,9 @@ export const TEAM_DATA: TeamItem[] = [
     subtitle: "프론트엔드",
     delay: 0.4,
     description:
-      "디자이너와\n 협업해 디자인\n 시스템을 구축하고\n 백엔드 개발자와\n 기능을 조율해요",
+      "디자이너와\n 협업해 디자인\n 시스템을 구축하고\n 백엔드 개발자와\n 기능을 조율해요.",
     descriptionMobile:
-      "디자이너와 협업해\n 디자인 시스템을 구축하고\n 백엔드 개발자와 기능을\n 조율해요",
+      "디자이너와 협업해\n 디자인 시스템을 구축하고\n 백엔드 개발자와 기능을\n 조율해요.",
   },
   {
     mainIcon: "/main/BackendIcon.svg",
@@ -89,8 +89,8 @@ export const TEAM_DATA: TeamItem[] = [
     subtitle: "백엔드",
     delay: 0.6,
     description:
-      "프로젝트의 요구\n 사항과 규모, 팀의 \n 상황에 따라 기술\n 스택을 선정하고\n 오류원인을 분석해요",
+      "프로젝트의 요구\n 사항과 규모, 팀의 \n 상황에 따라 기술\n 스택을 선정하고\n 오류원인을 분석해요.",
     descriptionMobile:
-      "프로젝트의 요구 사항과 규\n모, 팀의 상황에 따라 기술\n 스택을 선정하고 오류원인\n을 분석해요",
+      "프로젝트의 요구 사항과 규\n모, 팀의 상황에 따라 기술\n 스택을 선정하고 오류원인\n을 분석해요.",
   },
 ];
