@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import LinkButton from "../shared/LinkButton";
 
 const BACKGROUND_GRADIENT =
   "radial-gradient(118.65% 100.42% at 0% 0%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(129deg, rgba(70, 136, 254, 0.00) 44.57%, rgba(70, 136, 254, 0.20) 100%), linear-gradient(104deg, #EAF9FF 23.85%, #99DEFF 100%), #FFF";
