@@ -140,14 +140,19 @@ export default function MeetupProjectCarousel({
         <motion.button
           type="button"
           aria-label="previous"
-          className="fixed left-0 w-1/2 cursor-pointer z-10"
+          className="fixed left-0 w-1/2 cursor-pointer z-[30]"
           style={{
             top: `${carouselRect.top}px`,
             height: `${carouselRect.height}px`,
+            touchAction: "pan-x",
+            WebkitTouchCallout: "none",
+            WebkitUserSelect: "none",
+            userSelect: "none",
           }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
+          dragElastic={0.1}
+          dragMomentum={false}
           onClick={handlePrev}
           onDragEnd={(_, info) => {
             const threshold = 50;
@@ -159,14 +164,19 @@ export default function MeetupProjectCarousel({
         <motion.button
           type="button"
           aria-label="next"
-          className="fixed right-0 w-1/2 cursor-pointer z-10"
+          className="fixed right-0 w-1/2 cursor-pointer z-[30]"
           style={{
             top: `${carouselRect.top}px`,
             height: `${carouselRect.height}px`,
+            touchAction: "pan-x",
+            WebkitTouchCallout: "none",
+            WebkitUserSelect: "none",
+            userSelect: "none",
           }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
+          dragElastic={0.1}
+          dragMomentum={false}
           onClick={handleNext}
           onDragEnd={(_, info) => {
             const threshold = 50;
@@ -186,13 +196,27 @@ export default function MeetupProjectCarousel({
           const cardW = BASE_W * scale;
           const cardH = BASE_H * scale;
 
+          const getDelay = () => {
+            if (offset > 0) {
+              return offset * 0.03;
+            }
+            if (offset < 0) {
+              return Math.abs(offset) * 0.03;
+            }
+            return 0;
+          };
+
           return (
             <motion.div
               key={`${project.meetup_id}-${index}`}
               animate={{
                 x: getX(offset),
               }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              transition={{
+                duration: 0.5,
+                ease: [0.4, 0, 0.2, 1],
+                delay: getDelay(),
+              }}
               className="absolute cursor-pointer"
               style={{
                 zIndex,
@@ -219,7 +243,9 @@ export default function MeetupProjectCarousel({
                   priority={abs === 0}
                 />
                 {hasOverlay && (
-                  <div className="absolute inset-0 pointer-events-none rounded-2xl bg-white/40 backdrop-blur-[2.5px]" />
+                  <div
+                    className={`absolute inset-0 pointer-events-none ${isMobile ? "rounded-lg" : "rounded-2xl"} bg-white/40 backdrop-blur-[2.5px]`}
+                  />
                 )}
               </div>
             </motion.div>

@@ -21,11 +21,11 @@ export default function GuestIntroSection() {
           <p className="text-body-8 tablet:hidden mt-[20px] text-center text-gray-500">
             현업에서 활발히 활동 중이신 기획 · 개발 · 디자인 <br />
             분야의 전문가 및 실무자에게 직무에 대한 설명과
-            <br /> 조언을 들을 수 있는 활동입니다.
+            <br /> 조언을 들을 수 있는 활동이에요.
           </p>
           <p className="hidden tablet:block text-body-4 mt-4 text-center text-gray-500">
             현업에서 활발히 활동 중이신 기획 · 개발 · 디자인 분야의 전문가 및 실무자에게 <br />
-            직무에 대한 설명과 조언을 들을 수 있는 활동입니다.
+            직무에 대한 설명과 조언을 들을 수 있는 활동이에요.
           </p>
         </div>
         <motion.div

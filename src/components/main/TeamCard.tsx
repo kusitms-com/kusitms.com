@@ -140,7 +140,9 @@ export function DesktopTeamCard({
           animate={{ opacity: active ? 1 : 0 }}
           transition={{ duration: 0.25 }}
         >
-          <p className="text-body-6 text-gray-600 leading-5 whitespace-pre-line">{description}</p>
+          <p className="text-body-6 font-medium text-gray-600 leading-6 tracking-[-0.32px] whitespace-pre-line">
+            {description}
+          </p>
         </motion.div>
       </div>
     </motion.div>
