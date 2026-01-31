@@ -67,23 +67,6 @@ export default function IntroSection() {
             <br />
             It, Management Society
           </motion.p>
-          <motion.div
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{
-              y: {
-                duration: 2,
-                ease: "easeInOut",
-              },
-              opacity: {
-                duration: 2,
-                ease: "easeInOut",
-              },
-            }}
-            className="pt-6"
-          >
-            <LinkButton title="33기 지원하러가기!" link="/recruit" />
-          </motion.div>
         </div>
       </div>
       <div className="hidden tablet:block">
@@ -138,11 +121,6 @@ export default function IntroSection() {
                 <Image src="/main/Snow.svg" alt="Snow" width={54} height={59} />
               </motion.div>
             </div>
-            <LinkButton
-              title="33기 지원하러 가기"
-              link="/recruit"
-              className="mt-6 inline-flex"
-            />
           </div>
         </motion.div>
       </div>
