@@ -75,7 +75,7 @@ export default function Stories({ initialData }: StoriesContainerProps) {
                     src={
                       story.imageAddress?.trim()
                         ? story.imageAddress.trim()
-                        : "/reviews/null_image.png"
+                        : "/reviews/null_image.webp"
                     }
                   />
                   <StoryCard.Info>

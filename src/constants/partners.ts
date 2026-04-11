@@ -1,7 +1,7 @@
 export const PARTNERS: string[] = [
-  "/main/img/partner/Seoul.png",
-  "/main/img/partner/LetsCareer.png",
-  "/main/img/partner/SniperFactory.png",
-  "/main/img/partner/FLab.png",
-  "/main/img/partner/Dcamp.png",
+  "/main/img/partner/Seoul.webp",
+  "/main/img/partner/LetsCareer.webp",
+  "/main/img/partner/SniperFactory.webp",
+  "/main/img/partner/FLab.webp",
+  "/main/img/partner/Dcamp.webp",
 ];
