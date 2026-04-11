@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useScrollLock } from "@/hooks";
 
 const navLinks = [
   { href: "/", label: "학회소개", matchPath: "/" },
@@ -23,19 +24,7 @@ function MobilePageNav() {
     setIsMenuOpen(false);
   };
 
-  // 메뉴가 열릴 때 스크롤 막기
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    // 컴포넌트 언마운트 시 스크롤 복원
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isMenuOpen]);
+  useScrollLock(isMenuOpen);
 
   return (
     <>
