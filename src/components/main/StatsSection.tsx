@@ -45,7 +45,7 @@ export default function StatsSection() {
     <div className="relative w-full" ref={ref}>
       <div className="relative w-full h-[308px] desktop:h-[447px]">
         <Image
-          src="/main/img/Background.png"
+          src="/main/img/Background.webp"
           alt="Special_Lecture_by_Expert_1"
           fill
           priority

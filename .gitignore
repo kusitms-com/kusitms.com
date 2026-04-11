@@ -43,3 +43,11 @@ next-env.d.ts
 # webstorm파일
 *.iml
 *.xml
+
+# AI
+.omc
+.claude
+CLAUDE.md
+
+# WebP build artifacts
+public/**/*.webp

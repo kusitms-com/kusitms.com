@@ -152,7 +152,7 @@ export default function IntroSection() {
         >
           <div className="absolute inset-0 max-[767px]:top-[-60px] max-[767px]:bottom-0 tablet:inset-0">
             <Image
-              src="/main/img/Main_Graphic.png"
+              src="/main/img/Main_Graphic.webp"
               alt="Main Graphic"
               fill
               className="object-cover max-[767px]:translate-y-[60px] max-[767px]:object-[60%_120%] tablet:translate-y-0 tablet:object-center"
