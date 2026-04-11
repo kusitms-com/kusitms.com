@@ -1,5 +1,5 @@
 {
-  "buildCommand": "next build",
+  "buildCommand": "node convert-webp.mjs && next build",
   "outputDirectory": ".next",
   "framework": "nextjs",
   "rewrites": [
