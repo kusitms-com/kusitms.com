@@ -8,7 +8,7 @@ export default function Banner() {
         <div className="w-full mx-auto relative h-[400px]">
           <div className="relative h-[400px] w-full">
             <Image
-              src={"/projects/Banner.svg"}
+              src={"/projects/Banner.webp"}
               alt={"Projects banner"}
               priority
               fill
@@ -33,7 +33,7 @@ export default function Banner() {
         <div className="w-full mx-auto relative h-[297px]">
           <div className="h-[297px] w-full relative">
             <Image
-              src={"/projects/Banner.svg"}
+              src={"/projects/Banner.webp"}
               alt={"Projects banner"}
               priority
               fill

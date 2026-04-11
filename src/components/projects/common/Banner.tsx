@@ -14,7 +14,7 @@ export default function Banner({ title, description }: BannerProps) {
           <div className="max-w-[1024px] mx-auto relative h-[180px] overflow-hidden">
             <div className="max-w-[727px] h-[464px] relative ml-auto -top-[205px]">
               <Image
-                src={"/projects/ProjectBanner.svg"}
+                src={"/projects/ProjectBanner.webp"}
                 alt={"Projects banner"}
                 priority
                 fill
@@ -36,7 +36,7 @@ export default function Banner({ title, description }: BannerProps) {
           <div className="w-full mx-auto relative h-[180px] overflow-hidden">
             <div className="h-[250px] w-full absolute bottom-[-70px] ">
               <Image
-                src={"/projects/ProjectBanner.svg"}
+                src={"/projects/ProjectBanner.webp"}
                 alt={"Projects banner"}
                 priority
                 fill
