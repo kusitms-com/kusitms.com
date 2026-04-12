@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
-import { useScrollLock } from "@/hooks";
+import { useEffect } from "react";
 
 interface Props {
   children: ReactNode;
@@ -12,7 +12,13 @@ interface Props {
 export default function ProjectModalShell({ children }: Props) {
   const router = useRouter();
 
-  useScrollLock(true);
+  useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
 
   return (
     <div
