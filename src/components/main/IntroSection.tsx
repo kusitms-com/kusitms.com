@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { MAIN_GRAPHIC_BLUR } from "@/constants/blurDataURL";
 
 const BACKGROUND_GRADIENT =
   "radial-gradient(118.65% 100.42% at 0% 0%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(129deg, rgba(70, 136, 254, 0.00) 44.57%, rgba(70, 136, 254, 0.20) 100%), linear-gradient(104deg, #EAF9FF 23.85%, #99DEFF 100%), #FFF";
@@ -156,6 +157,8 @@ export default function IntroSection() {
               alt="Main Graphic"
               fill
               sizes="100vw"
+              placeholder="blur"
+              blurDataURL={MAIN_GRAPHIC_BLUR}
               className="object-cover max-[767px]:translate-y-[60px] max-[767px]:object-[60%_120%] tablet:translate-y-0 tablet:object-center"
             />
           </div>

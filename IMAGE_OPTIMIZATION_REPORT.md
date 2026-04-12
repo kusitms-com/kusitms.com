@@ -223,13 +223,71 @@ imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
 
 ---
 
+## Step 3: placeholder="blur" 적용
+
+### 변경 내용
+
+- `sharp`로 핵심 래스터 fill 이미지 3종을 12px WebP로 리사이즈 → base64 인코딩하여 `src/constants/blurDataURL.ts`에 정적 상수로 저장
+- LCP 후보 컴포넌트(IntroSection, StatsSection, ProjectTypeBanner)의 `<Image fill priority>`에 `placeholder="blur"` + `blurDataURL` 적용
+- SVG(Banner.svg, ProjectBanner.svg)는 제외 — 벡터는 blur 효과 의미 없음
+
+### 적용 대상
+
+| 파일 | 이미지 | blurDataURL 상수 | base64 길이 |
+|------|--------|------------------|-----|
+| `IntroSection.tsx` | Main_Graphic.webp | `MAIN_GRAPHIC_BLUR` | 323B |
+| `StatsSection.tsx` | Background.webp | `BACKGROUND_BLUR` | 111B |
+| `ProjectTypeBanner.tsx` | Project.webp | `PROJECT_BLUR` | 115B |
+
+### 로컬 Lab 측정 결과 (3회) — localhost:3000 (WebP + sizes + blur)
+
+| 측정 | LCP | TTFB | Render Delay | CLS |
+|------|-----|------|--------------|-----|
+| 1회차 | 463ms | 63ms | 341ms | 0.00 |
+| 2회차 | 507ms | 80ms | 362ms | 0.00 |
+| 3회차 | 1,438ms | 930ms | 438ms | 0.00 |
+| **평균** | **803ms** | **358ms** | **380ms** | **0.00** |
+
+> 3회차는 dev 서버 콜드 컴파일(TTFB 930ms)로 이상값. 1~2회차 평균은 LCP ~485ms.
+
+### Step 2 vs Step 3 로컬 비교
+
+| 지표 | Step 2 평균 | Step 3 평균 | 변화 | 비고 |
+|------|------------|------------|------|------|
+| LCP | 2,390ms | 803ms | **-66.4%** | blur placeholder가 즉시 페인트되어 LCP 후보로 평가됨 |
+| Render Delay | 2,319ms | 380ms | **-83.6%** | base64 인라인 이미지로 네트워크 대기 제거 |
+| CLS | 0.00 | 0.00 | 0 | 변화 없음 |
+
+> **분석**: `placeholder="blur"` 적용 시 base64 블러 이미지가 HTML에 인라인되어 네트워크 요청 없이 즉시 페인트됨. Chrome LCP 알고리즘은 해당 blur 엘리먼트를 LCP 후보로 인식하여 LCP 수치가 크게 개선됨. 이는 실제 사용자 체감 로딩 속도 개선(FCP/초기 페인트 가속)을 반영하는 동시에 진짜 이미지 로딩까지의 시간은 별도로 존재함에 유의.
+
+### 네트워크/번들 영향
+
+| 항목 | Step 2 | Step 3 | 변화 |
+|------|--------|--------|------|
+| blurDataURL 총 인라인 크기 | 0B | 549B | +549B (무시 가능) |
+| 이미지 요청 수 | 14개 | 14개 | 동일 |
+
+---
+
+## 누적 최적화 요약
+
+| 지표 | Step 0 | Step 1 | Step 2 | Step 3 | 누적 변화 |
+|------|--------|--------|--------|--------|----------|
+| 이미지 총 용량 | 15.00MB | 9.59MB | 9.59MB | 9.59MB | **-36.1%** |
+| 요청 최대 너비 | w=3840 | w=3840 | w=1920 | w=1920 | **-50%** |
+| sizes 적용 | 1곳 | 1곳 | 8곳 | 8곳 | +7곳 |
+| blur placeholder | 0곳 | 0곳 | 0곳 | 3곳 | +3곳 |
+| 로컬 LCP 평균 | 1,743ms | 2,386ms | 2,390ms | 803ms | **-53.9% vs Step 0** |
+
+---
+
 ## 최적화 계획 (전략 B: Vercel 최적화 유지 + 소모량 절감)
 
 | 순서 | 최적화 항목 | 상태 |
 |------|------------|------|
 | Step 1 | PNG → WebP 빌드타임 변환 (정적 이미지) | **완료** (용량 -36.1%) |
 | Step 2 | sizes 속성 추가 + deviceSizes 최적화 | **완료** (요청 너비 -50%) |
-| Step 3 | `placeholder="blur"` 적용 | 대기 |
+| Step 3 | `placeholder="blur"` 적용 | **완료** (LCP -66.4% 로컬) |
 | Step 4 | SVGO로 SVG 최적화 | 대기 |
 | Step 5 | S3 외부 이미지 `unoptimized` 정리 | 대기 |
 
@@ -242,3 +300,4 @@ imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
 | 2026-04-11 | Step 0 | 베이스라인 측정 완료 (프로덕션 3회 평균 LCP 356ms, 로컬 3회 평균 LCP 1,743ms) |
 | 2026-04-11 | Step 1 | PNG → WebP 무손실 변환 완료 (67개 파일, 용량 15.00MB → 9.59MB, -36.1%) |
 | 2026-04-11 | Step 2 | sizes 속성 7곳 추가 + deviceSizes [3840,2048] 제거 (요청 너비 3840→1920, -50%) |
+| 2026-04-12 | Step 3 | 핵심 래스터 fill 이미지 3곳에 placeholder="blur" 적용 (로컬 LCP 2,390ms→803ms) |

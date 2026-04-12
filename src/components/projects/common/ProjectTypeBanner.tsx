@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type React from "react";
+import { PROJECT_BLUR } from "@/constants/blurDataURL";
 
 interface Props {
   title: string;
@@ -17,6 +18,8 @@ export default function ProjectTypeBanner({ title, detail }: Props) {
           className="object-cover rounded-[12px] max-h-[320px]"
           fill
           sizes="(max-width: 768px) 100vw, 1024px"
+          placeholder="blur"
+          blurDataURL={PROJECT_BLUR}
         />
         <div className="rounded-[12px] max-h-[320px] absolute inset-0 bg-black/70" />
         <div className="absolute inset-0 flex flex-col tablet:gap-4 gap-3 items-center justify-center text-center pointer-events-none">

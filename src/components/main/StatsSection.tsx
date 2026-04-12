@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { BACKGROUND_BLUR } from "@/constants/blurDataURL";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
@@ -51,6 +52,8 @@ export default function StatsSection() {
           priority
           className="object-cover"
           sizes="100vw"
+          placeholder="blur"
+          blurDataURL={BACKGROUND_BLUR}
         />
       </div>
       <div className="flex flex-col gap-y-[24px] desktop:gap-y-[40px] items-center justify-center absolute top-0 w-full desktop:h-[447px] h-[308px]">
