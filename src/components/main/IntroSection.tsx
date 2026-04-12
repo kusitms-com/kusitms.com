@@ -155,6 +155,7 @@ export default function IntroSection() {
               src="/main/img/Main_Graphic.webp"
               alt="Main Graphic"
               fill
+              priority
               className="object-cover max-[767px]:translate-y-[60px] max-[767px]:object-[60%_120%] tablet:translate-y-0 tablet:object-center"
             />
           </div>
