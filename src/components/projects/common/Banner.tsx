@@ -18,6 +18,7 @@ export default function Banner({ title, description }: BannerProps) {
                 alt={"Projects banner"}
                 priority
                 fill
+                sizes="(max-width: 1024px) 100vw, 727px"
                 className="object-cover"
               />
             </div>
@@ -40,6 +41,7 @@ export default function Banner({ title, description }: BannerProps) {
                 alt={"Projects banner"}
                 priority
                 fill
+                sizes="100vw"
                 style={{
                   objectFit: "none",
                   objectPosition: "left bottom",

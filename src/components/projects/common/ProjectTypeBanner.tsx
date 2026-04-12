@@ -16,6 +16,7 @@ export default function ProjectTypeBanner({ title, detail }: Props) {
           priority
           className="object-cover rounded-[12px] max-h-[320px]"
           fill
+          sizes="(max-width: 768px) 100vw, 1024px"
         />
         <div className="rounded-[12px] max-h-[320px] absolute inset-0 bg-black/70" />
         <div className="absolute inset-0 flex flex-col tablet:gap-4 gap-3 items-center justify-center text-center pointer-events-none">

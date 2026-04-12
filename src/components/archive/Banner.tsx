@@ -12,6 +12,7 @@ export default function Banner() {
               alt={"Projects banner"}
               priority
               fill
+              sizes="100vw"
               className="object-cover object-center"
             />
           </div>
@@ -37,6 +38,7 @@ export default function Banner() {
               alt={"Projects banner"}
               priority
               fill
+              sizes="100vw"
               style={{ objectFit: "none", objectPosition: "center top" }}
             />
           </div>
