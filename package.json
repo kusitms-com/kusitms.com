@@ -29,7 +29,10 @@
     "tailwind-merge": "^3.3.0"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["sharp", "@tailwindcss/oxide"]
+    "onlyBuiltDependencies": [
+      "sharp",
+      "@tailwindcss/oxide"
+    ]
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.6",
