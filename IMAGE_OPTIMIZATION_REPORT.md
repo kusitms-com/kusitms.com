@@ -281,6 +281,120 @@ imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
 
 ---
 
+## 프로덕션 Lab 측정 — Step 3 적용 후 (Vercel Preview)
+
+> 측정일: 2026-04-12
+> 측정 환경: `https://kusitms-oz5h5wra5-leemanjaes-projects.vercel.app` (3회, throttling 없음)
+
+| 측정 | LCP | TTFB | Load Delay | Load Duration | Render Delay | CLS |
+|------|-----|------|------------|---------------|--------------|-----|
+| 1회차 | 191ms | 50ms | 31ms | 51ms | 59ms | 0.00 |
+| 2회차 | 209ms | 42ms | 26ms | 43ms | 98ms | 0.00 |
+| 3회차 | 308ms | 60ms | 24ms | 166ms | 58ms | 0.00 |
+| **평균** | **236ms** | **51ms** | **27ms** | **87ms** | **72ms** | **0.00** |
+
+### Step 0 프로덕션 vs Step 3 프로덕션
+
+| 지표 | Step 0 (kusitms.com) | Step 3 (Preview) | 변화 |
+|------|--------------------|-----------------|------|
+| LCP | 356ms | **236ms** | **-120ms (-33.7%)** |
+| TTFB | 179ms | **51ms** | **-128ms (-71.5%)** |
+| Load Duration | 70ms | 87ms | +17ms |
+| Render Delay | 92ms | **72ms** | **-20ms (-21.7%)** |
+| CLS | 0.00 | 0.00 | 동일 |
+
+> **분석**: 프로덕션 배포에서도 LCP **-33.7%**, TTFB **-71.5%**, Render Delay **-21.7%** 개선 확인. Load Duration이 소폭 증가한 이유는 3회차 이상치(166ms)의 영향이며 1~2회차 기준으로는 47ms로 Step 0(70ms)보다 빠름. 누적 최적화(WebP 용량 -36.1% + sizes로 요청 너비 -50% + blur placeholder 인라인 페인트)의 복합 효과로 해석됨.
+> 비교 환경 차이: Step 0은 `kusitms.com` apex 도메인 + CDN 워밍 상태, Step 3은 Vercel Preview URL(SSO 보호). 동일 도메인 재측정 시 수치 변동 가능.
+
+---
+
+## Step 4 검토 결과: SVGO — **적용 안 함**
+
+### 검토 내용
+
+- `npx svgo -rf public` 시범 실행 → 83개 SVG 전체에서 **-94KB (-0.4%)**만 감소
+- 대용량 SVG 상위 파일들 조사 결과, 실제로는 **base64 raster 래퍼** (SVG 껍데기 안에 `data:image/png;base64,...` 문자열로 비트맵을 박아넣은 구조)임을 확인
+- SVGO는 vector 데이터만 최적화하므로 base64 블록에는 효과 없음
+
+### 대용량 SVG 구성 분석
+
+| 파일 | 크기 | 실제 구성 |
+|------|------|----------|
+| `projects/ProjectBanner.svg` | 6.05MB | base64 raster 래퍼 |
+| `main/MainGroupSticker.svg` | 4.69MB | base64 raster 래퍼 (코드 참조 0건) |
+| `main/Logo.svg` | 2.36MB | base64 raster 래퍼 (코드 참조 0건) |
+| `projects/Banner.svg` | 2.00MB | base64 raster 래퍼 |
+| `main/ManageBg.svg` | 1.22MB | base64 raster 래퍼 |
+
+### 결론
+
+- SVGO는 이 프로젝트엔 **실익 없음** → 적용 롤백
+- 진짜 용량 절감은 base64 추출 후 WebP 재인코딩이 필요하지만, 범위가 Step 4(SVG 최적화)를 넘어 Step 1(WebP 변환)의 연장선 작업이며 디자이너/기획과 협의 필요
+- 미사용 SVG 삭제도 "왜 넣었는지" 이력 확인 전 삭제는 리스크 → 보류
+
+---
+
+## Step 5: S3 외부 이미지 `unoptimized` 부분 제거 (B안)
+
+### 변경 배경
+
+`unoptimized` prop은 Vercel Image Optimization 파이프라인을 우회시켜 원본 이미지를 그대로 전송함. 제거 시 `_next/image` 엔드포인트에서 WebP/AVIF 자동 변환 + 디바이스별 리사이즈 + CDN 캐싱 적용됨.
+
+### 트레이드오프 분석
+
+| 측면 | 유지 (unoptimized 그대로) | 제거 (최적화 적용) |
+|------|------------------------|------------------|
+| Vercel 크레딧 | 소모 0 | 고유 source URL당 1 크레딧 (60일 캐시) |
+| 사용자 전송 바이트 | 원본 풀사이즈 | WebP 리사이즈본 (30~70% 감소) |
+| LCP/체감 성능 | 느림 | 빠름 |
+
+Vercel 크레딧 과금은 **고유 source 이미지 URL당** 이루어지며 바이트 크기와 무관. 60일간 CDN 캐싱되므로 동일 이미지 반복 방문은 크레딧 소모 없음.
+
+### 적용 범위 (B안: 초기 노출 카드만)
+
+| 파일 | 이미지 | 조치 |
+|------|--------|------|
+| `projects/common/ProjectCard.tsx` (Poster 300x190) | S3 포스터 썸네일 | `unoptimized` 제거 + `sizes="(max-width: 768px) 50vw, 300px"` |
+| `projects/common/ProjectCard.tsx` (Logo 95x95) | S3 회사/단체 로고 | `unoptimized` 제거 + `sizes="95px"` |
+
+### 유지한 항목
+
+| 파일 | 이유 |
+|------|------|
+| `RecruitingTeamInfoItem.tsx` | 정적 SVG (`Union.svg`) — SVG는 `_next/image` 우회가 기본 |
+| `OldProjectSection.tsx` | `project.poster_url ?? "/footerLogo.svg"` fallback이 SVG라 `dangerouslyAllowSVG` 설정 필요 |
+| `RecentProjectSection.tsx` | 상세 페이지 대형 포스터, 트래픽 집중도 낮아 크레딧 절약 우선 |
+| `StoryCard.tsx` | 스토리 리스트 — 추후 사용량 모니터링 후 확장 검토 |
+
+### 네트워크 검증 (localhost /projects/meetup)
+
+| 항목 | Before (unoptimized) | After (B안 적용) |
+|------|---------------------|-----------------|
+| S3 로고/포스터 요청 경로 | `https://kusitms-bucket.s3...` 직접 | `/_next/image?url=<S3>&w=640&q=75` |
+| 응답 포맷 | 원본 PNG/JPG | WebP/AVIF 자동 변환 |
+| 요청 너비 | 원본 (대개 ≥1000px) | **w=640** (sizes 반영) |
+| 요청 건수 | 24개 | 24개 (경로만 변경) |
+
+### 로컬 Lab 측정 (3회) — localhost:3000/projects/meetup
+
+| 측정 | LCP | TTFB | Load Delay | Load Duration | Render Delay | CLS |
+|------|-----|------|------------|---------------|--------------|-----|
+| 1회차 | 1,691ms | 1,465ms | 28ms | 30ms | 168ms | 0.00 |
+| 2회차 | 228ms | 87ms | 28ms | 7ms | 106ms | 0.00 |
+| 3회차 | 204ms | 57ms | 43ms | 5ms | 99ms | 0.00 |
+| **평균 (2~3회, 워밍 후)** | **216ms** | **72ms** | **36ms** | **6ms** | **103ms** | **0.00** |
+
+> 1회차는 dev 서버 콜드 컴파일(TTFB 1,465ms)로 제외. 2~3회차 평균을 유효값으로 간주.
+
+### 결과 요약
+
+- S3 이미지가 Vercel 최적화 파이프라인에 진입하여 WebP로 자동 변환 + w=640 리사이즈 확인
+- 프로젝트 리스트 카드 페이지에서 이미지당 전송 바이트 대폭 감소 기대 (프로덕션 검증 필요)
+- 크레딧 소모 증가 리스크는 **B안으로 범위 축소** + 60일 캐싱으로 제한적
+- LCP는 기존에도 네트워크 병목 구간이 아니어서 수치 변동 없음 (본 Step의 목적은 대역폭·크레딧 최적화)
+
+---
+
 ## 최적화 계획 (전략 B: Vercel 최적화 유지 + 소모량 절감)
 
 | 순서 | 최적화 항목 | 상태 |
@@ -288,8 +402,8 @@ imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
 | Step 1 | PNG → WebP 빌드타임 변환 (정적 이미지) | **완료** (용량 -36.1%) |
 | Step 2 | sizes 속성 추가 + deviceSizes 최적화 | **완료** (요청 너비 -50%) |
 | Step 3 | `placeholder="blur"` 적용 | **완료** (LCP -66.4% 로컬) |
-| Step 4 | SVGO로 SVG 최적화 | 대기 |
-| Step 5 | S3 외부 이미지 `unoptimized` 정리 | 대기 |
+| Step 4 | SVGO로 SVG 최적화 | **보류** (-0.4% 효과 미미, base64 래퍼 이슈) |
+| Step 5 | S3 `unoptimized` 부분 제거 (B안) | **완료** (ProjectCard 2곳, 리스트 카드 대상) |
 
 ---
 
@@ -301,3 +415,6 @@ imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
 | 2026-04-11 | Step 1 | PNG → WebP 무손실 변환 완료 (67개 파일, 용량 15.00MB → 9.59MB, -36.1%) |
 | 2026-04-11 | Step 2 | sizes 속성 7곳 추가 + deviceSizes [3840,2048] 제거 (요청 너비 3840→1920, -50%) |
 | 2026-04-12 | Step 3 | 핵심 래스터 fill 이미지 3곳에 placeholder="blur" 적용 (로컬 LCP 2,390ms→803ms) |
+| 2026-04-12 | 검증 | 프로덕션 Preview 3회 측정 (평균 LCP 236ms, Step 0 대비 -33.7%, TTFB -71.5%) |
+| 2026-04-13 | Step 4 검토 | SVGO 시범 적용 → -0.4% 효과로 미미, 대용량 SVG가 base64 raster 래퍼임을 확인하고 롤백 (적용 안 함) |
+| 2026-04-14 | Step 5 (B안) | ProjectCard의 S3 포스터/로고 `unoptimized` 제거 + sizes 추가 (Vercel `_next/image` 파이프라인 진입 확인, w=640 WebP 변환) |
