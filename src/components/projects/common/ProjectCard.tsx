@@ -33,13 +33,12 @@ const Poster = ({ src }: { src: string }) => (
     className="aspect-[300/190] w-full h-full object-cover"
     width={300}
     height={190}
-    unoptimized
   />
 );
 
 const Logo = ({ src }: { src: string }) => (
   <div className="absolute top-[-60px] right-[16px] desktop:top-0 desktop:right-[24px] w-[78px] h-[78px] desktop:w-[95px] desktop:h-[95px] flex items-center justify-center overflow-hidden rounded-full bg-white">
-    <Image src={src} alt="logo" width={95} height={95} unoptimized />
+    <Image src={src} alt="logo" width={95} height={95} />
   </div>
 );
 

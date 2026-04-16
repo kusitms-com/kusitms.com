@@ -27,7 +27,6 @@ function RecentProjectSection({ project }: { project: MeetupProjectDetail }) {
           alt="poster"
           width={1000}
           height={1400}
-          unoptimized
           className="w-full h-auto object-contain"
           priority
         />
