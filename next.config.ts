@@ -2,7 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["kusitms-bucket.s3.ap-northeast-2.amazonaws.com"],
+    loader: "custom",
+    loaderFile: "./src/lib/image-loader.ts",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "kusitms-bucket.s3.ap-northeast-2.amazonaws.com",
+      },
+    ],
   },
 };
 
