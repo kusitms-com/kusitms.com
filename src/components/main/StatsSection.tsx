@@ -35,7 +35,10 @@ export default function StatsSection() {
 
   const [startCount, setStartCount] = useState(false);
 
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
+    setIsClient(true);
     if (inView) {
       const timer = setTimeout(() => setStartCount(true), 300);
       return () => clearTimeout(timer);
@@ -45,16 +48,18 @@ export default function StatsSection() {
   return (
     <div className="relative w-full" ref={ref}>
       <div className="relative w-full h-[308px] desktop:h-[447px]">
-        <Image
-          src="/main/img/Background.webp"
-          alt="Special_Lecture_by_Expert_1"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={BACKGROUND_BLUR}
-        />
+        {isClient && (
+          <Image
+            src="/main/img/Background.webp"
+            alt="Background"
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 1200px, 3840px"
+            placeholder="blur"
+            blurDataURL={BACKGROUND_BLUR}
+          />
+        )}
       </div>
       <div className="flex flex-col gap-y-[24px] desktop:gap-y-[40px] items-center justify-center absolute top-0 w-full desktop:h-[447px] h-[308px]">
         <div className="desktop:text-title-7 text-body-6 text-white">Since 2009</div>
