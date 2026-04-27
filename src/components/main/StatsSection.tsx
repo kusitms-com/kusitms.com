@@ -1,10 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { BACKGROUND_BLUR } from "@/constants/blurDataURL";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import { BACKGROUND_BLUR } from "@/constants/blurDataURL";
 import { useBreakpoint } from "@/hooks";
 
 export default function StatsSection() {
