@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { MAIN_GRAPHIC_BLUR } from "@/constants/blurDataURL";
-import { useEffect, useState } from "react";
+import { useBreakpoint } from "@/hooks";
 
 const BACKGROUND_GRADIENT =
   "radial-gradient(118.65% 100.42% at 0% 0%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(129deg, rgba(70, 136, 254, 0.00) 44.57%, rgba(70, 136, 254, 0.20) 100%), linear-gradient(104deg, #EAF9FF 23.85%, #99DEFF 100%), #FFF";
@@ -10,16 +10,7 @@ const OUTFIT_FONT = "font-[family-name:var(--font-outfit)]";
 const OUTLINE_TEXT_BASE = `${OUTFIT_FONT} text-[#006AFF] leading-[100%] -tracking-[1.36px] font-medium`;
 
 export default function IntroSection() {
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const { isMobile } = useBreakpoint();
 
   return (
     <div

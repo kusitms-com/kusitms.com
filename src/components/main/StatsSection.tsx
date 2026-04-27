@@ -5,6 +5,7 @@ import { BACKGROUND_BLUR } from "@/constants/blurDataURL";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import { useBreakpoint } from "@/hooks";
 
 export default function StatsSection() {
   const statData = [
@@ -34,11 +35,9 @@ export default function StatsSection() {
   });
 
   const [startCount, setStartCount] = useState(false);
-
-  const [isClient, setIsClient] = useState(false);
+  const { isClient } = useBreakpoint();
 
   useEffect(() => {
-    setIsClient(true);
     if (inView) {
       const timer = setTimeout(() => setStartCount(true), 300);
       return () => clearTimeout(timer);

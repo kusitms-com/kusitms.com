@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useBreakpoint } from "@/hooks";
 
 interface BannerProps {
   title?: string;
@@ -8,16 +8,7 @@ interface BannerProps {
 }
 
 export default function Banner({ title, description }: BannerProps) {
-  const [isTablet, setIsTablet] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    const checkTablet = () => {
-      setIsTablet(window.innerWidth >= 768);
-    };
-    checkTablet();
-    window.addEventListener("resize", checkTablet);
-    return () => window.removeEventListener("resize", checkTablet);
-  }, []);
+  const { isTablet } = useBreakpoint();
 
   if (isTablet === null) return <div className="w-full h-[180px] bg-sky-100" />;
 

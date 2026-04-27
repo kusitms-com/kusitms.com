@@ -1,18 +1,9 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useBreakpoint } from "@/hooks";
 
 export default function Banner() {
-  const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    const checkDesktop = () => {
-      setIsDesktop(window.innerWidth >= 1280);
-    };
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
-    return () => window.removeEventListener("resize", checkDesktop);
-  }, []);
+  const { isDesktop } = useBreakpoint();
 
   if (isDesktop === null) return <div className="w-full h-[297px] desktop:h-[400px] bg-gray-100" />;
 
