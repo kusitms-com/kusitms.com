@@ -1,3 +1,4 @@
+export * from "./useBreakpoint";
 export * from "./useModalHook";
 export * from "./useOutsideClickHook";
 export * from "./useScrollDetection";

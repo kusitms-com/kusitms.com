@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type React from "react";
+import { PROJECT_BLUR } from "@/constants/blurDataURL";
 
 interface Props {
   title: string;
@@ -11,11 +12,14 @@ export default function ProjectTypeBanner({ title, detail }: Props) {
     <section className="w-full relative tablet:h-[420px] h-[209px] tablet:pb-25 pb-15 tablet:px-10 px-4 rounded-[12px] ">
       <div className="w-full h-full overflow-hidden relative">
         <Image
-          src={"/projects/img/Project.png"}
+          src={"/projects/img/Project.webp"}
           alt={"Projects type banner"}
           priority
           className="object-cover rounded-[12px] max-h-[320px]"
           fill
+          sizes="(max-width: 768px) 100vw, 1024px"
+          placeholder="blur"
+          blurDataURL={PROJECT_BLUR}
         />
         <div className="rounded-[12px] max-h-[320px] absolute inset-0 bg-black/70" />
         <div className="absolute inset-0 flex flex-col tablet:gap-4 gap-3 items-center justify-center text-center pointer-events-none">
