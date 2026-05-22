@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@import "@kusitms.com/tokens/index.css";
+@import "@kusitms.com/tokens/themes.css";
+@import "@kusitms.com/tokens/typography.css";
+@import "@kusitms.com/ui/styles.css";
+
 @custom-variant dark (&:is(.dark *));
 
 body {
