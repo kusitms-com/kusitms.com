@@ -42,7 +42,7 @@ function MobileExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
-        className="relative"
+        className="relative overflow-hidden rounded-[16px] bg-white"
         style={{
           touchAction: "pan-x",
           WebkitTouchCallout: "none",
@@ -61,29 +61,31 @@ function MobileExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
           }
         }}
       >
-        <Image
-          className="w-full h-auto rounded-t-[16px]"
-          src={current.image}
-          alt={current.title}
-          width={944}
-          height={571}
-        />
-        <div className="bg-white rounded-b-[16px] px-5 tablet:px-6 pb-4 -mt-2">
+        <div className="relative">
+          <Image
+            className="block w-full h-auto"
+            src={current.image}
+            alt={current.title}
+            width={944}
+            height={571}
+          />
+          <button
+            type="button"
+            aria-label="previous"
+            onClick={prev}
+            className="absolute left-0 top-0 bottom-0 w-1/2 cursor-pointer"
+          />
+          <button
+            type="button"
+            aria-label="next"
+            onClick={next}
+            className="absolute right-0 top-0 bottom-0 w-1/2 cursor-pointer"
+          />
+        </div>
+        <div className="px-5 pt-3 pb-5 tablet:px-6">
           <p className="text-body-7 font-bold text-gray-700">{current.title}</p>
           <p className="mt-1 text-body-9 text-gray-500 leading-relaxed">{current.description}</p>
         </div>
-        <button
-          type="button"
-          aria-label="previous"
-          onClick={prev}
-          className="absolute left-0 top-0 bottom-0 w-1/2 cursor-pointer"
-        />
-        <button
-          type="button"
-          aria-label="next"
-          onClick={next}
-          className="absolute right-0 top-0 bottom-0 w-1/2 cursor-pointer"
-        />
       </motion.div>
       <div className="mt-4 flex items-center justify-center gap-2">
         {items.map((_, i) => (
@@ -136,48 +138,49 @@ function DesktopExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
-        className="relative"
+        className="overflow-hidden rounded-[16px] bg-white"
       >
-        <Image
-          className="w-full h-auto rounded-[16px]"
-          src={current.image}
-          alt={current.title}
-          width={944}
-          height={571}
-        />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[46%] rounded-b-[16px] bg-gradient-to-t from-white/95 via-white/80 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 px-[108px] pb-[50px] drop-shadow-[0_1px_8px_rgba(255,255,255,0.85)]">
+        <div className="relative">
+          <Image
+            className="block w-full h-auto"
+            src={current.image}
+            alt={current.title}
+            width={944}
+            height={571}
+          />
+          <button
+            type="button"
+            aria-label="previous"
+            onClick={prev}
+            className="cursor-pointer absolute left-9 top-1/2 -translate-y-1/2 w-13 h-13 min-w-13 min-h-13 rounded-full bg-black/20 text-gray-900 flex items-center justify-center"
+          >
+            <Image
+              src="/projects/icons/ArrowLeft.svg"
+              alt="prev"
+              width={14}
+              height={24}
+              className="block mr-[4px]"
+            />
+          </button>
+          <button
+            type="button"
+            aria-label="next"
+            onClick={next}
+            className="cursor-pointer absolute right-9 top-1/2 -translate-y-1/2 w-13 h-13 min-w-13 min-h-13 rounded-full bg-black/20 text-gray-900 flex items-center justify-center"
+          >
+            <Image
+              src="/projects/icons/ArrowRight.svg"
+              alt="next"
+              width={14}
+              height={24}
+              className="block ml-[4px]"
+            />
+          </button>
+        </div>
+        <div className="px-[108px] pt-6 pb-10">
           <p className="text-title-7 font-bold text-gray-900">{current.title}</p>
           <p className="mt-2 text-body-6 text-gray-700 leading-relaxed">{current.description}</p>
         </div>
-        <button
-          type="button"
-          aria-label="previous"
-          onClick={prev}
-          className="cursor-pointer absolute left-9 top-1/2 -translate-y-1/2 w-13 h-13 min-w-13 min-h-13 rounded-full bg-black/20 text-gray-900 flex items-center justify-center"
-        >
-          <Image
-            src="/projects/icons/ArrowLeft.svg"
-            alt="prev"
-            width={14}
-            height={24}
-            className="block mr-[4px]"
-          />
-        </button>
-        <button
-          type="button"
-          aria-label="next"
-          onClick={next}
-          className="cursor-pointer absolute right-9 top-1/2 -translate-y-1/2 w-13 h-13 min-w-13 min-h-13 rounded-full bg-black/20 text-gray-900 flex items-center justify-center"
-        >
-          <Image
-            src="/projects/icons/ArrowRight.svg"
-            alt="next"
-            width={14}
-            height={24}
-            className="block ml-[4px]"
-          />
-        </button>
       </motion.div>
       <div className="mt-[20px] flex items-center justify-center gap-2">
         {items.map((_, i) => (
