@@ -114,7 +114,7 @@ export default function IntroSection() {
 
         <div className="absolute inset-x-0 top-[36%] z-10 flex -translate-y-1/2 flex-col items-center gap-[12px] px-4 font-[family-name:var(--font-outfit)] font-medium leading-none text-[#2f40ff] drop-shadow-[0_0_12.5px_rgba(143,124,255,0.15)] tablet:gap-[24px] desktop:gap-[min(1.82vw,59px)]">
           <p className="text-[clamp(28px,3.09vw,100px)]">KUSITMS 33rd</p>
-          <p className="whitespace-nowrap text-center text-[clamp(42px,5.86vw,190px)]">
+          <p className="whitespace-nowrap text-center text-[clamp(26px,8vw,34px)] tablet:text-[clamp(42px,5.86vw,190px)]">
             Want It One, One IT One
           </p>
         </div>
