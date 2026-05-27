@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: "https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/meetup/OG/456ed518-7489-4106-9d33-94c491ef358732__OG_.png",
+        url: "https://www.kusitms.com/og/kusitms-og-33rd.png",
 
         alt: "KUSITMS Recruit",
       },
@@ -35,9 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "KUSITMS | RECRUIT",
     description: "큐시즘과 함께할 새로운 기수를 모집합니다. 모집 일정과 지원 방법을 확인해보세요.",
-    images: [
-      "https://kusitms-bucket.s3.ap-northeast-2.amazonaws.com/meetup/OG/456ed518-7489-4106-9d33-94c491ef358732__OG_.png",
-    ],
+    images: ["https://www.kusitms.com/og/kusitms-og-33rd.png"],
   },
 };
 
