@@ -1,119 +1,132 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { MAIN_GRAPHIC_BLUR } from "@/constants/blurDataURL";
-import { useBreakpoint } from "@/hooks";
 
-const BACKGROUND_GRADIENT =
-  "radial-gradient(118.65% 100.42% at 0% 0%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(129deg, rgba(70, 136, 254, 0.00) 44.57%, rgba(70, 136, 254, 0.20) 100%), linear-gradient(104deg, #EAF9FF 23.85%, #99DEFF 100%), #FFF";
-const OUTFIT_FONT = "font-[family-name:var(--font-outfit)]";
-const OUTLINE_TEXT_BASE = `${OUTFIT_FONT} text-[#006AFF] leading-[100%] -tracking-[1.36px] font-medium`;
+const ASSET_MOTION = {
+  duration: 7,
+  repeat: Infinity,
+  ease: "easeInOut" as const,
+};
+
+const FLOAT_Y = [0, -12, 0];
 
 export default function IntroSection() {
-  const { isMobile } = useBreakpoint();
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div
-      className="relative w-full h-[400px] tablet:h-[808px] desktop:mt-[74px] overflow-hidden"
-      style={{ background: BACKGROUND_GRADIENT }}
+    <section
+      className="relative w-full desktop:mt-[74px] overflow-hidden bg-[#d9e7ff]"
+      aria-label="KUSITMS 33rd Want It One, One IT One banner"
     >
-      {/* 모바일 텍스트 레이아웃 */}
-      {isMobile === true && (
-        <div className="relative z-10 flex flex-col items-center justify-center h-full">
-          <div className="flex flex-col px-9">
-            <motion.div
-              initial={{ y: -50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 2, ease: "easeInOut" }}
-              className="flex flex-col gap-1 mt-8"
-            >
-              <p className={`${OUTLINE_TEXT_BASE} text-[18px]`}>KUSITMS 32nd</p>
-              <div className="flex items-center gap-x-2">
-                <p className={`${OUTLINE_TEXT_BASE} text-[28px]`}>More it, MORE IT</p>
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                >
-                  <Image src="/main/Snow.svg" alt="Snow" width={20} height={20} />
-                </motion.div>
-              </div>
-            </motion.div>
-            <motion.p
-              initial={{ y: -50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 2, ease: "easeInOut" }}
-              className="text-body-8 text-[#006AFF] pt-6"
-            >
-              Korean University Students
-              <br />
-              It, Management Society
-            </motion.p>
-          </div>
-        </div>
-      )}
+      <motion.div
+        className="relative h-[260px] tablet:h-[420px] desktop:h-[min(41.67vw,720px)] min-[1728px]:h-[720px] overflow-hidden"
+        style={{
+          backgroundImage:
+            "linear-gradient(69deg, #ffffff 8.7%, #e3e5ff 19.3%, #ffffff 55.3%, #91a9ca 106.9%)",
+        }}
+        initial={shouldReduceMotion ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 0.9,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
+        <Image
+          src="/main/img/banner/layers/wave-line.svg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-70 mix-blend-overlay"
+        />
 
-      {/* 태블릿/데스크탑 텍스트 레이아웃 */}
-      {isMobile === false && (
-        <>
-          <motion.p
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeInOut" }}
-            className="absolute z-10 top-[72px] right-[75px] text-body-6 text-[#0077FF] text-right"
-          >
+        <motion.div
+          aria-hidden="true"
+          className="absolute left-[-3%] top-[-18%] w-[34%] min-w-[220px] max-w-[650px]"
+          animate={shouldReduceMotion ? undefined : { y: FLOAT_Y, rotate: [-2, 1.5, -2] }}
+          transition={{ ...ASSET_MOTION, delay: 0.2 }}
+        >
+          <Image
+            src="/main/img/banner/layers/glass-left.png"
+            alt=""
+            width={980}
+            height={1116}
+            priority
+            className="h-auto w-full"
+          />
+        </motion.div>
+
+        <motion.div
+          aria-hidden="true"
+          className="absolute left-[2%] bottom-0 w-[28%] min-w-[170px] max-w-[500px]"
+          animate={shouldReduceMotion ? undefined : { y: [0, -10, 0], x: [0, -6, 0] }}
+          transition={{ ...ASSET_MOTION, duration: 8.5, delay: 0.8 }}
+        >
+          <Image
+            src="/main/img/banner/layers/glass-left-blur.png"
+            alt=""
+            width={1000}
+            height={693}
+            className="h-auto w-full"
+          />
+        </motion.div>
+
+        <motion.div
+          aria-hidden="true"
+          className="absolute right-[-8%] bottom-[-20%] w-[34%] min-w-[260px] max-w-[700px]"
+          animate={shouldReduceMotion ? undefined : { y: [0, -16, 0], rotate: [0, -1.4, 0] }}
+          transition={{ ...ASSET_MOTION, duration: 7.8, delay: 0.4 }}
+        >
+          <Image
+            src="/main/img/banner/layers/glass-right.png"
+            alt=""
+            width={994}
+            height={983}
+            priority
+            className="h-auto w-full"
+          />
+        </motion.div>
+
+        <motion.div
+          aria-hidden="true"
+          className="absolute right-[-1%] top-[-6%] w-[22%] min-w-[170px] max-w-[420px]"
+          animate={shouldReduceMotion ? undefined : { y: [0, 12, 0], rotate: [0, 2.2, 0] }}
+          transition={{ ...ASSET_MOTION, duration: 8.2, delay: 1 }}
+        >
+          <Image
+            src="/main/img/banner/layers/glass-top-right.png"
+            alt=""
+            width={612}
+            height={430}
+            className="h-auto w-full"
+          />
+        </motion.div>
+
+        <div className="absolute inset-x-0 top-[7%] hidden grid-cols-3 px-[12%] font-[family-name:var(--font-outfit)] text-[10px] font-medium uppercase leading-[1.4] text-[#2f40ff] tablet:grid desktop:text-[clamp(11px,0.86vw,28px)]">
+          <p className="text-center">Planner, Designer, Developer</p>
+          <p className="text-center capitalize">33rd Concept</p>
+          <p className="text-center">
             Korean University Students
             <br />
             It, Management Society
-          </motion.p>
-          <motion.div
-            className="absolute z-10 top-[72px] left-[84px] space-y-4"
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeInOut" }}
-          >
-            <div>
-              <p className={`${OUTLINE_TEXT_BASE} text-[42px]`}>KUSITMS 32nd</p>
-              <div className="flex items-center gap-x-6">
-                <p className={`${OUTLINE_TEXT_BASE} text-[68px]`}>More it, MORE IT</p>
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                >
-                  <Image src="/main/Snow.svg" alt="Snow" width={54} height={59} />
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </>
-      )}
+          </p>
+        </div>
 
-      {/* 배경 이미지 - Hydration 완료 전에는 렌더링하지 않거나 기본값 유지 */}
-      {isMobile !== null && (
-        <motion.div
-          className="absolute inset-0 z-0"
-          initial={{ y: -30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 2.2, ease: "easeOut" }}
-        >
-          <motion.div
-            className="absolute inset-0"
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: 3, ease: "easeInOut", delay: 2.2 }}
-          >
-            <div className="absolute inset-0 max-[767px]:top-[-60px] max-[767px]:bottom-0 tablet:inset-0">
-              <Image
-                src="/main/img/Main_Graphic.webp"
-                alt="Main Graphic"
-                fill
-                sizes={isMobile ? "100vw" : "(max-width: 1200px) 1200px, 3840px"}
-                placeholder="blur"
-                blurDataURL={MAIN_GRAPHIC_BLUR}
-                className="object-cover max-[767px]:translate-y-[60px] max-[767px]:object-[60%_120%] tablet:translate-y-0 tablet:object-center"
-              />
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </div>
+        <div className="absolute inset-x-0 top-[36%] z-10 flex -translate-y-1/2 flex-col items-center gap-[12px] px-4 font-[family-name:var(--font-outfit)] font-medium leading-none text-[#2f40ff] drop-shadow-[0_0_12.5px_rgba(143,124,255,0.15)] tablet:gap-[24px] desktop:gap-[min(1.82vw,59px)]">
+          <p className="text-[clamp(28px,3.09vw,100px)]">KUSITMS 33rd</p>
+          <p className="whitespace-nowrap text-center text-[clamp(42px,5.86vw,190px)]">
+            Want It One, One IT One
+          </p>
+        </div>
+
+        <Image
+          src="/main/img/banner/layers/kusitms-logo.svg"
+          alt="KUSITMS"
+          width={305}
+          height={56}
+          className="absolute bottom-[5.5%] left-1/2 z-10 h-auto w-[96px] -translate-x-1/2 tablet:w-[126px] desktop:w-[min(9.4vw,152px)]"
+        />
+      </motion.div>
+    </section>
   );
 }

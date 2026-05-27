@@ -95,7 +95,7 @@ export function DesktopTeamCard({
             scale: active ? 1.5 : 1,
             x: active ? 10 : 0,
             y: active ? 10 : 0,
-            opacity: 1,
+            opacity: active ? 0.14 : 0.2,
           }}
           transition={{ type: "spring", stiffness: 260, damping: 18 }}
         >
@@ -206,7 +206,7 @@ export function MobileTeamCard({
           className="absolute top-0 left-0"
           animate={{
             scale: isExpanded ? 1.2 : 1,
-            opacity: isExpanded ? 0.3 : 1,
+            opacity: isExpanded ? 0.12 : 0.2,
           }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
@@ -331,7 +331,7 @@ export function TabletTeamCard({
           className="absolute top-0 left-0"
           animate={{
             scale: isExpanded ? 1.2 : 1,
-            opacity: isExpanded ? 0.3 : 1,
+            opacity: isExpanded ? 0.12 : 0.2,
           }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
