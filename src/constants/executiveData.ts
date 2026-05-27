@@ -7,7 +7,7 @@ export type ExecutiveItem = {
 export const EXECUTIVE_DATA: ExecutiveItem[] = [
   {
     image: "/main/img/manage/Manage1.webp",
-    title: "32기 운영진",
+    title: "33기 운영진",
     description:
       "큐시즘을 이끄는 든든한 힘! 학부학부터 교육기획팀, 경영총괄팀, 대외홍보팀까지 각 운영팀의 역할과 업무를 소개합니다.",
   },

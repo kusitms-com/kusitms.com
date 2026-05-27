@@ -145,9 +145,10 @@ function DesktopExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
           width={944}
           height={571}
         />
-        <div className="absolute inset-x-0 bottom-0 px-[108px] pb-[50px]">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[46%] rounded-b-[16px] bg-gradient-to-t from-white/95 via-white/80 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 px-[108px] pb-[50px] drop-shadow-[0_1px_8px_rgba(255,255,255,0.85)]">
           <p className="text-title-7 font-bold text-gray-900">{current.title}</p>
-          <p className="mt-2 text-body-6 text-gray-600 leading-relaxed">{current.description}</p>
+          <p className="mt-2 text-body-6 text-gray-700 leading-relaxed">{current.description}</p>
         </div>
         <button
           type="button"
