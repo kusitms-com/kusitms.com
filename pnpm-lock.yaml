@@ -12,11 +12,11 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0(react@19.1.0)
       '@kusitms.com/tokens':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.2.0
+        version: 0.2.0
       '@kusitms.com/ui':
-        specifier: ^0.1.0
-        version: 0.1.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^0.2.0
+        version: 0.2.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@next/third-parties':
         specifier: ^16.0.1
         version: 16.0.1(next@16.0.7(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
@@ -348,11 +348,11 @@ packages:
     peerDependencies:
       react: ^19.0.0
 
-  '@kusitms.com/tokens@0.1.0':
-    resolution: {integrity: sha512-wnegma1ujsWzTLjhGItXFQVIIxfCjYTze4MNtL5c89rvcsC5QUrMk0qa7LSU2G117LuV+Yow+Ig37J+CJCQqBw==}
+  '@kusitms.com/tokens@0.2.0':
+    resolution: {integrity: sha512-9I8Gw8FXdK5I49UMg7GakOFIqLRt50XabY5L8TGcwqywdCPivk1b0x1e2OrowLj8wGKS0ktGN8KDxUoLOe5RAg==}
 
-  '@kusitms.com/ui@0.1.0':
-    resolution: {integrity: sha512-iLzHJo4u9liLTIysgKbQF6f7JsZuqfdxVL6Fzmu/KbYU8uD8UGQQ3ibDTkrCekef4aaf6Ekh/4diqtX7BnUi/w==}
+  '@kusitms.com/ui@0.2.0':
+    resolution: {integrity: sha512-39iUIjhUsvZYO6c8DCtAzrrOocidgbGOF84l4VgZR+aWfzzwSMUM8Lwp78Djyx0ynYSMA912CcT/kOYWjNRYTg==}
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
@@ -1372,10 +1372,12 @@ snapshots:
     dependencies:
       react: 19.1.0
 
-  '@kusitms.com/tokens@0.1.0': {}
+  '@kusitms.com/tokens@0.2.0': {}
 
-  '@kusitms.com/ui@0.1.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@kusitms.com/ui@0.2.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
+      '@kusitms.com/icons': 0.1.0(react@19.1.0)
+      '@kusitms.com/tokens': 0.2.0
       '@radix-ui/react-accordion': 1.2.12(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-select': 2.2.6(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react: 19.1.0
