@@ -33,21 +33,13 @@ export default function RecruitQnA() {
             <Accordion.Item
               key={item.question}
               value={item.question}
-              question={
-                <p className="flex gap-x-2 text-black text-body-6 desktop:text-body-2 items-baseline">
-                  <span className="text-dark-blue-500 text-body-1 desktop:text-title-7">Q.</span>
-                  {item.question}
-                </p>
-              }
+              question={item.question}
               answer={
-                <div className="flex gap-x-2 text-body-6 desktop:text-body-2 items-baseline">
-                  <span className="text-dark-blue-300 text-body-1 desktop:text-title-7">A.</span>
-                  <div className="text-gray-700">
-                    {item.answer.map((line, idx) => (
-                      <p key={idx}>{line}</p>
-                    ))}
-                  </div>
-                </div>
+                <>
+                  {item.answer.map((line, idx) => (
+                    <p key={idx}>{line}</p>
+                  ))}
+                </>
               }
             />
           ))}
