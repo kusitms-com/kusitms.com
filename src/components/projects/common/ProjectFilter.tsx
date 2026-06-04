@@ -1,7 +1,7 @@
+import { Dropdown } from "@kusitms.com/ui";
 import { useMemo } from "react";
 import type { CorporateProjectItem, MeetupItem } from "@/service/projects";
 import { calculateProjectCounts } from "@/utils/projectCountUtils";
-import Dropdown from "./DropDown";
 
 interface ProjectFilterProps {
   cardinal: string;
@@ -24,9 +24,9 @@ export default function ProjectFilter({ cardinal, onChange, projectList }: Proje
         전체 프로젝트 <span className="text-dark-blue-600">{visibleCount}</span>개
       </p>
       <Dropdown
-        options={options}
-        selected={cardinal ? `${cardinal}기` : "모든 기수"}
-        onSelect={(value) => onChange(value === "모든 기수" ? "" : value.replace("기", ""))}
+        options={options.map((o) => ({ value: o, label: o }))}
+        value={cardinal ? `${cardinal}기` : "모든 기수"}
+        onValueChange={(value) => onChange(value === "모든 기수" ? "" : value.replace("기", ""))}
       />
     </div>
   );

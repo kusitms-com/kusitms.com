@@ -195,11 +195,27 @@ body {
   }
 }
 
+/* @kusitms.com/ui ShowcaseCard: grid cell에 맞게 고정 너비 오버라이드 */
+.project-card {
+  display: block;
+  width: 100%;
+}
+.project-card > div:first-child {
+  width: 100% !important;
+}
+
+/* @kusitms.com/ui Modal: mobile에서 items-start → items-center 오버라이드 */
+[aria-modal="true"] > div {
+  align-items: center;
+}
+
 .display-gradient {
   background: linear-gradient(180deg, #05f -28.5%, #151519 114.19%);
 }
 
 @theme {
+  --font-sans: var(--font-pretendard);
+
   --breakpoint-tablet: 768px;
   --breakpoint-desktop: 1024px;
   --breakpoint-wide: 1440px;

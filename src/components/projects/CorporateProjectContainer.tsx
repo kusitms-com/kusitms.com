@@ -1,8 +1,8 @@
 "use client";
 
+import { ShowcaseCard } from "@kusitms.com/ui";
 import { useState } from "react";
 import { type CorporateResponse, getCorporateProjects } from "@/service/projects";
-import Card from "./common/ProjectCard";
 import ProjectFilter from "./common/ProjectFilter";
 
 type ProjectContainerProps = CorporateResponse;
@@ -26,16 +26,18 @@ export default function CorporateProjectContainer({
         onChange={handleFilterChange}
         projectList={corporateProjectsList.corporateList}
       />
-      <div className="grid tablet:grid-cols-3 grid-cols-1 gap-5 gap-x-[22px] justify-items-center">
+      <div className="grid grid-cols-1 tablet:grid-cols-3 gap-5 gap-x-[22px]">
         {projects.corporateList.map((project) => (
-          <Card key={project.corporate_id}>
-            <Card.Poster src={project.banner_url.trim()} />
-            <Card.Info>
-              <Card.Cardinal cardinal={project.cardinal} />
-              <Card.ProjectName>{project.name}</Card.ProjectName>
-              <Card.ContentIntro>{project.content}</Card.ContentIntro>
-            </Card.Info>
-          </Card>
+          <div key={project.corporate_id} className="project-card">
+            <ShowcaseCard
+              name={project.name}
+              description={project.content}
+              th={project.cardinal}
+              isMeetup={false}
+              type="WEB"
+              imageUrl={project.banner_url.trim()}
+            />
+          </div>
         ))}
       </div>
     </div>

@@ -1,10 +1,7 @@
-import ProjectModalShell from "@/components/projectDetail/ProjectModalShell";
-import ProjectNavigation from "@/components/projectDetail/ProjectNavigation";
+import ProjectModal from "@/components/projectDetail/ProjectModal";
 import NavButtons from "@/components/projects/common/NavButtons";
 import ProjectTypeBanner from "@/components/projects/common/ProjectTypeBanner";
 import ProjectContainer from "@/components/projects/MeetupProjectContainer";
-import OldProjectSection from "@/components/projects/OldProjectSection";
-import RecentProjectSection from "@/components/projects/RecentProjectSection";
 import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
 import { getAdjacentMeetupIds } from "@/utils";
 
@@ -33,8 +30,6 @@ async function ProjectDetailPage({
   const { data: project } = await getMeetupProjectDetail(projectNumber);
   const projectList = await getMeetupProjects("", "");
 
-  const recentIdList = [47, 50, 51, 53, 48, 55, 52, 49, 54];
-
   const { prevId, nextId } = getAdjacentMeetupIds(projectList.data.meetup_list, projectNumber);
 
   return (
@@ -55,15 +50,7 @@ async function ProjectDetailPage({
         />
         <ProjectContainer data={projectList.data} />
       </section>
-
-      <ProjectModalShell>
-        <ProjectNavigation prevId={prevId} nextId={nextId} />
-        {recentIdList.includes(parseInt(projectNumber, 10)) ? (
-          <RecentProjectSection project={project} />
-        ) : (
-          <OldProjectSection project={project} />
-        )}
-      </ProjectModalShell>
+      <ProjectModal project={project} prevId={prevId} nextId={nextId} />
     </>
   );
 }
