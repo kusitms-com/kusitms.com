@@ -199,6 +199,10 @@ body {
 .project-card {
   display: block;
   width: 100%;
+  transition: transform 0.2s ease;
+}
+.project-card:hover {
+  transform: scale(1.02);
 }
 .project-card > div:first-child {
   width: 100% !important;

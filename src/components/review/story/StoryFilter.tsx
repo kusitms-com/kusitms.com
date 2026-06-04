@@ -43,7 +43,7 @@ export default function StoryFilter({
     Object.entries(options).find(([, v]) => v === value)?.[0] || Object.keys(options)[0];
 
   return (
-    <div className="flex tablet:flex-row flex-col justify-between">
+    <div className="flex tablet:flex-row flex-col justify-between items-start">
       <p className="tablet:text-title-7 text-body-3 text-gray-700 tablet:pb-[39px] pb-[12px]">
         전체 게시글 <span className="text-dark-blue-600">{totalCount}</span>개
       </p>

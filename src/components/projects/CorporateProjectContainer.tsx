@@ -28,7 +28,7 @@ export default function CorporateProjectContainer({
       />
       <div className="grid grid-cols-1 tablet:grid-cols-3 gap-5 gap-x-[22px]">
         {projects.corporateList.map((project) => (
-          <div key={project.corporate_id} className="project-card">
+          <div key={project.corporate_id} className="project-card cursor-pointer">
             <ShowcaseCard
               name={project.name}
               description={project.content}

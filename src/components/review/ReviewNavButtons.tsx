@@ -13,7 +13,7 @@ export default function ReviewNavButtons() {
   const router = useRouter();
 
   return (
-    <NavigationTab className="tablet:px-10 px-4 pt-5 tablet:pb-15 pb-9">
+    <NavigationTab className="tablet:px-10 px-4 tablet:pb-15 pb-7">
       {NAV_ITEMS.map((item) => (
         <NavigationTabItem
           key={item.href}

@@ -14,7 +14,7 @@ export default function NavButtons() {
   const currentPath = pathname ? pathname.slice(10) : "";
 
   return (
-    <NavigationTab className="tablet:px-10 px-4 pt-2 pb-10">
+    <NavigationTab className="tablet:px-10 px-4 pb-8">
       {NAV_ITEMS.map((item) => (
         <NavigationTabItem
           key={item.path}
