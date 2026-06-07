@@ -34,6 +34,7 @@ export default function ProjectContainer({ data: meetupProjectList }: ProjectCon
             href={`/projects/meetup/${project.meetup_id}`}
             key={project.meetup_id}
             prefetch={false}
+            scroll={false}
             className="project-card"
             onMouseEnter={() => {
               router.prefetch(`/projects/meetup/${project.meetup_id}`);

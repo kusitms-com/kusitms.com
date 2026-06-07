@@ -46,8 +46,8 @@ export default function ProjectModal({
     <Modal
       isOpen={true}
       onClose={() => router.back()}
-      onPrev={prevId ? () => router.replace(`${domain}/${prevId}`) : undefined}
-      onNext={nextId ? () => router.replace(`${domain}/${nextId}`) : undefined}
+      onPrev={prevId ? () => router.replace(`${domain}/${prevId}`, { scroll: false }) : undefined}
+      onNext={nextId ? () => router.replace(`${domain}/${nextId}`, { scroll: false }) : undefined}
       name={project.name}
       th={project.cardinal}
       type={project.type as "WEB" | "APP"}
