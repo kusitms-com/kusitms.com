@@ -1,5 +1,5 @@
-import { RecruitmentCard } from "@kusitms.com/ui";
 import { BookGraphic, CalendarGraphic, TrophyGraphic } from "@kusitms.com/icons";
+import { RecruitmentCard } from "@kusitms.com/ui";
 
 const recruitItems = [
   {

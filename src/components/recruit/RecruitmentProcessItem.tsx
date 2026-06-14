@@ -1,5 +1,5 @@
-import { Button, RecruitmentCard } from "@kusitms.com/ui";
 import { ChatGraphic, FileGraphic, MedalGraphic, PeopleGraphic } from "@kusitms.com/icons";
+import { Button, RecruitmentCard } from "@kusitms.com/ui";
 
 const recruitmentProcess = [
   {

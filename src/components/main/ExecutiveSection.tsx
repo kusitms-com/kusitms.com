@@ -1,8 +1,8 @@
 "use client";
+import { PageNavButton } from "@kusitms.com/ui";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useState } from "react";
-import { PageNavButton } from "@kusitms.com/ui";
 import { EXECUTIVE_DATA, type ExecutiveItem } from "@/constants/executiveData";
 
 function MobileExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {

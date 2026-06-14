@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { EmailInput } from "@kusitms.com/ui";
+import { useState } from "react";
 import { postEmail } from "@/service/recruit/postEmail";
 
 const MailInput = () => {
@@ -30,6 +30,7 @@ const MailInput = () => {
     <EmailInput
       value={email}
       onChange={setEmail}
+      // biome-ignore lint/suspicious/noExplicitAny: DS EmailInput의 onSubmit이 InputHTMLAttributes와 교차 타입 충돌
       onSubmit={handleSubmit as any}
       validate={() => true}
       placeholder="메일을 입력해주세요"

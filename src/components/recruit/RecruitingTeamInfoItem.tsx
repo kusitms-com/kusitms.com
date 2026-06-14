@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { FilterItem, List, NavigationFilter } from "@kusitms.com/ui";
+import { useState } from "react";
 import { recruitInfoItems } from "@/constants/recruitData";
 
 export default function RecruitingTeamInfoItem() {

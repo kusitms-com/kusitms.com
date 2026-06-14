@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { Accordion, FilterItem, NavigationFilter } from "@kusitms.com/ui";
+import { useState } from "react";
 import { categories, qnaList } from "@/constants/recruitData";
 
 export default function RecruitQnA() {
@@ -22,11 +22,7 @@ export default function RecruitQnA() {
         ))}
       </NavigationFilter>
       {/* QnA 정보 */}
-      <Accordion
-        type="single"
-        collapsible
-        className="flex flex-col gap-[12px] desktop:gap-[20px]"
-      >
+      <Accordion type="single" collapsible className="flex flex-col gap-[12px] desktop:gap-[20px]">
         {qnaList
           .filter((item) => selectedField === "전체" || item.field === selectedField)
           .map((item) => (
@@ -34,13 +30,7 @@ export default function RecruitQnA() {
               key={item.question}
               value={item.question}
               question={item.question}
-              answer={
-                <>
-                  {item.answer.map((line, idx) => (
-                    <p key={idx}>{line}</p>
-                  ))}
-                </>
-              }
+              answer={item.answer.map((line, idx) => <p key={idx}>{line}</p>)}
             />
           ))}
       </Accordion>
