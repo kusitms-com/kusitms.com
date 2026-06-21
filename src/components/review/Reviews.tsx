@@ -1,8 +1,8 @@
 "use client";
 
+import { ReviewCard } from "@kusitms.com/ui";
 import { useState } from "react";
 import { getReviews, type ReviewResponse } from "@/service/reviews";
-import ReviewBox from "./ReviewBox";
 import ReviewFilter from "./ReviewFilter";
 
 interface ReviewsProps {
@@ -41,8 +41,11 @@ export default function Reviews({ reviews }: ReviewsProps) {
       />
       <section className="desktop:columns-3 tablet:columns-2 columns-1 gap-4 tablet:mb-[160px] mb-[80px] tablet:px-10 px-4 mx-auto">
         {reviewItems.map((review) => (
-          <div key={review.review_id} className="break-inside-avoid tablet:mb-4 mb-3">
-            <ReviewBox {...review} />
+          <div
+            key={review.review_id}
+            className="w-full break-inside-avoid tablet:mb-4 mb-3 [&>div]:w-full"
+          >
+            <ReviewCard name={review.name} part={review.team} body={review.review} />
           </div>
         ))}
       </section>

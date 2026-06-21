@@ -1,11 +1,10 @@
 "use client";
 
+import { Blog, Pagination } from "@kusitms.com/ui";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { getStories, type StoriesData, type StoriesParams } from "@/service/reviews/getStories";
-import Pagination from "./Pagination";
-import StoryCard from "./StoryCard";
 import StoryFilter from "./StoryFilter";
 
 type StoriesContainerProps = {
@@ -70,24 +69,16 @@ export default function Stories({ initialData }: StoriesContainerProps) {
                   router.prefetch(story.address);
                 }}
               >
-                <StoryCard>
-                  <StoryCard.Thumbnail
-                    src={
-                      story.imageAddress?.trim()
-                        ? story.imageAddress.trim()
-                        : "/reviews/null_image.webp"
-                    }
-                  />
-                  <StoryCard.Info>
-                    <StoryCard.Title>{story.title}</StoryCard.Title>
-                    <StoryCard.Content>{story.content}</StoryCard.Content>
-                    <StoryCard.TagContainer>
-                      <StoryCard.Tag>{story.categoryName}</StoryCard.Tag>
-                      <StoryCard.Tag>{story.cardinal}기</StoryCard.Tag>
-                      <StoryCard.Tag>{story.position}</StoryCard.Tag>
-                    </StoryCard.TagContainer>
-                  </StoryCard.Info>
-                </StoryCard>
+                <Blog
+                  imageUrl={
+                    story.imageAddress?.trim()
+                      ? story.imageAddress.trim()
+                      : "/reviews/null_image.webp"
+                  }
+                  title={story.title}
+                  content={story.content}
+                  labels={[story.categoryName, `${story.cardinal}기`, story.position]}
+                />
               </Link>
             ))
           ) : (

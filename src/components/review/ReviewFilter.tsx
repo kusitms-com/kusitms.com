@@ -1,7 +1,7 @@
 "use client";
 
+import { Dropdown } from "@kusitms.com/ui";
 import { useMemo } from "react";
-import Dropdown from "../projects/common/DropDown";
 
 interface ReviewFilterProps {
   team: string;
@@ -41,9 +41,9 @@ export default function ReviewFilter({ team, cardinal, totalCount, onChange }: R
       </p>
       <div className="flex gap-[12px]">
         <Dropdown
-          options={cardinalOptions}
-          selected={getSelectedLabel(cardinal, CARDINALS)}
-          onSelect={(value) =>
+          options={cardinalOptions.map((o) => ({ value: o, label: o }))}
+          value={getSelectedLabel(cardinal, CARDINALS)}
+          onValueChange={(value) =>
             onChange({
               team,
               cardinal: CARDINALS[value as keyof typeof CARDINALS],
@@ -51,9 +51,9 @@ export default function ReviewFilter({ team, cardinal, totalCount, onChange }: R
           }
         />
         <Dropdown
-          options={teamOptions}
-          selected={getSelectedLabel(team, TEAMS)}
-          onSelect={(value) =>
+          options={teamOptions.map((o) => ({ value: o, label: o }))}
+          value={getSelectedLabel(team, TEAMS)}
+          onValueChange={(value) =>
             onChange({
               team: TEAMS[value as keyof typeof TEAMS],
               cardinal,
