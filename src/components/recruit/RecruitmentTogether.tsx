@@ -1,4 +1,4 @@
-import LinkButton from "../shared/LinkButton";
+import { Button } from "@kusitms.com/ui";
 import MailInput from "./MailInput";
 
 const RecruitmentTogether = () => {
@@ -19,11 +19,13 @@ const RecruitmentTogether = () => {
             <p>멋진 아이디어를 실현하고, 놀라운 결과를 만들어내요.</p>
             <p>함께 큐밀리가 되시겠어요?</p>
           </span>
-          {/* TODO: 실제 지원 링크로 이동 */}
-          <LinkButton
-            title="지원하기"
-            link="https://www.recruit-withus.co.kr/%ED%95%9C%EA%B5%AD%EB%8C%80%ED%95%99%EC%83%9DIT%EA%B2%BD%EC%98%81%ED%95%99%ED%9A%8C-KUSITMS/fIdzmzwic"
-          />
+          <a
+            href="https://www.recruit-withus.co.kr/%ED%95%9C%EA%B5%AD%EB%8C%80%ED%95%99%EC%83%9DIT%EA%B2%BD%EC%98%81%ED%95%99%ED%9A%8C-KUSITMS/fIdzmzwic"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button>지원하기</Button>
+          </a>
         </>
       ) : (
         <>
