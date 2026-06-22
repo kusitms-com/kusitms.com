@@ -86,11 +86,13 @@ export default function Stories({ initialData }: StoriesContainerProps) {
           )}
         </div>
         {storiesData.totalPages > 0 && (
-          <Pagination
-            currentPage={currentPage + 1}
-            totalPages={storiesData.totalPages}
-            onPageChange={handlePageChange}
-          />
+          <div className="flex justify-center">
+            <Pagination
+              currentPage={currentPage + 1}
+              totalPages={storiesData.totalPages}
+              onPageChange={handlePageChange}
+            />
+          </div>
         )}
       </div>
     </>
