@@ -117,7 +117,7 @@ export default function MeetupProjectCarousel({
       {archiveMode && (
         <div className="desktop:mt-[160px] mt-[80px] items-center flex flex-col w-full gap-4">
           <p className="text-title-7 desktop:text-title-5 text-gray-900 font-bold">
-            32기 큐시즘 전시회
+            33기 큐시즘 전시회
           </p>
           <p className="text-body-8 desktop:text-body-4 text-gray-500 text-center">
             큐밀리들의 두 달간의 여정,&nbsp;
