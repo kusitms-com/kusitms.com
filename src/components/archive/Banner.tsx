@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useBreakpoint } from "@/hooks";
 
-const ARCHIVE_BANNER_SRC = "/projects/archive/KusitmsExhibitionBanner.png";
+const ARCHIVE_BANNER_SRC = "/projects/archive/KusitmsExhibitionBanner.webp";
 
 export default function Banner() {
   const { isDesktop } = useBreakpoint();
