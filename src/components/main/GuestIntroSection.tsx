@@ -37,13 +37,7 @@ export default function GuestIntroSection() {
         >
           <div className="grid grid-cols-1 tablet:grid-cols-3 desktop:grid-cols-4 gap-x-6 gap-y-8 place-items-center">
             {GUEST_DATA.map((guest, idx) => (
-              <div
-                key={idx}
-                className={
-                  `flex flex-col items-center ` +
-                  (idx === 4 ? "desktop:col-start-2" : idx === 5 ? "desktop:col-start-3" : "")
-                }
-              >
+              <div key={idx} className="flex flex-col items-center">
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
