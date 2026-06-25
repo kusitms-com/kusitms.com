@@ -15,8 +15,8 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0
       '@kusitms.com/ui':
-        specifier: ^0.2.0
-        version: 0.2.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: 0.2.2
+        version: 0.2.2(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@next/third-parties':
         specifier: ^16.0.1
         version: 16.0.1(next@16.0.7(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
@@ -351,8 +351,8 @@ packages:
   '@kusitms.com/tokens@0.2.0':
     resolution: {integrity: sha512-9I8Gw8FXdK5I49UMg7GakOFIqLRt50XabY5L8TGcwqywdCPivk1b0x1e2OrowLj8wGKS0ktGN8KDxUoLOe5RAg==}
 
-  '@kusitms.com/ui@0.2.0':
-    resolution: {integrity: sha512-39iUIjhUsvZYO6c8DCtAzrrOocidgbGOF84l4VgZR+aWfzzwSMUM8Lwp78Djyx0ynYSMA912CcT/kOYWjNRYTg==}
+  '@kusitms.com/ui@0.2.2':
+    resolution: {integrity: sha512-hIpTKxSV5ETSESZcuBj26RbCm0RyKPv/tlx5cguJqh2EjwmKJkml4MdtIUi6ICzRqzNCI43p+oWX9lLnu1TvKQ==}
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
@@ -1374,7 +1374,7 @@ snapshots:
 
   '@kusitms.com/tokens@0.2.0': {}
 
-  '@kusitms.com/ui@0.2.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@kusitms.com/ui@0.2.2(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@kusitms.com/icons': 0.1.0(react@19.1.0)
       '@kusitms.com/tokens': 0.2.0
