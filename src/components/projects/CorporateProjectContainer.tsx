@@ -26,7 +26,7 @@ export default function CorporateProjectContainer({
         onChange={handleFilterChange}
         projectList={corporateProjectsList.corporateList}
       />
-      <div className="grid grid-cols-1 tablet:grid-cols-3 gap-5 gap-x-[22px]">
+      <div className="grid grid-cols-1 tablet:grid-cols-3 gap-5 gap-x-[22px] [&_.project-card>div]:!w-full [&_.project-card>div]:!max-w-full">
         {projects.corporateList.map((project) => (
           <div key={project.corporate_id} className="project-card cursor-pointer">
             <ShowcaseCard

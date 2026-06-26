@@ -208,9 +208,9 @@ body {
   width: 100% !important;
 }
 
-/* @kusitms.com/ui Modal: mobile에서 items-start → items-center 오버라이드 */
-[aria-modal="true"] > div {
-  align-items: center;
+/* @kusitms.com/ui Modal: mobile에서도 dialog를 화면 중앙에 배치 */
+[aria-modal="true"] > div:nth-of-type(2) {
+  align-items: center !important;
 }
 
 .display-gradient {

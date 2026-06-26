@@ -28,7 +28,7 @@ export default function ProjectContainer({ data: meetupProjectList }: ProjectCon
         onChange={handleFilterChange}
         projectList={meetupProjectList.meetup_list}
       />
-      <div className="grid grid-cols-1 tablet:grid-cols-3 gap-5 gap-x-[22px]">
+      <div className="grid grid-cols-1 tablet:grid-cols-3 gap-5 gap-x-[22px] [&_.project-card>div]:!w-full [&_.project-card>div]:!max-w-full">
         {projects.meetup_list.map((project) => (
           <Link
             href={`/projects/meetup/${project.meetup_id}`}
