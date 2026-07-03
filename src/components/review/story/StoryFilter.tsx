@@ -35,7 +35,7 @@ export default function StoryFilter({
   onChange,
 }: StoryFilterProps) {
   const genOptions = useMemo(
-    () => ["모든 기수", ...Array.from({ length: 7 }, (_, i) => `${31 - i}기`)],
+    () => ["모든 기수", ...Array.from({ length: 7 }, (_, i) => `${33 - i}기`)],
     [],
   );
 
