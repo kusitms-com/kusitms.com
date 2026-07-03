@@ -2,40 +2,52 @@
 
 import { EmailInput } from "@kusitms.com/ui";
 import { useState } from "react";
+import { useToast } from "@/hooks";
 import { postEmail } from "@/service/recruit/postEmail";
 
 const MailInput = () => {
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { showToast, Toast } = useToast();
 
   const handleSubmit = async (value: string) => {
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
     try {
       await postEmail(value);
-      alert("알림 신청이 완료되었습니다!");
+      showToast({ message: "알림 신청이 완료되었습니다!" });
       setEmail("");
     } catch (error) {
       if (error instanceof Error && error.message) {
         try {
           const parsed = JSON.parse(error.message);
           if (parsed?.message) {
-            alert(parsed.message);
+            showToast({ message: parsed.message, type: "error" });
             return;
           }
         } catch {}
       }
-      alert("알림 신청에 실패했습니다. 다시 시도해주세요.");
+      showToast({ message: "알림 신청에 실패했습니다. 다시 시도해주세요.", type: "error" });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <EmailInput
-      value={email}
-      onChange={setEmail}
-      // biome-ignore lint/suspicious/noExplicitAny: DS EmailInput의 onSubmit이 InputHTMLAttributes와 교차 타입 충돌
-      onSubmit={handleSubmit as any}
-      validate={() => true}
-      placeholder="메일을 입력해주세요"
-      buttonLabel="알림 받기"
-    />
+    <>
+      <EmailInput
+        value={email}
+        onChange={setEmail}
+        // biome-ignore lint/suspicious/noExplicitAny: DS EmailInput의 onSubmit이 InputHTMLAttributes와 교차 타입 충돌
+        onSubmit={handleSubmit as any}
+        validate={() => true}
+        placeholder="메일을 입력해주세요"
+        buttonLabel={isSubmitting ? "신청 중" : "알림 받기"}
+        disabled={isSubmitting}
+      />
+      {Toast}
+    </>
   );
 };
 

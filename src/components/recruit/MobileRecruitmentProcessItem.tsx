@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 type Step = {
+  group: "신규 운영진" | "신규 학회원";
   title: string;
   date: string;
   bgColor: "white" | "#0055FF";
@@ -9,32 +10,58 @@ type Step = {
 
 const steps: Step[] = [
   {
+    group: "신규 운영진",
     title: "서류 지원 기간",
-    date: "7월 17일(목) ~ 7월 26일(토)\n자정 마감",
+    date: "7월 16일(목) ~ 7월 20일(월)",
     bgColor: "white",
     textColor: "#0055FF",
   },
   {
+    group: "신규 운영진",
     title: "서류 합격 발표",
-    date: "7월 29일(화)\n합격자/불합격자 전체 연락",
+    date: "7월 22일(수)\n합격자/불합격자 전체 연락",
     bgColor: "#0055FF",
     textColor: "white",
   },
   {
-    title: "면접 기간",
-    date: "8월 2일(토) ~ 8월 3일(일)\n서류 합격자 개별 안내",
+    group: "신규 운영진",
+    title: "신규 운영진 면접",
+    date: "7월 25일(토) ~ 7월 26일(일)\n서류 합격자 개별 안내",
     bgColor: "white",
     textColor: "#0055FF",
   },
   {
-    title: "최종 합격 발표",
-    date: "8월 0일()\n합격자/불합격자 전체 연락",
+    group: "신규 운영진",
+    title: "최종 결과 발표",
+    date: "7월 28일(화)\n합격자/불합격자 전체 연락",
     bgColor: "#0055FF",
     textColor: "white",
   },
   {
-    title: "32기 활동",
-    date: "8월 9일(토) ~ 12월 6일(토)",
+    group: "신규 학회원",
+    title: "서류 지원 기간",
+    date: "7월 25일(토) ~ 8월 1일(토) 23:59",
+    bgColor: "white",
+    textColor: "#0055FF",
+  },
+  {
+    group: "신규 학회원",
+    title: "서류 합격 발표",
+    date: "8월 4일(화)\n합격자/불합격자 전체 연락",
+    bgColor: "#0055FF",
+    textColor: "white",
+  },
+  {
+    group: "신규 학회원",
+    title: "면접 기간",
+    date: "8월 8일(토) ~ 8월 9일(일)\n서류 합격자 개별 안내",
+    bgColor: "white",
+    textColor: "#0055FF",
+  },
+  {
+    group: "신규 학회원",
+    title: "최종 합격 발표",
+    date: "8월 11일(화)",
     bgColor: "#0055FF",
     textColor: "white",
   },
@@ -78,44 +105,34 @@ const ArrowIcon = ({ rotate = 0, flip = false }: { rotate?: number; flip?: boole
 export default function MobileRecruitmentProcessItem() {
   return (
     <section className="relative block desktop:hidden flex flex-col items-center justify-center gap-y-[40px]">
-      {/* 1st row */}
-      <div className="flex relative gap-x-[45px]">
-        <RecruitStep step={steps[0]} />
-        <div className="absolute left-[45%] top-[25%] flex items-center">
-          <ArrowIcon />
-        </div>
-        <RecruitStep step={steps[1]} />
-      </div>
+      {(["신규 운영진", "신규 학회원"] as const).map((group) => {
+        const groupSteps = steps.filter((step) => step.group === group);
 
-      {/* 2nd arrow (세로 방향) */}
-      <div className="flex items-center w-full justify-end px-[60px]">
-        <ArrowIcon rotate={90} />
-      </div>
+        return (
+          <div key={group} className="flex w-full flex-col items-center gap-y-[32px]">
+            <h3 className="text-title-7 text-gray-900">{group}</h3>
+            <div className="flex relative gap-x-[45px]">
+              <RecruitStep step={groupSteps[0]} />
+              <div className="absolute left-[45%] top-[25%] flex items-center">
+                <ArrowIcon />
+              </div>
+              <RecruitStep step={groupSteps[1]} />
+            </div>
 
-      {/* 2nd row */}
-      <div className="flex relative gap-x-[45px]">
-        <RecruitStep step={steps[3]} />
-        <div className="absolute left-[45%] top-[25%] flex items-center">
-          <ArrowIcon rotate={180} />
-        </div>
-        <RecruitStep step={steps[2]} />
-      </div>
+            <div className="flex items-center w-full justify-end px-[60px]">
+              <ArrowIcon rotate={90} />
+            </div>
 
-      {/* 대각선 화살표 2개 */}
-      <div className="flex gap-x-[136px]">
-        <div className="flex items-center">
-          <ArrowIcon rotate={60} />
-        </div>
-        <div className="flex items-center">
-          <ArrowIcon rotate={120} flip />
-        </div>
-      </div>
-
-      {/* 마지막 원 + 배경 */}
-      <div className="flex flex-col relative items-center justify-center">
-        <div className="absolute w-[154px] h-[154px] rounded-full bg-[#0055FF] top-1 opacity-20 z-0" />
-        <RecruitStep step={steps[4]} />
-      </div>
+            <div className="flex relative gap-x-[45px]">
+              <RecruitStep step={groupSteps[3]} />
+              <div className="absolute left-[45%] top-[25%] flex items-center">
+                <ArrowIcon rotate={180} />
+              </div>
+              <RecruitStep step={groupSteps[2]} />
+            </div>
+          </div>
+        );
+      })}
     </section>
   );
 }

@@ -10,7 +10,7 @@ interface ProjectFilterProps {
 }
 
 export default function ProjectFilter({ cardinal, onChange, projectList }: ProjectFilterProps) {
-  const generations = Array.from({ length: 7 }, (_, i) => `${32 - i}기`);
+  const generations = Array.from({ length: 7 }, (_, i) => `${33 - i}기`);
   const options = ["모든 기수", ...generations];
 
   const projectCounts = useMemo(() => calculateProjectCounts(projectList), [projectList]);
