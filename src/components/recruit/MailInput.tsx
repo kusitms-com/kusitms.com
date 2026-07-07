@@ -6,11 +6,13 @@ import { useToast } from "@/hooks";
 import { postEmail } from "@/service/recruit/postEmail";
 
 const MailInput = () => {
+  const isPreparing = true;
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { showToast, Toast } = useToast();
 
   const handleSubmit = async (value: string) => {
+    if (isPreparing) return;
     if (isSubmitting) return;
 
     setIsSubmitting(true);
@@ -42,9 +44,9 @@ const MailInput = () => {
         // biome-ignore lint/suspicious/noExplicitAny: DS EmailInput의 onSubmit이 InputHTMLAttributes와 교차 타입 충돌
         onSubmit={handleSubmit as any}
         validate={() => true}
-        placeholder="메일을 입력해주세요"
+        placeholder={isPreparing ? "준비중..." : "메일을 입력해주세요"}
         buttonLabel={isSubmitting ? "신청 중" : "알림 받기"}
-        disabled={isSubmitting}
+        disabled={isPreparing || isSubmitting}
       />
       {Toast}
     </>
