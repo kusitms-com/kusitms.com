@@ -23,7 +23,7 @@ export default function ArchiveContainerPage() {
                 width={368}
                 height={245}
                 className={
-                  "desktop:rounded-[16px] rounded-[12px] w-[288px] h-[192px] desktop:min-w-[368px] desktop:min-h-[245px]"
+                  "desktop:rounded-[16px] rounded-[12px] w-[288px] h-[192px] desktop:min-w-[368px] desktop:min-h-[245px] object-cover object-center"
                 }
               />
             </TimelineItem>
