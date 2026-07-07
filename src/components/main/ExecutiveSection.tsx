@@ -1,4 +1,5 @@
 "use client";
+import { PageNavButton } from "@kusitms.com/ui";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useState } from "react";
@@ -148,34 +149,12 @@ function DesktopExecutiveCarousel({ items }: { items: ExecutiveItem[] }) {
             width={944}
             height={571}
           />
-          <button
-            type="button"
-            aria-label="previous"
-            onClick={prev}
-            className="cursor-pointer absolute left-9 top-1/2 -translate-y-1/2 w-13 h-13 min-w-13 min-h-13 rounded-full bg-black/20 text-gray-900 flex items-center justify-center"
-          >
-            <Image
-              src="/projects/icons/ArrowLeft.svg"
-              alt="prev"
-              width={14}
-              height={24}
-              className="block mr-[4px]"
-            />
-          </button>
-          <button
-            type="button"
-            aria-label="next"
-            onClick={next}
-            className="cursor-pointer absolute right-9 top-1/2 -translate-y-1/2 w-13 h-13 min-w-13 min-h-13 rounded-full bg-black/20 text-gray-900 flex items-center justify-center"
-          >
-            <Image
-              src="/projects/icons/ArrowRight.svg"
-              alt="next"
-              width={14}
-              height={24}
-              className="block ml-[4px]"
-            />
-          </button>
+          <div className="absolute left-9 top-1/2 -translate-y-1/2">
+            <PageNavButton direction="prev" color="dark" onClick={prev} />
+          </div>
+          <div className="absolute right-9 top-1/2 -translate-y-1/2">
+            <PageNavButton direction="next" color="dark" onClick={next} />
+          </div>
         </div>
         <div className="px-[108px] pt-6 pb-10">
           <p className="text-title-7 font-bold text-gray-900">{current.title}</p>

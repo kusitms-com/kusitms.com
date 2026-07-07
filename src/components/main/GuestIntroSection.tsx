@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { GUEST_DATA } from "@/constants/guestData";
+import { cn } from "@/lib/utils";
 
 export default function GuestIntroSection() {
   return (
@@ -37,35 +38,27 @@ export default function GuestIntroSection() {
         >
           <div className="grid grid-cols-1 tablet:grid-cols-3 desktop:grid-cols-4 gap-x-6 gap-y-8 place-items-center">
             {GUEST_DATA.map((guest, idx) => (
-              <div
-                key={idx}
-                className={
-                  `flex flex-col items-center ` +
-                  (idx === 4 ? "desktop:col-start-2" : idx === 5 ? "desktop:col-start-3" : "")
-                }
-              >
+              <div key={idx} className="flex flex-col items-center">
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   viewport={{ once: true }}
                 >
-                  <Image
-                    src={guest.mainIcon}
-                    alt={guest.title}
-                    width={160}
-                    height={167}
-                    className="block desktop:hidden"
-                  />
-                  <Image
-                    src={guest.mainIcon}
-                    alt={guest.title}
-                    width={192}
-                    height={200}
-                    className="hidden desktop:block"
-                  />
+                  <div className="relative flex h-[190px] w-[160px] items-end justify-center desktop:h-[230px] desktop:w-[192px]">
+                    <Image
+                      src={guest.mainIcon}
+                      alt={guest.title}
+                      fill
+                      sizes="(min-width: 1024px) 192px, 160px"
+                      className={cn(
+                        "relative z-10 origin-bottom object-contain object-bottom",
+                        guest.imageClassName,
+                      )}
+                    />
+                  </div>
                 </motion.div>
-                <div className="mt-4 text-center">
+                <div className="mt-6 text-center">
                   <p className="text-dark-blue-400 text-body-5">{guest.title}</p>
                   <p className="text-gray-700 text-body-5 mt-1">{guest.subtitle}</p>
                 </div>

@@ -1,50 +1,55 @@
 "use client";
 
+import { EmailInput } from "@kusitms.com/ui";
 import { useState } from "react";
+import { useToast } from "@/hooks";
 import { postEmail } from "@/service/recruit/postEmail";
 
 const MailInput = () => {
+  const isPreparing = true;
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { showToast, Toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
+  const handleSubmit = async (value: string) => {
+    if (isPreparing) return;
+    if (isSubmitting) return;
 
-  const handleSubmit = async () => {
+    setIsSubmitting(true);
     try {
-      await postEmail(email);
-      alert("알림 신청이 완료되었습니다!");
+      await postEmail(value);
+      showToast({ message: "알림 신청이 완료되었습니다!" });
       setEmail("");
     } catch (error) {
       if (error instanceof Error && error.message) {
         try {
           const parsed = JSON.parse(error.message);
           if (parsed?.message) {
-            alert(parsed.message);
+            showToast({ message: parsed.message, type: "error" });
             return;
           }
         } catch {}
       }
-      alert("알림 신청에 실패했습니다. 다시 시도해주세요.");
+      showToast({ message: "알림 신청에 실패했습니다. 다시 시도해주세요.", type: "error" });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="w-full desktop:w-[652px] flex items-center bg-gray-50 desktop:py-[12px] py-[8px] pl-[20px] desktop:pl-[28px] pr-[10px] desktop:pr-[20px] rounded-full text-body-8 desktop:text-body-2">
-      <input
-        type="email"
-        placeholder="메일을 입력해주세요"
-        className="flex-1 min-w-0 bg-transparent placeholder:text-gray-500 text-gray-900 outline-none focus:outline-none"
+    <>
+      <EmailInput
         value={email}
-        onChange={handleInputChange}
+        onChange={setEmail}
+        // biome-ignore lint/suspicious/noExplicitAny: DS EmailInput의 onSubmit이 InputHTMLAttributes와 교차 타입 충돌
+        onSubmit={handleSubmit as any}
+        validate={() => true}
+        placeholder={isPreparing ? "준비중..." : "메일을 입력해주세요"}
+        buttonLabel={isSubmitting ? "신청 중" : "알림 받기"}
+        disabled={isPreparing || isSubmitting}
       />
-      <button
-        onClick={handleSubmit}
-        className="bg-dark-blue-500 active:bg-dark-blue-600 text-gray-0 rounded-full cursor-pointer text-body-8 px-[12px] py-[8px] desktop:text-body-4 desktop:px-[24px] desktop:py-[10px] flex-shrink-0 min-w-[72px]"
-      >
-        알림 받기
-      </button>
-    </div>
+      {Toast}
+    </>
   );
 };
 

@@ -1,10 +1,10 @@
 "use client";
 
+import { ShowcaseCard } from "@kusitms.com/ui";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { getMeetupProjects, type MeetupResponse } from "@/service/projects";
-import Card from "./common/ProjectCard";
 import ProjectFilter from "./common/ProjectFilter";
 
 type ProjectContainerProps = MeetupResponse;
@@ -28,24 +28,26 @@ export default function ProjectContainer({ data: meetupProjectList }: ProjectCon
         onChange={handleFilterChange}
         projectList={meetupProjectList.meetup_list}
       />
-      <div className="grid tablet:grid-cols-3 grid-cols-1 gap-5 gap-x-[22px] justify-items-center ">
+      <div className="grid grid-cols-1 tablet:grid-cols-3 gap-5 gap-x-[22px] [&_.project-card>div]:!w-full [&_.project-card>div]:!max-w-full">
         {projects.meetup_list.map((project) => (
           <Link
             href={`/projects/meetup/${project.meetup_id}`}
             key={project.meetup_id}
             prefetch={false}
+            scroll={false}
+            className="project-card"
             onMouseEnter={() => {
               router.prefetch(`/projects/meetup/${project.meetup_id}`);
             }}
           >
-            <Card key={project.meetup_id} hoverable>
-              <Card.Poster src={project.poster_url} />
-              <Card.Info>
-                <Card.Cardinal cardinal={project.cardinal} type={project.type} />
-                <Card.ProjectName>{project.name}</Card.ProjectName>
-                <Card.ContentIntro>{project.one_line_intro}</Card.ContentIntro>
-              </Card.Info>
-            </Card>
+            <ShowcaseCard
+              name={project.name}
+              description={project.one_line_intro}
+              th={project.cardinal}
+              isMeetup={true}
+              type={project.type as "WEB" | "APP"}
+              imageUrl={project.poster_url}
+            />
           </Link>
         ))}
       </div>

@@ -26,13 +26,20 @@ export default function PartnerSection() {
         <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-transparent" />
         <motion.div
-          className="flex items-center w-[max-content]"
+          className="flex items-center gap-14 tablet:gap-20 w-[max-content]"
           initial={{ x: "-50%" }}
           animate={{ x: ["-50%", "0%"] }}
           transition={{ duration: 25, ease: "linear", repeat: Infinity }}
         >
           {[...PARTNERS, ...PARTNERS].map((partner, idx) => (
-            <Image key={idx} src={partner} alt={`partner-${idx}`} width={224} height={153} />
+            <Image
+              key={idx}
+              src={partner}
+              alt={`partner-${idx}`}
+              width={224}
+              height={153}
+              className="shrink-0"
+            />
           ))}
         </motion.div>
       </div>

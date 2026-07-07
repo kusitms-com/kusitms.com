@@ -10,13 +10,13 @@ import { useBreakpoint } from "@/hooks";
 export default function StatsSection() {
   const statData = [
     {
-      end: 1409,
+      end: 1464,
       suffix: "명",
       label: "누적 회원 수",
       delay: 0,
     },
     {
-      end: 230,
+      end: 244,
       suffix: "개",
       label: "프로젝트 결과물",
       delay: 0.3,

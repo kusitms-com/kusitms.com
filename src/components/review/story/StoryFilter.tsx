@@ -1,6 +1,6 @@
+import { Dropdown } from "@kusitms.com/ui";
 import { useMemo } from "react";
 import type { StoriesParams } from "@/service/reviews/getStories";
-import Dropdown from "../../projects/common/DropDown";
 
 interface StoryFilterProps {
   generation?: number;
@@ -35,7 +35,7 @@ export default function StoryFilter({
   onChange,
 }: StoryFilterProps) {
   const genOptions = useMemo(
-    () => ["모든 기수", ...Array.from({ length: 7 }, (_, i) => `${31 - i}기`)],
+    () => ["모든 기수", ...Array.from({ length: 7 }, (_, i) => `${33 - i}기`)],
     [],
   );
 
@@ -43,15 +43,15 @@ export default function StoryFilter({
     Object.entries(options).find(([, v]) => v === value)?.[0] || Object.keys(options)[0];
 
   return (
-    <div className="flex tablet:flex-row flex-col justify-between">
+    <div className="flex tablet:flex-row flex-col justify-between items-start">
       <p className="tablet:text-title-7 text-body-3 text-gray-700 tablet:pb-[39px] pb-[12px]">
         전체 게시글 <span className="text-dark-blue-600">{totalCount}</span>개
       </p>
       <div className="flex tablet:gap-[12px] gap-[8px] pb-[20px] tablet:pb-0">
         <Dropdown
-          options={Object.keys(CATEGORIES)}
-          selected={getSelectedLabel(category, CATEGORIES)}
-          onSelect={(value) =>
+          options={Object.keys(CATEGORIES).map((o) => ({ value: o, label: o }))}
+          value={getSelectedLabel(category, CATEGORIES)}
+          onValueChange={(value) =>
             onChange({
               generation,
               position,
@@ -60,9 +60,9 @@ export default function StoryFilter({
           }
         />
         <Dropdown
-          options={genOptions}
-          selected={generation ? `${generation}기` : "모든 기수"}
-          onSelect={(value) =>
+          options={genOptions.map((o) => ({ value: o, label: o }))}
+          value={generation ? `${generation}기` : "모든 기수"}
+          onValueChange={(value) =>
             onChange({
               generation: value === "모든 기수" ? undefined : parseInt(value.replace("기", ""), 10),
               position,
@@ -71,9 +71,9 @@ export default function StoryFilter({
           }
         />
         <Dropdown
-          options={Object.keys(POSITIONS)}
-          selected={getSelectedLabel(position, POSITIONS)}
-          onSelect={(value) =>
+          options={Object.keys(POSITIONS).map((o) => ({ value: o, label: o }))}
+          value={getSelectedLabel(position, POSITIONS)}
+          onValueChange={(value) =>
             onChange({
               generation,
               position: POSITIONS[value as keyof typeof POSITIONS],

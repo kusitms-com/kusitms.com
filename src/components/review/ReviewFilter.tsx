@@ -1,7 +1,7 @@
 "use client";
 
+import { Dropdown } from "@kusitms.com/ui";
 import { useMemo } from "react";
-import Dropdown from "../projects/common/DropDown";
 
 interface ReviewFilterProps {
   team: string;
@@ -12,6 +12,7 @@ interface ReviewFilterProps {
 
 const CARDINALS = {
   "모든 기수": undefined,
+  "33기": 33,
   "31기": 31,
   "30기": 30,
   "29기": 29,
@@ -23,8 +24,7 @@ const TEAMS = {
   "모든 파트": "",
   기획: "PLANNER",
   디자인: "DESIGNER",
-  프론트엔드: "FRONTEND",
-  백엔드: "BACKEND",
+  개발: "DEVELOPER",
 } as const;
 
 const getSelectedLabel = <T,>(value: T | undefined, options: Record<string, T | undefined>) =>
@@ -41,9 +41,9 @@ export default function ReviewFilter({ team, cardinal, totalCount, onChange }: R
       </p>
       <div className="flex gap-[12px]">
         <Dropdown
-          options={cardinalOptions}
-          selected={getSelectedLabel(cardinal, CARDINALS)}
-          onSelect={(value) =>
+          options={cardinalOptions.map((o) => ({ value: o, label: o }))}
+          value={getSelectedLabel(cardinal, CARDINALS)}
+          onValueChange={(value) =>
             onChange({
               team,
               cardinal: CARDINALS[value as keyof typeof CARDINALS],
@@ -51,9 +51,9 @@ export default function ReviewFilter({ team, cardinal, totalCount, onChange }: R
           }
         />
         <Dropdown
-          options={teamOptions}
-          selected={getSelectedLabel(team, TEAMS)}
-          onSelect={(value) =>
+          options={teamOptions.map((o) => ({ value: o, label: o }))}
+          value={getSelectedLabel(team, TEAMS)}
+          onValueChange={(value) =>
             onChange({
               team: TEAMS[value as keyof typeof TEAMS],
               cardinal,

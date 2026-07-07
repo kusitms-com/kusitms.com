@@ -5,6 +5,7 @@ export const COMPANY_ROW1: string[] = [
   "/main/img/company/SeoulMilk.webp",
   "/main/img/company/Kobaco.webp",
   "/main/img/company/CodeIt.webp",
+  "/main/img/company/Litmus.png",
   "/main/img/company/HDMedi.webp",
   "/main/img/company/FitPet.webp",
 ];
