@@ -47,6 +47,7 @@ export default async function ReviewsLayout({
     <main className="flex flex-col items-center desktop:pt-[72px]">
       <Banner
         title="후기"
+        imageSrc="/projects/ReviewBanner2026.png"
         description={
           <>
             큐밀리의 솔직 후기를 <br className="tablet:hidden" />
