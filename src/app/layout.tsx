@@ -2,11 +2,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Geist_Mono, Outfit } from "next/font/google";
 import localFont from "next/font/local";
-import { Footer, Header } from "@/components/shared";
 import "./globals.css";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { Suspense } from "react";
 import PageViewTracker from "@/components/shared/analytics/PageViewTracker";
+import { PublicChrome } from "@/components/shared/PublicChrome";
 
 const pretendard = localFont({
   src: "../../public/fonts/PretendardVariable.woff2",
@@ -73,9 +73,7 @@ export default function RootLayout({
       <body
         className={`${pretendard.variable} ${geistMono.variable} ${outfit.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <PublicChrome>{children}</PublicChrome>
         <SpeedInsights />
         {gtmId && <GoogleTagManager gtmId={gtmId} />}
         <Suspense>
