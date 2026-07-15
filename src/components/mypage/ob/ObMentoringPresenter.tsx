@@ -1,5 +1,4 @@
 import { SaveSuccessModal } from "@/components/mypage/ob/components/feedback/SaveSuccessModal";
-import { SaveToast } from "@/components/mypage/ob/components/feedback/SaveToast";
 import { FormActions } from "@/components/mypage/ob/components/form/FormActions";
 import { MyPageHeader } from "@/components/mypage/ob/components/layout/MyPageHeader";
 import { ProfileSummary } from "@/components/mypage/ob/components/layout/ProfileSummary";
@@ -9,6 +8,7 @@ import { BasicInfoSection } from "@/components/mypage/ob/components/sections/Bas
 import { MentoringIntroSection } from "@/components/mypage/ob/components/sections/MentoringIntroSection";
 import { MentoringMethodSection } from "@/components/mypage/ob/components/sections/MentoringMethodSection";
 import type { ObMentoringPresenterProps } from "@/components/mypage/ob/types";
+import { SuccessToast } from "@/components/shared/ui/SuccessToast";
 
 export function ObMentoringPresenter({
   form,
@@ -52,7 +52,7 @@ export function ObMentoringPresenter({
       {modalVisible && (
         <SaveSuccessModal onClose={handleCloseModal} onConfirm={handleConfirmModal} />
       )}
-      {toastVisible && <SaveToast />}
+      {toastVisible && <SuccessToast />}
     </main>
   );
 }

@@ -46,7 +46,7 @@ export type ObMentoringPresenterProps = UseObMentoringFormReturn;
 export type SideNavItem = {
   label: string;
   icon: LucideIcon;
-  active?: boolean;
+  href?: string;
 };
 
 export type SectionProps = {

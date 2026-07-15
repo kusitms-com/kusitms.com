@@ -42,6 +42,26 @@ body {
   scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
 }
 
+/* @kusitms.com/ui Dropdown: 긴 Radix Select 옵션 목록은 패널 안에서 스크롤 */
+[role="listbox"][data-state="open"][style*="--radix-select-trigger-width"] {
+  max-height: min(320px, var(--radix-select-content-available-height));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+[role="listbox"][data-state="open"][style*="--radix-select-trigger-width"]::-webkit-scrollbar {
+  width: 6px;
+}
+
+[role="listbox"][data-state="open"][style*="--radix-select-trigger-width"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+[role="listbox"][data-state="open"][style*="--radix-select-trigger-width"]::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #c1c6d3;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
