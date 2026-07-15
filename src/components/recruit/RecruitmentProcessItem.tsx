@@ -4,8 +4,7 @@ import { ChatGraphic, FileGraphic, MedalGraphic, PeopleGraphic } from "@kusitms.
 import { Button, RecruitmentCard } from "@kusitms.com/ui";
 import { useToast } from "@/hooks";
 
-const RECRUIT_APPLY_URL =
-  "https://www.recruit-withus.co.kr/%ED%95%9C%EA%B5%AD%EB%8C%80%ED%95%99%EC%83%9DIT%EA%B2%BD%EC%98%81%ED%95%99%ED%9A%8C-KUSITMS/fIdzmzwic";
+const RECRUIT_APPLY_URL = "https://forms.gle/cBzDbN7yYesLxdW99";
 
 const recruitmentSchedules = [
   {
@@ -61,7 +60,7 @@ const recruitmentSchedules = [
 ];
 
 export default function RecruitmentProcessItem() {
-  const isRecruiting = false;
+  const isRecruiting = true;
   const { showToast, Toast } = useToast();
 
   const handleApplyClick = () => {
