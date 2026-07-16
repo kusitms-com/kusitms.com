@@ -2,6 +2,7 @@
 
 import { Favicon128, FooterDesktopLogo } from "@kusitms.com/icons";
 import { Label } from "@kusitms.com/ui";
+import Link from "next/link";
 import { useState } from "react";
 import Button from "@/components/mentoring/Button";
 import InputField from "@/components/mentoring/InputField";
@@ -44,9 +45,9 @@ const page = () => {
         로그인
       </Button>
       <p className="text-label-14r text-label-alternative pb-1">아직 계정이 없으신가요?</p>
-      <button className="text-label-netural underline text-label-14sb cursor-pointer">
+      <Link href="/signup" className="text-label-netural underline text-label-14sb cursor-pointer">
         회원가입
-      </button>
+      </Link>
     </div>
   );
 };
