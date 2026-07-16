@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import Button from "@/components/mentoring/Button";
 import { type SignupFormValues, signupSchema } from "@/lib/validations/signup";
@@ -9,13 +10,15 @@ import SignupActivityFields from "./_components/SignupActivityFields";
 import SignupFileFields from "./_components/SignupFileFields";
 
 const page = () => {
+  const router = useRouter();
+
   const {
     register,
     control,
     handleSubmit,
     watch,
     getValues,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
   } = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
     mode: "onChange",
@@ -38,6 +41,9 @@ const page = () => {
 
   const onSubmit = (data: SignupFormValues) => {
     console.log(data);
+    // biome-ignore lint/suspicious/noDocumentCookie: Cookie Store API is unsupported in Safari/iOS
+    document.cookie = "signup_completed=1; path=/; max-age=300";
+    router.replace("/signup/complete");
   };
 
   return (
@@ -51,9 +57,9 @@ const page = () => {
         </div>
         <Button
           size="xl"
-          variant={isValid ? "strong" : "disabled"}
+          variant={isValid && !isSubmitting ? "strong" : "disabled"}
           className="w-full"
-          disabled={!isValid}
+          disabled={!isValid || isSubmitting}
           type="submit"
         >
           회원가입
