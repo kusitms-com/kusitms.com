@@ -38,7 +38,7 @@ const SignupFileFields = ({ control, isEligibleForCertificate }: SignupFileField
           name="profileFile"
           render={({ field }) => (
             <FileUpload
-              helperText="* 가이드 문구(공개 여부나 활용되는 곳 설명)"
+              helperText="*  얼굴이 잘 보이는 프로필 사진을 등록해주세요. (JPG, PNG / 최대 10MB)"
               onFileChange={field.onChange}
             />
           )}
