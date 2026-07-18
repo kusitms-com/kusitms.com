@@ -2,7 +2,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Geist_Mono, Outfit } from "next/font/google";
 import localFont from "next/font/local";
-import { Footer, Header } from "@/components/shared";
+import { ConditionalFooter, Header } from "@/components/shared";
 import "./globals.css";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { Suspense } from "react";
@@ -75,7 +75,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
-        <Footer />
+        <ConditionalFooter />
         <SpeedInsights />
         {gtmId && <GoogleTagManager gtmId={gtmId} />}
         <Suspense>
