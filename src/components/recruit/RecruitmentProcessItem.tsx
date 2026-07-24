@@ -4,7 +4,7 @@ import { ChatGraphic, FileGraphic, MedalGraphic, PeopleGraphic } from "@kusitms.
 import { Button, RecruitmentCard } from "@kusitms.com/ui";
 import { useToast } from "@/hooks";
 
-const RECRUIT_APPLY_URL = "https://forms.gle/cBzDbN7yYesLxdW99";
+const RECRUIT_APPLY_URL = "https://forms.gle/7sf8ix1CnP9s3G3s8";
 
 const recruitmentSchedules = [
   {
