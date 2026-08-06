@@ -43,7 +43,7 @@ const recruitmentSchedules = [
       {
         graphic: ChatGraphic,
         title: "서류 합격 발표",
-        description: "8월 4일(화)\n합격자/불합격자 전체 연락",
+        description: "8월 5일(수)\n합격자/불합격자 전체 연락",
       },
       {
         graphic: PeopleGraphic,
@@ -60,7 +60,7 @@ const recruitmentSchedules = [
 ];
 
 export default function RecruitmentProcessItem() {
-  const isRecruiting = true;
+  const isRecruiting = false;
   const { showToast, Toast } = useToast();
 
   const handleApplyClick = () => {
@@ -92,7 +92,7 @@ export default function RecruitmentProcessItem() {
           </div>
         ))}
       </div>
-      <Button onClick={handleApplyClick}>지원하기</Button>
+      {isRecruiting && <Button onClick={handleApplyClick}>지원하기</Button>}
       {Toast}
     </section>
   );

@@ -47,7 +47,7 @@ const steps: Step[] = [
   {
     group: "신규 학회원",
     title: "서류 합격 발표",
-    date: "8월 4일(화)\n합격자/불합격자 전체 연락",
+    date: "8월 5일(수)\n합격자/불합격자 전체 연락",
     bgColor: "#0055FF",
     textColor: "white",
   },
