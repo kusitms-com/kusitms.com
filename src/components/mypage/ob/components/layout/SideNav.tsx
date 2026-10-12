@@ -1,7 +1,12 @@
 import { LogOut, User } from "lucide-react";
+import Link from "next/link";
 import { sideNavItems } from "@/components/mypage/ob/constants";
 
-export function SideNav() {
+type SideNavProps = {
+  activeItem?: string;
+};
+
+export function SideNav({ activeItem = "멘토링 관리" }: SideNavProps) {
   return (
     <aside className="hidden w-64 shrink-0 flex-col self-stretch border-r border-[#e5e7ef] bg-white py-10 text-sm desktop:flex">
       <div className="mb-7 flex items-center gap-3 px-5">
@@ -14,18 +19,24 @@ export function SideNav() {
         </div>
       </div>
       <nav className="space-y-1 px-3">
-        {sideNavItems.map(({ label, icon: Icon, active }) => (
-          <button
-            key={label}
-            type="button"
-            className={`flex h-12 w-full cursor-pointer items-center gap-3 rounded-md px-4 text-left font-semibold ${
-              active ? "bg-[#eef3ff] text-[#3157ff]" : "text-[#626879] hover:bg-[#f7f8fb]"
-            }`}
-          >
-            <Icon size={16} />
-            {label}
-          </button>
-        ))}
+        {sideNavItems.map(({ label, icon: Icon, href }) => {
+          const active = label === activeItem;
+          const className = `flex h-12 w-full cursor-pointer items-center gap-3 rounded-md px-4 text-left font-semibold ${
+            active ? "bg-[#eef3ff] text-[#3157ff]" : "text-[#626879] hover:bg-[#f7f8fb]"
+          }`;
+
+          return href ? (
+            <Link key={label} href={href} className={className}>
+              <Icon size={16} />
+              {label}
+            </Link>
+          ) : (
+            <button key={label} type="button" className={className}>
+              <Icon size={16} />
+              {label}
+            </button>
+          );
+        })}
       </nav>
       <button
         type="button"

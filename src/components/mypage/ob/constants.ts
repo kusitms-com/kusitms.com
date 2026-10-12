@@ -24,8 +24,8 @@ export const initialForm: ObMentoringFormState = {
 };
 
 export const sideNavItems: SideNavItem[] = [
-  { label: "멘토링 관리", icon: User, active: true },
-  { label: "일정 등록", icon: Clock3 },
+  { label: "멘토링 관리", icon: User, href: "/mypage/ob" },
+  { label: "일정 등록", icon: Clock3, href: "/mypage/ob/schedule" },
   { label: "멘토링 내역", icon: FileText },
   { label: "채팅방", icon: MessageSquare },
   { label: "받은 후기", icon: Heart },
