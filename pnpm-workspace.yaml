@@ -1,0 +1,7 @@
+packages:
+  - '.'
+
+allowBuilds:
+  '@tailwindcss/oxide': false
+  '@vercel/speed-insights': false
+  sharp: false

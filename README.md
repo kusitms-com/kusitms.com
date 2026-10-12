@@ -1,27 +1,47 @@
-# Kusitms 공식 홈페이지  
+# Kusitms 공식 홈페이지
+
 🔗 [KUSTIMS OFFICIAL WEB SITE](https://kusitms.com/)
 
-## 👥 팀원 구성  
-- **PM & 기획**: 윤수빈 (31기)  
-- **기획**: 한인우 (31기)  
-- **디자인**: 설정원 (30기, 31기), 주신아 (31기)  
-- **프론트엔드**: 진채정 (32기), 박나리 (32기), 김선화 (32기)  
-- **백엔드**: 정성호 (31기), 우은진 (31기)
+## Tech Stack
 
-## 🛠 기술 스택  
-- **프레임워크**: Next.js (App Router)  
-- **언어**: TypeScript  
-- **인프라**: AWS Route 53, Vercel
+- **Framework**: Next.js 16 (App Router) + React 19 (TypeScript)
+- **Package Manager**: pnpm
+- **UI**: Tailwind CSS v4 + [@kusitms.com/ui](https://github.com/kusitms-com/makers-design-system)
+- **Lint/Format**: Biome
+- **Infra**: AWS Route 53, Vercel
 
-## 🧩 서비스 아키텍처  
-<img width="1474" alt="스크린샷 2025-06-06 오후 10 50 37" src="https://github.com/user-attachments/assets/efba5068-dbc0-4fcc-8dca-594876332d58" />
+## Getting Started
 
-## 🔧 주요 작업 내용  
-1. **React → Next.js 마이그레이션**  
-2. **전시 탭 신규 구축**  
-3. **성능 개선**
-   - LCP 점수 **7.0s → 0.5s**로 대폭 향상  
-4. **SEO 설정**
-   - 프로젝트 리스트가 **검색엔진에 노출**되도록 개선  
-5. **반응형 웹 작업 예정**
+```bash
+git clone https://github.com/kusitms-com/kusitms.com.git
+cd kusitms.com
+pnpm install
+pnpm dev
+```
 
+## Scripts
+
+| Command        | Description       |
+| --------------- | ------------------ |
+| `pnpm dev`      | 개발 서버 실행 (Turbopack) |
+| `pnpm build`    | 프로덕션 빌드           |
+| `pnpm start`    | 프로덕션 서버 실행        |
+| `pnpm lint`     | Biome 검사           |
+| `pnpm format`   | Biome 포맷 적용        |
+
+## Project Structure
+
+```text
+src/
+├── app/          # Next.js App Router 라우트 (recruit, archive, projects 등)
+├── components/   # UI 컴포넌트 (도메인별 폴더로 구분: recruit, archive, projects 등)
+├── constants/    # 정적 데이터 및 상수
+├── hooks/        # 커스텀 React hook
+├── lib/          # 유틸리티
+├── service/      # 도메인별 데이터/비즈니스 로직 (recruit, projects, reviews)
+└── utils/        # 공용 유틸 함수
+```
+
+## 서비스 아키텍처
+
+<img width="1474" alt="스크린샷 2025-06-06 오후 10 50 37" src="https://github.com/user-attachments/assets/efba5068-dbc0-4fcc-8dca-594876332d58" />
