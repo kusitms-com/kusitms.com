@@ -4,8 +4,7 @@ import { ChatGraphic, FileGraphic, MedalGraphic, PeopleGraphic } from "@kusitms.
 import { Button, RecruitmentCard } from "@kusitms.com/ui";
 import { useToast } from "@/hooks";
 
-const RECRUIT_APPLY_URL =
-  "https://www.recruit-withus.co.kr/%ED%95%9C%EA%B5%AD%EB%8C%80%ED%95%99%EC%83%9DIT%EA%B2%BD%EC%98%81%ED%95%99%ED%9A%8C-KUSITMS/fIdzmzwic";
+const RECRUIT_APPLY_URL = "https://forms.gle/7sf8ix1CnP9s3G3s8";
 
 const recruitmentSchedules = [
   {
@@ -44,7 +43,7 @@ const recruitmentSchedules = [
       {
         graphic: ChatGraphic,
         title: "서류 합격 발표",
-        description: "8월 4일(화)\n합격자/불합격자 전체 연락",
+        description: "8월 5일(수)\n합격자/불합격자 전체 연락",
       },
       {
         graphic: PeopleGraphic,
@@ -93,7 +92,7 @@ export default function RecruitmentProcessItem() {
           </div>
         ))}
       </div>
-      <Button onClick={handleApplyClick}>지원하기</Button>
+      {isRecruiting && <Button onClick={handleApplyClick}>지원하기</Button>}
       {Toast}
     </section>
   );
