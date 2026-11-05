@@ -8,7 +8,7 @@ const twMerge = extendTailwindMerge({
         {
           text: [
             (value: string) =>
-              /^(pc|mobile|headline|body|label|caption)-\d+(b|sb|m|r)$/.test(value),
+              /^(pc|mobile|headline|body|label|caption|brand)-\d+(b|sb|m|r)$/.test(value),
           ],
         },
       ],
