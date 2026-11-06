@@ -5,3 +5,7 @@ allowBuilds:
   '@tailwindcss/oxide': false
   '@vercel/speed-insights': false
   sharp: false
+
+minimumReleaseAgeExclude:
+  - '@kusitms.com/tokens@0.3.0'
+  - '@kusitms.com/ui@0.2.3'

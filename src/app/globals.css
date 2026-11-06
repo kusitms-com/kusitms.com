@@ -239,6 +239,8 @@ body {
 
 @theme {
   --font-sans: var(--font-pretendard);
+  /* ponytail: PP Neue Montreal 라이선스 확인 전이라 폰트 파일 미포함, Pretendard로 폴백 */
+  --font-brand: "PP Neue Montreal", var(--font-pretendard), sans-serif;
 
   --breakpoint-tablet: 768px;
   --breakpoint-desktop: 1024px;
