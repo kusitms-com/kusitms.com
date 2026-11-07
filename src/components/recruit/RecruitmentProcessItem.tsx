@@ -8,52 +8,53 @@ const RECRUIT_APPLY_URL = "https://forms.gle/7sf8ix1CnP9s3G3s8";
 
 const recruitmentSchedules = [
   {
-    label: "신규 운영진",
+    label: "운영진",
     steps: [
       {
         graphic: FileGraphic,
         title: "서류 지원 기간",
-        description: "7월 16일(목) ~ 7월 20일(월)",
+        description: "1/7(목) ~ 1/11(월)",
       },
       {
         graphic: ChatGraphic,
         title: "서류 합격 발표",
-        description: "7월 22일(수)\n합격자/불합격자 전체 연락",
+        description: "1/13(수)\n합격자/불합격자 전체 연락",
       },
       {
         graphic: PeopleGraphic,
-        title: "신규 운영진 면접",
-        description: "7월 25일(토) ~ 7월 26일(일)\n서류 합격자 개별 안내",
+        title: "운영진 면접",
+        description: "1/16(토) ~ 1/17(일)\n서류 합격자 개별 안내",
       },
       {
         graphic: MedalGraphic,
         title: "최종 결과 발표",
-        description: "7월 28일(화)\n합격자/불합격자 전체 연락",
+        description: "1/19(화)\n합격자/불합격자 전체 연락",
       },
     ],
   },
   {
-    label: "신규 학회원",
+    label: "학회원",
     steps: [
       {
         graphic: FileGraphic,
         title: "서류 지원 기간",
-        description: "7월 25일(토) ~ 8월 1일(토) 23:59",
+        description: "1/16(토) ~ 1/23(토) 23:59",
       },
       {
         graphic: ChatGraphic,
         title: "서류 합격 발표",
-        description: "8월 5일(수)\n합격자/불합격자 전체 연락",
+        description: "1/27(수)\n합격자/불합격자 전체 연락",
       },
       {
         graphic: PeopleGraphic,
         title: "면접 기간",
-        description: "8월 8일(토) ~ 8월 9일(일)\n서류 합격자 개별 안내",
+        description: "1/30(토) ~ 1/31(일)\n서류 합격자 개별 안내",
       },
       {
         graphic: MedalGraphic,
         title: "최종 합격 발표",
-        description: "8월 11일(화)",
+        // 시안에 면접 기간(1/30~1/31)과 같은 값이 들어 있어 그대로 옮김. 확정 날짜 받으면 교체
+        description: "1/30(토) ~ 1/31(일)",
       },
     ],
   },
@@ -73,12 +74,18 @@ export default function RecruitmentProcessItem() {
   };
 
   return (
-    <section className="flex flex-col w-full items-center gap-[60px]">
-      <div className="flex w-full flex-col gap-[60px]">
+    <section className="flex flex-col w-full items-center gap-[60px] desktop:pb-14">
+      <div className="flex w-full max-w-[1200px] flex-col gap-[60px] desktop:gap-[60px]">
         {recruitmentSchedules.map((schedule) => (
-          <div key={schedule.label} className="flex w-full flex-col items-center gap-[24px]">
-            <h3 className="text-title-7 text-gray-900">{schedule.label}</h3>
-            <div className="flex gap-[20px] w-full desktop:flex-row flex-col items-center desktop:items-stretch">
+          <div
+            key={schedule.label}
+            className="flex w-full flex-col items-center gap-6 desktop:gap-[30px]"
+          >
+            <h3 className="text-title-7 text-label-normal desktop:text-[28px] desktop:leading-[38px] desktop:font-semibold">
+              {schedule.label}
+            </h3>
+            {/* DS RecruitmentCard는 폭이 고정(w-75 / lg:w-55)이라 시안(모바일 285px, 데스크톱 4장이 1200px을 채움)에 맞게 덮는다 */}
+            <div className="flex gap-[20px] w-full desktop:flex-row flex-col items-center desktop:items-stretch [&>div]:w-[285px] desktop:[&>div]:w-auto desktop:[&>div]:flex-1">
               {schedule.steps.map((process) => (
                 <RecruitmentCard
                   key={`${schedule.label}-${process.title}`}

@@ -7,9 +7,10 @@ import RecruitQnA from "@/components/recruit/RecruitQnA";
 
 async function RecruitPage() {
   const recruitInfoList = [
+    // 시안(KUS_RCT) 순서: 일정 → 대상 → 파트 → FAQ
+    { id: 3, title: "모집 일정", englishTitle: "Schedule" },
     { id: 1, title: "모집 대상", englishTitle: "Target" },
     { id: 2, title: "모집 파트", englishTitle: "Position" },
-    { id: 3, title: "모집 일정", englishTitle: "Schedule" },
     { id: 4, title: "자주 묻는 질문", englishTitle: "FAQ" },
   ];
 
@@ -28,11 +29,11 @@ async function RecruitPage() {
 
   return (
     <main className="mx-auto w-full flex justify-center">
-      <div className="desktop:max-w-[1024px] px-[16px] desktop:min-w-0 min-w-[393px] flex flex-col items-center gap-[100px] desktop:gap-[200px] pt-[80px] desktop:pt-[172px] desktop:px-[40px]">
+      <div className="w-full min-w-0 px-5 desktop:max-w-[1440px] flex flex-col items-center gap-[100px] desktop:gap-[200px] pt-[80px] desktop:pt-[172px] desktop:px-10">
         <RecruitmentTogether />
         {/* 모집 정보 */}
         <div className="w-full flex flex-col gap-y-[100px] items-center">
-          <section className="w-full flex flex-col desktop:gap-y-[200px] gap-y-[100px] items-center">
+          <section className="w-full flex flex-col gap-y-[200px] items-center">
             {recruitInfoList.map((item) => (
               <Recruit title={item.title} key={item.id} englishTitle={item.englishTitle}>
                 {renderRecruitComponent(item.id)}
