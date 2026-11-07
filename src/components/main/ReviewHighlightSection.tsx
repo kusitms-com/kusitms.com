@@ -41,7 +41,7 @@ export default function ReviewHighlightSection({ reviews }: { reviews: Review[] 
   return (
     <section
       aria-labelledby={headingId}
-      className="bg-fill-netural px-5 py-[200px] desktop:bg-transparent desktop:px-0 desktop:pt-[320px] desktop:pb-0"
+      className="bg-fill-netural px-5 py-[200px] desktop:bg-transparent desktop:px-10 min-[1280px]:px-0 desktop:pt-[320px] desktop:pb-0"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 desktop:gap-12">
         <div className="flex flex-col items-center gap-6 text-center">
@@ -60,7 +60,7 @@ export default function ReviewHighlightSection({ reviews }: { reviews: Review[] 
         </div>
 
         <div className="flex w-full flex-col items-center gap-9 desktop:gap-10">
-          <ul className="grid w-full grid-cols-2 gap-4 desktop:w-auto desktop:grid-flow-col desktop:grid-cols-[repeat(3,335px)] desktop:h-[450px] desktop:grid-rows-[210px_210px] desktop:content-start desktop:gap-6">
+          <ul className="grid w-full grid-cols-2 gap-4 desktop:w-auto desktop:grid-flow-col desktop:grid-cols-[repeat(3,minmax(0,335px))] desktop:h-[450px] desktop:grid-rows-[210px_210px] desktop:content-start desktop:gap-6">
             {picked.map((review) => (
               <li
                 key={review.id}

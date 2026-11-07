@@ -34,7 +34,7 @@ export default function AboutSection() {
           aria-label="KUSITMS"
           className="h-10 w-[220px] desktop:h-11 desktop:w-[242px]"
         />
-        <p className="text-center text-[24px] leading-[44px] font-bold tracking-[-0.008em] text-black desktop:text-[48px] desktop:leading-[1.8] desktop:font-semibold desktop:tracking-[-0.018em]">
+        <p className="text-center text-[24px] leading-[44px] font-bold tracking-[-0.008em] text-black desktop:text-[min(48px,3.334vw)] desktop:leading-[1.8] desktop:font-semibold desktop:tracking-[-0.018em]">
           <span className="sr-only">{DESKTOP_LINES.join(" ")}</span>
           <span aria-hidden="true" className="block desktop:hidden">
             <Lines lines={MOBILE_LINES} />

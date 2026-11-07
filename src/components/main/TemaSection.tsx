@@ -4,6 +4,7 @@ import { PageNavButton } from "@kusitms.com/ui";
 import Image from "next/image";
 import { useId, useState } from "react";
 import { EXECUTIVE_DATA } from "@/constants/executiveData";
+import { nextTabIndex } from "@/lib/tabKeys";
 import { cn } from "@/lib/utils";
 
 // 팀 설명은 기존 운영진 데이터(executiveData)를 쓰고, 사진은 팀별 새 사진을 쓴다. 탭 순서는 시안(학부학 → 경영총괄팀 → 대외홍보팀 → 교육기획팀)
@@ -20,6 +21,7 @@ const TEAMS = [
 /** 피그마 TEMA(운영진) — 데스크톱 614:17576 상단, 모바일 614:17424 */
 export default function TemaSection() {
   const headingId = useId();
+  const tabsId = useId();
   const [active, setActive] = useState(0);
   const team = TEAMS[active];
   const move = (step: number) => setActive((index) => (index + step + TEAMS.length) % TEAMS.length);
@@ -66,8 +68,18 @@ export default function TemaSection() {
                 key={item.title}
                 type="button"
                 role="tab"
+                id={`${tabsId}-tab-${index}`}
                 aria-selected={index === active}
+                aria-controls={`${tabsId}-panel`}
+                tabIndex={index === active ? 0 : -1}
                 onClick={() => setActive(index)}
+                onKeyDown={(event) => {
+                  const next = nextTabIndex(event.key, index, TEAMS.length, "horizontal");
+                  if (next === null) return;
+                  event.preventDefault();
+                  setActive(next);
+                  document.getElementById(`${tabsId}-tab-${next}`)?.focus();
+                }}
                 className={cn(
                   "h-[26px] cursor-pointer rounded-full px-2.5 text-[12px] leading-[18px] font-semibold whitespace-nowrap transition-colors desktop:h-auto desktop:px-6 desktop:py-2.5 desktop:text-[18px] desktop:leading-[26px]",
                   index === active
@@ -81,7 +93,9 @@ export default function TemaSection() {
           </div>
 
           <div
+            id={`${tabsId}-panel`}
             role="tabpanel"
+            aria-labelledby={`${tabsId}-tab-${active}`}
             className="relative h-[215px] w-full max-w-[335px] overflow-hidden rounded-[6px] bg-white desktop:h-[571px] desktop:max-w-[944px] desktop:rounded-2xl"
           >
             <Image

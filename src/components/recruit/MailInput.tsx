@@ -21,18 +21,48 @@ const PRIVACY_ROWS = [
 function PrivacyModal({ onClose }: { onClose: () => void }) {
   const titleId = useId();
   const confirmRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
+  // 열 때 "확인"에 포커스, 닫으면 연 버튼으로 포커스를 돌려준다
   useEffect(() => {
+    const opener = document.activeElement as HTMLElement | null;
     confirmRef.current?.focus();
-    const onKey = (event: KeyboardEvent) => event.key === "Escape" && onClose();
+    return () => opener?.focus();
+  }, []);
+
+  // Esc로 닫고, Tab/Shift+Tab은 모달 안에서만 돈다
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onCloseRef.current();
+      if (event.key !== "Tab" || !dialogRef.current) return;
+      const focusables = [
+        ...dialogRef.current.querySelectorAll<HTMLElement>(
+          "button, [href], [tabindex]:not([tabindex='-1'])",
+        ),
+      ];
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (!first || !last) return;
+      const inside = dialogRef.current.contains(document.activeElement);
+      if (event.shiftKey && (document.activeElement === first || !inside)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !inside)) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  }, []);
 
   // body에 그려야 페이지 래퍼(min-w 등)와 상관없이 화면 기준으로 가운데 놓인다
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-5">
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}

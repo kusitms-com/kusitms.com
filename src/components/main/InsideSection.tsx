@@ -2,11 +2,12 @@
 
 import { ArrowRightIcon, KeyboardArrowLeftIcon, KeyboardArrowRightIcon } from "@kusitms.com/icons";
 import { Button, PageNavButton } from "@kusitms.com/ui";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type ReactNode, useEffect, useId, useState } from "react";
+import { nextTabIndex } from "@/lib/tabKeys";
 import { cn } from "@/lib/utils";
 import type { MeetupItem } from "@/service/projects";
 
@@ -99,6 +100,11 @@ function MeetupCoverflow({ projects }: { projects: MeetupItem[] }) {
   const router = useRouter();
   const [current, setCurrent] = useState(0);
   const [isDesktop, setIsDesktop] = useState(true);
+  // "동작 줄이기" 설정이면 카드 이동·크기 변화를 애니메이션 없이 바로 바꾼다
+  const reduceMotion = useReducedMotion();
+  const transition = reduceMotion
+    ? { duration: 0 }
+    : { duration: 0.5, ease: [0.4, 0, 0.2, 1] as const };
 
   useEffect(() => {
     const query = window.matchMedia("(min-width: 1024px)");
@@ -149,7 +155,7 @@ function MeetupCoverflow({ projects }: { projects: MeetupItem[] }) {
                   borderRadius: COVER.radius * k,
                 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                transition={transition}
                 className="absolute left-1/2 cursor-pointer overflow-hidden"
                 style={{ zIndex: 10 - abs }}
               >
@@ -165,7 +171,7 @@ function MeetupCoverflow({ projects }: { projects: MeetupItem[] }) {
                   className="absolute inset-0 bg-white/40 backdrop-blur-[1.6px]"
                   initial={false}
                   animate={{ opacity: abs > 0 ? 1 : 0 }}
-                  transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                  transition={transition}
                 />
               </motion.button>
             );
@@ -393,6 +399,7 @@ export default function InsideSection({ meetupProjects = [] }: { meetupProjects?
           <div
             role="tablist"
             aria-label="큐시즘 활동"
+            aria-orientation="vertical"
             className="hidden w-[240px] shrink-0 flex-col gap-[27px] desktop:flex"
           >
             {slides.map((slide, index) => {
@@ -405,7 +412,15 @@ export default function InsideSection({ meetupProjects = [] }: { meetupProjects?
                   id={`${tabsId}-tab-${index}`}
                   aria-selected={selected}
                   aria-controls={`${tabsId}-panel`}
+                  tabIndex={selected ? 0 : -1}
                   onClick={() => setActiveIndex(index)}
+                  onKeyDown={(event) => {
+                    const next = nextTabIndex(event.key, index, slides.length, "vertical");
+                    if (next === null) return;
+                    event.preventDefault();
+                    setActiveIndex(next);
+                    document.getElementById(`${tabsId}-tab-${next}`)?.focus();
+                  }}
                   className={cn(
                     "flex w-full cursor-pointer items-center justify-between px-3 py-4 text-left text-[24px] leading-9 tracking-[-0.008em] transition-colors",
                     selected
