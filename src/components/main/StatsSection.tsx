@@ -26,7 +26,7 @@ export default function StatsSection() {
   return (
     <section
       aria-labelledby={headingId}
-      className="relative z-10 bg-fill-netural px-5 pt-[200px] desktop:bg-[#f9fafb] desktop:px-0 desktop:py-80"
+      className="relative z-10 bg-fill-netural px-5 pt-[200px] desktop:px-0 desktop:py-80"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-12">
         <h2

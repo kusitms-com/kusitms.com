@@ -26,7 +26,7 @@ export default function AboutSection() {
   return (
     <section
       aria-label="큐시즘 소개"
-      className="relative z-10 bg-linear-to-b from-[rgba(247,247,248,0)] to-[#f7f7f8] to-[67.693%] px-4 pt-[300px] pb-[150px] desktop:from-[rgba(249,250,251,0)] desktop:to-[#f9fafb] desktop:px-0 desktop:pt-[100px] desktop:pb-[187px]"
+      className="relative z-10 bg-linear-to-b from-[rgba(247,247,248,0)] to-[#f7f7f8] to-[67.693%] px-4 pt-[300px] pb-[150px] desktop:px-0 desktop:pt-[100px] desktop:pb-[187px]"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-[35px]">
         <HeaderDesktopLogo
