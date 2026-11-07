@@ -1,6 +1,5 @@
 import AboutSection from "@/components/main/AboutSection";
 import AudienceSection from "@/components/main/AudienceSection";
-import ExecutiveSection from "@/components/main/ExecutiveSection";
 import FitSection from "@/components/main/FitSection";
 import GuestIntroSection from "@/components/main/GuestIntroSection";
 import InsideSection from "@/components/main/InsideSection";
@@ -10,6 +9,7 @@ import PartsSection from "@/components/main/PartsSection";
 import ProgramIntroSection from "@/components/main/ProgramIntroSection";
 import ReviewHighlightSection from "@/components/main/ReviewHighlightSection";
 import StatsSection from "@/components/main/StatsSection";
+import TemaSection from "@/components/main/TemaSection";
 import { getMeetupProjects, type MeetupItem } from "@/service/projects";
 import { getReviews, type Review } from "@/service/reviews";
 
@@ -42,7 +42,7 @@ export default async function Home() {
       <AudienceSection />
       <InsideSection meetupProjects={meetupProjects} />
       <ReviewHighlightSection reviews={reviews} />
-      <ExecutiveSection />
+      <TemaSection />
       <ProgramIntroSection meetupProjects={meetupProjects} />
       <GuestIntroSection />
       <PartnerSection />
