@@ -1,4 +1,5 @@
 import AboutSection from "@/components/main/AboutSection";
+import AudienceSection from "@/components/main/AudienceSection";
 import ExecutiveSection from "@/components/main/ExecutiveSection";
 import FitSection from "@/components/main/FitSection";
 import GuestIntroSection from "@/components/main/GuestIntroSection";
@@ -27,6 +28,7 @@ export default async function Home() {
       </div>
       <FitSection />
       <PartsSection />
+      <AudienceSection />
       <ExecutiveSection />
       <ProgramIntroSection meetupProjects={meetupProjects} />
       <GuestIntroSection />
