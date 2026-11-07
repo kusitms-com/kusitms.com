@@ -1,21 +1,41 @@
 "use client";
 
-import { HeaderNavigation, Header as HeaderUI } from "@kusitms.com/ui";
+import { Button, DefaultButton, HeaderNavigation, Header as HeaderUI } from "@kusitms.com/ui";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+const DESKTOP_HEADER_HEIGHT = 76;
 
 const navLinks = [
   { href: "/", label: "학회소개", matchPath: "/" },
   { href: "/projects/meetup", label: "프로젝트", matchPath: "/projects" },
-  { href: "/reviews/activity", label: "후기", matchPath: "/reviews" },
   { href: "/archive", label: "33기 아카이브", matchPath: "/archive" },
+  { href: "/reviews/activity", label: "후기", matchPath: "/reviews" },
   { href: "/recruit", label: "리크루팅", matchPath: "/recruit" },
 ];
 
 export const Header = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const currentPath = pathname ?? "";
+  const [overHero, setOverHero] = useState(currentPath === "/");
+
+  useEffect(() => {
+    if (currentPath !== "/") {
+      setOverHero(false);
+      return;
+    }
+
+    const updateTone = () => {
+      const hero = document.querySelector("main > section");
+      setOverHero(hero !== null && hero.getBoundingClientRect().bottom > DESKTOP_HEADER_HEIGHT);
+    };
+    updateTone();
+    window.addEventListener("scroll", updateTone, { passive: true });
+    return () => window.removeEventListener("scroll", updateTone);
+  }, [currentPath]);
 
   const logo = (
     <h1>
@@ -23,13 +43,32 @@ export const Header = () => {
         <Image
           src="/headerLogo.svg"
           alt="큐시즘"
-          width={142}
-          height={26}
-          className="h-[21px] w-[120px] desktop:h-[26px] desktop:w-[142px]"
+          width={132}
+          height={24}
+          className="h-[21px] w-[120px] desktop:h-6 desktop:w-[132px]"
           priority
         />
       </Link>
     </h1>
+  );
+
+  const goToRecruit = () => router.push("/recruit");
+
+  const cta = (
+    <Button
+      size="m"
+      variant={overHero ? "glass" : "default"}
+      showIcon={false}
+      onClick={goToRecruit}
+    >
+      모집 알림 받기
+    </Button>
+  );
+
+  const mobileCta = (
+    <DefaultButton size="m" onClick={goToRecruit}>
+      모집 알림 받기
+    </DefaultButton>
   );
 
   return (
@@ -37,6 +76,8 @@ export const Header = () => {
       key={currentPath}
       logo={logo}
       mobileLogo={logo}
+      cta={cta}
+      mobileCta={mobileCta}
       menuIcon={
         <Image
           src="/projects/icons/menu.svg"
@@ -56,16 +97,17 @@ export const Header = () => {
         />
       }
     >
-      {navLinks.map(({ href, label, matchPath }) => {
-        const isActive =
-          matchPath === "/" ? currentPath === matchPath : currentPath.startsWith(matchPath);
-
-        return (
-          <HeaderNavigation key={href} href={href} state={isActive ? "pressed" : "default"}>
-            {label}
-          </HeaderNavigation>
-        );
-      })}
+      {navLinks.map(({ href, label, matchPath }) => (
+        <HeaderNavigation
+          key={href}
+          href={href}
+          isActive={
+            matchPath === "/" ? currentPath === matchPath : currentPath.startsWith(matchPath)
+          }
+        >
+          {label}
+        </HeaderNavigation>
+      ))}
     </HeaderUI>
   );
 };
