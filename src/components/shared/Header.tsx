@@ -74,6 +74,7 @@ export const Header = () => {
   return (
     <HeaderUI
       key={currentPath}
+      className="relative"
       logo={logo}
       mobileLogo={logo}
       cta={cta}

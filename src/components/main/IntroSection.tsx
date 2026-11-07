@@ -1,132 +1,109 @@
 "use client";
-import { motion, useReducedMotion } from "framer-motion";
+
 import Image from "next/image";
+import Link from "next/link";
+import { useRef } from "react";
 
-const ASSET_MOTION = {
-  duration: 7,
-  repeat: Infinity,
-  ease: "easeInOut" as const,
-};
+const TAGLINE_LINES = ["한계 너머, 새로운 도약"] as const;
+const HEADLINE_LINES = ["Beyond LIMIT,", "Lead IT"] as const;
+// Figma 텍스트 모션(가운데에서 바깥으로): 총 1.246초 안에서 글자 간격 = 총 시간 ÷ (가장 먼 칸 수 + 4),
+// 글자당 재생 시간 = 간격 × 4. 헤드라인 89ms/356ms, 태그라인 124.6ms/498.4ms와 일치한다.
+const TEXT_MOTION_TOTAL_SECONDS = 1.24606;
+const TEXT_MOTION_DURATION_IN_STAGGERS = 4;
 
-const FLOAT_Y = [0, -12, 0];
+function AnimatedLines({ lines }: { readonly lines: readonly string[] }) {
+  const lineLengths = lines.map((line) => [...line].length);
+  const lineStarts = lineLengths.map((_, lineIndex) =>
+    lineLengths.slice(0, lineIndex).reduce((sum, length) => sum + length + 1, 0),
+  );
+  const totalCharacters = lineLengths.reduce((sum, length) => sum + length + 1, -1);
+  const center = (totalCharacters - 1) / 2;
+  const staggerSeconds =
+    TEXT_MOTION_TOTAL_SECONDS /
+    (Math.floor(totalCharacters / 2) + TEXT_MOTION_DURATION_IN_STAGGERS);
+  const durationSeconds = staggerSeconds * TEXT_MOTION_DURATION_IN_STAGGERS;
+
+  return (
+    <>
+      <span className="sr-only">{lines.join(" ")}</span>
+      {lines.map((line, lineIndex) => (
+        <span key={line} aria-hidden="true" className="block whitespace-nowrap">
+          {[...line].map((character, index) => (
+            <span
+              key={`${index}-${character}`}
+              className="inline-block motion-safe:animate-hero-char"
+              style={{
+                animationDuration: `${durationSeconds}s`,
+                animationDelay: `${Math.abs(lineStarts[lineIndex] + index - center) * staggerSeconds}s`,
+              }}
+            >
+              {character === " " ? "\u00a0" : character}
+            </span>
+          ))}
+        </span>
+      ))}
+    </>
+  );
+}
 
 export default function IntroSection() {
-  const shouldReduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const scrollToNextSection = () => {
+    sectionRef.current?.nextElementSibling?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  };
 
   return (
     <section
-      className="relative w-full desktop:mt-[74px] overflow-hidden bg-[#d9e7ff]"
-      aria-label="KUSITMS 33rd Want It One, One IT One banner"
+      ref={sectionRef}
+      aria-label="KUSITMS 소개"
+      className="relative isolate -mt-16 flex min-h-dvh w-full flex-col overflow-hidden bg-white text-brand-60 desktop:mt-0"
     >
-      <motion.div
-        className="relative h-[260px] tablet:h-[420px] desktop:h-[min(41.67vw,720px)] min-[1728px]:h-[720px] overflow-hidden"
-        style={{
-          backgroundImage:
-            "linear-gradient(69deg, #ffffff 8.7%, #e3e5ff 19.3%, #ffffff 55.3%, #91a9ca 106.9%)",
-        }}
-        initial={shouldReduceMotion ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: 0.9,
-          ease: [0.22, 1, 0.36, 1],
-        }}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <Image
+          src="/main/renewal/hero-background.jpg"
+          alt=""
+          width={2163}
+          height={2163}
+          priority
+          sizes="(min-width: 1024px) 100vw, 1181px"
+          className="absolute top-[-17px] left-[-367px] h-[848px] w-[1181px] max-w-none desktop:top-0 desktop:left-[-1.77%] desktop:h-[103.05%] desktop:w-[103.44%]"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#000,#fff)] bg-[length:57.094px_100%] bg-[position:-3.84px_0] bg-repeat-x opacity-10 mix-blend-soft-light desktop:bg-[length:72px_100%] desktop:bg-[position:0_0]" />
+        <div className="absolute inset-x-0 bottom-0 h-[400px] bg-linear-to-b from-white/0 to-white desktop:h-[505px] desktop:from-[rgba(247,247,248,0)] desktop:to-[#f7f7f8]" />
+      </div>
+      <div className="absolute top-[calc(50%-30px)] left-1/2 z-10 flex w-[276px] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-14 text-center desktop:top-[19.82%] desktop:left-[5.14%] desktop:w-[772px] desktop:translate-x-0 desktop:translate-y-0 desktop:items-start desktop:text-left">
+        <div className="flex w-full flex-col gap-2 desktop:gap-1">
+          <p className="font-suit text-[24px] leading-[1.25] tracking-[-0.04em] desktop:text-[48px]">
+            <AnimatedLines lines={TAGLINE_LINES} />
+          </p>
+          <h2 className="font-brand text-[44px] font-medium leading-[56px] tracking-[-0.01em] desktop:text-[123px] desktop:leading-[138.232px]">
+            <AnimatedLines lines={HEADLINE_LINES} />
+          </h2>
+        </div>
+        <Link
+          href="/recruit"
+          className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-white bg-white/30 px-6 py-2 text-[16px] leading-6 font-semibold tracking-[-0.0025em] text-brand-60 transition-colors hover:bg-white/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em] desktop:text-brand-primary"
+        >
+          34기 모집 신청 바로가기
+        </Link>
+      </div>
+      <button
+        type="button"
+        aria-label="다음 섹션으로 이동"
+        className="absolute bottom-8 left-1/2 z-10 grid size-11 -translate-x-1/2 cursor-pointer place-items-center border-0 bg-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary desktop:size-14"
+        onClick={scrollToNextSection}
       >
         <Image
-          src="/main/img/banner/layers/wave-line.svg"
+          src="/main/renewal/hero-arrow.svg"
           alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-70 mix-blend-overlay"
+          width={36}
+          height={36}
+          className="size-9 motion-safe:animate-hero-arrow desktop:size-12"
         />
-
-        <motion.div
-          aria-hidden="true"
-          className="absolute left-[-3%] top-[-18%] w-[34%] min-w-[220px] max-w-[650px]"
-          animate={shouldReduceMotion ? undefined : { y: FLOAT_Y, rotate: [-2, 1.5, -2] }}
-          transition={{ ...ASSET_MOTION, delay: 0.2 }}
-        >
-          <Image
-            src="/main/img/banner/layers/glass-left.png"
-            alt=""
-            width={980}
-            height={1116}
-            priority
-            className="h-auto w-full"
-          />
-        </motion.div>
-
-        <motion.div
-          aria-hidden="true"
-          className="absolute left-[2%] bottom-0 w-[28%] min-w-[170px] max-w-[500px]"
-          animate={shouldReduceMotion ? undefined : { y: [0, -10, 0], x: [0, -6, 0] }}
-          transition={{ ...ASSET_MOTION, duration: 8.5, delay: 0.8 }}
-        >
-          <Image
-            src="/main/img/banner/layers/glass-left-blur.png"
-            alt=""
-            width={1000}
-            height={693}
-            className="h-auto w-full"
-          />
-        </motion.div>
-
-        <motion.div
-          aria-hidden="true"
-          className="absolute right-[-8%] bottom-[-20%] w-[34%] min-w-[260px] max-w-[700px]"
-          animate={shouldReduceMotion ? undefined : { y: [0, -16, 0], rotate: [0, -1.4, 0] }}
-          transition={{ ...ASSET_MOTION, duration: 7.8, delay: 0.4 }}
-        >
-          <Image
-            src="/main/img/banner/layers/glass-right.png"
-            alt=""
-            width={994}
-            height={983}
-            priority
-            className="h-auto w-full"
-          />
-        </motion.div>
-
-        <motion.div
-          aria-hidden="true"
-          className="absolute right-[-1%] top-[-6%] w-[22%] min-w-[170px] max-w-[420px]"
-          animate={shouldReduceMotion ? undefined : { y: [0, 12, 0], rotate: [0, 2.2, 0] }}
-          transition={{ ...ASSET_MOTION, duration: 8.2, delay: 1 }}
-        >
-          <Image
-            src="/main/img/banner/layers/glass-top-right.png"
-            alt=""
-            width={612}
-            height={430}
-            className="h-auto w-full"
-          />
-        </motion.div>
-
-        <div className="absolute inset-x-0 top-[7%] hidden grid-cols-3 px-[12%] font-[family-name:var(--font-outfit)] text-[10px] font-medium uppercase leading-[1.4] text-[#2f40ff] tablet:grid desktop:text-[clamp(11px,0.86vw,28px)]">
-          <p className="text-center">Planner, Designer, Developer</p>
-          <p className="text-center capitalize">33rd Concept</p>
-          <p className="text-center">
-            Korean University Students
-            <br />
-            It, Management Society
-          </p>
-        </div>
-
-        <div className="absolute inset-x-0 top-[36%] z-10 flex -translate-y-1/2 flex-col items-center gap-[12px] px-4 font-[family-name:var(--font-outfit)] font-medium leading-none text-[#2f40ff] drop-shadow-[0_0_12.5px_rgba(143,124,255,0.15)] tablet:gap-[24px] desktop:gap-[min(1.82vw,59px)]">
-          <p className="text-[clamp(28px,3.09vw,100px)]">KUSITMS 33rd</p>
-          <p className="whitespace-nowrap text-center text-[clamp(26px,8vw,34px)] tablet:text-[clamp(42px,5.86vw,190px)]">
-            Want It One, One IT One
-          </p>
-        </div>
-
-        <Image
-          src="/main/img/banner/layers/kusitms-logo.svg"
-          alt="KUSITMS"
-          width={305}
-          height={56}
-          className="absolute bottom-[5.5%] left-1/2 z-10 h-auto w-[96px] -translate-x-1/2 tablet:w-[126px] desktop:w-[min(9.4vw,152px)]"
-        />
-      </motion.div>
+      </button>
     </section>
   );
 }
