@@ -49,7 +49,7 @@ export default function ReviewHighlightSection({ reviews }: { reviews: Review[] 
           <div className="flex flex-col gap-4">
             <h2
               id={headingId}
-              className="text-[32px] leading-[42px] font-bold tracking-[-0.012em] text-brand-primary desktop:text-pc-36b desktop:leading-12 desktop:text-label-normal"
+              className="text-pc-32b text-brand-primary desktop:text-pc-36b desktop:leading-12 desktop:text-label-normal"
             >
               활동후기
             </h2>
@@ -75,11 +75,11 @@ export default function ReviewHighlightSection({ reviews }: { reviews: Review[] 
                     className="size-6 rotate-180 desktop:size-8"
                   />
                   {/* API 후기는 길어서(중간값 170자) 카드 크기를 지키도록 줄 수를 자른다: 모바일 4줄, 데스크톱 3줄 */}
-                  <p className="line-clamp-4 text-[14px] leading-5 font-medium tracking-[0.0125em] text-black desktop:line-clamp-3 desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]">
+                  <p className="line-clamp-4 text-label-14m text-black desktop:line-clamp-3 desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]">
                     {review.body}
                   </p>
                 </div>
-                <p className="mt-auto text-right text-[13px] leading-[18px] font-medium tracking-[0.012em] text-label-light desktop:mt-0 desktop:text-[18px] desktop:leading-[26px] desktop:font-normal desktop:tracking-[-0.005em]">
+                <p className="mt-auto text-right text-label-13m text-label-light desktop:mt-0 desktop:text-body-18r">
                   {review.part}
                 </p>
               </li>

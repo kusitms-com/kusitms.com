@@ -33,17 +33,17 @@ export default function TemaSection() {
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-12">
         <div className="flex flex-col items-center gap-6 text-center desktop:items-start desktop:gap-12 desktop:text-left">
-          <p className="text-[16px] leading-6 font-bold tracking-[-0.0025em] text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]">
+          <p className="text-body-16b text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]">
             TEMA
           </p>
           <div className="flex flex-col gap-1 desktop:gap-3">
             <h2
               id={headingId}
-              className="text-[24px] leading-9 font-bold tracking-[-0.008em] text-label-normal desktop:text-[48px] desktop:leading-[62px] desktop:tracking-[-0.018em]"
+              className="text-headline-24b text-label-normal desktop:text-[48px] desktop:leading-[62px] desktop:tracking-[-0.018em]"
             >
               큐밀리를 이끌어나갈 운영진
             </h2>
-            <p className="text-[14px] leading-5 tracking-[0.0125em] text-label-netural desktop:w-[560px] desktop:text-[16px] desktop:leading-6 desktop:font-medium desktop:tracking-[-0.0025em] desktop:text-label-alternative">
+            <p className="text-label-14r text-label-netural desktop:w-[560px] desktop:text-body-16m desktop:text-label-alternative">
               <span className="desktop:hidden">
                 KUSITMS 활동을 이끄는 운영진으로
                 <br />네 가지 팀으로 이루어져있어요

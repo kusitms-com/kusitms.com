@@ -16,17 +16,17 @@ export default function PartnersSection() {
     <section aria-labelledby={headingId} className="py-[100px] desktop:pt-[400px] desktop:pb-0">
       <div className="flex flex-col gap-9 desktop:gap-12">
         <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-6 px-5 text-center desktop:items-start desktop:px-0 desktop:gap-12 desktop:text-left">
-          <p className="text-[16px] leading-6 font-bold tracking-[-0.0025em] text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]">
+          <p className="text-body-16b text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]">
             PARTNERS
           </p>
           <div className="flex flex-col gap-1 desktop:gap-3">
             <h2
               id={headingId}
-              className="text-[24px] leading-9 font-bold tracking-[-0.008em] text-label-normal desktop:text-[48px] desktop:leading-[62px] desktop:tracking-[-0.018em]"
+              className="text-headline-24b text-label-normal desktop:text-[48px] desktop:leading-[62px] desktop:tracking-[-0.018em]"
             >
               KUSITMS 파트너사
             </h2>
-            <p className="text-[14px] leading-5 tracking-[0.0125em] text-label-netural desktop:text-[18px] desktop:leading-[26px] desktop:font-medium desktop:tracking-[-0.005em] desktop:text-label-alternative">
+            <p className="text-label-14r text-label-netural desktop:text-body-18m desktop:text-label-alternative">
               큐시즘과 함께 청년 IT경영의 내일을 만들어갈 다양한 후원사를 기다립니다. 여러분의
               후원이 IT경영의 미래를 만듭니다
             </p>

@@ -72,7 +72,7 @@ export default function IntroSection() {
           className="absolute top-[-17px] left-[-367px] h-[848px] w-[1181px] max-w-none desktop:top-0 desktop:left-[-1.77%] desktop:h-[103.05%] desktop:w-[103.44%]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#000,#fff)] bg-[length:57.094px_100%] bg-[position:-3.84px_0] bg-repeat-x opacity-10 mix-blend-soft-light desktop:bg-[length:72px_100%] desktop:bg-[position:0_0]" />
-        <div className="absolute inset-x-0 bottom-0 h-[400px] bg-linear-to-b from-white/0 to-white desktop:h-[505px] desktop:from-[rgba(247,247,248,0)] desktop:to-[#f7f7f8]" />
+        <div className="absolute inset-x-0 bottom-0 h-[400px] bg-linear-to-b from-white/0 to-white desktop:h-[505px] desktop:from-[rgba(247,247,248,0)] desktop:to-fill-netural" />
       </div>
       <div className="absolute top-[calc(50%-30px)] left-1/2 z-10 flex w-[276px] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-14 text-center desktop:top-[19.82%] desktop:left-[5.14%] desktop:w-[772px] desktop:translate-x-0 desktop:translate-y-0 desktop:items-start desktop:text-left">
         <div className="flex w-full flex-col gap-2 desktop:gap-1">
@@ -85,7 +85,7 @@ export default function IntroSection() {
         </div>
         <Link
           href="/recruit"
-          className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-white bg-white/30 px-6 py-2 text-[16px] leading-6 font-semibold tracking-[-0.0025em] text-brand-60 transition-colors hover:bg-white/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em] desktop:text-brand-primary"
+          className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-white bg-white/30 px-6 py-2 text-body-16sb text-brand-60 transition-colors hover:bg-white/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em] desktop:text-brand-primary"
         >
           34기 모집 신청 바로가기
         </Link>

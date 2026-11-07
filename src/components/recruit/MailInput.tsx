@@ -185,7 +185,7 @@ const MailInput = () => {
             }}
             className="size-5 cursor-pointer rounded-[4px] accent-brand-primary desktop:size-[25px]"
           />
-          <span className="text-[14px] leading-5 font-medium text-label-normal desktop:text-[18px] desktop:leading-[26px] desktop:tracking-[-0.005em]">
+          <span className="text-label-14m text-label-normal desktop:text-[18px] desktop:leading-[26px] desktop:tracking-[-0.005em]">
             [필수] 개인정보 수집·이용에 동의합니다
           </span>
         </label>

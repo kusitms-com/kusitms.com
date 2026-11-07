@@ -81,7 +81,7 @@ export default function RecruitmentProcessItem() {
             key={schedule.label}
             className="flex w-full flex-col items-center gap-6 desktop:gap-[30px]"
           >
-            <h3 className="text-title-7 text-label-normal desktop:text-[28px] desktop:leading-[38px] desktop:font-semibold">
+            <h3 className="text-title-7 text-label-normal desktop:text-mobile-28sb">
               {schedule.label}
             </h3>
             {/* DS RecruitmentCard는 폭이 고정(w-75 / lg:w-55)이라 시안(모바일 285px, 데스크톱 4장이 1200px을 채움)에 맞게 덮는다 */}

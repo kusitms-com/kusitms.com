@@ -32,7 +32,7 @@ export default function StatsSection() {
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-12">
         <h2
           id={headingId}
-          className="text-center text-[16px] leading-6 font-bold tracking-[-0.0025em] text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]"
+          className="text-center text-body-16b text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]"
         >
           Since 2009
         </h2>

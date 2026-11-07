@@ -226,7 +226,7 @@ function PhotoLink({ href, children }: { href: string; children: ReactNode }) {
   return (
     <Link
       href={href}
-      className="absolute top-[73.7%] left-1/2 inline-flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full border border-[rgba(124,153,253,0.5)] bg-white px-4 py-2 text-[14px] leading-5 font-semibold text-brand-strong drop-shadow-[0_0_5.4px_rgba(168,186,247,0.8)] desktop:gap-3 desktop:px-6 desktop:py-2.5 desktop:text-[18px] desktop:leading-[27px] desktop:drop-shadow-[0_0_9.75px_rgba(168,186,247,0.8)]"
+      className="absolute top-[73.7%] left-1/2 inline-flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full border border-[rgba(124,153,253,0.5)] bg-white px-4 py-2 text-label-14sb text-brand-strong drop-shadow-[0_0_5.4px_rgba(168,186,247,0.8)] desktop:gap-3 desktop:px-6 desktop:py-2.5 desktop:text-[18px] desktop:leading-[27px] desktop:drop-shadow-[0_0_9.75px_rgba(168,186,247,0.8)]"
     >
       {children}
       <ArrowRightIcon className="size-5 desktop:size-6" />
@@ -383,11 +383,11 @@ export default function InsideSection({ meetupProjects = [] }: { meetupProjects?
         <div className="flex flex-col items-center gap-2.5 pt-[67px] pb-4 text-center">
           <h2
             id={headingId}
-            className="bg-[linear-gradient(95deg,#7c9dfd_11.8%,#004bfe_97.2%)] bg-clip-text text-[24px] leading-9 font-bold tracking-[-0.008em] text-transparent desktop:text-[32px] desktop:leading-[42px] desktop:tracking-[-0.012em]"
+            className="bg-[linear-gradient(95deg,#7c9dfd_11.8%,var(--color-brand-primary)_97.2%)] bg-clip-text text-headline-24b text-transparent desktop:text-[32px] desktop:leading-[42px] desktop:tracking-[-0.012em]"
           >
             Inside KUSITMS
           </h2>
-          <p className="text-[14px] leading-5 font-medium text-[#18181b] desktop:text-[18px] desktop:leading-[26px]">
+          <p className="text-label-14m text-[#18181b] desktop:text-[18px] desktop:leading-[26px]">
             큐시즘의 한 학기, 그 안에서 펼쳐지는 경험들
           </p>
         </div>
@@ -443,9 +443,7 @@ export default function InsideSection({ meetupProjects = [] }: { meetupProjects?
               active.panelClass,
             )}
           >
-            <p className="mb-2.5 text-[18px] leading-[26px] font-semibold tracking-[-0.005em] text-black desktop:hidden">
-              {active.title}
-            </p>
+            <p className="mb-2.5 text-body-18sb text-black desktop:hidden">{active.title}</p>
             <div className="flex w-full justify-center">{active.media}</div>
             <p
               className={cn(
@@ -469,7 +467,7 @@ export default function InsideSection({ meetupProjects = [] }: { meetupProjects?
             >
               <KeyboardArrowLeftIcon className="size-5" />
             </button>
-            <p className="flex gap-2 text-[14px] leading-5 font-bold" aria-live="polite">
+            <p className="flex gap-2 text-label-14b" aria-live="polite">
               <span className="text-label-netural">{pad(activeIndex + 1)}</span>
               <span className="text-label-disable">/</span>
               <span className="text-label-disable">{pad(total)}</span>

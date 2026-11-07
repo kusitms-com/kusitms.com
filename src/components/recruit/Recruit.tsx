@@ -14,10 +14,10 @@ export default function Recruit({ children, title, englishTitle, style }: JobReq
       className={twMerge("flex flex-col items-center desktop:gap-y-[60px] gap-y-9 w-full", style)}
     >
       <div className="flex flex-col gap-6 items-center desktop:gap-1">
-        <h2 className="text-[16px] leading-6 font-bold text-brand-secondary desktop:text-[24px] desktop:leading-9">
+        <h2 className="text-body-16b text-brand-secondary desktop:text-[24px] desktop:leading-9">
           {englishTitle}
         </h2>
-        <h1 className="text-[24px] leading-9 font-bold text-label-normal desktop:text-[36px] desktop:leading-12">
+        <h1 className="text-headline-24b text-label-normal desktop:text-[36px] desktop:leading-12">
           {title}
         </h1>
       </div>
