@@ -21,7 +21,8 @@ const STATS = [
 
 export default function StatsSection() {
   const headingId = useId();
-  const [activeIndex, setActiveIndex] = useState(0);
+  // 처음에는 모든 카드가 흰색이고, 마우스를 올린 카드만 파랗게 넓어진다
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
     <section
@@ -38,7 +39,7 @@ export default function StatsSection() {
         <MotionConfig transition={CARD_TRANSITION} reducedMotion="user">
           <ul
             className="flex flex-col gap-5 desktop:flex-row desktop:gap-6"
-            onMouseLeave={() => setActiveIndex(0)}
+            onMouseLeave={() => setActiveIndex(null)}
           >
             {STATS.map((stat, index) => (
               <StatCard
