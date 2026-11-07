@@ -3,6 +3,7 @@ import AudienceSection from "@/components/main/AudienceSection";
 import ExecutiveSection from "@/components/main/ExecutiveSection";
 import FitSection from "@/components/main/FitSection";
 import GuestIntroSection from "@/components/main/GuestIntroSection";
+import InsideSection from "@/components/main/InsideSection";
 import IntroSection from "@/components/main/IntroSection";
 import PartnerSection from "@/components/main/PartnerSection";
 import PartsSection from "@/components/main/PartsSection";
@@ -29,6 +30,7 @@ export default async function Home() {
       <FitSection />
       <PartsSection />
       <AudienceSection />
+      <InsideSection meetupProjects={meetupProjects} />
       <ExecutiveSection />
       <ProgramIntroSection meetupProjects={meetupProjects} />
       <GuestIntroSection />

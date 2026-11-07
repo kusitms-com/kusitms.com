@@ -271,6 +271,18 @@ body {
 
   --animate-hero-char: hero-char-in 0.356s cubic-bezier(0, 0, 0.58, 1) both;
   /* 시안의 아래 화살표 Lottie(arrow-down)와 같은 모션: 1초 주기로 박스 높이의 10.22%만큼 내려갔다 돌아온다 */
+  /* Inside KUSITMS 기업 로고 롤링: 로고 목록을 두 번 이어 붙이고 절반만큼 흘려 끊김 없이 반복 */
+  --animate-logo-marquee: logo-marquee 20s linear infinite;
+
+  @keyframes logo-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
   --animate-hero-arrow: hero-arrow-bob 1s cubic-bezier(0.403, 0, 0.597, 1) infinite;
 
   @keyframes hero-arrow-bob {
