@@ -78,7 +78,8 @@ export const Header = () => {
   return (
     <HeaderUI
       key={currentPath}
-      className="relative"
+      // DS Header는 데스크톱에서만 fixed라, 모바일도 스크롤 중 화면 위에 남도록 sticky를 준다(데스크톱은 DS의 fixed가 이긴다)
+      className="sticky"
       logo={logo}
       mobileLogo={logo}
       cta={cta}
