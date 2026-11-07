@@ -59,7 +59,7 @@ export default function IntroSection() {
     <section
       ref={sectionRef}
       aria-label="KUSITMS 소개"
-      className="relative isolate -mt-16 flex min-h-dvh w-full flex-col overflow-hidden bg-white text-brand-60 desktop:mt-0"
+      className="sticky top-0 isolate -mt-16 flex min-h-dvh w-full flex-col overflow-hidden bg-white text-brand-60 desktop:mt-0"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <Image

@@ -1,3 +1,4 @@
+import AboutSection from "@/components/main/AboutSection";
 import ExecutiveSection from "@/components/main/ExecutiveSection";
 import GuestIntroSection from "@/components/main/GuestIntroSection";
 import IntroSection from "@/components/main/IntroSection";
@@ -18,8 +19,11 @@ export default async function Home() {
 
   return (
     <main className="mx-auto font-[family-name:var(--font-pretendard)] bg-gradient-2">
-      <IntroSection />
-      <StatsSection />
+      <div className="relative">
+        <IntroSection />
+        <AboutSection />
+        <StatsSection />
+      </div>
       <TeamCardsSection />
       <ExecutiveSection />
       <ProgramIntroSection meetupProjects={meetupProjects} />

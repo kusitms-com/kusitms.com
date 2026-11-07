@@ -29,8 +29,12 @@ export const Header = () => {
     }
 
     const updateTone = () => {
-      const hero = document.querySelector("main > section");
-      setOverHero(hero !== null && hero.getBoundingClientRect().bottom > DESKTOP_HEADER_HEIGHT);
+      const hero = document.querySelector("main section");
+      const nextSection = hero?.nextElementSibling;
+      const heroCoverEdge = nextSection
+        ? nextSection.getBoundingClientRect().top
+        : hero?.getBoundingClientRect().bottom;
+      setOverHero(heroCoverEdge !== undefined && heroCoverEdge > DESKTOP_HEADER_HEIGHT);
     };
     updateTone();
     window.addEventListener("scroll", updateTone, { passive: true });
