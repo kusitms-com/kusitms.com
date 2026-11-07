@@ -14,7 +14,8 @@ export default function RecruitingTeamInfoItem() {
   return (
     <section className="flex w-full min-w-0 flex-col gap-5 desktop:gap-0 desktop:pb-[72px] [&_li]:whitespace-normal desktop:[&_li]:whitespace-nowrap [&_ul]:w-full">
       {/* 파트 선택 네비게이션 */}
-      <NavigationFilter className="justify-center">
+      {/* DS NavigationFilter(responsive)는 모바일에서 justify-start이고 클래스를 병합하지 않아 important로 가운데 정렬한다. 넘칠 때는 safe로 왼쪽부터 보이게 한다 */}
+      <NavigationFilter className="justify-center-safe!">
         {recruitInfoItems.map((item) => (
           <FilterItem
             key={item.role}
