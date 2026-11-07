@@ -8,9 +8,14 @@ import StatCard from "./StatCard";
 const CARD_TRANSITION = { duration: 0.3, ease: "easeOut" } as const;
 
 const STATS = [
-  { label: "누적 회원 수", end: 1409, suffix: "명", description: "2009년부터 함께한 큐밀리" },
-  { label: "프로젝트 결과물", end: 86, suffix: "개", description: "기획에서 전시까지 만든 서비스" },
-  { label: "참여 대학 수", end: 50, suffix: "개", description: "함께하는 연합 학회" },
+  { label: "누적 회원 수", end: 1464, suffix: "명", description: "2009년부터 함께한 큐밀리" },
+  {
+    label: "프로젝트 결과물",
+    end: 244,
+    suffix: "개",
+    description: "기획에서 전시까지 만든 서비스",
+  },
+  { label: "참여 대학 수", end: 100, suffix: "개", description: "함께하는 연합 학회" },
   { label: "운영기간", end: 17, suffix: "년", description: "Since 2009" },
 ] as const;
 
