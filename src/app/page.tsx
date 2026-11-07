@@ -4,9 +4,9 @@ import FitSection from "@/components/main/FitSection";
 import GuestIntroSection from "@/components/main/GuestIntroSection";
 import IntroSection from "@/components/main/IntroSection";
 import PartnerSection from "@/components/main/PartnerSection";
+import PartsSection from "@/components/main/PartsSection";
 import ProgramIntroSection from "@/components/main/ProgramIntroSection";
 import StatsSection from "@/components/main/StatsSection";
-import TeamCardsSection from "@/components/main/TeamCardsSection";
 import { getMeetupProjects, type MeetupItem } from "@/service/projects";
 
 export default async function Home() {
@@ -26,7 +26,7 @@ export default async function Home() {
         <StatsSection />
       </div>
       <FitSection />
-      <TeamCardsSection />
+      <PartsSection />
       <ExecutiveSection />
       <ProgramIntroSection meetupProjects={meetupProjects} />
       <GuestIntroSection />
