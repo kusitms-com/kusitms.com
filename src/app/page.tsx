@@ -8,8 +8,10 @@ import IntroSection from "@/components/main/IntroSection";
 import PartnerSection from "@/components/main/PartnerSection";
 import PartsSection from "@/components/main/PartsSection";
 import ProgramIntroSection from "@/components/main/ProgramIntroSection";
+import ReviewHighlightSection from "@/components/main/ReviewHighlightSection";
 import StatsSection from "@/components/main/StatsSection";
 import { getMeetupProjects, type MeetupItem } from "@/service/projects";
+import { getReviews, type Review } from "@/service/reviews";
 
 export default async function Home() {
   let meetupProjects: MeetupItem[] = [];
@@ -18,6 +20,14 @@ export default async function Home() {
     meetupProjects = response.data?.meetup_list || [];
   } catch (error) {
     console.error("Failed to fetch meetup projects:", error);
+  }
+
+  let reviews: Review[] = [];
+  try {
+    const response = await getReviews("");
+    reviews = response.data?.review_list || [];
+  } catch (error) {
+    console.error("Failed to fetch reviews:", error);
   }
 
   return (
@@ -31,6 +41,7 @@ export default async function Home() {
       <PartsSection />
       <AudienceSection />
       <InsideSection meetupProjects={meetupProjects} />
+      <ReviewHighlightSection reviews={reviews} />
       <ExecutiveSection />
       <ProgramIntroSection meetupProjects={meetupProjects} />
       <GuestIntroSection />
