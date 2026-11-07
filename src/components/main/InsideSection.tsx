@@ -374,7 +374,7 @@ export default function InsideSection({ meetupProjects = [] }: { meetupProjects?
   return (
     <section
       aria-labelledby={headingId}
-      className="bg-linear-to-b from-[#e6f0f9] from-[4.82%] to-[#f9fafb] to-[108.77%] px-5 py-[100px] desktop:px-0 desktop:pt-[72px] desktop:pb-[70px]"
+      className="bg-linear-to-b from-[#e6f0f9] from-[4.82%] to-[#f9fafb] to-[108.77%] px-5 py-[100px] desktop:bg-none desktop:px-0 desktop:py-0"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 desktop:gap-12">
         <div className="flex flex-col items-center gap-2.5 pt-[67px] pb-4 text-center">

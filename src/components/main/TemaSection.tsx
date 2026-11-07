@@ -27,7 +27,7 @@ export default function TemaSection() {
   return (
     <section
       aria-labelledby={headingId}
-      className="bg-linear-to-b from-[#e6f0f9] from-[4.82%] to-[#f9fafb] to-[108.77%] px-5 py-[100px] desktop:px-0 desktop:pt-[392px] desktop:pb-[72px]"
+      className="bg-linear-to-b from-[#e6f0f9] from-[4.82%] to-[#f9fafb] to-[108.77%] px-5 py-[100px] desktop:bg-none desktop:px-0 desktop:pt-[320px] desktop:pb-0"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-12">
         <div className="flex flex-col items-center gap-6 text-center desktop:items-start desktop:gap-12 desktop:text-left">
