@@ -41,7 +41,7 @@ export default function ReviewHighlightSection({ reviews }: { reviews: Review[] 
   return (
     <section
       aria-labelledby={headingId}
-      className="bg-fill-netural px-5 py-[200px] desktop:bg-transparent desktop:px-10 min-[1280px]:px-0 desktop:pt-[320px] desktop:pb-0"
+      className="px-5 py-[200px] desktop:px-10 min-[1280px]:px-0 desktop:pt-[320px] desktop:pb-0"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 desktop:gap-12">
         <div className="flex flex-col items-center gap-6 text-center">

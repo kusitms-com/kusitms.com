@@ -378,10 +378,7 @@ export default function InsideSection({ meetupProjects = [] }: { meetupProjects?
   const move = (step: number) => setActiveIndex((index) => (index + step + total) % total);
 
   return (
-    <section
-      aria-labelledby={headingId}
-      className="bg-linear-to-b from-[#e6f0f9] from-[4.82%] to-[#f9fafb] to-[108.77%] px-5 py-[100px] desktop:bg-none desktop:px-0 desktop:py-0"
-    >
+    <section aria-labelledby={headingId} className="px-5 py-[100px] desktop:px-0 desktop:py-0">
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 desktop:gap-12">
         <div className="flex flex-col items-center gap-2.5 pt-[67px] pb-4 text-center">
           <h2

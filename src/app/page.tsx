@@ -38,13 +38,13 @@ export default async function Home() {
       <FitSection />
       <PartsSection />
       <AudienceSection />
-      {/* 시안(607:24007) 데스크톱: 추천 섹션 배경에서 500px 동안 하늘색으로 넘어간 뒤, Inside~파트너사가
-          하나의 그라데이션 배경(위아래 72px, 섹션 사이 2px)을 함께 쓴다. 모바일은 섹션별 배경을 그대로 쓴다 */}
+      {/* 시안(데스크톱 607:24007, 모바일 531:20634): 추천 섹션 배경(#f6f7f9)에서 하늘색으로 넘어가는 띠(모바일 125px, 데스크톱 500px) 뒤에
+          Inside~파트너사가 하나의 그라데이션 배경을 함께 쓴다(데스크톱은 위아래 72px, 섹션 사이 2px) */}
       <div
         aria-hidden
-        className="hidden h-[500px] bg-linear-to-b from-[#f6f7f9] to-[#e6f0f9] desktop:block"
+        className="h-[125px] bg-linear-to-b from-[#f6f7f9] to-[#e6f0f9] desktop:h-[500px]"
       />
-      <div className="desktop:flex desktop:flex-col desktop:gap-[2px] desktop:bg-linear-to-b desktop:from-[#e6f0f9] desktop:from-[4.82%] desktop:to-[#f9fafb] desktop:to-[108.77%] desktop:py-[72px]">
+      <div className="bg-linear-to-b from-[#e6f0f9] from-[4.82%] to-[#f9fafb] to-[108.77%] desktop:flex desktop:flex-col desktop:gap-[2px] desktop:py-[72px]">
         <InsideSection meetupProjects={meetupProjects} />
         <ReviewHighlightSection reviews={reviews} />
         <TemaSection />
