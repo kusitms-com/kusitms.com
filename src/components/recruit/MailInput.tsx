@@ -9,7 +9,7 @@ import { postEmail } from "@/service/recruit/postEmail";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // 시안 KUS_RCT_004_1~5의 안내 문구. 서버 응답에 "이미"가 들어 있으면 중복 신청으로 본다
-type Status = "idle" | "submitting" | "success" | "duplicate" | "error";
+type Status = "idle" | "submitting" | "success" | "duplicate" | "invalid" | "agree" | "error";
 
 const PRIVACY_ROWS = [
   ["수집 항목", "이메일"],
@@ -29,7 +29,13 @@ function PrivacyModal({ onClose }: { onClose: () => void }) {
   useEffect(() => {
     const opener = document.activeElement as HTMLElement | null;
     confirmRef.current?.focus();
-    return () => opener?.focus();
+    // 모달이 열려 있는 동안 뒤 화면 스크롤 고정(KUS_RCT_003)
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = overflow;
+      opener?.focus();
+    };
   }, []);
 
   // Esc로 닫고, Tab/Shift+Tab은 모달 안에서만 돈다
@@ -61,12 +67,20 @@ function PrivacyModal({ onClose }: { onClose: () => void }) {
   // body에 그려야 페이지 래퍼(min-w 등)와 상관없이 화면 기준으로 가운데 놓인다
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-5">
+      {/* Dim(배경) 클릭으로도 닫힌다(KUS_RCT_003). 키보드는 Esc·확인 버튼으로 닫으므로 탭 순서에서 뺀다 */}
+      <button
+        type="button"
+        tabIndex={-1}
+        aria-label="개인정보 안내 닫기"
+        onClick={onClose}
+        className="absolute inset-0 cursor-default"
+      />
       <div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="flex w-full max-w-[490px] flex-col gap-4 rounded-lg bg-white p-5"
+        className="relative flex w-full max-w-[490px] flex-col gap-4 rounded-lg bg-white p-5"
       >
         <h3 id={titleId} className="text-[20px] leading-[30px] font-bold text-label-normal">
           개인정보 수집·이용 안내
@@ -94,18 +108,16 @@ function PrivacyModal({ onClose }: { onClose: () => void }) {
 }
 
 const MailInput = () => {
-  // 모집 알림 신청은 아직 열지 않았다(기존과 동일하게 비활성화). 열 때 false로 바꾼다
-  const isPreparing = true;
   const checkboxId = useId();
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
-  const [touched, setTouched] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [showPrivacy, setShowPrivacy] = useState(false);
 
-  const isValidEmail = EMAIL_PATTERN.test(email);
-  const formatError = touched && email.length > 0 && !isValidEmail;
-  const agreeError = touched && isValidEmail && !agreed;
+  // 오류는 알림 받기를 눌렀을 때만 정하고, 입력이나 동의 체크를 바꾸면 지운다.
+  // invalid는 빈 값·형식 불일치(서버 400 형식 오류 포함), agree는 동의 미체크
+  const formatError = status === "invalid";
+  const agreeError = status === "agree";
 
   const helper = formatError
     ? { text: "이메일 형식을 확인해 주세요", tone: "error" }
@@ -118,7 +130,7 @@ const MailInput = () => {
           : status === "error"
             ? { text: "잠시 후 다시 시도해 주세요", tone: "error" }
             : null;
-  // 시안: 형식·동의·중복 오류는 입력창 테두리도 빨갛게, 서버 오류는 문구만
+  // 시안(KUS_RCT_004): 형식·동의·중복 오류는 입력창 테두리도 빨갛게, 서버 오류는 문구만
   const redBorder = formatError || agreeError || status === "duplicate";
 
   const handleChange = (value: string) => {
@@ -127,21 +139,27 @@ const MailInput = () => {
   };
 
   const handleSubmit = async (value: string) => {
-    if (isPreparing) return;
+    // 버튼은 항상 누를 수 있고(DS EmailInput은 validate가 false면 버튼을 막음), 누르면 여기서 검사한다
+    if (!EMAIL_PATTERN.test(value)) {
+      setStatus("invalid");
+      return;
+    }
+    if (!agreed) {
+      setStatus("agree");
+      return;
+    }
     setStatus("submitting");
     try {
       await postEmail(value);
       setStatus("success");
+      // 신청 완료 시 입력창을 비운다
+      setEmail("");
     } catch (error) {
-      let message = "";
-      if (error instanceof Error) {
-        try {
-          message = JSON.parse(error.message)?.message ?? "";
-        } catch {
-          message = error.message;
-        }
-      }
-      setStatus(message.includes("이미") ? "duplicate" : "error");
+      // 백엔드는 누락·형식 오류·중복을 모두 400으로 주고 message로 구분한다. 서버 오류는 입력값을 유지한다
+      const message = error instanceof Error ? error.message : "";
+      if (message.includes("이미 등록된")) setStatus("duplicate");
+      else if (message.includes("형식") || message.includes("필수")) setStatus("invalid");
+      else setStatus("error");
     }
   };
 
@@ -150,14 +168,11 @@ const MailInput = () => {
       <EmailInput
         value={email}
         onChange={handleChange}
-        onBlur={() => setTouched(true)}
         // biome-ignore lint/suspicious/noExplicitAny: DS EmailInput의 onSubmit이 InputHTMLAttributes와 교차 타입 충돌
         onSubmit={handleSubmit as any}
-        validate={(value) =>
-          EMAIL_PATTERN.test(value) && agreed && (status === "idle" || status === "error")
-        }
-        placeholder={isPreparing ? "준비중..." : "이메일 주소를 입력해 주세요"}
-        disabled={isPreparing}
+        // 요청 중과 신청 완료 직후에는 막고, 새로 입력하면(상태가 idle로 돌아감) 다시 누를 수 있다
+        validate={() => status !== "submitting" && status !== "success"}
+        placeholder="이메일 주소를 입력해 주세요"
         buttonLabel="알림 받기"
         aria-invalid={redBorder}
         aria-describedby={helper ? `${checkboxId}-helper` : undefined}
@@ -167,8 +182,8 @@ const MailInput = () => {
         id={`${checkboxId}-helper`}
         aria-live="polite"
         className={cn(
-          "min-h-6 w-full px-[18px] pt-0.5 text-[12px] leading-6 desktop:px-[22px] desktop:pt-[11px] desktop:text-[18px] desktop:leading-[26px]",
-          helper?.tone === "error" ? "text-status-negative" : "text-label-netural",
+          "h-[26px] w-full px-[18px] pt-0.5 text-[12px] leading-6 desktop:h-[33px] desktop:px-[22px] desktop:pt-[7px] desktop:text-[18px] desktop:leading-[26px]",
+          helper?.tone === "error" ? "text-status-negative" : "text-label-normal",
         )}
       >
         {helper?.text}
@@ -181,7 +196,7 @@ const MailInput = () => {
             checked={agreed}
             onChange={(event) => {
               setAgreed(event.target.checked);
-              setTouched(true);
+              if (status === "agree") setStatus("idle");
             }}
             className="size-5 cursor-pointer rounded-[4px] accent-brand-primary desktop:size-[25px]"
           />
