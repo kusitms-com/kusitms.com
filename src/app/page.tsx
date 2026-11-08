@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import AboutSection from "@/components/main/AboutSection";
 import AudienceSection from "@/components/main/AudienceSection";
 import FitSection from "@/components/main/FitSection";
@@ -10,6 +11,26 @@ import StatsSection from "@/components/main/StatsSection";
 import TemaSection from "@/components/main/TemaSection";
 import { getMeetupProjects, type MeetupItem } from "@/service/projects";
 import { getReviews, type Review } from "@/service/reviews";
+
+// 메타 규칙 1-1(홈). 이미지는 현 기수 이미지가 나오기 전까지 기존 33기 이미지를 쓴다
+const HOME_TITLE = "큐시즘(KUSITMS) · 대학생 IT 프로젝트 학회";
+const HOME_DESCRIPTION =
+  "기획·디자인·개발이 한 팀이 되어 6개월 동안 실제 서비스를 만드는 2009년 설립 학회";
+
+export const metadata: Metadata = {
+  title: HOME_TITLE,
+  description: HOME_DESCRIPTION,
+  alternates: { canonical: "https://www.kusitms.com" },
+  openGraph: {
+    type: "website",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    url: "https://www.kusitms.com",
+    images: [
+      { url: "https://www.kusitms.com/og/kusitms-og-33rd.png", alt: "KUSITMS 홈페이지 배너" },
+    ],
+  },
+};
 
 export default async function Home() {
   let meetupProjects: MeetupItem[] = [];

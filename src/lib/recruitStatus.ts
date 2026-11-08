@@ -80,3 +80,32 @@ export const APPLY_LABEL: Record<RecruitStatusKey, string> = {
   "open-staff": "운영진 지원하기",
   "open-member": "학회원 지원하기",
 };
+
+/** "2027-01-07" → "1/7" (메타 문구의 서류 접수 기간 표기) */
+export function formatMonthDay(date: string): string {
+  const [, month, day] = date.split("-").map(Number);
+  return `${month}/${day}`;
+}
+
+function addDays(date: string, days: number): string {
+  const [year, month, day] = date.split("-").map(Number);
+  return new Date(Date.UTC(year, month - 1, day + days)).toISOString().slice(0, 10);
+}
+
+/** 주어진 한국 날짜까지 일어난 가장 최근 모집 상태 전환일(공고일, 접수 시작, 마감 다음 날). 없으면 null */
+export function getLatestStatusChangeDate(kstDate: string): string | null {
+  const { announceDate, staff, member } = RECRUIT_SCHEDULE;
+  const changes = [
+    announceDate,
+    staff.start,
+    addDays(staff.end, 1),
+    member.start,
+    addDays(member.end, 1),
+  ];
+  return (
+    changes
+      .filter((date) => date <= kstDate)
+      .sort()
+      .at(-1) ?? null
+  );
+}
