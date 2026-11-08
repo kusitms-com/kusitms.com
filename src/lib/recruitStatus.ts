@@ -80,3 +80,9 @@ export const APPLY_LABEL: Record<RecruitStatusKey, string> = {
   "open-staff": "운영진 지원하기",
   "open-member": "학회원 지원하기",
 };
+
+/** "2027-01-07" → "1/7" (메타 문구의 서류 접수 기간 표기) */
+export function formatMonthDay(date: string): string {
+  const [, month, day] = date.split("-").map(Number);
+  return `${month}/${day}`;
+}

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import Recruit from "@/components/recruit/Recruit";
 import RecruitingTeamInfoItem from "@/components/recruit/RecruitingTeamInfoItem";
@@ -6,17 +7,66 @@ import RecruitmentTargetInfoItem from "@/components/recruit/RecruitmentTargetInf
 import RecruitmentTogether from "@/components/recruit/RecruitmentTogether";
 import RecruitQnA from "@/components/recruit/RecruitQnA";
 import UpcomingToast from "@/components/recruit/UpcomingToast";
-import { getRecruitStatus, QA_DATE_COOKIE, resolveKstDate, toStatusKey } from "@/lib/recruitStatus";
+import {
+  formatMonthDay,
+  getRecruitStatus,
+  QA_DATE_COOKIE,
+  RECRUIT_SCHEDULE,
+  type RecruitStatusKey,
+  resolveKstDate,
+  toStatusKey,
+} from "@/lib/recruitStatus";
 
-async function RecruitPage({
+type RecruitSearchParams = Promise<Record<string, string | string[] | undefined>>;
+
+// proxy와 같은 규칙: 주소의 qa_date가 없으면 스테이징에서 저장해 둔 qa_date 쿠키를 쓴다
+async function resolveStatusKey(searchParams: RecruitSearchParams): Promise<RecruitStatusKey> {
+  const { qa_date: qaDate } = await searchParams;
+  const savedQaDate = (await cookies()).get(QA_DATE_COOKIE)?.value;
+  return toStatusKey(getRecruitStatus(resolveKstDate(qaDate ?? savedQaDate)));
+}
+
+const RECRUIT_URL = "https://www.kusitms.com/recruit";
+const OG_IMAGE = "https://www.kusitms.com/og/kusitms-og-33rd.png";
+
+// 메타 규칙 1-1·1-2: 모집 상태(비모집 / 모집 중)에 따라 title·description·OG를 서버에서 전환한다.
+// 기수와 서류 접수 기간은 RECRUIT_SCHEDULE에서 만든다. 이미지는 상태별 이미지가 나오기 전까지 기존 이미지를 쓴다
+export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
-  const { qa_date: qaDate } = await searchParams;
-  // proxy와 같은 규칙: 주소의 qa_date가 없으면 스테이징에서 저장해 둔 qa_date 쿠키를 쓴다
-  const savedQaDate = (await cookies()).get(QA_DATE_COOKIE)?.value;
-  const statusKey = toStatusKey(getRecruitStatus(resolveKstDate(qaDate ?? savedQaDate)));
+  searchParams: RecruitSearchParams;
+}): Promise<Metadata> {
+  const statusKey = await resolveStatusKey(searchParams);
+  const { cardinal, staff, member } = RECRUIT_SCHEDULE;
+  const [title, description] =
+    statusKey === "closed"
+      ? [
+          "다음 기수 모집, 메일로 알려드려요",
+          "이메일을 남기면 큐시즘 모집이 시작될 때 바로 알려드려요",
+        ]
+      : [
+          `큐시즘 ${cardinal}기 모집 중`,
+          `서류 접수 ${formatMonthDay(staff.start)}~${formatMonthDay(member.end)}. 지금 큐시즘 한 팀이 되어 보세요`,
+        ];
+
+  return {
+    title,
+    description,
+    alternates: { canonical: RECRUIT_URL },
+    openGraph: {
+      type: "website",
+      siteName: "KUSITMS",
+      title,
+      description,
+      url: RECRUIT_URL,
+      images: [{ url: OG_IMAGE, alt: "KUSITMS Recruit" }],
+    },
+    twitter: { card: "summary_large_image", title, description, images: [OG_IMAGE] },
+  };
+}
+
+async function RecruitPage({ searchParams }: { searchParams: RecruitSearchParams }) {
+  const statusKey = await resolveStatusKey(searchParams);
   const recruitInfoList = [
     // 시안(KUS_RCT) 순서: 일정 → 대상 → 파트 → FAQ
     { id: 3, title: "모집 일정", englishTitle: "Schedule", anchor: "schedule" },
