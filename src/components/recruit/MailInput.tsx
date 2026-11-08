@@ -9,7 +9,7 @@ import { postEmail } from "@/service/recruit/postEmail";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // 시안 KUS_RCT_004_1~5의 안내 문구. 서버 응답에 "이미"가 들어 있으면 중복 신청으로 본다
-type Status = "idle" | "submitting" | "success" | "duplicate" | "invalid" | "error";
+type Status = "idle" | "submitting" | "success" | "duplicate" | "invalid" | "agree" | "error";
 
 const PRIVACY_ROWS = [
   ["수집 항목", "이메일"],
@@ -111,14 +111,13 @@ const MailInput = () => {
   const checkboxId = useId();
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
-  const [touched, setTouched] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [showPrivacy, setShowPrivacy] = useState(false);
 
-  const isValidEmail = EMAIL_PATTERN.test(email);
-  // 서버가 형식 오류(400)로 돌려준 경우도 형식 오류로 보여 준다
-  const formatError = (touched && email.length > 0 && !isValidEmail) || status === "invalid";
-  const agreeError = touched && isValidEmail && !agreed;
+  // 오류는 알림 받기를 눌렀을 때만 정하고, 입력이나 동의 체크를 바꾸면 지운다.
+  // invalid는 빈 값·형식 불일치(서버 400 형식 오류 포함), agree는 동의 미체크
+  const formatError = status === "invalid";
+  const agreeError = status === "agree";
 
   const helper = formatError
     ? { text: "이메일 형식을 확인해 주세요", tone: "error" }
@@ -140,13 +139,21 @@ const MailInput = () => {
   };
 
   const handleSubmit = async (value: string) => {
+    // 버튼은 항상 누를 수 있고(DS EmailInput은 validate가 false면 버튼을 막음), 누르면 여기서 검사한다
+    if (!EMAIL_PATTERN.test(value)) {
+      setStatus("invalid");
+      return;
+    }
+    if (!agreed) {
+      setStatus("agree");
+      return;
+    }
     setStatus("submitting");
     try {
       await postEmail(value);
       setStatus("success");
-      // 신청 완료 시 입력창을 비운다(입력값 변경으로 상태가 초기화되지 않게 직접 비움)
+      // 신청 완료 시 입력창을 비운다
       setEmail("");
-      setTouched(false);
     } catch (error) {
       // 백엔드는 누락·형식 오류·중복을 모두 400으로 주고 message로 구분한다. 서버 오류는 입력값을 유지한다
       const message = error instanceof Error ? error.message : "";
@@ -161,12 +168,10 @@ const MailInput = () => {
       <EmailInput
         value={email}
         onChange={handleChange}
-        onBlur={() => setTouched(true)}
         // biome-ignore lint/suspicious/noExplicitAny: DS EmailInput의 onSubmit이 InputHTMLAttributes와 교차 타입 충돌
         onSubmit={handleSubmit as any}
-        validate={(value) =>
-          EMAIL_PATTERN.test(value) && agreed && (status === "idle" || status === "error")
-        }
+        // 요청 중과 신청 완료 직후에는 막고, 새로 입력하면(상태가 idle로 돌아감) 다시 누를 수 있다
+        validate={() => status !== "submitting" && status !== "success"}
         placeholder="이메일 주소를 입력해 주세요"
         buttonLabel="알림 받기"
         aria-invalid={redBorder}
@@ -191,7 +196,7 @@ const MailInput = () => {
             checked={agreed}
             onChange={(event) => {
               setAgreed(event.target.checked);
-              setTouched(true);
+              if (status === "agree") setStatus("idle");
             }}
             className="size-5 cursor-pointer rounded-[4px] accent-brand-primary desktop:size-[25px]"
           />
