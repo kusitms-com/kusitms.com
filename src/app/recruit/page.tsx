@@ -17,7 +17,6 @@ async function RecruitPage({
   // proxy와 같은 규칙: 주소의 qa_date가 없으면 스테이징에서 저장해 둔 qa_date 쿠키를 쓴다
   const savedQaDate = (await cookies()).get(QA_DATE_COOKIE)?.value;
   const statusKey = toStatusKey(getRecruitStatus(resolveKstDate(qaDate ?? savedQaDate)));
-  const isRecruiting = statusKey !== "closed";
   const recruitInfoList = [
     // 시안(KUS_RCT) 순서: 일정 → 대상 → 파트 → FAQ
     { id: 3, title: "모집 일정", englishTitle: "Schedule", anchor: "schedule" },
@@ -33,7 +32,7 @@ async function RecruitPage({
       case 2:
         return <RecruitingTeamInfoItem />;
       case 3:
-        return <RecruitmentProcessItem isRecruiting={isRecruiting} />;
+        return <RecruitmentProcessItem />;
       case 4:
         return <RecruitQnA />;
     }
