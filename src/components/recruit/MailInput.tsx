@@ -108,8 +108,6 @@ function PrivacyModal({ onClose }: { onClose: () => void }) {
 }
 
 const MailInput = () => {
-  // 모집 알림 신청은 아직 열지 않았다(기존과 동일하게 비활성화). 열 때 false로 바꾼다
-  const isPreparing = true;
   const checkboxId = useId();
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
@@ -142,7 +140,6 @@ const MailInput = () => {
   };
 
   const handleSubmit = async (value: string) => {
-    if (isPreparing) return;
     setStatus("submitting");
     try {
       await postEmail(value);
@@ -170,8 +167,7 @@ const MailInput = () => {
         validate={(value) =>
           EMAIL_PATTERN.test(value) && agreed && (status === "idle" || status === "error")
         }
-        placeholder={isPreparing ? "준비중..." : "이메일 주소를 입력해 주세요"}
-        disabled={isPreparing}
+        placeholder="이메일 주소를 입력해 주세요"
         buttonLabel="알림 받기"
         aria-invalid={redBorder}
         aria-describedby={helper ? `${checkboxId}-helper` : undefined}
