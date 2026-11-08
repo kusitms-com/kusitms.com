@@ -6,12 +6,18 @@ interface JobRequirementProps {
   title: string;
   englishTitle: string;
   style?: string;
+  id?: string;
 }
 
-export default function Recruit({ children, title, englishTitle, style }: JobRequirementProps) {
+export default function Recruit({ children, title, englishTitle, style, id }: JobRequirementProps) {
   return (
     <div
-      className={twMerge("flex flex-col items-center desktop:gap-y-[60px] gap-y-9 w-full", style)}
+      id={id}
+      className={twMerge(
+        "scroll-mt-24 desktop:scroll-mt-28",
+        "flex flex-col items-center desktop:gap-y-[60px] gap-y-9 w-full",
+        style,
+      )}
     >
       <div className="flex flex-col gap-6 items-center desktop:gap-1">
         <h2 className="text-body-16b text-brand-secondary desktop:text-[24px] desktop:leading-9">

@@ -44,3 +44,39 @@ export function resolveKstDate(qaDate: string | string[] | undefined, now = new 
   const match = allowQaDate && typeof qaDate === "string" ? QA_DATE_PATTERN.exec(qaDate) : null;
   return match ? match[1] : toKstDate(now);
 }
+
+// TODO(35기 모집 전 필수 교체): 운영진·학회원 지원서(또는 지원 사이트) 링크를 받으면 각각 교체한다.
+// 지금 값은 임시로 넣은 기존 지원 폼이고, 두 트랙이 같은 링크를 쓴다. 신모 기간 회장단에게 수령(명세 0-1)
+export const RECRUIT_APPLY_URL: Record<RecruitTrack, string> = {
+  staff: "https://forms.gle/7sf8ix1CnP9s3G3s8",
+  member: "https://forms.gle/7sf8ix1CnP9s3G3s8",
+};
+
+// proxy가 요청마다 판정한 상태를 GNB(클라이언트)에 넘기는 쿠키, 스테이징 qa_date를 페이지 이동 중에도 유지하는 쿠키
+export const RECRUIT_STATUS_COOKIE = "recruit_status";
+export const QA_DATE_COOKIE = "qa_date";
+
+export type RecruitStatusKey = "closed" | "upcoming" | "open-staff" | "open-member";
+
+export function toStatusKey(status: RecruitStatus): RecruitStatusKey {
+  return status.phase === "open" ? `open-${status.track}` : status.phase;
+}
+
+export function fromStatusKey(key: RecruitStatusKey): RecruitStatus {
+  if (key === "open-staff") return { phase: "open", track: "staff" };
+  if (key === "open-member") return { phase: "open", track: "member" };
+  return { phase: key };
+}
+
+export function isStatusKey(value: string | undefined): value is RecruitStatusKey {
+  return (
+    value === "closed" || value === "upcoming" || value === "open-staff" || value === "open-member"
+  );
+}
+
+export const APPLY_LABEL: Record<RecruitStatusKey, string> = {
+  closed: "모집 알림 받기",
+  upcoming: "지원하기",
+  "open-staff": "운영진 지원하기",
+  "open-member": "학회원 지원하기",
+};

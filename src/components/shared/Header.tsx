@@ -3,24 +3,43 @@
 import { Button, DefaultButton, HeaderNavigation, Header as HeaderUI } from "@kusitms.com/ui";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useApplyAction } from "@/hooks/useApplyAction";
+import {
+  APPLY_LABEL,
+  isStatusKey,
+  RECRUIT_STATUS_COOKIE,
+  type RecruitStatusKey,
+} from "@/lib/recruitStatus";
 
 const DESKTOP_HEADER_HEIGHT = 76;
+
+function readStatusCookie(): RecruitStatusKey | null {
+  const value = document.cookie.match(new RegExp(`(?:^|; )${RECRUIT_STATUS_COOKIE}=([^;]*)`))?.[1];
+  return isStatusKey(value) ? value : null;
+}
 
 const navLinks = [
   { href: "/", label: "학회소개", matchPath: "/" },
   { href: "/projects/meetup", label: "프로젝트", matchPath: "/projects" },
-  { href: "/archive", label: "33기 아카이브", matchPath: "/archive" },
   { href: "/reviews/activity", label: "후기", matchPath: "/reviews" },
+  { href: "/archive", label: "33기 아카이브", matchPath: "/archive" },
   { href: "/recruit", label: "리크루팅", matchPath: "/recruit" },
 ];
 
 export const Header = () => {
   const pathname = usePathname();
-  const router = useRouter();
   const currentPath = pathname ?? "";
   const [overHero, setOverHero] = useState(currentPath === "/");
+  // proxy가 요청마다 서버 시간으로 판정해 둔 모집 상태. 읽기 전에는 버튼 자리만 잡아 두고 숨긴다
+  const [statusKey, setStatusKey] = useState<RecruitStatusKey | null>(null);
+  const apply = useApplyAction("gnb");
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: 페이지를 옮길 때마다 proxy가 갱신한 쿠키를 다시 읽는다
+  useEffect(() => {
+    setStatusKey(readStatusCookie());
+  }, [currentPath]);
 
   useEffect(() => {
     if (currentPath !== "/") {
@@ -56,24 +75,29 @@ export const Header = () => {
     </h1>
   );
 
-  const goToRecruit = () => router.push("/recruit");
-
+  // 명세 0-1: 버튼은 하나, 문구와 동작만 모집 상태에 따라 바뀐다. 모바일은 헤더 대신 햄버거 메뉴 하단에 둔다(디자인 기준)
   const cta = (
-    <Button
-      size="m"
-      variant={overHero ? "glass" : "default"}
-      showIcon={false}
-      onClick={goToRecruit}
+    <span
+      className={statusKey ? undefined : "invisible"}
+      aria-hidden={statusKey ? undefined : true}
     >
-      모집 알림 받기
-    </Button>
+      <Button
+        size="m"
+        variant={overHero ? "glass" : "default"}
+        showIcon={false}
+        tabIndex={statusKey ? undefined : -1}
+        onClick={() => statusKey && apply(statusKey)}
+      >
+        {APPLY_LABEL[statusKey ?? "closed"]}
+      </Button>
+    </span>
   );
 
-  const mobileCta = (
-    <DefaultButton size="m" onClick={goToRecruit}>
-      모집 알림 받기
+  const mobileCta = statusKey ? (
+    <DefaultButton size="m" onClick={() => apply(statusKey)}>
+      {APPLY_LABEL[statusKey]}
     </DefaultButton>
-  );
+  ) : null;
 
   return (
     <HeaderUI

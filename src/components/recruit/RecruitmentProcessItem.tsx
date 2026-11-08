@@ -1,12 +1,64 @@
 "use client";
 
 import { ChatGraphic, FileGraphic, MedalGraphic, PeopleGraphic } from "@kusitms.com/icons";
-import { Button, RecruitmentCard } from "@kusitms.com/ui";
-import { useToast } from "@/hooks";
+import { RecruitmentCard } from "@kusitms.com/ui";
 
-const RECRUIT_APPLY_URL = "https://forms.gle/7sf8ix1CnP9s3G3s8";
+// 비모집: 지난 기수(34기) 일정을 "신규 운영진 / 신규 학회원"으로 그대로 보여 준다(명세 3-3)
+const PAST_SCHEDULES = [
+  {
+    label: "신규 운영진",
+    steps: [
+      {
+        graphic: FileGraphic,
+        title: "서류 지원 기간",
+        description: "7월 16일(목) ~ 7월 20일(월)",
+      },
+      {
+        graphic: ChatGraphic,
+        title: "서류 합격 발표",
+        description: "7월 22일(수)\n합격자/불합격자 전체 연락",
+      },
+      {
+        graphic: PeopleGraphic,
+        title: "신규 운영진 면접",
+        description: "7월 25일(토) ~ 7월 26일(일)\n서류 합격자 개별 안내",
+      },
+      {
+        graphic: MedalGraphic,
+        title: "최종 결과 발표",
+        description: "7월 28일(화)\n합격자/불합격자 전체 연락",
+      },
+    ],
+  },
+  {
+    label: "신규 학회원",
+    steps: [
+      {
+        graphic: FileGraphic,
+        title: "서류 지원 기간",
+        description: "7월 25일(토) ~ 8월 1일(토) 23:59",
+      },
+      {
+        graphic: ChatGraphic,
+        title: "서류 합격 발표",
+        description: "8월 5일(수)\n합격자/불합격자 전체 연락",
+      },
+      {
+        graphic: PeopleGraphic,
+        title: "면접 기간",
+        description: "8월 8일(토) ~ 8월 9일(일)\n서류 합격자 개별 안내",
+      },
+      {
+        graphic: MedalGraphic,
+        title: "최종 합격 발표",
+        description: "8월 11일(화)",
+      },
+    ],
+  },
+];
 
-const recruitmentSchedules = [
+// 모집 중: 이번 기수(35기, 명세 0-2 예시) 일정
+const CURRENT_SCHEDULES = [
   {
     label: "운영진",
     steps: [
@@ -53,29 +105,19 @@ const recruitmentSchedules = [
       {
         graphic: MedalGraphic,
         title: "최종 합격 발표",
-        // 시안에 면접 기간(1/30~1/31)과 같은 값이 들어 있어 그대로 옮김. 확정 날짜 받으면 교체
-        description: "1/30(토) ~ 1/31(일)",
+        description: "2/2(화)",
       },
     ],
   },
 ];
 
 export default function RecruitmentProcessItem({ isRecruiting }: { isRecruiting: boolean }) {
-  const { showToast, Toast } = useToast();
-
-  const handleApplyClick = () => {
-    if (isRecruiting) {
-      window.open(RECRUIT_APPLY_URL, "_blank", "noopener,noreferrer");
-      return;
-    }
-
-    showToast({ message: "지원 기간이 아직 아니에요" });
-  };
+  const schedules = isRecruiting ? CURRENT_SCHEDULES : PAST_SCHEDULES;
 
   return (
     <section className="flex flex-col w-full items-center gap-[60px] desktop:pb-14">
       <div className="flex w-full max-w-[1200px] flex-col gap-[60px] desktop:gap-[60px]">
-        {recruitmentSchedules.map((schedule) => (
+        {schedules.map((schedule) => (
           <div
             key={schedule.label}
             className="flex w-full flex-col items-center gap-6 desktop:gap-[30px]"
@@ -98,8 +140,6 @@ export default function RecruitmentProcessItem({ isRecruiting }: { isRecruiting:
           </div>
         ))}
       </div>
-      {isRecruiting && <Button onClick={handleApplyClick}>지원하기</Button>}
-      {Toast}
     </section>
   );
 }
