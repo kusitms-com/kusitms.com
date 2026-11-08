@@ -60,8 +60,7 @@ const recruitmentSchedules = [
   },
 ];
 
-export default function RecruitmentProcessItem() {
-  const isRecruiting = false;
+export default function RecruitmentProcessItem({ isRecruiting }: { isRecruiting: boolean }) {
   const { showToast, Toast } = useToast();
 
   const handleApplyClick = () => {

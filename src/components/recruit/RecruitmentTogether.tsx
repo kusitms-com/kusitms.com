@@ -1,9 +1,8 @@
 import { Button } from "@kusitms.com/ui";
 import MailInput from "./MailInput";
 
-const RecruitmentTogether = () => {
-  // 모집기간 여부에 따라 문구와 버튼 다르게 처리
-  const isRecruiting = false;
+// 모집기간 여부(서버에서 한국 시간으로 판정)에 따라 문구와 버튼 다르게 처리
+const RecruitmentTogether = ({ isRecruiting }: { isRecruiting: boolean }) => {
   return (
     <div className="flex flex-col w-full items-center">
       <h2 className="text-pc-40b text-brand-primary desktop:text-[48px] desktop:leading-[1.35]">
