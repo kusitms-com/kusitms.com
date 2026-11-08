@@ -31,7 +31,7 @@ const RecruitmentTogether = ({ statusKey }: { statusKey: RecruitStatusKey }) => 
           className="flex w-full scroll-mt-24 flex-col items-center desktop:scroll-mt-28"
         >
           {/* 시안 KUS_RCT(모집 전): 데스크톱 20/30 Medium, 모바일 13/18 */}
-          <span className="flex w-full flex-col items-center gap-1 pt-5 pb-10 text-center text-label-13m text-label-normal desktop:pt-4 desktop:pb-20 desktop:text-[20px] desktop:leading-[30px]">
+          <span className="flex w-full flex-col items-center gap-1 pt-5 pb-10 text-center text-label-13m text-label-normal desktop:pt-10 desktop:pb-20 desktop:text-[20px] desktop:leading-[30px]">
             <p>지금은 모집 기간이 아니에요</p>
             <p>모집이 시작되면 메일로 알려드릴게요.</p>
           </span>

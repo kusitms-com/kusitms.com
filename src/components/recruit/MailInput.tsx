@@ -9,7 +9,7 @@ import { postEmail } from "@/service/recruit/postEmail";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // 시안 KUS_RCT_004_1~5의 안내 문구. 서버 응답에 "이미"가 들어 있으면 중복 신청으로 본다
-type Status = "idle" | "submitting" | "success" | "duplicate" | "error";
+type Status = "idle" | "submitting" | "success" | "duplicate" | "invalid" | "error";
 
 const PRIVACY_ROWS = [
   ["수집 항목", "이메일"],
@@ -29,7 +29,13 @@ function PrivacyModal({ onClose }: { onClose: () => void }) {
   useEffect(() => {
     const opener = document.activeElement as HTMLElement | null;
     confirmRef.current?.focus();
-    return () => opener?.focus();
+    // 모달이 열려 있는 동안 뒤 화면 스크롤 고정(KUS_RCT_003)
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = overflow;
+      opener?.focus();
+    };
   }, []);
 
   // Esc로 닫고, Tab/Shift+Tab은 모달 안에서만 돈다
@@ -61,12 +67,20 @@ function PrivacyModal({ onClose }: { onClose: () => void }) {
   // body에 그려야 페이지 래퍼(min-w 등)와 상관없이 화면 기준으로 가운데 놓인다
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-5">
+      {/* Dim(배경) 클릭으로도 닫힌다(KUS_RCT_003). 키보드는 Esc·확인 버튼으로 닫으므로 탭 순서에서 뺀다 */}
+      <button
+        type="button"
+        tabIndex={-1}
+        aria-label="개인정보 안내 닫기"
+        onClick={onClose}
+        className="absolute inset-0 cursor-default"
+      />
       <div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="flex w-full max-w-[490px] flex-col gap-4 rounded-lg bg-white p-5"
+        className="relative flex w-full max-w-[490px] flex-col gap-4 rounded-lg bg-white p-5"
       >
         <h3 id={titleId} className="text-[20px] leading-[30px] font-bold text-label-normal">
           개인정보 수집·이용 안내
@@ -104,7 +118,8 @@ const MailInput = () => {
   const [showPrivacy, setShowPrivacy] = useState(false);
 
   const isValidEmail = EMAIL_PATTERN.test(email);
-  const formatError = touched && email.length > 0 && !isValidEmail;
+  // 서버가 형식 오류(400)로 돌려준 경우도 형식 오류로 보여 준다
+  const formatError = (touched && email.length > 0 && !isValidEmail) || status === "invalid";
   const agreeError = touched && isValidEmail && !agreed;
 
   const helper = formatError
@@ -118,7 +133,7 @@ const MailInput = () => {
           : status === "error"
             ? { text: "잠시 후 다시 시도해 주세요", tone: "error" }
             : null;
-  // 시안: 형식·동의·중복 오류는 입력창 테두리도 빨갛게, 서버 오류는 문구만
+  // 시안(KUS_RCT_004): 형식·동의·중복 오류는 입력창 테두리도 빨갛게, 서버 오류는 문구만
   const redBorder = formatError || agreeError || status === "duplicate";
 
   const handleChange = (value: string) => {
@@ -132,16 +147,15 @@ const MailInput = () => {
     try {
       await postEmail(value);
       setStatus("success");
+      // 신청 완료 시 입력창을 비운다(입력값 변경으로 상태가 초기화되지 않게 직접 비움)
+      setEmail("");
+      setTouched(false);
     } catch (error) {
-      let message = "";
-      if (error instanceof Error) {
-        try {
-          message = JSON.parse(error.message)?.message ?? "";
-        } catch {
-          message = error.message;
-        }
-      }
-      setStatus(message.includes("이미") ? "duplicate" : "error");
+      // 백엔드는 누락·형식 오류·중복을 모두 400으로 주고 message로 구분한다. 서버 오류는 입력값을 유지한다
+      const message = error instanceof Error ? error.message : "";
+      if (message.includes("이미 등록된")) setStatus("duplicate");
+      else if (message.includes("형식") || message.includes("필수")) setStatus("invalid");
+      else setStatus("error");
     }
   };
 
@@ -167,8 +181,8 @@ const MailInput = () => {
         id={`${checkboxId}-helper`}
         aria-live="polite"
         className={cn(
-          "min-h-6 w-full px-[18px] pt-0.5 text-[12px] leading-6 desktop:px-[22px] desktop:pt-[11px] desktop:text-[18px] desktop:leading-[26px]",
-          helper?.tone === "error" ? "text-status-negative" : "text-label-netural",
+          "h-[26px] w-full px-[18px] pt-0.5 text-[12px] leading-6 desktop:h-[33px] desktop:px-[22px] desktop:pt-[7px] desktop:text-[18px] desktop:leading-[26px]",
+          helper?.tone === "error" ? "text-status-negative" : "text-label-normal",
         )}
       >
         {helper?.text}
