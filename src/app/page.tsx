@@ -1,11 +1,15 @@
-import ExecutiveSection from "@/components/main/ExecutiveSection";
-import GuestIntroSection from "@/components/main/GuestIntroSection";
+import AboutSection from "@/components/main/AboutSection";
+import AudienceSection from "@/components/main/AudienceSection";
+import FitSection from "@/components/main/FitSection";
+import InsideSection from "@/components/main/InsideSection";
 import IntroSection from "@/components/main/IntroSection";
-import PartnerSection from "@/components/main/PartnerSection";
-import ProgramIntroSection from "@/components/main/ProgramIntroSection";
+import PartnersSection from "@/components/main/PartnersSection";
+import PartsSection from "@/components/main/PartsSection";
+import ReviewHighlightSection from "@/components/main/ReviewHighlightSection";
 import StatsSection from "@/components/main/StatsSection";
-import TeamCardsSection from "@/components/main/TeamCardsSection";
+import TemaSection from "@/components/main/TemaSection";
 import { getMeetupProjects, type MeetupItem } from "@/service/projects";
+import { getReviews, type Review } from "@/service/reviews";
 
 export default async function Home() {
   let meetupProjects: MeetupItem[] = [];
@@ -16,15 +20,36 @@ export default async function Home() {
     console.error("Failed to fetch meetup projects:", error);
   }
 
+  let reviews: Review[] = [];
+  try {
+    const response = await getReviews("");
+    reviews = response.data?.review_list || [];
+  } catch (error) {
+    console.error("Failed to fetch reviews:", error);
+  }
+
   return (
     <main className="mx-auto font-[family-name:var(--font-pretendard)] bg-gradient-2">
-      <IntroSection />
-      <StatsSection />
-      <TeamCardsSection />
-      <ExecutiveSection />
-      <ProgramIntroSection meetupProjects={meetupProjects} />
-      <GuestIntroSection />
-      <PartnerSection />
+      <div className="relative">
+        <IntroSection />
+        <AboutSection />
+        <StatsSection />
+      </div>
+      <FitSection />
+      <PartsSection />
+      <AudienceSection />
+      {/* 시안(데스크톱 607:24007, 모바일 531:20634): 추천 섹션 배경(#f6f7f9)에서 하늘색으로 넘어가는 띠(모바일 125px, 데스크톱 500px) 뒤에
+          Inside~파트너사가 하나의 그라데이션 배경을 함께 쓴다(데스크톱은 위아래 72px, 섹션 사이 2px) */}
+      <div
+        aria-hidden
+        className="h-[125px] bg-linear-to-b from-[#f6f7f9] to-[#e6f0f9] desktop:h-[500px]"
+      />
+      <div className="bg-linear-to-b from-[#e6f0f9] from-[4.82%] to-[#f9fafb] to-[108.77%] desktop:flex desktop:flex-col desktop:gap-[2px] desktop:py-[72px]">
+        <InsideSection meetupProjects={meetupProjects} />
+        <ReviewHighlightSection reviews={reviews} />
+        <TemaSection />
+        <PartnersSection />
+      </div>
     </main>
   );
 }

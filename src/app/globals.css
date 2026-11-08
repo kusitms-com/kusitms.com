@@ -8,6 +8,30 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "PP Neue Montreal";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/ppneuemontreal-bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "PP Neue Montreal";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/ppneuemontreal-medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/SUIT-Regular.woff2") format("woff2");
+}
+
 body {
   background-color: #fff;
   color: #fff;
@@ -237,10 +261,50 @@ body {
   background: linear-gradient(180deg, #05f -28.5%, #151519 114.19%);
 }
 
+@theme inline {
+  --font-brand: "PP Neue Montreal", var(--font-pretendard), sans-serif;
+  --font-suit: "SUIT", var(--font-pretendard), sans-serif;
+}
+
 @theme {
   --font-sans: var(--font-pretendard);
-  /* ponytail: PP Neue Montreal 라이선스 확인 전이라 폰트 파일 미포함, Pretendard로 폴백 */
-  --font-brand: "PP Neue Montreal", var(--font-pretendard), sans-serif;
+
+  --animate-hero-char: hero-char-in 0.356s cubic-bezier(0, 0, 0.58, 1) both;
+  /* 시안의 아래 화살표 Lottie(arrow-down)와 같은 모션: 1초 주기로 박스 높이의 10.22%만큼 내려갔다 돌아온다 */
+  /* Inside KUSITMS 기업 로고 롤링: 로고 목록을 두 번 이어 붙이고 절반만큼 흘려 끊김 없이 반복 */
+  --animate-logo-marquee: logo-marquee 20s linear infinite;
+
+  @keyframes logo-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  --animate-hero-arrow: hero-arrow-bob 1s cubic-bezier(0.403, 0, 0.597, 1) infinite;
+
+  @keyframes hero-arrow-bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10.22%);
+    }
+  }
+
+  @keyframes hero-char-in {
+    from {
+      opacity: 0;
+      filter: blur(30px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
 
   --breakpoint-tablet: 768px;
   --breakpoint-desktop: 1024px;
