@@ -8,7 +8,7 @@ const FIT_CARDS: { label: string; title: string; lines: FitLine[] }[] = [
     lines: [
       { text: "활동 내 대학생 신분을 유지하는 분", tone: "strong" },
       { text: "(졸업 유예자, 휴학생, 수료생 포함)", tone: "sub" },
-      { text: "전문가 초청 강연" },
+      { text: "기획 · 디자인 · 프론트엔드 · 백엔드 파트" },
     ],
   },
   {

@@ -1,4 +1,5 @@
 import { useId } from "react";
+import type { IntroductionData } from "@/service/introductions";
 import PartCard, { type Part } from "./PartCard";
 
 const PARTS: {
@@ -44,8 +45,14 @@ const PARTS: {
 ];
 
 /** 피그마 KUS_HOM_002 함께하는 큐밀리. 데스크톱 호버 디자인은 PartCard가 처리 */
-export default function PartsSection() {
+export default function PartsSection({ introductions }: { introductions: IntroductionData }) {
   const headingId = useId();
+  const images = {
+    planner: introductions.planning_image_url,
+    designer: introductions.design_image_url,
+    frontend: introductions.frontend_image_url,
+    backend: introductions.backend_image_url,
+  };
 
   return (
     <section
@@ -66,7 +73,7 @@ export default function PartsSection() {
         </div>
         <div className="flex flex-col gap-5 desktop:grid desktop:grid-cols-2 desktop:gap-6">
           {PARTS.map((part) => (
-            <PartCard key={part.part} {...part} />
+            <PartCard key={part.part} {...part} image={images[part.part]} />
           ))}
         </div>
       </div>

@@ -1,15 +1,9 @@
 import Image from "next/image";
 import { useId } from "react";
-import { PARTNERS } from "@/constants/partners";
-import { cn } from "@/lib/utils";
+import IntroductionMessage from "./IntroductionMessage";
 
-// 굵은 검정 워드마크라 같은 높이에서 혼자 커 보이는 로고는 높이를 따로 준다
-const LOGO_SIZE: Record<string, string> = {
-  "/main/img/partner/Gabia.svg": "h-[10px] desktop:h-[30px]",
-};
-
-/** 피그마 KUSITMS 파트너사(데스크톱 614:18290, 모바일 614:18138). 로고 목록은 사이트가 관리하는 PARTNERS 상수를 쓴다. */
-export default function PartnersSection() {
+/** 피그마 KUSITMS 파트너사(데스크톱 614:18290, 모바일 614:18138). */
+export default function PartnersSection({ sponsors }: { sponsors: readonly string[] }) {
   const headingId = useId();
 
   return (
@@ -37,26 +31,17 @@ export default function PartnersSection() {
           <div className="flex h-[49px] w-full items-center overflow-hidden desktop:h-[153px]">
             {/* gap은 마지막 로고 뒤에 붙지 않아 -50%가 한 벌 길이보다 짧아지고 이음매에서 튄다. 로고마다 오른쪽 여백을 줘서 정확히 한 벌만큼 흐르게 한다 */}
             <div className="flex w-max shrink-0 items-center motion-safe:animate-logo-marquee">
-              {[...PARTNERS, ...PARTNERS].map((src, index) => (
+              {sponsors.length === 0 && <IntroductionMessage message="소개 정보를 준비 중이에요" />}
+              {[...sponsors, ...sponsors].map((src, index) => (
                 <Image
                   key={`${src}-${index}`}
                   src={src}
-                  alt={
-                    index < PARTNERS.length
-                      ? (src
-                          .split("/")
-                          .pop()
-                          ?.replace(/(2026)?\.\w+$/, "") ?? "")
-                      : ""
-                  }
-                  aria-hidden={index >= PARTNERS.length}
+                  alt={index < sponsors.length ? `후원사 ${index + 1}` : ""}
+                  aria-hidden={index >= sponsors.length}
                   width={193}
                   height={52}
                   loading="eager"
-                  className={cn(
-                    "mr-4 w-auto shrink-0 object-contain desktop:mr-12",
-                    LOGO_SIZE[src] ?? "h-[17px] desktop:h-[52px]",
-                  )}
+                  className="mr-4 h-[17px] w-auto shrink-0 object-contain desktop:mr-12 desktop:h-[52px]"
                 />
               ))}
             </div>

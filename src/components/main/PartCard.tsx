@@ -10,27 +10,21 @@ const HOVER_FADE = "transition-opacity duration-[600ms] ease-[cubic-bezier(0.42,
 
 /** 피그마 Image Asset (planner/designer/front/back) */
 export function PartImage({
-  part,
+  src,
   size,
   className,
 }: {
-  part: Part;
+  src: string | null;
   size: number;
   className?: string;
 }) {
-  return (
-    <Image
-      src={`/main/renewal/part-${part}.png`}
-      alt=""
-      width={size}
-      height={size}
-      className={className}
-    />
-  );
+  if (!src) return null;
+  return <Image src={src} alt="" width={size} height={size} className={className} />;
 }
 
 interface PartCardProps {
   part: Part;
+  image: string | null;
   number: string;
   name: string;
   korean: string;
@@ -42,7 +36,7 @@ interface PartCardProps {
 
 /** 피그마 Card/Parts. 모바일 → 데스크톱 반응형, 데스크톱 호버 시 isHover=true 디자인으로 전환 */
 export default function PartCard({
-  part,
+  image,
   number,
   name,
   korean,
@@ -73,7 +67,7 @@ export default function PartCard({
               <p className="text-body-16r text-label-assitive">{korean}</p>
             </div>
           </div>
-          <PartImage part={part} size={64} className="mb-2 rounded-[3.556px] desktop:hidden" />
+          <PartImage src={image} size={64} className="mb-2 rounded-[3.556px] desktop:hidden" />
         </div>
         <div className="flex flex-col gap-1">
           <p className="text-body-16sb text-label-netural">{summary}</p>
@@ -81,7 +75,7 @@ export default function PartCard({
         </div>
       </div>
       <PartImage
-        part={part}
+        src={image}
         size={232}
         className={cn("hidden shrink-0 desktop:block desktop:group-hover:opacity-0", HOVER_FADE)}
       />
