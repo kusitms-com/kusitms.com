@@ -229,17 +229,25 @@ function PhotoLink({ href, children }: { href: string; children: ReactNode }) {
   );
 }
 
-// 기업 프로젝트 사진과 로고는 시안대로 맞춘 로컬 이미지를 그대로 쓴다(로고 색 반전·크기 보정 포함)
-function CompanyMedia() {
+// 기업 프로젝트 사진은 API(activities의 "기업 연계프로젝트")를 쓰고, 로고 롤링은 시안대로 맞춘 로컬 로고(색 반전·크기 보정 포함)를 쓴다
+function CompanyMedia({ activity }: { activity: IntroductionActivity | undefined }) {
+  const photos = [activity?.image_url1, activity?.image_url2].filter((src): src is string => !!src);
   return (
     <div className="relative aspect-[600/377] w-full overflow-hidden rounded-[6.7px] desktop:rounded-m">
-      <Image
-        src="/main/renewal/inside/company-project.webp"
-        alt="기업 프로젝트 활동 사진"
-        fill
-        sizes="(min-width: 1024px) 600px, 100vw"
-        className="object-cover"
-      />
+      <div className="absolute inset-0 flex">
+        {photos.map((src) => (
+          <div key={src} className="relative h-full flex-1">
+            <Image
+              src={src}
+              alt="기업 프로젝트 활동 사진"
+              fill
+              sizes="(min-width: 1024px) 600px, 100vw"
+              className="object-cover"
+            />
+          </div>
+        ))}
+      </div>
+      {photos.length === 0 && <IntroductionMessage message="소개 정보를 준비 중이에요" />}
       <div className="absolute inset-0 bg-linear-to-b from-black from-[15%] to-transparent to-[80%]" />
       <LogoMarquee />
       <PhotoLink href="/projects/corporate">기업 프로젝트 보러가기</PhotoLink>
@@ -348,7 +356,11 @@ export default function InsideSection({
   }[] = [
     {
       title: "기업 프로젝트",
-      media: <CompanyMedia />,
+      media: (
+        <CompanyMedia
+          activity={introductions.activities.find((item) => item.name === "기업 연계프로젝트")}
+        />
+      ),
       description:
         "실제 기업이 고민하고 있는 경영 · 마케팅 문제나 개발과 관련된 과제를 받아\n팀별로 아이디어를 제시해 5주간 과제를 수행하는 프로젝트예요",
       panelClass: "desktop:justify-center",
