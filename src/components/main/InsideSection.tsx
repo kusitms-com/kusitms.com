@@ -255,8 +255,24 @@ function CompanyMedia({ activity }: { activity: IntroductionActivity | undefined
   );
 }
 
-// 받은 사진이 배경 있는 일반 사진이라 얼굴 중심 정사각형으로 잘라 원형으로 보여주고,
-// 시안의 흑백 톤에 맞춰 CSS로만 흑백 처리한다(원본 색은 파일에 그대로 둔다)
+// 연사 사진은 얼굴 중심 정사각형으로 잘라 둔 로컬 파일을 이름으로 찾아 쓴다(API 원본은 비율이 제각각이라 원형에서 얼굴이 잘림).
+// 로컬 파일이 없는 새 연사는 API 사진을 쓴다. 시안의 흑백 톤은 CSS로만 처리한다
+const SPEAKER_PHOTOS: Record<string, string> = {
+  윤재영: "yoon-jaeyoung",
+  이재현: "lee-jaehyun",
+  우디: "woody",
+  김현준: "kim-hyunjun",
+  김규회: "kim-gyuhoe",
+  손재명: "son-jaemyung",
+  석종일: "seok-jongil",
+  김예찬: "kim-yechan",
+};
+
+function speakerPhoto(speaker: IntroductionLecture) {
+  const slug = SPEAKER_PHOTOS[speaker.name];
+  return slug ? `/main/renewal/inside/speaker-${slug}.webp` : speaker.image_link;
+}
+
 function SpeakerMedia({ speakers }: { speakers: readonly IntroductionLecture[] }) {
   const rows = Array.from({ length: Math.ceil(speakers.length / 4) }, (_, index) =>
     speakers.slice(index * 4, index * 4 + 4),
@@ -266,23 +282,29 @@ function SpeakerMedia({ speakers }: { speakers: readonly IntroductionLecture[] }
     <div className="flex w-full flex-col items-center gap-4 desktop:gap-5">
       {rows.map((row) => (
         <ul key={row[0].id} className="flex justify-center gap-3 desktop:gap-6">
-          {row.map((speaker) => (
-            <li key={speaker.id} className="flex w-[72px] flex-col items-center desktop:w-[120px]">
-              {speaker.image_link && (
-                <Image
-                  src={speaker.image_link}
-                  alt=""
-                  width={100}
-                  height={100}
-                  className="size-16 rounded-full bg-[#e5ecff] object-cover ring-4 ring-[#e5ecff] grayscale desktop:size-[100px]"
-                />
-              )}
-              <p className="mt-2 text-center text-[10px] leading-[14px] font-semibold desktop:mt-2.5 desktop:text-[12px] desktop:leading-4">
-                <span className="block text-[#7099ff]">{speaker.corporation}</span>
-                <span className="block text-[#474752]">{speaker.name} 연사님</span>
-              </p>
-            </li>
-          ))}
+          {row.map((speaker) => {
+            const photo = speakerPhoto(speaker);
+            return (
+              <li
+                key={speaker.id}
+                className="flex w-[72px] flex-col items-center desktop:w-[120px]"
+              >
+                {photo && (
+                  <Image
+                    src={photo}
+                    alt=""
+                    width={100}
+                    height={100}
+                    className="size-16 rounded-full bg-[#e5ecff] object-cover ring-4 ring-[#e5ecff] grayscale desktop:size-[100px]"
+                  />
+                )}
+                <p className="mt-2 text-center text-[10px] leading-[14px] font-semibold desktop:mt-2.5 desktop:text-[12px] desktop:leading-4">
+                  <span className="block text-[#7099ff]">{speaker.corporation}</span>
+                  <span className="block text-[#474752]">{speaker.name} 연사님</span>
+                </p>
+              </li>
+            );
+          })}
         </ul>
       ))}
     </div>
