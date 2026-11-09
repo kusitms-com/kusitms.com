@@ -78,8 +78,8 @@ function LogoMarquee() {
   );
 }
 
-// 시안(607:23767)의 밋업 프로젝트 커버플로. 데스크톱 기준 값이고 모바일은 0.56배로 줄인다.
-// 가운데 카드 257x162(위쪽 정렬), 양옆 카드 0.742·0.558배(180px 줄의 세로 가운데), 가로 간격 ±142.5·±228.3px.
+// 밋업 프로젝트 커버플로의 기준값(이전 시안 607:23767). 가운데 카드 257x162(위쪽 정렬), 양옆 카드 0.742·0.558배(180px 줄의 세로 가운데),
+// 가로 간격 ±142.5·±228.3px. 데스크톱 시안(833:13957)은 이 값의 1.135배(가운데 카드 292x184), 모바일은 0.558배로 쓴다.
 // 기존 MeetupProjectCarousel은 화면 절반을 덮는 fixed 버튼을 써서 탭을 가리므로 이 섹션 전용으로 둔다.
 const COVER = {
   width: 257.2,
@@ -88,7 +88,8 @@ const COVER = {
   scale: [1, 0.742, 0.558],
   x: [0, 142.5, 228.3],
   radius: 10.19,
-  arrowTop: 73,
+  desktopScale: 1.135,
+  mobileScale: 0.558,
 } as const;
 
 function MeetupCoverflow({ projects }: { projects: MeetupItem[] }) {
@@ -112,14 +113,14 @@ function MeetupCoverflow({ projects }: { projects: MeetupItem[] }) {
   if (projects.length === 0) return null;
 
   // 모바일 시안(614:11711): 카드·간격 모두 0.558배, 277px 폭 프레임이 바깥 카드를 잘라 3장만 보인다
-  const k = isDesktop ? 1 : 0.558;
+  const k = isDesktop ? COVER.desktopScale : COVER.mobileScale;
   const count = projects.length;
   const go = (step: number) => setCurrent((index) => (index + step + count) % count);
 
   return (
-    <div className="relative flex w-full flex-col items-center pt-8 desktop:pt-0">
+    <div className="relative flex w-full flex-col items-center pt-8 desktop:h-[444px] desktop:justify-center desktop:pt-0">
       <div
-        className="relative w-[277px] overflow-hidden desktop:w-full desktop:overflow-visible"
+        className="relative w-[277px] overflow-hidden desktop:w-full"
         style={{ height: COVER.rowHeight * k }}
       >
         {/* 카드를 위치가 아니라 프로젝트로 구분해야 같은 카드가 새 자리로 미끄러져 이동한다 */}
@@ -173,10 +174,10 @@ function MeetupCoverflow({ projects }: { projects: MeetupItem[] }) {
           })}
         </AnimatePresence>
       </div>
-      {/* 화살표: 데스크톱은 패널 바깥 63px·52px, 모바일은 화면 양끝에 24px로 줄여 카드 높이 가운데 */}
+      {/* 화살표: 데스크톱은 444px 영역 세로 가운데에 왼쪽 7px·오른쪽 끝, 모바일은 화면 양끝에 24px로 줄여 카드 높이 가운데 */}
       <div
-        className="absolute left-0 z-20 origin-left scale-[0.667] desktop:-left-[63px] desktop:scale-100"
-        style={{ top: isDesktop ? COVER.arrowTop : 32 + (COVER.rowHeight * k) / 2 - 18 }}
+        className="absolute left-0 z-20 origin-left scale-[0.667] desktop:top-1/2 desktop:left-[7px] desktop:-translate-y-1/2 desktop:scale-100"
+        style={isDesktop ? undefined : { top: 32 + (COVER.rowHeight * k) / 2 - 18 }}
       >
         <PageNavButton
           color="dark"
@@ -186,8 +187,8 @@ function MeetupCoverflow({ projects }: { projects: MeetupItem[] }) {
         />
       </div>
       <div
-        className="absolute right-0 z-20 origin-right scale-[0.667] desktop:-right-[63px] desktop:scale-100"
-        style={{ top: isDesktop ? COVER.arrowTop : 32 + (COVER.rowHeight * k) / 2 - 18 }}
+        className="absolute right-0 z-20 origin-right scale-[0.667] desktop:top-1/2 desktop:-translate-y-1/2 desktop:scale-100"
+        style={isDesktop ? undefined : { top: 32 + (COVER.rowHeight * k) / 2 - 18 }}
       >
         <PageNavButton
           color="dark"
@@ -196,19 +197,20 @@ function MeetupCoverflow({ projects }: { projects: MeetupItem[] }) {
           onClick={() => go(1)}
         />
       </div>
-      <div className="mt-[5px] flex gap-[5px] desktop:mt-2.5" aria-hidden>
+      <div className="mt-[5px] flex gap-[5px] desktop:mt-[11px] desktop:gap-1.5" aria-hidden>
         {projects.map((project, index) => (
           <span
             key={project.meetup_id}
             className={cn(
-              "size-[5px] rounded-full",
+              "size-[5px] rounded-full desktop:size-1.5",
               index === current ? "bg-label-alternative" : "bg-label-disable",
             )}
           />
         ))}
       </div>
+      {/* 데스크톱 시안은 설명 옆 "보러가기" 버튼으로 대신하므로 모바일에서만 보인다 */}
       <Button // 디자인 시스템 Button은 클래스 충돌을 병합하지 않아 기본 배경(#004bfe)이 이기므로 important로 덮는다
-        className="mt-5 bg-[#4279ff]! desktop:py-2.5"
+        className="mt-5 bg-[#4279ff]! desktop:hidden"
         onClick={() => router.push("/projects/meetup")}
       >
         프로젝트 더보기
@@ -217,14 +219,15 @@ function MeetupCoverflow({ projects }: { projects: MeetupItem[] }) {
   );
 }
 
+// 모바일 시안의 사진 위 알약 링크. 데스크톱 시안(833:13808)은 설명 옆 디자인 시스템 Button(보러가기)으로 대신한다
 function PhotoLink({ href, children }: { href: string; children: ReactNode }) {
   return (
     <Link
       href={href}
-      className="absolute top-[73.7%] left-1/2 inline-flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full border border-[rgba(124,153,253,0.5)] bg-white px-4 py-2 text-label-14sb text-brand-strong drop-shadow-[0_0_5.4px_rgba(168,186,247,0.8)] desktop:gap-3 desktop:px-6 desktop:py-2.5 desktop:text-[18px] desktop:leading-[27px] desktop:drop-shadow-[0_0_9.75px_rgba(168,186,247,0.8)]"
+      className="absolute top-[73.7%] left-1/2 inline-flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full border border-[rgba(124,153,253,0.5)] bg-white px-4 py-2 text-label-14sb text-brand-strong drop-shadow-[0_0_5.4px_rgba(168,186,247,0.8)] desktop:hidden"
     >
       {children}
-      <ArrowRightIcon className="size-5 desktop:size-6" />
+      <ArrowRightIcon className="size-5" />
     </Link>
   );
 }
@@ -233,7 +236,7 @@ function PhotoLink({ href, children }: { href: string; children: ReactNode }) {
 function CompanyMedia({ activity }: { activity: IntroductionActivity | undefined }) {
   const photos = [activity?.image_url1, activity?.image_url2].filter((src): src is string => !!src);
   return (
-    <div className="relative aspect-[600/377] w-full overflow-hidden rounded-[6.7px] desktop:rounded-m">
+    <div className="relative aspect-[600/377] w-full overflow-hidden rounded-[6.7px] desktop:aspect-[847/444] desktop:rounded-[20px]">
       <div className="absolute inset-0 flex">
         {photos.map((src) => (
           <div key={src} className="relative h-full flex-1">
@@ -241,7 +244,7 @@ function CompanyMedia({ activity }: { activity: IntroductionActivity | undefined
               src={src}
               alt="기업 프로젝트 활동 사진"
               fill
-              sizes="(min-width: 1024px) 600px, 100vw"
+              sizes="(min-width: 1024px) 847px, 100vw"
               className="object-cover"
             />
           </div>
@@ -273,13 +276,14 @@ function speakerPhoto(speaker: IntroductionLecture) {
   return slug ? `/main/renewal/inside/speaker-${slug}.webp` : speaker.image_link;
 }
 
+// 데스크톱은 다른 탭의 사진 영역(444px)과 높이를 맞추고, 연사 사진(100px)은 그 안에서 세로 가운데에 둔다
 function SpeakerMedia({ speakers }: { speakers: readonly IntroductionLecture[] }) {
   const rows = Array.from({ length: Math.ceil(speakers.length / 4) }, (_, index) =>
     speakers.slice(index * 4, index * 4 + 4),
   );
   if (speakers.length === 0) return <IntroductionMessage message="소개 정보를 준비 중이에요" />;
   return (
-    <div className="flex w-full flex-col items-center gap-4 desktop:gap-5">
+    <div className="flex w-full flex-col items-center gap-4 desktop:h-[444px] desktop:justify-center desktop:gap-10">
       {rows.map((row) => (
         <ul key={row[0].id} className="flex justify-center gap-3 desktop:gap-6">
           {row.map((speaker) => {
@@ -314,12 +318,12 @@ function SpeakerMedia({ speakers }: { speakers: readonly IntroductionLecture[] }
 // OB 초청데이 사진은 API(ob_lecture)가 아직 비어 있어 당분간 프론트 이미지를 쓴다
 function ObMedia() {
   return (
-    <div className="relative aspect-[335/210] w-full overflow-hidden rounded-[6.7px] desktop:aspect-[600/402] desktop:rounded-m">
+    <div className="relative aspect-[335/210] w-full overflow-hidden rounded-[6.7px] desktop:aspect-[847/444] desktop:rounded-[20px]">
       <Image
         src="/main/renewal/inside/ob-day.webp"
         alt="OB 초청데이 커피챗 사진"
         fill
-        sizes="(min-width: 1024px) 600px, 100vw"
+        sizes="(min-width: 1024px) 847px, 100vw"
         className="object-cover object-left-top"
       />
     </div>
@@ -338,14 +342,19 @@ function ExhibitionMedia({ activities }: { activities: readonly IntroductionActi
   );
   if (photos.length === 0) return <IntroductionMessage message="소개 정보를 준비 중이에요" />;
   return (
-    <div className="grid aspect-[600/378] w-full grid-flow-col auto-cols-fr gap-1.5">
+    // 데스크톱 시안(833:14005): 847x450 틀(12px 반경)에 사진 두 장을 10px 간격·8px 반경으로 나란히 둔다.
+    // 8px은 rounded-s로 쓰면 Tailwind v4가 시작 방향(start) 반경 유틸리티로도 해석해 왼쪽만 4px가 되므로 토큰 변수(--s)를 직접 쓴다
+    <div className="grid aspect-[600/378] w-full grid-flow-col auto-cols-fr gap-1.5 desktop:aspect-[847/450] desktop:gap-2.5 desktop:overflow-hidden desktop:rounded-m">
       {photos.map((photo) => (
-        <div key={photo.src} className="relative overflow-hidden rounded-[6.7px] desktop:rounded-m">
+        <div
+          key={photo.src}
+          className="relative overflow-hidden rounded-[6.7px] desktop:rounded-(--s)"
+        >
           <Image
             src={photo.src}
             alt={photo.alt}
             fill
-            sizes="(min-width: 1024px) 300px, 50vw"
+            sizes="(min-width: 1024px) 420px, 50vw"
             className="object-cover"
             style={{ objectPosition: photo.position }}
           />
@@ -364,16 +373,17 @@ export default function InsideSection({
 }) {
   const headingId = useId();
   const tabsId = useId();
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
 
   // description: 데스크톱 줄바꿈, mobileDescription: 모바일 줄바꿈(없으면 데스크톱과 같음). 시안의 줄바꿈 위치를 그대로 따른다.
-  // panelClass: 시안의 슬라이드별 데스크톱 패널 정렬, descGap: 모바일 미디어-설명 간격
+  // href: 데스크톱 시안의 설명 옆 "보러가기" 버튼 목적지, descGap: 모바일 미디어-설명 간격
   const slides: {
     title: string;
     media: ReactNode;
     description: string;
     mobileDescription?: string;
-    panelClass: string;
+    href?: string;
     descGap?: string;
   }[] = [
     {
@@ -385,14 +395,13 @@ export default function InsideSection({
       ),
       description:
         "실제 기업이 고민하고 있는 경영 · 마케팅 문제나 개발과 관련된 과제를 받아\n팀별로 아이디어를 제시해 5주간 과제를 수행하는 프로젝트예요",
-      panelClass: "desktop:justify-center",
+      href: "/projects/corporate",
     },
     {
       title: "전문가 초청 강연",
       media: <SpeakerMedia speakers={introductions.expert_lecture} />,
       description:
         "현업에서 활발히 활동 중이신 기획 · 개발 · 디자인 분야의 전문가 및 실무자에게\n직무에 대한 설명과 조언을 들을 수 있는 활동이에요.",
-      panelClass: "desktop:justify-between desktop:pt-3.5",
     },
     {
       title: "OB 초청데이",
@@ -400,14 +409,13 @@ export default function InsideSection({
       description: "큐시즘을 먼저 경험한 OB 선배들과 커피챗을 하며 프로젝트와 실무 조언을 얻어요.",
       mobileDescription:
         "큐시즘을 먼저 경험한 OB 선배들과 커피챗을 하며\n프로젝트와 실무 조언을 얻어요.",
-      panelClass: "desktop:justify-center",
     },
     {
       title: "밋업 프로젝트",
       media: <MeetupCoverflow projects={meetupProjects} />,
       description:
         "기획 파트가 발제한 아이디어로 기획·디자인·개발이 한 팀이 되어\n실제 서비스를 만들어요. 큐시즘의 메인 프로젝트예요.",
-      panelClass: "desktop:justify-end",
+      href: "/projects/meetup",
       descGap: "mt-[30px]",
     },
     {
@@ -420,11 +428,13 @@ export default function InsideSection({
         />
       ),
       description:
+        "완성한 서비스를 전시회에서 직접 선보이고, 밋업데이에서 발표하며 한 기수를 마무리해요.",
+      mobileDescription:
         "완성한 서비스를 전시회에서 직접 선보이고,\n밋업데이에서 발표하며 한 기수를 마무리해요.",
-      panelClass: "desktop:justify-start",
     },
   ];
   const active = slides[activeIndex];
+  const href = active.href;
   const total = slides.length;
   const pad = (value: number) => String(value).padStart(2, "0");
   const move = (step: number) => setActiveIndex((index) => (index + step + total) % total);
@@ -439,17 +449,17 @@ export default function InsideSection({
           >
             Inside KUSITMS
           </h2>
-          <p className="text-label-14m text-[#18181b] desktop:text-[18px] desktop:leading-[26px]">
+          <p className="text-label-14m text-[#18181b] desktop:text-headline-20m desktop:text-label-netural">
             큐시즘의 한 학기, 그 안에서 펼쳐지는 경험들
           </p>
         </div>
 
-        <div className="flex w-full flex-col items-center gap-9 desktop:flex-row desktop:items-end desktop:justify-center desktop:gap-[260px]">
+        <div className="flex w-full flex-col items-center gap-9 desktop:flex-row desktop:items-start desktop:gap-[72px]">
           <div
             role="tablist"
             aria-label="큐시즘 활동"
             aria-orientation="vertical"
-            className="hidden w-[240px] shrink-0 flex-col gap-[27px] desktop:flex"
+            className="hidden w-[281px] shrink-0 flex-col gap-12 desktop:flex"
           >
             {slides.map((slide, index) => {
               const selected = index === activeIndex;
@@ -471,10 +481,10 @@ export default function InsideSection({
                     document.getElementById(`${tabsId}-tab-${next}`)?.focus();
                   }}
                   className={cn(
-                    "flex w-full cursor-pointer items-center justify-between px-3 py-4 text-left text-[24px] leading-9 tracking-[-0.008em] transition-colors",
+                    "flex w-full cursor-pointer items-center justify-between px-3 py-4 text-left transition-colors",
                     selected
-                      ? "border-b-2 border-brand-secondary font-bold text-black"
-                      : "font-medium text-label-disable hover:text-label-alternative",
+                      ? "border-b-2 border-brand-secondary text-headline-24b text-label-strong"
+                      : "text-headline-24m text-label-disable hover:text-label-alternative",
                   )}
                 >
                   {slide.title}
@@ -490,24 +500,32 @@ export default function InsideSection({
             id={`${tabsId}-panel`}
             role="tabpanel"
             aria-labelledby={`${tabsId}-tab-${activeIndex}`}
-            className={cn(
-              "flex w-full max-w-[600px] flex-col items-center desktop:h-[450px] desktop:gap-5",
-              active.panelClass,
-            )}
+            className="flex w-full max-w-[600px] flex-col items-center desktop:min-w-0 desktop:max-w-none desktop:flex-1 desktop:items-start desktop:gap-6 desktop:py-2"
           >
             <p className="mb-2.5 text-body-18sb text-black desktop:hidden">{active.title}</p>
             <div className="flex w-full justify-center">{active.media}</div>
-            <p
-              className={cn(
-                "whitespace-pre-line break-keep text-center text-[11px] leading-[13px] tracking-[0.015em] text-label-netural desktop:mt-0 desktop:text-[18px] desktop:leading-[26px] desktop:font-medium desktop:tracking-[-0.005em]",
-                active.descGap ?? "mt-3.5",
+            {/* 데스크톱 시안: 설명은 왼쪽 정렬 20px, 링크가 있는 탭은 오른쪽에 "보러가기" 버튼(간격 24px). 모바일은 래퍼 없이(contents) 기존 배치 그대로 */}
+            <div className="contents desktop:flex desktop:w-full desktop:items-center desktop:gap-6">
+              <p
+                className={cn(
+                  // 모바일의 leading/tracking 클래스가 --tw-leading/--tw-tracking 변수로 토큰 유틸리티를 덮으므로 데스크톱 값(32px, -0.008em)을 따로 준다
+                  "whitespace-pre-line break-keep text-center text-[11px] leading-[13px] tracking-[0.015em] text-label-netural desktop:mt-0 desktop:flex-1 desktop:text-left desktop:text-headline-20r desktop:leading-8 desktop:tracking-[-0.008em]",
+                  active.descGap ?? "mt-3.5",
+                )}
+              >
+                <span className="desktop:hidden">
+                  {active.mobileDescription ?? active.description}
+                </span>
+                <span className="hidden desktop:inline">{active.description}</span>
+              </p>
+              {href && (
+                <div className="hidden shrink-0 desktop:block">
+                  <Button size="m" onClick={() => router.push(href)}>
+                    보러가기
+                  </Button>
+                </div>
               )}
-            >
-              <span className="desktop:hidden">
-                {active.mobileDescription ?? active.description}
-              </span>
-              <span className="hidden desktop:inline">{active.description}</span>
-            </p>
+            </div>
           </div>
 
           <div className="flex items-center gap-2.5 desktop:hidden">
