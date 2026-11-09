@@ -3,28 +3,27 @@
 import { PageNavButton } from "@kusitms.com/ui";
 import Image from "next/image";
 import { useId, useState } from "react";
-import { EXECUTIVE_DATA } from "@/constants/executiveData";
 import { nextTabIndex } from "@/lib/tabKeys";
 import { cn } from "@/lib/utils";
+import type { IntroductionTeam } from "@/service/introductions";
+import IntroductionMessage from "./IntroductionMessage";
 
-// 팀 설명은 기존 운영진 데이터(executiveData)를 쓰고, 사진은 팀별 새 사진을 쓴다. 탭 순서는 시안(학부학 → 경영총괄팀 → 대외홍보팀 → 교육기획팀)
-const TEAMS = [
-  { title: "학부학", image: "president" },
-  { title: "경영총괄팀", image: "management" },
-  { title: "대외홍보팀", image: "pr" },
-  { title: "교육기획팀", image: "education" },
-].map((team) => ({
-  ...team,
-  description: EXECUTIVE_DATA.find((item) => item.title === team.title)?.description ?? "",
-}));
+// 시안의 탭 순서. API 첫 항목("34기 운영진" 전체 카드)은 시안에 없어 빼고, 목록에 없는 팀은 뒤에 붙인다
+const TEAM_ORDER = ["학부학", "경영총괄팀", "대외홍보팀", "교육기획팀"];
+const orderOf = (name: string) => {
+  const index = TEAM_ORDER.indexOf(name);
+  return index === -1 ? TEAM_ORDER.length : index;
+};
 
 /** 피그마 TEMA(운영진) — 데스크톱 614:17576 상단, 모바일 614:17424 */
-export default function TemaSection() {
+export default function TemaSection({ teams: allTeams }: { teams: readonly IntroductionTeam[] }) {
+  const teams = allTeams.slice(1).sort((a, b) => orderOf(a.name) - orderOf(b.name));
   const headingId = useId();
   const tabsId = useId();
   const [active, setActive] = useState(0);
-  const team = TEAMS[active];
-  const move = (step: number) => setActive((index) => (index + step + TEAMS.length) % TEAMS.length);
+  const team = teams[active];
+  const move = (step: number) => setActive((index) => (index + step + teams.length) % teams.length);
+  if (!team) return <IntroductionMessage message="소개 정보를 준비 중이에요" />;
 
   return (
     <section
@@ -63,9 +62,9 @@ export default function TemaSection() {
             aria-label="운영진 팀"
             className="flex justify-center gap-2 desktop:gap-6"
           >
-            {TEAMS.map((item, index) => (
+            {teams.map((item, index) => (
               <button
-                key={item.title}
+                key={item.id}
                 type="button"
                 role="tab"
                 id={`${tabsId}-tab-${index}`}
@@ -74,7 +73,7 @@ export default function TemaSection() {
                 tabIndex={index === active ? 0 : -1}
                 onClick={() => setActive(index)}
                 onKeyDown={(event) => {
-                  const next = nextTabIndex(event.key, index, TEAMS.length, "horizontal");
+                  const next = nextTabIndex(event.key, index, teams.length, "horizontal");
                   if (next === null) return;
                   event.preventDefault();
                   setActive(next);
@@ -87,7 +86,7 @@ export default function TemaSection() {
                     : "border border-line-normal bg-white text-label-light hover:text-label-netural",
                 )}
               >
-                {item.title}
+                {item.name}
               </button>
             ))}
           </div>
@@ -98,14 +97,16 @@ export default function TemaSection() {
             aria-labelledby={`${tabsId}-tab-${active}`}
             className="relative h-[215px] w-full max-w-[335px] overflow-hidden rounded-[6px] bg-white desktop:h-[571px] desktop:max-w-[944px] desktop:rounded-2xl"
           >
-            <Image
-              key={team.image}
-              src={`/main/renewal/tema/${team.image}.webp`}
-              alt={`${team.title} 운영진 사진`}
-              fill
-              sizes="(min-width: 1024px) 944px, 335px"
-              className="object-cover"
-            />
+            {team.image_link && (
+              <Image
+                key={team.image_link}
+                src={team.image_link}
+                alt={`${team.name} 운영진 사진`}
+                fill
+                sizes="(min-width: 1024px) 944px, 335px"
+                className="object-cover"
+              />
+            )}
             {/* 사진 아래쪽을 흰색으로 덮어 팀 이름·설명이 읽히게 한다(시안의 흰색 페이드) */}
             <div className="absolute inset-x-0 bottom-0 h-[45%] bg-linear-to-t from-white from-[35%] to-transparent" />
             <div className="absolute inset-x-0 top-[88px] flex justify-between px-3 desktop:top-[233px] desktop:px-8">
@@ -128,7 +129,7 @@ export default function TemaSection() {
             </div>
             <div className="absolute inset-x-0 top-[163px] flex flex-col gap-[3px] px-10 desktop:top-[433px] desktop:gap-2 desktop:px-[108px]">
               <h3 className="text-[10px] leading-normal font-bold text-label-netural desktop:text-[24px] desktop:leading-[34px] desktop:tracking-[-0.008em]">
-                {team.title}
+                {team.name}
               </h3>
               <p className="text-[8px] leading-normal font-medium text-label-alternative desktop:text-[16px] desktop:leading-6 desktop:tracking-[-0.0025em]">
                 {team.description}

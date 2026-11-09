@@ -9,7 +9,13 @@ import { useRouter } from "next/navigation";
 import { type ReactNode, useEffect, useId, useState } from "react";
 import { nextTabIndex } from "@/lib/tabKeys";
 import { cn } from "@/lib/utils";
+import type {
+  IntroductionActivity,
+  IntroductionData,
+  IntroductionLecture,
+} from "@/service/introductions";
 import type { MeetupItem } from "@/service/projects";
+import IntroductionMessage from "./IntroductionMessage";
 
 const LOGO_DIR = "/main/img/company";
 // 어두운 사진 위에 올라가므로 검은 계열 로고는 흰색으로 바꿔 보여준다(시안과 같은 처리)
@@ -36,17 +42,6 @@ const LOGO_ROWS: { src: string; invert?: boolean; size?: string }[][] = [
     { src: "FitPet.webp" },
     { src: "Verty.svg", size: "h-2 px-1 desktop:h-3.5 desktop:px-2" },
   ],
-];
-
-const SPEAKERS = [
-  { slug: "yoon-jaeyoung", role: "기획", name: "윤재영 연사님" },
-  { slug: "lee-jaehyun", role: "기획", name: "이재현 연사님" },
-  { slug: "kim-hyunjun", role: "디자인", name: "김현준 연사님" },
-  { slug: "woody", role: "디자인", name: "우디 연사님" },
-  { slug: "kim-yechan", role: "백엔드", name: "김예찬 연사님" },
-  { slug: "seok-jongil", role: "백엔드", name: "석종일 연사님" },
-  { slug: "son-jaemyung", role: "백엔드", name: "손재명 연사님" },
-  { slug: "kim-gyuhoe", role: "프론트엔드", name: "김규회 연사님" },
 ];
 
 function LogoMarquee() {
@@ -234,6 +229,7 @@ function PhotoLink({ href, children }: { href: string; children: ReactNode }) {
   );
 }
 
+// 기업 프로젝트 사진과 로고는 시안대로 맞춘 로컬 이미지를 그대로 쓴다(로고 색 반전·크기 보정 포함)
 function CompanyMedia() {
   return (
     <div className="relative aspect-[600/377] w-full overflow-hidden rounded-[6.7px] desktop:rounded-m">
@@ -253,27 +249,29 @@ function CompanyMedia() {
 
 // 받은 사진이 배경 있는 일반 사진이라 얼굴 중심 정사각형으로 잘라 원형으로 보여주고,
 // 시안의 흑백 톤에 맞춰 CSS로만 흑백 처리한다(원본 색은 파일에 그대로 둔다)
-function SpeakerMedia() {
-  const rows = [SPEAKERS.slice(0, 4), SPEAKERS.slice(4)];
+function SpeakerMedia({ speakers }: { speakers: readonly IntroductionLecture[] }) {
+  const rows = Array.from({ length: Math.ceil(speakers.length / 4) }, (_, index) =>
+    speakers.slice(index * 4, index * 4 + 4),
+  );
+  if (speakers.length === 0) return <IntroductionMessage message="소개 정보를 준비 중이에요" />;
   return (
     <div className="flex w-full flex-col items-center gap-4 desktop:gap-5">
       {rows.map((row) => (
-        <ul key={row[0].slug} className="flex justify-center gap-3 desktop:gap-6">
+        <ul key={row[0].id} className="flex justify-center gap-3 desktop:gap-6">
           {row.map((speaker) => (
-            <li
-              key={speaker.slug}
-              className="flex w-[72px] flex-col items-center desktop:w-[120px]"
-            >
-              <Image
-                src={`/main/renewal/inside/speaker-${speaker.slug}.webp`}
-                alt=""
-                width={100}
-                height={100}
-                className="size-16 rounded-full bg-[#e5ecff] object-cover ring-4 ring-[#e5ecff] grayscale desktop:size-[100px]"
-              />
+            <li key={speaker.id} className="flex w-[72px] flex-col items-center desktop:w-[120px]">
+              {speaker.image_link && (
+                <Image
+                  src={speaker.image_link}
+                  alt=""
+                  width={100}
+                  height={100}
+                  className="size-16 rounded-full bg-[#e5ecff] object-cover ring-4 ring-[#e5ecff] grayscale desktop:size-[100px]"
+                />
+              )}
               <p className="mt-2 text-center text-[10px] leading-[14px] font-semibold desktop:mt-2.5 desktop:text-[12px] desktop:leading-4">
-                <span className="block text-[#7099ff]">{speaker.role}</span>
-                <span className="block text-[#474752]">{speaker.name}</span>
+                <span className="block text-[#7099ff]">{speaker.corporation}</span>
+                <span className="block text-[#474752]">{speaker.name} 연사님</span>
               </p>
             </li>
           ))}
@@ -283,6 +281,7 @@ function SpeakerMedia() {
   );
 }
 
+// OB 초청데이 사진은 API(ob_lecture)가 아직 비어 있어 당분간 프론트 이미지를 쓴다
 function ObMedia() {
   return (
     <div className="relative aspect-[335/210] w-full overflow-hidden rounded-[6.7px] desktop:aspect-[600/402] desktop:rounded-m">
@@ -297,16 +296,23 @@ function ObMedia() {
   );
 }
 
-function ExhibitionMedia() {
+function ExhibitionMedia({ activities }: { activities: readonly IntroductionActivity[] }) {
+  const photos = activities.flatMap((activity) =>
+    [activity.image_url1, activity.image_url2]
+      .filter((src): src is string => !!src)
+      .map((src) => ({
+        src,
+        alt: `${activity.name} 사진`,
+        position: activity.name === "전시회" ? "54% 50%" : "34% 50%",
+      })),
+  );
+  if (photos.length === 0) return <IntroductionMessage message="소개 정보를 준비 중이에요" />;
   return (
-    <div className="grid aspect-[600/378] w-full grid-cols-2 gap-1.5">
-      {[
-        { src: "exhibition", alt: "전시회 사진", position: "54% 50%" },
-        { src: "meetup-day", alt: "밋업데이 발표 사진", position: "34% 50%" },
-      ].map((photo) => (
+    <div className="grid aspect-[600/378] w-full grid-flow-col auto-cols-fr gap-1.5">
+      {photos.map((photo) => (
         <div key={photo.src} className="relative overflow-hidden rounded-[6.7px] desktop:rounded-m">
           <Image
-            src={`/main/renewal/inside/${photo.src}.webp`}
+            src={photo.src}
             alt={photo.alt}
             fill
             sizes="(min-width: 1024px) 300px, 50vw"
@@ -319,7 +325,13 @@ function ExhibitionMedia() {
   );
 }
 
-export default function InsideSection({ meetupProjects = [] }: { meetupProjects?: MeetupItem[] }) {
+export default function InsideSection({
+  introductions,
+  meetupProjects = [],
+}: {
+  introductions: IntroductionData;
+  meetupProjects?: MeetupItem[];
+}) {
   const headingId = useId();
   const tabsId = useId();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -343,7 +355,7 @@ export default function InsideSection({ meetupProjects = [] }: { meetupProjects?
     },
     {
       title: "전문가 초청 강연",
-      media: <SpeakerMedia />,
+      media: <SpeakerMedia speakers={introductions.expert_lecture} />,
       description:
         "현업에서 활발히 활동 중이신 기획 · 개발 · 디자인 분야의 전문가 및 실무자에게\n직무에 대한 설명과 조언을 들을 수 있는 활동이에요.",
       panelClass: "desktop:justify-between desktop:pt-3.5",
@@ -366,7 +378,13 @@ export default function InsideSection({ meetupProjects = [] }: { meetupProjects?
     },
     {
       title: "전시회 · 밋업데이",
-      media: <ExhibitionMedia />,
+      media: (
+        <ExhibitionMedia
+          activities={introductions.activities.filter(
+            (item) => item.name === "전시회" || item.name === "밋업데이",
+          )}
+        />
+      ),
       description:
         "완성한 서비스를 전시회에서 직접 선보이고,\n밋업데이에서 발표하며 한 기수를 마무리해요.",
       panelClass: "desktop:justify-start",
