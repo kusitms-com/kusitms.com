@@ -269,8 +269,6 @@ body {
 @theme {
   --font-sans: var(--font-pretendard);
 
-  --animate-hero-char: hero-char-in 0.356s cubic-bezier(0, 0, 0.58, 1) both;
-  /* 시안의 아래 화살표 Lottie(arrow-down)와 같은 모션: 1초 주기로 박스 높이의 10.22%만큼 내려갔다 돌아온다 */
   /* Inside KUSITMS 기업 로고 롤링: 로고 목록을 두 번 이어 붙이고 절반만큼 흘려 끊김 없이 반복 */
   --animate-logo-marquee: logo-marquee 20s linear infinite;
 
@@ -283,6 +281,7 @@ body {
     }
   }
 
+  /* 시안의 아래 화살표 Lottie(arrow-down)와 같은 모션: 1초 주기로 박스 높이의 10.22%만큼 내려갔다 돌아온다 */
   --animate-hero-arrow: hero-arrow-bob 1s cubic-bezier(0.403, 0, 0.597, 1) infinite;
 
   @keyframes hero-arrow-bob {
@@ -295,14 +294,52 @@ body {
     }
   }
 
-  @keyframes hero-char-in {
+  /* 홈 히어로 v14 시안의 배경 모션. 기본 스타일이 완성 상태라서 motion-safe가 아니면 애니메이션 없이 완성 화면이 바로 보인다.
+     0.5초 뒤 파란 배경 마스크가 3.5초 동안 왼쪽부터 펼쳐지고, 유리 슬랫 컨테이너는 1.25초 동안 왼쪽부터 열리며
+     슬랫 하나하나는 42ms 간격(인라인 animation-delay)으로 0.5초씩 나타난다. 광택은 11초 주기로 흐른다.
+     타이틀 글자 모션은 글자마다 키프레임 오프셋이 달라 IntroSection에서 Web Animations API로 돌린다 */
+  --animate-hero-energy: hero-energy-reveal 3.5s cubic-bezier(0.8, 0, 0.15, 1) 0.5s both;
+  --animate-hero-glass: hero-glass-reveal 1.25s linear 0.5s both;
+  --animate-hero-slat: hero-slat-appear 0.5s ease-out both;
+  --animate-hero-sheen: hero-sheen 11s ease-in-out infinite;
+
+  @keyframes hero-energy-reveal {
+    from {
+      -webkit-mask-size: 0.01% 100%;
+      mask-size: 0.01% 100%;
+    }
+    to {
+      -webkit-mask-size: 200% 100%;
+      mask-size: 200% 100%;
+    }
+  }
+
+  @keyframes hero-glass-reveal {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @keyframes hero-slat-appear {
     from {
       opacity: 0;
-      filter: blur(30px);
     }
     to {
       opacity: 1;
-      filter: blur(0);
+    }
+  }
+
+  @keyframes hero-sheen {
+    0%,
+    20% {
+      transform: translateX(-28%);
+    }
+    75%,
+    100% {
+      transform: translateX(26%);
     }
   }
 
