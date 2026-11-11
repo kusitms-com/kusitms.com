@@ -35,7 +35,9 @@ export default function PictureCard({
           <h3 className="whitespace-pre-line text-headline-20sb desktop:text-body-18sb text-label-normal">
             {title}
           </h3>
-          <p className="text-label-14r desktop:text-caption-12r text-label-light">{description}</p>
+          <p className="whitespace-pre-line text-label-14r desktop:text-caption-12r text-label-light">
+            {description}
+          </p>
         </div>
       </div>
     </div>

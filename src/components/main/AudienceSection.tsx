@@ -1,11 +1,11 @@
 import { useId } from "react";
 import PictureCard from "./PictureCard";
 
-// 피그마 주석 "호버 시, 1.2배 확대": 카드 전체가 1.2배로 커지고 옆 카드가 밀려난다(데스크톱).
-// 가로 여백을 282px의 10%씩 늘려 자리를 만들고, 세로는 페이지가 흔들리지 않게 겹쳐 그린다.
-// 전환 시간은 정의돼 있지 않아 파트 카드와 같은 600ms ease-in-out
+// 피그마 주석 "호버 시, 1.2배 확대": 카드 전체가 1.2배로 커지고, 가로 여백을 282px의 10%씩 늘려 옆 카드를 밀어낸다(데스크톱).
+// 세로는 페이지가 흔들리지 않게 겹쳐 그린다.
+// 프로토타입: While hovering, Smart animate, Ease out back(Figma 곡선 0.45,1.45,0.8,1), 500ms
 const CARD_HOVER =
-  "desktop:relative desktop:w-[282px] desktop:min-w-0 min-[1280px]:shrink-0 desktop:transition-[scale,margin] desktop:duration-[600ms] desktop:ease-[cubic-bezier(0.42,0,0.58,1)] motion-reduce:transition-none desktop:hover:z-10 desktop:hover:mx-[28.2px] desktop:hover:scale-[1.2]";
+  "desktop:relative desktop:w-[282px] desktop:min-w-0 min-[1280px]:shrink-0 desktop:transition-[scale,margin] desktop:duration-500 desktop:ease-[cubic-bezier(0.45,1.45,0.8,1)] motion-reduce:transition-none desktop:hover:z-10 desktop:hover:mx-[28.2px] desktop:hover:scale-[1.2]";
 
 const AUDIENCE_CARDS = [
   {
@@ -24,13 +24,13 @@ const AUDIENCE_CARDS = [
     image: "/main/renewal/audience-3.jpg",
     number: "03",
     title: "다른 파트와 부딪히며\n답을 찾아가고 싶은 분",
-    description: "서로의 언어와 일하는 방식을 배우면서 하나의 결론을 만들어가요.",
+    description: "서로의 언어와 일하는 방식을 배우면서\n하나의 결론을 만들어가요.",
   },
   {
     image: "/main/renewal/audience-4.jpg",
     number: "04",
     title: "같은 고민을 나눌\n동료가 필요한 분",
-    description: "동기와 선배가 함께 고민하고 응원하는 커뮤니티가 있어요.",
+    description: "동기와 선배가 함께 고민하고\n응원하는 커뮤니티가 있어요.",
   },
 ];
 
@@ -45,13 +45,13 @@ export default function AudienceSection() {
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-14">
         <div className="flex flex-col items-center gap-6 text-center">
-          <p className="text-body-16b desktop:text-headline-20b text-brand-primary">PARTS</p>
+          <p className="text-body-16b desktop:text-headline-20b text-brand-primary">FIT</p>
           <div className="flex flex-col gap-4">
             <h2 id={headingId} className="text-headline-24b desktop:text-pc-36b text-label-normal">
               이런 분께 추천해요
             </h2>
-            <p className="hidden text-headline-20m text-label-netural desktop:block">
-              학회원의 성장을 위해 기획·디자인·프론트엔드·백엔드가 한 팀으로 프로젝트를 진행해요.
+            <p className="text-body-16r text-label-netural desktop:text-headline-20m">
+              큐시즘에서는 이런 분들이 함께하고 있어요
             </p>
           </div>
         </div>
