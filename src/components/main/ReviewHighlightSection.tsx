@@ -43,7 +43,7 @@ export default function ReviewHighlightSection() {
     >
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 desktop:gap-12">
         <FadeIn className="flex flex-col items-center gap-6 text-center">
-          <p className="text-body-16b text-brand-primary desktop:text-headline-20b">Review</p>
+          <p className="text-body-16b text-brand-primary desktop:text-headline-20b">REVIEW</p>
           <div className="flex flex-col gap-4">
             <h2
               id={headingId}
