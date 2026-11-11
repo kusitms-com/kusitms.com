@@ -2,6 +2,7 @@
 
 import { MotionConfig } from "framer-motion";
 import { useId, useState } from "react";
+import FadeIn from "@/components/shared/FadeIn";
 import type { IntroductionData } from "@/service/introductions";
 import StatCard from "./StatCard";
 
@@ -41,27 +42,31 @@ export default function StatsSection({ introductions }: { introductions: Introdu
       className="relative z-10 bg-fill-netural px-5 pt-[200px] desktop:px-0 desktop:py-80"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-12">
-        <h2
-          id={headingId}
-          className="text-center text-body-16b text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]"
-        >
-          Since 2009
-        </h2>
-        <MotionConfig transition={CARD_TRANSITION} reducedMotion="user">
-          <ul
-            className="flex flex-col gap-5 desktop:flex-row desktop:gap-6"
-            onMouseLeave={() => setActiveIndex(null)}
+        <FadeIn>
+          <h2
+            id={headingId}
+            className="text-center text-body-16b text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]"
           >
-            {stats.map((stat, index) => (
-              <StatCard
-                key={stat.label}
-                {...stat}
-                isActive={index === activeIndex}
-                onMouseEnter={() => setActiveIndex(index)}
-              />
-            ))}
-          </ul>
-        </MotionConfig>
+            Since 2009
+          </h2>
+        </FadeIn>
+        <FadeIn>
+          <MotionConfig transition={CARD_TRANSITION} reducedMotion="user">
+            <ul
+              className="flex flex-col gap-5 desktop:flex-row desktop:gap-6"
+              onMouseLeave={() => setActiveIndex(null)}
+            >
+              {stats.map((stat, index) => (
+                <StatCard
+                  key={stat.label}
+                  {...stat}
+                  isActive={index === activeIndex}
+                  onMouseEnter={() => setActiveIndex(index)}
+                />
+              ))}
+            </ul>
+          </MotionConfig>
+        </FadeIn>
       </div>
     </section>
   );

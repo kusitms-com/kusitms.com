@@ -8,4 +8,5 @@ allowBuilds:
 
 minimumReleaseAgeExclude:
   - '@kusitms.com/tokens@0.3.0'
-  - '@kusitms.com/ui@0.2.3'
+  - '@kusitms.com/ui@0.2.3 || 0.4.0'
+  - '@kusitms.com/icons@0.2.0'

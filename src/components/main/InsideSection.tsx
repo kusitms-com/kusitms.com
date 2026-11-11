@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type ReactNode, useEffect, useId, useState } from "react";
+import FadeIn from "@/components/shared/FadeIn";
 import { nextTabIndex } from "@/lib/tabKeys";
 import { cn } from "@/lib/utils";
 import type {
@@ -283,26 +284,31 @@ function SpeakerMedia({ speakers }: { speakers: readonly IntroductionLecture[] }
   );
   if (speakers.length === 0) return <IntroductionMessage message="소개 정보를 준비 중이에요" />;
   return (
-    <div className="flex w-full flex-col items-center gap-4 desktop:h-[444px] desktop:justify-center desktop:gap-10">
+    // 시안(데스크톱 833:14027, 모바일 614:11572): 사진 4개를 폭 양 끝까지 같은 간격으로 둔다.
+    // 데스크톱은 154px 사진·847px 폭·줄 사이 10px, 모바일은 68px 사진·좌우 12px 안쪽·줄 사이 6px
+    <div className="flex w-full flex-col items-center gap-1.5 desktop:h-[444px] desktop:justify-center desktop:gap-2.5">
       {rows.map((row) => (
-        <ul key={row[0].id} className="flex justify-center gap-3 desktop:gap-6">
+        <ul
+          key={row[0].id}
+          className="grid w-full grid-cols-[repeat(4,68px)] justify-between px-3 desktop:grid-cols-[repeat(4,154px)] desktop:px-0"
+        >
           {row.map((speaker) => {
             const photo = speakerPhoto(speaker);
             return (
               <li
                 key={speaker.id}
-                className="flex w-[72px] flex-col items-center desktop:w-[120px]"
+                className="flex w-[68px] flex-col items-center desktop:w-[154px]"
               >
                 {photo && (
                   <Image
                     src={photo}
                     alt=""
-                    width={100}
-                    height={100}
-                    className="size-16 rounded-full bg-[#e5ecff] object-cover ring-4 ring-[#e5ecff] grayscale desktop:size-[100px]"
+                    width={160}
+                    height={160}
+                    className="size-[68px] rounded-full bg-[#e5ecff] object-cover ring-4 ring-[#e5ecff] grayscale desktop:size-[154px]"
                   />
                 )}
-                <p className="mt-2 text-center text-[10px] leading-[14px] font-semibold desktop:mt-2.5 desktop:text-[12px] desktop:leading-4">
+                <p className="mt-1.5 text-center text-[10px] leading-[14px] font-semibold desktop:mt-3 desktop:text-[13px] desktop:leading-[1.5]">
                   <span className="block text-[#7099ff]">{speaker.corporation}</span>
                   <span className="block text-[#474752]">{speaker.name} 연사님</span>
                 </p>
@@ -330,22 +336,18 @@ function ObMedia() {
   );
 }
 
-function ExhibitionMedia({ activities }: { activities: readonly IntroductionActivity[] }) {
-  const photos = activities.flatMap((activity) =>
-    [activity.image_url1, activity.image_url2]
-      .filter((src): src is string => !!src)
-      .map((src) => ({
-        src,
-        alt: `${activity.name} 사진`,
-        position: activity.name === "전시회" ? "54% 50%" : "34% 50%",
-      })),
-  );
-  if (photos.length === 0) return <IntroductionMessage message="소개 정보를 준비 중이에요" />;
+// 전시회·밋업데이 사진은 API 이미지 화질이 낮아 시안(833:14005) 원본(2048x1152)을 프론트 이미지로 쓴다
+const EXHIBITION_PHOTOS = [
+  { src: "/main/renewal/inside/exhibition-hq.webp", alt: "전시회 사진", position: "54% 50%" },
+  { src: "/main/renewal/inside/meetup-day-hq.webp", alt: "밋업데이 사진", position: "34% 50%" },
+] as const;
+
+function ExhibitionMedia() {
   return (
     // 데스크톱 시안(833:14005): 847x450 틀(12px 반경)에 사진 두 장을 10px 간격·8px 반경으로 나란히 둔다.
     // 8px은 rounded-s로 쓰면 Tailwind v4가 시작 방향(start) 반경 유틸리티로도 해석해 왼쪽만 4px가 되므로 토큰 변수(--s)를 직접 쓴다
     <div className="grid aspect-[600/378] w-full grid-flow-col auto-cols-fr gap-1.5 desktop:aspect-[847/450] desktop:gap-2.5 desktop:overflow-hidden desktop:rounded-m">
-      {photos.map((photo) => (
+      {EXHIBITION_PHOTOS.map((photo) => (
         <div
           key={photo.src}
           className="relative overflow-hidden rounded-[6.7px] desktop:rounded-(--s)"
@@ -402,6 +404,9 @@ export default function InsideSection({
       media: <SpeakerMedia speakers={introductions.expert_lecture} />,
       description:
         "현업에서 활발히 활동 중이신 기획 · 개발 · 디자인 분야의 전문가 및 실무자에게\n직무에 대한 설명과 조언을 들을 수 있는 활동이에요.",
+      // 모바일 시안(614:11572)은 강제 줄바꿈 없이 두 줄로 자연스럽게 넘어간다
+      mobileDescription:
+        "현업에서 활발히 활동 중이신 기획 · 개발 · 디자인 분야의 전문가 및 실무자에게 직무에 대한 설명과 조언을 들을 수 있는 활동이에요.",
     },
     {
       title: "OB 초청데이",
@@ -420,13 +425,7 @@ export default function InsideSection({
     },
     {
       title: "전시회 · 밋업데이",
-      media: (
-        <ExhibitionMedia
-          activities={introductions.activities.filter(
-            (item) => item.name === "전시회" || item.name === "밋업데이",
-          )}
-        />
-      ),
+      media: <ExhibitionMedia />,
       description:
         "완성한 서비스를 전시회에서 직접 선보이고, 밋업데이에서 발표하며 한 기수를 마무리해요.",
       mobileDescription:
@@ -442,7 +441,7 @@ export default function InsideSection({
   return (
     <section aria-labelledby={headingId} className="px-5 py-[100px] desktop:px-0 desktop:py-0">
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 desktop:gap-12">
-        <div className="flex flex-col items-center gap-2.5 pt-[67px] pb-4 text-center">
+        <FadeIn className="flex flex-col items-center gap-2.5 pt-[67px] pb-4 text-center">
           <h2
             id={headingId}
             className="bg-[linear-gradient(95deg,#7c9dfd_11.8%,var(--color-brand-primary)_97.2%)] bg-clip-text text-headline-24b text-transparent desktop:text-[32px] desktop:leading-[42px] desktop:tracking-[-0.012em]"
@@ -452,9 +451,9 @@ export default function InsideSection({
           <p className="text-label-14m text-[#18181b] desktop:text-headline-20m desktop:text-label-netural">
             큐시즘의 한 학기, 그 안에서 펼쳐지는 경험들
           </p>
-        </div>
+        </FadeIn>
 
-        <div className="flex w-full flex-col items-center gap-9 desktop:flex-row desktop:items-start desktop:gap-[72px]">
+        <FadeIn className="flex w-full flex-col items-center gap-9 desktop:flex-row desktop:items-start desktop:gap-[72px]">
           <div
             role="tablist"
             aria-label="큐시즘 활동"
@@ -551,7 +550,7 @@ export default function InsideSection({
               <KeyboardArrowRightIcon className="size-5" />
             </button>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

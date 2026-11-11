@@ -9,14 +9,13 @@ import PartnersSection from "@/components/main/PartnersSection";
 import PartsSection from "@/components/main/PartsSection";
 import ReviewHighlightSection from "@/components/main/ReviewHighlightSection";
 import StatsSection from "@/components/main/StatsSection";
-import TemaSection from "@/components/main/TemaSection";
+import TeamSection from "@/components/main/TeamSection";
 import {
   getIntroductions,
   type IntroductionData,
   IntroductionHttpError,
 } from "@/service/introductions";
 import { getMeetupProjects, type MeetupItem } from "@/service/projects";
-import { getReviews, type Review } from "@/service/reviews";
 
 // 메타 규칙 1-1(홈). 이미지는 현 기수 이미지가 나오기 전까지 기존 33기 이미지를 쓴다
 const HOME_TITLE = "큐시즘(KUSITMS) · 대학생 IT 프로젝트 학회";
@@ -63,14 +62,6 @@ export default async function Home() {
     console.error("Failed to fetch meetup projects:", error);
   }
 
-  let reviews: Review[] = [];
-  try {
-    const response = await getReviews("");
-    reviews = response.data?.review_list || [];
-  } catch (error) {
-    console.error("Failed to fetch reviews:", error);
-  }
-
   return (
     <main className="mx-auto font-[family-name:var(--font-pretendard)] bg-gradient-2">
       <div className="relative">
@@ -93,8 +84,8 @@ export default async function Home() {
         ) : (
           introductionFallback
         )}
-        <ReviewHighlightSection reviews={reviews} />
-        {introductions ? <TemaSection teams={introductions.teams} /> : introductionFallback}
+        <ReviewHighlightSection />
+        {introductions ? <TeamSection teams={introductions.teams} /> : introductionFallback}
         {introductions ? (
           <PartnersSection sponsors={introductions.sponsor_image_urls} />
         ) : (

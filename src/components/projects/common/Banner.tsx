@@ -6,7 +6,7 @@ interface BannerProps {
   imageSrc?: string;
 }
 
-const DEFAULT_BANNER_SRC = "/projects/ProjectBanner2026.png";
+const DEFAULT_BANNER_SRC = "/projects/ProjectBanner34th.png";
 
 export default function Banner({ title, description, imageSrc = DEFAULT_BANNER_SRC }: BannerProps) {
   const textDescription = typeof description === "string" ? description : "";
@@ -21,8 +21,14 @@ export default function Banner({ title, description, imageSrc = DEFAULT_BANNER_S
           priority
           fill
           sizes="100vw"
-          className="object-cover object-left tablet:object-center"
+          className="object-cover object-[60%_50%] tablet:object-center"
         />
+        {/* 배너 이미지 속 글자는 폭의 18~45% 구간에 있어 모바일(180px 높이, 폭의 약 20%만 보임)에서는 잘린다.
+            모바일은 글자가 없는 60% 지점을 기준으로 배경만 보여주고, 제목·설명을 코드 텍스트로 올린다 */}
+        <div className="pointer-events-none absolute inset-0 flex flex-col justify-center gap-1 px-8 tablet:hidden">
+          {title && <p className="text-body-1 font-bold text-brand-primary">{title}</p>}
+          {description && <p className="text-body-6 text-brand-primary">{description}</p>}
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-export type FitLine = { text: string; tone?: "strong" | "sub" };
+export type FitLine = { text: string };
 
 interface FitCardProps {
   label: string;
@@ -9,12 +9,6 @@ interface FitCardProps {
   lines: FitLine[];
   className?: string;
 }
-
-const LINE_STYLE = {
-  strong: "text-body-18sb text-label-normal",
-  sub: "text-body-16r text-label-alternative",
-  default: "text-body-16r desktop:text-body-18r text-label-normal",
-};
 
 /** 피그마 Card/Fit. 모바일(Variant2) → 데스크톱(Overview) 반응형 */
 export default function FitCard({ label, title, lines, className }: FitCardProps) {
@@ -32,7 +26,7 @@ export default function FitCard({ label, title, lines, className }: FitCardProps
       <Image src="/main/renewal/fit-divider.svg" alt="" width={120} height={1} />
       <ul className="flex flex-col items-center gap-2">
         {lines.map((line) => (
-          <li key={line.text} className={LINE_STYLE[line.tone ?? "default"]}>
+          <li key={line.text} className="text-body-16r desktop:text-body-18r text-label-normal">
             {line.text}
           </li>
         ))}

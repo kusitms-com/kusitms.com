@@ -3,21 +3,22 @@
 import { PageNavButton } from "@kusitms.com/ui";
 import Image from "next/image";
 import { useId, useState } from "react";
+import FadeIn from "@/components/shared/FadeIn";
 import { nextTabIndex } from "@/lib/tabKeys";
 import { cn } from "@/lib/utils";
 import type { IntroductionTeam } from "@/service/introductions";
 import IntroductionMessage from "./IntroductionMessage";
 
-// 시안의 탭 순서. API 첫 항목("34기 운영진" 전체 카드)은 시안에 없어 빼고, 목록에 없는 팀은 뒤에 붙인다
-const TEAM_ORDER = ["학부학", "경영총괄팀", "대외홍보팀", "교육기획팀"];
+// 시안(614:17374)의 탭 순서. 34기 운영진 전체 카드가 첫 탭이고, 목록에 없는 팀은 뒤에 붙인다
+const TEAM_ORDER = ["34기 운영진", "학부학", "경영총괄팀", "교육기획팀", "대외홍보팀"];
 const orderOf = (name: string) => {
   const index = TEAM_ORDER.indexOf(name);
   return index === -1 ? TEAM_ORDER.length : index;
 };
 
-/** 피그마 TEMA(운영진) — 데스크톱 614:17576 상단, 모바일 614:17424 */
-export default function TemaSection({ teams: allTeams }: { teams: readonly IntroductionTeam[] }) {
-  const teams = allTeams.slice(1).sort((a, b) => orderOf(a.name) - orderOf(b.name));
+/** 피그마 TEAM(운영진) — 데스크톱 614:17576 상단, 모바일 614:17424 */
+export default function TeamSection({ teams: allTeams }: { teams: readonly IntroductionTeam[] }) {
+  const teams = [...allTeams].sort((a, b) => orderOf(a.name) - orderOf(b.name));
   const headingId = useId();
   const tabsId = useId();
   const [active, setActive] = useState(0);
@@ -31,9 +32,9 @@ export default function TemaSection({ teams: allTeams }: { teams: readonly Intro
       className="px-5 py-[100px] desktop:px-0 desktop:pt-[320px] desktop:pb-0"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-12">
-        <div className="flex flex-col items-center gap-6 text-center desktop:items-start desktop:gap-12 desktop:text-left">
+        <FadeIn className="flex flex-col items-center gap-6 text-center desktop:items-start desktop:gap-12 desktop:text-left">
           <p className="text-body-16b text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]">
-            TEMA
+            TEAM
           </p>
           <div className="flex flex-col gap-1 desktop:gap-3">
             <h2
@@ -54,13 +55,13 @@ export default function TemaSection({ teams: allTeams }: { teams: readonly Intro
               </span>
             </p>
           </div>
-        </div>
+        </FadeIn>
 
-        <div className="flex flex-col items-center gap-6 desktop:gap-5">
+        <FadeIn className="flex flex-col items-center gap-6 desktop:gap-5">
           <div
             role="tablist"
             aria-label="운영진 팀"
-            className="flex justify-center gap-2 desktop:gap-6"
+            className="flex max-w-[295px] flex-wrap justify-center gap-x-2.5 gap-y-2 desktop:max-w-none desktop:flex-nowrap desktop:gap-6"
           >
             {teams.map((item, index) => (
               <button
@@ -136,7 +137,7 @@ export default function TemaSection({ teams: allTeams }: { teams: readonly Intro
               </p>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );
