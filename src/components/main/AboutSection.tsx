@@ -1,4 +1,5 @@
 import { HeaderDesktopLogo } from "@kusitms.com/icons";
+import FadeIn from "@/components/shared/FadeIn";
 
 const DESKTOP_LINES = [
   "큐시즘은 2009년 설립된 한국대학생 IT경영학회입니다.",
@@ -28,7 +29,7 @@ export default function AboutSection() {
       aria-label="큐시즘 소개"
       className="relative z-10 bg-linear-to-b from-[rgba(247,247,248,0)] to-fill-netural to-[67.693%] px-4 pt-[300px] pb-[150px] desktop:px-0 desktop:pt-[100px] desktop:pb-[187px]"
     >
-      <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-[35px]">
+      <FadeIn className="mx-auto flex max-w-[1200px] flex-col items-center gap-[35px]">
         <HeaderDesktopLogo
           role="img"
           aria-label="KUSITMS"
@@ -43,7 +44,7 @@ export default function AboutSection() {
             <Lines lines={DESKTOP_LINES} />
           </span>
         </p>
-      </div>
+      </FadeIn>
     </section>
   );
 }

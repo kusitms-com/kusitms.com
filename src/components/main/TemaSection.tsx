@@ -3,6 +3,7 @@
 import { PageNavButton } from "@kusitms.com/ui";
 import Image from "next/image";
 import { useId, useState } from "react";
+import FadeIn from "@/components/shared/FadeIn";
 import { nextTabIndex } from "@/lib/tabKeys";
 import { cn } from "@/lib/utils";
 import type { IntroductionTeam } from "@/service/introductions";
@@ -31,7 +32,7 @@ export default function TemaSection({ teams: allTeams }: { teams: readonly Intro
       className="px-5 py-[100px] desktop:px-0 desktop:pt-[320px] desktop:pb-0"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-12">
-        <div className="flex flex-col items-center gap-6 text-center desktop:items-start desktop:gap-12 desktop:text-left">
+        <FadeIn className="flex flex-col items-center gap-6 text-center desktop:items-start desktop:gap-12 desktop:text-left">
           <p className="text-body-16b text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]">
             TEMA
           </p>
@@ -54,9 +55,9 @@ export default function TemaSection({ teams: allTeams }: { teams: readonly Intro
               </span>
             </p>
           </div>
-        </div>
+        </FadeIn>
 
-        <div className="flex flex-col items-center gap-6 desktop:gap-5">
+        <FadeIn className="flex flex-col items-center gap-6 desktop:gap-5">
           <div
             role="tablist"
             aria-label="운영진 팀"
@@ -136,7 +137,7 @@ export default function TemaSection({ teams: allTeams }: { teams: readonly Intro
               </p>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

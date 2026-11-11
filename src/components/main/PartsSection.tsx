@@ -1,4 +1,5 @@
 import { useId } from "react";
+import FadeIn from "@/components/shared/FadeIn";
 import type { IntroductionData } from "@/service/introductions";
 import PartCard, { type Part } from "./PartCard";
 
@@ -60,7 +61,7 @@ export default function PartsSection({ introductions }: { introductions: Introdu
       className="bg-fill-netural px-5 pt-[200px] desktop:px-0 desktop:py-[360px]"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-14">
-        <div className="flex flex-col items-center gap-6 text-center">
+        <FadeIn className="flex flex-col items-center gap-6 text-center">
           <p className="text-body-16b desktop:text-headline-20b text-brand-primary">PARTS</p>
           <div className="flex flex-col gap-4">
             <h2 id={headingId} className="text-headline-24b desktop:text-pc-36b text-label-normal">
@@ -70,12 +71,12 @@ export default function PartsSection({ introductions }: { introductions: Introdu
               학회원의 성장을 위해 기획·디자인·프론트엔드·백엔드가 한 팀으로 프로젝트를 진행해요.
             </p>
           </div>
-        </div>
-        <div className="flex flex-col gap-5 desktop:grid desktop:grid-cols-2 desktop:gap-6">
+        </FadeIn>
+        <FadeIn className="flex flex-col gap-5 desktop:grid desktop:grid-cols-2 desktop:gap-6">
           {PARTS.map((part) => (
             <PartCard key={part.part} {...part} image={images[part.part]} />
           ))}
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

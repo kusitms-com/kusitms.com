@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type ReactNode, useEffect, useId, useState } from "react";
+import FadeIn from "@/components/shared/FadeIn";
 import { nextTabIndex } from "@/lib/tabKeys";
 import { cn } from "@/lib/utils";
 import type {
@@ -442,7 +443,7 @@ export default function InsideSection({
   return (
     <section aria-labelledby={headingId} className="px-5 py-[100px] desktop:px-0 desktop:py-0">
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 desktop:gap-12">
-        <div className="flex flex-col items-center gap-2.5 pt-[67px] pb-4 text-center">
+        <FadeIn className="flex flex-col items-center gap-2.5 pt-[67px] pb-4 text-center">
           <h2
             id={headingId}
             className="bg-[linear-gradient(95deg,#7c9dfd_11.8%,var(--color-brand-primary)_97.2%)] bg-clip-text text-headline-24b text-transparent desktop:text-[32px] desktop:leading-[42px] desktop:tracking-[-0.012em]"
@@ -452,9 +453,9 @@ export default function InsideSection({
           <p className="text-label-14m text-[#18181b] desktop:text-headline-20m desktop:text-label-netural">
             큐시즘의 한 학기, 그 안에서 펼쳐지는 경험들
           </p>
-        </div>
+        </FadeIn>
 
-        <div className="flex w-full flex-col items-center gap-9 desktop:flex-row desktop:items-start desktop:gap-[72px]">
+        <FadeIn className="flex w-full flex-col items-center gap-9 desktop:flex-row desktop:items-start desktop:gap-[72px]">
           <div
             role="tablist"
             aria-label="큐시즘 활동"
@@ -551,7 +552,7 @@ export default function InsideSection({
               <KeyboardArrowRightIcon className="size-5" />
             </button>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

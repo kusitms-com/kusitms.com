@@ -4,6 +4,7 @@ import { Button } from "@kusitms.com/ui";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useId } from "react";
+import FadeIn from "@/components/shared/FadeIn";
 
 // 시안 문구 그대로(API 후기 대신). 목록은 열 우선 순서라 데스크톱은 세로로 채워 3열 2행(기획 → 디자인 → 개발),
 // 모바일은 2열 3행이 시안 배치와 같다. "\n"은 데스크톱 시안의 줄바꿈이고 모바일에서는 공백으로 보인다
@@ -41,7 +42,7 @@ export default function ReviewHighlightSection() {
       className="px-5 py-[200px] desktop:px-10 min-[1280px]:px-0 desktop:pt-[320px] desktop:pb-0"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 desktop:gap-12">
-        <div className="flex flex-col items-center gap-6 text-center">
+        <FadeIn className="flex flex-col items-center gap-6 text-center">
           <p className="text-body-16b text-brand-primary desktop:text-headline-20b">Review</p>
           <div className="flex flex-col gap-4">
             <h2
@@ -56,9 +57,9 @@ export default function ReviewHighlightSection() {
               <br className="desktop:hidden" /> 전해드려요
             </p>
           </div>
-        </div>
+        </FadeIn>
 
-        <div className="flex w-full flex-col items-center gap-9 desktop:gap-10">
+        <FadeIn className="flex w-full flex-col items-center gap-9 desktop:gap-10">
           <ul className="grid w-full grid-cols-2 gap-4 desktop:w-auto desktop:grid-flow-col desktop:grid-cols-[repeat(3,minmax(0,335px))] desktop:h-[450px] desktop:grid-rows-[210px_210px] desktop:content-start desktop:gap-6">
             {REVIEWS.map((review) => (
               <li
@@ -86,7 +87,7 @@ export default function ReviewHighlightSection() {
           <Button size="m" onClick={() => router.push("/reviews/activity")}>
             후기 더보기
           </Button>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

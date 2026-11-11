@@ -1,4 +1,5 @@
 import { useId } from "react";
+import FadeIn from "@/components/shared/FadeIn";
 import PictureCard from "./PictureCard";
 
 // 피그마 주석 "호버 시, 1.2배 확대": 카드 전체가 1.2배로 커지고, 가로 여백을 282px의 10%씩 늘려 옆 카드를 밀어낸다(데스크톱).
@@ -44,7 +45,7 @@ export default function AudienceSection() {
       className="bg-fill-netural px-5 py-[200px] desktop:px-10 desktop:pt-[360px] min-[1280px]:px-0 desktop:pb-80"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-14">
-        <div className="flex flex-col items-center gap-6 text-center">
+        <FadeIn className="flex flex-col items-center gap-6 text-center">
           <p className="text-body-16b desktop:text-headline-20b text-brand-primary">FIT</p>
           <div className="flex flex-col gap-4">
             <h2 id={headingId} className="text-headline-24b desktop:text-pc-36b text-label-normal">
@@ -54,12 +55,12 @@ export default function AudienceSection() {
               큐시즘에서는 이런 분들이 함께하고 있어요
             </p>
           </div>
-        </div>
-        <div className="flex flex-col gap-5 desktop:flex-row desktop:items-center desktop:justify-center desktop:gap-6">
+        </FadeIn>
+        <FadeIn className="flex flex-col gap-5 desktop:flex-row desktop:items-center desktop:justify-center desktop:gap-6">
           {AUDIENCE_CARDS.map((card) => (
             <PictureCard key={card.number} {...card} className={CARD_HOVER} />
           ))}
-        </div>
+        </FadeIn>
       </div>
     </section>
   );
