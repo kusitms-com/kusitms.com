@@ -284,26 +284,31 @@ function SpeakerMedia({ speakers }: { speakers: readonly IntroductionLecture[] }
   );
   if (speakers.length === 0) return <IntroductionMessage message="소개 정보를 준비 중이에요" />;
   return (
-    <div className="flex w-full flex-col items-center gap-4 desktop:h-[444px] desktop:justify-center desktop:gap-10">
+    // 시안(데스크톱 833:14027, 모바일 614:11572): 사진 4개를 폭 양 끝까지 같은 간격으로 둔다.
+    // 데스크톱은 154px 사진·847px 폭·줄 사이 10px, 모바일은 68px 사진·좌우 12px 안쪽·줄 사이 6px
+    <div className="flex w-full flex-col items-center gap-1.5 desktop:h-[444px] desktop:justify-center desktop:gap-2.5">
       {rows.map((row) => (
-        <ul key={row[0].id} className="flex justify-center gap-3 desktop:gap-6">
+        <ul
+          key={row[0].id}
+          className="grid w-full grid-cols-[repeat(4,68px)] justify-between px-3 desktop:grid-cols-[repeat(4,154px)] desktop:px-0"
+        >
           {row.map((speaker) => {
             const photo = speakerPhoto(speaker);
             return (
               <li
                 key={speaker.id}
-                className="flex w-[72px] flex-col items-center desktop:w-[120px]"
+                className="flex w-[68px] flex-col items-center desktop:w-[154px]"
               >
                 {photo && (
                   <Image
                     src={photo}
                     alt=""
-                    width={100}
-                    height={100}
-                    className="size-16 rounded-full bg-[#e5ecff] object-cover ring-4 ring-[#e5ecff] grayscale desktop:size-[100px]"
+                    width={160}
+                    height={160}
+                    className="size-[68px] rounded-full bg-[#e5ecff] object-cover ring-4 ring-[#e5ecff] grayscale desktop:size-[154px]"
                   />
                 )}
-                <p className="mt-2 text-center text-[10px] leading-[14px] font-semibold desktop:mt-2.5 desktop:text-[12px] desktop:leading-4">
+                <p className="mt-1.5 text-center text-[10px] leading-[14px] font-semibold desktop:mt-3 desktop:text-[13px] desktop:leading-[1.5]">
                   <span className="block text-[#7099ff]">{speaker.corporation}</span>
                   <span className="block text-[#474752]">{speaker.name} 연사님</span>
                 </p>
@@ -399,6 +404,9 @@ export default function InsideSection({
       media: <SpeakerMedia speakers={introductions.expert_lecture} />,
       description:
         "현업에서 활발히 활동 중이신 기획 · 개발 · 디자인 분야의 전문가 및 실무자에게\n직무에 대한 설명과 조언을 들을 수 있는 활동이에요.",
+      // 모바일 시안(614:11572)은 강제 줄바꿈 없이 두 줄로 자연스럽게 넘어간다
+      mobileDescription:
+        "현업에서 활발히 활동 중이신 기획 · 개발 · 디자인 분야의 전문가 및 실무자에게 직무에 대한 설명과 조언을 들을 수 있는 활동이에요.",
     },
     {
       title: "OB 초청데이",
