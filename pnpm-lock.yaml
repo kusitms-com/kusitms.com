@@ -12,14 +12,14 @@ importers:
         specifier: ^5.4.0
         version: 5.4.0(react-hook-form@7.81.0(react@19.1.0))
       '@kusitms.com/icons':
-        specifier: ^0.1.0
-        version: 0.1.0(react@19.1.0)
+        specifier: ^0.2.0
+        version: 0.2.0(react@19.1.0)
       '@kusitms.com/tokens':
         specifier: ^0.3.0
         version: 0.3.0
       '@kusitms.com/ui':
-        specifier: 0.3.0
-        version: 0.3.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: 0.4.0
+        version: 0.4.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@next/third-parties':
         specifier: ^16.0.1
         version: 16.0.1(next@16.0.7(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
@@ -360,16 +360,16 @@ packages:
   '@jridgewell/trace-mapping@0.3.29':
     resolution: {integrity: sha512-uw6guiW/gcAGPDhLmd77/6lW8QLeiV5RUTsAX46Db6oLhGaVj4lhnPwb184s1bkc8kdVg/+h988dro8GRDpmYQ==}
 
-  '@kusitms.com/icons@0.1.0':
-    resolution: {integrity: sha512-LtCA6YpvVH/i98Bw1UwkyR256n1fk5XdDr/V79gtK0G1aG9flH+ab7QX3Cd6IJyEcrUULs9BXytQBRfxyf3kyQ==}
+  '@kusitms.com/icons@0.2.0':
+    resolution: {integrity: sha512-2NF+oSs0P2jAaYGIFRYKsvEhbx96vvQV4ZMqaAFPgnlL1M861PMEry1+EL5x4Ij+c2VCRu7d4MPJZOM6Et8wDw==}
     peerDependencies:
       react: ^19.0.0
 
   '@kusitms.com/tokens@0.3.0':
     resolution: {integrity: sha512-LmUrU4iYOML21scyPGmlc86lCTna7/mDCPvZiqY6rCZTIjzy1VkjviTNEFos6t+dMXi75aopJORSN/cqdy7BoA==}
 
-  '@kusitms.com/ui@0.3.0':
-    resolution: {integrity: sha512-8AodouabIH3yp1euN9xNMH3EwtxwyM0ziJS/WWxmu1wEivvPwqPJIF7cmIJS/zBVDxPEAGQNR0UBYgNG61DJpQ==}
+  '@kusitms.com/ui@0.4.0':
+    resolution: {integrity: sha512-zTx8iTY46DEgxr01ANzjAGrJEjwaT7BdJId6nFpIR8h5S3dEYevcZ9OqjCV1zUe97Jx43Bjtn/tnc9OcMdy4pA==}
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
@@ -1406,15 +1406,15 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.4
 
-  '@kusitms.com/icons@0.1.0(react@19.1.0)':
+  '@kusitms.com/icons@0.2.0(react@19.1.0)':
     dependencies:
       react: 19.1.0
 
   '@kusitms.com/tokens@0.3.0': {}
 
-  '@kusitms.com/ui@0.3.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@kusitms.com/ui@0.4.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@kusitms.com/icons': 0.1.0(react@19.1.0)
+      '@kusitms.com/icons': 0.2.0(react@19.1.0)
       '@kusitms.com/tokens': 0.3.0
       '@radix-ui/react-accordion': 1.2.12(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-select': 2.2.6(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
