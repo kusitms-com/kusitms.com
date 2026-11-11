@@ -51,7 +51,7 @@ export default function FitSection() {
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-12">
         <div className="flex flex-col items-center gap-6 text-center">
-          <p className="text-body-16b desktop:text-headline-20b text-brand-primary">FIT</p>
+          <p className="text-body-16b desktop:text-headline-20b text-brand-primary">OVERVIEW</p>
           <h2 id={headingId} className="text-headline-24b desktop:text-pc-36b text-label-normal">
             큐시즘, 한눈에 보기
           </h2>
