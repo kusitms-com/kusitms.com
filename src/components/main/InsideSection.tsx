@@ -331,22 +331,18 @@ function ObMedia() {
   );
 }
 
-function ExhibitionMedia({ activities }: { activities: readonly IntroductionActivity[] }) {
-  const photos = activities.flatMap((activity) =>
-    [activity.image_url1, activity.image_url2]
-      .filter((src): src is string => !!src)
-      .map((src) => ({
-        src,
-        alt: `${activity.name} 사진`,
-        position: activity.name === "전시회" ? "54% 50%" : "34% 50%",
-      })),
-  );
-  if (photos.length === 0) return <IntroductionMessage message="소개 정보를 준비 중이에요" />;
+// 전시회·밋업데이 사진은 API 이미지 화질이 낮아 시안(833:14005) 원본(2048x1152)을 프론트 이미지로 쓴다
+const EXHIBITION_PHOTOS = [
+  { src: "/main/renewal/inside/exhibition-hq.webp", alt: "전시회 사진", position: "54% 50%" },
+  { src: "/main/renewal/inside/meetup-day-hq.webp", alt: "밋업데이 사진", position: "34% 50%" },
+] as const;
+
+function ExhibitionMedia() {
   return (
     // 데스크톱 시안(833:14005): 847x450 틀(12px 반경)에 사진 두 장을 10px 간격·8px 반경으로 나란히 둔다.
     // 8px은 rounded-s로 쓰면 Tailwind v4가 시작 방향(start) 반경 유틸리티로도 해석해 왼쪽만 4px가 되므로 토큰 변수(--s)를 직접 쓴다
     <div className="grid aspect-[600/378] w-full grid-flow-col auto-cols-fr gap-1.5 desktop:aspect-[847/450] desktop:gap-2.5 desktop:overflow-hidden desktop:rounded-m">
-      {photos.map((photo) => (
+      {EXHIBITION_PHOTOS.map((photo) => (
         <div
           key={photo.src}
           className="relative overflow-hidden rounded-[6.7px] desktop:rounded-(--s)"
@@ -421,13 +417,7 @@ export default function InsideSection({
     },
     {
       title: "전시회 · 밋업데이",
-      media: (
-        <ExhibitionMedia
-          activities={introductions.activities.filter(
-            (item) => item.name === "전시회" || item.name === "밋업데이",
-          )}
-        />
-      ),
+      media: <ExhibitionMedia />,
       description:
         "완성한 서비스를 전시회에서 직접 선보이고, 밋업데이에서 발표하며 한 기수를 마무리해요.",
       mobileDescription:
