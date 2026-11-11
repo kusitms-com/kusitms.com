@@ -16,8 +16,8 @@ const orderOf = (name: string) => {
   return index === -1 ? TEAM_ORDER.length : index;
 };
 
-/** 피그마 TEMA(운영진) — 데스크톱 614:17576 상단, 모바일 614:17424 */
-export default function TemaSection({ teams: allTeams }: { teams: readonly IntroductionTeam[] }) {
+/** 피그마 TEAM(운영진) — 데스크톱 614:17576 상단, 모바일 614:17424 */
+export default function TeamSection({ teams: allTeams }: { teams: readonly IntroductionTeam[] }) {
   const teams = allTeams.slice(1).sort((a, b) => orderOf(a.name) - orderOf(b.name));
   const headingId = useId();
   const tabsId = useId();
@@ -34,7 +34,7 @@ export default function TemaSection({ teams: allTeams }: { teams: readonly Intro
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-12">
         <FadeIn className="flex flex-col items-center gap-6 text-center desktop:items-start desktop:gap-12 desktop:text-left">
           <p className="text-body-16b text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]">
-            TEMA
+            TEAM
           </p>
           <div className="flex flex-col gap-1 desktop:gap-3">
             <h2

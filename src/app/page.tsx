@@ -9,7 +9,7 @@ import PartnersSection from "@/components/main/PartnersSection";
 import PartsSection from "@/components/main/PartsSection";
 import ReviewHighlightSection from "@/components/main/ReviewHighlightSection";
 import StatsSection from "@/components/main/StatsSection";
-import TemaSection from "@/components/main/TemaSection";
+import TeamSection from "@/components/main/TeamSection";
 import {
   getIntroductions,
   type IntroductionData,
@@ -85,7 +85,7 @@ export default async function Home() {
           introductionFallback
         )}
         <ReviewHighlightSection />
-        {introductions ? <TemaSection teams={introductions.teams} /> : introductionFallback}
+        {introductions ? <TeamSection teams={introductions.teams} /> : introductionFallback}
         {introductions ? (
           <PartnersSection sponsors={introductions.sponsor_image_urls} />
         ) : (
