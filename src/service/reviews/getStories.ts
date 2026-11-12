@@ -83,8 +83,8 @@ export const getStories = async (params?: StoriesParams): Promise<StoriesRespons
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "force-cache",
-      next: { revalidate: 3600 }, // 1시간마다 재검증
+      // 어드민에서 바꾼 스토리가 바로 보이도록 캐시하지 않는다
+      cache: "no-store",
     });
 
     if (!res.ok) {

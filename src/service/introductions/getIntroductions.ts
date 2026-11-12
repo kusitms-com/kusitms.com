@@ -60,7 +60,8 @@ export const getIntroductions = async (): Promise<IntroductionResponse> => {
   const res = await fetch(`${baseUrl}/api/introductions`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
-    next: { revalidate: 600, tags: ["introductions"] },
+    // 어드민에서 바꾼 소개 정보가 바로 보이도록 캐시하지 않는다
+    cache: "no-store",
   });
 
   if (!res.ok) {

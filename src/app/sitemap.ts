@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { getLatestStatusChangeDate, toKstDate } from "@/lib/recruitStatus";
 import { getMeetupProjects } from "@/service/projects";
 
+// 어드민에서 바꾼 프로젝트·소개 정보가 바로 보이도록 요청마다 새로 그린다(빌드 시 정적 생성 시도 안 함)
+export const dynamic = "force-dynamic";
+
 type SitemapEntry = MetadataRoute.Sitemap[number];
 
 // 리크루팅 lastmod가 모집 상태 전환일에 맞춰 바뀌도록 하루마다 다시 만든다(전환은 날짜 단위)
