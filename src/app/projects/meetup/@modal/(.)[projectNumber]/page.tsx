@@ -2,21 +2,6 @@ import ProjectModal from "@/components/projectDetail/ProjectModal";
 import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
 import { getAdjacentMeetupIds } from "@/utils";
 
-export async function generateStaticParams() {
-  try {
-    const meetupProjectList = await getMeetupProjects("", "");
-    if (!meetupProjectList?.data?.meetup_list) {
-      return [];
-    }
-    return meetupProjectList.data.meetup_list.map((project) => ({
-      projectNumber: project.meetup_id.toString(),
-    }));
-  } catch (error) {
-    console.error("Failed to generate static params for meetup projects:", error);
-    return [];
-  }
-}
-
 async function ProjectDetailModalPage({
   params,
 }: Readonly<{

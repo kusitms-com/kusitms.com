@@ -17,6 +17,9 @@ import {
 } from "@/service/introductions";
 import { getMeetupProjects, type MeetupItem } from "@/service/projects";
 
+// 어드민에서 바꾼 프로젝트·소개 정보가 바로 보이도록 요청마다 새로 그린다(빌드 시 정적 생성 시도 안 함)
+export const dynamic = "force-dynamic";
+
 // 메타 규칙 1-1(홈). 이미지는 현 기수 이미지가 나오기 전까지 기존 33기 이미지를 쓴다
 const HOME_TITLE = "큐시즘(KUSITMS) · 대학생 IT 프로젝트 학회";
 const HOME_DESCRIPTION =
