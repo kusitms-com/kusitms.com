@@ -379,14 +379,13 @@ export default function InsideSection({
   const [activeIndex, setActiveIndex] = useState(0);
 
   // description: 데스크톱 줄바꿈, mobileDescription: 모바일 줄바꿈(없으면 데스크톱과 같음). 시안의 줄바꿈 위치를 그대로 따른다.
-  // href: 데스크톱 시안의 설명 옆 "보러가기" 버튼 목적지, descGap: 모바일 미디어-설명 간격
+  // href: 데스크톱 시안의 설명 옆 "보러가기" 버튼 목적지
   const slides: {
     title: string;
     media: ReactNode;
     description: string;
     mobileDescription?: string;
     href?: string;
-    descGap?: string;
   }[] = [
     {
       title: "기업 프로젝트",
@@ -421,7 +420,6 @@ export default function InsideSection({
       description:
         "기획 파트가 발제한 아이디어로 기획·디자인·개발이 한 팀이 되어\n실제 서비스를 만들어요. 큐시즘의 메인 프로젝트예요.",
       href: "/projects/meetup",
-      descGap: "mt-[30px]",
     },
     {
       title: "전시회 · 밋업데이",
@@ -432,8 +430,6 @@ export default function InsideSection({
         "완성한 서비스를 전시회에서 직접 선보이고,\n밋업데이에서 발표하며 한 기수를 마무리해요.",
     },
   ];
-  const active = slides[activeIndex];
-  const href = active.href;
   const total = slides.length;
   const pad = (value: number) => String(value).padStart(2, "0");
   const move = (step: number) => setActiveIndex((index) => (index + step + total) % total);
@@ -499,32 +495,48 @@ export default function InsideSection({
             id={`${tabsId}-panel`}
             role="tabpanel"
             aria-labelledby={`${tabsId}-tab-${activeIndex}`}
-            className="flex w-full max-w-[600px] flex-col items-center desktop:min-w-0 desktop:max-w-none desktop:flex-1 desktop:items-start desktop:gap-6 desktop:py-2"
+            className="grid w-full max-w-[600px] desktop:min-w-0 desktop:max-w-none desktop:flex-1 desktop:py-2"
           >
-            <p className="mb-2.5 text-body-18sb text-black desktop:hidden">{active.title}</p>
-            <div className="flex w-full justify-center">{active.media}</div>
-            {/* 데스크톱 시안: 설명은 왼쪽 정렬 20px, 링크가 있는 탭은 오른쪽에 "보러가기" 버튼(간격 24px). 모바일은 래퍼 없이(contents) 기존 배치 그대로 */}
-            <div className="contents desktop:flex desktop:w-full desktop:items-center desktop:gap-6">
-              <p
-                className={cn(
-                  // 모바일의 leading/tracking 클래스가 --tw-leading/--tw-tracking 변수로 토큰 유틸리티를 덮으므로 데스크톱 값(32px, -0.008em)을 따로 준다
-                  "whitespace-pre-line break-keep text-center text-[11px] leading-[13px] tracking-[0.015em] text-label-netural desktop:mt-0 desktop:flex-1 desktop:text-left desktop:text-headline-20r desktop:leading-8 desktop:tracking-[-0.008em]",
-                  active.descGap ?? "mt-3.5",
-                )}
-              >
-                <span className="desktop:hidden">
-                  {active.mobileDescription ?? active.description}
-                </span>
-                <span className="hidden desktop:inline">{active.description}</span>
-              </p>
-              {href && (
-                <div className="hidden shrink-0 desktop:block">
-                  <Button size="m" onClick={() => router.push(href)}>
-                    보러가기
-                  </Button>
+            {/* 슬라이드마다 미디어 크기 규칙과 설명 줄 수가 달라, 활성 슬라이드만 그리면 넘길 때마다 패널 높이가 바뀐다.
+                다섯 장을 같은 그리드 칸에 겹쳐 두고 나머지는 숨겨, 패널 높이를 가장 큰 슬라이드에 맞춘다 */}
+            {slides.map((slide, index) => {
+              const selected = index === activeIndex;
+              const href = slide.href;
+              return (
+                <div
+                  key={slide.title}
+                  aria-hidden={selected ? undefined : true}
+                  inert={!selected}
+                  className={cn(
+                    "col-start-1 row-start-1 flex flex-col items-center desktop:items-start desktop:gap-6",
+                    !selected && "invisible",
+                  )}
+                >
+                  <p className="mb-2.5 text-body-18sb text-black desktop:hidden">{slide.title}</p>
+                  {/* 모바일 시안은 다섯 장 모두 설명이 같은 위치(내용 영역 맨 아래)에 있고, 높이가 다른 미디어는 제목과 설명 사이 가운데에 둔다 */}
+                  <div className="flex w-full flex-1 items-center justify-center desktop:flex-none">
+                    {slide.media}
+                  </div>
+                  {/* 데스크톱 시안: 설명은 왼쪽 정렬 20px, 링크가 있는 탭은 오른쪽에 "보러가기" 버튼(간격 24px). 모바일은 래퍼 없이(contents) 기존 배치 그대로 */}
+                  <div className="contents desktop:flex desktop:w-full desktop:items-center desktop:gap-6">
+                    {/* 모바일 시안 설명: Common/Caption/11-r(11px, 줄 높이 16px) 두 줄 */}
+                    <p className="mt-3.5 whitespace-pre-line break-keep text-center text-caption-11r text-label-netural desktop:mt-0 desktop:flex-1 desktop:text-left desktop:text-headline-20r desktop:leading-8 desktop:tracking-[-0.008em]">
+                      <span className="desktop:hidden">
+                        {slide.mobileDescription ?? slide.description}
+                      </span>
+                      <span className="hidden desktop:inline">{slide.description}</span>
+                    </p>
+                    {href && (
+                      <div className="hidden shrink-0 desktop:block">
+                        <Button size="m" onClick={() => router.push(href)}>
+                          보러가기
+                        </Button>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              )}
-            </div>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-2.5 desktop:hidden">
