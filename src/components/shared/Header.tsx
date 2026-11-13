@@ -104,6 +104,7 @@ export const Header = () => {
       key={currentPath}
       // DS Header는 데스크톱에서만 fixed라, 모바일도 스크롤 중 화면 위에 남도록 sticky를 준다(데스크톱은 DS의 fixed가 이긴다)
       className="sticky"
+      mobileMenuClassName="[&_a:hover]:text-label-normal [&_a:hover]:font-semibold [&_a:active]:text-label-normal [&_a:active]:font-semibold"
       logo={logo}
       mobileLogo={logo}
       cta={cta}
@@ -131,6 +132,7 @@ export const Header = () => {
         <HeaderNavigation
           key={href}
           href={href}
+          className="hover:font-semibold active:text-label-normal active:font-semibold"
           isActive={
             matchPath === "/" ? currentPath === matchPath : currentPath.startsWith(matchPath)
           }
