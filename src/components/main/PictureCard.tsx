@@ -29,7 +29,9 @@ export default function PictureCard({
           className="object-cover"
         />
       </div>
-      <div className="flex flex-col gap-3 px-6 pt-5 pb-6 desktop:px-5 desktop:pt-4 desktop:pb-5">
+      {/* 1024~1279px에서는 카드가 화면 폭에 맞춰 218px까지 줄어, 좌우 여백 20px이면 긴 제목(약 183px)이 세 줄이 된다.
+          이 구간만 여백을 16px로 줄여 시안의 두 줄을 유지한다 */}
+      <div className="flex flex-col gap-3 px-6 pt-5 pb-6 desktop:px-4 desktop:pt-4 desktop:pb-5 min-[1280px]:px-5">
         <p className="text-body-16sb desktop:text-label-14sb text-brand-primary">{number}</p>
         <div className="flex flex-col gap-2">
           <h3 className="whitespace-pre-line text-headline-20sb desktop:text-body-18sb text-label-normal">

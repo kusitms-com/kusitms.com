@@ -2,11 +2,14 @@ import { useId } from "react";
 import FadeIn from "@/components/shared/FadeIn";
 import PictureCard from "./PictureCard";
 
-// 피그마 주석 "호버 시, 1.2배 확대": 카드 전체가 1.2배로 커지고, 가로 여백을 282px의 10%씩 늘려 옆 카드를 밀어낸다(데스크톱).
-// 세로는 페이지가 흔들리지 않게 겹쳐 그린다.
-// 프로토타입: While hovering, Smart animate, Ease out back(Figma 곡선 0.45,1.45,0.8,1), 500ms
+// 피그마 주석 "호버 시, 1.2배 확대": 카드 전체가 1.2배로 커지고, 옆 카드는 282px의 10%만큼 바깥으로 밀려난다(데스크톱).
+// 여백(margin)을 늘리면 줄 폭이 다시 계산돼 카드가 줄고 본문이 줄바꿈되므로, 크기·위치는 transform(scale·translate)으로만 바꾼다.
 const CARD_HOVER =
-  "desktop:relative desktop:w-[282px] desktop:min-w-0 min-[1280px]:shrink-0 desktop:transition-[scale,margin] desktop:duration-500 desktop:ease-[cubic-bezier(0.45,1.45,0.8,1)] motion-reduce:transition-none desktop:hover:z-10 desktop:hover:mx-[28.2px] desktop:hover:scale-[1.2]";
+  "desktop:relative desktop:w-[282px] desktop:min-w-0 min-[1280px]:shrink-0 desktop:transition-[scale,translate] desktop:duration-500 desktop:ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none desktop:hover:z-10 desktop:hover:scale-[1.2]";
+
+// 호버한 카드의 왼쪽 카드들은 왼쪽으로, 오른쪽 카드들은 오른쪽으로 282px의 10%만큼 밀어낸다
+const ROW_HOVER =
+  "desktop:[&>*:has(~*:hover)]:-translate-x-[28.2px] desktop:[&>*:hover~*]:translate-x-[28.2px]";
 
 const AUDIENCE_CARDS = [
   {
@@ -56,7 +59,9 @@ export default function AudienceSection() {
             </p>
           </div>
         </FadeIn>
-        <FadeIn className="flex flex-col gap-5 desktop:flex-row desktop:items-center desktop:justify-center desktop:gap-6">
+        <FadeIn
+          className={`flex flex-col gap-5 desktop:flex-row desktop:items-center desktop:justify-center desktop:gap-6 ${ROW_HOVER}`}
+        >
           {AUDIENCE_CARDS.map((card) => (
             <PictureCard key={card.number} {...card} className={CARD_HOVER} />
           ))}
