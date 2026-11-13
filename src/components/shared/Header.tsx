@@ -84,6 +84,7 @@ export const Header = () => {
       <Button
         size="m"
         variant={overHero ? "glass" : "default"}
+        className={overHero ? "transition-colors hover:bg-white/60" : undefined}
         showIcon={false}
         tabIndex={statusKey ? undefined : -1}
         onClick={() => statusKey && apply(statusKey)}
