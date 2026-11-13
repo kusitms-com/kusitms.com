@@ -27,15 +27,15 @@ export default function AboutSection() {
   return (
     <section
       aria-label="큐시즘 소개"
-      className="relative z-10 bg-linear-to-b from-[rgba(247,247,248,0)] to-fill-netural to-[67.693%] px-4 pt-[300px] pb-[150px] desktop:px-0 desktop:pt-[100px] desktop:pb-[187px]"
+      className="relative z-10 bg-linear-to-b from-[rgba(247,247,248,0)] via-[rgba(247,247,248,0.45)] via-[17.2521%] to-fill-netural to-[56.765%] pt-[200px] pb-[150px]"
     >
-      <FadeIn className="mx-auto flex max-w-[1200px] flex-col items-center gap-[35px]">
+      <FadeIn className="mx-auto flex max-w-[1200px] flex-col items-center gap-6 desktop:gap-[35px]">
         <HeaderDesktopLogo
           role="img"
           aria-label="KUSITMS"
-          className="h-10 w-[220px] desktop:h-11 desktop:w-[242px]"
+          className="h-8 w-[174px] desktop:h-11 desktop:w-[242px]"
         />
-        <p className="text-center text-[24px] leading-[44px] font-bold tracking-[-0.008em] text-black desktop:text-[min(48px,3.334vw)] desktop:leading-[1.8] desktop:font-semibold desktop:tracking-[-0.018em]">
+        <p className="text-center text-[20px] leading-[44px] font-semibold tracking-[-0.008em] text-black desktop:text-[40px] desktop:leading-[2.2] desktop:tracking-[-0.018em]">
           <span className="sr-only">{DESKTOP_LINES.join(" ")}</span>
           <span aria-hidden="true" className="block desktop:hidden">
             <Lines lines={MOBILE_LINES} />
