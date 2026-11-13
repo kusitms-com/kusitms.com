@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     siteName: "KUSITMS",
     images: [
       {
-        url: "https://www.kusitms.com/og/kusitms-og-33rd.png",
+        url: "https://www.kusitms.com/og/kusitms-og-34th.png",
         alt: "KUSITMS 프로젝트 목록",
       },
     ],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: "큐시즘에서 진행한 다양한 프로젝트들을 한눈에 확인해보세요.",
     images: [
       {
-        url: "https://www.kusitms.com/og/kusitms-og-33rd.png",
+        url: "https://www.kusitms.com/og/kusitms-og-34th.png",
         alt: "KUSITMS 프로젝트 목록",
       },
     ],

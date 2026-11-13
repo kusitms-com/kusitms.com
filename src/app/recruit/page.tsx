@@ -27,7 +27,7 @@ async function resolveStatusKey(searchParams: RecruitSearchParams): Promise<Recr
 }
 
 const RECRUIT_URL = "https://www.kusitms.com/recruit";
-const OG_IMAGE = "https://www.kusitms.com/og/kusitms-og-33rd.png";
+const OG_IMAGE = "https://www.kusitms.com/og/kusitms-og-34th.png";
 
 // 메타 규칙 1-1·1-2: 모집 상태(비모집 / 모집 중)에 따라 title·description·OG를 서버에서 전환한다.
 // 기수와 서류 접수 기간은 RECRUIT_SCHEDULE에서 만든다. 이미지는 상태별 이미지가 나오기 전까지 기존 이미지를 쓴다
