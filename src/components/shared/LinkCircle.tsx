@@ -22,7 +22,8 @@ export const IconLink = ({
   tooltip,
   tooltipAlign = "center",
 }: IconLinkProps) => (
-  <div className="group relative flex size-9 items-center justify-center rounded-full bg-fill-primary text-label-normal transition-[filter] hover:drop-shadow-[0_1px_6px_rgba(179,179,188,0.6)]">
+  <div className="group relative flex size-9 items-center justify-center rounded-full bg-fill-primary text-label-normal transition-shadow hover:shadow-[0_1px_6px_rgba(179,179,188,0.6)]">
+    {/* 그림자를 filter(drop-shadow)로 주면 Safari가 툴팁을 filter 영역에서 잘라 그릴 수 있어 원형에 맞는 box-shadow를 쓴다 */}
     {/* 시안의 hover: fill/primary 위에 interaction/hover(흰색 25%)를 한 겹 덮는다 */}
     <span
       aria-hidden
