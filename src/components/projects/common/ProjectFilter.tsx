@@ -1,6 +1,7 @@
 import { Dropdown } from "@kusitms.com/ui";
 import { useMemo } from "react";
 import type { CorporateProjectItem, MeetupItem } from "@/service/projects";
+import { toCardinalOptions } from "@/utils/cardinalOptions";
 import { calculateProjectCounts } from "@/utils/projectCountUtils";
 
 interface ProjectFilterProps {
@@ -10,8 +11,13 @@ interface ProjectFilterProps {
 }
 
 export default function ProjectFilter({ cardinal, onChange, projectList }: ProjectFilterProps) {
-  const generations = Array.from({ length: 7 }, (_, i) => `${33 - i}기`);
-  const options = ["모든 기수", ...generations];
+  const options = useMemo(
+    () => [
+      "모든 기수",
+      ...toCardinalOptions(projectList.map((project) => project.cardinal)).map((c) => `${c}기`),
+    ],
+    [projectList],
+  );
 
   const projectCounts = useMemo(() => calculateProjectCounts(projectList), [projectList]);
 
