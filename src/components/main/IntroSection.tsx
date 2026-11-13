@@ -204,7 +204,9 @@ export default function IntroSection() {
                 "after:absolute after:inset-y-0 after:left-0 after:w-px after:bg-[linear-gradient(transparent,rgba(255,255,255,0.72)_18%,rgba(255,255,255,0.15)_78%,transparent)]",
                 "[transform:translate3d(calc(var(--hero-pointer-x)*var(--slat-depth)_+_var(--slat-wave)),calc(var(--hero-pointer-y)*var(--slat-depth)*0.08),0)]",
                 "motion-safe:animate-hero-slat",
-                "[@media(max-width:700px)]:basis-[9%] [@media(max-width:700px)]:backdrop-blur-[3px]",
+                // 아이폰 실기기 Safari에서 슬랫 여러 개의 backdrop-filter가 잘못 합성돼 배경이 줄무늬로 깨졌다.
+                // 배경 이미지가 이미 흐릿해 모바일의 작은 블러는 눈에 띠지 않으므로 700px 이하에서는 끈다
+                "[@media(max-width:700px)]:basis-[9%] [@media(max-width:700px)]:[-webkit-backdrop-filter:none] [@media(max-width:700px)]:[backdrop-filter:none]",
                 slat.index >= MOBILE_SLAT_COUNT && "[@media(max-width:700px)]:hidden",
               )}
               style={
@@ -217,7 +219,7 @@ export default function IntroSection() {
             />
           ))}
         </div>
-        <div className="absolute -inset-[30%] bg-[linear-gradient(112deg,transparent_36%,rgba(255,255,255,0.08)_46%,transparent_56%)] mix-blend-screen motion-safe:animate-hero-sheen" />
+        <div className="absolute -inset-[30%] bg-[linear-gradient(112deg,transparent_36%,rgba(255,255,255,0.08)_46%,transparent_56%)] mix-blend-screen motion-safe:animate-hero-sheen [@media(max-width:700px)]:hidden" />
         <div className="absolute inset-x-0 bottom-0 h-[400px] bg-linear-to-b from-white/0 to-white desktop:h-[505px] desktop:from-[rgba(247,247,248,0)] desktop:to-fill-netural" />
       </div>
       <div className="absolute top-[calc(50%-30px)] left-1/2 z-10 flex w-[276px] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-14 text-center desktop:top-[19.82%] desktop:left-[5.14%] desktop:w-[772px] desktop:translate-x-0 desktop:translate-y-0 desktop:items-start desktop:text-left">
