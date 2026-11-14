@@ -377,6 +377,7 @@ export default function InsideSection({
   const tabsId = useId();
   const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
+  const reduceMotion = useReducedMotion();
 
   // description: 데스크톱 줄바꿈, mobileDescription: 모바일 줄바꿈(없으면 데스크톱과 같음). 시안의 줄바꿈 위치를 그대로 따른다.
   // href: 데스크톱 시안의 설명 옆 "보러가기" 버튼 목적지
@@ -503,14 +504,23 @@ export default function InsideSection({
               const selected = index === activeIndex;
               const href = slide.href;
               return (
-                <div
+                // 선택된 슬라이드는 오른쪽 32px에서 밀려 들어오고, 이전 슬라이드는 제자리에서 짧게 페이드아웃한 뒤
+                // 다음 등장을 위해 오른쪽으로 옮겨 둔다. 숨긴 슬라이드는 투명도 0 + inert + aria-hidden으로 가린다
+                <motion.div
                   key={slide.title}
                   aria-hidden={selected ? undefined : true}
                   inert={!selected}
-                  className={cn(
-                    "col-start-1 row-start-1 flex flex-col items-center desktop:items-start desktop:gap-6",
-                    !selected && "invisible",
-                  )}
+                  initial={false}
+                  animate={{ opacity: selected ? 1 : 0, x: selected || reduceMotion ? 0 : 32 }}
+                  transition={
+                    selected
+                      ? { duration: 0.3, delay: 0.08, ease: "easeOut" }
+                      : {
+                          opacity: { duration: 0.15, ease: "easeIn" },
+                          x: { duration: 0, delay: 0.15 },
+                        }
+                  }
+                  className="col-start-1 row-start-1 flex flex-col items-center desktop:items-start desktop:gap-6"
                 >
                   <p className="mb-2.5 text-body-18sb text-black desktop:hidden">{slide.title}</p>
                   {/* 모바일 시안은 다섯 장 모두 설명이 같은 위치(내용 영역 맨 아래)에 있고, 높이가 다른 미디어는 제목과 설명 사이 가운데에 둔다 */}
@@ -534,7 +544,7 @@ export default function InsideSection({
                       </div>
                     )}
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
