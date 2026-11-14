@@ -25,6 +25,8 @@ export const getReviews = async (team: string, cardinal?: number): Promise<Revie
     const res = await fetch(`${baseUrl}/api/reviews?${query.toString()}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
+      // 어드민 수정이 바로 보이도록 캐시하지 않는다
+      cache: "no-store",
     });
 
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
