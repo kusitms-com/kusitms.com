@@ -38,11 +38,19 @@ export function getRecruitStatus(kstDate: string): RecruitStatus {
 // 실서비스(VERCEL_ENV=production)에서는 무시한다.
 const QA_DATE_PATTERN = /^(\d{4}-\d{2}-\d{2})(T\d{2}:\d{2}(:\d{2})?)?$/;
 
+function matchQaDate(qaDate: string | string[] | undefined): RegExpExecArray | null {
+  const allowQaDate = process.env.VERCEL_ENV !== "production";
+  return allowQaDate && typeof qaDate === "string" ? QA_DATE_PATTERN.exec(qaDate) : null;
+}
+
+/** 이 환경에서 qa_date가 현재 시각을 대신하는지 */
+export function isQaDateActive(qaDate: string | string[] | undefined): boolean {
+  return matchQaDate(qaDate) !== null;
+}
+
 /** 서버 시각(또는 허용된 환경의 qa_date)으로 오늘의 한국 날짜를 정한다 */
 export function resolveKstDate(qaDate: string | string[] | undefined, now = new Date()): string {
-  const allowQaDate = process.env.VERCEL_ENV !== "production";
-  const match = allowQaDate && typeof qaDate === "string" ? QA_DATE_PATTERN.exec(qaDate) : null;
-  return match ? match[1] : toKstDate(now);
+  return matchQaDate(qaDate)?.[1] ?? toKstDate(now);
 }
 
 // TODO(35기 모집 전 필수 교체): 운영진·학회원 지원서(또는 지원 사이트) 링크를 받으면 각각 교체한다.
@@ -72,6 +80,52 @@ export function isStatusKey(value: string | undefined): value is RecruitStatusKe
   return (
     value === "closed" || value === "upcoming" || value === "open-staff" || value === "open-member"
   );
+}
+
+// 공개 API(GET /api/introductions)의 banner_status 문구(백엔드 BannerStatus enum의 표시값) → 모집 상태
+const BANNER_STATUS_KEY: Record<string, RecruitStatusKey> = {
+  "모집 마감": "closed",
+  "모집 예정": "upcoming",
+  "운영진 모집": "open-staff",
+  "학회원 모집": "open-member",
+};
+
+/** 어드민 배너 상태를 모집 상태로 바꾼다. 값이 없거나 모르는 값이면 null */
+export function bannerStatusToKey(
+  bannerStatus: string | null | undefined,
+): RecruitStatusKey | null {
+  const value = bannerStatus?.trim();
+  return value && Object.hasOwn(BANNER_STATUS_KEY, value) ? BANNER_STATUS_KEY[value] : null;
+}
+
+/** 공개 API의 banner_status. 요청 실패·시간 초과·응답 형식 오류면 null */
+export async function fetchBannerStatus(fetcher: typeof fetch = fetch): Promise<string | null> {
+  try {
+    const res = await fetcher(`${process.env.NEXT_PUBLIC_API_URL}/api/introductions`, {
+      cache: "no-store",
+      // 모든 페이지 요청이 이 응답을 기다리므로 API가 느리면 바로 날짜 판정으로 넘어간다
+      signal: AbortSignal.timeout(1500),
+    });
+    if (!res.ok) return null;
+    const body = await res.json();
+    const value = body?.data?.banner_status;
+    return typeof value === "string" ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * 모집 상태 판정. 스테이징 qa_date가 있으면 QA를 위해 날짜 판정을 쓰고,
+ * 아니면 어드민 배너 상태를 먼저 쓴다. 배너 값이 없거나 모르는 값이면 RECRUIT_SCHEDULE 날짜 판정으로 대체한다
+ */
+export function resolveRecruitStatusKey(
+  bannerStatus: string | null,
+  qaDate: string | undefined,
+  now = new Date(),
+): RecruitStatusKey {
+  const fromBanner = isQaDateActive(qaDate) ? null : bannerStatusToKey(bannerStatus);
+  return fromBanner ?? toStatusKey(getRecruitStatus(resolveKstDate(qaDate, now)));
 }
 
 export const APPLY_LABEL: Record<RecruitStatusKey, string> = {
