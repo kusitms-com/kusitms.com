@@ -12,6 +12,7 @@ import {
   RECRUIT_STATUS_COOKIE,
   type RecruitStatusKey,
 } from "@/lib/recruitStatus";
+import { cn } from "@/lib/utils";
 
 const DESKTOP_HEADER_HEIGHT = 76;
 
@@ -32,6 +33,9 @@ export const Header = () => {
   const pathname = usePathname();
   const currentPath = pathname ?? "";
   const [overHero, setOverHero] = useState(currentPath === "/");
+  // 메인 맨 위(스크롤 전)에서는 히어로 배경이 그대로 보이도록 헤더 배경·블러를 뺀다
+  const [atTop, setAtTop] = useState(currentPath === "/");
+  const [menuOpen, setMenuOpen] = useState(false);
   // proxy가 요청마다 서버 시간으로 판정해 둔 모집 상태. 읽기 전에는 버튼 자리만 잡아 두고 숨긴다
   const [statusKey, setStatusKey] = useState<RecruitStatusKey | null>(null);
   const apply = useApplyAction("gnb");
@@ -42,8 +46,11 @@ export const Header = () => {
   }, [currentPath]);
 
   useEffect(() => {
+    // key={currentPath}로 DS Header가 다시 마운트되며 메뉴가 닫히므로 상태도 맞춘다
+    setMenuOpen(false);
     if (currentPath !== "/") {
       setOverHero(false);
+      setAtTop(false);
       return;
     }
 
@@ -54,6 +61,7 @@ export const Header = () => {
         ? nextSection.getBoundingClientRect().top
         : hero?.getBoundingClientRect().bottom;
       setOverHero(heroCoverEdge !== undefined && heroCoverEdge > DESKTOP_HEADER_HEIGHT);
+      setAtTop(window.scrollY <= 0);
     };
     updateTone();
     window.addEventListener("scroll", updateTone, { passive: true });
@@ -103,8 +111,14 @@ export const Header = () => {
   return (
     <HeaderUI
       key={currentPath}
-      // DS Header는 데스크톱에서만 fixed라, 모바일도 스크롤 중 화면 위에 남도록 sticky를 준다(데스크톱은 DS의 fixed가 이긴다)
-      className="sticky"
+      // DS Header는 데스크톱에서만 fixed라, 모바일도 스크롤 중 화면 위에 남도록 sticky를 준다(데스크톱은 DS의 fixed가 이긴다).
+      // DS cn은 클래스를 병합하지 않아 배경·블러는 important로 덮는다. 블러를 none 대신 0px로 두어야 전환이 부드럽다.
+      // 모바일 메뉴가 열리면 DS가 흰 배경으로 바꾸므로 그때는 덮지 않는다
+      className={cn(
+        "sticky transition-[background-color,backdrop-filter] duration-300",
+        atTop && !menuOpen && "bg-transparent! backdrop-blur-[0px]!",
+      )}
+      onOpenChange={setMenuOpen}
       mobileMenuClassName="[&_a:hover]:text-label-normal [&_a:hover]:font-semibold [&_a:active]:text-label-normal [&_a:active]:font-semibold"
       logo={logo}
       mobileLogo={logo}
