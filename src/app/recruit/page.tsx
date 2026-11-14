@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
+import { cache } from "react";
 import Recruit from "@/components/recruit/Recruit";
 import RecruitingTeamInfoItem from "@/components/recruit/RecruitingTeamInfoItem";
 import RecruitmentProcessItem from "@/components/recruit/RecruitmentProcessItem";
@@ -8,22 +9,26 @@ import RecruitmentTogether from "@/components/recruit/RecruitmentTogether";
 import RecruitQnA from "@/components/recruit/RecruitQnA";
 import UpcomingToast from "@/components/recruit/UpcomingToast";
 import {
+  fetchBannerStatus,
   formatMonthDay,
-  getRecruitStatus,
   QA_DATE_COOKIE,
   RECRUIT_SCHEDULE,
   type RecruitStatusKey,
-  resolveKstDate,
-  toStatusKey,
+  resolveRecruitStatusKey,
 } from "@/lib/recruitStatus";
 
 type RecruitSearchParams = Promise<Record<string, string | string[] | undefined>>;
 
-// proxy와 같은 규칙: 주소의 qa_date가 없으면 스테이징에서 저장해 둔 qa_date 쿠키를 쓴다
+// generateMetadata와 페이지가 한 요청에서 API를 두 번 부르지 않도록 요청 단위로 묶는다
+const getBannerStatus = cache(() => fetchBannerStatus());
+
+// proxy와 같은 규칙: 어드민 배너 상태를 먼저 쓰고, 없으면 날짜로 정한다.
+// 주소의 qa_date가 없으면 스테이징에서 저장해 둔 qa_date 쿠키를 쓴다
 async function resolveStatusKey(searchParams: RecruitSearchParams): Promise<RecruitStatusKey> {
   const { qa_date: qaDate } = await searchParams;
   const savedQaDate = (await cookies()).get(QA_DATE_COOKIE)?.value;
-  return toStatusKey(getRecruitStatus(resolveKstDate(qaDate ?? savedQaDate)));
+  const effectiveQaDate = typeof qaDate === "string" ? qaDate : savedQaDate;
+  return resolveRecruitStatusKey(await getBannerStatus(), effectiveQaDate);
 }
 
 const RECRUIT_URL = "https://www.kusitms.com/recruit";
