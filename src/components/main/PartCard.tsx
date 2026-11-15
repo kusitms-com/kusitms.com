@@ -47,31 +47,36 @@ export default function PartCard({
   return (
     <div
       className={cn(
-        "group relative flex overflow-hidden rounded-m bg-fill-normal shadow-spread-s desktop:h-[232px] desktop:shadow-spread-m",
+        "group relative flex overflow-hidden rounded-m bg-fill-normal shadow-spread-s desktop:min-h-[246px] desktop:shadow-spread-m",
         className,
       )}
     >
       <div
         className={cn(
-          "flex flex-1 flex-col justify-center gap-7 px-6 py-5 desktop:gap-6 desktop:p-6 desktop:group-hover:opacity-0",
+          "flex flex-1 flex-col justify-center gap-7 px-6 py-5 desktop:gap-5 desktop:p-6 desktop:group-hover:opacity-0",
           HOVER_FADE,
         )}
       >
         <div className="flex items-center justify-between">
-          <div className="flex flex-col gap-1 desktop:gap-2">
+          <div className="flex flex-col gap-1">
             <p className="text-body-16m text-brand-primary">{number}</p>
             <div className="flex flex-col gap-1">
               <h3 className="font-brand text-brand-22b desktop:text-brand-30b text-label-normal">
                 {name}
               </h3>
-              <p className="text-body-16r text-label-assitive">{korean}</p>
+              <p className="text-body-16r text-label-assitive desktop:text-label-alternative">
+                {korean}
+              </p>
             </div>
           </div>
           <PartImage src={image} size={64} className="mb-2 rounded-[3.556px] desktop:hidden" />
         </div>
         <div className="flex flex-col gap-1">
-          <p className="text-body-16sb text-label-netural">{summary}</p>
-          <p className="whitespace-pre-line text-caption-12r text-label-alternative">{detail}</p>
+          {/* 시안(8:9837) 데스크톱 기본 상태: 요약 20b, 설명 16m(label/light) */}
+          <p className="text-body-16sb text-label-netural desktop:text-headline-20b">{summary}</p>
+          <p className="whitespace-pre-line break-keep desktop:whitespace-normal text-caption-12r text-label-alternative desktop:text-body-16m desktop:text-label-light">
+            {detail}
+          </p>
         </div>
       </div>
       <PartImage
