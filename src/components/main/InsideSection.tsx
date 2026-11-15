@@ -260,7 +260,7 @@ function CompanyMedia({ activity }: { activity: IntroductionActivity | undefined
 }
 
 // 연사 사진은 얼굴 중심 정사각형으로 잘라 둔 로컬 파일을 이름으로 찾아 쓴다(API 원본은 비율이 제각각이라 원형에서 얼굴이 잘림).
-// 로컬 파일이 없는 새 연사는 API 사진을 쓴다. 시안의 흑백 톤은 CSS로만 처리한다
+// 로컬 파일이 없는 새 연사는 API 사진을 쓴다. 사진 파일 자체가 흑백이다
 const SPEAKER_PHOTOS: Record<string, string> = {
   윤재영: "yoon-jaeyoung",
   이재현: "lee-jaehyun",
@@ -284,32 +284,34 @@ function SpeakerMedia({ speakers }: { speakers: readonly IntroductionLecture[] }
   );
   if (speakers.length === 0) return <IntroductionMessage message="소개 정보를 준비 중이에요" />;
   return (
-    // 시안(데스크톱 833:14027, 모바일 614:11572): 사진 4개를 폭 양 끝까지 같은 간격으로 둔다.
-    // 데스크톱은 154px 사진·847px 폭·줄 사이 10px, 모바일은 68px 사진·좌우 12px 안쪽·줄 사이 6px
-    <div className="flex w-full flex-col items-center gap-1.5 desktop:h-[444px] desktop:justify-center desktop:gap-2.5">
+    // 시안(데스크톱 833:14027, 모바일 614:11572): 사진 4개를 폭 양 끝까지 같은 간격으로 둔다. 사진 파일에 파란 블롭 배경이 들어 있어 별도 틀은 없다.
+    // 데스크톱은 169.4px 폭 사진·847px 폭·줄 사이 20px, 모바일은 68px 사진·좌우 12px 안쪽·줄 사이 6px
+    <div className="flex w-full flex-col items-center gap-1.5 desktop:min-h-[444px] desktop:justify-center desktop:gap-5">
       {rows.map((row) => (
         <ul
           key={row[0].id}
-          className="grid w-full grid-cols-[repeat(4,68px)] justify-between px-3 desktop:grid-cols-[repeat(4,154px)] desktop:px-0"
+          className="grid w-full grid-cols-[repeat(4,68px)] justify-between px-3 desktop:grid-cols-[repeat(4,169.4px)] desktop:px-0"
         >
           {row.map((speaker) => {
             const photo = speakerPhoto(speaker);
             return (
               <li
                 key={speaker.id}
-                className="flex w-[68px] flex-col items-center desktop:w-[154px]"
+                className="flex w-[68px] flex-col items-center desktop:w-[169.4px]"
               >
                 {photo && (
                   <Image
                     src={photo}
                     alt=""
-                    width={160}
-                    height={160}
-                    className="size-[68px] rounded-full bg-[#e5ecff] object-cover ring-4 ring-[#e5ecff] grayscale desktop:size-[154px]"
+                    width={340}
+                    height={380}
+                    className="h-[71px] w-full object-contain desktop:h-[190px]"
                   />
                 )}
-                <p className="mt-1.5 text-center text-[10px] leading-[14px] font-semibold desktop:mt-3 desktop:text-[13px] desktop:leading-[1.5]">
-                  <span className="block text-[#7099ff]">{speaker.corporation}</span>
+                <p className="mt-1.5 text-center text-[8px] leading-[normal] font-semibold desktop:mt-3.5 desktop:text-[14px] desktop:leading-5 desktop:tracking-[0.175px]">
+                  <span className="block text-[#7099ff] desktop:font-bold">
+                    {speaker.corporation}
+                  </span>
                   <span className="block text-[#474752]">{speaker.name} 연사님</span>
                 </p>
               </li>
