@@ -48,7 +48,7 @@ export default function FitSection() {
   return (
     <section
       aria-labelledby={headingId}
-      className="bg-fill-netural px-5 pt-[200px] desktop:px-0 desktop:py-80"
+      className="bg-fill-netural px-5 pt-[200px] desktop:px-0 desktop:pt-60 desktop:pb-0"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-12">
         <FadeIn className="flex flex-col items-center gap-6 text-center">

@@ -29,10 +29,10 @@ export default function TeamSection({ teams: allTeams }: { teams: readonly Intro
   return (
     <section
       aria-labelledby={headingId}
-      className="px-5 py-[100px] desktop:px-0 desktop:pt-[320px] desktop:pb-0"
+      className="px-5 pt-[200px] desktop:px-0 desktop:pt-[320px]"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-12">
-        <FadeIn className="flex flex-col items-center gap-6 text-center desktop:items-start desktop:gap-12 desktop:text-left">
+        <FadeIn className="flex flex-col items-center gap-6 text-center desktop:gap-12">
           <p className="text-body-16b text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]">
             TEAM
           </p>

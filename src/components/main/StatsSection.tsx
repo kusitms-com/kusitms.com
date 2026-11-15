@@ -39,7 +39,7 @@ export default function StatsSection({ introductions }: { introductions: Introdu
   return (
     <section
       aria-labelledby={headingId}
-      className="relative z-10 bg-fill-netural px-5 pt-[200px] desktop:px-0 desktop:py-80"
+      className="relative z-10 bg-fill-netural px-5 pt-[200px] desktop:px-0 desktop:pt-60 desktop:pb-0"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-12">
         <FadeIn>

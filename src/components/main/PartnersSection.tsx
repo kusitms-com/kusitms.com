@@ -8,9 +8,9 @@ export default function PartnersSection({ sponsors }: { sponsors: readonly strin
   const headingId = useId();
 
   return (
-    <section aria-labelledby={headingId} className="py-[100px] desktop:pt-[400px] desktop:pb-0">
+    <section aria-labelledby={headingId} className="py-[200px] desktop:pt-80">
       <div className="flex flex-col gap-9 desktop:gap-12">
-        <FadeIn className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-6 px-5 text-center desktop:items-start desktop:px-0 desktop:gap-12 desktop:text-left">
+        <FadeIn className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-6 px-5 text-center desktop:px-0 desktop:gap-12">
           <p className="text-body-16b text-brand-primary desktop:text-[20px] desktop:leading-8 desktop:tracking-[-0.008em]">
             PARTNERS
           </p>
