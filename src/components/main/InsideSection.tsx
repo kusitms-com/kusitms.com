@@ -260,7 +260,7 @@ function CompanyMedia({ activity }: { activity: IntroductionActivity | undefined
 }
 
 // 연사 사진은 얼굴 중심 정사각형으로 잘라 둔 로컬 파일을 이름으로 찾아 쓴다(API 원본은 비율이 제각각이라 원형에서 얼굴이 잘림).
-// 로컬 파일이 없는 새 연사는 API 사진을 쓴다. 시안의 흑백 톤은 CSS로만 처리한다
+// 로컬 파일이 없는 새 연사는 API 사진을 쓴다. 사진 파일 자체가 흑백이다
 const SPEAKER_PHOTOS: Record<string, string> = {
   윤재영: "yoon-jaeyoung",
   이재현: "lee-jaehyun",
@@ -305,7 +305,7 @@ function SpeakerMedia({ speakers }: { speakers: readonly IntroductionLecture[] }
                     alt=""
                     width={160}
                     height={160}
-                    className="size-[68px] rounded-full bg-[#e5ecff] object-cover ring-4 ring-[#e5ecff] grayscale desktop:size-[154px]"
+                    className="size-[68px] rounded-full bg-[#e5ecff] object-cover ring-4 ring-[#e5ecff] desktop:size-[154px]"
                   />
                 )}
                 <p className="mt-1.5 text-center text-[10px] leading-[14px] font-semibold desktop:mt-3 desktop:text-[13px] desktop:leading-[1.5]">
