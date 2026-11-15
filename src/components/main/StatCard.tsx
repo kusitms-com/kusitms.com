@@ -51,7 +51,7 @@ export default function StatCard({
         className={cn(
           "text-body-16sb desktop:text-headline-20sb text-label-alternative",
           TEXT_TRANSITION,
-          isActive && "desktop:text-label-disable",
+          isActive && "desktop:text-fill-alternative",
         )}
       >
         {label}
@@ -82,7 +82,7 @@ export default function StatCard({
           className={cn(
             "text-label-14r desktop:text-body-16r text-label-assitive",
             TEXT_TRANSITION,
-            isActive && "desktop:text-label-disable",
+            isActive && "desktop:text-fill-netural",
           )}
         >
           {description}
