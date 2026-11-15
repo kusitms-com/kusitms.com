@@ -45,7 +45,7 @@ export default function AudienceSection() {
   return (
     <section
       aria-labelledby={headingId}
-      className="bg-fill-netural px-5 py-[200px] desktop:px-10 desktop:pt-[360px] min-[1280px]:px-0 desktop:pb-80"
+      className="bg-fill-netural px-5 py-[200px] desktop:px-10 desktop:py-60 min-[1280px]:px-0"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-9 desktop:gap-14">
         <FadeIn className="flex flex-col items-center gap-6 text-center">
