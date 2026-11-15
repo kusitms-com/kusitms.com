@@ -300,10 +300,18 @@ function SpeakerMedia({ speakers }: { speakers: readonly IntroductionLecture[] }
                 className="flex w-[68px] flex-col items-center desktop:w-[169.4px]"
               >
                 {photo && (
-                  <Image src={photo} alt="" width={340} height={380} className="h-[71px] w-full object-contain desktop:h-[190px]" />
+                  <Image
+                    src={photo}
+                    alt=""
+                    width={340}
+                    height={380}
+                    className="h-[71px] w-full object-contain desktop:h-[190px]"
+                  />
                 )}
                 <p className="mt-1.5 text-center text-[8px] leading-[normal] font-semibold desktop:mt-3.5 desktop:text-[14px] desktop:leading-5 desktop:tracking-[0.175px]">
-                  <span className="block text-[#7099ff] desktop:font-bold">{speaker.corporation}</span>
+                  <span className="block text-[#7099ff] desktop:font-bold">
+                    {speaker.corporation}
+                  </span>
                   <span className="block text-[#474752]">{speaker.name} 연사님</span>
                 </p>
               </li>
