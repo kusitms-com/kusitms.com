@@ -285,8 +285,8 @@ function SpeakerMedia({ speakers }: { speakers: readonly IntroductionLecture[] }
   if (speakers.length === 0) return <IntroductionMessage message="소개 정보를 준비 중이에요" />;
   return (
     // 시안(데스크톱 833:14027, 모바일 614:11572): 사진 4개를 폭 양 끝까지 같은 간격으로 둔다. 사진 파일에 파란 블롭 배경이 들어 있어 별도 틀은 없다.
-    // 데스크톱은 169.4px 폭 사진·847px 폭·줄 사이 20px, 모바일은 68px 사진·좌우 12px 안쪽·줄 사이 6px
-    <div className="flex w-full flex-col items-center gap-1.5 desktop:min-h-[444px] desktop:justify-center desktop:gap-5">
+    // 데스크톱은 169.4px 폭 칸·사진 높이 151px·847px 폭·줄 사이 16px(시안 8:11959), 모바일은 68px 사진·좌우 12px 안쪽·줄 사이 6px
+    <div className="flex w-full flex-col items-center gap-1.5 desktop:min-h-[444px] desktop:justify-center desktop:gap-4">
       {rows.map((row) => (
         <ul
           key={row[0].id}
@@ -305,10 +305,10 @@ function SpeakerMedia({ speakers }: { speakers: readonly IntroductionLecture[] }
                     alt=""
                     width={340}
                     height={380}
-                    className="h-[71px] w-full object-contain desktop:h-[190px]"
+                    className="h-[71px] w-full object-contain desktop:h-[151px]"
                   />
                 )}
-                <p className="mt-1.5 text-center text-[8px] leading-[normal] font-semibold desktop:mt-3.5 desktop:text-[14px] desktop:leading-5 desktop:tracking-[0.175px]">
+                <p className="mt-1.5 text-center text-[8px] leading-[normal] font-semibold desktop:mt-3.5 desktop:flex desktop:flex-col desktop:gap-[3.5px] desktop:text-[14px] desktop:leading-5 desktop:tracking-[0.175px]">
                   <span className="block text-[#7099ff] desktop:font-bold">
                     {speaker.corporation}
                   </span>
