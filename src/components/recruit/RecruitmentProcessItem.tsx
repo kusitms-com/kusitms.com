@@ -3,55 +3,55 @@
 import { ChatGraphic, FileGraphic, MedalGraphic, PeopleGraphic } from "@kusitms.com/icons";
 import { RecruitmentCard } from "@kusitms.com/ui";
 
-// 이번 기수(35기, 명세 0-2 예시) 일정. 모집 상태와 상관없이 항상 보여 준다
+// 모집 일정(main 브랜치 일정). 모집 상태와 상관없이 항상 보여 준다
 const CURRENT_SCHEDULES = [
   {
-    label: "운영진",
+    label: "신규 운영진",
     steps: [
       {
         graphic: FileGraphic,
         title: "서류 지원 기간",
-        description: "1/7(목) ~ 1/11(월)",
+        description: "7월 16일(목) ~ 7월 20일(월)",
       },
       {
         graphic: ChatGraphic,
         title: "서류 합격 발표",
-        description: "1/13(수)\n합격자/불합격자 전체 연락",
+        description: "7월 22일(수)\n합격자/불합격자 전체 연락",
       },
       {
         graphic: PeopleGraphic,
-        title: "운영진 면접",
-        description: "1/16(토) ~ 1/17(일)\n서류 합격자 개별 안내",
+        title: "신규 운영진 면접",
+        description: "7월 25일(토) ~ 7월 26일(일)\n서류 합격자 개별 안내",
       },
       {
         graphic: MedalGraphic,
         title: "최종 결과 발표",
-        description: "1/19(화)\n합격자/불합격자 전체 연락",
+        description: "7월 28일(화)\n합격자/불합격자 전체 연락",
       },
     ],
   },
   {
-    label: "학회원",
+    label: "신규 학회원",
     steps: [
       {
         graphic: FileGraphic,
         title: "서류 지원 기간",
-        description: "1/16(토) ~ 1/23(토) 23:59",
+        description: "7월 25일(토) ~ 8월 1일(토) 23:59",
       },
       {
         graphic: ChatGraphic,
         title: "서류 합격 발표",
-        description: "1/27(수)\n합격자/불합격자 전체 연락",
+        description: "8월 5일(수)\n합격자/불합격자 전체 연락",
       },
       {
         graphic: PeopleGraphic,
         title: "면접 기간",
-        description: "1/30(토) ~ 1/31(일)\n서류 합격자 개별 안내",
+        description: "8월 8일(토) ~ 8월 9일(일)\n서류 합격자 개별 안내",
       },
       {
         graphic: MedalGraphic,
         title: "최종 합격 발표",
-        description: "2/2(화)",
+        description: "8월 11일(화)",
       },
     ],
   },
