@@ -36,9 +36,22 @@ export const Header = () => {
   // 메인 맨 위(스크롤 전)에서는 히어로 배경이 그대로 보이도록 헤더 배경·블러를 뺀다
   const [atTop, setAtTop] = useState(currentPath === "/");
   const [menuOpen, setMenuOpen] = useState(false);
+  // 메뉴 패널이 보이는 동안(열림 + 닫히며 사라지는 300ms) true. 이때 헤더에 backdrop-filter가 조금이라도 남아 있으면
+  // 헤더가 패널 블러의 기준이 되어 뒤 화면이 흐려지지 않다가, 헤더 블러 전환이 끝나는 순간 한 번에 흐려진다
+  const [menuPanelShown, setMenuPanelShown] = useState(false);
   // proxy가 요청마다 서버 시간으로 판정해 둔 모집 상태. 읽기 전에는 버튼 자리만 잡아 두고 숨긴다
   const [statusKey, setStatusKey] = useState<RecruitStatusKey | null>(null);
   const apply = useApplyAction("gnb");
+
+  useEffect(() => {
+    if (menuOpen) {
+      setMenuPanelShown(true);
+      return;
+    }
+    // 패널 페이드(mobileMenuClassName의 duration-300)가 끝난 뒤에 헤더 블러를 되돌린다
+    const timer = window.setTimeout(() => setMenuPanelShown(false), 300);
+    return () => window.clearTimeout(timer);
+  }, [menuOpen]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: 페이지를 옮길 때마다 proxy가 갱신한 쿠키를 다시 읽는다
   useEffect(() => {
@@ -117,9 +130,10 @@ export const Header = () => {
       className={cn(
         "sticky transition-[background-color,backdrop-filter] duration-300",
         atTop && !menuOpen && "bg-transparent! backdrop-blur-[0px]!",
+        menuPanelShown && "transition-[background-color]! [backdrop-filter:none]!",
       )}
       onOpenChange={setMenuOpen}
-      mobileMenuClassName="[&_a:hover]:text-label-normal [&_a:hover]:font-semibold [&_a:active]:text-label-normal [&_a:active]:font-semibold"
+      mobileMenuClassName="transition-[opacity,backdrop-filter,display] transition-discrete duration-300 ease-out starting:opacity-0 starting:backdrop-blur-[0px] [&.hidden]:opacity-0 [&.hidden]:backdrop-blur-[0px] [&_a:hover]:text-label-normal [&_a:hover]:font-semibold [&_a:active]:text-label-normal [&_a:active]:font-semibold"
       logo={logo}
       mobileLogo={logo}
       cta={cta}
