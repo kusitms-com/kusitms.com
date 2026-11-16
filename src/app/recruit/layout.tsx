@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+// title·description·OG는 모집 상태에 따라 page.tsx의 generateMetadata가 정한다
 export const metadata: Metadata = {
-  title: "KUSITMS | RECRUIT",
-  description: "큐시즘과 함께할 새로운 기수를 모집합니다. 모집 일정과 지원 방법을 확인해보세요.",
   keywords: [
     "KUSITMS",
     "큐시즘",
@@ -16,27 +15,6 @@ export const metadata: Metadata = {
     "지원 방법",
     "학회 지원",
   ],
-  openGraph: {
-    title: "KUSITMS | RECRUIT",
-    description: "큐시즘과 함께할 새로운 기수를 모집합니다. 모집 일정과 지원 방법을 확인해보세요.",
-    url: "https://www.kusitms.com/recruit",
-    siteName: "KUSITMS",
-
-    images: [
-      {
-        url: "https://www.kusitms.com/og/kusitms-og-33rd.png",
-
-        alt: "KUSITMS Recruit",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "KUSITMS | RECRUIT",
-    description: "큐시즘과 함께할 새로운 기수를 모집합니다. 모집 일정과 지원 방법을 확인해보세요.",
-    images: ["https://www.kusitms.com/og/kusitms-og-33rd.png"],
-  },
 };
 
 export default async function RecruitLayout({

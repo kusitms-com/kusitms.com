@@ -18,7 +18,7 @@ const recruitItems = [
 
 export default function RecruitmentTargetInfoItem() {
   return (
-    <section className="flex desktop:flex-row flex-col w-full desktop:px-0 px-[10px] gap-[16px] desktop:gap-[22px] items-center desktop:items-stretch">
+    <section className="flex desktop:flex-row flex-col w-full gap-6 items-center desktop:items-stretch [&>div]:w-full desktop:[&>div]:w-auto desktop:[&>div]:flex-1">
       {recruitItems.map((item) => (
         <RecruitmentCard
           key={item.description}

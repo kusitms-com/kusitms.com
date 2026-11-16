@@ -2,27 +2,14 @@ import ProjectModal from "@/components/projectDetail/ProjectModal";
 import { getMeetupProjectDetail, getMeetupProjects } from "@/service/projects";
 import { getAdjacentMeetupIds } from "@/utils";
 
-export async function generateStaticParams() {
-  try {
-    const meetupProjectList = await getMeetupProjects("", "");
-    if (!meetupProjectList?.data?.meetup_list) {
-      return [];
-    }
-    return meetupProjectList.data.meetup_list.map((project) => ({
-      projectNumber: project.meetup_id.toString(),
-    }));
-  } catch (error) {
-    console.error("Failed to generate static params for meetup projects:", error);
-    return [];
-  }
-}
-
 async function ProjectDetailModalPage({
   params,
 }: Readonly<{
   params: Promise<{ projectNumber: string }>;
 }>) {
   const { projectNumber } = await params;
+  // 빌드 시 인터셉트 라우트가 "[projectNumber]" 문자열 그대로 프리렌더되어 상세 API가 400을 반환하므로 숫자 id만 처리
+  if (!/^\d+$/.test(projectNumber)) return null;
 
   const { data: project } = await getMeetupProjectDetail(projectNumber);
   const projectList = await getMeetupProjects("", "");

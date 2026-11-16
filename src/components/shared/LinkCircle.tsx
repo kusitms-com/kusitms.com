@@ -1,31 +1,55 @@
-import Image from "next/image";
+import { Tooltip } from "@kusitms.com/ui";
 import Link from "next/link";
-import { twMerge } from "tailwind-merge";
+import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
-interface LinkCircleProps {
-  img: string;
+interface IconLinkProps {
+  icon: ReactNode;
   link: string;
-  className?: string;
-  size?: number;
+  label: string;
+  tooltip: string;
+  /** 오른쪽 끝 아이콘은 툴팁이 화면 밖으로 나가지 않도록 오른쪽에 맞춘다(시안 Footer/Contact align=end) */
+  tooltipAlign?: "center" | "end";
 }
 
-export const IconLink = ({ img, link, className, size = 24 }: LinkCircleProps) => {
-  return (
+// 시안(861:76150 Footer/Contact): 36px 원형(fill/primary) 아이콘, 호버 시 흰색 25% 밝게 + 그림자, 위로 12px 띄운 툴팁.
+// 툴팁 모양과 툴팁 위 hover 상태는 디자인 시스템 Tooltip이 그린다.
+// 데스크톱은 툴팁만 링크이고, 모바일은 아이콘이 링크다. 툴팁 아래 12px은 포인터 이동을 위한 투명 여백이다.
+export const IconLink = ({
+  icon,
+  link,
+  label,
+  tooltip,
+  tooltipAlign = "center",
+}: IconLinkProps) => (
+  <div className="group relative flex size-9 items-center justify-center rounded-full bg-fill-primary text-label-normal transition-shadow hover:shadow-[0_1px_6px_rgba(179,179,188,0.6)]">
+    {/* 그림자를 filter(drop-shadow)로 주면 Safari가 툴팁을 filter 영역에서 잘라 그릴 수 있어 원형에 맞는 box-shadow를 쓴다 */}
+    {/* 시안의 hover: fill/primary 위에 interaction/hover(흰색 25%)를 한 겹 덮는다 */}
+    <span
+      aria-hidden
+      className="pointer-events-none absolute inset-0 rounded-full transition-colors group-hover:bg-interaction-hover"
+    />
+    <span className="pointer-events-none relative" aria-hidden>
+      {icon}
+    </span>
     <Link
       href={link}
       target="_blank"
-      className={twMerge(
-        "w-[36px] h-[36px] rounded-full bg-dark-blue-50 flex justify-center items-center",
-        className,
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="absolute inset-0 rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary desktop:hidden"
+    />
+    <Link
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${label}: ${tooltip}`}
+      className={cn(
+        "absolute bottom-full z-10 hidden pb-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary desktop:block desktop:pointer-events-none desktop:opacity-0 desktop:group-hover:pointer-events-auto desktop:group-hover:opacity-100 desktop:focus-visible:pointer-events-auto desktop:focus-visible:opacity-100",
+        tooltipAlign === "end" ? "right-0" : "left-1/2 -translate-x-1/2",
       )}
     >
-      <Image
-        src={img}
-        alt="SNS icon"
-        width={size}
-        height={size}
-        style={{ width: `${size}px`, height: `${size}px` }}
-      />
+      <Tooltip label={tooltip} arrow={tooltipAlign} aria-hidden />
     </Link>
-  );
-};
+  </div>
+);

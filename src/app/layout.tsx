@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     url: "https://www.kusitms.com",
     images: [
       {
-        url: "https://www.kusitms.com/og/kusitms-og-33rd.png",
+        url: "https://www.kusitms.com/og/kusitms-og-34th.png",
         alt: "KUSITMS 홈페이지 배너",
       },
     ],

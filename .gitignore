@@ -43,3 +43,7 @@ next-env.d.ts
 # webstorm파일
 *.iml
 *.xml
+
+# AI 파일
+.omc
+.serena

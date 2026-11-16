@@ -3,6 +3,9 @@ import NavButtons from "@/components/projects/common/NavButtons";
 import ProjectTypeBanner from "@/components/projects/common/ProjectTypeBanner";
 import { getCorporateProjects } from "@/service/projects";
 
+// 어드민에서 바꾼 프로젝트·소개 정보가 바로 보이도록 요청마다 새로 그린다(빌드 시 정적 생성 시도 안 함)
+export const dynamic = "force-dynamic";
+
 async function CorporateProjectPage() {
   const corporateProjectsList = await getCorporateProjects("");
 

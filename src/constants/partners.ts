@@ -10,4 +10,5 @@ export const PARTNERS: string[] = [
   "/main/img/partner/USEmbassy.png",
   "/main/img/partner/Kchiver.png",
   "/main/img/partner/LG.png",
+  "/main/img/partner/Gabia.svg",
 ];

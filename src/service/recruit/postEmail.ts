@@ -9,22 +9,21 @@ export interface PostEmailResponse {
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
+/**
+ * 모집 알림 이메일 등록 (POST /api/emails, 본문 { email }).
+ * 실패 시 서버가 준 message(누락·형식 오류·중복 모두 400)를 담은 Error를 던진다
+ */
 export const postEmail = async (email: string): Promise<PostEmailResponse> => {
-  try {
-    const res = await fetch(`${baseUrl}/api/emails?email=${encodeURIComponent(email)}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-    });
+  const res = await fetch(`${baseUrl}/api/emails`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email }),
+  });
 
-    if (!res.ok) {
-      // 서버가 반환하는 에러 메시지를 그대로 throw
-      const errorBody = await res.text();
-      throw new Error(errorBody);
-    }
-
-    return res.json();
-  } catch (err) {
-    console.error("Failed to post email:", err);
-    throw err;
+  if (!res.ok) {
+    const body = await res.json().catch(() => null);
+    throw new Error(typeof body?.message === "string" ? body.message : `HTTP ${res.status}`);
   }
+
+  return res.json();
 };

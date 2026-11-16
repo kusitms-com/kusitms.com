@@ -28,8 +28,8 @@ export const getCorporateProjects = async (cardinal: string): Promise<CorporateR
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "force-cache",
-      next: { revalidate: 604800, tags: ["corporateProjects"] },
+      // 어드민에서 추가·수정·삭제한 프로젝트가 바로 보이도록 캐시하지 않는다
+      cache: "no-store",
     });
 
     if (!res.ok) {
